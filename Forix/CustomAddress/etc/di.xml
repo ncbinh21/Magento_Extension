@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+  <type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
+    <plugin disabled="false" name="Forix_Custom_Plugin_BillingLayoutProcessor" sortOrder="99" type="Forix\CustomAddress\Plugin\Checkout\LayoutProcessor"/>
+  </type>
+  <type name="Magento\Quote\Model\BillingAddressManagement">
+    <plugin disabled="false" name="Forix_Custom_Plugin_Magento_Quote_Model_BillingAddressManagement" sortOrder="10" type="Forix\CustomAddress\Plugin\Magento\Quote\Model\BillingAddressManagement"/>
+  </type>
+  <type name="Magento\Quote\Model\Quote\Address\BillingAddressPersister">
+    <plugin disabled="false" name="Forix_Custom_Plugin_BillingAddressSave" sortOrder="10" type="Forix\CustomAddress\Plugin\Magento\Quote\Model\Quote\Address\BillingAddressPersister"/>
+  </type>
+  <type name="Magento\Quote\Model\ShippingAddressManagement">
+    <plugin disabled="false" name="Forix_Custom_Plugin_Magento_Quote_Model_ShippingAddressManagement" sortOrder="10" type="Forix\CustomAddress\Plugin\Magento\Quote\Model\ShippingAddressManagement"/>
+  </type>
+</config>
