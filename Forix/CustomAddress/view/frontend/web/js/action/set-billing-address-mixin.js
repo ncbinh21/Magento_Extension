@@ -9,6 +9,7 @@ define([
         return wrapper.wrap(setBillingAddressAction, function (originalAction, messageContainer) {
 
             var billingAddress = quote.billingAddress();
+
             if(billingAddress != undefined) {
 
                 if (billingAddress['extension_attributes'] === undefined) {
@@ -17,6 +18,7 @@ define([
 
                 if (billingAddress.customAttributes != undefined) {
                     $.each(billingAddress.customAttributes, function (key, value) {
+
                         if($.isPlainObject(value)){
                             value = value['value'];
                         }

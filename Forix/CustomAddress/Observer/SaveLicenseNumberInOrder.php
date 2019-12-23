@@ -7,7 +7,7 @@ class SaveLicenseNumberInOrder implements \Magento\Framework\Event\ObserverInter
         $order = $observer->getEvent()->getOrder();
         $quote = $observer->getEvent()->getQuote();
         if ($quote->getBillingAddress()) {
-            $order->getBillingAddress()->setLicenseNumber($quote->getBillingAddress()->getExtensionAttributes()->getLicenseNumber());
+            $order->getBillingAddress()->setLicenseNumber($quote->getBillingAddress()->getLicenseNumber());
         }
         if (!$quote->isVirtual()) {
             $order->getShippingAddress()->setLicenseNumber($quote->getShippingAddress()->getLicenseNumber());

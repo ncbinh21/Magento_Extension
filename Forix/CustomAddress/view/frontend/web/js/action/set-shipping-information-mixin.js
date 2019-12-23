@@ -20,6 +20,7 @@ define([
                     if($.isPlainObject(value)){
                         value = value['value'];
                     }
+
                     shippingAddress['customAttributes'][key] = value;
                     shippingAddress['extension_attributes'][key] = value;
 
