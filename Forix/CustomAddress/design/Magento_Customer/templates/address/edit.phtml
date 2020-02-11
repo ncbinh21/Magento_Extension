@@ -39,12 +39,6 @@
                 <input type="text" name="fax" id="fax" title="<?php /* @escapeNotVerified */ echo __('Fax') ?>" value="<?php echo $block->escapeHtml($block->getAddress()->getFax()) ?>" class="input-text <?php /* @escapeNotVerified */ echo $this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('fax') ?>">
             </div>
         </div>
-        <div class="field license_number">
-            <label class="label" for="license_number"><span><?php echo $block->escapeHtml(__('License Number')) ?></span></label>
-            <div class="control">
-                <input type="text" name="license_number" value="<?= $block->escapeHtml($block->getAddress()->getCustomAttribute('license_number') ? $block->getAddress()->getCustomAttribute('license_number')->getValue() : '') ?>" title="<?= $block->escapeHtml($block->getAddress()->getCustomAttribute('license_number') ? $block->getAddress()->getCustomAttribute('license_number')->getValue() : '') ?>" class="input-text <?= $block->escapeHtml($block->getAddress()->getCustomAttribute('license_number') ? $block->getAddress()->getCustomAttribute('license_number')->getValue() : '') ?>" id="license_number">
-            </div>
-        </div>
     </fieldset>
     <fieldset class="fieldset">
         <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Address') ?></span></legend><br>
@@ -104,7 +98,12 @@
                 <?php echo $block->getCountryHtmlSelect() ?>
             </div>
         </div>
-
+        <div class="field license_number">
+            <label class="label" for="license_number"><span><?php echo $block->escapeHtml(__('License Number')) ?></span></label>
+            <div class="control">
+                <input type="text" name="license_number" value="<?= $block->escapeHtml($block->getAddress()->getCustomAttribute('license_number') ? $block->getAddress()->getCustomAttribute('license_number')->getValue() : '') ?>" title="<?= $block->escapeHtml($block->getAddress()->getCustomAttribute('license_number') ? $block->getAddress()->getCustomAttribute('license_number')->getValue() : '') ?>" class="input-text <?= $block->escapeHtml($block->getAddress()->getCustomAttribute('license_number') ? $block->getAddress()->getCustomAttribute('license_number')->getValue() : '') ?>" id="license_number">
+            </div>
+        </div>
         <?php if ($block->isDefaultBilling()): ?>
             <div class="message info"><?php /* @escapeNotVerified */ echo __("It's a default billing address.") ?></div>
         <?php elseif ($block->canSetAsDefaultBilling()): ?>
