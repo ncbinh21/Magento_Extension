@@ -1,0 +1,42 @@
+theme: Base Theme
+title: Abandoned Cart
+template_subject: You have abandoned your cart
+template_areas:
+  header: <h1>Dear <?=$this->getCustomerName() ?>!</h1>
+  content: |
+    We noticed that for some unknown reason you had abandoned your cart at <a href="<?php echo $this->getStore()->getBaseUrl() ?>"><?php echo $this->getStoreName() ?></a> with the following item(s) in it:
+
+    <table width="0" border="0" cellspacing="5" cellpadding="10">
+    <?php foreach ($this->getQuote()->getAllVisibleItems() as $item): ?>
+    <tr>
+    <td><img src="<?=$this->getImageUrl($item->getProduct(), 'image', 300) ?>" style="max-width: 15rem"/></td>
+    <td valign="top">
+      <p><a href="<?=$item->getProduct()->getProductUrl() ?>"><?php echo $item->getName() ?></a></p>
+      <b><?=$this->formatPrice($item->getPrice()) ?></b>
+    </td>
+    </tr>
+    <?php endforeach ?>
+    </table>
+    <table class="button" width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td>
+          <table class="inner-wrapper" border="0" cellspacing="0" cellpadding="0" align="center">
+            <tr>
+              <td align="center">
+                <a href="<?=$this->getRestoreCartUrl() ?>">Finish Checkout</a>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  footer: |
+    <?php if ($this->getCoupon()): ?>
+      <div class="offer">
+        We highly appreciate each and every our visitor, and it's extremely frustrating for us to lose you as a customer. <br>
+        Let us offer you a <b>discount</b> to complete your purchase.<br>
+        Your coupon code: <span class="coupon"><?php echo $this->getCoupon()->getCode() ?></span>
+      </div>
+    <?php endif ?>
+
+    <p>If you have any questions about our products or services, please <a href="<?php echo $this->getStoreUrl() ?>/contact/">contact with us.</a></p>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Orange35_Colorpickercustom::css/swatches.css"/>
+        <css src="Orange35_Colorpickercustom::css/slick.css"/>
+        <!--<css src="Orange35_Colorpickercustom::css/slick-theme.css"/>-->
+    </head>
+    <body>
+        <referenceBlock name="product.info.options.wrapper">
+            <block class="Orange35\Colorpickercustom\Block\Product\View\Options" name="product.info.options" as="product_options" template="Orange35_Colorpickercustom::product/view/options.phtml">
+                <block class="Magento\Catalog\Block\Product\View\Options\Type\DefaultType" as="default" template="Magento_Catalog::product/view/options/type/default.phtml"/>
+                <block class="Magento\Catalog\Block\Product\View\Options\Type\Text" as="text" template="Magento_Catalog::product/view/options/type/text.phtml"/>
+                <block class="Magento\Catalog\Block\Product\View\Options\Type\File" as="file" template="Magento_Catalog::product/view/options/type/file.phtml"/>
+                <block class="Magento\Catalog\Block\Product\View\Options\Type\Select" as="select" template="Magento_Catalog::product/view/options/type/select.phtml"/>
+                <block class="Magento\Catalog\Block\Product\View\Options\Type\Date" as="date" template="Magento_Catalog::product/view/options/type/date.phtml"/>
+                <block class="Orange35\Colorpickercustom\Block\Product\View\Options\Type\Swatch" as="swatch" template="Orange35_Colorpickercustom::product/view/options/type/swatch.phtml"/>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

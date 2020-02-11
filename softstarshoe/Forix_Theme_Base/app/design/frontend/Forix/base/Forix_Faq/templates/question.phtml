@@ -1,0 +1,43 @@
+<?php
+/**
+ * @var Forix\Faq\Block\Faq $this
+ */
+
+$categoryId = $this->getCategoryId() ? : 0;
+$childGroups = $this->getChildCategoryOf($categoryId);
+?>
+<section class="block block-faq-lists">
+    <?php if ($childGroups):
+        foreach ($childGroups as $group):
+            $questions = $this->getItemCollectionBy($group);
+            if ($questions->getSize()): ?>
+                <div class="block-faq-lists">
+                    <div class="block-title">
+                        <strong><?php echo $this->escapeHtml($group->getCategoryName()); ?></strong>
+                    </div>
+                    <div class="block-content">
+                        <ul class="items block-faqs">
+                            <?php foreach ($questions as $question): ?>
+                                <li class="item">
+                                    <a href="javascript:void(0)" data-mage-init='{"faqCallFunc":{"findClass":".answer-question"}}'
+                                       class="title">
+                                        <?php echo $this->escapeHtml($question->getQuestion()); ?>
+                                    </a>
+                                    <div class="content">
+                                        <?php if($question->getAnswerHtml()): ?>
+                                            <?php echo $question->getAnswer(); ?>
+                                        <?php else :?>
+                                            <?php echo $this->escapeHtml($question->getAnswer()); ?>
+                                        <?php endif; ?>
+                                    </div>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                </div>
+                <?php
+            endif;
+        endforeach;
+    endif;
+    ?>
+</section>

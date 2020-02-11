@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="aheadworks" translate="label" sortOrder="300">
+            <label>Aheadworks Extensions</label>
+        </tab>
+        <section id="aw_giftcard" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Gift Card</label>
+            <tab>aheadworks</tab>
+            <resource>Aheadworks_Giftcard::config_aw_giftcard</resource>
+            <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="expire_days" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Gift Card Expires After (days)</label>
+                    <validate>validate-digits</validate>
+                </field>
+            </group>
+            <group id="email" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Email Settings</label>
+                <field id="sender" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Gift Card Notification Email Sender</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                </field>
+            </group>
+            <group id="code_pattern" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Gift Card Code Pattern</label>
+                <field id="code_length" translate="label,comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Code Length</label>
+                    <comment><![CDATA[Excluding prefix, suffix, and separators]]></comment>
+                    <validate>validate-digits validate-greater-than-zero</validate>
+                </field>
+                <field id="code_format" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Code Format</label>
+                    <source_model>Aheadworks\Giftcard\Model\Source\Giftcard\CodeFormat</source_model>
+                </field>
+                <field id="code_prefix" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Code Prefix</label>
+                </field>
+                <field id="code_suffix" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Code Suffix</label>
+                </field>
+                <field id="dash_every_x_characters" translate="label,comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Dash Every X Characters</label>
+                    <comment><![CDATA[If empty no separation]]></comment>
+                    <validate>validate-digits validate-not-negative-number</validate>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

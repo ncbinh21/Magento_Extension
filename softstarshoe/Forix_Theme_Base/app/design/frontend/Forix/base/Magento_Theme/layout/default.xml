@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Remove some Block -->
+        <referenceBlock name="report.bugs" remove="true"/>
+        <!--<referenceContainer name="header.panel" remove="true"/>-->
+        <referenceContainer name="compare-link-wrapper" remove="true"/>
+        <referenceContainer name="footer_links" remove="true"/>
+        <referenceContainer name="wishlist_sidebar" remove="true"/>
+        <referenceContainer name="store.settings.language" remove="true"/>
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+        <referenceBlock name="multiple-wishlist_sidebar" remove="true"/>
+        <referenceBlock name="paypal.partner.right.logo" remove="true"/>
+        <referenceBlock name="bml.right.logo" remove="true"/>
+        <referenceBlock name="sale.reorder.sidebar" remove="true"/>
+        <referenceBlock name="wishlist_sidebar" remove="true"/>
+
+        <!-- Adding some Container -->
+        <referenceContainer name="footer-container">
+            <container name="footer_top" as="footer_top" label="Footer Top" htmlTag="div" htmlClass="footer top">
+                <container name="footer_top_inner" as="footer_top_inner" label="Footer Top Inner" htmlTag="div" htmlClass="footer-top inner"/>
+            </container>
+            <container name="footer_bottom" as="footer_bottom" label="Footer Bottom" htmlTag="div" htmlClass="footer bottom">
+                <container name="footer_bottom_inner" as="footer_bottom_inner" label="Footer Bottom Inner" htmlTag="div" htmlClass="footer-bottom inner"/>
+            </container>
+        </referenceContainer>
+        <referenceContainer name="footer">
+            <container name="footer_inner" as="footer_inner" label="Footer Inner" htmlTag="div" htmlClass="footer inner"/>
+        </referenceContainer>
+        <referenceContainer name="page.wrapper">
+            <container name="page_promotions" as="page_promotions" label="Page Promotions" htmlTag="div" htmlClass="page-promotions" before="main.content">
+                <container name="page_promotions_inner" as="page_promotions_inner" label="Page Promotions Inner" htmlTag="div" htmlClass="promotions-inner"/>
+            </container>
+            <container name="main_banner" as="main_banner" label="Main Banner" htmlTag="div" htmlClass="main-banner" before="main.content"/>
+        </referenceContainer>
+        <referenceContainer name="header-wrapper">
+            <container name="main_nav" as="main_nav" label="Main Navigation" htmlTag="div" htmlClass="main-nav" after="logo">
+                <container name="main_nav_top" as="main_nav_top" label="Main Navigation - Top" htmlTag="div" htmlClass="nav-top" before="-"/>
+                <container name="main_nav_center" as="main_nav_center" label="Main Navigation - Center"/>
+                <container name="main_nav_bottom" as="main_nav_bottom" label="Main Navigation - Bottom" htmlTag="div" htmlClass="nav-bottom" after="-"/>
+            </container>
+        </referenceContainer>
+        <referenceContainer name="sidebar.main">
+            <block class="Magento\Framework\View\Element\Template" name="sidebar.cms" template="Magento_Theme::forix/sidebar-cms.phtml"/>
+        </referenceContainer>
+
+        <!-- Moving some Block -->
+        <move element="copyright" destination="footer_bottom_inner"/>
+        <move element="navigation.sections" destination="main_nav_center"/>
+        <referenceBlock name="store.menu">
+            <block class="Magento\Cms\Block\Block" name="menu-static">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">menu-static</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <move element="page.top" destination="page.wrapper" after="page_promotions"/>
+        <move element="store_language" destination="page.wrapper" before="before.body.end"/>
+    </body>
+</page>

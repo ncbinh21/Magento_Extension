@@ -1,0 +1,21 @@
+<!--@subject [#{{var ticket.uid}}] Ticket replied: {{var ticket.subject}}@-->
+<!--@styles .aw-hdu-note {color: gray; font-size: 85%;}@-->
+
+{{template config_path="design/email/header_template"}}
+
+<strong>Hello, {{var ticket.customer_name}}.</strong><br/><br/>
+
+{{var message.content|escape|nl2br}}<br/><br/>
+
+<strong>Best Regards,</strong><br/>
+
+<strong>{{var author_name}}</strong><br/>
+<strong>Support team,</strong><br/>
+{{var store.frontend_name}}<br/><br/>
+
+<div class="aw-hdu-note">
+    You can update the ticket <a href="{{var external_url}}">via web interface</a> or by replying to this email.<br/>
+    When updating the ticket via email, keep the ticket ID in the subject line to ensure that your reply will be tracked appropriately.
+</div>
+
+{{template config_path="design/email/footer_template"}}

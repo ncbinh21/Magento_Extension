@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Customer::customer">
+                    <resource id="CommerceExtensions_GuestToReg::guestcustomer" title="Guests To Registered Customers" translate="title" sortOrder="160" />
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

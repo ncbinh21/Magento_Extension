@@ -1,0 +1,16 @@
+<?php
+$post = $this->getPost();
+$image = $post->getImage();
+if($image) {
+    $imageUrl = $image->getLargeImage() ? $image->getLargeImage() : $image->getFullSizeImage();
+    $imageUrl = $imageUrl ? $imageUrl : $image->getMediumImage();
+    $imageUrl = $imageUrl ? $imageUrl : $image->getAvailableImage();
+}
+?>
+<!--  facebook open graph -->
+<meta property="og:title" content="<?php /* @escapeNotVerified */ echo $post->getPostTitle(); ?>" />
+<?php if($image): ?>
+<meta property="og:image" content="<?php /* @escapeNotVerified */ echo $imageUrl; ?>" />
+<?php endif; ?>
+<meta property="og:url" content="<?php /* @escapeNotVerified */ echo $post->getUrl(); ?>" />
+<!--  facebook open graph -->

@@ -1,0 +1,62 @@
+<?php if ($category = $this->getCategory()): ?>
+	<?php
+	$categoryHelper = $this->getCategoryHelper();
+	$subcategories = $this->getChildCategories($category);
+	$subLevel = (int)$block->getLevel() > 1 ? $block->getLevel() : 1;
+
+
+	?>
+	<div class="block widget block-catalog-category-list">
+		<?php if($title = $block->getTitle()): ?>
+		<div class="block-title">
+			<strong><?php echo $title ?></strong>
+		</div>
+		<?php endif; ?>
+		<div class="block-content">
+			<?php if($block->isRootCategory($category)): ?>
+				<h2><?php echo $category->getName() ?></h2>
+			<?php else: ?>
+				<h2><a href="<?php echo $categoryHelper->getCategoryUrl($category) ?>"><?php echo $category->getName() ?></a></h2>
+			<?php endif; ?>
+			<?php if(sizeof($subcategories) > 0): ?>
+			<ul>
+			<?php foreach($subcategories as $subcategory): ?>
+			<?php if (!$subcategory->getIsActive()) { continue; } ?>
+				<li><a href="<?php echo $categoryHelper->getCategoryUrl($subcategory) ?>"><?php echo $subcategory->getName() ?></a>
+					<?php $ssubCategories = $this->getChildCategories($subcategory) ?>
+					<?php //if(sizeof($ssubCategories) > 0): ?>
+					<ul>
+						<?php
+						foreach($ssubCategories as $ssubcategory):
+							if (!$ssubcategory->getIsActive()) {
+								continue;
+							}
+							?>
+							<li><a href="<?php echo $categoryHelper->getCategoryUrl($ssubcategory) ?>"><?php echo $ssubcategory->getName() ?></a>
+								<?php $sssubCategories = $this->getChildCategories($ssubcategory) ?>
+								<?php //if(sizeof($sssubCategories) > 0): ?>
+								<ul>
+									<?php
+									foreach($sssubCategories as $sssubcategory):
+										if (!$sssubcategory->getIsActive()) {
+											continue;
+										}
+										?>
+										<li><a href="<?php echo $categoryHelper->getCategoryUrl($sssubcategory) ?>"><?php echo $sssubcategory->getName() ?></a></li>
+									<?php endforeach; ?>
+								</ul>
+								<?php //endif; ?>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+					<?php //endif; ?>
+				</li>
+			<?php endforeach;?>
+			</ul>
+			<?php endif; ?>
+		</div>
+	</div>
+<?php endif; ?>
+
+<!--<h1>OR show all Categories like menu</h1>
+--><?php /*echo $this->getHtml() */?>

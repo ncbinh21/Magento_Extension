@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="controller_action_predispatch">
+        <observer name="emailreport" instance="Mirasvit\EmailReport\Observer\ReportClick" />
+    </event>
+
+    <event name="model_save_after">
+        <observer name="emailreport" instance="Mirasvit\EmailReport\Observer\RegisterConversion" />
+    </event>
+</config>

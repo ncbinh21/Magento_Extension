@@ -1,0 +1,226 @@
+@use-sections-core__enable: true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+
+.product.data.items > .item.content{
+    &:extend(.forix-abs-clearfix all);
+}
+.product.data.items > .item.title > a{
+    &:extend(.forix-abs-three-size all);
+}
+.product.data.items > .item.title > a{
+    &:extend(.home-tab-container .tabs li a);
+}
+.product.data.items > .item.title.active > a{
+    &:extend(.home-tab-container .tabs li a.active);
+}
+.product.data.items > .item.title > a:after{
+    &:extend(.forix-abs-icon-base all);
+}
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .product.data.items{
+        > .item.title{
+            width: auto;
+            display: inline-block;
+        }
+        >.item.content{
+            float: right;
+        }
+        >.item.content{
+            background: url(../images/gray-bg.jpg) repeat left bottom;
+            position: relative;
+            z-index: 1;
+            margin-top: -1px;
+            border-top: 1px solid #d8d8d8;
+            border-bottom: 1px solid #d3d3d3;
+            &:before,
+            &:after{
+                content: "";
+                position: absolute;
+                width: 400%;
+                top: -1px;
+                bottom: -1px;
+                background: url(../images/gray-bg.jpg) repeat left bottom;
+                display: block !important;
+                border-top: 1px solid #d8d8d8;
+                border-bottom: 1px solid #d3d3d3;
+            }
+            &:before{
+                left: -400%;
+            }
+            &:after{
+                right: -400%;
+            }
+        }
+    }
+    .product.data.items{
+        background: #fff;
+        position: relative;
+        z-index: 1;
+        border-bottom: 0;
+        margin-left: 0;
+        margin-right: 0;
+
+        > .item.title{
+            &.active,
+            &:hover{
+                > a{
+                }
+            }
+
+            &.active{
+                > a{
+                    cursor: default;
+                }
+
+                + .item.content{
+                    display: block;
+                }
+            }
+
+            > a{
+                color: @primary-text__color;
+                line-height: inherit;
+                font-weight: @forix-font-weight__bold;
+                //text-transform: uppercase;
+                text-decoration: none;
+                display: block;
+
+                &:hover{
+                    color: @sss-color-9;
+                }
+            }
+        }
+
+        > .item.content{
+            display: none;
+            width: 100%;
+            background: url(../images/gray-bg.jpg) repeat left bottom;
+
+            &:nth-of-type(2){
+                display: block;
+            }
+        }
+    }
+    .product .product.data.items{
+        > .item.title.active{
+            > a{
+                background: url(../images/gray-bg.jpg);
+                &:after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0px;
+                    left: 0;
+                    width: 100%;
+                    display: block;
+                    height: 1px;
+                    background: url(../images/gray-bg.jpg);
+                    z-index: 2;
+                }
+            }
+        }
+    }
+}
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .product.data.items {
+        > .item.title{
+            display: block;
+            position: relative;
+            &.active,
+            &:hover,
+            &:focus{
+                + .item.content{
+                    margin-bottom: 20px;
+                    margin-top: -10px;
+                }
+                > a{
+                    border-radius: 10px 10px  0 0!important;
+                    &:after {
+                        content: @sss-icon-angle-down !important;
+                        background: 0!important;
+                        height: auto!important;
+                        left: auto!important;
+                        bottom: auto!important;
+                        z-index: 100000!important;
+                        width: auto!important;
+                    }
+                }
+            }
+            > a{
+                text-align: left;
+                font-size: 16px!important;
+                border-radius: 10px!important;
+                border: 1px solid @sss-color-4!important;
+                margin: 0 0 10px;
+                padding: 10px;
+                background: url(../images/gray-bg.jpg);
+                &:after {
+                    display: inline-block;
+                    content: @sss-icon-angle-up;
+                    position: absolute;
+                    right: 10px;
+                    top: 10px;
+                }
+            }
+        }
+        >  .item.content{
+            clear: both;
+            float: none;
+            background: 0;
+            margin: 0;
+            padding: 10px!important;
+            border: 1px solid @sss-color-4;
+            border-top: 0;
+            overflow: auto;
+            &:before,
+            &:after{
+                display: none!important;
+            }
+        }
+        .tab-description__col-full .tab-description__col-left{
+            padding: 0;
+            .list-background{
+                margin: 10px 0;
+            }
+        }
+    }
+    .value .homepage-cms-container-1{
+        margin-bottom: 0;
+    }
+}
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+}
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    .product.data.items{
+        > .item.content{
+            padding: 25px 0;
+        }
+    }
+}
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+}
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    .product.data.items{
+        > .item.title > a{
+            &:after {
+                display: none;
+            }
+        }
+    }
+}

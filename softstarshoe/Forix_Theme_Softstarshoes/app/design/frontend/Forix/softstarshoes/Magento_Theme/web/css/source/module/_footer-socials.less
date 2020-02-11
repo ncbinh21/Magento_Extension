@@ -1,0 +1,76 @@
+@use-footer-box-socials-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+
+// ------------------------------------
+// Variables Extends
+// ------------------------------------
+@footer-socials__link__color: @color-white;
+@footer-socials__link__color__hover: @sss-color-7;
+
+// ------------------------------------
+// Extend Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .footer .box-socials{
+        a{
+            background: none;
+            color: @footer-socials__link__color;
+            text-decoration: none;
+            &:hover{
+                &:before{
+                    color: @footer-socials__link__color__hover;
+                }
+            }
+
+            &:before{
+                color:@color-white;
+            }
+        }
+        li{
+            margin-top: 11px;
+        }
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .footer .box-socials{
+        text-align: center;
+        li{
+            display: inline-block;
+            float: none;
+            margin-top: 10px;
+        }
+    }
+}
+
+// >768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .footer .box-socials{
+        display: table;
+        float: right;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .footer .box-socials{
+        width: 25%;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 768px){
+    .footer .box-socials{
+        width: 29%;
+        li{
+            margin-top: 8px;
+        }
+    }
+}
+@media screen and (min-width: 1025px) {
+    .footer .box-socials{
+        width: 21%;
+    }
+}

@@ -1,0 +1,28 @@
+<?php if ($block->canUseCredit()): ?>
+    <div style="margin-bottom: 3px">
+        <input id="p_method_use_credit" value="1" name="payment[use_credit]" type="checkbox" title="<?= __('Store Credit') ?>" onclick="" <?php if ($block->getUseCredit()): ?>checked<?php endif; ?> />
+        <label for="p_method_use_credit">
+            <?= __('Use Store Credit (%1 available)', $block->formatPrice($block->getBalance())) ?>
+        </label>
+
+        <script type="text/javascript">
+            require([
+                "jquery",
+                "mage/mage",
+                'prototype',
+                'Magento_Sales/order/create/scripts'
+            ], function($) {
+                function toggleUseCredit()
+                {
+                    value = ($('#p_method_use_credit').length && $('#p_method_use_credit')[0].checked ? 1 : 0);
+                    var data = {};
+                    data['payment[use_credit]'] = value;
+
+                    order.loadArea(['shipping_method', 'totals', 'billing_method'], true, data);
+                }
+                Event.observe($('#p_method_use_credit')[0], 'click', toggleUseCredit);
+                Event.observe(document, 'dom:loaded', toggleUseCredit);
+            });
+        </script>
+    </div>
+<?php endif ?>

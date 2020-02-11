@@ -1,0 +1,35 @@
+<!--@subject Your balance at {{var store.getFrontendName()}} has been updated @-->
+{{template config_path="design/email/header_template"}}
+
+<table>
+    <tr class="email-intro">
+        <td>
+            <p class="greeting">{{var customer.name}},</p>
+            <p>
+                {{trans "Your account balance has been updated at %store_name." store_name=$store.getFrontendName()}}
+            </p>
+        </td>
+    </tr>
+    <tr class="email-summary">
+        <td>
+            <table cellspacing="10px" cellpadding="10px">
+                <tr>
+                    <td>{{trans "Balance Total"}}</td>
+                    <td><b>{{var balance_amount}}</b></td>
+                </tr>
+                <tr>
+                    <td>{{trans "Balance Update"}}</td>
+                    <td>{{var transaction_amount}}</td>
+                </tr>
+                <tr>
+                    <td>{{trans "Comment"}}</td>
+                    <td style="font-size:0.9em;">
+                        <i>{{var transaction_message}}</i>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer_template"}}

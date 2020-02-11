@@ -1,0 +1,108 @@
+<?php
+/**
+ * Forix
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Forix.com license that is
+ * available through the world-wide-web at this URL:
+ *
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Forix
+ * @package     Forix_Bannerslider
+ * @copyright   Copyright (c) 2012 Forix (http://www.forixwebdesign.com/)
+ * @license
+ */
+?>
+<?php
+/** @var \Forix\Bannerslider\Block\SliderItem $block */
+$styleSlide = $block->getSlider()->getStyleSlide();
+$slider = $block->getSlider();
+$htmlId   = $block->getFlexsliderHtmlId();
+$bannerCollection = $block->getBannerCollection();
+$animation = ($slider->getData('animationB') == 'slide') ? 'false' : 'true';
+?>
+<?php if($slider->getStatus() == 1):?>
+<div class="main-slider-wrapper">
+    <ul class="main-slider" data-action="main-slider">
+        <?php foreach ($bannerCollection as $banner) : ?>
+            <?php
+            $srcMobile = $block->getBannerImageByType($banner, 'phone');
+            $srcTablet = $block->getBannerImageByType($banner, 'tablet');
+            $srcDesktop = $block->getBannerImageByType($banner, 'desktop');
+            ?>
+            <?php if($banner->getDesktop()) :?>
+                <li class="item <?php echo $banner->getData('align_text')?>">
+                    <div class="box-outer">
+                        <div class="box-image">
+                            <picture>
+                                <!--[if IE 9]><video style="display: none;"><![endif]-->
+                                <?php if($banner->getDesktop()) :?>
+                                    <source srcset="<?php echo $srcDesktop ?>" media="(min-width: 1024px)">
+                                <?php endif; ?>
+                                <?php if($banner->getTablet()) :?>
+                                    <source srcset="<?php echo $srcTablet ?>" media="(min-width: 768px) and (max-width: 1023px)">
+                                <?php endif; ?>
+                                <?php if($banner->getPhone()) :?>
+                                    <source srcset="<?php echo $srcMobile ?>" media="(max-width: 767px)">
+                                <?php endif; ?>
+                                <!--[if IE 9]></video><![endif]-->
+                                <img src="<?php echo $block->getBannerImageUrl($banner) ?>" srcset="<?php echo $block->getBannerImageUrl($banner) ?>" alt="<?php echo $banner->getImageAlt() ?>">
+                            </picture>
+                        </div>
+                        <div class="banner-content">
+                            <div class="banner-inner">
+                                <h4 class="banner-title"><?php echo $banner->getName(); ?></h4>
+                                <div class="box-info">
+                                <?php if($banner->getImageAlt()):?>
+                                    <p class="banner-text"><?php echo $banner->getImageAlt(); ?></p>
+                                <?php endif; ?>
+                                <?php if($banner->getClickUrl()): ?>
+                                    <?php if($btext = $banner->getButtonText()): ?>
+                                        <a target="<?php echo $banner->getTargetValue()?>" href="<?php echo $banner->getClickUrl() ?>" class="banner-link"><?php echo __($btext); ?></a>
+                                    <?php else: ?>
+                                        <a target="<?php echo $banner->getTargetValue()?>" href="<?php echo $banner->getClickUrl() ?>" class="banner-link"><?php echo __('Shop Now'); ?></a>
+                                    <?php endif;?>
+                                <?php endif;?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            <?php endif; ?>
+        <?php endforeach ?>
+    </ul>
+</div>
+<script type="text/x-magento-init">
+    {
+        "[data-action='main-slider']": {
+            "forix/slick": {
+                "appendArrows": ".main-slider-wrapper",
+                "appendDots": ".main-slider-wrapper",
+                "fade": <?php echo $animation?>,
+                "autoplay": true,
+                "arrows": false,
+                "dots": true,
+                "lazyLoad": "ondemand",
+                "autoplaySpeed": <?php echo $slider->getSliderSpeed()? $slider->getSliderSpeed():"3000"; ?>,
+                "speed": 500,
+                "infinite": true
+            }
+        }
+    }
+</script>
+<script>
+    require([
+        "jquery"
+    ], function($){
+        $('.main-slider').on('init', function(event, slick, direction){
+            $('.main-slider').addClass("slick-loaded");
+        });
+    });
+</script>
+<?php endif; ?>

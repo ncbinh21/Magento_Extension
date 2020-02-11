@@ -1,0 +1,23 @@
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "forix/shoppingCart": {}
+        }
+    }
+</script>
+<script type="application/javascript">
+    require(['jquery', 'jquery/ui'], function($){
+        $('.qty').change(function() {
+            $('.form-cart').submit();
+        });
+
+        function check() {
+            if (!$('.grand.totals .price').length) {
+                setTimeout(check, 1000);
+            }
+            $('.btn-cart-value').html($('.grand.totals .price').html());
+        }
+
+        check();
+    });
+</script>

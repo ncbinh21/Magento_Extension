@@ -1,0 +1,40 @@
+<?php
+
+namespace Mirasvit\Seo\Model\SeoObject;
+
+class Page extends \Mirasvit\Seo\Model\SeoObject\AbstractObject
+{
+    protected $_page;
+    protected $_parseObjects = [];
+
+    public function _construct()
+    {
+        parent::_construct();
+        $this->_page = $this->page;
+
+        if ($this->_page) {
+            $this->_parseObjects['page'] = $this->_page;
+        }
+        $this->_parseObjects['store'] = $this->objectStoreFactory->create();
+        $this->init();
+    }
+
+    protected function init()
+    {
+        if ($this->_page->getMetaTitle()) {
+            $this->setMetaTitle($this->parse($this->_page->getMetaTitle()));
+        }
+        if ($this->_page->getMetaKeywords()) {
+            $this->setMetaKeywords($this->parse($this->_page->getMetaKeywords()));
+        }
+        if ($this->_page->getMetaDescription()) {
+            $this->setMetaDescription($this->parse($this->_page->getMetaDescription()));
+        }
+        if ($this->_page->getTitle()) {
+            $this->setTitle($this->parse($this->_page->getTitle()));
+        }
+        if ($this->_page->getDescription()) {
+            $this->setDescription($this->parse($this->_page->getDescription()));
+        }
+    }
+}

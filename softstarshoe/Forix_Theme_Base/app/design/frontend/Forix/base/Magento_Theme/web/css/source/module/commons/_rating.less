@@ -1,0 +1,219 @@
+@use-rating-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.rating-summary .label{
+    &:extend(.rating-summary .rating-label all);
+}
+.review-control-vote label span,
+.rating-summary .rating-result span span,
+.rating-summary .rating-label,
+.review-control-vote input[type="radio"]{
+    &:extend(.forix-abs-visually-hidden all);
+}
+.review-control-vote label:before,
+.review-control-vote:before,
+.rating-summary .rating-result > span:before,
+.rating-summary .rating-result:before{
+    &:extend(.forix-abs-icon-base all);
+}
+
+.rating-summary .rating-result > span:before,
+.rating-summary .rating-result:before{
+    &:extend(.forix-abs-primary-size all);
+}
+
+.review-control-vote:before,
+.review-control-vote label:before{
+    &:extend(.forix-abs-secondary-size all);
+}
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .rating-summary{
+        overflow: hidden;
+        white-space: nowrap;
+        display: inline-block;
+
+        .rating-result{
+            display: inline-block;
+            position: relative;
+            vertical-align: middle;
+
+            &:before{
+                left: 0;
+                position: absolute;
+                top: 0;
+                width: 100%;
+                z-index: 1;
+                color: @color-gray-3;
+                content: @font-awesome-star2 @font-awesome-star2 @font-awesome-star2 @font-awesome-star2 @font-awesome-star2;
+                display: block;
+                font-style: normal;
+                font-weight: normal;
+                height: 16px;
+                letter-spacing: 2px;
+                line-height: 16px;
+            }
+
+            > span{
+                display: block;
+                overflow: hidden;
+
+                &:before{
+                    position: relative;
+                    z-index: 2;
+                    color: @color-gray-2;
+                    content: @font-awesome-star2 @font-awesome-star2 @font-awesome-star2 @font-awesome-star2 @font-awesome-star2;
+                    display: block;
+                    font-style: normal;
+                    font-weight: normal;
+                    height: 16px;
+                    letter-spacing: 2px;
+                    line-height: 16px;
+                }
+            }
+        }
+    }
+
+    .reviews-actions{
+        display: inline-block;
+        vertical-align: top;
+
+        .action{
+            color: @secondary-text__color;
+            text-decoration: none;
+
+            &:hover{
+                color: @color-black;
+            }
+
+            &:first-child{
+                margin-left: 0;
+            }
+
+            &.add{
+                margin-left: @forix-indent__xm;
+            }
+        }
+    }
+
+    .product-reviews-summary.empty,
+    .product-reviews-summary.short.empty {
+        .action{
+            margin-left: 0;
+        }
+    }
+
+    .review-control-vote{
+        overflow: hidden;
+        margin-bottom: @forix-indent__m;
+        margin-top: -@forix-indent__xs;
+
+        &:before{
+            color: @color-gray-3;
+            font-style: normal;
+            font-weight: normal;
+            vertical-align: top;
+            content: @font-awesome-star2 @font-awesome-star2 @font-awesome-star2 @font-awesome-star2 @font-awesome-star2;
+            display: block;
+            position: absolute;
+            z-index: 1;
+            height: 32px;
+            letter-spacing: 3px;
+            line-height: 32px;
+        }
+
+        label{
+            cursor: pointer;
+            display: block;
+            position: absolute;
+            padding: 0;
+
+            &:before{
+                color: @color-gray-2;
+                font-style: normal;
+                font-weight: normal;
+                vertical-align: top;
+                opacity: 0;
+                height: 32px;
+                letter-spacing: 3px;
+                line-height: 32px;
+            }
+        }
+
+        .rating-1{
+            z-index: 6;
+
+            &:before{
+                content: @font-awesome-star2;
+            }
+        }
+
+        .rating-2{
+            z-index: 5;
+
+            &:before{
+                content: @font-awesome-star2 @font-awesome-star2;
+            }
+        }
+
+        .rating-3{
+            z-index: 4;
+
+            &:before{
+                content: @font-awesome-star2 @font-awesome-star2 @font-awesome-star2;
+            }
+        }
+
+        .rating-4{
+            z-index: 3;
+
+            &:before{
+                content: @font-awesome-star2 @font-awesome-star2 @font-awesome-star2 @font-awesome-star2;
+            }
+        }
+
+        .rating-5{
+            z-index: 2;
+
+            &:before{
+                content: @font-awesome-star2 @font-awesome-star2 @font-awesome-star2 @font-awesome-star2 @font-awesome-star2;
+            }
+        }
+
+        label:hover:before,
+        input[type="radio"]:focus + label:before,
+        input[type="radio"]:checked + label:before {
+            opacity: 1;
+        }
+    }
+}
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    .rating-summary .rating-result{
+        width: 69px;
+    }
+
+    .reviews-actions .action{
+        line-height: 20px;
+    }
+}
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    .rating-summary .rating-result{
+        width: 75px;
+    }
+
+    .reviews-actions .action{
+        line-height: 22px;
+    }
+}

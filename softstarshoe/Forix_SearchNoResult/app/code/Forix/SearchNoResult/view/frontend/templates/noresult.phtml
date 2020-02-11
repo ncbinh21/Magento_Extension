@@ -1,0 +1,21 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Eric
+ * Date: 3/16/2016
+ * Time: 10:23 AM
+ */
+?>
+<div class="block block-empty search-noresult">
+	<div class="title"><?php /* @escapeNotVerified */ echo($block->getNoResultText()) ? $block->getNoResultText() : $block->getSearchQueryText() ?>
+	</div>
+	<?php echo $block->getAdditionalHtml() ?>
+	<?php if ($messages = $block->getNoteMessages()):?>
+		<?php foreach ($messages as $message):?>
+			<br /><?php /* @escapeNotVerified */ echo $message?>
+		<?php endforeach;?>
+	<?php endif; ?>
+	<div class="block-content">
+		<p class="empty note"><?php echo __('Check for any typos, try using a broader search phase or choose a product category from the list below:') ?></p>
+	</div>
+</div>

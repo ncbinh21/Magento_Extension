@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * This is the default layout for all post type view pages.
+ * All post types inherit this layout and have their own specific layout file
+ * Create any wordpress_posttype_view.xml files (where posttype is the actual post type) to target a specific post type
+ * To target the default posts, create wordpress_post_view.xml
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <meta name="description" content="Stay up to date with the latest news from Softstar, including new shoe styles, foot health tips and our fun workshop adventures."/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="FishPig\WordPress\Block\Post\View" name="wp.post.view">
+                <block class="Magento\Framework\View\Element\Template" name="pdp.socials.addthis" template="Magento_Catalog::product/view/socials-addthis.phtml" before="-">
+                    <block class="Magento\Framework\View\Element\Template" name="pdp.script" template="Magento_Catalog::product/view/script.phtml"/>
+                </block>
+            </block>
+            <block class="FishPig\WordPress\Block\Post\View" name="post_breadcrumb_top" template="post/view/breadcrumb.phtml" before="wp.post.view"/>
+            <block class="FishPig\WordPress\Block\Post\View" name="post_related" template="post/view/related_post.phtml" after="sidebar.main"/>
+            <block class="FishPig\WordPress\Block\Post\View" name="post_breadcrumb_bottom" template="post/view/breadcrumblast.phtml" after="post_related"/>
+            <block class="FishPig\WordPress\Block\Post\View\Comment\Wrapper" name="wp.post.view.comments.view" as="comments">
+                <block class="FishPig\WordPress\Block\Post\View\Comments" name="wp.post.view.comments.list.view" as="comment_list" template="post/view/comments.phtml" />
+                <block class="FishPig\WordPress\Block\Post\View\Comment\Pager" name="wp.post.view.comments.pager.view" as="pager"/>
+                <block class="FishPig\WordPress\Block\Post\View\Comment\Form" name="wp.post.view.comments.form.view" as="form">
+                    <container name="before_form_end" htmlTag="div" htmlClass="recapcha-blog-detail">
+                        <block class="Forix\ReCaptcha\Block\Holder" ifconfig="recaptcha/setting/is_active" name="recaptcha_blog_detail" template="Forix_ReCaptcha::holder.phtml">
+                            <action method="setFormId">
+                                <argument name="formId" xsi:type="string">blog_detail</argument>
+                            </action>
+                        </block>
+                    </container>
+                </block>
+            </block>
+            <!--<move element="p.post.view.comments" destination="content" before="-"/>-->
+        </referenceContainer>
+    </body>
+</page>

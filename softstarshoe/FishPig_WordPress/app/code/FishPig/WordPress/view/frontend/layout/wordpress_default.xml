@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * This is the default layout for all WordPress content
+ *
+ */
+-->
+<page layout="2columns-right" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+		<css src="FishPig_WordPress/css/wordpress.css"/>
+		<meta name="description" content="Stay up to date with the latest news from Softstar, including new shoe styles, foot health tips and our fun workshop adventures."/>
+	</head>
+  <body>
+    <referenceContainer name="sidebar.main">
+			<block class="FishPig\WordPress\Block\Sidebar" name="wp.sidebar" before="-">
+				<action method="setWidgetArea">
+					<argument name="widget_area" xsi:type="string">sidebar-main</argument>
+				</action>
+			</block>
+			<block class="FishPig\WordPress\Block\Homepage\View" name="about_us" template="FishPig_WordPress::sidebar/widget/about_us.phtml" after="wp.sidebar" />
+			<block class="Magento\Newsletter\Block\Subscribe" name="email_update" template="FishPig_WordPress::sidebar/widget/email_update.phtml" after="-" />
+			<block class="FishPig\WordPress\Block\Sidebar" name="follow_us" template="FishPig_WordPress::sidebar/widget/follow_us.phtml" after="-" />
+    </referenceContainer>
+	<referenceBlock name="page.main.title" remove="true"/>
+	  <referenceContainer name="main.content">
+		  <container name="instagram-title-container" htmlTag="div" htmlClass="instagram-title float">
+		  <block class="Magento\Cms\Block\Block" name="instagram-title">
+			  <arguments>
+				  <argument name="block_id" xsi:type="string">instagram-title</argument>
+			  </arguments>
+		  </block>
+		  </container>
+		  <container name="instagram-container" htmlTag="div" htmlClass="homepage-instagram">
+		  <block class="Yosto\InstagramConnect\Block\Instagram\ShoppingPage" name="shoppingpage" template="Yosto_InstagramConnect::instagram/shoppingpage/page.phtml" after="sidebar.main"/>
+		  </container>
+	  </referenceContainer>
+	  <referenceBlock name="breadcrumbs" remove="true"/>
+  </body>
+</page>

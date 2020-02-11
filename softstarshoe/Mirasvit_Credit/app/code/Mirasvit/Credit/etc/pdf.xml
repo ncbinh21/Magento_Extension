@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Sales:etc/pdf_file.xsd">
+    <totals>
+        <total name="credit">
+            <title translate="true">Store Credit</title>
+            <source_field>credit_amount</source_field>
+            <amount_prefix>-</amount_prefix>
+            <display_zero>false</display_zero>
+            <sort_order>600</sort_order>
+        </total>
+        <total name="credit_refunded">
+            <title translate="true">Refunded to Store Credit</title>
+            <source_field>credit_total_refunded</source_field>
+            <display_zero>false</display_zero>
+            <sort_order>700</sort_order>
+        </total>
+    </totals>
+</config>

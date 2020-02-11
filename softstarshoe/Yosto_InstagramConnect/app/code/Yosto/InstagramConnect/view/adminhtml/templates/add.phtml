@@ -1,0 +1,344 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**@var  \Yosto\InstagramConnect\Block\Adminhtml\Template\Add $block */
+?>
+
+
+
+<?php /* @escapeNotVerified */
+echo $block->getFormInitScripts() ?>
+<?php if ($block->getButtonsHtml('header')): ?>
+    <div class="page-form-actions" <?php /* @escapeNotVerified */
+    echo $block->getUiId('content-header') ?>><?php echo $block->getButtonsHtml('header') ?></div>
+<?php endif; ?>
+<?php echo $block->getFormHtml() ?>
+<?php if ($block->hasFooterButtons()): ?>
+    <div class="content-footer">
+        <p class="form-buttons"><?php echo $block->getButtonsHtml('footer') ?></p>
+    </div>
+<?php endif; ?>
+<script>
+    require([
+        'jquery',
+        'mage/backend/form',
+        'mage/backend/validation'
+    ], function ($) {
+
+        $('#edit_form').form()
+            .validation({
+                validationUrl: '<?php /* @escapeNotVerified */ echo $block->getValidationUrl() ?>',
+                highlight: function (element) {
+                    var detailsElement = $(element).closest('details');
+                    if (detailsElement.length && detailsElement.is('.details')) {
+                        var summaryElement = detailsElement.find('summary');
+                        if (summaryElement.length && summaryElement.attr('aria-expanded') === "false") {
+                            summaryElement.trigger('click');
+                        }
+                    }
+                    $(element).trigger('highlight.validate');
+                }
+            });
+
+    });
+</script>
+<?php /* @escapeNotVerified */
+echo $block->getFormScripts() ?>
+<fieldset class="fieldset admin__fieldset">
+    <legend class="legend admin__legend">
+        <span><?php echo _("Choose image for Tiles");?></span>
+    </legend>
+    <div class="container-fluid">
+        <div class="main-container">
+            <div class="images-container ui-droppable">
+                <?php
+                $instaProduct = $block->getProductInstagramMedia();
+                $a = count($instaProduct);
+                ?>
+
+                <?php foreach ($instaProduct as $media) : ?>
+                    <?php foreach ($media[1] as $mediaDetail) : ?>
+                        <img src="<?= $mediaDetail->images->standard_resolution->url ?>"
+                             alt="Instagram Images" class="small-pierce ui-draggable product-id-<?= $media[0] ?>">
+                    <?php endforeach; ?>
+                <?php endforeach; ?>
+
+            </div>
+
+            <div id="tabs">
+                <ul>
+                    <li><a href="#tabs-1">PC</a></li>
+                    <li><a href="#tabs-3">Mobile</a></li>
+                </ul>
+                <div id="tabs-1">
+                    <div class="grid-stack" style="width:1024px">
+                    </div>
+                </div>
+                <div id="tabs-3">
+                    <div class="grid-stack-mobile" style="width:400px">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+
+
+<script type="text/javascript">
+    require(
+        [
+            'jquery',
+            'jquery/ui',
+            'Yosto_InstagramConnect/js/gridstack',
+            'Yosto_InstagramConnect/js/gridstackJQueryUI',
+            'Yosto_InstagramConnect/js/lodash'
+        ],
+        function ($) {
+            $(function () {
+
+                var pcOptions = {
+                    cellHeight: 'auto',
+                    verticalMargin: 6,
+                    horizontalMargin: 6,
+                    width: 8,
+                    oneColumnModeClass: 'no_enable_one_column_mode',
+                    disableDrag: true
+                };
+
+                var mobileOptions = {
+                    cellHeight: 'auto',
+                    verticalMargin: 6,
+                    horizontalMargin: 6,
+                    width: 4,
+                    oneColumnModeClass: 'no_enable_one_column_mode',
+                    disableDrag: true
+                };
+
+                $('.grid-stack').gridstack(pcOptions);
+                $('.grid-stack-mobile').gridstack(mobileOptions);
+
+                loadGrid('pc');
+                loadGrid('mobile');
+                reloadDragDrop();
+
+                $('#save').click(function () {
+                    updateNewCodeForJson('mobile');
+                    updateNewCodeForJson('pc');
+                });
+
+                function loadGrid(device) {
+                    if (device == 'pc') {
+                        var grid = $('.grid-stack').data('gridstack');
+                        this.serializedData = eval($('#template_pc_code').val());
+                    } else if (device == 'mobile') {
+                        var grid = $('.grid-stack-mobile').data('gridstack');
+                        this.serializedData = eval($('#template_mobile_code').val());
+                    }
+
+                    grid.removeAll();
+                    var items = GridStackUI.Utils.sort(this.serializedData);
+
+                    _.each(items, function (node) {
+                        //delete image in container if it's contain in a tile
+                        if (node.imgURL != '' && node.imgURL != null) {
+                            $containerImage = $(".images-container img[src='" + node.imgURL + "']");
+                            if ($containerImage != null) {
+                                $containerImage.remove();
+                            }
+                        }
+
+                        var htmlStr = '<div class="grid-stack-item-content ui-droppable id' + node.uniqueId + '" style="left:3px; right:3px"></div>';
+                        $boundDiv = $.parseHTML('<div data-gs-no-resize="yes"></div>');
+                        $widget = $.parseHTML(htmlStr);
+                        if (node.productId != '' && node.productId != null) {
+                            $imgPiece = jQuery('<img src=' + node.imgURL + ' alt="Instagram Images" class="small-pierce ui-draggable ' + node.productId + '">');
+                            $imgPiece.appendTo($widget);
+                            $imgPiece.css("width", "100%").css("height", "100%").css("margin-left", "0").css("margin-bottom", "0");
+                        }
+                        jQuery($widget).appendTo($boundDiv);
+                        grid.addWidget($boundDiv,
+                            node.x, node.y, node.width, node.height);
+                    });
+                }
+
+                $("#tabs").tabs({
+                    activate: function (event, ui) {
+                    }
+                });
+
+                function reloadDrag() {
+                    $(".ui-draggable").draggable({
+                        accept: ".ui-droppable",
+                        revert: "invalid"
+                    });
+                }
+
+                function reloadDragDrop() {
+                    reloadDrag();
+                    $(".ui-droppable").droppable({
+                        accept: ".ui-draggable",
+                        drop: function (event, ui) {
+
+                            if (ui.draggable.parent() != null && ui.draggable.parent()[0].getAttribute('class').indexOf('images-container') != -1) {
+                                dragFromImagesContainer(this, ui);
+                            } else {
+                                dragFromTiles(this, ui);
+                            }
+
+                            reloadDrag();
+                        }
+                    });
+                }
+
+                function dragFromImagesContainer(to, ui) {
+                    if (to.getAttribute('class').indexOf('images-container') == -1) {
+
+                        $draggable = ui.draggable.clone();
+
+                        uniqueId = $(to).attr('class').match(/\bid[^\b]*?\b/gi)[0];
+                        if ($(to).parent().parent().attr('class').indexOf('grid-stack-mobile') == -1) {
+                            $sameIdItem = $('.grid-stack-mobile').find('.' + uniqueId);
+                        } else {
+                            $sameIdItem = $('.grid-stack').find('.' + uniqueId);
+                        }
+
+
+                        //check if tile have image
+                        if ($(to).find('img').size() > 0) {
+                            $returnImage = $(to).find('img');
+                            $returnImage.appendTo(ui.draggable.parent());
+                            $returnImage.attr('style', '');
+                            $returnImage.css("position", "relative").css("width", "60px").css("height", "60px").css("margin-left", "5px").css("margin-bottom", "5px").css("float", "left");
+                            $sameIdItem.empty();
+                        }
+
+                        //Add image to same id tile but other device
+                        $sameIdDraggable = $draggable.clone();
+                        $sameIdDraggable.attr('style', '');
+                        $sameIdDraggable.css("width", "100%").css("height", "100%").css("margin-left", "0").css("margin-bottom", "0").css("position", "relative");
+                        $sameIdDraggable.appendTo($sameIdItem);
+
+
+                        //send image from container to tile
+                        ui.draggable.remove();
+                        $draggable.appendTo(to);
+                        $draggable.attr('style', '');
+                        $draggable.css("width", "100%").css("height", "100%").css("margin-left", "0").css("margin-bottom", "0").css("position", "relative");
+
+
+                    } else {
+                        $draggable = ui.draggable.clone();
+                        ui.draggable.remove();
+                        $draggable.attr('style', '');
+                        $draggable.css("position", "relative").css("width", "60px").css("height", "60px").css("margin-left", "5px").css("margin-bottom", "5px").css("float", "left");
+                        $draggable.appendTo(to);
+                    }
+                }
+
+                function dragFromTiles(to, ui) {
+                    var fromUniqueId = ui.draggable.parent().attr('class').match(/\bid[^\b]*?\b/gi)[0];
+                    if (to.getAttribute('class').indexOf('images-container') == -1) {
+                        var toUniqueId = $(to).attr('class').match(/\bid[^\b]*?\b/gi)[0];
+
+                        if ($(to).find('img').size() > 0) {
+                            if ($(to).parent().parent().attr('class').indexOf('grid-stack-mobile') == -1) {
+                                changeImageFromAndTo(fromUniqueId, toUniqueId, 'mobile');
+                            } else {
+                                changeImageFromAndTo(fromUniqueId, toUniqueId, 'pc');
+                            }
+                            $returnDraggable = $(to).find('img');
+                            $returnDraggable.appendTo(ui.draggable.parent());
+                            $draggable = ui.draggable.clone();
+                            ui.draggable.remove();
+                            $draggable.attr('style', '');
+                            $draggable.css("width", "100%").css("height", "100%").css("margin-left", "0").css("margin-bottom", "0").css("position", "relative");
+                            $draggable.appendTo(to);
+
+                        } else {
+                            $draggable = ui.draggable.clone();
+                            ui.draggable.remove();
+                            $draggable.attr('style', '');
+                            $draggable.css("width", "100%").css("height", "100%").css("margin-left", "0").css("margin-bottom", "0").css("position", "relative");
+                            $draggable.appendTo(to);
+                        }
+                    } else {
+                        if (ui.draggable.parent().parent().parent().attr('class').indexOf('grid-stack-mobile') == -1) {
+                            $sameIdItem = $('.grid-stack-mobile').find('.' + fromUniqueId);
+                        } else {
+                            $sameIdItem = $('.grid-stack').find('.' + fromUniqueId);
+                        }
+
+                        $sameIdItem.empty();
+
+                        $draggable = ui.draggable.clone();
+                        ui.draggable.remove();
+                        $draggable.attr('style', '');
+                        $draggable.css("position", "relative").css("width", "60px").css("height", "60px").css("margin-left", "5px").css("margin-bottom", "5px").css("float", "left");
+                        $draggable.appendTo(to);
+
+                    }
+                }
+
+                function changeImageFromAndTo(idFrom, idTo, device) {
+                    if (device == 'pc') {
+                        var mainGrid = $('.grid-stack');
+                    } else {
+                        var mainGrid = $('.grid-stack-mobile');
+                    }
+
+                    var fromTile = mainGrid.find('.' + idFrom);
+                    var toTile = mainGrid.find('.' + idTo);
+                    $imgFrom = $(fromTile).find('img');
+                    $imgTo = $(toTile).find('img');
+                    if ($imgFrom != null && $imgTo != null) {
+                        $imgFrom.appendTo(toTile);
+                        $imgTo.appendTo(fromTile);
+                    } else {
+                        $imgFrom.appendTo(toTile);
+                    }
+                }
+
+                function updateNewCodeForJson(device) {
+                    if (device == 'pc') {
+                        var itemClass = '.grid-stack > .grid-stack-item';
+                        var deviceCodeId = '#template_pc_code';
+                        var tabletDeviceCodeId = '#template_tablet_code';
+                    } else if (device == 'mobile') {
+                        var itemClass = '.grid-stack-mobile > .grid-stack-item';
+                        var deviceCodeId = '#template_mobile_code';
+                    }
+                    this.serializedData = _.map($(itemClass), function (el) {
+                        el = $(el);
+                        var node = el.data('_gridstack_node');
+                        var imgURL = "";
+                        var productId = "";
+                        var uniqueIdClass = el.find('.grid-stack-item-content')[0].getAttribute("class").match(/\bid[^\b]*?\b/gi)[0];
+                        uniqueId = uniqueIdClass.replace("id", "");
+                        if (node.el.find('img').size() > 0) {
+                            imgURL = node.el.find('img').attr('src');
+                            productId = node.el.find('img').attr('class').match(/product-id[\w-]*\b/)[0]
+                        }
+                        return {
+                            x: node.x,
+                            y: node.y,
+                            width: node.width,
+                            height: node.height,
+                            imgURL: imgURL,
+                            productId: productId,
+                            uniqueId: uniqueId
+                        };
+                    }, this);
+                    $(deviceCodeId).val(JSON.stringify(this.serializedData, null, ''));
+                    if (tabletDeviceCodeId != null) {
+                        $(tabletDeviceCodeId).val(JSON.stringify(this.serializedData, null, ''));
+                    }
+                }
+            });
+
+        });
+</script>

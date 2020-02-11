@@ -1,0 +1,27 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="billing-address-form" data-bind="fadeVisible: isAddressFormVisible">
+    <h4 class="billing-tittle" data-bind="i18n: 'Billing address'"></h4>
+    <!-- ko foreach: getRegion('before-fields') -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <!--/ko-->
+    <form data-bind="attr: {'data-hasrequired': $t('* Required Fields')}">
+        <fieldset class="fieldset address">
+            <!-- ko foreach: getRegion('additional-fieldsets') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+            <!-- ko if: (isCustomerLoggedIn && customerHasAddresses) -->
+            <div class="choice field">
+                <input id="billing-save-in-address-book" type="checkbox" class="checkbox" data-bind="checked: saveInAddressBook" />
+                <label class="label" for="billing-save-in-address-book">
+                    <span data-bind="i18n: 'Save in address book'"></span>
+                </label>
+            </div>
+            <!-- /ko -->
+        </fieldset>
+    </form>
+</div>

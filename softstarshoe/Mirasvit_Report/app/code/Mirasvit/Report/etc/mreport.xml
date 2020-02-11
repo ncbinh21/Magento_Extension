@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="mreport.xsd">
+    <table name="sales_order" connection="sales">
+        <columns>
+            <column name="entity_id" label="Order ID" fields="entity_id" type="number"/>
+            <column name="customer_id" label="Customer ID" fields="customer_id" type="number"/>
+
+            <column name="shipping_method" label="Shipping Method" fields="shipping_method"/>
+
+            <column name="created_at" label="Purchased On" fields="created_at" type="date"
+                    class="Mirasvit\Report\Model\Query\Column\Date\Range"/>
+
+            <column name="hour_of_day" label="Hour of day" fields="created_at"
+                    class="Mirasvit\Report\Model\Query\Column\Date\Hour"/>
+
+            <column name="day" label="Day" fields="created_at"
+                    class="Mirasvit\Report\Model\Query\Column\Date\Day"/>
+
+            <column name="week" label="Week" fields="created_at"
+                    class="Mirasvit\Report\Model\Query\Column\Date\Week"/>
+
+            <column name="month" label="Month" fields="created_at"
+                    class="Mirasvit\Report\Model\Query\Column\Date\Month"/>
+
+            <column name="quarter" label="Quarter" fields="created_at"
+                    class="Mirasvit\Report\Model\Query\Column\Date\Quarter"/>
+
+            <column name="year" label="Year" fields="created_at"
+                    class="Mirasvit\Report\Model\Query\Column\Date\Year"/>
+
+            <column name="store_id" label="Store" fields="store_id"
+                    class="Mirasvit\Report\Model\Query\Column\Store"/>
+
+            <column name="increment_id" label="ID" fields="increment_id"/>
+
+            <column name="customer_firstname" label="First Name" fields="customer_firstname"/>
+            <column name="customer_lastname" label="Last Name" fields="customer_lastname"/>
+            <column name="customer_email" label="Email" fields="customer_email"/>
+
+            <column name="customer_name" label="Customer name" fields="customer_firstname, customer_lastname"
+                    expr="CONCAT_WS(' ', %1, %2)"/>
+
+            <column name="customer_taxvat" label="Tax / Vat" fields="customer_taxvat"/>
+
+            <column name="coupon" label="Coupon Code" fields="coupon_code"/>
+            <column name="customer_note" label="Customer Note" fields="customer_note"/>
+
+            <column name="quantity" label="Number of orders" fields="entity_id" type="number"
+                    expr="DISTINCT(%1)" percent="true"
+                    class="Mirasvit\Report\Model\Query\Column\Count"/>
+
+            <column name="total_qty_ordered" label="Total Qty Ordered" fields="total_qty_ordered" type="number"
+                    expr="CEIL(%1)"
+                    aggregations="simple,sum,avg"/>
+
+            <column name="discount_amount" label="Discount Amount" fields="base_discount_amount,base_to_global_rate" type="price"
+                    expr="%1 * %2"
+                    aggregations="simple,sum,avg"/>
+
+            <column name="shipping_amount" label="Shipping Amount" fields="base_shipping_amount,base_to_global_rate" type="price"
+                    expr="%1 * %2"
+                    aggregations="simple,sum,avg"/>
+
+            <column name="tax_amount" label="Tax Amount" fields="base_tax_amount,base_to_global_rate" type="price"
+                    expr="%1 * %2"
+                    aggregations="simple,sum,avg"/>
+
+            <column name="shipping_tax_amount" label="Shipping Tax Amount" fields="base_shipping_tax_amount,base_to_global_rate"
+                    expr="%1 * %2"
+                    type="price"
+                    aggregations="simple,sum,avg"/>
+
+            <column name="tax_refunded" label="Tax Refunded" fields="base_tax_refunded,base_to_global_rate"
+                    expr="%1 * %2"
+                    type="price"
+                    aggregations="simple,sum,avg"/>
+
+            <column name="total_invoiced" label="Total Invoiced" fields="base_total_invoiced,base_to_global_rate" type="price"
+                    expr="%1 * %2"
+                    aggregations="simple,sum,avg"/>
+
+            <column name="total_refunded" label="Total Refunded" fields="base_total_refunded,base_to_global_rate" type="price"
+                    expr="%1 * %2"
+                    aggregations="simple,sum,avg"/>
+
+            <column name="total_invoiced_cost" label="Total Invoiced Cost" fields="base_total_invoiced_cost,base_to_global_rate"
+                    expr="%1 * %2"
+                    type="price"
+                    aggregations="simple,sum,avg"/>
+
+            <column name="subtotal" label="Subtotal" fields="base_subtotal,base_to_global_rate" type="price"
+                    expr="%1 * %2"
+                    aggregations="simple,sum,avg"/>
+
+            <column name="grand_total" label="Grand Total" fields="base_grand_total,base_to_global_rate" type="price"
+                    expr="%1 * %2"
+                    aggregations="simple,sum,avg" color="#97CC64"/>
+            <column name="coupon_rule_name" label="Cart Price Rule" fields="coupon_rule_name"/>
+        </columns>
+    </table>
+
+    <table name="catalog_category_product" connection="default">
+        <columns>
+            <column name="category_id" label="Category ID" fields="category_id"/>
+            <column name="product_id" label="Product ID" fields="product_id"/>
+        </columns>
+    </table>
+
+    <eavTable name="customer_entity" type="customer" connection="default">
+        <columns>
+            <column name="entity_id" label="Customer ID" fields="entity_id" type="number"/>
+        </columns>
+    </eavTable>
+
+    <eavTable name="customer_address_entity" type="customer_address" connection="default" />
+
+    <eavTable name="catalog_product_entity" type="catalog_product" connection="default">
+        <columns>
+            <column name="entity_id" label="Product ID" fields="entity_id" type="number"
+                    class="\Mirasvit\Report\Model\Query\Column\Product"/>
+            <column name="type_id" label="Product Type" fields="type_id" type="select"
+                    options="Mirasvit\Report\Model\Config\Source\ProductType"/>
+            <column name="attribute" label="Attribute" fields="entity_id"/>
+        </columns>
+    </eavTable>
+
+    <eavTable name="catalog_category_entity" type="catalog_category" connection="default">
+        <columns>
+            <column name="entity_id" label="Category ID" fields="entity_id" type="number"/>
+        </columns>
+    </eavTable>
+
+    <relation name="catalog_category_entity2catalog_category_product">
+        <leftTable>catalog_category_entity</leftTable>
+        <rightTable>catalog_category_product</rightTable>
+        <condition>%1.entity_id=%2.category_id</condition>
+        <type>11</type>
+    </relation>
+
+    <relation name="catalog_category_product2catalog_product_entity">
+        <leftTable>catalog_category_product</leftTable>
+        <rightTable>catalog_product_entity</rightTable>
+        <condition>%1.product_id=%2.entity_id</condition>
+        <type>11</type>
+    </relation>
+</config>

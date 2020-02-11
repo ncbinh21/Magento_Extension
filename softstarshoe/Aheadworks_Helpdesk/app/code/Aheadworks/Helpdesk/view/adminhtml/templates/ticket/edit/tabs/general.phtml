@@ -1,0 +1,48 @@
+<?php
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+
+/* @var $block \Aheadworks\Helpdesk\Block\Adminhtml\Ticket\Edit\Tabs\General\Items */
+
+// @codingStandardsIgnoreFile
+?>
+<?php $order = $block->getOrderModel() ?>
+<table class="admin__table-primary">
+    <thead>
+        <tr>
+            <th class="col name"><?php echo $block->escapeHtml(__('Product Name')) ?></th>
+            <th class="col qty"><?php echo $block->escapeHtml(__('Qty')) ?></th>
+            <th class="col subtotal"><?php echo $block->escapeHtml(__('Row Total')) ?></th>
+        </tr>
+    </thead>
+    <?php $items = $order->getItemsCollection(); ?>
+    <?php foreach ($items as $item): ?>
+        <?php if ($item->getParentItem()) {
+            continue;
+        } ?>
+        <tbody>
+            <tr>
+                <td>
+                    <a href="<?php echo $block->escapeUrl($block->getUrl('catalog/product/edit', ['id' => $item->getProductId()]))?>" target="_blank">
+                        <?php echo $block->escapeHtml($item->getName()) ?>
+                    </a>
+                </td>
+                <td><?php echo (int)$item->getQtyOrdered() ?></td>
+                <td><span class="price"><?php /* @noEscape */ echo $order->formatPrice($item->getRowTotal()) ?></span></td>
+            </tr>
+        </tbody>
+    <?php endforeach; ?>
+    <tfoot>
+        <tr>
+            <td></td>
+            <td>
+                <?php echo $block->escapeHtml(__('Total:')) ?>
+            </td>
+            <td>
+                <span class="price"><?php /* @noEscape */ echo $order->formatPrice($order->getGrandTotal()); ?></span>
+            </td>
+        </tr>
+    </tfoot>
+</table>

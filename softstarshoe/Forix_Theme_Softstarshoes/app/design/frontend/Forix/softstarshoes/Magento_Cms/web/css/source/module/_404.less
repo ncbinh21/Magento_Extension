@@ -1,0 +1,328 @@
+@use-cms-noroute-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.cms-noroute-index .column.main .nav-links-extend ul{
+    &:extend(.forix-abs-row all);
+}
+
+.cms-noroute-index .column.main .nav-links-extend ul > li{
+    &:extend(.forix-abs-column all);
+}
+
+.cms-noroute-index .column.main .nav-links-extend > ul{
+    &:extend(.forix-abs-list-reset);
+}
+
+.cms-noroute-index .column.main .nav-links-extend h2{
+    &:extend(.forix-abs-visually-hidden all);
+}
+
+.cms-noroute-index .page-title{
+    &:extend(.forix-abs-primary-title-size all);
+}
+
+.cms-noroute-index .column.main .nav-links-extend a{
+    &:extend(.forix-abs-three-size all);
+}
+
+.cms-noroute-index .column.main .nav-links-extend > ul > li,
+.cms-noroute-index .column.main .nav-links-extend  ul  ul > li a{
+    &:extend(.forix-abs-primary-size all);
+}
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+@cms-noroute__max-width: 1170px;
+
+@cms-noroute-item__width__m: 3;
+@cms-noroute-item__width__l: 225px;
+
+@cms-noroute-item__text__color: @primary-text__color;
+
+@cms-noroute-item__link__color: @secondary-link__color;
+@cms-noroute-item__link__hover__color:  @secondary-link__color__hover;
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .cms-noroute-index{
+        .page-title-wrapper,
+        .column.main{
+            text-align:center;
+        }
+        .route-contact{
+            .item{
+                display: inline-block;
+                text-align: left;
+                position: relative;
+                margin: 0 @forix-indent__base;
+                span,p{
+                    display: block;
+                }
+                &:after{
+                    font-size: 42px;
+                    top: 0;
+                    left: @forix-indent__s;
+                    position: absolute;
+                    font-family: @forix-icon__font-name;
+                }
+                .inner-right{
+                    padding-left: 65px;
+                }
+                &:nth-child(1){
+                    span{
+                        margin-top: @forix-indent__xs;
+
+                    }
+                    &:after{
+                        content: "\e91f";
+                    }
+                    .inner-right{
+                        padding-left: 58px;
+                    }
+                }
+                &:nth-child(2){
+                    &:after{
+                        content: "\e915";
+                        top: -3px;
+                    }
+                }
+                span{
+                    color: @sss-color-1;
+                    font-size: @forix-font-size__m;
+                    font-weight: @forix-font-weight__bold;
+                }
+                p{
+                    color: @sss-color-1;
+                    font-size: @medium-title__font-size__l;
+                    font-weight: @forix-font-weight__bold;
+                     margin: 0
+
+                }
+            }
+        }
+        .page-title{
+            text-transform: none;
+            font-size: 35px !important;
+        }
+
+        .column.main{
+            float: none !important;
+            margin: 0px auto;
+            a{
+                text-decoration: none;
+            }
+
+            .block-empty{
+                max-width: @cms-noroute__max-width;
+                margin: 0 auto;
+
+                .title{
+                    font-weight: @forix-font-weight__semibold;
+                    font-size: @forix-font-size__medium;
+                    margin-bottom: @forix-indent__base;
+
+                }
+
+                .empty{
+                    margin: 0 0 @forix-indent__xm;
+                    font-size: @forix-font-size__m;
+                }
+            }
+        }
+    }
+
+    .cms-noroute-index .nav-links-extend{
+        margin-top: 55px;
+        padding-top: 65px;
+        position: relative;
+
+        &:after{
+            content: '';
+            background: url(../images/img-sprite.png) no-repeat center -1342px;
+            height: 4px;
+            position: absolute;
+            top: 0px;
+            left: -18px;
+            right: -18px;
+        }
+        > ul{
+            display: inline-block;
+            width: 100%;
+            font-size: 0;
+            vertical-align: top;
+
+            > li{
+                display: inline-block;
+                text-align: center;
+                vertical-align: top;
+                > a{
+                    font-size: @forix-font-size__xxl !important;
+                    text-transform: none;
+                    color: @sss-color-1;
+                }
+
+            }
+            ul{
+                > li{
+                    > a{
+                        font-size: @forix-font-size__m !important;
+                    }
+                }
+
+            }
+        }
+
+        a{
+            font-weight: @forix-font-weight__bold;
+            color: @cms-noroute-item__link__color;
+            text-transform: uppercase;
+
+            &:hover{
+                color: @cms-noroute-item__link__hover__color;
+            }
+        }
+
+        ul ul{
+            display: block;
+            margin: 0;
+            padding: @forix-indent__s 0;
+        }
+
+        ul ul > li{
+            display: block;
+            margin: 0;
+            padding: 0;
+            width: auto;
+
+            a{
+                color: @cms-noroute-item__link__color;
+                text-transform: none;
+                font-weight: @forix-font-weight__semibold;
+
+                &:hover{
+                    color: @cms-noroute-item__link__hover__color;
+                    font-weight:@forix-font-weight__bold;
+                }
+            }
+        }
+
+        ul ul ul{
+            display: block;
+            margin: 0;
+            padding: 0;
+
+            > li{
+                display: block;
+                padding: 0;
+                width: auto;
+            }
+        }
+    }
+
+    .cms-noroute-index .column.main{
+        text-align:center;
+    }
+
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .cms-noroute-index {
+        .page-title-wrapper{
+            margin: 0 0 @forix-indent__xs;
+            padding: @forix-indent__xm 0 0;
+        }
+
+        .column.main{
+            .block-empty{
+                padding: 0;
+            }
+        }
+
+        .nav-links-extend{
+            > ul > li{
+                width: 100%;
+                padding: 0;
+            }
+        }
+        .route-contact{
+            .item{
+                margin-left: -25px;
+                &:nth-child(1){
+                    .inner-right{
+                        padding-left: 100px;
+                    }
+                    &:after{
+                        left: 45px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .cms-noroute-index {
+        .page-title-wrapper{
+            margin: 0 0 @forix-indent__s;
+            padding: @forix-indent__xxl 0 0;
+        }
+
+        .column.main .block-empty{
+            padding: @forix-indent__s 0;
+        }
+        .nav-links-extend {
+            padding-left: 100px;
+            ul{
+                li{
+                    text-align: left;
+                    ul{
+                        li{
+                            text-align: left;
+                        }
+                    }
+                }
+
+            }
+
+        }
+    }
+
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    .cms-noroute-index{
+        .column.main {
+            .nav-links-extend > ul > li{
+                margin: 0 0 @forix-indent__xm;
+            }
+        }
+    }
+}
+
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    .cms-noroute-index{
+        .nav-links-extend > ul > li{
+            width: percentage(@cms-noroute-item__width__m/@forix-total-columns__m);
+        }
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    .cms-noroute-index{
+        .nav-links-extend > ul > li{
+            width: percentage(@cms-noroute-item__width__l/@cms-noroute__max-width);
+            margin: 0 0 @forix-indent__xm;
+        }
+    }
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="paypal.additional.actions">
+            <block class="Mirasvit\Credit\Block\Checkout\Cart\Credit" name="credit.cart" template="checkout/cart/credit.phtml">
+                <arguments>
+                    <argument name="isPaypal" xsi:type="string">1</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

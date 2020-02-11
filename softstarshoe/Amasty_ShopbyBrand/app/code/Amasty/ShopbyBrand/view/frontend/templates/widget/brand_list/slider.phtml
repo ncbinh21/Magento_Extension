@@ -1,0 +1,100 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2017 Amasty (https://www.amasty.com)
+ * @package Amasty_ShopbyBrand
+ */
+?>
+<?php
+/** @var Amasty\ShopbyBrand\Block\Widget\BrandSlider $this */
+    $items          = $this->getItems();
+    $itemsPerView   = $this->getData('items_number');
+    $sliderOptions  = $this->getSliderOptions();
+    $showLabel      = $this->getData('show_label');
+    $showPagination = $this->getData('pagination_show');
+    $showButtons    = $this->getData('buttons_show');
+    $imgWidth       = $this->getData('image_width') ?
+        $this->getData('image_width') :
+        Amasty\ShopbyBrand\Block\Widget\BrandSlider::DEFAULT_IMG_WIDTH;
+    $imgHeight      = $this->getData('image_height');
+    $sliderWidth    = $this->getData('slider_width') ?
+        $this->getData('slider_width') :
+        ($imgWidth + 10) * $itemsPerView;
+    $buttonWidth    = 40;
+    $sliderId       = $this->getSliderId();
+?>
+<style>
+    #<?= /* @escapeNotVerified */ $sliderId ?> {
+        max-width: <?= /* @escapeNotVerified */ $buttonWidth * 2 + $sliderWidth; ?>px;
+        padding: 0 <?= /* @escapeNotVerified */ $buttonWidth?>px;
+    }
+    #<?= /* @escapeNotVerified */ $sliderId ?> .swiper-slide .swiper-brand img {
+    <?php if ($imgWidth) : ?>
+        max-width: <?= /* @escapeNotVerified */ $imgWidth;?>px;
+    <?php endif;?>
+    <?php if ($imgHeight) : ?>
+        max-height: <?= /* @escapeNotVerified */ $imgHeight;?>px;
+    <?php endif;?>
+</style>
+<div class="amslider-container">
+  <div class="amslider-header-container"
+       style="background-color:<?= /* @escapeNotVerified */ $this->getHeaderColor() ?>;">
+    <div class="amslider-header">
+      <span style="color: <?= $block->escapeHtml($this->getTitleColor()) ?>;">
+            <?= $block->escapeHtml($this->getTitle()) ?></span>
+    </div>
+  </div>
+    <div class="amslider" id="<?= /* @escapeNotVerified */$sliderId ?>" <?php if (!$showLabel) : ?>
+        <?= ' show-label' ?>
+    <?php endif; ?>">
+    <?php if ($showPagination) : ?>
+        <div class="swiper-pagination"></div>
+    <?php endif; ?>
+    <?php if ($showButtons) : ?>
+        <div class="swiper-button-prev"></div>
+        <div  class="swiper-button-next"></div>
+    <?php endif; ?>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <?php foreach ($items as $brand) :
+                    if (!$brand['img']) :
+                        continue;
+                    endif; ?>
+                    <a href="<?= /* @escapeNotVerified */ $brand['url']?>" class="swiper-slide">
+                        <div class="swiper-brand <?php if ($showLabel) : ?>
+                            <?= ' brand-label' ?>
+                        <?php endif; ?>">
+                            <img src="<?= /* @escapeNotVerified */ $brand['img']; ?>" />
+                            <?php if ($showLabel) : ?>
+                                <div class="brand-title"><?= $block->escapeHtml($brand['label'])?></div>
+                            <?php endif; ?>
+                        </div>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    require([
+        'jquery',
+        'Amasty_ShopbyBrand/js/swiper.min',
+        'domReady!'
+    ], function ($) {
+        new Swiper('#<?= /* @escapeNotVerified */ $sliderId ?> .swiper-container', {
+            <?php foreach ($sliderOptions as $option => $value) : ?>
+                <?= /* @escapeNotVerified */ $option . ':' . $value . "," ?>
+            <?php endforeach; ?>
+              breakpoints: {
+                <?php for ($i = 1; $i < $itemsPerView; $i++) :?>
+                <?= /* @escapeNotVerified */ ($i + 1) * ($imgWidth + 20 + 10) + $buttonWidth * 2; ?> : {
+                  slidesPerView: <?= /* @escapeNotVerified */ $i ?>
+                },
+                <?php endfor; ?>
+              },
+              nextButton: '#<?= /* @escapeNotVerified */ $sliderId ?> .swiper-button-next',
+              prevButton: '#<?= /* @escapeNotVerified */ $sliderId ?> .swiper-button-prev',
+              spaceBetween: 10
+           })
+    });
+</script>

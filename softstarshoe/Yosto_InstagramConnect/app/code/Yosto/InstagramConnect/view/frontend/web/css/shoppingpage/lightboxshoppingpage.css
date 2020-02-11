@@ -1,0 +1,142 @@
+/*Media queries*/
+@media screen and (max-width: 768px) {
+    .instagram-page-modal-content .quickshop-media {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .instagram-page-modal-content .quickshop-product-detail {
+        width: 100%;
+    }
+
+    .instagram-page-modal-content .product.attribute.overview {
+        width: 100%;
+    }
+
+    .instagram-page-modal-content .product-info-stock-sku {
+        float: left;
+        padding-left: 10px;
+    }
+
+    .instagram-page-modal-content .price-box.price-final_price {
+        padding-left: 10px;
+    }
+
+    .instagram-page-modal-content .shop-now-wrapper {
+        width: 100%;
+    }
+
+    .instagram-page-modal-content {
+        box-sizing: border-box;
+        padding: 2%;
+    }
+
+    .product-info-price {
+        width: 100% !important;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .instagram-page-modal-content .quickshop-media {
+        width: 37%;
+        /* margin-left: 25px; */
+    }
+
+    .instagram-page-modal-content .quickshop-product-detail {
+        width: 60%;
+    }
+
+    .instagram-page-modal-content .product-info-stock-sku {
+        float: right;
+        margin-right: 5%;
+    }
+
+    .instagram-page-modal-content .product.attribute.overview {
+        width: 60%;
+    }
+
+    .instagram-page-modal-content .price-box.price-final_price {
+        float: left;
+    }
+
+    .instagram-page-modal-content .shop-now-wrapper {
+        width: 60%;
+    }
+}
+
+/*End media queries*/
+
+.instagram-page-modal-content {
+    overflow-y: auto;
+}
+
+.instagram-page-modal-content .quickshop-product-detail {
+    float: right;
+    border-bottom: 1px solid #c1c1c1;
+}
+
+.instagram-page-modal-content .product.attribute.overview {
+    float: right;
+    margin-top: 2%;
+}
+
+.instagram-page-modal-content .product-sku {
+    float: right;
+}
+
+.instagram-page-modal-content img.lb-image {
+    display: block !important;
+    width: 100% !important;
+}
+
+.instagram-page-modal-content #lightbox {
+
+    float: left;
+    padding: 5px;
+    border: 2px dotted whitesmoke;
+    box-sizing: border-box;
+}
+.instagram-page-modal-content #lightbox:hover {
+    opacity: 0.8;
+}
+.instagram-page-modal-content .page-title {
+    /*! margin-left: 25px; */
+}
+
+.instagram-shopping-page-aside {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.instagram-page-modal-content .shop-now-wrapper {
+    float: right;
+    margin-top: 2%;
+}
+
+.instagram-page-modal-content .shop-now-btn {
+    float: left;
+    margin-bottom: 2%;
+    width: 50%;
+    padding: 15px;
+    border-radius: 0;
+    font-size: 2.0rem;
+}
+
+.instagram-shopping-page-aside .modal-inner-wrap {
+    padding: 2%;
+    width: 85% !important;
+    overflow-y: auto;
+}
+
+.instagram-shopping-page-aside .shopping-page-close {
+    padding: 3px;
+    background-color: #ffffff !important;
+}
+
+.instagram-shopping-page-aside .page-title-wrapper.product.quickshop-title {
+    display: flex;
+    /* justify-content: center; */
+}
+
+.instagram-shopping-page-aside .modal-header {
+    padding: 0 !important;
+}

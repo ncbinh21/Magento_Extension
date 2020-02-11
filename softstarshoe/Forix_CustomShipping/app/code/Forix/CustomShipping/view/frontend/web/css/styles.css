@@ -1,0 +1,24 @@
+.opc-wrapper .form div[name="shippingAddress.postcode"] .ui-helper-hidden-accessible, .payment-method-billing-address .ui-helper-hidden-accessible {
+    display: none;
+}
+
+.opc-wrapper .form div[name="shippingAddress.postcode"] .ui-autocomplete, .payment-method-billing-address .ui-autocomplete {
+    border: 1px solid #dcdcdc;
+    background: #f0f0f0;
+    list-style: none;
+    padding: 10px 15px;
+    height: 150px;
+    overflow: auto;
+    position: absolute;
+    top: 100% !important;
+    left: 0 !important;
+    z-index: 10;
+    margin: 0;
+}
+
+.opc-wrapper .form div[name="shippingAddress.postcode"] .ui-autocomplete a, .payment-method-billing-address .ui-autocomplete a{
+    text-decoration: none;
+    line-height: 25px;
+    font-weight: 700;
+}
+

@@ -1,0 +1,77 @@
+<?php $relatedPosts = $block->getPost()->getRelatedPost() ?>
+<?php if ( count( $relatedPosts ) > 0 ): ?>
+    <div class="related-post">
+        <h4><?php echo __( 'Other Interesting Posts' ) ?></h4>
+        <ul class="related-post-list" data-action="related-post-list">
+            <?php foreach ( $relatedPosts as $post ): ?>
+                <li class="related-post-item">
+                    <?php if ( $image = $post->getFeaturedImage() ): ?>
+                        <?php $imageUrl = $image->getMediumImage() ? $image->getMediumImage() : $image->getThumbnailImage() ?>
+                        <?php if($imageUrl): ?>
+                        <div class="post-image">
+                            <a href="<?php echo $post->getUrl() ?>">
+                                <img src="<?php echo $imageUrl ?>"
+                                     alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/>
+                            </a>
+                        </div>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                    <div class="post-title">
+                        <a href="<?php echo $post->getUrl() ?>"><?php echo $this->escapeHtml($post->getPostTitle()) ?></a>
+                    </div>
+                    <div class="readmore">
+                        <a href="<?php echo $post->getUrl() ?>"><?php echo __('Read More') ?></a>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+
+    <script type="text/x-magento-init">
+        {
+            "[data-action='related-post-list']": {
+                "forix/slick": {
+                    "appendArrows": ".related-post",
+                    "appendDots": ".related-post",
+                    "fade": false,
+                    "infinite": false,
+                    "slidesToShow": 3,
+                    "slidesToScroll": 1,
+                    "responsive": [{
+                          "breakpoint": 1024,
+                          "settings": {
+                            "slidesToShow": 3,
+                            "slidesToScroll": 1
+                          }
+                        },
+                        {
+                          "breakpoint": 1023,
+                          "settings": {
+                            "slidesToShow": 2,
+                            "slidesToScroll": 1
+                          }
+                        },
+                        {
+                          "breakpoint": 767,
+                          "settings": {
+                            "slidesToShow": 2,
+                            "slidesToScroll": 1
+                        }
+                    }],
+                    "speed": 300
+                }
+            }
+        }
+    </script>
+    <script>
+        require([
+            "jquery"
+        ], function($){
+            $('.related-post-list').on('init', function(event, slick, direction){
+                $('.related-post-list').addClass("slick-loaded");
+            });
+        });
+    </script>
+<?php endif; ?>
+
+

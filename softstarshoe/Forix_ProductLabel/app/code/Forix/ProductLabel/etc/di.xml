@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+  ~ /**********************************************
+  ~  *
+  ~  * Copyright © 2017 Forix. All rights reserved.
+  ~  * See COPYING.txt for license details.
+  ~  */
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Catalog\Block\Product\ImageBuilder" type="Forix\ProductLabel\Block\Product\ImageBuilder"/>
+    <type name="Forix\ProductLabel\Block\Product\ImageBuilder">
+        <plugin name="add_product_label_options" type="Forix\ProductLabel\Plugin\Product\ImageBuilderPlugin" sortOrder="50"/>
+    </type>
+    <virtualType name="ForixProductLabelRuleGrid" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">forix_productlabel_rule</argument>
+            <argument name="resourceModel" xsi:type="string">Forix\ProductLabel\Model\ResourceModel\Rule</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="rule_label_listing_data_source" xsi:type="string">ForixProductLabelRuleGrid</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

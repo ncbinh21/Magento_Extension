@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 x-mage2(Yosto). All rights reserved.
+ * See README.txt for details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="yosto_instagram_connect" translate="label" type="text" sortOrder="20" showInDefault="1"
+                 showInWebsite="1" showInStore="1">
+            <label>Instagram Connect</label>
+            <tab>general</tab>
+            <resource>Yosto_InstagramConnect::yosto_instagram_connect</resource>
+            <group id="instagram_connect_config" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>General</label>
+                <field id="instagram_client_id" translate="label comment" type="text" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Client Id</label>
+                    <comment>Client id receive when register on Instagram developer.
+                    </comment>
+                </field>
+                <field id="instagram_client_secret" translate="label comment" type="text" sortOrder="2" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Client Secret</label>
+                    <comment>Client secret receive when register on Instagram developer.
+                    </comment>
+                </field>
+                <field id="instagram_access_token" translate="label comment" type="text" sortOrder="3" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Access Token</label>
+                    <comment>Access token receive when authenticate on Instagram developer.
+                    </comment>
+                </field>
+                <field id="get_token_button" translate="label comment" type="button" sortOrder="80" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <frontend_model>Yosto\InstagramConnect\Block\Adminhtml\System\Config\GetTokenButton</frontend_model>
+                </field>
+            </group>
+            <group id="instagram_display_config" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Instagram Images on Product Pages</label>
+                <field id="instagram_display_product_page" translate="label comment" type="select" sortOrder="1" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Product Detail Page Display</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Choose to display instagram image in product detail page.
+                    </comment>
+                </field>
+                <field id="instagram_product_image_number" translate="label comment" type="text" sortOrder="2" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Product Detail Image Number</label>
+                    <validate>validate-digits</validate>
+                    <comment>
+                        Choose the maximum image number to display in product detail page.
+                        The maximum number should be less than 20 for hight quality display.
+                    </comment>
+                </field>
+                <field id="instagram_display_likes_comments" translate="label comment" type="select" sortOrder="3" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Display Likes And Comments</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Choose to display likes and comments count of image on Instagram.
+                    </comment>
+                </field>
+            </group>
+            <group id="instagram_shopping_page_config" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Instagram Shopping Page</label>
+                <field id="shopping_page_enable_link_label" translate="label comment" type="text" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enter link's label</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="shopping_page_template" translate="label comment" type="select" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Shopping Page Template</label>
+                    <source_model>Yosto\InstagramConnect\Model\System\Config\TemplateList</source_model>
+                </field>
+                <field id="shopping_page_enable_link_navigation" translate="label comment" type="select" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable link on Navigation menu</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Choose to display link to Instagram Shopping Page on navigation menu.
+                    </comment>
+                </field>
+                <field id="shopping_page_enable_link_footer" translate="label comment" type="select" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable link on Footer</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Choose to display link to Instagram Shopping Page on footer.
+                    </comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

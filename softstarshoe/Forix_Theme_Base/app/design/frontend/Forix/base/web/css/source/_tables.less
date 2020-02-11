@@ -1,0 +1,4636 @@
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.table-wrapper:not(.table-scroll) table:not(.table){
+    &:extend(.forix-abs-table-reponsive all);
+}
+
+.table-wrapper .table:not(.cart):not(.totals):not(.table-comparison) {
+    &:extend(.forix-abs-data-table-reponsive all);
+}
+
+table td .product-item-details .product-item-name{
+    &:extend(table td .product-item-name all);
+}
+
+table td .item.options{
+    &:extend(table td .item-options);
+}
+
+table td .item.options dt{
+    &:extend(table td .item-options dt all);
+}
+
+table td .item.options dd{
+    &:extend(table td .item-options dd);
+}
+
+table caption{
+    &:extend(.forix-abs-visually-hidden all);
+}
+
+table td .item-options{
+    &:extend(.forix-abs-clearfix all);
+}
+
+table tbody td.mark strong,
+table tbody th.mark strong,
+table tbody td.amount strong,
+table tbody th.amount strong,
+table tfoot td.mark strong,
+table tfoot th.mark strong,
+table tfoot td.amount strong,
+table tfoot th.amount strong{
+    &:extend(.forix-abs-secondary-size all);
+}
+
+// ------------------------------------
+// Core
+// ------------------------------------
+// common
+& when (@media-common = true){
+    & when(@use-table-core__enable= true) {
+        .table-scroll{
+            .forix-global-call(
+                @_block-name: @forix-table-scroll__name,
+                @_version: false
+            );
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+            -webkit-overflow-scrolling: touch;
+        }
+        .table-wrapper{
+            .forix-global-call(
+                @_block-name: @forix-table-wrapper__name,
+                @_version: false
+            );
+        }
+        table{
+            .forix-global-call(
+                @_block-name: @forix-table__name,
+                @_version: false
+            );
+            th{
+                .forix-global-call(
+                    @_block-name: @forix-table-th__name,
+                    @_version: false
+                );
+            }
+            td{
+                .forix-global-call(
+                    @_block-name: @forix-table-td__name,
+                    @_version: false
+                );
+            }
+            tr{
+                .forix-global-call(
+                    @_block-name: @forix-table-tr__name,
+                    @_version: false
+                );
+            }
+            caption{
+                .forix-global-call(
+                    @_block-name: @forix-table-caption__name,
+                    @_version: false
+                );
+            }
+            thead{
+                .forix-global-call(
+                    @_block-name: @forix-table-thead__name,
+                    @_version: false
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-thead-tr__name,
+                        @_version: false
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-thead-th__name,
+                        @_version: false
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-thead-td__name,
+                        @_version: false
+                    );
+                }
+            }
+            tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody__name,
+                    @_version: false
+                );
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-th__name,
+                        @_version: false
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-td__name,
+                        @_version: false
+                    );
+                }
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-tr__name,
+                        @_version: false
+                    );
+                }
+            }
+            tfoot{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot__name,
+                    @_version: false
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tfoot-tr__name,
+                        @_version: false
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tfoot-th__name,
+                        @_version: false
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tfoot-td__name,
+                        @_version: false
+                    );
+                }
+            }
+            tbody + tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-tbody__name,
+                    @_version: false
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-tbody-tr__name,
+                        @_version: false
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-tbody-td__name,
+                        @_version: false
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-tbody-th__name,
+                        @_version: false
+                    );
+                }
+            }
+
+            // Format
+            th{
+                a{
+                    .forix-global-call(
+                        @_block-name: @forix-table-th-a__name,
+                        @_version: false
+                    );
+                }
+            }
+            td{
+                a{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a__name,
+                        @_version: false
+                    );
+                }
+                a.action{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-action__name,
+                        @_version: false
+                    );
+                }
+                a.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-action-span__name,
+                        @_version: false
+                    );
+                }
+                a.view{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-view__name,
+                        @_version: false
+                    );
+                }
+                a.view span{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-view-span__name,
+                        @_version: false
+                    );
+                }
+                a.order{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-order__name,
+                        @_version: false
+                    );
+                }
+                a.order span{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-order-span__name,
+                        @_version: false
+                    );
+                }
+                .product-item-name{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-name__name,
+                        @_version: false
+                    );
+                }
+                .product-item-name a{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-name-a__name,
+                        @_version: false
+                    );
+                }
+                .item-options{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-item-options__name,
+                        @_version: false
+                    );
+                }
+                .item-options dt{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-item-options-dt__name,
+                        @_version: false
+                    );
+                }
+                .item-options dd{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-item-options-dd__name,
+                        @_version: false
+                    );
+                }
+                .item-options dd br{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-item-options-dd-br__name,
+                        @_version: false
+                    );
+                }
+                .price{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-price__name,
+                        @_version: false
+                    );
+                }
+                .cart-price{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-cart-price__name,
+                        @_version: false
+                    );
+                }
+                .cart-price .price{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-cart-price-price__name,
+                        @_version: false
+                    );
+                }
+                .product-item-photo{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-photo__name,
+                        @_version: false
+                    );
+                }
+
+                .product-image-container{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-image-container__name,
+                        @_version: false
+                    );
+                }
+                .product-image-wrapper{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-image-wrapper__name,
+                        @_version: false
+                    );
+                }
+                .product-image-photo{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-image-photo__name,
+                        @_version: false
+                    );
+                }
+                .product-item-details{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details__name,
+                        @_version: false
+                    );
+                }
+                .product-item-details .product-item-name{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-product-item-name__name,
+                        @_version: false
+                    );
+                }
+                .product-item-details .product-item-name a{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-product-item-name-a__name,
+                        @_version: false
+                    );
+                }
+                .product-item-details .item-options{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-item-options__name,
+                        @_version: false
+                    );
+                }
+                .product-item-details .item-options dt{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-item-options-dt__name,
+                        @_version: false
+                    );
+                }
+                .product-item-details .item-options dd{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-item-options-dd__name,
+                        @_version: false
+                    );
+                }
+                .product-item-details .item-options dd br{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-item-options-dd-br__name,
+                        @_version: false
+                    );
+                }
+                .message{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-message__name,
+                        @_version: false
+                    );
+                }
+                .message div{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-message-div__name,
+                        @_version: false
+                    );
+                }
+                input.qty{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-input-qty__name,
+                        @_version: false
+                    );
+                }
+            }
+            td.mark,
+            th.mark{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-mark__name,
+                    @_version: false
+                );
+            }
+            td.amount,
+            th.amount{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-amount__name,
+                    @_version: false
+                );
+            }
+            td .price,
+            th .price{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-price__name,
+                    @_version: false
+                );
+            }
+            td.mark strong,
+            th.mark strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-mark-strong__name,
+                    @_version: false
+                );
+            }
+            td.amount strong,
+            th.amount strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-amount-strong__name,
+                    @_version: false
+                );
+            }
+            tbody td.mark,
+            tbody th.mark{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-mark__name,
+                    @_version: false
+                );
+            }
+            tbody td.amount,
+            tbody th.amount{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-amount__name,
+                    @_version: false
+                );
+            }
+            tbody td .price,
+            tbody th .price{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-price__name,
+                    @_version: false
+                );
+            }
+            tbody td.mark strong,
+            tbody th.mark strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-mark-strong__name,
+                    @_version: false
+                );
+            }
+            tbody td.amount strong,
+            tbody th.amount strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-amount-strong__name,
+                    @_version: false
+                );
+            }
+            tfoot td.mark,
+            tfoot th.mark{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-mark__name,
+                    @_version: false
+                );
+            }
+            tfoot td.amount,
+            tfoot th.amount{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-amount__name,
+                    @_version: false
+                );
+            }
+            tfoot td .price,
+            tfoot th .price{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-price__name,
+                    @_version: false
+                );
+            }
+            tfoot td.mark strong,
+            tfoot th.mark strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-mark-strong__name,
+                    @_version: false
+                );
+            }
+            tfoot td.amount strong,
+            tfoot th.amount strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-amount-strong__name,
+                    @_version: false
+                );
+            }
+        }
+        //.table
+        .table{
+            .forix-global-call(
+                @_block-name: @forix-data-table__name,
+                @_version: false
+            );
+            .table-caption{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-caption__name,
+                    @_version: false
+                );
+            }
+            thead{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-thead__name,
+                    @_version: false
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-thead-tr__name,
+                        @_version: false
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-thead-td__name,
+                        @_version: false
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-thead-th__name,
+                        @_version: false
+                    );
+                }
+            }
+            tbody{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-tbody__name,
+                    @_version: false
+                );
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-th__name,
+                        @_version: false
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-td__name,
+                        @_version: false
+                    );
+                }
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-tr__name,
+                        @_version: false
+                    );
+                }
+            }
+            tfoot{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-tfoot__name,
+                    @_version: false
+                );
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tfoot-th__name,
+                        @_version: false
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tfoot-td__name,
+                        @_version: false
+                    );
+                }
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tfoot-tr__name,
+                        @_version: false
+                    );
+                }
+            }
+            tbody + tbody{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-tbody-tbody__name,
+                    @_version: false
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-tbody-tr__name,
+                        @_version: false
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-tbody-th__name,
+                        @_version: false
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-tbody-td__name,
+                        @_version: false
+                    );
+                }
+            }
+
+            // Format
+            &.additional-attributes{
+                .forix-global-call(
+                    @_block-name: @forix-table-additional-attributes__name,
+                    @_version: false
+                );
+                tbody{
+                    .forix-global-call(
+                        @_block-name: @forix-table-additional-attributes-tbody__name,
+                        @_version: false
+                    );
+                }
+                tbody th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-additional-attributes-tbody-th__name,
+                        @_version: false
+                    );
+                }
+                tbody td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-additional-attributes-tbody-td__name,
+                        @_version: false
+                    );
+                }
+            }
+        }
+        .forix-abs-table-reponsive{
+            .forix-global-call(
+                @_block-name: @forix-table-reponsive__name,
+                @_version: false
+            );
+            thead{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-thead__name,
+                    @_version: false
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-thead-tr__name,
+                        @_version: false
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-thead-th__name,
+                        @_version: false
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-thead-td__name,
+                        @_version: false
+                    );
+                }
+            }
+            tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-tbody__name,
+                    @_version: false
+                );
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tbody-th__name,
+                        @_version: false
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tbody-td__name,
+                        @_version: false
+                    );
+                }
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tbody-tr__name,
+                        @_version: false
+                    );
+                }
+            }
+            tfoot{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-tfoot__name,
+                    @_version: false
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tfoot-tr__name,
+                        @_version: false
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tfoot-th__name,
+                        @_version: false
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tfoot-td__name,
+                        @_version: false
+                    );
+                }
+            }
+        }
+        .forix-abs-data-table-reponsive{
+            .forix-global-call(
+                @_block-name: @forix-table-reponsive-data-table__name,
+                @_version: false
+            );
+            thead{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-data-table-thead__name,
+                    @_version: false
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-thead-tr__name,
+                        @_version: false
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-thead-td__name,
+                        @_version: false
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-thead-th__name,
+                        @_version: false
+                    );
+                }
+            }
+            tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-data-table-tbody__name,
+                    @_version: false
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-tr__name,
+                        @_version: false
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-td__name,
+                        @_version: false
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-th__name,
+                        @_version: false
+                    );
+                }
+            }
+            tfoot{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-data-table-tfoot__name,
+                    @_version: false
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tfoot-tr__name,
+                        @_version: false
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tfoot-td__name,
+                        @_version: false
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tfoot-th__name,
+                        @_version: false
+                    );
+                }
+            }
+            tbody + tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-data-table-tbody-tbody__name,
+                    @_version: false
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-tbody-tr__name,
+                        @_version: false
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-tbody-td__name,
+                        @_version: false
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-tbody-th__name,
+                        @_version: false
+                    );
+                }
+            }
+        }
+    }
+    .table tbody tr:last-child td,
+    .table tbody tr:last-child th{
+        border-bottom: 0;
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    & when(@use-table-core__enable= true) {
+        .table-scroll{
+            .forix-global-call(
+                @_block-name: @forix-table-scroll__name,
+                @_version: ''
+            );
+        }
+        .table-wrapper{
+            .forix-global-call(
+                @_block-name: @forix-table-wrapper__name,
+                @_version: ''
+            );
+        }
+        table{
+            .forix-global-call(
+                @_block-name: @forix-table__name,
+                @_version: ''
+            );
+            th{
+                .forix-global-call(
+                    @_block-name: @forix-table-th__name,
+                    @_version: ''
+                );
+            }
+            td{
+                .forix-global-call(
+                    @_block-name: @forix-table-td__name,
+                    @_version: ''
+                );
+            }
+            tr{
+                .forix-global-call(
+                    @_block-name: @forix-table-tr__name,
+                    @_version: ''
+                );
+            }
+            caption{
+                .forix-global-call(
+                    @_block-name: @forix-table-caption__name,
+                    @_version: ''
+                );
+            }
+            thead{
+                .forix-global-call(
+                    @_block-name: @forix-table-thead__name,
+                    @_version: ''
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-thead-tr__name,
+                        @_version: ''
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-thead-th__name,
+                        @_version: ''
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-thead-td__name,
+                        @_version: ''
+                    );
+                }
+            }
+            tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody__name,
+                    @_version: ''
+                );
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-th__name,
+                        @_version: ''
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-td__name,
+                        @_version: ''
+                    );
+                }
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-tr__name,
+                        @_version: ''
+                    );
+                }
+            }
+            tfoot{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot__name,
+                    @_version: ''
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tfoot-tr__name,
+                        @_version: ''
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tfoot-th__name,
+                        @_version: ''
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tfoot-td__name,
+                        @_version: ''
+                    );
+                }
+            }
+            tbody + tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-tbody__name,
+                    @_version: ''
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-tbody-tr__name,
+                        @_version: ''
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-tbody-td__name,
+                        @_version: ''
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-tbody-th__name,
+                        @_version: ''
+                    );
+                }
+            }
+
+            // Format
+            th{
+                a{
+                    .forix-global-call(
+                        @_block-name: @forix-table-th-a__name,
+                        @_version: ''
+                    );
+                }
+            }
+            td{
+                a{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a__name,
+                        @_version: ''
+                    );
+                }
+                a.action{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-action__name,
+                        @_version: ''
+                    );
+                }
+                a.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-action-span__name,
+                        @_version: ''
+                    );
+                }
+                a.view{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-view__name,
+                        @_version: ''
+                    );
+                }
+                a.view span{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-view-span__name,
+                        @_version: ''
+                    );
+                }
+                a.order{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-order__name,
+                        @_version: ''
+                    );
+                }
+                a.order span{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-order-span__name,
+                        @_version: ''
+                    );
+                }
+                .product-item-name{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-name__name,
+                        @_version: ''
+                    );
+                }
+                .product-item-name a{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-name-a__name,
+                        @_version: ''
+                    );
+                }
+                .item-options{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-item-options__name,
+                        @_version: ''
+                    );
+                }
+                .item-options dt{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-item-options-dt__name,
+                        @_version: ''
+                    );
+                }
+                .item-options dd{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-item-options-dd__name,
+                        @_version: ''
+                    );
+                }
+                .item-options dd br{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-item-options-dd-br__name,
+                        @_version: ''
+                    );
+                }
+                .price{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-price__name,
+                        @_version: ''
+                    );
+                }
+                .cart-price{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-cart-price__name,
+                        @_version: ''
+                    );
+                }
+                .cart-price .price{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-cart-price-price__name,
+                        @_version: ''
+                    );
+                }
+                .product-item-photo{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-photo__name,
+                        @_version: ''
+                    );
+                }
+
+                .product-image-container{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-image-container__name,
+                        @_version: ''
+                    );
+                }
+                .product-image-wrapper{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-image-wrapper__name,
+                        @_version: ''
+                    );
+                }
+                .product-image-photo{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-image-photo__name,
+                        @_version: ''
+                    );
+                }
+                .product-item-details{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details__name,
+                        @_version: ''
+                    );
+                }
+                .product-item-details .product-item-name{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-product-item-name__name,
+                        @_version: ''
+                    );
+                }
+                .product-item-details .product-item-name a{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-product-item-name-a__name,
+                        @_version: ''
+                    );
+                }
+                .product-item-details .item-options{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-item-options__name,
+                        @_version: ''
+                    );
+                }
+                .product-item-details .item-options dt{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-item-options-dt__name,
+                        @_version: ''
+                    );
+                }
+                .product-item-details .item-options dd{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-item-options-dd__name,
+                        @_version: ''
+                    );
+                }
+                .product-item-details .item-options dd br{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-item-options-dd-br__name,
+                        @_version: ''
+                    );
+                }
+                .message{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-message__name,
+                        @_version: ''
+                    );
+                }
+                .message div{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-message-div__name,
+                        @_version: ''
+                    );
+                }
+                input.qty{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-input-qty__name,
+                        @_version: ''
+                    );
+                }
+            }
+            td.mark,
+            th.mark{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-mark__name,
+                    @_version: ''
+                );
+            }
+            td.amount,
+            th.amount{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-amount__name,
+                    @_version: ''
+                );
+            }
+            td .price,
+            th .price{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-price__name,
+                    @_version: ''
+                );
+            }
+            td.mark strong,
+            th.mark strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-mark-strong__name,
+                    @_version: ''
+                );
+            }
+            td.amount strong,
+            th.amount strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-amount-strong__name,
+                    @_version: ''
+                );
+            }
+            tbody td.mark,
+            tbody th.mark{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-mark__name,
+                    @_version: ''
+                );
+            }
+            tbody td.amount,
+            tbody th.amount{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-amount__name,
+                    @_version: ''
+                );
+            }
+            tbody td .price,
+            tbody th .price{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-price__name,
+                    @_version: ''
+                );
+            }
+            tbody td.mark strong,
+            tbody th.mark strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-mark-strong__name,
+                    @_version: ''
+                );
+            }
+            tbody td.amount strong,
+            tbody th.amount strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-amount-strong__name,
+                    @_version: ''
+                );
+            }
+            tfoot td.mark,
+            tfoot th.mark{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-mark__name,
+                    @_version: ''
+                );
+            }
+            tfoot td.amount,
+            tfoot th.amount{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-amount__name,
+                    @_version: ''
+                );
+            }
+            tfoot td .price,
+            tfoot th .price{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-price__name,
+                    @_version: ''
+                );
+            }
+            tfoot td.mark strong,
+            tfoot th.mark strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-mark-strong__name,
+                    @_version: ''
+                );
+            }
+            tfoot td.amount strong,
+            tfoot th.amount strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-amount-strong__name,
+                    @_version: ''
+                );
+            }
+        }
+        //.table
+        .table{
+            .forix-global-call(
+                @_block-name: @forix-data-table__name,
+                @_version: ''
+            );
+            .table-caption{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-caption__name,
+                    @_version: ''
+                );
+            }
+            thead{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-thead__name,
+                    @_version: ''
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-thead-tr__name,
+                        @_version: ''
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-thead-td__name,
+                        @_version: ''
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-thead-th__name,
+                        @_version: ''
+                    );
+                }
+            }
+            tbody{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-tbody__name,
+                    @_version: ''
+                );
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-th__name,
+                        @_version: ''
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-td__name,
+                        @_version: ''
+                    );
+                }
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-tr__name,
+                        @_version: ''
+                    );
+                }
+            }
+            tfoot{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-tfoot__name,
+                    @_version: ''
+                );
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tfoot-th__name,
+                        @_version: ''
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tfoot-td__name,
+                        @_version: ''
+                    );
+                }
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tfoot-tr__name,
+                        @_version: ''
+                    );
+                }
+            }
+            tbody + tbody{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-tbody-tbody__name,
+                    @_version: ''
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-tbody-tr__name,
+                        @_version: ''
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-tbody-th__name,
+                        @_version: ''
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-tbody-td__name,
+                        @_version: ''
+                    );
+                }
+            }
+
+            // Format
+            &.additional-attributes{
+                .forix-global-call(
+                    @_block-name: @forix-table-additional-attributes__name,
+                    @_version: ''
+                );
+                tbody{
+                    .forix-global-call(
+                        @_block-name: @forix-table-additional-attributes-tbody__name,
+                        @_version: ''
+                    );
+                }
+                tbody th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-additional-attributes-tbody-th__name,
+                        @_version: ''
+                    );
+                }
+                tbody td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-additional-attributes-tbody-td__name,
+                        @_version: ''
+                    );
+                }
+            }
+        }
+        .forix-abs-table-reponsive{
+            .forix-global-call(
+                @_block-name: @forix-table-reponsive__name,
+                @_version: ''
+            );
+            thead{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-thead__name,
+                    @_version: ''
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-thead-tr__name,
+                        @_version: ''
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-thead-th__name,
+                        @_version: ''
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-thead-td__name,
+                        @_version: ''
+                    );
+                }
+            }
+            tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-tbody__name,
+                    @_version: ''
+                );
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tbody-th__name,
+                        @_version: ''
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tbody-td__name,
+                        @_version: ''
+                    );
+                }
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tbody-tr__name,
+                        @_version: ''
+                    );
+                }
+            }
+            tfoot{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-tfoot__name,
+                    @_version: ''
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tfoot-tr__name,
+                        @_version: ''
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tfoot-th__name,
+                        @_version: ''
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tfoot-td__name,
+                        @_version: ''
+                    );
+                }
+            }
+        }
+        .forix-abs-data-table-reponsive{
+            .forix-global-call(
+                @_block-name: @forix-table-reponsive-data-table__name,
+                @_version: ''
+            );
+            thead{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-data-table-thead__name,
+                    @_version: ''
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-thead-tr__name,
+                        @_version: ''
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-thead-td__name,
+                        @_version: ''
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-thead-th__name,
+                        @_version: ''
+                    );
+                }
+            }
+            tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-data-table-tbody__name,
+                    @_version: ''
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-tr__name,
+                        @_version: ''
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-td__name,
+                        @_version: ''
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-th__name,
+                        @_version: ''
+                    );
+                }
+            }
+            tfoot{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-data-table-tfoot__name,
+                    @_version: ''
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tfoot-tr__name,
+                        @_version: ''
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tfoot-td__name,
+                        @_version: ''
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tfoot-th__name,
+                        @_version: ''
+                    );
+                }
+            }
+            tbody + tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-data-table-tbody-tbody__name,
+                    @_version: ''
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-tbody-tr__name,
+                        @_version: ''
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-tbody-td__name,
+                        @_version: ''
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-tbody-th__name,
+                        @_version: ''
+                    );
+                }
+            }
+        }
+    }
+    .table tfoot tr:before,
+    .table tfoot tr:after {
+        content: '';
+        display: table;
+    }
+
+    table tfoot tr:first-child td.mark,
+    table tfoot tr:first-child th.mark,
+    table tfoot tr:first-child td.amount,
+    table tfoot tr:first-child th.amount{
+        padding-top: @forix-indent__xm;
+    }
+
+    table tfoot tr:last-child td.mark,
+    table tfoot tr:last-child th.mark,
+    table tfoot tr:last-child td.amount,
+    table tfoot tr:last-child th.amount{
+        padding-bottom: @forix-indent__xm;
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    & when(@use-table-core__enable= true) {
+        .table-scroll{
+            .forix-global-call(
+                @_block-name: @forix-table-scroll__name,
+                @_version: 'ml'
+            );
+        }
+        .table-wrapper{
+            .forix-global-call(
+                @_block-name: @forix-table-wrapper__name,
+                @_version: 'ml'
+            );
+        }
+        table{
+            .forix-global-call(
+                @_block-name: @forix-table__name,
+                @_version: 'ml'
+            );
+            th{
+                .forix-global-call(
+                    @_block-name: @forix-table-th__name,
+                    @_version: 'ml'
+                );
+            }
+            td{
+                .forix-global-call(
+                    @_block-name: @forix-table-td__name,
+                    @_version: 'ml'
+                );
+            }
+            tr{
+                .forix-global-call(
+                    @_block-name: @forix-table-tr__name,
+                    @_version: 'ml'
+                );
+            }
+            caption{
+                .forix-global-call(
+                    @_block-name: @forix-table-caption__name,
+                    @_version: 'ml'
+                );
+            }
+            thead{
+                .forix-global-call(
+                    @_block-name: @forix-table-thead__name,
+                    @_version: 'ml'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-thead-tr__name,
+                        @_version: 'ml'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-thead-th__name,
+                        @_version: 'ml'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-thead-td__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+            tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody__name,
+                    @_version: 'ml'
+                );
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-th__name,
+                        @_version: 'ml'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-td__name,
+                        @_version: 'ml'
+                    );
+                }
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-tr__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+            tfoot{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot__name,
+                    @_version: 'ml'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tfoot-tr__name,
+                        @_version: 'ml'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tfoot-th__name,
+                        @_version: 'ml'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tfoot-td__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+            tbody + tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-tbody__name,
+                    @_version: 'ml'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-tbody-tr__name,
+                        @_version: 'ml'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-tbody-td__name,
+                        @_version: 'ml'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-tbody-th__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+
+            // Format
+            th{
+                a{
+                    .forix-global-call(
+                        @_block-name: @forix-table-th-a__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+            td{
+                a{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a__name,
+                        @_version: 'ml'
+                    );
+                }
+                a.action{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-action__name,
+                        @_version: 'ml'
+                    );
+                }
+                a.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-action-span__name,
+                        @_version: 'ml'
+                    );
+                }
+                a.view{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-view__name,
+                        @_version: 'ml'
+                    );
+                }
+                a.view span{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-view-span__name,
+                        @_version: 'ml'
+                    );
+                }
+                a.order{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-order__name,
+                        @_version: 'ml'
+                    );
+                }
+                a.order span{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-order-span__name,
+                        @_version: 'ml'
+                    );
+                }
+                .product-item-name{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-name__name,
+                        @_version: 'ml'
+                    );
+                }
+                .product-item-name a{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-name-a__name,
+                        @_version: 'ml'
+                    );
+                }
+                .item-options{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-item-options__name,
+                        @_version: 'ml'
+                    );
+                }
+                .item-options dt{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-item-options-dt__name,
+                        @_version: 'ml'
+                    );
+                }
+                .item-options dd{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-item-options-dd__name,
+                        @_version: 'ml'
+                    );
+                }
+                .item-options dd br{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-item-options-dd-br__name,
+                        @_version: 'ml'
+                    );
+                }
+                .price{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-price__name,
+                        @_version: 'ml'
+                    );
+                }
+                .cart-price{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-cart-price__name,
+                        @_version: 'ml'
+                    );
+                }
+                .cart-price .price{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-cart-price-price__name,
+                        @_version: 'ml'
+                    );
+                }
+                .product-item-photo{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-photo__name,
+                        @_version: 'ml'
+                    );
+                }
+
+                .product-image-container{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-image-container__name,
+                        @_version: 'ml'
+                    );
+                }
+                .product-image-wrapper{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-image-wrapper__name,
+                        @_version: 'ml'
+                    );
+                }
+                .product-image-photo{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-image-photo__name,
+                        @_version: 'ml'
+                    );
+                }
+                .product-item-details{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details__name,
+                        @_version: 'ml'
+                    );
+                }
+                .product-item-details .product-item-name{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-product-item-name__name,
+                        @_version: 'ml'
+                    );
+                }
+                .product-item-details .product-item-name a{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-product-item-name-a__name,
+                        @_version: 'ml'
+                    );
+                }
+                .product-item-details .item-options{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-item-options__name,
+                        @_version: 'ml'
+                    );
+                }
+                .product-item-details .item-options dt{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-item-options-dt__name,
+                        @_version: 'ml'
+                    );
+                }
+                .product-item-details .item-options dd{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-item-options-dd__name,
+                        @_version: 'ml'
+                    );
+                }
+                .product-item-details .item-options dd br{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-item-options-dd-br__name,
+                        @_version: 'ml'
+                    );
+                }
+                .message{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-message__name,
+                        @_version: 'ml'
+                    );
+                }
+                .message div{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-message-div__name,
+                        @_version: 'ml'
+                    );
+                }
+                input.qty{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-input-qty__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+            td.mark,
+            th.mark{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-mark__name,
+                    @_version: 'ml'
+                );
+            }
+            td.amount,
+            th.amount{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-amount__name,
+                    @_version: 'ml'
+                );
+            }
+            td .price,
+            th .price{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-price__name,
+                    @_version: 'ml'
+                );
+            }
+            td.mark strong,
+            th.mark strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-mark-strong__name,
+                    @_version: 'ml'
+                );
+            }
+            td.amount strong,
+            th.amount strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-amount-strong__name,
+                    @_version: 'ml'
+                );
+            }
+            tbody td.mark,
+            tbody th.mark{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-mark__name,
+                    @_version: 'ml'
+                );
+            }
+            tbody td.amount,
+            tbody th.amount{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-amount__name,
+                    @_version: 'ml'
+                );
+            }
+            tbody td .price,
+            tbody th .price{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-price__name,
+                    @_version: 'ml'
+                );
+            }
+            tbody td.mark strong,
+            tbody th.mark strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-mark-strong__name,
+                    @_version: 'ml'
+                );
+            }
+            tbody td.amount strong,
+            tbody th.amount strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-amount-strong__name,
+                    @_version: 'ml'
+                );
+            }
+            tfoot td.mark,
+            tfoot th.mark{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-mark__name,
+                    @_version: 'ml'
+                );
+            }
+            tfoot td.amount,
+            tfoot th.amount{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-amount__name,
+                    @_version: 'ml'
+                );
+            }
+            tfoot td .price,
+            tfoot th .price{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-price__name,
+                    @_version: 'ml'
+                );
+            }
+            tfoot td.mark strong,
+            tfoot th.mark strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-mark-strong__name,
+                    @_version: 'ml'
+                );
+            }
+            tfoot td.amount strong,
+            tfoot th.amount strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-amount-strong__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        //.table
+        .table{
+            .forix-global-call(
+                @_block-name: @forix-data-table__name,
+                @_version: 'ml'
+            );
+            .table-caption{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-caption__name,
+                    @_version: 'ml'
+                );
+            }
+            thead{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-thead__name,
+                    @_version: 'ml'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-thead-tr__name,
+                        @_version: 'ml'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-thead-td__name,
+                        @_version: 'ml'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-thead-th__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+            tbody{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-tbody__name,
+                    @_version: 'ml'
+                );
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-th__name,
+                        @_version: 'ml'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-td__name,
+                        @_version: 'ml'
+                    );
+                }
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-tr__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+            tfoot{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-tfoot__name,
+                    @_version: 'ml'
+                );
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tfoot-th__name,
+                        @_version: 'ml'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tfoot-td__name,
+                        @_version: 'ml'
+                    );
+                }
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tfoot-tr__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+            tbody + tbody{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-tbody-tbody__name,
+                    @_version: 'ml'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-tbody-tr__name,
+                        @_version: 'ml'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-tbody-th__name,
+                        @_version: 'ml'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-tbody-td__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+
+            // Format
+            &.additional-attributes{
+                .forix-global-call(
+                    @_block-name: @forix-table-additional-attributes__name,
+                    @_version: 'ml'
+                );
+                tbody{
+                    .forix-global-call(
+                        @_block-name: @forix-table-additional-attributes-tbody__name,
+                        @_version: 'ml'
+                    );
+                }
+                tbody th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-additional-attributes-tbody-th__name,
+                        @_version: 'ml'
+                    );
+                }
+                tbody td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-additional-attributes-tbody-td__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+        }
+        .forix-abs-table-reponsive{
+            .forix-global-call(
+                @_block-name: @forix-table-reponsive__name,
+                @_version: 'ml'
+            );
+            thead{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-thead__name,
+                    @_version: 'ml'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-thead-tr__name,
+                        @_version: 'ml'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-thead-th__name,
+                        @_version: 'ml'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-thead-td__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+            tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-tbody__name,
+                    @_version: 'ml'
+                );
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tbody-th__name,
+                        @_version: 'ml'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tbody-td__name,
+                        @_version: 'ml'
+                    );
+                }
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tbody-tr__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+            tfoot{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-tfoot__name,
+                    @_version: 'ml'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tfoot-tr__name,
+                        @_version: 'ml'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tfoot-th__name,
+                        @_version: 'ml'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tfoot-td__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+        }
+        .forix-abs-data-table-reponsive{
+            .forix-global-call(
+                @_block-name: @forix-table-reponsive-data-table__name,
+                @_version: 'ml'
+            );
+            thead{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-data-table-thead__name,
+                    @_version: 'ml'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-thead-tr__name,
+                        @_version: 'ml'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-thead-td__name,
+                        @_version: 'ml'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-thead-th__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+            tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-data-table-tbody__name,
+                    @_version: 'ml'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-tr__name,
+                        @_version: 'ml'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-td__name,
+                        @_version: 'ml'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-th__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+            tfoot{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-data-table-tfoot__name,
+                    @_version: 'ml'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tfoot-tr__name,
+                        @_version: 'ml'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tfoot-td__name,
+                        @_version: 'ml'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tfoot-th__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+            tbody + tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-data-table-tbody-tbody__name,
+                    @_version: 'ml'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-tbody-tr__name,
+                        @_version: 'ml'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-tbody-td__name,
+                        @_version: 'ml'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-tbody-th__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+        }
+    }
+    .table tbody td.name{
+        max-width: 210px;
+    }
+    .table tfoot tr:first-child th.mark,
+    .table tfoot tr:first-child td.mark{
+        padding-top: @forix-indent__base;
+    }
+    .table tfoot tr:first-child th.amount,
+    .table tfoot tr:first-child td.amount{
+        padding-top: @forix-indent__base;
+    }
+    .table tfoot tr:last-child th.mark,
+    .table tfoot tr:last-child td.mark{
+        padding-bottom: @forix-indent__base;
+    }
+    .table tfoot tr:last-child th.amount,
+    .table tfoot tr:last-child td.amount{
+        padding-bottom: @forix-indent__base;
+    }
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    & when(@use-table-core__enable= true) {
+        .table-scroll{
+            .forix-global-call(
+                @_block-name: @forix-table-scroll__name,
+                @_version: 'sm'
+            );
+        }
+        .table-wrapper{
+            .forix-global-call(
+                @_block-name: @forix-table-wrapper__name,
+                @_version: 'sm'
+            );
+        }
+        table{
+            .forix-global-call(
+                @_block-name: @forix-table__name,
+                @_version: 'sm'
+            );
+            th{
+                .forix-global-call(
+                    @_block-name: @forix-table-th__name,
+                    @_version: 'sm'
+                );
+            }
+            td{
+                .forix-global-call(
+                    @_block-name: @forix-table-td__name,
+                    @_version: 'sm'
+                );
+            }
+            tr{
+                .forix-global-call(
+                    @_block-name: @forix-table-tr__name,
+                    @_version: 'sm'
+                );
+            }
+            caption{
+                .forix-global-call(
+                    @_block-name: @forix-table-caption__name,
+                    @_version: 'sm'
+                );
+            }
+            thead{
+                .forix-global-call(
+                    @_block-name: @forix-table-thead__name,
+                    @_version: 'sm'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-thead-tr__name,
+                        @_version: 'sm'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-thead-th__name,
+                        @_version: 'sm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-thead-td__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+            tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody__name,
+                    @_version: 'sm'
+                );
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-th__name,
+                        @_version: 'sm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-td__name,
+                        @_version: 'sm'
+                    );
+                }
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-tr__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+            tfoot{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot__name,
+                    @_version: 'sm'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tfoot-tr__name,
+                        @_version: 'sm'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tfoot-th__name,
+                        @_version: 'sm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tfoot-td__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+            tbody + tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-tbody__name,
+                    @_version: 'sm'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-tbody-tr__name,
+                        @_version: 'sm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-tbody-td__name,
+                        @_version: 'sm'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-tbody-th__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+
+            // Format
+            th{
+                a{
+                    .forix-global-call(
+                        @_block-name: @forix-table-th-a__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+            td{
+                a{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a__name,
+                        @_version: 'sm'
+                    );
+                }
+                a.action{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-action__name,
+                        @_version: 'sm'
+                    );
+                }
+                a.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-action-span__name,
+                        @_version: 'sm'
+                    );
+                }
+                a.view{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-view__name,
+                        @_version: 'sm'
+                    );
+                }
+                a.view span{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-view-span__name,
+                        @_version: 'sm'
+                    );
+                }
+                a.order{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-order__name,
+                        @_version: 'sm'
+                    );
+                }
+                a.order span{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-order-span__name,
+                        @_version: 'sm'
+                    );
+                }
+                .product-item-name{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-name__name,
+                        @_version: 'sm'
+                    );
+                }
+                .product-item-name a{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-name-a__name,
+                        @_version: 'sm'
+                    );
+                }
+                .item-options{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-item-options__name,
+                        @_version: 'sm'
+                    );
+                }
+                .item-options dt{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-item-options-dt__name,
+                        @_version: 'sm'
+                    );
+                }
+                .item-options dd{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-item-options-dd__name,
+                        @_version: 'sm'
+                    );
+                }
+                .item-options dd br{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-item-options-dd-br__name,
+                        @_version: 'sm'
+                    );
+                }
+                .price{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-price__name,
+                        @_version: 'sm'
+                    );
+                }
+                .cart-price{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-cart-price__name,
+                        @_version: 'sm'
+                    );
+                }
+                .cart-price .price{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-cart-price-price__name,
+                        @_version: 'sm'
+                    );
+                }
+                .product-item-photo{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-photo__name,
+                        @_version: 'sm'
+                    );
+                }
+
+                .product-image-container{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-image-container__name,
+                        @_version: 'sm'
+                    );
+                }
+                .product-image-wrapper{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-image-wrapper__name,
+                        @_version: 'sm'
+                    );
+                }
+                .product-image-photo{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-image-photo__name,
+                        @_version: 'sm'
+                    );
+                }
+                .product-item-details{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details__name,
+                        @_version: 'sm'
+                    );
+                }
+                .product-item-details .product-item-name{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-product-item-name__name,
+                        @_version: 'sm'
+                    );
+                }
+                .product-item-details .product-item-name a{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-product-item-name-a__name,
+                        @_version: 'sm'
+                    );
+                }
+                .product-item-details .item-options{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-item-options__name,
+                        @_version: 'sm'
+                    );
+                }
+                .product-item-details .item-options dt{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-item-options-dt__name,
+                        @_version: 'sm'
+                    );
+                }
+                .product-item-details .item-options dd{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-item-options-dd__name,
+                        @_version: 'sm'
+                    );
+                }
+                .product-item-details .item-options dd br{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-item-options-dd-br__name,
+                        @_version: 'sm'
+                    );
+                }
+                .message{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-message__name,
+                        @_version: 'sm'
+                    );
+                }
+                .message div{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-message-div__name,
+                        @_version: 'sm'
+                    );
+                }
+                input.qty{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-input-qty__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+            td.mark,
+            th.mark{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-mark__name,
+                    @_version: 'sm'
+                );
+            }
+            td.amount,
+            th.amount{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-amount__name,
+                    @_version: 'sm'
+                );
+            }
+            td .price,
+            th .price{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-price__name,
+                    @_version: 'sm'
+                );
+            }
+            td.mark strong,
+            th.mark strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-mark-strong__name,
+                    @_version: 'sm'
+                );
+            }
+            td.amount strong,
+            th.amount strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-amount-strong__name,
+                    @_version: 'sm'
+                );
+            }
+            tbody td.mark,
+            tbody th.mark{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-mark__name,
+                    @_version: 'sm'
+                );
+            }
+            tbody td.amount,
+            tbody th.amount{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-amount__name,
+                    @_version: 'sm'
+                );
+            }
+            tbody td .price,
+            tbody th .price{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-price__name,
+                    @_version: 'sm'
+                );
+            }
+            tbody td.mark strong,
+            tbody th.mark strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-mark-strong__name,
+                    @_version: 'sm'
+                );
+            }
+            tbody td.amount strong,
+            tbody th.amount strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-amount-strong__name,
+                    @_version: 'sm'
+                );
+            }
+            tfoot td.mark,
+            tfoot th.mark{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-mark__name,
+                    @_version: 'sm'
+                );
+            }
+            tfoot td.amount,
+            tfoot th.amount{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-amount__name,
+                    @_version: 'sm'
+                );
+            }
+            tfoot td .price,
+            tfoot th .price{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-price__name,
+                    @_version: 'sm'
+                );
+            }
+            tfoot td.mark strong,
+            tfoot th.mark strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-mark-strong__name,
+                    @_version: 'sm'
+                );
+            }
+            tfoot td.amount strong,
+            tfoot th.amount strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-amount-strong__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        //.table
+        .table{
+            .forix-global-call(
+                @_block-name: @forix-data-table__name,
+                @_version: 'sm'
+            );
+            .table-caption{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-caption__name,
+                    @_version: 'sm'
+                );
+            }
+            thead{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-thead__name,
+                    @_version: 'sm'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-thead-tr__name,
+                        @_version: 'sm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-thead-td__name,
+                        @_version: 'sm'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-thead-th__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+            tbody{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-tbody__name,
+                    @_version: 'sm'
+                );
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-th__name,
+                        @_version: 'sm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-td__name,
+                        @_version: 'sm'
+                    );
+                }
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-tr__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+            tfoot{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-tfoot__name,
+                    @_version: 'sm'
+                );
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tfoot-th__name,
+                        @_version: 'sm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tfoot-td__name,
+                        @_version: 'sm'
+                    );
+                }
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tfoot-tr__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+            tbody + tbody{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-tbody-tbody__name,
+                    @_version: 'sm'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-tbody-tr__name,
+                        @_version: 'sm'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-tbody-th__name,
+                        @_version: 'sm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-tbody-td__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+
+            // Format
+            &.additional-attributes{
+                .forix-global-call(
+                    @_block-name: @forix-table-additional-attributes__name,
+                    @_version: 'sm'
+                );
+                tbody{
+                    .forix-global-call(
+                        @_block-name: @forix-table-additional-attributes-tbody__name,
+                        @_version: 'sm'
+                    );
+                }
+                tbody th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-additional-attributes-tbody-th__name,
+                        @_version: 'sm'
+                    );
+                }
+                tbody td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-additional-attributes-tbody-td__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+        }
+        .forix-abs-table-reponsive{
+            .forix-global-call(
+                @_block-name: @forix-table-reponsive__name,
+                @_version: 'sm'
+            );
+            thead{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-thead__name,
+                    @_version: 'sm'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-thead-tr__name,
+                        @_version: 'sm'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-thead-th__name,
+                        @_version: 'sm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-thead-td__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+            tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-tbody__name,
+                    @_version: 'sm'
+                );
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tbody-th__name,
+                        @_version: 'sm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tbody-td__name,
+                        @_version: 'sm'
+                    );
+                }
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tbody-tr__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+            tfoot{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-tfoot__name,
+                    @_version: 'sm'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tfoot-tr__name,
+                        @_version: 'sm'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tfoot-th__name,
+                        @_version: 'sm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tfoot-td__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+        }
+        .forix-abs-data-table-reponsive{
+            .forix-global-call(
+                @_block-name: @forix-table-reponsive-data-table__name,
+                @_version: 'sm'
+            );
+            thead{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-data-table-thead__name,
+                    @_version: 'sm'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-thead-tr__name,
+                        @_version: 'sm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-thead-td__name,
+                        @_version: 'sm'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-thead-th__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+            tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-data-table-tbody__name,
+                    @_version: 'sm'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-tr__name,
+                        @_version: 'sm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-td__name,
+                        @_version: 'sm'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-th__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+            tfoot{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-data-table-tfoot__name,
+                    @_version: 'sm'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tfoot-tr__name,
+                        @_version: 'sm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tfoot-td__name,
+                        @_version: 'sm'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tfoot-th__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+            tbody + tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-data-table-tbody-tbody__name,
+                    @_version: 'sm'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-tbody-tr__name,
+                        @_version: 'sm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-tbody-td__name,
+                        @_version: 'sm'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-tbody-th__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+        }
+    }
+}
+
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    & when(@use-table-core__enable= true) {
+        .table-scroll{
+            .forix-global-call(
+                @_block-name: @forix-table-scroll__name,
+                @_version: 'm'
+            );
+        }
+        .table-wrapper{
+            .forix-global-call(
+                @_block-name: @forix-table-wrapper__name,
+                @_version: 'm'
+            );
+        }
+        table{
+            .forix-global-call(
+                @_block-name: @forix-table__name,
+                @_version: 'm'
+            );
+            th{
+                .forix-global-call(
+                    @_block-name: @forix-table-th__name,
+                    @_version: 'm'
+                );
+            }
+            td{
+                .forix-global-call(
+                    @_block-name: @forix-table-td__name,
+                    @_version: 'm'
+                );
+            }
+            tr{
+                .forix-global-call(
+                    @_block-name: @forix-table-tr__name,
+                    @_version: 'm'
+                );
+            }
+            caption{
+                .forix-global-call(
+                    @_block-name: @forix-table-caption__name,
+                    @_version: 'm'
+                );
+            }
+            thead{
+                .forix-global-call(
+                    @_block-name: @forix-table-thead__name,
+                    @_version: 'm'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-thead-tr__name,
+                        @_version: 'm'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-thead-th__name,
+                        @_version: 'm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-thead-td__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+            tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody__name,
+                    @_version: 'm'
+                );
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-th__name,
+                        @_version: 'm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-td__name,
+                        @_version: 'm'
+                    );
+                }
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-tr__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+            tfoot{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot__name,
+                    @_version: 'm'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tfoot-tr__name,
+                        @_version: 'm'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tfoot-th__name,
+                        @_version: 'm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tfoot-td__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+            tbody + tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-tbody__name,
+                    @_version: 'm'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-tbody-tr__name,
+                        @_version: 'm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-tbody-td__name,
+                        @_version: 'm'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-tbody-th__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+
+            // Format
+            th{
+                a{
+                    .forix-global-call(
+                        @_block-name: @forix-table-th-a__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+            td{
+                a{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a__name,
+                        @_version: 'm'
+                    );
+                }
+                a.action{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-action__name,
+                        @_version: 'm'
+                    );
+                }
+                a.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-action-span__name,
+                        @_version: 'm'
+                    );
+                }
+                a.view{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-view__name,
+                        @_version: 'm'
+                    );
+                }
+                a.view span{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-view-span__name,
+                        @_version: 'm'
+                    );
+                }
+                a.order{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-order__name,
+                        @_version: 'm'
+                    );
+                }
+                a.order span{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-order-span__name,
+                        @_version: 'm'
+                    );
+                }
+                .product-item-name{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-name__name,
+                        @_version: 'm'
+                    );
+                }
+                .product-item-name a{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-name-a__name,
+                        @_version: 'm'
+                    );
+                }
+                .item-options{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-item-options__name,
+                        @_version: 'm'
+                    );
+                }
+                .item-options dt{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-item-options-dt__name,
+                        @_version: 'm'
+                    );
+                }
+                .item-options dd{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-item-options-dd__name,
+                        @_version: 'm'
+                    );
+                }
+                .item-options dd br{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-item-options-dd-br__name,
+                        @_version: 'm'
+                    );
+                }
+                .price{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-price__name,
+                        @_version: 'm'
+                    );
+                }
+                .cart-price{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-cart-price__name,
+                        @_version: 'm'
+                    );
+                }
+                .cart-price .price{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-cart-price-price__name,
+                        @_version: 'm'
+                    );
+                }
+                .product-item-photo{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-photo__name,
+                        @_version: 'm'
+                    );
+                }
+
+                .product-image-container{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-image-container__name,
+                        @_version: 'm'
+                    );
+                }
+                .product-image-wrapper{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-image-wrapper__name,
+                        @_version: 'm'
+                    );
+                }
+                .product-image-photo{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-image-photo__name,
+                        @_version: 'm'
+                    );
+                }
+                .product-item-details{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details__name,
+                        @_version: 'm'
+                    );
+                }
+                .product-item-details .product-item-name{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-product-item-name__name,
+                        @_version: 'm'
+                    );
+                }
+                .product-item-details .product-item-name a{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-product-item-name-a__name,
+                        @_version: 'm'
+                    );
+                }
+                .product-item-details .item-options{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-item-options__name,
+                        @_version: 'm'
+                    );
+                }
+                .product-item-details .item-options dt{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-item-options-dt__name,
+                        @_version: 'm'
+                    );
+                }
+                .product-item-details .item-options dd{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-item-options-dd__name,
+                        @_version: 'm'
+                    );
+                }
+                .product-item-details .item-options dd br{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-item-options-dd-br__name,
+                        @_version: 'm'
+                    );
+                }
+                .message{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-message__name,
+                        @_version: 'm'
+                    );
+                }
+                .message div{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-message-div__name,
+                        @_version: 'm'
+                    );
+                }
+                input.qty{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-input-qty__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+            td.mark,
+            th.mark{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-mark__name,
+                    @_version: 'm'
+                );
+            }
+            td.amount,
+            th.amount{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-amount__name,
+                    @_version: 'm'
+                );
+            }
+            td .price,
+            th .price{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-price__name,
+                    @_version: 'm'
+                );
+            }
+            td.mark strong,
+            th.mark strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-mark-strong__name,
+                    @_version: 'm'
+                );
+            }
+            td.amount strong,
+            th.amount strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-amount-strong__name,
+                    @_version: 'm'
+                );
+            }
+            tbody td.mark,
+            tbody th.mark{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-mark__name,
+                    @_version: 'm'
+                );
+            }
+            tbody td.amount,
+            tbody th.amount{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-amount__name,
+                    @_version: 'm'
+                );
+            }
+            tbody td .price,
+            tbody th .price{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-price__name,
+                    @_version: 'm'
+                );
+            }
+            tbody td.mark strong,
+            tbody th.mark strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-mark-strong__name,
+                    @_version: 'm'
+                );
+            }
+            tbody td.amount strong,
+            tbody th.amount strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-amount-strong__name,
+                    @_version: 'm'
+                );
+            }
+            tfoot td.mark,
+            tfoot th.mark{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-mark__name,
+                    @_version: 'm'
+                );
+            }
+            tfoot td.amount,
+            tfoot th.amount{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-amount__name,
+                    @_version: 'm'
+                );
+            }
+            tfoot td .price,
+            tfoot th .price{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-price__name,
+                    @_version: 'm'
+                );
+            }
+            tfoot td.mark strong,
+            tfoot th.mark strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-mark-strong__name,
+                    @_version: 'm'
+                );
+            }
+            tfoot td.amount strong,
+            tfoot th.amount strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-amount-strong__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        //.table
+        .table{
+            .forix-global-call(
+                @_block-name: @forix-data-table__name,
+                @_version: 'm'
+            );
+            .table-caption{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-caption__name,
+                    @_version: 'm'
+                );
+            }
+            thead{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-thead__name,
+                    @_version: 'm'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-thead-tr__name,
+                        @_version: 'm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-thead-td__name,
+                        @_version: 'm'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-thead-th__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+            tbody{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-tbody__name,
+                    @_version: 'm'
+                );
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-th__name,
+                        @_version: 'm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-td__name,
+                        @_version: 'm'
+                    );
+                }
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-tr__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+            tfoot{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-tfoot__name,
+                    @_version: 'm'
+                );
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tfoot-th__name,
+                        @_version: 'm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tfoot-td__name,
+                        @_version: 'm'
+                    );
+                }
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tfoot-tr__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+            tbody + tbody{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-tbody-tbody__name,
+                    @_version: 'm'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-tbody-tr__name,
+                        @_version: 'm'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-tbody-th__name,
+                        @_version: 'm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-tbody-td__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+
+            // Format
+            &.additional-attributes{
+                .forix-global-call(
+                    @_block-name: @forix-table-additional-attributes__name,
+                    @_version: 'm'
+                );
+                tbody{
+                    .forix-global-call(
+                        @_block-name: @forix-table-additional-attributes-tbody__name,
+                        @_version: 'm'
+                    );
+                }
+                tbody th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-additional-attributes-tbody-th__name,
+                        @_version: 'm'
+                    );
+                }
+                tbody td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-additional-attributes-tbody-td__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+        }
+        .forix-abs-table-reponsive{
+            .forix-global-call(
+                @_block-name: @forix-table-reponsive__name,
+                @_version: 'm'
+            );
+            thead{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-thead__name,
+                    @_version: 'm'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-thead-tr__name,
+                        @_version: 'm'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-thead-th__name,
+                        @_version: 'm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-thead-td__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+            tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-tbody__name,
+                    @_version: 'm'
+                );
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tbody-th__name,
+                        @_version: 'm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tbody-td__name,
+                        @_version: 'm'
+                    );
+                }
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tbody-tr__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+            tfoot{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-tfoot__name,
+                    @_version: 'm'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tfoot-tr__name,
+                        @_version: 'm'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tfoot-th__name,
+                        @_version: 'm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tfoot-td__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+        }
+        .forix-abs-data-table-reponsive{
+            .forix-global-call(
+                @_block-name: @forix-table-reponsive-data-table__name,
+                @_version: 'm'
+            );
+            thead{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-data-table-thead__name,
+                    @_version: 'm'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-thead-tr__name,
+                        @_version: 'm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-thead-td__name,
+                        @_version: 'm'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-thead-th__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+            tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-data-table-tbody__name,
+                    @_version: 'm'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-tr__name,
+                        @_version: 'm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-td__name,
+                        @_version: 'm'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-th__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+            tfoot{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-data-table-tfoot__name,
+                    @_version: 'm'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tfoot-tr__name,
+                        @_version: 'm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tfoot-td__name,
+                        @_version: 'm'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tfoot-th__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+            tbody + tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-data-table-tbody-tbody__name,
+                    @_version: 'm'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-tbody-tr__name,
+                        @_version: 'm'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-tbody-td__name,
+                        @_version: 'm'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-tbody-th__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+        }
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    & when(@use-table-core__enable= true) {
+        .table-scroll{
+            .forix-global-call(
+                @_block-name: @forix-table-scroll__name,
+                @_version: 'l'
+            );
+        }
+        .table-wrapper{
+            .forix-global-call(
+                @_block-name: @forix-table-wrapper__name,
+                @_version: 'l'
+            );
+        }
+        table{
+            .forix-global-call(
+                @_block-name: @forix-table__name,
+                @_version: 'l'
+            );
+            th{
+                .forix-global-call(
+                    @_block-name: @forix-table-th__name,
+                    @_version: 'l'
+                );
+            }
+            td{
+                .forix-global-call(
+                    @_block-name: @forix-table-td__name,
+                    @_version: 'l'
+                );
+            }
+            tr{
+                .forix-global-call(
+                    @_block-name: @forix-table-tr__name,
+                    @_version: 'l'
+                );
+            }
+            caption{
+                .forix-global-call(
+                    @_block-name: @forix-table-caption__name,
+                    @_version: 'l'
+                );
+            }
+            thead{
+                .forix-global-call(
+                    @_block-name: @forix-table-thead__name,
+                    @_version: 'l'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-thead-tr__name,
+                        @_version: 'l'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-thead-th__name,
+                        @_version: 'l'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-thead-td__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+            tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody__name,
+                    @_version: 'l'
+                );
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-th__name,
+                        @_version: 'l'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-td__name,
+                        @_version: 'l'
+                    );
+                }
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-tr__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+            tfoot{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot__name,
+                    @_version: 'l'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tfoot-tr__name,
+                        @_version: 'l'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tfoot-th__name,
+                        @_version: 'l'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tfoot-td__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+            tbody + tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-tbody__name,
+                    @_version: 'l'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-tbody-tr__name,
+                        @_version: 'l'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-tbody-td__name,
+                        @_version: 'l'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-tbody-tbody-th__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+
+            // Format
+            th{
+                a{
+                    .forix-global-call(
+                        @_block-name: @forix-table-th-a__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+            td{
+                a{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a__name,
+                        @_version: 'l'
+                    );
+                }
+                a.action{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-action__name,
+                        @_version: 'l'
+                    );
+                }
+                a.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-action-span__name,
+                        @_version: 'l'
+                    );
+                }
+                a.view{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-view__name,
+                        @_version: 'l'
+                    );
+                }
+                a.view span{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-view-span__name,
+                        @_version: 'l'
+                    );
+                }
+                a.order{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-order__name,
+                        @_version: 'l'
+                    );
+                }
+                a.order span{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-a-order-span__name,
+                        @_version: 'l'
+                    );
+                }
+                .product-item-name{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-name__name,
+                        @_version: 'l'
+                    );
+                }
+                .product-item-name a{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-name-a__name,
+                        @_version: 'l'
+                    );
+                }
+                .item-options{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-item-options__name,
+                        @_version: 'l'
+                    );
+                }
+                .item-options dt{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-item-options-dt__name,
+                        @_version: 'l'
+                    );
+                }
+                .item-options dd{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-item-options-dd__name,
+                        @_version: 'l'
+                    );
+                }
+                .item-options dd br{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-item-options-dd-br__name,
+                        @_version: 'l'
+                    );
+                }
+                .price{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-price__name,
+                        @_version: 'l'
+                    );
+                }
+                .cart-price{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-cart-price__name,
+                        @_version: 'l'
+                    );
+                }
+                .cart-price .price{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-cart-price-price__name,
+                        @_version: 'l'
+                    );
+                }
+                .product-item-photo{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-photo__name,
+                        @_version: 'l'
+                    );
+                }
+
+                .product-image-container{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-image-container__name,
+                        @_version: 'l'
+                    );
+                }
+                .product-image-wrapper{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-image-wrapper__name,
+                        @_version: 'l'
+                    );
+                }
+                .product-image-photo{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-image-photo__name,
+                        @_version: 'l'
+                    );
+                }
+                .product-item-details{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details__name,
+                        @_version: 'l'
+                    );
+                }
+                .product-item-details .product-item-name{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-product-item-name__name,
+                        @_version: 'l'
+                    );
+                }
+                .product-item-details .product-item-name a{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-product-item-name-a__name,
+                        @_version: 'l'
+                    );
+                }
+                .product-item-details .item-options{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-item-options__name,
+                        @_version: 'l'
+                    );
+                }
+                .product-item-details .item-options dt{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-item-options-dt__name,
+                        @_version: 'l'
+                    );
+                }
+                .product-item-details .item-options dd{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-item-options-dd__name,
+                        @_version: 'l'
+                    );
+                }
+                .product-item-details .item-options dd br{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-product-item-details-item-options-dd-br__name,
+                        @_version: 'l'
+                    );
+                }
+                .message{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-message__name,
+                        @_version: 'l'
+                    );
+                }
+                .message div{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-message-div__name,
+                        @_version: 'l'
+                    );
+                }
+                input.qty{
+                    .forix-global-call(
+                        @_block-name: @forix-table-td-input-qty__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+            td.mark,
+            th.mark{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-mark__name,
+                    @_version: 'l'
+                );
+            }
+            td.amount,
+            th.amount{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-amount__name,
+                    @_version: 'l'
+                );
+            }
+            td .price,
+            th .price{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-price__name,
+                    @_version: 'l'
+                );
+            }
+            td.mark strong,
+            th.mark strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-mark-strong__name,
+                    @_version: 'l'
+                );
+            }
+            td.amount strong,
+            th.amount strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-td-th-amount-strong__name,
+                    @_version: 'l'
+                );
+            }
+            tbody td.mark,
+            tbody th.mark{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-mark__name,
+                    @_version: 'l'
+                );
+            }
+            tbody td.amount,
+            tbody th.amount{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-amount__name,
+                    @_version: 'l'
+                );
+            }
+            tbody td .price,
+            tbody th .price{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-price__name,
+                    @_version: 'l'
+                );
+            }
+            tbody td.mark strong,
+            tbody th.mark strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-mark-strong__name,
+                    @_version: 'l'
+                );
+            }
+            tbody td.amount strong,
+            tbody th.amount strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-tbody-td-th-amount-strong__name,
+                    @_version: 'l'
+                );
+            }
+            tfoot td.mark,
+            tfoot th.mark{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-mark__name,
+                    @_version: 'l'
+                );
+            }
+            tfoot td.amount,
+            tfoot th.amount{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-amount__name,
+                    @_version: 'l'
+                );
+            }
+            tfoot td .price,
+            tfoot th .price{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-price__name,
+                    @_version: 'l'
+                );
+            }
+            tfoot td.mark strong,
+            tfoot th.mark strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-mark-strong__name,
+                    @_version: 'l'
+                );
+            }
+            tfoot td.amount strong,
+            tfoot th.amount strong{
+                .forix-global-call(
+                    @_block-name: @forix-table-tfoot-td-th-amount-strong__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        //.table
+        .table{
+            .forix-global-call(
+                @_block-name: @forix-data-table__name,
+                @_version: 'l'
+            );
+            .table-caption{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-caption__name,
+                    @_version: 'l'
+                );
+            }
+            thead{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-thead__name,
+                    @_version: 'l'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-thead-tr__name,
+                        @_version: 'l'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-thead-td__name,
+                        @_version: 'l'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-thead-th__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+            tbody{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-tbody__name,
+                    @_version: 'l'
+                );
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-th__name,
+                        @_version: 'l'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-td__name,
+                        @_version: 'l'
+                    );
+                }
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-tr__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+            tfoot{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-tfoot__name,
+                    @_version: 'l'
+                );
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tfoot-th__name,
+                        @_version: 'l'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tfoot-td__name,
+                        @_version: 'l'
+                    );
+                }
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tfoot-tr__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+            tbody + tbody{
+                .forix-global-call(
+                    @_block-name: @forix-data-table-tbody-tbody__name,
+                    @_version: 'l'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-tbody-tr__name,
+                        @_version: 'l'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-tbody-th__name,
+                        @_version: 'l'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-data-table-tbody-tbody-td__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+
+            // Format
+            &.additional-attributes{
+                .forix-global-call(
+                    @_block-name: @forix-table-additional-attributes__name,
+                    @_version: 'l'
+                );
+                tbody{
+                    .forix-global-call(
+                        @_block-name: @forix-table-additional-attributes-tbody__name,
+                        @_version: 'l'
+                    );
+                }
+                tbody th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-additional-attributes-tbody-th__name,
+                        @_version: 'l'
+                    );
+                }
+                tbody td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-additional-attributes-tbody-td__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+        }
+        .forix-abs-table-reponsive{
+            .forix-global-call(
+                @_block-name: @forix-table-reponsive__name,
+                @_version: 'l'
+            );
+            thead{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-thead__name,
+                    @_version: 'l'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-thead-tr__name,
+                        @_version: 'l'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-thead-th__name,
+                        @_version: 'l'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-thead-td__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+            tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-tbody__name,
+                    @_version: 'l'
+                );
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tbody-th__name,
+                        @_version: 'l'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tbody-td__name,
+                        @_version: 'l'
+                    );
+                }
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tbody-tr__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+            tfoot{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-tfoot__name,
+                    @_version: 'l'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tfoot-tr__name,
+                        @_version: 'l'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tfoot-th__name,
+                        @_version: 'l'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-tfoot-td__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+        }
+        .forix-abs-data-table-reponsive{
+            .forix-global-call(
+                @_block-name: @forix-table-reponsive-data-table__name,
+                @_version: 'l'
+            );
+            thead{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-data-table-thead__name,
+                    @_version: 'l'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-thead-tr__name,
+                        @_version: 'l'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-thead-td__name,
+                        @_version: 'l'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-thead-th__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+            tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-data-table-tbody__name,
+                    @_version: 'l'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-tr__name,
+                        @_version: 'l'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-td__name,
+                        @_version: 'l'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-th__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+            tfoot{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-data-table-tfoot__name,
+                    @_version: 'l'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tfoot-tr__name,
+                        @_version: 'l'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tfoot-td__name,
+                        @_version: 'l'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tfoot-th__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+            tbody + tbody{
+                .forix-global-call(
+                    @_block-name: @forix-table-reponsive-data-table-tbody-tbody__name,
+                    @_version: 'l'
+                );
+                tr{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-tbody-tr__name,
+                        @_version: 'l'
+                    );
+                }
+                td{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-tbody-td__name,
+                        @_version: 'l'
+                    );
+                }
+                th{
+                    .forix-global-call(
+                        @_block-name: @forix-table-reponsive-data-table-tbody-tbody-th__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+        }
+    }
+}
+
+// Start custom CSS

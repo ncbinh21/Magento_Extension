@@ -1,0 +1,12 @@
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="opc-block-summary" data-bind="blockLoader: isLoading">
+    <span class="title" data-bind="i18n: 'Order Summary', mageInit: {'forix/toggle': {'toggleContainers': '#summary-totals', 'selectorsToggleClass': 'hidden','touchOutSite':false}}"></span>
+    <!-- ko foreach: elems() -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    <!-- /ko -->
+</div>

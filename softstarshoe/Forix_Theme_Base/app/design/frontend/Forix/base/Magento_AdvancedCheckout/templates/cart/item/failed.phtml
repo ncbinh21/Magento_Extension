@@ -1,0 +1,165 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * Order by SKU Failed Items renderer
+ */
+
+/** @var $block \Magento\Checkout\Block\Cart\Item\Renderer */
+
+/** @var \Magento\Quote\Model\Quote\Item\AbstractItem $_item */
+$_item = $block->getItem();
+
+/** @var \Magento\Tax\Helper\Data $helper */
+$helper = $this->helper('Magento\Tax\Helper\Data');
+$additionalInfoBlock = $block->getProductAdditionalInformationBlock();
+$isVisibleProduct = $_item->getProduct()->isVisibleInSiteVisibility();
+$maxQuantity = -1;
+if ($_item->getQtyMaxAllowed()) {
+    $maxQuantity = $_item->getQtyMaxAllowed();
+}
+
+$canApplyMsrp = false;
+if ($block->moduleManager->isEnabled('Magento_Msrp')) {
+    /**
+     * @var \Magento\Msrp\Helper\Data $msrpHelper
+     */
+    $msrpHelper = $this->helper('Magento\Msrp\Helper\Data');
+    $canApplyMsrp = $msrpHelper->
+        isShowBeforeOrderConfirm($_item->getProduct()) && $msrpHelper->isMinimalPriceLessMsrp($_item->getProduct());
+}
+
+// disable the qty field if there is no product associated with the sku (i.e. invalid sku) or if sku failed for
+// out of stock scenario
+$qtyDisabled = !$block->hasProductUrl() ||
+        $_item->getCode() == \Magento\AdvancedCheckout\Helper\Data::ADD_ITEM_STATUS_FAILED_OUT_OF_STOCK;
+?>
+<tbody class="cart item" data-mage-init='{"orderBySkuFailure":{}}'>
+    <tr class="item-info">
+        <td data-th="<?php echo $block->escapeHtml(__('Item')); ?>" class="col item">
+            <?php if ($block->hasProductUrl()):?>
+                <a href="<?php /* @escapeNotVerified */ echo $block->getProductUrl() ?>"
+                   title="<?php echo $block->escapeHtml($block->getProductName()) ?>"
+                   class="product-item-photo"
+                   tabindex="-1">
+            <?php else:?>
+                <span class="product-item-photo">
+            <?php endif;?>
+            <?php echo $block->getImage($_item->getProduct(), 'cart_page_product_thumbnail')->toHtml(); ?>
+            <?php if ($block->hasProductUrl()):?>
+                </a>
+            <?php else: ?>
+                </span>
+            <?php endif; ?>
+            <div class="product-item-details">
+                <?php if ($block->getProductName()):?>
+                <strong class="product-item-name">
+                <?php if ($block->hasProductUrl()):?>
+                    <a href="<?php /* @escapeNotVerified */ echo $block->getProductUrl() ?>"><?php echo $block->escapeHtml($block->getProductName()) ?></a>
+                <?php else: ?>
+                    <?php echo $block->escapeHtml($block->getProductName()) ?>
+                <?php endif; ?>
+                </strong>
+                <?php endif;?>
+                <?php if ($isVisibleProduct): ?>
+                <div class="actions">
+                        <a class="action action-edit"
+                           href="<?php /* @escapeNotVerified */ echo $block->getConfigureUrl() ?>"
+                           title="<?php echo $block->escapeHtml(__('Edit item parameters')) ?>">
+                        <span>
+                            <?php /* @escapeNotVerified */ echo __('Edit') ?>
+                        </span>
+                        </a>
+                </div>
+                <?php endif ?>
+                <?php if ($additionalInfoBlock):?>
+                    <?php echo $additionalInfoBlock->setItem($_item)->toHtml() ?>
+                <?php endif;?>
+            </div>
+        </td>
+        <td data-th="<?php echo $block->escapeHtml(__('Price')); ?>" class="col price">
+            <?php if ($canApplyMsrp): ?>
+                <span class="msrp notice"><?php /* @escapeNotVerified */ echo __('See price before order confirmation.'); ?></span>
+                    <?php $helpLinkId = 'cart-msrp-help-' . $_item->getProduct()->getId(); ?>
+                    <a href="#" class="action help map" id="<?php /* @escapeNotVerified */ echo($helpLinkId); ?>" data-mage-init='{"addToCart":{"helpLinkId": "#<?php /* @escapeNotVerified */ echo $helpLinkId;?>","productName": "<?php /* @escapeNotVerified */ echo $_item->getProduct()->getName(); ?>","showAddToCart": false}}'>
+                        <span><?php /* @escapeNotVerified */ echo __("What's this?"); ?></span>
+                    </a>
+                </span>
+            <?php else: ?>
+                <?php if ($helper->displayPriceIncludingTax() || $helper->displayBothPrices()): ?>
+                    <?php $priceIncludingTax = $this->helper('Magento\Catalog\Helper\Data')->getTaxPrice($_item->getProduct(), $_item->getBaseCalculationPrice(), true); ?>
+                    <span class="price-including-tax" data-label="<?php echo $block->escapeHtml(__('Incl. Tax')); ?>"><span
+                            class="cart-price"><?php /* @escapeNotVerified */ echo $block->convertPrice($priceIncludingTax, true); ?></span></span>
+                <?php endif; ?>
+                <?php if ($helper->displayPriceExcludingTax() || $helper->displayBothPrices()): ?>
+                    <?php $priceExcludingTax = $this->helper('Magento\Catalog\Helper\Data')->getTaxPrice($_item->getProduct(), $_item->getBaseCalculationPrice(), false); ?>
+                    <span class="price-excluding-tax" data-label="<?php echo $block->escapeHtml(__('Excl. Tax')); ?>"><span
+                            class="cart-price"><?php /* @escapeNotVerified */ echo $block->convertPrice($priceExcludingTax, true); ?></span></span>
+                <?php endif; ?>
+            <?php endif ?>
+        </td>
+        <td data-th="<?php echo $block->escapeHtml(__('Qty')); ?>" class="col qty">
+            <?php $validateItemQuantityCheck = false; ?>
+            <div class="control qty">
+                <input name="cart[<?php echo $block->escapeHtml($_item->getSku()) ?>][qty]"
+                       value="<?php /* @escapeNotVerified */ echo $block->getQty() ?>"
+                       size="4"
+                       type="number"
+                       class="input-text qty <?php if ($qtyDisabled): ?>disabled<?php endif ?>"
+                       maxlength="12"
+                       title="<?php echo $block->escapeHtml(__('Qty')); ?>"
+                       data-role="input-qty"
+                       <?php if ($qtyDisabled): ?>disabled="disabled"<?php endif ?>
+                       data-validate="{'required': true,'validate-greater-than-zero': true, 'validate-item-quantity': {
+                       <?php if ($_item->getQtyMinAllowed()): ?>'minAllowed': <?php /* @escapeNotVerified */ echo $_item->getQtyMinAllowed(); $validateItemQuantityCheck = true; ?><?php endif ?>
+                       <?php if ($maxQuantity > 0): ?><?php if ($validateItemQuantityCheck): ?>,<?php endif ?> 'maxAllowed': <?php /* @escapeNotVerified */ echo $maxQuantity; $validateItemQuantityCheck = true; ?><?php endif ?>
+                       <?php if ($_item->getQtyIncrements() > 0): ?>
+                           <?php if ($validateItemQuantityCheck): ?>,<?php endif ?> 'qtyIncrements': <?php /* @escapeNotVerified */ echo $_item->getQtyIncrements() ?>
+                       <?php endif ?>}}"
+                       data-role="cart-item-qty"/>
+            </div>
+        </td>
+        <td class="col actions">
+            <?php if ($isVisibleProduct): ?>
+                <a class="action action-edit"
+                   href="<?php /* @escapeNotVerified */ echo $block->getConfigureUrl() ?>"
+                   title="<?php echo $block->escapeHtml(__('Edit item parameters')) ?>">
+                        <span>
+                            <?php /* @escapeNotVerified */ echo __('Edit') ?>
+                        </span>
+                </a>
+            <?php endif ?>
+
+            <button title="<?php echo $block->escapeHtml(__('Remove item')); ?>"
+                    type="button"
+                    class="action action-delete"
+                    data-post='<?php /* @escapeNotVerified */ echo $this->helper('Magento\Framework\Json\Helper\Data')->jsonEncode(['action' => $block->getDeleteUrl(), 'data' => [$_item->getSku()]]) ?>'>
+                    <span>
+                        <?php /* @escapeNotVerified */ echo __('Remove item')?>
+                    </span>
+            </button>
+        </td>
+    </tr>
+    <tr class="item-actions">
+        <td colspan="3">
+            <div class="actions-toolbar">
+                <?php if ($this->helper('Magento\Wishlist\Helper\Data')->isAllowInCart()) : ?>
+                    <?php if ($isVisibleProduct): ?>
+                        <a href="#"
+                           data-post='<?php /* @escapeNotVerified */ echo $this->helper('Magento\Wishlist\Helper\Data')->getMoveFromCartParams($_item->getId()); ?>'
+                           class="use-ajax action towishlist">
+                            <span>
+                                <?php /* @escapeNotVerified */ echo __('Move to Wish List'); ?>
+                            </span>
+                        </a>
+                    <?php endif ?>
+                <?php endif ?>
+            </div>
+        </td>
+    </tr>
+</tbody>

@@ -1,0 +1,21 @@
+{
+    "name": "forix/module-invoiceprint",
+    "description": "Custom print invoice page.",
+    "license": "proprietary",
+    "authors": [
+        {
+            "email": "info@mage2gen.com",
+            "name": "Mage2Gen"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Forix\\InvoicePrint\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}

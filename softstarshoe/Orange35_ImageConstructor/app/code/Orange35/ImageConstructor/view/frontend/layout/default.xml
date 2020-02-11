@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="header-wrapper">
+            <block class="Orange35\ImageConstructor\Block\ConstructorMin"
+                   name="constructor-mini.js" as="ic-m.js" after="minicart"
+                   template="Orange35_ImageConstructor::mini_init.phtml" cacheable="true"/>
+        </referenceContainer>
+        <referenceContainer name="sidebar.additional">
+            <block class="Orange35\ImageConstructor\Block\ConstructorMin"
+                   name="constructor-checkout.js" as="ic-w-m.js" after="wishlist"
+                   template="Orange35_ImageConstructor::wishlist_mini_init.phtml" cacheable="true"/>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,176 @@
+@use-module-faq-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.block-faqs{
+    &:extend(.forix-abs-accordion-1 all);
+
+    li{
+        &:extend(.forix-abs-accordion-1 all);
+
+        .title{
+            &:extend(.forix-abs-accordion-title-1 all);
+        }
+
+        .content{
+            &:extend(.forix-abs-accordion-content-1 all);
+        }
+    }
+}
+
+.column.main .block-faqs .title .dot{
+    &:extend(.forix-abs-visually-hidden all);
+}
+
+.column.main .block-faqs{
+    &:extend(.forix-abs-list-reset);
+}
+
+.column.main .block-faq-lists .block-title{
+    &:extend(.forix-abs-three-title-size all);
+}
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+@block-faq-lists__text__color: @three-text__color;
+
+@faq-column-main__width__m: 568px;
+@faq-sidebar__width__m: 200px;
+@faq-main__width__m: @screen__m;
+
+@faq-column-main__width__l: 1010px;
+@faq-sidebar__width__l: 313px;
+@faq-main__width__l: @screen__xxl;
+
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .faq-index-index{
+        .columns .sidebar-main{
+            position: relative;
+        }
+    }
+
+    .column.main{
+        .block-faq-lists{
+            &:last-child{
+                margin-bottom: 0;
+            }
+
+            .block-title{
+                color: @block-faq-lists__text__color;
+                text-transform: uppercase;
+                line-height: 20px;
+            }
+        }
+
+        .block-faqs{
+            .title{
+                line-height: 20px;
+            }
+        }
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .faq-index-index{
+        .page-title-wrapper{
+            margin: 0 0 @forix-indent__s;
+            padding: 0;
+        }
+
+        .columns .column.main{
+            margin-top: 70px;
+        }
+    }
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    .column.main{
+        .block-faq-lists{
+            margin: 0 0 @forix-indent__m;
+
+            .block-title{
+                margin-bottom: @forix-indent__s;
+            }
+        }
+
+        .block-faqs{
+            li{
+                margin-bottom: @forix-indent__s;
+            }
+        }
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .faq-index-index {
+        .columns .sidebar {
+            padding-right: @forix-indent__xl;
+        }
+    }
+}
+
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    .faq-index-index{
+        .page-title-wrapper{
+            margin: 0 0 @forix-indent__base;
+            padidng: @forix-indent__s 0 0;
+        }
+
+        .columns{
+            .column.main{
+                width: percentage(@faq-column-main__width__m/@faq-main__width__m);
+            }
+
+            .sidebar{
+                width: percentage(@faq-sidebar__width__m/@faq-main__width__m);
+            }
+        }
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    .faq-index-index{
+        .page-title-wrapper{
+            margin: 0 0 @forix-indent__m;
+            padding: @forix-indent__xm 0 0;
+        }
+
+        .columns{
+            .column.main{
+                width: percentage(@faq-column-main__width__l/@faq-main__width__l);
+            }
+
+            .sidebar{
+                width: percentage(@faq-sidebar__width__l/@faq-main__width__l);
+            }
+        }
+    }
+
+    .column.main{
+        .block-faq-lists{
+            margin: 0 0 @forix-indent__xxl;
+
+            .block-title{
+                margin-bottom: @forix-indent__base;
+            }
+        }
+
+        .block-faqs{
+            li{
+                margin-bottom: @forix-indent__base;
+            }
+        }
+    }
+}

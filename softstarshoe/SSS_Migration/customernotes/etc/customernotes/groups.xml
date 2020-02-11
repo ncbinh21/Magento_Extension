@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<groups xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="../groups.xsd">
+    <group name="source_documents">
+        <document>magecon_customer_notes</document>
+    </group>
+</groups>

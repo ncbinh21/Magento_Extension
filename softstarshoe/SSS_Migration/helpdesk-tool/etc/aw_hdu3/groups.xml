@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<groups xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="../groups.xsd">
+    <group name="source_documents">
+        <!--<document>aw_hdu3_department</document>
+        <document>aw_hdu3_gateway</document>-->
+        <document>aw_hdu3_ticket</document>
+        <document>aw_hdu3_ticket_message</document>
+        <document>aw_hdu3_ticket_history_attachment</document>
+    </group>
+    <group name="collect_old_new_data">
+        <document key="id">aw_hdu3_department</document>
+        <document key="id">aw_hdu3_ticket</document>
+        <document key="id">aw_hdu3_ticket_message</document>
+        <document key="id">aw_hdu3_ticket_history_attachment</document>
+    </group>
+    <group name="save_collected_old_new_data_aw_hdu3_gateway">
+        <document key="department_id">aw_hdu3_department</document>
+    </group>
+    <group name="save_collected_old_new_data_aw_hdu3_ticket">
+        <document key="department_id">aw_hdu3_department</document>
+    </group>
+    <group name="save_collected_old_new_data_aw_hdu3_ticket_message">
+        <document key="ticket_id">aw_hdu3_ticket</document>
+    </group>
+    <group name="save_collected_old_new_data_aw_helpdesk_attachment">
+        <document key="message_id">aw_hdu3_ticket_message</document>
+    </group>
+    <group name="transform_check_aw_hdu3_ticket">
+        <document key="\Migration\Handler\AheadworksHelpdesk\TicketCheck">class</document>
+    </group>
+    <group name="destination_documents_update_on_duplicate"></group>
+    <group name="after_save_aw_helpdesk_department">
+        <document key="\Migration\Handler\AheadworksHelpdesk\DepartmentSave">class</document>
+    </group>
+    <group name="after_save_aw_helpdesk_ticket">
+        <document key="\Migration\Handler\AheadworksHelpdesk\TicketSave">class</document>
+    </group>
+    <group name="after_save_aw_helpdesk_ticket_message">
+        <document key="\Migration\Handler\AheadworksHelpdesk\MessageSave">class</document>
+    </group>
+</groups>

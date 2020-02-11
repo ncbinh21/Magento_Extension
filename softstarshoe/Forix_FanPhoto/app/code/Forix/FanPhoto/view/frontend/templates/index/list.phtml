@@ -1,0 +1,148 @@
+<?php
+/**
+ * @var $block \Forix\FanPhoto\Block\Index\Index
+ */
+?>
+<style type="text/css">
+    html, body {
+        margin: 0;
+        padding: 0;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .slider {
+        width: 50%;
+        margin: 100px auto;
+    }
+
+    .slick-slide {
+        margin: 0px 20px;
+    }
+
+    .slick-slide img {
+        width: 100%;
+    }
+
+    .slick-prev:before,
+    .slick-next:before {
+        color: black;
+    }
+
+
+    .slick-slide {
+        transition: all ease-in-out .3s;
+        opacity: .2;
+    }
+
+    .slick-active {
+        opacity: .5;
+    }
+
+    .slick-current {
+        opacity: 1;
+    }
+
+    .slick-initialized .slick-slide{
+        display: block!important;
+    }
+</style>
+<?php
+$pager_url = $this->getUrl('fanphoto');
+$pager_url = rtrim($pager_url, '/');
+$position = $block->getPosition();
+$urlMedia = $block->getUrlMediaPhoto();
+?>
+<div class="block-fanphoto loading">
+    <h2><?php echo __( 'Happy Feet. Happy Fans.' ) ?></h2>
+    <div class="photo-filter"><?php echo __( 'Show Me' ) ?>: <a href="<?php echo $pager_url ?>" class="<?php if ($block->isFilterCurrent('')): ?>selected<?php endif;?>"><?php echo __( 'All Shoe Photos' ) ?></a> <a
+                href="<?php echo $pager_url. '?filterBy=Adult' ?>" class="<?php if ($block->isFilterCurrent('Adult')): ?>selected<?php endif;?>"><?php echo __( 'Adult Only' ) ?></a> <a href="<?php echo $pager_url. '?filterBy=Child' ?>" class="<?php if ($block->isFilterCurrent('Child')): ?>selected<?php endif;?>"><?php echo __( 'Kids Only' ) ?></a></div>
+    <div class="photos photo-gallery">
+        <?php
+        $photosCollection = $block->getPhotos();
+        $photoImagesCollection = $block->getPhotosLimit();
+        $imgPath = $this->getUrl('pub/media/fanphoto');
+        if ($photosCollection->getSize() > 0) :
+            ?>
+            <?php $photos = $photosCollection->getData();
+            $photoImages = $photoImagesCollection->getData();
+            ?>
+            <ul class="grid">
+                <?php foreach ($photos as $photo): ?>
+                    <?php if($photo['image_url']): ?>
+                        <li class="grid-item item col-1-1">
+                            <div class="photo-list">
+                                <a class="photo-item" href="#" data-position="<?php echo $position++ ?>"><img class="img" src="<?php echo $urlMedia . 'fanphoto/' . $photo['image_url']; ?>">
+                                    <span class="photo-caption">
+                                        <?php echo $photo['caption'] ?>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </ul>
+            <div style="clear: both"></div>
+            <div class="toolbar-bottom">
+                <div class="toolbar bottom">
+                    <?php echo $block->getPagerHtml(); ?>
+                </div>
+            </div>
+            <div class="view-photo">
+                <div class="slider-photos slider-for">
+                    <?php foreach($photoImages as $photo): ?>
+                        <div><img src="<?php echo $block->resize($photo['image_url'], '711', '515', true); ?>" /><div class="photo_caption"><?php echo $photo['caption'] ?></div></div>
+                    <?php endforeach; ?>
+                </div>
+                <div class="slider-nav">
+                    <?php foreach($photoImages as $photo): ?>
+                        <div><img src="<?php echo $block->resize($photo['image_url'], '100', '72', true); ?>" /></div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        <?php else : ?>
+            <p><?php echo __('Have no photo!') ?></p>
+        <?php endif; ?>
+    </div>
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Forix_FanPhoto/js/fanphoto/fanphoto": {}
+        }
+    }
+</script>
+<script>
+    require(['jquery', 'slick'], function($){
+        $(function(){
+            $('.slider-for').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: true,
+                fade: true,
+                asNavFor: '.slider-nav'
+            });
+
+            $('.slider-nav').slick({
+                slidesToShow: 11,
+                slidesToScroll: 1,
+                asNavFor: '.slider-for',
+                dots: false,
+                //centerMode: true,
+                focusOnSelect: true,
+                arrows: false,
+                variableWidth: true
+            });
+        });
+        <?php if ($block->isFilterCurrent('Adult') || $block->isFilterCurrent('Child') || $block->isFilterCurrent('All')): ?>
+        $( document ).ready(function($) {
+            var theHash = ".photo-filter";
+            $("html, body").animate({scrollTop:$(theHash).offset().top}, 800);
+        });
+        <?php endif; ?>
+    });
+</script>
+
+

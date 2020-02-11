@@ -1,0 +1,12 @@
+<!--@subject [#{{var ticket.uid}}] Ticket replied: {{var ticket.subject}}@-->
+
+{{template config_path="design/email/header_template"}}
+
+<strong>Hello, {{var agent.firstname}}.</strong><br/><br/>
+
+You’ve got a new message from <strong>{{var ticket.customer_name}}</strong>:<br/>
+{{var message.content|escape|nl2br}}<br/><br/>
+
+Click <a href="{{var ticket.backend_url}}">here</a> to view the ticket.
+
+{{template config_path="design/email/footer_template"}}

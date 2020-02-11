@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="fanphoto_newsubmit_template"
+              label="Fan Photo Alert"
+              file="fanphoto/newsubmit.html" type="html"
+              module="Forix_FanPhoto" area="frontend"/>
+</config>

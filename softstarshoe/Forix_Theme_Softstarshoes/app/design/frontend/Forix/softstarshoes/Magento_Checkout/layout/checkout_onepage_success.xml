@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Order Confirmation - Softstar Shoes</title>
+        <meta name="description" content="Thank you for your purchase from Softstar Shoes. Your order is confirmed."/>
+        <meta name="keywords" content="Softstar Shoes, Order Confirmation"/>
+    </head>
+    <body>
+        <referenceBlock name="page.main.title">
+            <block class="Magento\Checkout\Block\Onepage\Success" name="checkout.success.print.button" template="Magento_Checkout::button.phtml"/>
+            <action method="setPageTitle">
+                <argument translate="true" name="title" xsi:type="string">Thanks for your purchase!</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="content">
+            <container name="checkout-success-left" htmlTag="div" htmlClass="checkout success checkout-success-left">
+                <block class="Magento\Checkout\Block\Onepage\Success" name="checkout.success" template="Magento_Checkout::success.phtml" cacheable="false">
+                    <container name="order.success.additional.info" label="Order Success Additional Info"/>
+                </block>
+                <block class="Magento\Checkout\Block\Registration" name="checkout.registration" template="Magento_Checkout::registration.phtml" cacheable="false"/>
+            </container>
+            <container name="checkout-success-right" htmlTag="div" htmlClass="checkout success checkout-success-right" after="checkout-success-container-left">
+                <block class="Magento\Cms\Block\Block" name="checkout-success">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">checkout-success</argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceContainer>
+        <referenceBlock name="checkout.success.print.button" remove="true"/>
+    </body>
+</page>

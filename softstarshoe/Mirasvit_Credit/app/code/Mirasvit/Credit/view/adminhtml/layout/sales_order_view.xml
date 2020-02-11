@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<body>
+    <referenceContainer name="order_totals">
+        <block name="credit.credit" class="Mirasvit\Credit\Block\Adminhtml\Sales\Order\Totals\Credit"
+               template="sales/order/totals/credit.phtml"/>
+        <block name="credit_refunded" class="Mirasvit\Credit\Block\Adminhtml\Sales\Order\Totals\Credit"
+               template="sales/order/totals/credit_refunded.phtml"/>
+    </referenceContainer>
+    <referenceBlock name="order_items">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="credit" xsi:type="string" translate="true">Store Credits</item>
+            </argument>
+        </arguments>
+        <block class="Mirasvit\Credit\Block\Adminhtml\Sales\Order\View\Items\Renderer" as="creditpoints"
+               template="Magento_Sales::order/view/items/renderer/default.phtml">
+            <arguments>
+                <argument name="columns" xsi:type="array">
+                    <item name="product" xsi:type="string" translate="false">col-product</item>
+                    <item name="status" xsi:type="string" translate="false">col-status</item>
+                    <item name="price-original" xsi:type="string" translate="false">col-price-original</item>
+                    <item name="price" xsi:type="string" translate="false">col-price</item>
+                    <item name="qty" xsi:type="string" translate="false">col-ordered-qty</item>
+                    <item name="subtotal" xsi:type="string" translate="false">col-subtotal</item>
+                    <item name="tax-amount" xsi:type="string" translate="false">col-tax-amount</item>
+                    <item name="tax-percent" xsi:type="string" translate="false">col-tax-percent</item>
+                    <item name="discont" xsi:type="string" translate="false">col-discont</item>
+                    <item name="total" xsi:type="string" translate="false">col-total</item>
+                    <item name="credit" xsi:type="string" translate="false">col-credit</item>
+                </argument>
+            </arguments>
+        </block>
+    </referenceBlock>
+</body>
+</page>

@@ -1,0 +1,263 @@
+// block-name = messages
+@use-messages-core__enable: true;
+//@use-messages-class-default__enable: true;
+
+// Messages
+//==============
+//.messages
+@forix-messages__name: "forix-messages";
+@forix-messages__commons: false;
+@forix-messages__responsives: false;
+@forix-messages__check-have: false;
+@forix-messages__status: false;
+@forix-messages__prefix: false;
+@forix-messages__format: false;
+@forix-messages__use-flex: false;
+//.message
+@forix-message__name: "forix-message";
+@forix-message__commons: margin,padding,display,position,background,color;
+@forix-message__responsives: false;
+@forix-message__check-have: false;
+@forix-message__status: false;
+@forix-message__prefix: false;
+@forix-message__format: false;
+@forix-message__use-flex: false;
+
+@forix-message__padding: @forix-indent__s @forix-indent__base;
+@forix-message__margin: 0 0 @forix-indent__base;
+@forix-message__display: block;
+@forix-message__position: relative;
+@forix-message__background: @color-gray-3;
+@forix-message__color: @color-white;
+
+@forix-message__change__m: false;
+@forix-message__change__l: false;
+
+//.message > div
+@forix-message-div__name: "forix-message-div";
+@forix-message-div__commons: false;
+@forix-message-div__responsives: false;
+@forix-message-div__check-have: false;
+@forix-message-div__status: false;
+@forix-message-div__prefix: false;
+@forix-message-div__format: false;
+@forix-message-div__use-flex: false;
+//.message p
+@forix-message-p__name: "forix-message-p";
+@forix-message-p__commons: false;
+@forix-message-p__responsives: false;
+@forix-message-p__check-have: false;
+@forix-message-p__status: false;
+@forix-message-p__prefix: false;
+@forix-message-p__format: false;
+@forix-message-p__use-flex: false;
+//.message a
+@forix-message-a__name: "forix-message-a";
+@forix-message-a__commons: color;
+@forix-message-a__responsives: false;
+@forix-message-a__check-have: hover;
+@forix-message-a__status: false;
+@forix-message-a__prefix: false;
+@forix-message-a__format: false;
+@forix-message-a__use-flex: false;
+
+@forix-message-a__hover__commons: color;
+@forix-message-a__hover__responsives: false;
+
+@forix-message-a__color: @color-gray-1;
+@forix-message-a__hover__color: @color-black;
+
+//.message.info
+@forix-message-info__name: "forix-message-info";
+@forix-message-info__commons: false;
+@forix-message-info__responsives: false;
+@forix-message-info__check-have: false;
+@forix-message-info__status: false;
+@forix-message-info__prefix: false;
+@forix-message-info__format: false;
+@forix-message-info__use-flex: false;
+//.message.info p
+@forix-message-info-p__name: "forix-message-info-p";
+@forix-message-info-p__commons: false;
+@forix-message-info-p__responsives: false;
+@forix-message-info-p__check-have: false;
+@forix-message-info-p__status: false;
+@forix-message-info-p__prefix: false;
+@forix-message-info-p__format: false;
+@forix-message-info-p__use-flex: false;
+//.message.info a
+@forix-message-info-a__name: "forix-message-info-a";
+@forix-message-info-a__commons: false;
+@forix-message-info-a__responsives: false;
+@forix-message-info-a__check-have: false;
+@forix-message-info-a__status: false;
+@forix-message-info-a__prefix: false;
+@forix-message-info-a__format: false;
+@forix-message-info-a__use-flex: false;
+//.message.error
+@forix-message-error__name: "forix-message-error";
+@forix-message-error__commons: background,color;
+@forix-message-error__responsives: false;
+@forix-message-error__check-have: false;
+@forix-message-error__status: false;
+@forix-message-error__prefix: false;
+@forix-message-error__format: false;
+@forix-message-error__use-flex: false;
+
+@forix-message-error__background: @color-black;
+@forix-message-error__color: @color-white;
+
+//.message.error p
+@forix-message-error-p__name: "forix-message-error-p";
+@forix-message-error-p__commons: false;
+@forix-message-error-p__responsives: false;
+@forix-message-error-p__check-have: false;
+@forix-message-error-p__status: false;
+@forix-message-error-p__prefix: false;
+@forix-message-error-p__format: false;
+@forix-message-error-p__use-flex: false;
+//.message.error a
+@forix-message-error-a__name: "forix-message-error-a";
+@forix-message-error-a__commons: false;
+@forix-message-error-a__responsives: false;
+@forix-message-error-a__check-have: hover;
+@forix-message-error-a__status: false;
+@forix-message-error-a__prefix: false;
+@forix-message-error-a__format: false;
+@forix-message-error-a__use-flex: false;
+
+@forix-message-error-a__hover__commons: color;
+@forix-message-error-a__hover__responsives: false;
+
+@forix-message-error-a__hover__color: @color-green;
+
+//.message.warning
+@forix-message-warning__name: "forix-message-warning";
+@forix-message-warning__commons: false;
+@forix-message-warning__responsives: false;
+@forix-message-warning__check-have: false;
+@forix-message-warning__status: false;
+@forix-message-warning__prefix: false;
+@forix-message-warning__format: false;
+@forix-message-warning__use-flex: false;
+//.message.warning p
+@forix-message-warning-p__name: "forix-message-warning-p";
+@forix-message-warning-p__commons: false;
+@forix-message-warning-p__responsives: false;
+@forix-message-warning-p__check-have: false;
+@forix-message-warning-p__status: false;
+@forix-message-warning-p__prefix: false;
+@forix-message-warning-p__format: false;
+@forix-message-warning-p__use-flex: false;
+//.message.warning a
+@forix-message-warning-a__name: "forix-message-warning-a";
+@forix-message-warning-a__commons: false;
+@forix-message-warning-a__responsives: false;
+@forix-message-warning-a__check-have: false;
+@forix-message-warning-a__status: false;
+@forix-message-warning-a__prefix: false;
+@forix-message-warning-a__format: false;
+@forix-message-warning-a__use-flex: false;
+//.message.notice
+@forix-message-notice__name: "forix-message-notice";
+@forix-message-notice__commons: false;
+@forix-message-notice__responsives: false;
+@forix-message-notice__check-have: false;
+@forix-message-notice__status: false;
+@forix-message-notice__prefix: false;
+@forix-message-notice__format: false;
+@forix-message-notice__use-flex: false;
+//.message.notice p
+@forix-message-notice-p__name: "forix-message-notice-p";
+@forix-message-notice-p__commons: false;
+@forix-message-notice-p__responsives: false;
+@forix-message-notice-p__check-have: false;
+@forix-message-notice-p__status: false;
+@forix-message-notice-p__prefix: false;
+@forix-message-notice-p__format: false;
+@forix-message-notice-p__use-flex: false;
+//.message.notice a
+@forix-message-notice-a__name: "forix-message-notice-a";
+@forix-message-notice-a__commons: false;
+@forix-message-notice-a__responsives: false;
+@forix-message-notice-a__check-have: false;
+@forix-message-notice-a__status: false;
+@forix-message-notice-a__prefix: false;
+@forix-message-notice-a__format: false;
+@forix-message-notice-a__use-flex: false;
+//.message.success
+@forix-message-success__name: "forix-message-success";
+@forix-message-success__commons: background,color;
+@forix-message-success__responsives: false;
+@forix-message-success__check-have: false;
+@forix-message-success__status: false;
+@forix-message-success__prefix: false;
+@forix-message-success__format: false;
+@forix-message-success__use-flex: false;
+
+@forix-message-success__background: @color-green;
+@forix-message-success__color: @color-white;
+
+//.message.success p
+@forix-message-success-p__name: "forix-message-success-p";
+@forix-message-success-p__commons: false;
+@forix-message-success-p__responsives: false;
+@forix-message-success-p__check-have: false;
+@forix-message-success-p__status: false;
+@forix-message-success-p__prefix: false;
+@forix-message-success-p__format: false;
+@forix-message-success-p__use-flex: false;
+//.message.success a
+@forix-message-success-a__name: "forix-message-success-a";
+@forix-message-success-a__commons: false;
+@forix-message-success-a__responsives: false;
+@forix-message-success-a__check-have: false;
+@forix-message-success-a__status: false;
+@forix-message-success-a__prefix: false;
+@forix-message-success-a__format: false;
+@forix-message-success-a__use-flex: false;
+//.message.empty
+@forix-message-empty__name: "forix-message-empty";
+@forix-message-empty__commons: false;
+@forix-message-empty__responsives: false;
+@forix-message-empty__check-have: false;
+@forix-message-empty__status: false;
+@forix-message-empty__prefix: false;
+@forix-message-empty__format: false;
+@forix-message-empty__use-flex: false;
+//.message.empty p
+@forix-message-empty-p__name: "forix-message-empty-p";
+@forix-message-empty-p__commons: false;
+@forix-message-empty-p__responsives: false;
+@forix-message-empty-p__check-have: false;
+@forix-message-empty-p__status: false;
+@forix-message-empty-p__prefix: false;
+@forix-message-empty-p__format: false;
+@forix-message-empty-p__use-flex: false;
+//.message.empty a
+@forix-message-empty-a__name: "forix-message-empty-a";
+@forix-message-empty-a__commons: false;
+@forix-message-empty-a__responsives: false;
+@forix-message-empty-a__check-have: false;
+@forix-message-empty-a__status: false;
+@forix-message-empty-a__prefix: false;
+@forix-message-empty-a__format: false;
+@forix-message-empty-a__use-flex: false;
+//.page.messages
+@forix-message-page-messages__name: "forix-message-page-messages";
+@forix-message-page-messages__commons: false;
+@forix-message-page-messages__responsives: false;
+@forix-message-page-messages__check-have: false;
+@forix-message-page-messages__status: false;
+@forix-message-page-messages__prefix: false;
+@forix-message-page-messages__format: false;
+@forix-message-page-messages__use-flex: false;
+//.page.messages > div
+@forix-message-page-messages-div__name: "forix-message-page-messages-div";
+@forix-message-page-messages-div__commons: false;
+@forix-message-page-messages-div__responsives: false;
+@forix-message-page-messages-div__check-have: false;
+@forix-message-page-messages-div__status: false;
+@forix-message-page-messages-div__prefix: false;
+@forix-message-page-messages-div__format: false;
+@forix-message-page-messages-div__use-flex: false;

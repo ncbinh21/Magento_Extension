@@ -1,0 +1,158 @@
+
+@email-cell__color: #1271c4;
+@open-cell__color: #10913a;
+@click-cell__color: #c700b7;
+@order-cell__color: #1f8ceb;
+@review-cell__color: #1f8ceb;
+
+table.email__trigger-stat-table {
+    border: 2px solid #F9DACD;
+    width: 100%;
+
+    th, td {
+        background: transparent !important;
+        color: #303030;
+        border: none !important;
+        vertical-align: middle;
+        padding: 0.3rem 0.7rem;
+    }
+}
+
+.data-grid .email__trigger-stat-cell {
+    font-size: 14px;
+    text-align: center;
+    //vertical-align: middle;
+
+    .email__trigger-stat-icon {
+        margin-right: 4px;
+        vertical-align: bottom;
+    }
+
+    &.email-stat {
+        color: @email-cell__color;
+
+        path {
+            fill: @email-cell__color;
+        }
+    }
+
+    &.open-stat {
+        color: @open-cell__color;
+
+        path {
+            fill: @open-cell__color;
+        }
+    }
+
+    &.click-stat {
+        color: @click-cell__color;
+
+        path {
+            fill: @click-cell__color;
+        }
+    }
+
+    &.order-stat {
+        color: @order-cell__color;
+
+        path {
+            fill: @order-cell__color;
+        }
+    }
+
+    &.review-stat {
+        color: @review-cell__color;
+
+        path {
+            fill: @review-cell__color;
+        }
+    }
+}
+
+.trigger__status-wrapper {
+    text-align: center;
+
+    .status {
+        display: inline-block;
+        white-space: nowrap;
+        font-size: 11px;
+        border-radius: 2px;
+        padding: 3px 10px;
+        color: #fff;
+        font-weight: bold;
+        text-transform: capitalize;
+        min-width: 15rem;
+
+        &.enabled {
+            background: #53d056;
+        }
+        &.disabled {
+            background: #d6d6d6;
+        }
+    }
+}
+
+//
+// Style mass actions
+// ------------------
+.action-menu > li._parent {
+    position: relative;
+}
+
+.action-item {
+    display: inline-block;
+}
+
+.action-item-input {
+    max-width: 144px;
+}
+
+.advn-action-form {
+    padding: 0 8px 8px;
+}
+
+.action-submenu._active {
+    z-index: 99;
+}
+
+.action-item-button {
+    text-align: center;
+    margin-top: 8px;
+}
+
+.advn-action-form label {
+    vertical-align: middle;
+}
+
+.advn-action-form input {
+    vertical-align: middle;
+    width: 100%;
+}
+
+.advn-action-form select {
+    vertical-align: middle;
+    max-width: 158px;
+    margin-right: 8px;
+}
+
+.advn-action-form button {
+    vertical-align: middle;
+}
+
+.advn-action-form td:nth-child(3) {
+    text-align: right;
+}
+
+.advn-action-form td:nth-child(2) {
+    text-align: center;
+}
+
+.action-select-wrap ul.action-menu {
+    max-height: none;
+}
+
+@-moz-document url-prefix() {
+    .action-select-wrap ul.action-menu {
+        max-height: 45rem;
+    }
+}

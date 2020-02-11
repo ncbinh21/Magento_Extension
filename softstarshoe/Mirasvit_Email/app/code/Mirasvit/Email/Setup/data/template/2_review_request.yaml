@@ -1,0 +1,31 @@
+theme: Base Theme
+title: Review Request
+template_subject: Please add review for products you have bought
+template_areas:
+  header: <h1>Dear <?=$this->getCustomerName() ?></h1>
+  content: |
+    <p>Thank you for your recent purchase from <a href="<?=$this->getStore()->getBaseUrl() ?>"><?=$this->getStoreName() ?></a>.</p>
+    <p>We hope the experience met your expectations. We always strive to offer the highest quality service to all of our customers, and we rely on your feedback to help us achieve this.</p>
+    <p>We hope you’ll take a couple of minutes to write a review of your experience with our products.</p>
+
+    <table width="0" border="0" cellspacing="5" cellpadding="10">
+    <?php foreach ($this->getOrder()->getAllVisibleItems() as $item): ?>
+      <?php if ($item->getProduct()): ?>
+      <tr>
+        <td><img src="<?=$this->getImageUrl($item->getProduct(), 'image', 300) ?>" style="max-width: 15rem"/></td>
+        <td valign="top">
+          <b><a href="<?=$this->getResumeUrl($item->getProduct()->getProductUrl()) ?>">Review <?=$item->getName() ?></a></b>
+        </td>
+      </tr>
+      <?php endif ?>
+    <?php endforeach ?>
+    </table>
+  footer: |
+    <?php if ($this->getCoupon()): ?>
+    <div class="offer">
+      We highly appreciate each and every our visitor, and it's extremely frustrating for us to lose you as a customer.<br>
+      So let us offer you a <b>discount</b> to complete your purchase.<br>
+      Your coupon code: <span class="coupon"><?php echo $this->getCoupon()->getCode() ?></span>
+    </div>
+    <?php endif ?>
+    <p>If you have any questions about our products or services, please <a href="<?=$this->getStoreUrl() ?>/contact/">contact with us.</a></p>

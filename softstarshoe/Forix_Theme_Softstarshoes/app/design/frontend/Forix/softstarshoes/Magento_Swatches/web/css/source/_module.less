@@ -1,0 +1,66 @@
+@use-module-swatches-core__enable: true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .product-options-wrapper .swatch-attribute.size {
+        display: inline-block;
+        padding-right: @forix-indent__s;
+    }
+    .product-info-main .swatch-opt{
+        div.mage-error[generated]{
+            padding: 0 10px;
+        }
+    }
+    .product-info-main .swatch-opt.customize-link{
+        margin: 0 0 30px;
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .product-options-wrapper .swatch-attribute.size {
+        margin-right: @forix-indent__xs;
+        width: ~'calc(100% - 111px)';
+    }
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    .product-info-main .swatch-opt{
+        margin: 0 0 @forix-indent__xm;
+    }
+}
+
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    .product-options-wrapper .swatch-attribute.size {
+        width: percentage(153px/238px);
+        margin-right: 0;
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    .product-options-wrapper .swatch-attribute.size {
+        width: percentage(211px/376px);
+        margin-right: @forix-indent__xm;
+    }
+
+    .product-info-main .swatch-opt{
+        margin: 0 0 20px;
+        &.customize-link{
+            margin: 0 0 43px;
+        }
+    }
+}

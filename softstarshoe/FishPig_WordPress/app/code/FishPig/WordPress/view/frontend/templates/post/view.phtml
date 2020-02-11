@@ -1,0 +1,46 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php if ($post = $this->getPost()): ?>
+	<div class="post-view">
+		<div class="post-entry">
+			<?php if ($image = $post->getImage()): ?>
+                <?php
+                    $imageUrl = $image->getLargeImage() ? $image->getLargeImage() : $image->getFullSizeImage();
+				    $imageUrl = $imageUrl ? $imageUrl : $image->getMediumImage();
+				$imageUrl = $imageUrl ? $imageUrl : $image->getAvailableImage();
+                ?>
+				<div class="post-image">
+					<a href="<?php echo $post->getUrl() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"><img src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/></a>
+				</div>
+			<?php endif; ?>
+            <div class="post-title"><?php echo $this->escapeHtml($post->getPostTitle()) ?></div>
+            <div class="post-meta">
+                <div class="post-user post-meta-item">
+                    <a href="<?php echo $post->getUser()->getUrl() ?>"><?php echo $post->getUser() ->getDisplayName() ?></a>
+                </div>
+                <div class="post-date post-meta-item">
+                    - <?php echo $post->getPostDate() ?>
+                </div>
+                <div class="product-social-links">
+                    <div class="product-addto-links" data-role="add-to-links">
+                        <?php echo $this->getChildHtml('pdp.socials.addthis');?>
+                    </div>
+                </div>
+            </div>
+			<?php if (($content = trim($post->getContent())) !== ''): ?>
+				<div class="post-content"><?php echo $content ?></div>
+			<?php endif; ?>
+		</div>
+		<?php if ($tagString = $post->getTermCollectionAsString('post_tag')): ?>
+            <div class="post-tags post-meta-item">
+                <span class="tags"><?php echo __('Tags') ?>:</span> <?php echo $tagString ?>
+            </div>
+		<?php endif; ?>
+	</div>
+<?php endif; ?>

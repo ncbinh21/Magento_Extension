@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="items_grid">
+            <block class="Magento\Framework\View\Element\Template"
+                   template="Aheadworks_Giftcard::order/create/giftcard.phtml" name="aw-giftcard" after="-"/>
+        </referenceBlock>
+        <block class="Aheadworks\Giftcard\Block\Adminhtml\Order\Create\Totals"
+               name="aw_giftcard_total_renderer" template="Aheadworks_Giftcard::order/create/totals.phtml"/>
+    </body>
+</page>

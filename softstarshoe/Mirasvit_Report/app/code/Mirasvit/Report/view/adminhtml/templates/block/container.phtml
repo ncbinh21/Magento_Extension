@@ -1,0 +1,30 @@
+<?php
+/** @var \Mirasvit\Reports\Block\Adminhtml\Order\Plain $block */
+?>
+<?php
+$_switcher = $block->getStoreSwitcherHtml();
+$_toolbar = $block->getToolbarHtml();
+$_grid = $block->getGridHtml();
+$_chart = $block->getChartHtml();
+?>
+
+<div class="reports-report-block-container">
+    <div class="content-header">
+        <h3><?php echo $block->getHeaderText() ?></h3>
+<!--        <sup style="display:none;">--><?php //echo $block->getDate()->date() ?><!-- (GMT --><?php //echo $block->getDate()->getGmtOffset('hours') ?><!--)</sup>-->
+        <?php echo $_switcher ?>
+    </div>
+
+    <?php echo $_chart ?>
+    <?php echo $_toolbar ?>
+    <?php echo $_grid ?>
+
+</div>
+
+<?php if ($block->getRegistry()->registry('chart_package')): ?>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script>
+    google.load("visualization", '1.1', {packages:['<?php echo $block->getRegistry()->registry('chart_package') ?>'], 'language': 'en'});
+    google.setOnLoadCallback(drawChart);
+</script>
+<?php endif ?>

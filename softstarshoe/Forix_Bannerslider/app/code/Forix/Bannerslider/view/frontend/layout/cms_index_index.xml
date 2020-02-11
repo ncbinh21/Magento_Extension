@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Forix
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Forix.com license that is
+ * available through the world-wide-web at this URL:
+ *
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Forix
+ * @package     Forix_Bannerslider
+ * @copyright   Copyright (c) 2012 Forix (http://www.forixwebdesign.com/)
+ * @license
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="page.wrapper">
+            <block class="Forix\Bannerslider\Block\SliderItem" name="bannerslider.cms.page.content.top" before="main.content">
+                <action method="setSliderId">
+                    <argument name="sliderId" xsi:type="string">cms-page-content-top</argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

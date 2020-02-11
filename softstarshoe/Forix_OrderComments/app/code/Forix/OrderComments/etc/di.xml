@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Paypal\Model\Express" >
+        <plugin name="paypal_express_save_comments_to_quote" type="Forix\OrderComments\Plugin\Magento\Paypal\Model\Express" />
+    </type>
+    <type name="Magento\Paypal\Model\PayflowExpress" >
+        <plugin name="payflow_express_save_comments_to_quote" type="Forix\OrderComments\Plugin\Magento\Paypal\Model\Express" />
+    </type>
+    <type name="Magento\Quote\Model\QuoteManagement" >
+        <plugin name="paypal_express_save_comments_to_order" type="Forix\OrderComments\Plugin\Magento\Quote\Model\QuoteManagement" />
+    </type>
+    <type name="Magento\Quote\Model\Quote\Payment" >
+        <plugin name="checkmo_save_comments_to_order" type="Forix\OrderComments\Plugin\Magento\Quote\Model\PaymentMethodManagement" />
+    </type>
+</config>

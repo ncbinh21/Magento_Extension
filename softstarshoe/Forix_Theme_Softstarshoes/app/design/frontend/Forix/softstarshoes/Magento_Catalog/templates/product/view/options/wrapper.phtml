@@ -1,0 +1,35 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+$product = $block->getProduct();
+$hasTooltip = '';
+if($product->getTypeId() == 'configurable'){
+    $attributes = $product->getTypeInstance()->getConfigurableAttributes($product);
+    foreach ($attributes as $attribute){
+        $attrCode = $attribute->getProductAttribute()->getAttributeCode();
+        if(($attrCode == 'sss_sole' && $product->getSssTooltip()) || ($attrCode == 'sss_size' && $product->getSssSizeGuide())){
+            $hasTooltip = 'has-tooltip';
+        }
+    }
+}
+if($options = $product->getOptions()){
+    foreach ($options as $option){
+        if((strpos($option->getTitle(), 'Sole') !== false && $product->getSssTooltip()) || (strpos($option->getTitle(), 'Size') !== false) && $product->getSssSizeGuide()) {
+            $hasTooltip = 'has-tooltip';
+        }
+    }
+}
+$required = '';
+if ($block->hasRequiredOptions()) {
+    $required = ' data-hasrequired="' . __('* Required Fields') . '"';
+}
+?>
+<div class="product-options-wrapper <?php echo $hasTooltip ?>" id="product-options-wrapper"<?= /* @escapeNotVerified */ $required ?>>
+    <div class="fieldset" tabindex="0">
+        <?= $block->getChildHtml('', true) ?>
+    </div>
+</div>

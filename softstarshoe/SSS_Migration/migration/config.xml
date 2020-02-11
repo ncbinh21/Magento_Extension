@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="../../config.xsd">
+    <steps mode="data">
+        <step title="Custom Customer Attributes Step">
+            <integrity>Migration\Step\CustomCustomerAttributes\Integrity</integrity>
+            <data>Migration\Step\CustomCustomerAttributes\Data</data>
+            <volume>Migration\Step\CustomCustomerAttributes\Volume</volume>
+        </step>
+        <step title="Customer Attributes Step">
+            <integrity>Migration\Step\Customer\Integrity</integrity>
+            <data>Migration\Step\Customer\Data</data>
+            <!--<volume>Migration\Step\Customer\Volume</volume>-->
+        </step>
+        <step title="SalesOrder Step">
+            <integrity>Migration\Step\SalesOrder\Integrity</integrity>
+            <data>Migration\Step\SalesOrder\Data</data>
+            <volume>Migration\Step\SalesOrder\Volume</volume>
+        </step>
+        <step title="OrderGrids Step">
+            <integrity>Migration\Step\OrderGrids\Integrity</integrity>
+            <data>Migration\Step\OrderGrids\Data</data>
+            <volume>Migration\Step\OrderGrids\Volume</volume>
+        </step>
+        <step title="SalesIncrement Step">
+            <integrity>Migration\Step\SalesIncrement\Integrity</integrity>
+            <data>Migration\Step\SalesIncrement\Data</data>
+            <volume>Migration\Step\SalesIncrement\Volume</volume>
+        </step>
+    </steps>
+    <source>
+        <database host="192.240.166.129" name="softstar_magento" user="softstar_softsta" password="123forix"/>
+    </source>
+    <destination>
+        <database host="127.0.0.1" name="softstar_mage2" user="softstar_mage2" password="9ZcxRCTEcMvoq27rHw"/>
+    </destination>
+    <options>
+        <map_file>etc/opensource-to-opensource/map.xml</map_file>
+        <eav_map_file>etc/opensource-to-opensource/map-eav.xml.dist</eav_map_file>
+        <eav_document_groups_file>etc/opensource-to-opensource/eav-document-groups.xml.dist</eav_document_groups_file>
+        <eav_attribute_groups_file>etc/opensource-to-opensource/eav-attribute-groups.xml.dist</eav_attribute_groups_file>
+        <log_map_file>etc/opensource-to-opensource/map-log.xml.dist</log_map_file>
+        <log_document_groups_file>etc/opensource-to-opensource/log-document-groups.xml.dist</log_document_groups_file>
+        <settings_map_file>etc/opensource-to-opensource/settings.xml</settings_map_file>
+        <customer_map_file>etc/opensource-to-opensource/map-customer.xml</customer_map_file>
+        <customer_document_groups_file>etc/opensource-to-opensource/customer-document-groups.xml</customer_document_groups_file>
+        <customer_attribute_groups_file>etc/opensource-to-opensource/customer-attribute-groups.xml</customer_attribute_groups_file>
+        <sales_order_map_file>etc/opensource-to-opensource/map-sales.xml</sales_order_map_file>
+        <delta_document_groups_file>etc/opensource-to-opensource/deltalog.xml</delta_document_groups_file>
+        <customer_attr_map_file>etc/opensource-to-opensource/customer-attr-map.xml</customer_attr_map_file>
+        <customer_attr_document_groups_file>etc/opensource-to-opensource/customer-attr-document-groups.xml</customer_attr_document_groups_file>
+        <order_grids_document_groups_file>etc/opensource-to-opensource/order-grids-document-groups.xml</order_grids_document_groups_file>
+        <map_document_groups>etc/opensource-to-opensource/map-document-groups.xml.dist</map_document_groups>
+        <class_map>etc/opensource-to-opensource/class-map.xml.dist</class_map>
+        <tier_price_map_file>etc/opensource-to-opensource/1.9.3.4/map-tier-price.xml.dist</tier_price_map_file>
+        <stores_map_file>etc/opensource-to-opensource/map-stores.xml.dist</stores_map_file>
+        <!--
+        In case bulk_size=0 it will be auto-detected for every document.
+        -->
+        <bulk_size>0</bulk_size>
+        <!--
+        Set direct_document_copy = 1 for better performance.
+        NOTE: 'source' and 'destination' databases MUST be placed on the same MySQL instance
+        and 'destination' user MUST be granted with 'SELECT' permissions on 'source' database
+         -->
+        <direct_document_copy>0</direct_document_copy>
+        <source_prefix />
+        <dest_prefix />
+        <auto_resolve_urlrewrite_duplicates>0</auto_resolve_urlrewrite_duplicates>
+        <log_file>migration.log</log_file>
+        <progress_bar_format>%percent%% [%bar%] Remaining Time: %remaining%</progress_bar_format>
+        <upgrade_customer_password_hash>1</upgrade_customer_password_hash>
+        <edition_migrate>opensource-to-opensource</edition_migrate>
+        <edition_number>1.9.3.7</edition_number>
+        <init_statements_source>SET NAMES utf8;</init_statements_source>
+        <init_statements_destination>SET NAMES utf8;</init_statements_destination>
+        <crypt_key>c3f6366d16560f856ccb46f9a724c281</crypt_key>
+    </options>
+</config>

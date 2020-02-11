@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="../../map.xsd">
+    <source>
+        <document_rules>
+            <rename>
+                <document>enterprise_customerbalance</document>
+                <to>mst_credit_balance</to>
+            </rename>
+            <rename>
+                <document>enterprise_customerbalance_history</document>
+                <to>mst_credit_transaction</to>
+            </rename>
+        </document_rules>
+        <field_rules>
+            <move>
+                <field>enterprise_customerbalance.balance_id</field>
+                <to>mst_credit_balance.balance_id</to>
+            </move>
+            <move>
+                <field>enterprise_customerbalance.customer_id</field>
+                <to>mst_credit_balance.customer_id</to>
+            </move>
+            <move>
+                <field>enterprise_giftcardaccount.amount</field>
+                <to>mst_credit_balance.amount</to>
+            </move>
+            <move>
+                <field>enterprise_customerbalance_history.history_id</field>
+                <to>mst_credit_transaction.transaction_id</to>
+            </move>
+            <move>
+                <field>enterprise_customerbalance_history.balance_id</field>
+                <to>mst_credit_transaction.balance_id</to>
+            </move>
+            <move>
+                <field>enterprise_customerbalance_history.updated_at</field>
+                <to>mst_credit_transaction.created_at</to>
+            </move>
+            <move>
+                <field>enterprise_customerbalance_history.updated_at</field>
+                <to>mst_credit_transaction.updated_at</to>
+            </move>
+            <transform>
+                <field>enterprise_giftcardaccount_history.action</field>
+                <handler class="\Migration\Handler\Convert">
+                    <param name="map" value="[2:manual;1:manual;3:used;4:refunded;5:refill]" />
+                    <param name="defaultValue" value="manual" />
+                </handler>
+            </transform>
+            <move>
+                <field>enterprise_customerbalance_history.is_customer_notified</field>
+                <to>mst_credit_transaction.is_notified</to>
+            </move>
+            <move>
+                <field>enterprise_customerbalance_history.balance_amount</field>
+                <to>mst_credit_transaction.balance_amount</to>
+            </move>
+            <move>
+                <field>enterprise_customerbalance_history.balance_delta</field>
+                <to>mst_credit_transaction.balance_delta</to>
+            </move>
+            <move>
+                <field>enterprise_customerbalance_history.additional_info</field>
+                <to>mst_credit_transaction.message</to>
+            </move>
+        </field_rules>
+    </source>
+    <destination>
+    <field_rules>
+        <transform>
+            <field>aw_giftcard.is_subscribed</field>
+            <handler class="\Migration\Handler\SetValue">
+                <param name="value" value="0" />
+            </handler>
+        </transform>
+    </field_rules>
+    </destination>
+</map>

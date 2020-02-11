@@ -1,0 +1,12 @@
+<script>
+    require([
+        'jquery',
+        'Forix_AlternateImage/js/alternate-image'
+    ], function($) {
+        'use strict';
+        window.loadingImageGif = '<?php echo $block->getViewFileUrl('images/loader-1.gif');?>';
+        $( document ).ready(function() {
+            $('.items.product-items').alternateImage();
+        });
+    });
+</script>

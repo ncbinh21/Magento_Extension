@@ -1,0 +1,3889 @@
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.input-text,
+input[type="text"],
+input[type="password"],
+input[type="url"],
+input[type="tel"],
+input[type="search"],
+input[type="number"],
+input[type="datetime"],
+input[type="email"],
+select,
+.fieldset > .fields > .label{
+    &:extend(.forix-abs-primary-size all);
+}
+
+.fieldset > .field._required > .label{
+    &:extend(.fieldset > .field.required > .label all);
+}
+
+.fieldset > .fields > .field > .label{
+    &:extend(.fieldset > .field > .label all);
+}
+
+.fieldset > .fields > .field._required > .label,
+.fieldset > .fields > .field.required > .label{
+    &:extend(.fieldset > .field.required > .label all);
+}
+
+.legend{
+    &:extend(.forix-abs-three-size all);
+}
+
+.fieldset .field .fields.group{
+    &:extend(.forix-abs-clearfix all);
+}
+
+.datetime-picker + .ui-datepicker-trigger:before{
+    &:extend(.forix-abs-icon-base all);
+}
+
+// ------------------------------------
+// Core
+// ------------------------------------
+// common
+& when (@media-common = true){
+    & when(@use-form-core__enable= true) {
+        //[input-text|select|textarea]
+        .input-text,
+        input[type="text"],
+        input[type="password"],
+        input[type="url"],
+        input[type="tel"],
+        input[type="search"],
+        input[type="number"],
+        input[type="datetime"],
+        input[type="email"]{
+            .forix-global-call(
+                @_block-name:@forix-input-text__name,
+                @_version:false
+            );
+        }
+        input[type="number"]{
+            .forix-global-call(
+                @_block-name:@forix-input-number__name,
+                @_version:false
+            );
+        }
+        input[type="search"]{
+            .forix-global-call(
+                @_block-name:@forix-input-search__name,
+                @_version:false
+            );
+        }
+        select{
+            .forix-global-call(
+                @_block-name:@forix-select__name,
+                @_version:false
+            );
+        }
+        select[multiple="multiple"]{
+            .forix-global-call(
+                @_block-name:@forix-select-multiple__name,
+                @_version:false
+            );
+        }
+        textarea,
+        textarea.input-text{
+            .forix-global-call(
+                @_block-name:@forix-textarea__name,
+                @_version:false
+            );
+        }
+        input[type="checkbox"]{
+            .forix-global-call(
+                @_block-name:@forix-checkbox__name,
+                @_version:false
+            );
+        }
+        input[type="checkbox"] + label{
+            .forix-global-call(
+                @_block-name:@forix-checkout-label__name,
+                @_version:false
+            );
+        }
+        input[type="checkbox"]:checked + label{
+            .forix-global-call(
+                @_block-name:@forix-checkout-checked-label__name,
+                @_version:false
+            );
+        }
+        input[type="checkbox"]:disabled + label{
+            .forix-global-call(
+                @_block-name:@forix-checkout-disabled-label__name,
+                @_version:false
+            );
+        }
+        input[type="checkbox"]:enabled + label{
+            .forix-global-call(
+                @_block-name:@forix-checkout-enabled-label__name,
+                @_version:false
+            );
+        }
+        input[type="radio"]:not([name*='ratings']){
+            .forix-global-call(
+                @_block-name:@forix-radio__name,
+                @_version:false
+            );
+        }
+        input[type="radio"]:not([name*='ratings']) + label{
+            .forix-global-call(
+                @_block-name:@forix-radio-label__name,
+                @_version:false
+            );
+        }
+        input[type="radio"]:not([name*='ratings']):checked + label{
+            .forix-global-call(
+                @_block-name:@forix-radio-checked-label__name,
+                @_version:false
+            );
+        }
+        input[type="radio"]:not([name*='ratings']):disabled + label{
+            .forix-global-call(
+                @_block-name:@forix-radio-disabled-label__name,
+                @_version:false
+            );
+        }
+        input[type="radio"]:not([name*='ratings']):enabled + label{
+            .forix-global-call(
+                @_block-name:@forix-radio-enabled-label__name,
+                @_version:false
+            );
+        }
+
+        // Status When input have message
+        // Format Message show below form
+        // Format form
+        // =====================
+        input,
+        select,
+        textarea{
+            &.mage-error,
+            &.valid{
+                .forix-global-call(
+                    @_block-name:@forix-input-valid__name,
+                    @_version:false
+                );
+            }
+            &.mage-error{
+                .forix-global-call(
+                    @_block-name:@forix-input-mage-error__name,
+                    @_version:false
+                );
+            }
+        }
+        div.mage-error[generated]{
+            .forix-global-call(
+                @_block-name:@forix-mage-error-generated__name,
+                @_version:false
+            );
+        }
+        .form{
+            .forix-global-call(
+                @_block-name:@forix-form__name,
+                @_version:false
+            );
+        }
+        // Legend
+        // ===============
+        .legend{
+            .forix-global-call(
+                @_block-name:@forix-legend__name,
+                @_version:false
+            );
+            strong{
+                .forix-global-call(
+                    @_block-name:@forix-legend-strong__name,
+                    @_version:false
+                );
+            }
+            span{
+                .forix-global-call(
+                    @_block-name:@forix-legend-span__name,
+                    @_version:false
+                );
+            }
+            & + .fieldset,
+            & + div{
+                .forix-global-call(
+                    @_block-name:@forix-legend-fieldset__name,
+                    @_version:false
+                );
+            }
+        }
+        // Field
+        // ===============
+        .field{
+            &.date{
+                .forix-global-call(
+                    @_block-name:@forix-field-date__name,
+                    @_version:false
+                );
+                input{
+                    .forix-global-call(
+                        @_block-name:@forix-field-date-input__name,
+                        @_version:false
+                    );
+                }
+                .time-picker{
+                    .forix-global-call(
+                        @_block-name:@forix-field-date-time-picker__name,
+                        @_version:false
+                    );
+                }
+            }
+            .message{
+                .forix-global-call(
+                    @_block-name:@forix-field-dot-message__name,
+                    @_version:false
+                );
+                &.warning{
+                    .forix-global-call(
+                        @_block-name:@forix-field-message-warning__name,
+                        @_version:false
+                    );
+                }
+            }
+            &.sp-methods{
+                .forix-global-call(
+                    @_block-name:@forix-field-sp-methods__name,
+                    @_version:false
+                );
+            }
+            &.type{
+                .forix-global-call(
+                    @_block-name:@forix-field-type__name,
+                    @_version:false
+                );
+            }
+            &.default{
+                .forix-global-call(
+                    @_block-name:@forix-field-default__name,
+                    @_version:false
+                );
+            }
+            &.message{
+                .forix-global-call(
+                    @_block-name:@forix-field-message__name,
+                    @_version:false
+                );
+            }
+        }
+        .field .tooltip{
+            .forix-global-call(
+                @_block-name:@forix-field-tooltip__name,
+                @_version:false
+            );
+            .tooltip-toggle{
+                .forix-global-call(
+                    @_block-name:@forix-field-tooltip-toggle__name,
+                    @_version:false
+                );
+                &:hover,
+                &:focus{
+                    & + .tooltip-content{
+                        .forix-global-call(
+                            @_block-name:@forix-field-tooltip-toggle-hover-tooltip-content__name,
+                            @_version:false
+                        );
+                    }
+                }
+            }
+            .tooltip-content{
+                .forix-global-call(
+                    @_block-name:@forix-field-tooltip-content__name,
+                    @_version:false
+                );
+            }
+            &:hover{
+                .tooltip-content{
+                    .forix-global-call(
+                        @_block-name:@forix-field-tooltip-hover-tooltip-content__name,
+                        @_version:false
+                    );
+                }
+            }
+        }
+        // Fieldset
+        // ===============
+        .fieldset{
+            .forix-global-call(
+                @_block-name:@forix-fieldset__name,
+                @_version:false
+            );
+            *{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-all__name,
+                    @_version:false
+                );
+            }
+            > .legend{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-legend__name,
+                    @_version:false
+                );
+                & + br{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-legend-br__name,
+                        @_version:false
+                    );
+                }
+            }
+            > .field{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field__name,
+                    @_version:false
+                );
+                > .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-label__name,
+                        @_version:false
+                    );
+                }
+                > .label + br{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-label-br__name,
+                        @_version:false
+                    );
+                }
+                > .control{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-control__name,
+                        @_version:false
+                    );
+                }
+            }
+            > .field:not(.choice){
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-not-choice__name,
+                    @_version:false
+                );
+                > .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-not-choice-label__name,
+                        @_version:false
+                    );
+                }
+                > .control{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-not-choice-control__name,
+                        @_version:false
+                    );
+                }
+            }
+            >  .field + .fieldset{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-fieldset__name,
+                    @_version:false
+                );
+                > .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fieldset-field__name,
+                        @_version:false
+                    );
+                }
+                > .field .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fieldset-field-label__name,
+                        @_version:false
+                    );
+                }
+                > .field .label + br{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fieldset-field-label-br__name,
+                        @_version:false
+                    );
+                }
+                > .field .control{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fieldset-field-control__name,
+                        @_version:false
+                    );
+                }
+            }
+            > .field .fields.group{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-fields-group__name,
+                    @_version:false
+                );
+                > .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-field__name,
+                        @_version:false
+                    );
+                }
+                &.group-2 .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-2-field__name,
+                        @_version:false
+                    );
+                }
+                &.group-3 .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-3-field__name,
+                        @_version:false
+                    );
+                }
+                &.group-4 .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-4-field__name,
+                        @_version:false
+                    );
+                }
+                &.group-5 .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-5-field__name,
+                        @_version:false
+                    );
+                }
+            }
+            > .field.no-label{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-no-label__name,
+                    @_version:false
+                );
+                .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-no-label-label__name,
+                        @_version:false
+                    );
+                }
+            }
+            > .field.required{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-required__name,
+                    @_version:false
+                );
+                > .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-required-label__name,
+                        @_version:false
+                    );
+                }
+            }
+            > .field.choice{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-choice__name,
+                    @_version:false
+                );
+                > .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-label__name,
+                        @_version:false
+                    );
+                }
+                > .control{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-control__name,
+                        @_version:false
+                    );
+                }
+            }
+            > .field.note{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-note__name,
+                    @_version:false
+                );
+            }
+            > .field .description{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-description__name,
+                    @_version:false
+                );
+            }
+            > .field .note{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-dot-note__name,
+                    @_version:false
+                );
+            }
+            > .field .addon{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-addon__name,
+                    @_version:false
+                );
+                input,
+                textarea,
+                select{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-addon-input__name,
+                        @_version:false
+                    );
+                }
+                .addbefore,
+                .addafter{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-addon-add__name,
+                        @_version:false
+                    );
+                }
+                .addbefore{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-addon-addbefore__name,
+                        @_version:false
+                    );
+                }
+                .addafter{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-addon-addafter__name,
+                        @_version:false
+                    );
+                }
+            }
+            > .field .additional{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-additional__name,
+                    @_version:false
+                );
+                .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-additional-label__name,
+                        @_version:false
+                    );
+                }
+            }
+            > .field .field.choice{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-field-choice__name,
+                    @_version:false
+                );
+            }
+            > .field.choice{
+                > label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-label__name,
+                        @_version:false
+                    );
+                }
+                input{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-input__name,
+                        @_version:false
+                    );
+                }
+                input[type="checkbox"] + label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-checkbox-label__name,
+                        @_version:false
+                    );
+                }
+                input[type="radio"] + label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-radio-label__name,
+                        @_version:false
+                    );
+                }
+            }
+            > .field input[type=file]{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-input-file__name,
+                    @_version:false
+                );
+            }
+            & + .actions-toolbar{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-actions-toolbar__name,
+                    @_version:false
+                );
+            }
+        }
+        fieldset.field{
+            .forix-global-call(
+                @_block-name:@forix-fieldset-dot-field__name,
+                @_version:false
+            );
+        }
+        .fieldset .fields{
+            .forix-global-call(
+                @_block-name:@forix-fieldset-fields__name,
+                @_version:false
+            );
+            > .field{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-fields-field__name,
+                    @_version:false
+                );
+            }
+            > .actions-toolbar{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-fields-actions-toolbar__name,
+                    @_version:false
+                );
+                .action{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-fields-actions-toolbar-action__name,
+                        @_version:false
+                    );
+                }
+                .action.remove{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-fields-actions-toolbar-action-remove__name,
+                        @_version:false
+                    );
+                }
+            }
+        }
+        input:focus ~ .tooltip .tooltip-content,
+        select:focus ~ .tooltip .tooltip-content{
+            .forix-global-call(
+                @_block-name:@forix-input-focus-tooltip-content__name,
+                @_version:false
+            );
+        }
+        .datetime-picker{
+            .forix-global-call(
+                @_block-name:@forix-hasDatepicker__name,
+                @_version:false
+            );
+        }
+        .datetime-picker + .ui-datepicker-trigger{
+            .forix-global-call(
+                @_block-name:@forix-hasDatepicker-ui-datepicker-trigger__name,
+                @_version:false
+            );
+        }
+        .datetime-picker + .ui-datepicker-trigger span{
+            .forix-global-call(
+                @_block-name:@forix-hasDatepicker-ui-datepicker-trigger-span__name,
+                @_version:false
+            );
+        }
+        .sidebar{
+            .fieldset{
+                .forix-global-call(
+                    @_block-name:@forix-sidebar-fieldset__name,
+                    @_version:false
+                );
+                .field:not(.choice) > ,
+                .fields .field {
+                    .forix-global-call(
+                        @_block-name:@forix-sidebar-fieldset-field__name,
+                        @_version:false
+                    );
+                }
+                .fields .field .label{
+                    .forix-global-call(
+                        @_block-name:@forix-sidebar-fieldset-fields-field-label__name,
+                        @_version:false
+                    );
+                }
+                .fields .field .control{
+                    .forix-global-call(
+                        @_block-name:@forix-sidebar-fieldset-fields-field-control__name,
+                        @_version:false
+                    );
+                }
+            }
+        }
+    }
+
+    // fixed ie hide arrow
+    select::-ms-expand {
+        display: none;
+    }
+
+    // fixed ie - remove X on the input
+    input[type=text]::-ms-clear {
+        display: none;
+    }
+    ::-ms-clear {
+        display: none;
+    }
+
+    // FF input=number have arrow (fixed remove arrow)
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    & when(@use-form-core__enable= true) {
+        //[input-text|select|textarea]
+        .input-text,
+        input[type="text"],
+        input[type="password"],
+        input[type="url"],
+        input[type="tel"],
+        input[type="search"],
+        input[type="number"],
+        input[type="datetime"],
+        input[type="email"]{
+            .forix-global-call(
+                @_block-name:@forix-input-text__name,
+                @_version:''
+            );
+        }
+        input[type="number"]{
+            .forix-global-call(
+                @_block-name:@forix-input-number__name,
+                @_version:''
+            );
+        }
+        input[type="search"]{
+            .forix-global-call(
+                @_block-name:@forix-input-search__name,
+                @_version:''
+            );
+        }
+        select{
+            .forix-global-call(
+                @_block-name:@forix-select__name,
+                @_version:''
+            );
+        }
+        select[multiple="multiple"]{
+            .forix-global-call(
+                @_block-name:@forix-select-multiple__name,
+                @_version:''
+            );
+        }
+        textarea,
+        textarea.input-text{
+            .forix-global-call(
+                @_block-name:@forix-textarea__name,
+                @_version:''
+            );
+        }
+        input[type="checkbox"]{
+            .forix-global-call(
+                @_block-name:@forix-checkbox__name,
+                @_version:''
+            );
+        }
+        input[type="checkbox"] + label{
+            .forix-global-call(
+                @_block-name:@forix-checkout-label__name,
+                @_version:''
+            );
+        }
+        input[type="checkbox"]:checked + label{
+            .forix-global-call(
+                @_block-name:@forix-checkout-checked-label__name,
+                @_version:''
+            );
+        }
+        input[type="checkbox"]:disabled + label{
+            .forix-global-call(
+                @_block-name:@forix-checkout-disabled-label__name,
+                @_version:''
+            );
+        }
+        input[type="checkbox"]:enabled + label{
+            .forix-global-call(
+                @_block-name:@forix-checkout-enabled-label__name,
+                @_version:''
+            );
+        }
+        input[type="radio"]:not([name*='ratings']){
+            .forix-global-call(
+                @_block-name:@forix-radio__name,
+                @_version:''
+            );
+        }
+        input[type="radio"]:not([name*='ratings']) + label{
+            .forix-global-call(
+                @_block-name:@forix-radio-label__name,
+                @_version:''
+            );
+        }
+        input[type="radio"]:not([name*='ratings']):checked + label{
+            .forix-global-call(
+                @_block-name:@forix-radio-checked-label__name,
+                @_version:''
+            );
+        }
+        input[type="radio"]:not([name*='ratings']):disabled + label{
+            .forix-global-call(
+                @_block-name:@forix-radio-disabled-label__name,
+                @_version:''
+            );
+        }
+        input[type="radio"]:not([name*='ratings']):enabled + label{
+            .forix-global-call(
+                @_block-name:@forix-radio-enabled-label__name,
+                @_version:''
+            );
+        }
+
+        // Status When input have message
+        // Format Message show below form
+        // Format form
+        // =====================
+        input,
+        select,
+        textarea{
+            &.mage-error,
+            &.valid{
+                .forix-global-call(
+                    @_block-name:@forix-input-valid__name,
+                    @_version:''
+                );
+            }
+            &.mage-error{
+                .forix-global-call(
+                    @_block-name:@forix-input-mage-error__name,
+                    @_version:''
+                );
+            }
+        }
+        div.mage-error[generated]{
+            .forix-global-call(
+                @_block-name:@forix-mage-error-generated__name,
+                @_version:''
+            );
+        }
+        .form{
+            .forix-global-call(
+                @_block-name:@forix-form__name,
+                @_version:''
+            );
+        }
+        // Legend
+        // ===============
+        .legend{
+            .forix-global-call(
+                @_block-name:@forix-legend__name,
+                @_version:''
+            );
+            strong{
+                .forix-global-call(
+                    @_block-name:@forix-legend-strong__name,
+                    @_version:''
+                );
+            }
+            span{
+                .forix-global-call(
+                    @_block-name:@forix-legend-span__name,
+                    @_version:''
+                );
+            }
+            & + .fieldset,
+            & + div{
+                .forix-global-call(
+                    @_block-name:@forix-legend-fieldset__name,
+                    @_version:''
+                );
+            }
+        }
+        // Field
+        // ===============
+        .field{
+            &.date{
+                .forix-global-call(
+                    @_block-name:@forix-field-date__name,
+                    @_version:''
+                );
+                input{
+                    .forix-global-call(
+                        @_block-name:@forix-field-date-input__name,
+                        @_version:''
+                    );
+                }
+                .time-picker{
+                    .forix-global-call(
+                        @_block-name:@forix-field-date-time-picker__name,
+                        @_version:''
+                    );
+                }
+            }
+            .message{
+                .forix-global-call(
+                    @_block-name:@forix-field-dot-message__name,
+                    @_version:''
+                );
+                &.warning{
+                    .forix-global-call(
+                        @_block-name:@forix-field-message-warning__name,
+                        @_version:''
+                    );
+                }
+            }
+            &.sp-methods{
+                .forix-global-call(
+                    @_block-name:@forix-field-sp-methods__name,
+                    @_version:''
+                );
+            }
+            &.type{
+                .forix-global-call(
+                    @_block-name:@forix-field-type__name,
+                    @_version:''
+                );
+            }
+            &.default{
+                .forix-global-call(
+                    @_block-name:@forix-field-default__name,
+                    @_version:''
+                );
+            }
+            &.message{
+                .forix-global-call(
+                    @_block-name:@forix-field-message__name,
+                    @_version:''
+                );
+            }
+        }
+        .field .tooltip{
+            .forix-global-call(
+                @_block-name:@forix-field-tooltip__name,
+                @_version:''
+            );
+            .tooltip-toggle{
+                .forix-global-call(
+                    @_block-name:@forix-field-tooltip-toggle__name,
+                    @_version:''
+                );
+                &:hover,
+                &:focus{
+                    & + .tooltip-content{
+                        .forix-global-call(
+                            @_block-name:@forix-field-tooltip-toggle-hover-tooltip-content__name,
+                            @_version:''
+                        );
+                    }
+                }
+            }
+            .tooltip-content{
+                .forix-global-call(
+                    @_block-name:@forix-field-tooltip-content__name,
+                    @_version:''
+                );
+            }
+            &:hover{
+                .tooltip-content{
+                    .forix-global-call(
+                        @_block-name:@forix-field-tooltip-hover-tooltip-content__name,
+                        @_version:''
+                    );
+                }
+            }
+        }
+        // Fieldset
+        // ===============
+        .fieldset{
+            .forix-global-call(
+                @_block-name:@forix-fieldset__name,
+                @_version:''
+            );
+            *{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-all__name,
+                    @_version:''
+                );
+            }
+            > .legend{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-legend__name,
+                    @_version:''
+                );
+                & + br{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-legend-br__name,
+                        @_version:''
+                    );
+                }
+            }
+            > .field{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field__name,
+                    @_version:''
+                );
+                > .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-label__name,
+                        @_version:''
+                    );
+                }
+                > .label + br{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-label-br__name,
+                        @_version:''
+                    );
+                }
+                > .control{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-control__name,
+                        @_version:''
+                    );
+                }
+            }
+            > .field:not(.choice){
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-not-choice__name,
+                    @_version:''
+                );
+                > .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-not-choice-label__name,
+                        @_version:''
+                    );
+                }
+                > .control{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-not-choice-control__name,
+                        @_version:''
+                    );
+                }
+            }
+            >  .field + .fieldset{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-fieldset__name,
+                    @_version:''
+                );
+                > .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fieldset-field__name,
+                        @_version:''
+                    );
+                }
+                > .field .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fieldset-field-label__name,
+                        @_version:''
+                    );
+                }
+                > .field .label + br{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fieldset-field-label-br__name,
+                        @_version:''
+                    );
+                }
+                > .field .control{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fieldset-field-control__name,
+                        @_version:''
+                    );
+                }
+            }
+            > .field .fields.group{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-fields-group__name,
+                    @_version:''
+                );
+                > .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-field__name,
+                        @_version:''
+                    );
+                }
+                &.group-2 .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-2-field__name,
+                        @_version:''
+                    );
+                }
+                &.group-3 .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-3-field__name,
+                        @_version:''
+                    );
+                }
+                &.group-4 .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-4-field__name,
+                        @_version:''
+                    );
+                }
+                &.group-5 .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-5-field__name,
+                        @_version:''
+                    );
+                }
+            }
+            > .field.no-label{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-no-label__name,
+                    @_version:''
+                );
+                .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-no-label-label__name,
+                        @_version:''
+                    );
+                }
+            }
+            > .field.required{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-required__name,
+                    @_version:''
+                );
+                > .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-required-label__name,
+                        @_version:''
+                    );
+                }
+            }
+            > .field.choice{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-choice__name,
+                    @_version:''
+                );
+                > .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-label__name,
+                        @_version:''
+                    );
+                }
+                > .control{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-control__name,
+                        @_version:''
+                    );
+                }
+            }
+            > .field.note{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-note__name,
+                    @_version:''
+                );
+            }
+            > .field .description{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-description__name,
+                    @_version:''
+                );
+            }
+            > .field .note{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-dot-note__name,
+                    @_version:''
+                );
+            }
+            > .field .addon{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-addon__name,
+                    @_version:''
+                );
+                input,
+                textarea,
+                select{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-addon-input__name,
+                        @_version:''
+                    );
+                }
+                .addbefore,
+                .addafter{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-addon-add__name,
+                        @_version:''
+                    );
+                }
+                .addbefore{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-addon-addbefore__name,
+                        @_version:''
+                    );
+                }
+                .addafter{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-addon-addafter__name,
+                        @_version:''
+                    );
+                }
+            }
+            > .field .additional{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-additional__name,
+                    @_version:''
+                );
+                .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-additional-label__name,
+                        @_version:''
+                    );
+                }
+            }
+            > .field .field.choice{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-field-choice__name,
+                    @_version:''
+                );
+            }
+            > .field.choice{
+                > label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-label__name,
+                        @_version:''
+                    );
+                }
+                input{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-input__name,
+                        @_version:''
+                    );
+                }
+                input[type="checkbox"] + label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-checkbox-label__name,
+                        @_version:''
+                    );
+                }
+                input[type="radio"] + label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-radio-label__name,
+                        @_version:''
+                    );
+                }
+            }
+            > .field input[type=file]{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-input-file__name,
+                    @_version:''
+                );
+            }
+            & + .actions-toolbar{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-actions-toolbar__name,
+                    @_version:''
+                );
+            }
+        }
+        fieldset.field{
+            .forix-global-call(
+                @_block-name:@forix-fieldset-dot-field__name,
+                @_version:''
+            );
+        }
+        .fieldset .fields{
+            .forix-global-call(
+                @_block-name:@forix-fieldset-fields__name,
+                @_version:''
+            );
+            > .field{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-fields-field__name,
+                    @_version:''
+                );
+            }
+            > .actions-toolbar{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-fields-actions-toolbar__name,
+                    @_version:''
+                );
+                .action{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-fields-actions-toolbar-action__name,
+                        @_version:''
+                    );
+                }
+                .action.remove{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-fields-actions-toolbar-action-remove__name,
+                        @_version:''
+                    );
+                }
+            }
+        }
+        input:focus ~ .tooltip .tooltip-content,
+        select:focus ~ .tooltip .tooltip-content{
+            .forix-global-call(
+                @_block-name:@forix-input-focus-tooltip-content__name,
+                @_version:''
+            );
+        }
+        .datetime-picker{
+            .forix-global-call(
+                @_block-name:@forix-hasDatepicker__name,
+                @_version:''
+            );
+        }
+        .datetime-picker + .ui-datepicker-trigger{
+            .forix-global-call(
+                @_block-name:@forix-hasDatepicker-ui-datepicker-trigger__name,
+                @_version:''
+            );
+        }
+        .datetime-picker + .ui-datepicker-trigger span{
+            .forix-global-call(
+                @_block-name:@forix-hasDatepicker-ui-datepicker-trigger-span__name,
+                @_version:''
+            );
+        }
+        .sidebar{
+            .fieldset{
+                .forix-global-call(
+                    @_block-name:@forix-sidebar-fieldset__name,
+                    @_version:''
+                );
+                .field:not(.choice) > ,
+                .fields .field {
+                    .forix-global-call(
+                        @_block-name:@forix-sidebar-fieldset-field__name,
+                        @_version:''
+                    );
+                }
+                .fields .field .label{
+                    .forix-global-call(
+                        @_block-name:@forix-sidebar-fieldset-fields-field-label__name,
+                        @_version:''
+                    );
+                }
+                .fields .field .control{
+                    .forix-global-call(
+                        @_block-name:@forix-sidebar-fieldset-fields-field-control__name,
+                        @_version:''
+                    );
+                }
+            }
+        }
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    & when(@use-form-core__enable= true) {
+        //[input-text|select|textarea]
+        .input-text,
+        input[type="text"],
+        input[type="password"],
+        input[type="url"],
+        input[type="tel"],
+        input[type="search"],
+        input[type="number"],
+        input[type="datetime"],
+        input[type="email"]{
+            .forix-global-call(
+                @_block-name:@forix-input-text__name,
+                @_version:'ml'
+            );
+        }
+        input[type="number"]{
+            .forix-global-call(
+                @_block-name:@forix-input-number__name,
+                @_version:'ml'
+            );
+        }
+        input[type="search"]{
+            .forix-global-call(
+                @_block-name:@forix-input-search__name,
+                @_version:'ml'
+            );
+        }
+        select{
+            .forix-global-call(
+                @_block-name:@forix-select__name,
+                @_version:'ml'
+            );
+        }
+        select[multiple="multiple"]{
+            .forix-global-call(
+                @_block-name:@forix-select-multiple__name,
+                @_version:'ml'
+            );
+        }
+        textarea,
+        textarea.input-text{
+            .forix-global-call(
+                @_block-name:@forix-textarea__name,
+                @_version:'ml'
+            );
+        }
+        input[type="checkbox"]{
+            .forix-global-call(
+                @_block-name:@forix-checkbox__name,
+                @_version:'ml'
+            );
+        }
+        input[type="checkbox"] + label{
+            .forix-global-call(
+                @_block-name:@forix-checkout-label__name,
+                @_version:'ml'
+            );
+        }
+        input[type="checkbox"]:checked + label{
+            .forix-global-call(
+                @_block-name:@forix-checkout-checked-label__name,
+                @_version:'ml'
+            );
+        }
+        input[type="checkbox"]:disabled + label{
+            .forix-global-call(
+                @_block-name:@forix-checkout-disabled-label__name,
+                @_version:'ml'
+            );
+        }
+        input[type="checkbox"]:enabled + label{
+            .forix-global-call(
+                @_block-name:@forix-checkout-enabled-label__name,
+                @_version:'ml'
+            );
+        }
+        input[type="radio"]:not([name*='ratings']){
+            .forix-global-call(
+                @_block-name:@forix-radio__name,
+                @_version:'ml'
+            );
+        }
+        input[type="radio"]:not([name*='ratings']) + label{
+            .forix-global-call(
+                @_block-name:@forix-radio-label__name,
+                @_version:'ml'
+            );
+        }
+        input[type="radio"]:not([name*='ratings']):checked + label{
+            .forix-global-call(
+                @_block-name:@forix-radio-checked-label__name,
+                @_version:'ml'
+            );
+        }
+        input[type="radio"]:not([name*='ratings']):disabled + label{
+            .forix-global-call(
+                @_block-name:@forix-radio-disabled-label__name,
+                @_version:'ml'
+            );
+        }
+        input[type="radio"]:not([name*='ratings']):enabled + label{
+            .forix-global-call(
+                @_block-name:@forix-radio-enabled-label__name,
+                @_version:'ml'
+            );
+        }
+
+        // Status When input have message
+        // Format Message show below form
+        // Format form
+        // =====================
+        input,
+        select,
+        textarea{
+            &.mage-error,
+            &.valid{
+                .forix-global-call(
+                    @_block-name:@forix-input-valid__name,
+                    @_version:'ml'
+                );
+            }
+            &.mage-error{
+                .forix-global-call(
+                    @_block-name:@forix-input-mage-error__name,
+                    @_version:'ml'
+                );
+            }
+        }
+        div.mage-error[generated]{
+            .forix-global-call(
+                @_block-name:@forix-mage-error-generated__name,
+                @_version:'ml'
+            );
+        }
+        .form{
+            .forix-global-call(
+                @_block-name:@forix-form__name,
+                @_version:'ml'
+            );
+        }
+        // Legend
+        // ===============
+        .legend{
+            .forix-global-call(
+                @_block-name:@forix-legend__name,
+                @_version:'ml'
+            );
+            strong{
+                .forix-global-call(
+                    @_block-name:@forix-legend-strong__name,
+                    @_version:'ml'
+                );
+            }
+            span{
+                .forix-global-call(
+                    @_block-name:@forix-legend-span__name,
+                    @_version:'ml'
+                );
+            }
+            & + .fieldset,
+            & + div{
+                .forix-global-call(
+                    @_block-name:@forix-legend-fieldset__name,
+                    @_version:'ml'
+                );
+            }
+        }
+        // Field
+        // ===============
+        .field{
+            &.date{
+                .forix-global-call(
+                    @_block-name:@forix-field-date__name,
+                    @_version:'ml'
+                );
+                input{
+                    .forix-global-call(
+                        @_block-name:@forix-field-date-input__name,
+                        @_version:'ml'
+                    );
+                }
+                .time-picker{
+                    .forix-global-call(
+                        @_block-name:@forix-field-date-time-picker__name,
+                        @_version:'ml'
+                    );
+                }
+            }
+            .message{
+                .forix-global-call(
+                    @_block-name:@forix-field-dot-message__name,
+                    @_version:'ml'
+                );
+                &.warning{
+                    .forix-global-call(
+                        @_block-name:@forix-field-message-warning__name,
+                        @_version:'ml'
+                    );
+                }
+            }
+            &.sp-methods{
+                .forix-global-call(
+                    @_block-name:@forix-field-sp-methods__name,
+                    @_version:'ml'
+                );
+            }
+            &.type{
+                .forix-global-call(
+                    @_block-name:@forix-field-type__name,
+                    @_version:'ml'
+                );
+            }
+            &.default{
+                .forix-global-call(
+                    @_block-name:@forix-field-default__name,
+                    @_version:'ml'
+                );
+            }
+            &.message{
+                .forix-global-call(
+                    @_block-name:@forix-field-message__name,
+                    @_version:'ml'
+                );
+            }
+        }
+        .field .tooltip{
+            .forix-global-call(
+                @_block-name:@forix-field-tooltip__name,
+                @_version:'ml'
+            );
+            .tooltip-toggle{
+                .forix-global-call(
+                    @_block-name:@forix-field-tooltip-toggle__name,
+                    @_version:'ml'
+                );
+                &:hover,
+                &:focus{
+                    & + .tooltip-content{
+                        .forix-global-call(
+                            @_block-name:@forix-field-tooltip-toggle-hover-tooltip-content__name,
+                            @_version:'ml'
+                        );
+                    }
+                }
+            }
+            .tooltip-content{
+                .forix-global-call(
+                    @_block-name:@forix-field-tooltip-content__name,
+                    @_version:'ml'
+                );
+            }
+            &:hover{
+                .tooltip-content{
+                    .forix-global-call(
+                        @_block-name:@forix-field-tooltip-hover-tooltip-content__name,
+                        @_version:'ml'
+                    );
+                }
+            }
+        }
+        // Fieldset
+        // ===============
+        .fieldset{
+            .forix-global-call(
+                @_block-name:@forix-fieldset__name,
+                @_version:'ml'
+            );
+            *{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-all__name,
+                    @_version:'ml'
+                );
+            }
+            > .legend{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-legend__name,
+                    @_version:'ml'
+                );
+                & + br{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-legend-br__name,
+                        @_version:'ml'
+                    );
+                }
+            }
+            > .field{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field__name,
+                    @_version:'ml'
+                );
+                > .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-label__name,
+                        @_version:'ml'
+                    );
+                }
+                > .label + br{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-label-br__name,
+                        @_version:'ml'
+                    );
+                }
+                > .control{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-control__name,
+                        @_version:'ml'
+                    );
+                }
+            }
+            > .field:not(.choice){
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-not-choice__name,
+                    @_version:'ml'
+                );
+                > .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-not-choice-label__name,
+                        @_version:'ml'
+                    );
+                }
+                > .control{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-not-choice-control__name,
+                        @_version:'ml'
+                    );
+                }
+            }
+            >  .field + .fieldset{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-fieldset__name,
+                    @_version:'ml'
+                );
+                > .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fieldset-field__name,
+                        @_version:'ml'
+                    );
+                }
+                > .field .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fieldset-field-label__name,
+                        @_version:'ml'
+                    );
+                }
+                > .field .label + br{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fieldset-field-label-br__name,
+                        @_version:'ml'
+                    );
+                }
+                > .field .control{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fieldset-field-control__name,
+                        @_version:'ml'
+                    );
+                }
+            }
+            > .field .fields.group{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-fields-group__name,
+                    @_version:'ml'
+                );
+                > .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-field__name,
+                        @_version:'ml'
+                    );
+                }
+                &.group-2 .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-2-field__name,
+                        @_version:'ml'
+                    );
+                }
+                &.group-3 .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-3-field__name,
+                        @_version:'ml'
+                    );
+                }
+                &.group-4 .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-4-field__name,
+                        @_version:'ml'
+                    );
+                }
+                &.group-5 .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-5-field__name,
+                        @_version:'ml'
+                    );
+                }
+            }
+            > .field.no-label{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-no-label__name,
+                    @_version:'ml'
+                );
+                .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-no-label-label__name,
+                        @_version:'ml'
+                    );
+                }
+            }
+            > .field.required{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-required__name,
+                    @_version:'ml'
+                );
+                > .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-required-label__name,
+                        @_version:'ml'
+                    );
+                }
+            }
+            > .field.choice{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-choice__name,
+                    @_version:'ml'
+                );
+                > .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-label__name,
+                        @_version:'ml'
+                    );
+                }
+                > .control{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-control__name,
+                        @_version:'ml'
+                    );
+                }
+            }
+            > .field.note{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-note__name,
+                    @_version:'ml'
+                );
+            }
+            > .field .description{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-description__name,
+                    @_version:'ml'
+                );
+            }
+            > .field .note{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-dot-note__name,
+                    @_version:'ml'
+                );
+            }
+            > .field .addon{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-addon__name,
+                    @_version:'ml'
+                );
+                input,
+                textarea,
+                select{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-addon-input__name,
+                        @_version:'ml'
+                    );
+                }
+                .addbefore,
+                .addafter{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-addon-add__name,
+                        @_version:'ml'
+                    );
+                }
+                .addbefore{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-addon-addbefore__name,
+                        @_version:'ml'
+                    );
+                }
+                .addafter{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-addon-addafter__name,
+                        @_version:'ml'
+                    );
+                }
+            }
+            > .field .additional{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-additional__name,
+                    @_version:'ml'
+                );
+                .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-additional-label__name,
+                        @_version:'ml'
+                    );
+                }
+            }
+            > .field .field.choice{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-field-choice__name,
+                    @_version:'ml'
+                );
+            }
+            > .field.choice{
+                > label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-label__name,
+                        @_version:'ml'
+                    );
+                }
+                input{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-input__name,
+                        @_version:'ml'
+                    );
+                }
+                input[type="checkbox"] + label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-checkbox-label__name,
+                        @_version:'ml'
+                    );
+                }
+                input[type="radio"] + label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-radio-label__name,
+                        @_version:'ml'
+                    );
+                }
+            }
+            > .field input[type=file]{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-input-file__name,
+                    @_version:'ml'
+                );
+            }
+            & + .actions-toolbar{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-actions-toolbar__name,
+                    @_version:'ml'
+                );
+            }
+        }
+        fieldset.field{
+            .forix-global-call(
+                @_block-name:@forix-fieldset-dot-field__name,
+                @_version:'ml'
+            );
+        }
+        .fieldset .fields{
+            .forix-global-call(
+                @_block-name:@forix-fieldset-fields__name,
+                @_version:'ml'
+            );
+            > .field{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-fields-field__name,
+                    @_version:'ml'
+                );
+            }
+            > .actions-toolbar{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-fields-actions-toolbar__name,
+                    @_version:'ml'
+                );
+                .action{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-fields-actions-toolbar-action__name,
+                        @_version:'ml'
+                    );
+                }
+                .action.remove{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-fields-actions-toolbar-action-remove__name,
+                        @_version:'ml'
+                    );
+                }
+            }
+        }
+        input:focus ~ .tooltip .tooltip-content,
+        select:focus ~ .tooltip .tooltip-content{
+            .forix-global-call(
+                @_block-name:@forix-input-focus-tooltip-content__name,
+                @_version:'ml'
+            );
+        }
+        .datetime-picker{
+            .forix-global-call(
+                @_block-name:@forix-hasDatepicker__name,
+                @_version:'ml'
+            );
+        }
+        .datetime-picker + .ui-datepicker-trigger{
+            .forix-global-call(
+                @_block-name:@forix-hasDatepicker-ui-datepicker-trigger__name,
+                @_version:'ml'
+            );
+        }
+        .datetime-picker + .ui-datepicker-trigger span{
+            .forix-global-call(
+                @_block-name:@forix-hasDatepicker-ui-datepicker-trigger-span__name,
+                @_version:'ml'
+            );
+        }
+        .sidebar{
+            .fieldset{
+                .forix-global-call(
+                    @_block-name:@forix-sidebar-fieldset__name,
+                    @_version:'ml'
+                );
+                .field:not(.choice) > ,
+                .fields .field {
+                    .forix-global-call(
+                        @_block-name:@forix-sidebar-fieldset-field__name,
+                        @_version:'ml'
+                    );
+                }
+                .fields .field .label{
+                    .forix-global-call(
+                        @_block-name:@forix-sidebar-fieldset-fields-field-label__name,
+                        @_version:'ml'
+                    );
+                }
+                .fields .field .control{
+                    .forix-global-call(
+                        @_block-name:@forix-sidebar-fieldset-fields-field-control__name,
+                        @_version:'ml'
+                    );
+                }
+            }
+        }
+    }
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l) {
+    & when(@use-form-core__enable= true) {
+        //[input-text|select|textarea]
+        .input-text,
+        input[type="text"],
+        input[type="password"],
+        input[type="url"],
+        input[type="tel"],
+        input[type="search"],
+        input[type="number"],
+        input[type="datetime"],
+        input[type="email"]{
+            .forix-global-call(
+                @_block-name:@forix-input-text__name,
+                @_version:'sm'
+            );
+        }
+        input[type="number"]{
+            .forix-global-call(
+                @_block-name:@forix-input-number__name,
+                @_version:'sm'
+            );
+        }
+        input[type="search"]{
+            .forix-global-call(
+                @_block-name:@forix-input-search__name,
+                @_version:'sm'
+            );
+        }
+        select{
+            .forix-global-call(
+                @_block-name:@forix-select__name,
+                @_version:'sm'
+            );
+        }
+        select[multiple="multiple"]{
+            .forix-global-call(
+                @_block-name:@forix-select-multiple__name,
+                @_version:'sm'
+            );
+        }
+        textarea,
+        textarea.input-text{
+            .forix-global-call(
+                @_block-name:@forix-textarea__name,
+                @_version:'sm'
+            );
+        }
+        input[type="checkbox"]{
+            .forix-global-call(
+                @_block-name:@forix-checkbox__name,
+                @_version:'sm'
+            );
+        }
+        input[type="checkbox"] + label{
+            .forix-global-call(
+                @_block-name:@forix-checkout-label__name,
+                @_version:'sm'
+            );
+        }
+        input[type="checkbox"]:checked + label{
+            .forix-global-call(
+                @_block-name:@forix-checkout-checked-label__name,
+                @_version:'sm'
+            );
+        }
+        input[type="checkbox"]:disabled + label{
+            .forix-global-call(
+                @_block-name:@forix-checkout-disabled-label__name,
+                @_version:'sm'
+            );
+        }
+        input[type="checkbox"]:enabled + label{
+            .forix-global-call(
+                @_block-name:@forix-checkout-enabled-label__name,
+                @_version:'sm'
+            );
+        }
+        input[type="radio"]:not([name*='ratings']){
+            .forix-global-call(
+                @_block-name:@forix-radio__name,
+                @_version:'sm'
+            );
+        }
+        input[type="radio"]:not([name*='ratings']) + label{
+            .forix-global-call(
+                @_block-name:@forix-radio-label__name,
+                @_version:'sm'
+            );
+        }
+        input[type="radio"]:not([name*='ratings']):checked + label{
+            .forix-global-call(
+                @_block-name:@forix-radio-checked-label__name,
+                @_version:'sm'
+            );
+        }
+        input[type="radio"]:not([name*='ratings']):disabled + label{
+            .forix-global-call(
+                @_block-name:@forix-radio-disabled-label__name,
+                @_version:'sm'
+            );
+        }
+        input[type="radio"]:not([name*='ratings']):enabled + label{
+            .forix-global-call(
+                @_block-name:@forix-radio-enabled-label__name,
+                @_version:'sm'
+            );
+        }
+
+        // Status When input have message
+        // Format Message show below form
+        // Format form
+        // =====================
+        input,
+        select,
+        textarea{
+            &.mage-error,
+            &.valid{
+                .forix-global-call(
+                    @_block-name:@forix-input-valid__name,
+                    @_version:'sm'
+                );
+            }
+            &.mage-error{
+                .forix-global-call(
+                    @_block-name:@forix-input-mage-error__name,
+                    @_version:'sm'
+                );
+            }
+        }
+        div.mage-error[generated]{
+            .forix-global-call(
+                @_block-name:@forix-mage-error-generated__name,
+                @_version:'sm'
+            );
+        }
+        .form{
+            .forix-global-call(
+                @_block-name:@forix-form__name,
+                @_version:'sm'
+            );
+        }
+        // Legend
+        // ===============
+        .legend{
+            .forix-global-call(
+                @_block-name:@forix-legend__name,
+                @_version:'sm'
+            );
+            strong{
+                .forix-global-call(
+                    @_block-name:@forix-legend-strong__name,
+                    @_version:'sm'
+                );
+            }
+            span{
+                .forix-global-call(
+                    @_block-name:@forix-legend-span__name,
+                    @_version:'sm'
+                );
+            }
+            & + .fieldset,
+            & + div{
+                .forix-global-call(
+                    @_block-name:@forix-legend-fieldset__name,
+                    @_version:'sm'
+                );
+            }
+        }
+        // Field
+        // ===============
+        .field{
+            &.date{
+                .forix-global-call(
+                    @_block-name:@forix-field-date__name,
+                    @_version:'sm'
+                );
+                input{
+                    .forix-global-call(
+                        @_block-name:@forix-field-date-input__name,
+                        @_version:'sm'
+                    );
+                }
+                .time-picker{
+                    .forix-global-call(
+                        @_block-name:@forix-field-date-time-picker__name,
+                        @_version:'sm'
+                    );
+                }
+            }
+            .message{
+                .forix-global-call(
+                    @_block-name:@forix-field-dot-message__name,
+                    @_version:'sm'
+                );
+                &.warning{
+                    .forix-global-call(
+                        @_block-name:@forix-field-message-warning__name,
+                        @_version:'sm'
+                    );
+                }
+            }
+            &.sp-methods{
+                .forix-global-call(
+                    @_block-name:@forix-field-sp-methods__name,
+                    @_version:'sm'
+                );
+            }
+            &.type{
+                .forix-global-call(
+                    @_block-name:@forix-field-type__name,
+                    @_version:'sm'
+                );
+            }
+            &.default{
+                .forix-global-call(
+                    @_block-name:@forix-field-default__name,
+                    @_version:'sm'
+                );
+            }
+            &.message{
+                .forix-global-call(
+                    @_block-name:@forix-field-message__name,
+                    @_version:'sm'
+                );
+            }
+        }
+        .field .tooltip{
+            .forix-global-call(
+                @_block-name:@forix-field-tooltip__name,
+                @_version:'sm'
+            );
+            .tooltip-toggle{
+                .forix-global-call(
+                    @_block-name:@forix-field-tooltip-toggle__name,
+                    @_version:'sm'
+                );
+                &:hover,
+                &:focus{
+                    & + .tooltip-content{
+                        .forix-global-call(
+                            @_block-name:@forix-field-tooltip-toggle-hover-tooltip-content__name,
+                            @_version:'sm'
+                        );
+                    }
+                }
+            }
+            .tooltip-content{
+                .forix-global-call(
+                    @_block-name:@forix-field-tooltip-content__name,
+                    @_version:'sm'
+                );
+            }
+            &:hover{
+                .tooltip-content{
+                    .forix-global-call(
+                        @_block-name:@forix-field-tooltip-hover-tooltip-content__name,
+                        @_version:'sm'
+                    );
+                }
+            }
+        }
+        // Fieldset
+        // ===============
+        .fieldset{
+            .forix-global-call(
+                @_block-name:@forix-fieldset__name,
+                @_version:'sm'
+            );
+            *{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-all__name,
+                    @_version:'sm'
+                );
+            }
+            > .legend{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-legend__name,
+                    @_version:'sm'
+                );
+                & + br{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-legend-br__name,
+                        @_version:'sm'
+                    );
+                }
+            }
+            > .field{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field__name,
+                    @_version:'sm'
+                );
+                > .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-label__name,
+                        @_version:'sm'
+                    );
+                }
+                > .label + br{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-label-br__name,
+                        @_version:'sm'
+                    );
+                }
+                > .control{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-control__name,
+                        @_version:'sm'
+                    );
+                }
+            }
+            > .field:not(.choice){
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-not-choice__name,
+                    @_version:'sm'
+                );
+                > .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-not-choice-label__name,
+                        @_version:'sm'
+                    );
+                }
+                > .control{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-not-choice-control__name,
+                        @_version:'sm'
+                    );
+                }
+            }
+            >  .field + .fieldset{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-fieldset__name,
+                    @_version:'sm'
+                );
+                > .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fieldset-field__name,
+                        @_version:'sm'
+                    );
+                }
+                > .field .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fieldset-field-label__name,
+                        @_version:'sm'
+                    );
+                }
+                > .field .label + br{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fieldset-field-label-br__name,
+                        @_version:'sm'
+                    );
+                }
+                > .field .control{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fieldset-field-control__name,
+                        @_version:'sm'
+                    );
+                }
+            }
+            > .field .fields.group{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-fields-group__name,
+                    @_version:'sm'
+                );
+                > .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-field__name,
+                        @_version:'sm'
+                    );
+                }
+                &.group-2 .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-2-field__name,
+                        @_version:'sm'
+                    );
+                }
+                &.group-3 .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-3-field__name,
+                        @_version:'sm'
+                    );
+                }
+                &.group-4 .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-4-field__name,
+                        @_version:'sm'
+                    );
+                }
+                &.group-5 .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-5-field__name,
+                        @_version:'sm'
+                    );
+                }
+            }
+            > .field.no-label{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-no-label__name,
+                    @_version:'sm'
+                );
+                .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-no-label-label__name,
+                        @_version:'sm'
+                    );
+                }
+            }
+            > .field.required{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-required__name,
+                    @_version:'sm'
+                );
+                > .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-required-label__name,
+                        @_version:'sm'
+                    );
+                }
+            }
+            > .field.choice{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-choice__name,
+                    @_version:'sm'
+                );
+                > .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-label__name,
+                        @_version:'sm'
+                    );
+                }
+                > .control{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-control__name,
+                        @_version:'sm'
+                    );
+                }
+            }
+            > .field.note{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-note__name,
+                    @_version:'sm'
+                );
+            }
+            > .field .description{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-description__name,
+                    @_version:'sm'
+                );
+            }
+            > .field .note{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-dot-note__name,
+                    @_version:'sm'
+                );
+            }
+            > .field .addon{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-addon__name,
+                    @_version:'sm'
+                );
+                input,
+                textarea,
+                select{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-addon-input__name,
+                        @_version:'sm'
+                    );
+                }
+                .addbefore,
+                .addafter{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-addon-add__name,
+                        @_version:'sm'
+                    );
+                }
+                .addbefore{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-addon-addbefore__name,
+                        @_version:'sm'
+                    );
+                }
+                .addafter{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-addon-addafter__name,
+                        @_version:'sm'
+                    );
+                }
+            }
+            > .field .additional{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-additional__name,
+                    @_version:'sm'
+                );
+                .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-additional-label__name,
+                        @_version:'sm'
+                    );
+                }
+            }
+            > .field .field.choice{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-field-choice__name,
+                    @_version:'sm'
+                );
+            }
+            > .field.choice{
+                > label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-label__name,
+                        @_version:'sm'
+                    );
+                }
+                input{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-input__name,
+                        @_version:'sm'
+                    );
+                }
+                input[type="checkbox"] + label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-checkbox-label__name,
+                        @_version:'sm'
+                    );
+                }
+                input[type="radio"] + label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-radio-label__name,
+                        @_version:'sm'
+                    );
+                }
+            }
+            > .field input[type=file]{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-input-file__name,
+                    @_version:'sm'
+                );
+            }
+            & + .actions-toolbar{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-actions-toolbar__name,
+                    @_version:'sm'
+                );
+            }
+        }
+        fieldset.field{
+            .forix-global-call(
+                @_block-name:@forix-fieldset-dot-field__name,
+                @_version:'sm'
+            );
+        }
+        .fieldset .fields{
+            .forix-global-call(
+                @_block-name:@forix-fieldset-fields__name,
+                @_version:'sm'
+            );
+            > .field{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-fields-field__name,
+                    @_version:'sm'
+                );
+            }
+            > .actions-toolbar{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-fields-actions-toolbar__name,
+                    @_version:'sm'
+                );
+                .action{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-fields-actions-toolbar-action__name,
+                        @_version:'sm'
+                    );
+                }
+                .action.remove{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-fields-actions-toolbar-action-remove__name,
+                        @_version:'sm'
+                    );
+                }
+            }
+        }
+        input:focus ~ .tooltip .tooltip-content,
+        select:focus ~ .tooltip .tooltip-content{
+            .forix-global-call(
+                @_block-name:@forix-input-focus-tooltip-content__name,
+                @_version:'sm'
+            );
+        }
+        .datetime-picker{
+            .forix-global-call(
+                @_block-name:@forix-hasDatepicker__name,
+                @_version:'sm'
+            );
+        }
+        .datetime-picker + .ui-datepicker-trigger{
+            .forix-global-call(
+                @_block-name:@forix-hasDatepicker-ui-datepicker-trigger__name,
+                @_version:'sm'
+            );
+        }
+        .datetime-picker + .ui-datepicker-trigger span{
+            .forix-global-call(
+                @_block-name:@forix-hasDatepicker-ui-datepicker-trigger-span__name,
+                @_version:'sm'
+            );
+        }
+        .sidebar{
+            .fieldset{
+                .forix-global-call(
+                    @_block-name:@forix-sidebar-fieldset__name,
+                    @_version:'sm'
+                );
+                .field:not(.choice) > ,
+                .fields .field {
+                    .forix-global-call(
+                        @_block-name:@forix-sidebar-fieldset-field__name,
+                        @_version:'sm'
+                    );
+                }
+                .fields .field .label{
+                    .forix-global-call(
+                        @_block-name:@forix-sidebar-fieldset-fields-field-label__name,
+                        @_version:'sm'
+                    );
+                }
+                .fields .field .control{
+                    .forix-global-call(
+                        @_block-name:@forix-sidebar-fieldset-fields-field-control__name,
+                        @_version:'sm'
+                    );
+                }
+            }
+        }
+    }
+}
+
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    & when(@use-form-core__enable= true) {
+        //[input-text|select|textarea]
+        .input-text,
+        input[type="text"],
+        input[type="password"],
+        input[type="url"],
+        input[type="tel"],
+        input[type="search"],
+        input[type="number"],
+        input[type="datetime"],
+        input[type="email"]{
+            .forix-global-call(
+                @_block-name:@forix-input-text__name,
+                @_version:'m'
+            );
+        }
+        input[type="number"]{
+            .forix-global-call(
+                @_block-name:@forix-input-number__name,
+                @_version:'m'
+            );
+        }
+        input[type="search"]{
+            .forix-global-call(
+                @_block-name:@forix-input-search__name,
+                @_version:'m'
+            );
+        }
+        select{
+            .forix-global-call(
+                @_block-name:@forix-select__name,
+                @_version:'m'
+            );
+        }
+        select[multiple="multiple"]{
+            .forix-global-call(
+                @_block-name:@forix-select-multiple__name,
+                @_version:'m'
+            );
+        }
+        textarea,
+        textarea.input-text{
+            .forix-global-call(
+                @_block-name:@forix-textarea__name,
+                @_version:'m'
+            );
+        }
+        input[type="checkbox"]{
+            .forix-global-call(
+                @_block-name:@forix-checkbox__name,
+                @_version:'m'
+            );
+        }
+        input[type="checkbox"] + label{
+            .forix-global-call(
+                @_block-name:@forix-checkout-label__name,
+                @_version:'m'
+            );
+        }
+        input[type="checkbox"]:checked + label{
+            .forix-global-call(
+                @_block-name:@forix-checkout-checked-label__name,
+                @_version:'m'
+            );
+        }
+        input[type="checkbox"]:disabled + label{
+            .forix-global-call(
+                @_block-name:@forix-checkout-disabled-label__name,
+                @_version:'m'
+            );
+        }
+        input[type="checkbox"]:enabled + label{
+            .forix-global-call(
+                @_block-name:@forix-checkout-enabled-label__name,
+                @_version:'m'
+            );
+        }
+        input[type="radio"]:not([name*='ratings']){
+            .forix-global-call(
+                @_block-name:@forix-radio__name,
+                @_version:'m'
+            );
+        }
+        input[type="radio"]:not([name*='ratings']) + label{
+            .forix-global-call(
+                @_block-name:@forix-radio-label__name,
+                @_version:'m'
+            );
+        }
+        input[type="radio"]:not([name*='ratings']):checked + label{
+            .forix-global-call(
+                @_block-name:@forix-radio-checked-label__name,
+                @_version:'m'
+            );
+        }
+        input[type="radio"]:not([name*='ratings']):disabled + label{
+            .forix-global-call(
+                @_block-name:@forix-radio-disabled-label__name,
+                @_version:'m'
+            );
+        }
+        input[type="radio"]:not([name*='ratings']):enabled + label{
+            .forix-global-call(
+                @_block-name:@forix-radio-enabled-label__name,
+                @_version:'m'
+            );
+        }
+
+        // Status When input have message
+        // Format Message show below form
+        // Format form
+        // =====================
+        input,
+        select,
+        textarea{
+            &.mage-error,
+            &.valid{
+                .forix-global-call(
+                    @_block-name:@forix-input-valid__name,
+                    @_version:'m'
+                );
+            }
+            &.mage-error{
+                .forix-global-call(
+                    @_block-name:@forix-input-mage-error__name,
+                    @_version:'m'
+                );
+            }
+        }
+        div.mage-error[generated]{
+            .forix-global-call(
+                @_block-name:@forix-mage-error-generated__name,
+                @_version:'m'
+            );
+        }
+        .form{
+            .forix-global-call(
+                @_block-name:@forix-form__name,
+                @_version:'m'
+            );
+        }
+        // Legend
+        // ===============
+        .legend{
+            .forix-global-call(
+                @_block-name:@forix-legend__name,
+                @_version:'m'
+            );
+            strong{
+                .forix-global-call(
+                    @_block-name:@forix-legend-strong__name,
+                    @_version:'m'
+                );
+            }
+            span{
+                .forix-global-call(
+                    @_block-name:@forix-legend-span__name,
+                    @_version:'m'
+                );
+            }
+            & + .fieldset,
+            & + div{
+                .forix-global-call(
+                    @_block-name:@forix-legend-fieldset__name,
+                    @_version:'m'
+                );
+            }
+        }
+        // Field
+        // ===============
+        .field{
+            &.date{
+                .forix-global-call(
+                    @_block-name:@forix-field-date__name,
+                    @_version:'m'
+                );
+                input{
+                    .forix-global-call(
+                        @_block-name:@forix-field-date-input__name,
+                        @_version:'m'
+                    );
+                }
+                .time-picker{
+                    .forix-global-call(
+                        @_block-name:@forix-field-date-time-picker__name,
+                        @_version:'m'
+                    );
+                }
+            }
+            .message{
+                .forix-global-call(
+                    @_block-name:@forix-field-dot-message__name,
+                    @_version:'m'
+                );
+                &.warning{
+                    .forix-global-call(
+                        @_block-name:@forix-field-message-warning__name,
+                        @_version:'m'
+                    );
+                }
+            }
+            &.sp-methods{
+                .forix-global-call(
+                    @_block-name:@forix-field-sp-methods__name,
+                    @_version:'m'
+                );
+            }
+            &.type{
+                .forix-global-call(
+                    @_block-name:@forix-field-type__name,
+                    @_version:'m'
+                );
+            }
+            &.default{
+                .forix-global-call(
+                    @_block-name:@forix-field-default__name,
+                    @_version:'m'
+                );
+            }
+            &.message{
+                .forix-global-call(
+                    @_block-name:@forix-field-message__name,
+                    @_version:'m'
+                );
+            }
+        }
+        .field .tooltip{
+            .forix-global-call(
+                @_block-name:@forix-field-tooltip__name,
+                @_version:'m'
+            );
+            .tooltip-toggle{
+                .forix-global-call(
+                    @_block-name:@forix-field-tooltip-toggle__name,
+                    @_version:'m'
+                );
+                &:hover,
+                &:focus{
+                    & + .tooltip-content{
+                        .forix-global-call(
+                            @_block-name:@forix-field-tooltip-toggle-hover-tooltip-content__name,
+                            @_version:'m'
+                        );
+                    }
+                }
+            }
+            .tooltip-content{
+                .forix-global-call(
+                    @_block-name:@forix-field-tooltip-content__name,
+                    @_version:'m'
+                );
+            }
+            &:hover{
+                .tooltip-content{
+                    .forix-global-call(
+                        @_block-name:@forix-field-tooltip-hover-tooltip-content__name,
+                        @_version:'m'
+                    );
+                }
+            }
+        }
+        // Fieldset
+        // ===============
+        .fieldset{
+            .forix-global-call(
+                @_block-name:@forix-fieldset__name,
+                @_version:'m'
+            );
+            *{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-all__name,
+                    @_version:'m'
+                );
+            }
+            > .legend{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-legend__name,
+                    @_version:'m'
+                );
+                & + br{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-legend-br__name,
+                        @_version:'m'
+                    );
+                }
+            }
+            > .field{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field__name,
+                    @_version:'m'
+                );
+                > .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-label__name,
+                        @_version:'m'
+                    );
+                }
+                > .label + br{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-label-br__name,
+                        @_version:'m'
+                    );
+                }
+                > .control{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-control__name,
+                        @_version:'m'
+                    );
+                }
+            }
+            > .field:not(.choice){
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-not-choice__name,
+                    @_version:'m'
+                );
+                > .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-not-choice-label__name,
+                        @_version:'m'
+                    );
+                }
+                > .control{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-not-choice-control__name,
+                        @_version:'m'
+                    );
+                }
+            }
+            >  .field + .fieldset{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-fieldset__name,
+                    @_version:'m'
+                );
+                > .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fieldset-field__name,
+                        @_version:'m'
+                    );
+                }
+                > .field .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fieldset-field-label__name,
+                        @_version:'m'
+                    );
+                }
+                > .field .label + br{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fieldset-field-label-br__name,
+                        @_version:'m'
+                    );
+                }
+                > .field .control{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fieldset-field-control__name,
+                        @_version:'m'
+                    );
+                }
+            }
+            > .field .fields.group{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-fields-group__name,
+                    @_version:'m'
+                );
+                > .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-field__name,
+                        @_version:'m'
+                    );
+                }
+                &.group-2 .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-2-field__name,
+                        @_version:'m'
+                    );
+                }
+                &.group-3 .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-3-field__name,
+                        @_version:'m'
+                    );
+                }
+                &.group-4 .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-4-field__name,
+                        @_version:'m'
+                    );
+                }
+                &.group-5 .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-5-field__name,
+                        @_version:'m'
+                    );
+                }
+            }
+            > .field.no-label{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-no-label__name,
+                    @_version:'m'
+                );
+                .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-no-label-label__name,
+                        @_version:'m'
+                    );
+                }
+            }
+            > .field.required{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-required__name,
+                    @_version:'m'
+                );
+                > .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-required-label__name,
+                        @_version:'m'
+                    );
+                }
+            }
+            > .field.choice{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-choice__name,
+                    @_version:'m'
+                );
+                > .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-label__name,
+                        @_version:'m'
+                    );
+                }
+                > .control{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-control__name,
+                        @_version:'m'
+                    );
+                }
+            }
+            > .field.note{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-note__name,
+                    @_version:'m'
+                );
+            }
+            > .field .description{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-description__name,
+                    @_version:'m'
+                );
+            }
+            > .field .note{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-dot-note__name,
+                    @_version:'m'
+                );
+            }
+            > .field .addon{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-addon__name,
+                    @_version:'m'
+                );
+                input,
+                textarea,
+                select{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-addon-input__name,
+                        @_version:'m'
+                    );
+                }
+                .addbefore,
+                .addafter{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-addon-add__name,
+                        @_version:'m'
+                    );
+                }
+                .addbefore{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-addon-addbefore__name,
+                        @_version:'m'
+                    );
+                }
+                .addafter{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-addon-addafter__name,
+                        @_version:'m'
+                    );
+                }
+            }
+            > .field .additional{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-additional__name,
+                    @_version:'m'
+                );
+                .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-additional-label__name,
+                        @_version:'m'
+                    );
+                }
+            }
+            > .field .field.choice{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-field-choice__name,
+                    @_version:'m'
+                );
+            }
+            > .field.choice{
+                > label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-label__name,
+                        @_version:'m'
+                    );
+                }
+                input{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-input__name,
+                        @_version:'m'
+                    );
+                }
+                input[type="checkbox"] + label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-checkbox-label__name,
+                        @_version:'m'
+                    );
+                }
+                input[type="radio"] + label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-radio-label__name,
+                        @_version:'m'
+                    );
+                }
+            }
+            > .field input[type=file]{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-input-file__name,
+                    @_version:'m'
+                );
+            }
+            & + .actions-toolbar{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-actions-toolbar__name,
+                    @_version:'m'
+                );
+            }
+        }
+        fieldset.field{
+            .forix-global-call(
+                @_block-name:@forix-fieldset-dot-field__name,
+                @_version:'m'
+            );
+        }
+        .fieldset .fields{
+            .forix-global-call(
+                @_block-name:@forix-fieldset-fields__name,
+                @_version:'m'
+            );
+            > .field{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-fields-field__name,
+                    @_version:'m'
+                );
+            }
+            > .actions-toolbar{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-fields-actions-toolbar__name,
+                    @_version:'m'
+                );
+                .action{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-fields-actions-toolbar-action__name,
+                        @_version:'m'
+                    );
+                }
+                .action.remove{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-fields-actions-toolbar-action-remove__name,
+                        @_version:'m'
+                    );
+                }
+            }
+        }
+        input:focus ~ .tooltip .tooltip-content,
+        select:focus ~ .tooltip .tooltip-content{
+            .forix-global-call(
+                @_block-name:@forix-input-focus-tooltip-content__name,
+                @_version:'m'
+            );
+        }
+        .datetime-picker{
+            .forix-global-call(
+                @_block-name:@forix-hasDatepicker__name,
+                @_version:'m'
+            );
+        }
+        .datetime-picker + .ui-datepicker-trigger{
+            .forix-global-call(
+                @_block-name:@forix-hasDatepicker-ui-datepicker-trigger__name,
+                @_version:'m'
+            );
+        }
+        .datetime-picker + .ui-datepicker-trigger span{
+            .forix-global-call(
+                @_block-name:@forix-hasDatepicker-ui-datepicker-trigger-span__name,
+                @_version:'m'
+            );
+        }
+        .sidebar{
+            .fieldset{
+                .forix-global-call(
+                    @_block-name:@forix-sidebar-fieldset__name,
+                    @_version:'m'
+                );
+                .field:not(.choice) > ,
+                .fields .field {
+                    .forix-global-call(
+                        @_block-name:@forix-sidebar-fieldset-field__name,
+                        @_version:'m'
+                    );
+                }
+                .fields .field .label{
+                    .forix-global-call(
+                        @_block-name:@forix-sidebar-fieldset-fields-field-label__name,
+                        @_version:'m'
+                    );
+                }
+                .fields .field .control{
+                    .forix-global-call(
+                        @_block-name:@forix-sidebar-fieldset-fields-field-control__name,
+                        @_version:'m'
+                    );
+                }
+            }
+        }
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    & when(@use-form-core__enable= true) {
+        //[input-text|select|textarea]
+        .input-text,
+        input[type="text"],
+        input[type="password"],
+        input[type="url"],
+        input[type="tel"],
+        input[type="search"],
+        input[type="number"],
+        input[type="datetime"],
+        input[type="email"]{
+            .forix-global-call(
+                @_block-name:@forix-input-text__name,
+                @_version:'l'
+            );
+        }
+        input[type="number"]{
+            .forix-global-call(
+                @_block-name:@forix-input-number__name,
+                @_version:'l'
+            );
+        }
+        input[type="search"]{
+            .forix-global-call(
+                @_block-name:@forix-input-search__name,
+                @_version:'l'
+            );
+        }
+        select{
+            .forix-global-call(
+                @_block-name:@forix-select__name,
+                @_version:'l'
+            );
+        }
+        select[multiple="multiple"]{
+            .forix-global-call(
+                @_block-name:@forix-select-multiple__name,
+                @_version:'l'
+            );
+        }
+        textarea,
+        textarea.input-text{
+            .forix-global-call(
+                @_block-name:@forix-textarea__name,
+                @_version:'l'
+            );
+        }
+        input[type="checkbox"]{
+            .forix-global-call(
+                @_block-name:@forix-checkbox__name,
+                @_version:'l'
+            );
+        }
+        input[type="checkbox"] + label{
+            .forix-global-call(
+                @_block-name:@forix-checkout-label__name,
+                @_version:'l'
+            );
+        }
+        input[type="checkbox"]:checked + label{
+            .forix-global-call(
+                @_block-name:@forix-checkout-checked-label__name,
+                @_version:'l'
+            );
+        }
+        input[type="checkbox"]:disabled + label{
+            .forix-global-call(
+                @_block-name:@forix-checkout-disabled-label__name,
+                @_version:'l'
+            );
+        }
+        input[type="checkbox"]:enabled + label{
+            .forix-global-call(
+                @_block-name:@forix-checkout-enabled-label__name,
+                @_version:'l'
+            );
+        }
+        input[type="radio"]:not([name*='ratings']){
+            .forix-global-call(
+                @_block-name:@forix-radio__name,
+                @_version:'l'
+            );
+        }
+        input[type="radio"]:not([name*='ratings']) + label{
+            .forix-global-call(
+                @_block-name:@forix-radio-label__name,
+                @_version:'l'
+            );
+        }
+        input[type="radio"]:not([name*='ratings']):checked + label{
+            .forix-global-call(
+                @_block-name:@forix-radio-checked-label__name,
+                @_version:'l'
+            );
+        }
+        input[type="radio"]:not([name*='ratings']):disabled + label{
+            .forix-global-call(
+                @_block-name:@forix-radio-disabled-label__name,
+                @_version:'l'
+            );
+        }
+        input[type="radio"]:not([name*='ratings']):enabled + label{
+            .forix-global-call(
+                @_block-name:@forix-radio-enabled-label__name,
+                @_version:'l'
+            );
+        }
+
+        // Status When input have message
+        // Format Message show below form
+        // Format form
+        // =====================
+        input,
+        select,
+        textarea{
+            &.mage-error,
+            &.valid{
+                .forix-global-call(
+                    @_block-name:@forix-input-valid__name,
+                    @_version:'l'
+                );
+            }
+            &.mage-error{
+                .forix-global-call(
+                    @_block-name:@forix-input-mage-error__name,
+                    @_version:'l'
+                );
+            }
+        }
+        div.mage-error[generated]{
+            .forix-global-call(
+                @_block-name:@forix-mage-error-generated__name,
+                @_version:'l'
+            );
+        }
+        .form{
+            .forix-global-call(
+                @_block-name:@forix-form__name,
+                @_version:'l'
+            );
+        }
+        // Legend
+        // ===============
+        .legend{
+            .forix-global-call(
+                @_block-name:@forix-legend__name,
+                @_version:'l'
+            );
+            strong{
+                .forix-global-call(
+                    @_block-name:@forix-legend-strong__name,
+                    @_version:'l'
+                );
+            }
+            span{
+                .forix-global-call(
+                    @_block-name:@forix-legend-span__name,
+                    @_version:'l'
+                );
+            }
+            & + .fieldset,
+            & + div{
+                .forix-global-call(
+                    @_block-name:@forix-legend-fieldset__name,
+                    @_version:'l'
+                );
+            }
+        }
+        // Field
+        // ===============
+        .field{
+            &.date{
+                .forix-global-call(
+                    @_block-name:@forix-field-date__name,
+                    @_version:'l'
+                );
+                input{
+                    .forix-global-call(
+                        @_block-name:@forix-field-date-input__name,
+                        @_version:'l'
+                    );
+                }
+                .time-picker{
+                    .forix-global-call(
+                        @_block-name:@forix-field-date-time-picker__name,
+                        @_version:'l'
+                    );
+                }
+            }
+            .message{
+                .forix-global-call(
+                    @_block-name:@forix-field-dot-message__name,
+                    @_version:'l'
+                );
+                &.warning{
+                    .forix-global-call(
+                        @_block-name:@forix-field-message-warning__name,
+                        @_version:'l'
+                    );
+                }
+            }
+            &.sp-methods{
+                .forix-global-call(
+                    @_block-name:@forix-field-sp-methods__name,
+                    @_version:'l'
+                );
+            }
+            &.type{
+                .forix-global-call(
+                    @_block-name:@forix-field-type__name,
+                    @_version:'l'
+                );
+            }
+            &.default{
+                .forix-global-call(
+                    @_block-name:@forix-field-default__name,
+                    @_version:'l'
+                );
+            }
+            &.message{
+                .forix-global-call(
+                    @_block-name:@forix-field-message__name,
+                    @_version:'l'
+                );
+            }
+        }
+        .field .tooltip{
+            .forix-global-call(
+                @_block-name:@forix-field-tooltip__name,
+                @_version:'l'
+            );
+            .tooltip-toggle{
+                .forix-global-call(
+                    @_block-name:@forix-field-tooltip-toggle__name,
+                    @_version:'l'
+                );
+                &:hover,
+                &:focus{
+                    & + .tooltip-content{
+                        .forix-global-call(
+                            @_block-name:@forix-field-tooltip-toggle-hover-tooltip-content__name,
+                            @_version:'l'
+                        );
+                    }
+                }
+            }
+            .tooltip-content{
+                .forix-global-call(
+                    @_block-name:@forix-field-tooltip-content__name,
+                    @_version:'l'
+                );
+            }
+            &:hover{
+                .tooltip-content{
+                    .forix-global-call(
+                        @_block-name:@forix-field-tooltip-hover-tooltip-content__name,
+                        @_version:'l'
+                    );
+                }
+            }
+        }
+        // Fieldset
+        // ===============
+        .fieldset{
+            .forix-global-call(
+                @_block-name:@forix-fieldset__name,
+                @_version:'l'
+            );
+            *{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-all__name,
+                    @_version:'l'
+                );
+            }
+            > .legend{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-legend__name,
+                    @_version:'l'
+                );
+                & + br{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-legend-br__name,
+                        @_version:'l'
+                    );
+                }
+            }
+            > .field{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field__name,
+                    @_version:'l'
+                );
+                > .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-label__name,
+                        @_version:'l'
+                    );
+                }
+                > .label + br{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-label-br__name,
+                        @_version:'l'
+                    );
+                }
+                > .control{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-control__name,
+                        @_version:'l'
+                    );
+                }
+            }
+            > .field:not(.choice){
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-not-choice__name,
+                    @_version:'l'
+                );
+                > .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-not-choice-label__name,
+                        @_version:'l'
+                    );
+                }
+                > .control{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-not-choice-control__name,
+                        @_version:'l'
+                    );
+                }
+            }
+            >  .field + .fieldset{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-fieldset__name,
+                    @_version:'l'
+                );
+                > .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fieldset-field__name,
+                        @_version:'l'
+                    );
+                }
+                > .field .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fieldset-field-label__name,
+                        @_version:'l'
+                    );
+                }
+                > .field .label + br{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fieldset-field-label-br__name,
+                        @_version:'l'
+                    );
+                }
+                > .field .control{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fieldset-field-control__name,
+                        @_version:'l'
+                    );
+                }
+            }
+            > .field .fields.group{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-fields-group__name,
+                    @_version:'l'
+                );
+                > .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-field__name,
+                        @_version:'l'
+                    );
+                }
+                &.group-2 .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-2-field__name,
+                        @_version:'l'
+                    );
+                }
+                &.group-3 .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-3-field__name,
+                        @_version:'l'
+                    );
+                }
+                &.group-4 .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-4-field__name,
+                        @_version:'l'
+                    );
+                }
+                &.group-5 .field{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-fields-group-5-field__name,
+                        @_version:'l'
+                    );
+                }
+            }
+            > .field.no-label{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-no-label__name,
+                    @_version:'l'
+                );
+                .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-no-label-label__name,
+                        @_version:'l'
+                    );
+                }
+            }
+            > .field.required{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-required__name,
+                    @_version:'l'
+                );
+                > .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-required-label__name,
+                        @_version:'l'
+                    );
+                }
+            }
+            > .field.choice{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-choice__name,
+                    @_version:'l'
+                );
+                > .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-label__name,
+                        @_version:'l'
+                    );
+                }
+                > .control{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-control__name,
+                        @_version:'l'
+                    );
+                }
+            }
+            > .field.note{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-note__name,
+                    @_version:'l'
+                );
+            }
+            > .field .description{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-description__name,
+                    @_version:'l'
+                );
+            }
+            > .field .note{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-dot-note__name,
+                    @_version:'l'
+                );
+            }
+            > .field .addon{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-addon__name,
+                    @_version:'l'
+                );
+                input,
+                textarea,
+                select{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-addon-input__name,
+                        @_version:'l'
+                    );
+                }
+                .addbefore,
+                .addafter{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-addon-add__name,
+                        @_version:'l'
+                    );
+                }
+                .addbefore{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-addon-addbefore__name,
+                        @_version:'l'
+                    );
+                }
+                .addafter{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-addon-addafter__name,
+                        @_version:'l'
+                    );
+                }
+            }
+            > .field .additional{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-additional__name,
+                    @_version:'l'
+                );
+                .label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-additional-label__name,
+                        @_version:'l'
+                    );
+                }
+            }
+            > .field .field.choice{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-field-choice__name,
+                    @_version:'l'
+                );
+            }
+            > .field.choice{
+                > label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-label__name,
+                        @_version:'l'
+                    );
+                }
+                input{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-input__name,
+                        @_version:'l'
+                    );
+                }
+                input[type="checkbox"] + label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-checkbox-label__name,
+                        @_version:'l'
+                    );
+                }
+                input[type="radio"] + label{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-field-choice-radio-label__name,
+                        @_version:'l'
+                    );
+                }
+            }
+            > .field input[type=file]{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-field-input-file__name,
+                    @_version:'l'
+                );
+            }
+            & + .actions-toolbar{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-actions-toolbar__name,
+                    @_version:'l'
+                );
+            }
+        }
+        fieldset.field{
+            .forix-global-call(
+                @_block-name:@forix-fieldset-dot-field__name,
+                @_version:'l'
+            );
+        }
+        .fieldset .fields{
+            .forix-global-call(
+                @_block-name:@forix-fieldset-fields__name,
+                @_version:'l'
+            );
+            > .field{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-fields-field__name,
+                    @_version:'l'
+                );
+            }
+            > .actions-toolbar{
+                .forix-global-call(
+                    @_block-name:@forix-fieldset-fields-actions-toolbar__name,
+                    @_version:'l'
+                );
+                .action{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-fields-actions-toolbar-action__name,
+                        @_version:'l'
+                    );
+                }
+                .action.remove{
+                    .forix-global-call(
+                        @_block-name:@forix-fieldset-fields-actions-toolbar-action-remove__name,
+                        @_version:'l'
+                    );
+                }
+            }
+        }
+        input:focus ~ .tooltip .tooltip-content,
+        select:focus ~ .tooltip .tooltip-content{
+            .forix-global-call(
+                @_block-name:@forix-input-focus-tooltip-content__name,
+                @_version:'l'
+            );
+        }
+        .datetime-picker{
+            .forix-global-call(
+                @_block-name:@forix-hasDatepicker__name,
+                @_version:'l'
+            );
+        }
+        .datetime-picker + .ui-datepicker-trigger{
+            .forix-global-call(
+                @_block-name:@forix-hasDatepicker-ui-datepicker-trigger__name,
+                @_version:'l'
+            );
+        }
+        .datetime-picker + .ui-datepicker-trigger span{
+            .forix-global-call(
+                @_block-name:@forix-hasDatepicker-ui-datepicker-trigger-span__name,
+                @_version:'l'
+            );
+        }
+        .sidebar{
+            .fieldset{
+                .forix-global-call(
+                    @_block-name:@forix-sidebar-fieldset__name,
+                    @_version:'l'
+                );
+                .field:not(.choice) > ,
+                .fields .field {
+                    .forix-global-call(
+                        @_block-name:@forix-sidebar-fieldset-field__name,
+                        @_version:'l'
+                    );
+                }
+                .fields .field .label{
+                    .forix-global-call(
+                        @_block-name:@forix-sidebar-fieldset-fields-field-label__name,
+                        @_version:'l'
+                    );
+                }
+                .fields .field .control{
+                    .forix-global-call(
+                        @_block-name:@forix-sidebar-fieldset-fields-field-control__name,
+                        @_version:'l'
+                    );
+                }
+            }
+        }
+    }
+}

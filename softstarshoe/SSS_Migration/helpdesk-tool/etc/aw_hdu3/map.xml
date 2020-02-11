@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="../../map.xsd">
+    <source>
+        <document_rules>
+            <rename>
+                <document>aw_hdu3_department</document>
+                <to>aw_helpdesk_department</to>
+            </rename>
+            <rename>
+                <document>aw_hdu3_gateway</document>
+                <to>aw_helpdesk_department_gateway</to>
+            </rename>
+            <rename>
+                <document>aw_hdu3_ticket</document>
+                <to>aw_helpdesk_ticket</to>
+            </rename>
+            <rename>
+                <document>aw_hdu3_ticket_message</document>
+                <to>aw_helpdesk_ticket_message</to>
+            </rename>
+            <rename>
+                <document>aw_hdu3_ticket_history_attachment</document>
+                <to>aw_helpdesk_attachment</to>
+            </rename>
+        </document_rules>
+        <field_rules>
+            <move>
+                <field>aw_hdu3_department.title</field>
+                <to>aw_helpdesk_department.name</to>
+            </move>
+            <move>
+                <field>aw_hdu3_department.status</field>
+                <to>aw_helpdesk_department.is_enabled</to>
+            </move>
+            <move>
+                <field>aw_hdu3_department.store_ids</field>
+                <to>aw_helpdesk_department.is_visible</to>
+            </move>
+            <move>
+                <field>aw_hdu3_gateway.is_active</field>
+                <to>aw_helpdesk_department_gateway.is_enabled</to>
+            </move>
+            <transform>
+                <field>aw_hdu3_gateway.protocol</field>
+                <handler class="\Migration\Handler\Convert">
+                    <param name="map" value="[1:POP3;2:IMAP]" />
+                    <param name="defaultValue" value="POP3" />
+                </handler>
+            </transform>
+            <transform>
+                <field>aw_hdu3_gateway.password</field>
+                <handler class="\Migration\Handler\Convert">
+                    <param name="map" value="[0:0]" />
+                    <param name="defaultValue" value=" " />
+                </handler>
+            </transform>
+            <transform>
+                <field>aw_hdu3_gateway.secure_type</field>
+                <handler class="\Migration\Handler\Convert">
+                    <param name="map" value="[0:0;1:SSL;2:TLS]" />
+                    <param name="defaultValue" value="0" />
+                </handler>
+            </transform>
+            <move>
+                <field>aw_hdu3_gateway.delete_emails</field>
+                <to>aw_helpdesk_department_gateway.is_delete_parsed</to>
+            </move>
+            <transform>
+                <field>aw_hdu3_ticket.status</field>
+                <handler class="\Migration\Handler\Convert">
+                    <param name="map" value="[1:open;2:open;3:solved;4:pending]" />
+                    <param name="defaultValue" value="solved" />
+                </handler>
+            </transform>
+            <transform>
+                <field>aw_hdu3_ticket.priority</field>
+                <handler class="\Migration\Handler\Convert">
+                    <param name="map" value="[1:high;2:high;3:normal;4:low]" />
+                    <param name="defaultValue" value="normal" />
+                </handler>
+            </transform>
+            <move>
+                <field>aw_hdu3_ticket.department_agent_id</field>
+                <to>aw_helpdesk_ticket.agent_id</to>
+            </move>
+            <move>
+                <field>aw_hdu3_ticket.order_increment_id</field>
+                <to>aw_helpdesk_ticket.order_id</to>
+            </move>
+            <move>
+                <field>aw_hdu3_ticket_message.history_id</field>
+                <to>aw_helpdesk_ticket_message.type</to>
+            </move>
+            <move>
+                <field>aw_hdu3_ticket_history_attachment.ticket_history_id</field>
+                <to>aw_helpdesk_attachment.message_id</to>
+            </move>
+            <move>
+                <field>aw_hdu3_ticket_history_attachment.file_real_name</field>
+                <to>aw_helpdesk_attachment.name</to>
+            </move>
+            <move>
+                <field>aw_hdu3_ticket_history_attachment.file_real_name</field>
+                <to>aw_helpdesk_attachment.name</to>
+            </move>
+            <move>
+                <field>aw_hdu3_ticket_history_attachment.file_name</field>
+                <to>aw_helpdesk_attachment.content</to>
+            </move>
+        </field_rules>
+    </source>
+    <destination>
+        <field_rules>
+            <transform>
+                <field>aw_helpdesk_ticket.store_id</field>
+                <handler class="\Migration\Handler\SetValue">
+                    <param name="value" value="1" />
+                </handler>
+            </transform>
+            <transform>
+                <field>aw_helpdesk_ticket.agent_id</field>
+                <handler class="\Migration\Handler\AheadworksHelpdesk\Agent"/>
+            </transform>
+            <transform>
+                <field>aw_helpdesk_ticket.customer_email</field>
+                <handler class="\Migration\Handler\AheadworksHelpdesk\Customer"/>
+            </transform>
+            <transform>
+                <field>aw_helpdesk_ticket.store_id</field>
+                <handler class="\Migration\Handler\AheadworksHelpdesk\Store"/>
+            </transform>
+            <transform>
+                <field>aw_helpdesk_ticket.order_id</field>
+                <handler class="\Migration\Handler\AheadworksHelpdesk\Order"/>
+            </transform>
+            <transform>
+                <field>aw_helpdesk_ticket_message.content</field>
+                <handler class="\Migration\Handler\AheadworksHelpdesk\MessageContent"/>
+            </transform>
+            <transform>
+                <field>aw_helpdesk_ticket_message.type</field>
+                <handler class="\Migration\Handler\AheadworksHelpdesk\MessageAuthor"/>
+            </transform>
+            <transform>
+                <field>aw_helpdesk_attachment.message_id</field>
+                <handler class="\Migration\Handler\AheadworksHelpdesk\MessageAttachment"/>
+            </transform>
+        </field_rules>
+    </destination>
+</map>

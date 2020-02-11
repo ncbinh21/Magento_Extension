@@ -1,0 +1,74 @@
+@use-calendar-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true) {
+    .ui-datepicker {
+        .ui-datepicker-calendar td {
+            padding: 0;
+            text-align: center;
+
+            a {
+                display: block;
+                text-align: center;
+            }
+        }
+
+        .ui-datepicker-buttonpane {
+            border-top: 0;
+        }
+    }
+}
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .ui-datepicker {
+        margin: 0 -1px;
+        border: @forix-border__base;
+        padding: @forix-indent__xs;
+
+        .ui-datepicker-buttonpane button {
+            margin: @forix-indent__xs 0 @forix-indent__s;
+        }
+
+        .ui-datepicker-calendar td {
+            min-width: 37px;
+
+            a {
+                padding: 0;
+            }
+        }
+
+        .ui-datepicker-prev,
+        .ui-datepicker-next {
+            top: 9px;
+        }
+    }
+}
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .ui-datepicker {
+        .ui-datepicker-calendar td {
+            min-width: 35px;
+
+            a {
+                padding: @forix-indent__xs;
+            }
+        }
+
+        .ui-datepicker-prev,
+        .ui-datepicker-next {
+            top: 10px;
+        }
+    }
+
+}

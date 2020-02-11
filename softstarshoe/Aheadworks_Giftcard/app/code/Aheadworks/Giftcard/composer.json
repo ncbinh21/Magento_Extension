@@ -1,0 +1,32 @@
+{
+    "name": "aheadworks/module-giftcard",
+    "description": "N/A",
+    "type": "magento2-module",
+    "version": "1.2.3",
+    "license": [
+        "proprietary"
+    ],
+    "require": {
+        "magento/module-backend": ">100.0",
+        "magento/module-eav": ">100.0",
+        "magento/module-config": ">100.0",
+        "magento/module-ui": ">100.0",
+        "magento/module-directory": ">100.0",
+        "magento/module-store": ">100.0",
+        "magento/module-catalog": ">100.0",
+        "magento/module-sales": ">100.0",
+        "magento/module-tax": ">100.0",
+        "magento/module-quote": ">100.0",
+        "magento/module-checkout": ">100.0",
+        "magento/module-customer": ">100.0",
+        "magento/framework": ">100.0"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Aheadworks\\Giftcard\\": ""
+        }
+    }
+}

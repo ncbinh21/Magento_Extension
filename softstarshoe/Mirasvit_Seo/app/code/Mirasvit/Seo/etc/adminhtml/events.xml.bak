@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../lib/internal/Magento/Framework/Event/etc/events.xsd">
+    <event name="cms_page_prepare_save">
+        <observer name="seo_cms_save_page" instance="\Mirasvit\Seo\Model\System\Cms\Observer" method="savePage"/>
+    </event>
+    <event name="adminhtml_cms_page_edit_tab_main_prepare_form">
+        <observer name="seo_cms_prepare_form" instance="\Mirasvit\Seo\Model\System\Cms\Observer" method="prepareForm"/>
+    </event>
+    <event name="controller_action_predispatch_adminhtml_system_config_save">
+        <observer name="m_seo" instance="\Mirasvit\Seo\Model\Config\Observer" method="hreflangLocaleCodeInfo"/>
+        <observer name="m_seo_max_length" instance="\Mirasvit\Seo\Model\Config\Observer" method="maxLengthInfo"/>
+    </event>
+</config>

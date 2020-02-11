@@ -1,0 +1,959 @@
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.messages{
+    &:extend(.forix-abs-clearfix all);
+}
+
+// ------------------------------------
+// Core
+// ------------------------------------
+//// common
+& when (@media-common = true){
+    & when(@use-messages-core__enable= true) {
+        .messages{
+            .forix-global-call(
+                @_block-name: @forix-messages__name,
+                @_version: false
+            );
+        }
+        .message{
+            .forix-global-call(
+                @_block-name: @forix-message__name,
+                @_version: false
+            );
+            > div{
+                .forix-global-call(
+                    @_block-name: @forix-message-div__name,
+                    @_version: false
+                );
+            }
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-p__name,
+                    @_version: false
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-a__name,
+                    @_version: false
+                );
+            }
+        }
+        .message.info{
+            .forix-global-call(
+                @_block-name: @forix-message-info__name,
+                @_version: false
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-info-p__name,
+                    @_version: false
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-info-a__name,
+                    @_version: false
+                );
+            }
+        }
+        .message.error{
+            .forix-global-call(
+                @_block-name: @forix-message-error__name,
+                @_version: false
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-error-p__name,
+                    @_version: false
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-error-a__name,
+                    @_version: false
+                );
+            }
+        }
+        .message.warning{
+            .forix-global-call(
+                @_block-name: @forix-message-warning__name,
+                @_version: false
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-warning-p__name,
+                    @_version: false
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-warning-a__name,
+                    @_version: false
+                );
+            }
+        }
+        .message.notice{
+            .forix-global-call(
+                @_block-name: @forix-message-notice__name,
+                @_version: false
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-notice-p__name,
+                    @_version: false
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-notice-a__name,
+                    @_version: false
+                );
+            }
+        }
+        .message.success{
+            .forix-global-call(
+                @_block-name: @forix-message-success__name,
+                @_version: false
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-success-p__name,
+                    @_version: false
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-success-a__name,
+                    @_version: false
+                );
+            }
+        }
+        .message.empty{
+            .forix-global-call(
+                @_block-name: @forix-message-empty__name,
+                @_version: false
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-empty-p__name,
+                    @_version: false
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-empty-a__name,
+                    @_version: false
+                );
+            }
+        }
+
+        .page.messages{
+            .forix-global-call(
+                @_block-name: @forix-message-page-messages__name,
+                @_version: false
+            );
+            
+            > div{
+                .forix-global-call(
+                    @_block-name: @forix-message-page-messages-div__name,
+                    @_version: false
+                );
+            }
+        }
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    & when(@use-messages-core__enable= true) {
+        .messages{
+            .forix-global-call(
+                @_block-name: @forix-messages__name,
+                @_version: ''
+            );
+        }
+        .message{
+            .forix-global-call(
+                @_block-name: @forix-message__name,
+                @_version: ''
+            );
+            > div{
+                .forix-global-call(
+                    @_block-name: @forix-message-div__name,
+                    @_version: ''
+                );
+            }
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-p__name,
+                    @_version: ''
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-a__name,
+                    @_version: ''
+                );
+            }
+        }
+        .message.info{
+            .forix-global-call(
+                @_block-name: @forix-message-info__name,
+                @_version: ''
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-info-p__name,
+                    @_version: ''
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-info-a__name,
+                    @_version: ''
+                );
+            }
+        }
+        .message.error{
+            .forix-global-call(
+                @_block-name: @forix-message-error__name,
+                @_version: ''
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-error-p__name,
+                    @_version: ''
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-error-a__name,
+                    @_version: ''
+                );
+            }
+        }
+        .message.warning{
+            .forix-global-call(
+                @_block-name: @forix-message-warning__name,
+                @_version: ''
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-warning-p__name,
+                    @_version: ''
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-warning-a__name,
+                    @_version: ''
+                );
+            }
+        }
+        .message.notice{
+            .forix-global-call(
+                @_block-name: @forix-message-notice__name,
+                @_version: ''
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-notice-p__name,
+                    @_version: ''
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-notice-a__name,
+                    @_version: ''
+                );
+            }
+        }
+        .message.success{
+            .forix-global-call(
+                @_block-name: @forix-message-success__name,
+                @_version: ''
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-success-p__name,
+                    @_version: ''
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-success-a__name,
+                    @_version: ''
+                );
+            }
+        }
+        .message.empty{
+            .forix-global-call(
+                @_block-name: @forix-message-empty__name,
+                @_version: ''
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-empty-p__name,
+                    @_version: ''
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-empty-a__name,
+                    @_version: ''
+                );
+            }
+        }
+
+        .page.messages{
+            .forix-global-call(
+                @_block-name: @forix-message-page-messages__name,
+                @_version: ''
+            );
+
+            > div{
+                .forix-global-call(
+                    @_block-name: @forix-message-page-messages-div__name,
+                    @_version: ''
+                );
+            }
+        }
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    & when(@use-messages-core__enable= true) {
+        .messages{
+            .forix-global-call(
+                @_block-name: @forix-messages__name,
+                @_version: 'ml'
+            );
+        }
+        .message{
+            .forix-global-call(
+                @_block-name: @forix-message__name,
+                @_version: 'ml'
+            );
+            > div{
+                .forix-global-call(
+                    @_block-name: @forix-message-div__name,
+                    @_version: 'ml'
+                );
+            }
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-p__name,
+                    @_version: 'ml'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-a__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        .message.info{
+            .forix-global-call(
+                @_block-name: @forix-message-info__name,
+                @_version: 'ml'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-info-p__name,
+                    @_version: 'ml'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-info-a__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        .message.error{
+            .forix-global-call(
+                @_block-name: @forix-message-error__name,
+                @_version: 'ml'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-error-p__name,
+                    @_version: 'ml'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-error-a__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        .message.warning{
+            .forix-global-call(
+                @_block-name: @forix-message-warning__name,
+                @_version: 'ml'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-warning-p__name,
+                    @_version: 'ml'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-warning-a__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        .message.notice{
+            .forix-global-call(
+                @_block-name: @forix-message-notice__name,
+                @_version: 'ml'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-notice-p__name,
+                    @_version: 'ml'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-notice-a__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        .message.success{
+            .forix-global-call(
+                @_block-name: @forix-message-success__name,
+                @_version: 'ml'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-success-p__name,
+                    @_version: 'ml'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-success-a__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        .message.empty{
+            .forix-global-call(
+                @_block-name: @forix-message-empty__name,
+                @_version: 'ml'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-empty-p__name,
+                    @_version: 'ml'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-empty-a__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+
+        .page.messages{
+            .forix-global-call(
+                @_block-name: @forix-message-page-messages__name,
+                @_version: 'ml'
+            );
+
+            > div{
+                .forix-global-call(
+                    @_block-name: @forix-message-page-messages-div__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+    }
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    & when(@use-messages-core__enable= true) {
+        .messages{
+            .forix-global-call(
+                @_block-name: @forix-messages__name,
+                @_version: 'sm'
+            );
+        }
+        .message{
+            .forix-global-call(
+                @_block-name: @forix-message__name,
+                @_version: 'sm'
+            );
+            > div{
+                .forix-global-call(
+                    @_block-name: @forix-message-div__name,
+                    @_version: 'sm'
+                );
+            }
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-p__name,
+                    @_version: 'sm'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-a__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        .message.info{
+            .forix-global-call(
+                @_block-name: @forix-message-info__name,
+                @_version: 'sm'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-info-p__name,
+                    @_version: 'sm'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-info-a__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        .message.error{
+            .forix-global-call(
+                @_block-name: @forix-message-error__name,
+                @_version: 'sm'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-error-p__name,
+                    @_version: 'sm'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-error-a__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        .message.warning{
+            .forix-global-call(
+                @_block-name: @forix-message-warning__name,
+                @_version: 'sm'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-warning-p__name,
+                    @_version: 'sm'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-warning-a__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        .message.notice{
+            .forix-global-call(
+                @_block-name: @forix-message-notice__name,
+                @_version: 'sm'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-notice-p__name,
+                    @_version: 'sm'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-notice-a__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        .message.success{
+            .forix-global-call(
+                @_block-name: @forix-message-success__name,
+                @_version: 'sm'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-success-p__name,
+                    @_version: 'sm'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-success-a__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        .message.empty{
+            .forix-global-call(
+                @_block-name: @forix-message-empty__name,
+                @_version: 'sm'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-empty-p__name,
+                    @_version: 'sm'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-empty-a__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+
+        .page.messages{
+            .forix-global-call(
+                @_block-name: @forix-message-page-messages__name,
+                @_version: 'sm'
+            );
+
+            > div{
+                .forix-global-call(
+                    @_block-name: @forix-message-page-messages-div__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+    }
+}
+
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    & when(@use-messages-core__enable= true) {
+        .messages{
+            .forix-global-call(
+                @_block-name: @forix-messages__name,
+                @_version: 'm'
+            );
+        }
+        .message{
+            .forix-global-call(
+                @_block-name: @forix-message__name,
+                @_version: 'm'
+            );
+            > div{
+                .forix-global-call(
+                    @_block-name: @forix-message-div__name,
+                    @_version: 'm'
+                );
+            }
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-p__name,
+                    @_version: 'm'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-a__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        .message.info{
+            .forix-global-call(
+                @_block-name: @forix-message-info__name,
+                @_version: 'm'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-info-p__name,
+                    @_version: 'm'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-info-a__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        .message.error{
+            .forix-global-call(
+                @_block-name: @forix-message-error__name,
+                @_version: 'm'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-error-p__name,
+                    @_version: 'm'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-error-a__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        .message.warning{
+            .forix-global-call(
+                @_block-name: @forix-message-warning__name,
+                @_version: 'm'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-warning-p__name,
+                    @_version: 'm'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-warning-a__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        .message.notice{
+            .forix-global-call(
+                @_block-name: @forix-message-notice__name,
+                @_version: 'm'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-notice-p__name,
+                    @_version: 'm'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-notice-a__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        .message.success{
+            .forix-global-call(
+                @_block-name: @forix-message-success__name,
+                @_version: 'm'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-success-p__name,
+                    @_version: 'm'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-success-a__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        .message.empty{
+            .forix-global-call(
+                @_block-name: @forix-message-empty__name,
+                @_version: 'm'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-empty-p__name,
+                    @_version: 'm'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-empty-a__name,
+                    @_version: 'm'
+                );
+            }
+        }
+
+        .page.messages{
+            .forix-global-call(
+                @_block-name: @forix-message-page-messages__name,
+                @_version: 'm'
+            );
+
+            > div{
+                .forix-global-call(
+                    @_block-name: @forix-message-page-messages-div__name,
+                    @_version: 'm'
+                );
+            }
+        }
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    & when(@use-messages-core__enable= true) {
+        .messages{
+            .forix-global-call(
+                @_block-name: @forix-messages__name,
+                @_version: 'l'
+            );
+        }
+        .message{
+            .forix-global-call(
+                @_block-name: @forix-message__name,
+                @_version: 'l'
+            );
+            > div{
+                .forix-global-call(
+                    @_block-name: @forix-message-div__name,
+                    @_version: 'l'
+                );
+            }
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-p__name,
+                    @_version: 'l'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-a__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        .message.info{
+            .forix-global-call(
+                @_block-name: @forix-message-info__name,
+                @_version: 'l'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-info-p__name,
+                    @_version: 'l'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-info-a__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        .message.error{
+            .forix-global-call(
+                @_block-name: @forix-message-error__name,
+                @_version: 'l'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-error-p__name,
+                    @_version: 'l'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-error-a__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        .message.warning{
+            .forix-global-call(
+                @_block-name: @forix-message-warning__name,
+                @_version: 'l'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-warning-p__name,
+                    @_version: 'l'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-warning-a__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        .message.notice{
+            .forix-global-call(
+                @_block-name: @forix-message-notice__name,
+                @_version: 'l'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-notice-p__name,
+                    @_version: 'l'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-notice-a__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        .message.success{
+            .forix-global-call(
+                @_block-name: @forix-message-success__name,
+                @_version: 'l'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-success-p__name,
+                    @_version: 'l'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-success-a__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        .message.empty{
+            .forix-global-call(
+                @_block-name: @forix-message-empty__name,
+                @_version: 'l'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-message-empty-p__name,
+                    @_version: 'l'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-message-empty-a__name,
+                    @_version: 'l'
+                );
+            }
+        }
+
+        .page.messages{
+            .forix-global-call(
+                @_block-name: @forix-message-page-messages__name,
+                @_version: 'l'
+            );
+
+            > div{
+                .forix-global-call(
+                    @_block-name: @forix-message-page-messages-div__name,
+                    @_version: 'l'
+                );
+            }
+        }
+    }
+}
+
+// Start custom CSS

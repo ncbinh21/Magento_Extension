@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Store/etc/config.xsd">
+    <default>
+        <shipstation_general>
+            <shipstation>
+            	<export_price>0</export_price>
+                <import_discounts>1</import_discounts>
+                <import_child_products>1</import_child_products>
+            </shipstation>
+        </shipstation_general>
+    </default>
+</config>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="controller_action_predispatch_customer_account_loginPost">
+        <observer name="captcha_login" instance="Forix\ReCaptcha\Observer\CheckUserLoginObserver" />
+    </event>
+    <event name="controller_action_predispatch_customer_account_createpost">
+        <observer name="captcha_createpost" instance="Forix\ReCaptcha\Observer\CheckUserCreateObserver" />
+    </event>
+    <event name="controller_action_predispatch_review_product_post">
+        <observer name="captcha_product_review" instance="Forix\ReCaptcha\Observer\CheckProductReviewObserver" />
+    </event>
+    <event name="controller_action_predispatch_customer_account_forgotpasswordpost">
+        <observer name="captcha_forgotpasswordpost" instance="Forix\ReCaptcha\Observer\CheckForgotpasswordObserver"/>
+    </event>
+    <event name="controller_action_predispatch_sendfriend_product_sendmail">
+        <observer name="captcha_sendfriend" instance="Forix\ReCaptcha\Observer\CheckSendFriendObserver"/>
+    </event>
+    <event name="controller_action_predispatch_contact_index_post">
+        <observer name="captcha_contactpost" instance="Forix\ReCaptcha\Observer\ContactPostObserver"/>
+    </event>
+</config>

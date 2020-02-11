@@ -1,0 +1,25 @@
+@use-module-salesrule-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.opc-wrapper .form-discount{
+    &:extend(.forix-abs-discount-block-form all);
+}
+.opc-wrapper .form-discount .field .label{
+    &:extend(.forix-abs-visually-hidden all);
+}
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .opc-wrapper .form-discount{
+        max-width: 100%;
+    }
+}

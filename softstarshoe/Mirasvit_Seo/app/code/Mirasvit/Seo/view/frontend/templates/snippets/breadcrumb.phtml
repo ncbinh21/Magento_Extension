@@ -1,0 +1,12 @@
+<?php if ($breadcrumbSnippets = $this->getBreadcrumbSnippets()): ?>
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement":
+        [
+            <?= $breadcrumbSnippets; ?>
+        ]
+    }
+    </script>
+<?php endif; ?>

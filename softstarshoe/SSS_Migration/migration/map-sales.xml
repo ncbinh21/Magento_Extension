@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<map xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="../map.xsd">
+    <source>
+        <document_rules>
+            <ignore>
+                <document>quote</document>
+            </ignore>
+
+            <ignore>
+                <document>quote*</document>
+            </ignore>
+            <rename>
+                <document>sales_flat_order</document>
+                <to>sales_order</to>
+            </rename>
+            <rename>
+                <document>sales_flat_creditmemo</document>
+                <to>sales_creditmemo</to>
+            </rename>
+            <rename>
+                <document>sales_flat_creditmemo_comment</document>
+                <to>sales_creditmemo_comment</to>
+            </rename>
+            <rename>
+                <document>sales_flat_creditmemo_item</document>
+                <to>sales_creditmemo_item</to>
+            </rename>
+            <rename>
+                <document>sales_flat_invoice</document>
+                <to>sales_invoice</to>
+            </rename>
+            <rename>
+                <document>sales_flat_invoice_comment</document>
+                <to>sales_invoice_comment</to>
+            </rename>
+            <rename>
+                <document>sales_flat_invoice_item</document>
+                <to>sales_invoice_item</to>
+            </rename>
+            <rename>
+                <document>sales_flat_order_address</document>
+                <to>sales_order_address</to>
+            </rename>
+            <rename>
+                <document>sales_flat_order_item</document>
+                <to>sales_order_item</to>
+            </rename>
+            <rename>
+                <document>sales_flat_order_payment</document>
+                <to>sales_order_payment</to>
+            </rename>
+            <rename>
+                <document>sales_flat_order_status_history</document>
+                <to>sales_order_status_history</to>
+            </rename>
+            <rename>
+                <document>sales_flat_shipment</document>
+                <to>sales_shipment</to>
+            </rename>
+            <rename>
+                <document>sales_flat_shipment_comment</document>
+                <to>sales_shipment_comment</to>
+            </rename>
+            <rename>
+                <document>sales_flat_shipment_item</document>
+                <to>sales_shipment_item</to>
+            </rename>
+            <rename>
+                <document>sales_flat_shipment_track</document>
+                <to>sales_shipment_track</to>
+            </rename>
+        </document_rules>
+        <field_rules>
+            <ignore>
+                <field>sales_flat_order.reward_points_balance_refunded</field>
+            </ignore>
+            <ignore>
+                <field>sales_flat_order.reward_salesrule_points</field>
+            </ignore>
+            <move>
+                <field>sales_flat_order.hidden_tax_amount</field>
+                <to>sales_order.discount_tax_compensation_amount</to>
+            </move>
+            <move>
+                <field>sales_flat_order.base_hidden_tax_amount</field>
+                <to>sales_order.base_discount_tax_compensation_amount</to>
+            </move>
+            <move>
+                <field>sales_flat_order.shipping_hidden_tax_amount</field>
+                <to>sales_order.shipping_discount_tax_compensation_amount</to>
+            </move>
+            <move>
+                <field>sales_flat_order.base_shipping_hidden_tax_amnt</field>
+                <to>sales_order.base_shipping_discount_tax_compensation_amnt</to>
+            </move>
+            <move>
+                <field>sales_flat_order.hidden_tax_invoiced</field>
+                <to>sales_order.discount_tax_compensation_invoiced</to>
+            </move>
+            <move>
+                <field>sales_flat_order.base_hidden_tax_invoiced</field>
+                <to>sales_order.base_discount_tax_compensation_invoiced</to>
+            </move>
+            <move>
+                <field>sales_flat_order.hidden_tax_refunded</field>
+                <to>sales_order.discount_tax_compensation_refunded</to>
+            </move>
+            <move>
+                <field>sales_flat_order.base_hidden_tax_refunded</field>
+                <to>sales_order.base_discount_tax_compensation_refunded</to>
+            </move>
+            <ignore>
+                <datatype>sales_flat_order.customer_group_id</datatype>
+            </ignore>
+            <transform>
+                <field>sales_flat_creditmemo.store_id</field>
+                <handler class="\Migration\Handler\SetValue">
+                    <param name="value" value="1" />
+                </handler>
+            </transform>
+            <transform>
+                <field>sales_flat_creditmemo_grid.store_id</field>
+                <handler class="\Migration\Handler\SetValue">
+                    <param name="value" value="1" />
+                </handler>
+            </transform>
+            <transform>
+                <field>sales_flat_order.store_id</field>
+                <handler class="\Migration\Handler\SetValue">
+                    <param name="value" value="1" />
+                </handler>
+            </transform>
+            <transform>
+                <field>sales_flat_order_grid.store_id</field>
+                <handler class="\Migration\Handler\SetValue">
+                    <param name="value" value="1" />
+                </handler>
+            </transform>
+            <transform>
+                <field>sales_flat_order_item.store_id</field>
+                <handler class="\Migration\Handler\SetValue">
+                    <param name="value" value="1" />
+                </handler>
+            </transform>
+            <transform>
+                <field>sales_flat_invoice.store_id</field>
+                <handler class="\Migration\Handler\SetValue">
+                    <param name="value" value="1" />
+                </handler>
+            </transform>
+            <transform>
+                <field>sales_flat_invoice_grid.store_id</field>
+                <handler class="\Migration\Handler\SetValue">
+                    <param name="value" value="1" />
+                </handler>
+            </transform>
+            <transform>
+                <field>sales_flat_quote.store_id</field>
+                <handler class="\Migration\Handler\SetValue">
+                    <param name="value" value="1" />
+                </handler>
+            </transform>
+            <transform>
+                <field>sales_flat_quote_item.store_id</field>
+                <handler class="\Migration\Handler\SetValue">
+                    <param name="value" value="1" />
+                </handler>
+            </transform>
+            <transform>
+                <field>sales_flat_shipment.store_id</field>
+                <handler class="\Migration\Handler\SetValue">
+                    <param name="value" value="1" />
+                </handler>
+            </transform>
+            <transform>
+                <field>sales_flat_shipment_grid.store_id</field>
+                <handler class="\Migration\Handler\SetValue">
+                    <param name="value" value="1" />
+                </handler>
+            </transform>
+            <transform>
+                <field>sales_flat_order_item.weee_tax_applied</field>
+                <handler class="Migration\Handler\SerializeToJson"/>
+            </transform>
+            <transform>
+                <field>sales_flat_quote_item.weee_tax_applied</field>
+                <handler class="Migration\Handler\SerializeToJson"/>
+            </transform>
+            <transform>
+                <field>sales_flat_creditmemo_item.weee_tax_applied</field>
+                <handler class="Migration\Handler\SerializeToJson"/>
+            </transform>
+            <transform>
+                <field>sales_flat_invoice_item.weee_tax_applied</field>
+                <handler class="Migration\Handler\SerializeToJson"/>
+            </transform>
+        </field_rules>
+    </source>
+    <destination>
+        <field_rules>
+            <ignore>
+                <field>sales_order.send_email</field>
+            </ignore>
+            <ignore>
+                <field>sales_order.coupon_rule_name</field>
+            </ignore>
+            <ignore>
+                <field>sales_order.gw_base_price_incl_tax</field>
+            </ignore>
+            <ignore>
+                <field>sales_order.gw_price_incl_tax</field>
+            </ignore>
+            <ignore>
+                <field>sales_order.gw_items_base_price_incl_tax</field>
+            </ignore>
+            <ignore>
+                <field>sales_order.gw_items_price_incl_tax</field>
+            </ignore>
+            <ignore>
+                <field>sales_order.gw_card_base_price_incl_tax</field>
+            </ignore>
+            <ignore>
+                <field>sales_order.gw_card_price_incl_tax</field>
+            </ignore>
+            <ignore>
+                <datatype>sales_order.customer_group_id</datatype>
+            </ignore>
+            <transform>
+                <field>sales_order.created_at</field>
+                <handler class="\Migration\Handler\Timezone">
+                    <param name="offset" value="-5" />
+                </handler>
+            </transform>
+        </field_rules>
+    </destination>
+</map>

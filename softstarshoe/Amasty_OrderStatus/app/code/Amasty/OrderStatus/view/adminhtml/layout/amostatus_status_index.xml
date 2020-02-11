@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2017 Amasty (https://www.amasty.com)
+ * @package Amasty_OrderStatus
+ */
+-->
+
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
+    <referenceContainer name="content" label="Root">
+        <block class="Amasty\OrderStatus\Block\Adminhtml\Status" name="admin.amasty.ostatus.grid.container">
+            <block class="Magento\Backend\Block\Widget\Grid" name="adminhtml.amasty.ostatus.grid" as="grid">
+                <arguments>
+                    <argument name="id" xsi:type="string">amostatus_status_grid</argument>
+                    <argument name="dataSource" xsi:type="object">Amasty\OrderStatus\Model\ResourceModel\Status\Collection</argument>
+                </arguments>
+                <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" as="grid.columnSet" name="adminhtml.amasty.ostatus.grid.columnSet">
+                    <arguments>
+                        <argument name="rowUrl" xsi:type="array">
+                            <item name="path" xsi:type="string">*/*/edit</item>
+                            <item name="extraParamsTemplate" xsi:type="array">
+                                <item name="id" xsi:type="string">getId</item>
+                            </item>
+                        </argument>
+                    </arguments>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="status">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Status Name</argument>
+                            <argument name="index" xsi:type="string">status</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="is_active">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Enabled</argument>
+                            <argument name="index" xsi:type="string">is_active</argument>
+                            <argument name="type" xsi:type="string">options</argument>
+                            <argument name="options" xsi:type="options" model="Magento\Config\Model\Config\Source\Yesno"/>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="notify_by_email">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">E-mail Notification</argument>
+                            <argument name="index" xsi:type="string">notify_by_email</argument>
+                            <argument name="type" xsi:type="string">options</argument>
+                            <argument name="options" xsi:type="options" model="Amasty\OrderStatus\Model\Config\Source\Statuses"/>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="actions">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Action</argument>
+                            <argument name="sortable" xsi:type="string">0</argument>
+                            <argument name="filter" xsi:type="string">0</argument>
+                            <argument name="type" xsi:type="string">action</argument>
+                            <argument name="id" xsi:type="string">actions</argument>
+                            <argument name="index" xsi:type="string">id</argument>
+                            <argument name="actions" xsi:type="array">
+                                <item name="view_action" xsi:type="array">
+                                    <item name="caption" xsi:type="string" translate="true">Edit</item>
+                                    <item name="url" xsi:type="array">
+                                        <item name="base" xsi:type="string">*/*/edit</item>
+                                    </item>
+                                    <item name="field" xsi:type="string">id</item>
+                                </item>
+                            </argument>
+                        </arguments>
+                    </block>
+                </block>
+            </block>
+        </block>
+    </referenceContainer>
+</layout>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Yosto_InstagramConnect/css/lightbox2.css"/>
+        <css src="Yosto_InstagramConnect/css/owlCarousel.css"/>
+        <css src="Yosto_InstagramConnect/css/owlCarousel-follower.css"/>
+        <css src="Yosto_InstagramConnect/css/instagram-connect.css" />
+        <css src="Yosto_InstagramConnect::css/shoppingpage/gridstack.css"/>
+        <css src="Yosto_InstagramConnect::css/shoppingpage/shoppingpage.css"/>
+        <css src="Yosto_InstagramConnect::css/shoppingpage/lightboxshoppingpage.css"/>
+        <css src="Yosto_InstagramConnect::css/shoppingpage/hover.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <container name="yosto.container.instagram.maincontent" label="Instagram Connect Container" htmlTag="div" />
+        </referenceContainer>
+
+        <referenceContainer name="sidebar.additional">
+            <container name="yosto.container.instagram.sidebar" label="Instagram Connect Sidebar" htmlTag="div"/>
+        </referenceContainer>
+        <referenceBlock name="footer_links">
+            <block class="Yosto\InstagramConnect\Block\Instagram\Link"
+                   ifconfig="yosto_instagram_connect/instagram_shopping_page_config/shopping_page_enable_link_footer"
+                   name="instagram_footer_link">
+                <arguments>
+                    <argument name="path" xsi:type="string">instagram/shopping/index</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

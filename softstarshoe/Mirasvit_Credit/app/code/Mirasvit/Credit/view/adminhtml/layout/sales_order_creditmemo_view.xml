@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="creditmemo_totals">
+            <block name="credit.item" class="Magento\Sales\Block\Adminhtml\Order\Totals\Item"
+                   template="Mirasvit_Credit::sales/creditmemo/totals/credit.phtml"/>
+
+            <block name="credit.refunded" class="Magento\Sales\Block\Adminhtml\Order\Totals\Item"
+                   template="Magento_Sales::order/totals/item.phtml">
+                <action method="setSourceField">
+                    <argument name="value" xsi:type="string">credit_total_refunded</argument>
+                </action>
+                <action method="setLabel">
+                    <argument name="value" xsi:type="string">Refunded to Store Credit</argument>
+                </action>
+                <action method="setDisplayArea">
+                    <argument name="value" xsi:type="string">footer</argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

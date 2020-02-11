@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="sidebar.cms">
+            <action method="setActiveLink">
+                <argument name="link" xsi:type="string">faq</argument>
+            </action>
+            <action method="setTitleDefault">
+                <argument name="title" translate="true" xsi:type="string">Help</argument>
+            </action>
+            <block class="Magento\Cms\Block\Block" name="left_cms_help_links_block">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">left-cms-help-links-block</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

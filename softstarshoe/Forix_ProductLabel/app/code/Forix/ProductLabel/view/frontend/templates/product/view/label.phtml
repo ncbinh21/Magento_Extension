@@ -1,0 +1,34 @@
+<?php
+/*************************************************
+ * *
+ *  *
+ *  * Copyright © 2017 Forix. All rights reserved.
+ *  * See COPYING.txt for license details.
+ *
+ */
+?>
+<?php
+/** @var \Forix\ProductLabel\Block\Product\View $block */
+
+$productLabelCollection = $block->getProductLabel();
+
+?>
+<?php if ($productLabelCollection->getSize() > 0): ?>
+    <?php
+    /** @var \Forix\ProductLabel\Model\Rule $label */
+    foreach ($productLabelCollection as $label):?>
+        <span class="product-label-info <?php echo $label->getProductPosition()?>">
+            <span class="product-label <?php /* @escapeNotVerified */ echo $label->getTypeClass()?>"
+                  style="<?php /* @escapeNotVerified */ echo $label->getProductCssBackground() ?>">
+            <?php if ($label->getCategoryImage()):?>
+                <img class="label" src="<?php /* @escapeNotVerified */ echo $label->getProductImageUrl()?>">
+            <?php else:?>
+                <span class="text-label">
+                    <?php /* @escapeNotVerified */echo $label->getProductText()?>
+                </span>
+            <?php endif;?>
+            </span>
+        </span>
+    <?php endforeach;?>
+    </span>
+<?php endif;?>

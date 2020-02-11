@@ -1,0 +1,17 @@
+<?php
+//@codingStandardsIgnoreFile
+/** @var \Mirasvit\Credit\Block\Sales\Order\Credit $block */
+$source = $block->getSource();
+$order = $block->getOrder();
+?>
+
+<?php if ($source->getCreditAmount()): ?>
+    <tr>
+        <td <?= $block->getLabelProperties() ?>>
+            <?= __('Store Credit'); ?>
+        </td>
+        <td <?= $block->getValueProperties() ?>>
+            -<?= $order->formatPrice($source->getCreditAmount()) ?>
+        </td>
+    </tr>
+<?php endif ?>

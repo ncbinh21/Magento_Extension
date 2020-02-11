@@ -1,0 +1,57 @@
+<?php
+/**
+ * @var $block \Forix\QuoteLetter\Block\AbstractSpecificQuote
+ */
+
+$quoteCollection = $block->getQuotes();
+$limit = $block->getData('item_limit') ?: true;
+
+$cssClass = $block->getCssClass();
+?>
+<?php if ($quoteCollection && $quoteCollection->getSize()): ?>
+    <div class="<?php echo $cssClass; ?>">
+        <ul class="quote-items special-quote">
+            <?php foreach ($quoteCollection as $item): ?>
+                <?php if (true === $limit || $limit): ?>
+                    <li class="item">
+                        <div class="item-inner">
+                            <div class="quote-letter-comment">
+                                <?php echo $item->getComment() ?>
+                            </div>
+                            <div class="quote-letter-owner">
+                                <span><?php echo __("%1, %2", $item->getName(), $item->getPosition()); ?></span>
+                            </div>
+                            <div class="quote-letter-owner-address">
+                                <span><?php echo $item->getAddress(); ?></span>
+                            </div>
+                        </div>
+                    </li>
+                    <?php if (true !== $limit) {
+                        $limit--;
+                    } ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </ul>
+        <script type="text/javascript">
+            require(['jquery', 'forix/plugins/slick'], function ($) {
+                $(".quote-items").slick({
+                    arrows: false,
+                    dots: true,
+                    infinite: true,
+                    autoplay: true,
+                    autoplaySpeed: 5000,
+                    lazyLoad: 'progressive',
+                    responsive: [
+                        {
+                            breakpoint: 1023,
+                            settings: {
+                                arrows: false,
+                                dots: true
+                            }
+                        }
+                    ]
+                });
+            });
+        </script>
+    </div>
+<?php endif; ?>

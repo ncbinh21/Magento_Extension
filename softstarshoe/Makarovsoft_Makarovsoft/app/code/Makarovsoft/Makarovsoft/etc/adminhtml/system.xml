@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="makarovsoft" translate="label" sortOrder="900">
+            <label>Alex Makarov Extensions</label>
+        </tab>
+        <section id="makarovsoft_makarovsoft" translate="label" type="text" sortOrder="110" showInDefault="1"
+                 showInWebsite="1" showInStore="1">
+            <label>Extensions and Updates</label>
+            <tab>makarovsoft</tab>
+            <resource>Makarovsoft_Makarovsoft::makarovsoft</resource>
+            <group id="advanced_aaa" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>New Magento 2 Extensions and Updates</label>
+                <field id="customer_adda" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <frontend_model>\Makarovsoft\Makarovsoft\Block\Modules</frontend_model>
+                </field>                
+            </group>
+        </section>
+    </system>
+</config>

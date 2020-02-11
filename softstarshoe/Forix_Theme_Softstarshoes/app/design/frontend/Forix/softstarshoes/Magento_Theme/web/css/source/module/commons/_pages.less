@@ -1,0 +1,92 @@
+@use-pager-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.pager{
+    &:extend(.forix-abs-clearfix all);
+
+    .toolbar-amount{
+        &:extend(.forix-abs-visually-hidden);
+    }
+}
+
+// ------------------------------------
+// Variables Extends
+// ------------------------------------
+
+// ------------------------------------
+// Extend Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .pager{
+        .toolbar-amount{
+            background: @secondary-background__color;
+            padding: 0 @forix-indent__s;
+            display: block;
+        }
+
+        .limiter{
+            float: left;
+            margin-left: 10px;
+        }
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .pager{
+        .toolbar-amount{
+            text-align: left;
+            margin: 0 -@forix-indent__s @forix-indent__s;
+            line-height: 44px;
+        }
+
+        .pages{
+            padding: 0 @forix-indent__s;
+        }
+
+        .limiter{
+            display: none;
+        }
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .pager{
+        background: @secondary-background__color;
+        .pages{
+            float: left;
+            width: auto;
+            margin: 0 10px;
+        }
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .pager{
+        .toolbar-amount{
+            margin: 0;
+            float: left;
+        }
+    }
+}
+
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    .pager{
+        .toolbar-amount{
+            line-height: 44px;
+        }
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    .pager .toolbar-amount{
+        line-height: 48px;
+    }
+}

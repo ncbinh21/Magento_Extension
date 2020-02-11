@@ -1,0 +1,47 @@
+@use-checkout-modals-core__enable: true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true) {
+    .modal-popup{
+        .form-shipping-address{
+            max-width: 100%;
+
+            .field-tooltip .field-tooltip-content{
+                left: auto;
+                right: 100%;
+                margin-left: 0;
+                margin-right: @forix-indent__s;
+            }
+
+            .field-tooltip .field-tooltip-content:before {
+                .lib-css(transform,rotate(227deg),1);
+                left: auto;
+                top: 25px;
+                right: -13px;
+            }
+        }
+    }
+}
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .modal-popup  .form-shipping-address{
+        padding-right: 0;
+    }
+}
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .modal-popup  .form-shipping-address{
+        padding-right: @forix-indent__xm;
+    }
+}

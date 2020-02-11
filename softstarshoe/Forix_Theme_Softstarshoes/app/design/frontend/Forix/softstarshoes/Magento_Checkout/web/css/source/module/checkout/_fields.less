@@ -1,0 +1,50 @@
+@use-checkout-fields-core__enable: true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.field._error .control select,
+.field._error .control textarea{
+    &:extend(.field._error .control input);
+}
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .field .control._with-tooltip{
+        position: relative;
+
+        input{
+            margin-right: @forix-indent__s;
+            width: 100%;
+        }
+    }
+
+    .field.choice .field-tooltip{
+        display: inline-block;
+        margin-left: @forix-indent__s;
+        position: relative;
+        top: -3px;
+
+        &-action{
+            line-height: 21px;
+        }
+    }
+
+    .field._error .control input{
+        border-color: @message-error__color;
+    }
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    .field .control._with-tooltip{
+        padding-right: 35px;
+    }
+}

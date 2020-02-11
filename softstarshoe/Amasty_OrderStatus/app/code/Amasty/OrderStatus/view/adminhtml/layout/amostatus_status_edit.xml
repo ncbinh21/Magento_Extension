@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2017 Amasty (https://www.amasty.com)
+ * @package Amasty_OrderStatus
+ */
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="left">
+            <block class="Amasty\OrderStatus\Block\Adminhtml\Status\Edit\Tabs" name="amostatus_status_edit_tabs">
+                <block class="Amasty\OrderStatus\Block\Adminhtml\Status\Edit\Tab\Information"
+                       name="amostatus_status_edit_tab_information"/>
+                <block class="Amasty\OrderStatus\Block\Adminhtml\Status\Edit\Tab\Email"
+                       name="amostatus_status_edit_tab_email"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">information_section</argument>
+                    <argument name="block" xsi:type="string">amostatus_status_edit_tab_information</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">email_section</argument>
+                    <argument name="block" xsi:type="string">amostatus_status_edit_tab_email</argument>
+                </action>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Amasty\OrderStatus\Block\Adminhtml\Status\Edit" name="amostatus_status_edit"/>
+        </referenceContainer>
+    </body>
+</page>
+

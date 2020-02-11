@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Pool" type="Magento\Ui\DataProvider\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="custom-options-layers" xsi:type="array">
+                    <item name="class" xsi:type="string">Orange35\ImageConstructor\Ui\DataProvider\Product\Form\Modifier\CustomOptions</item>
+                    <item name="sortOrder" xsi:type="number">78</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Orange35\ImageConstructor\Controller\Adminhtml\Layer\Upload">
+        <arguments>
+            <argument name="uploader" xsi:type="object">Orange35ImageConstructorLayerUploader</argument>
+        </arguments>
+    </type>
+    <type name="Orange35\ImageConstructor\Observer\ProductSave">
+        <arguments>
+            <argument name="uploader" xsi:type="object">Orange35ImageConstructorLayerUploader</argument>
+        </arguments>
+    </type>
+    <type name="Orange35\ImageConstructor\Ui\DataProvider\Product\Form\Modifier\CustomOptions">
+        <arguments>
+            <argument name="helper" xsi:type="object">Orange35ImageConstructorImageHelper</argument>
+        </arguments>
+    </type>
+    <type name="Orange35\ImageConstructor\Plugin\CleanImages">
+        <arguments>
+            <argument name="helper" xsi:type="object">Orange35ImageConstructorImageHelper</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Catalog\Model\Product\Image">
+        <plugin name="clean-cache-images" type="Orange35\ImageConstructor\Plugin\CleanImages" sortOrder="30"/>
+    </type>
+</config>

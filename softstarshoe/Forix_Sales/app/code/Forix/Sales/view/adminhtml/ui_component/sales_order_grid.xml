@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Created by Mercurial
+ * Job Title: Magento Developer
+ * Project Name: M2 - SoftStart Shoes
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <listingToolbar name="listing_top">
+        <massaction name="listing_massaction">
+            <action name="build">
+                <settings>
+                    <url path="sales/order/changestatus"/>
+                    <type>build</type>
+                    <label translate="true">Build</label>
+                </settings>
+            </action>
+        </massaction>
+    </listingToolbar>
+</listing>

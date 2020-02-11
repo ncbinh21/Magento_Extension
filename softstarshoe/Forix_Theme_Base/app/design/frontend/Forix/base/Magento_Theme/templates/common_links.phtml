@@ -1,0 +1,9 @@
+<?php
+    $_blockId = $block->getBlockId();
+?>
+<?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($_blockId)->toHtml();?>
+<script type="text/javascript">
+    require(['jquery'],function($){
+        $('#common_links a[href^="/' + location.pathname.split("/")[1] + '"]').addClass('active');
+    });
+</script>

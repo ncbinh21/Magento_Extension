@@ -1,0 +1,21 @@
+{
+  "name": "mirasvit/module-report",
+  "description": "Reports Core",
+  "require": {
+    "magento/framework": "100.0.*|100.1.*|100.2.*|101.0.*",
+    "mirasvit/module-core": "^1.2"
+  },
+  "type": "magento2-module",
+  "version": "1.2.27",
+  "license": [
+    "proprietary"
+  ],
+  "autoload": {
+    "files": [
+      "src/Report/registration.php"
+    ],
+    "psr-4": {
+      "Mirasvit\\Report\\": "src/Report"
+    }
+  }
+}

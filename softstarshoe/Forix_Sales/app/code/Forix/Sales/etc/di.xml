@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Created by Mercurial
+ * Job Title: Magento Developer
+ * Project Name: M2 - SoftStart Shoes
+ * Date: 06/03/2018
+ */
+
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Sales\Block\Adminhtml\Items\Column\Name" type="Forix\Sales\Block\Adminhtml\Items\Column\NameCustom"/>
+</config>
+

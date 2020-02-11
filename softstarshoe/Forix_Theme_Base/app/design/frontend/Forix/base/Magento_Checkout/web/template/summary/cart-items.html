@@ -1,0 +1,53 @@
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="block items-in-cart">
+    <div class="title" data-role="title" data-bind="mageInit: {'forix/toggle': {'toggleContainers': '#summary-minicart-items', 'selectorsToggleClass': 'hidden','touchOutSite':false,'afterToggle': showScroll,'afterCreated':showScroll}}">
+        <strong role="heading">
+            <translate args="maxCartItemsToDisplay" if="maxCartItemsToDisplay < getCartLineItemsCount()"/>
+            <translate args="'of'" if="maxCartItemsToDisplay < getCartLineItemsCount()"/>
+            <span data-bind="text: getCartLineItemsCount()"></span>
+            <translate args="'Item in Cart'" if="getCartLineItemsCount() === 1"/>
+            <translate args="'Items in Cart'" if="getCartLineItemsCount() > 1"/>
+        </strong>
+    </div>
+
+    <div class="content minicart-items" data-role="content" id="summary-minicart-items" data-bind="mageInit: {'forix/scroll': {'eleScroll': '[data-action=scroll]', 'item': '[data-role=product-item]','numberScroll': 2 }}" data-block='summary-minicart' if="getItemsQty() > 2">
+        <div class="minicart-items-wrapper overflowed" data-action="scroll">
+            <ol class="minicart-items">
+                <each args="items()">
+                    <li class="product-item" data-role="product-item">
+                        <div class="product">
+                            <each args="$parent.elems()" render=""/>
+                        </div>
+                    </li>
+                </each>
+            </ol>
+        </div>
+    </div>
+    
+    <div class="content minicart-items" data-role="content" id="summary-minicart-items" data-block='summary-minicart' ifnot="getItemsQty() > 2">
+        <div class="minicart-items-wrapper overflowed" data-action="scroll">
+            <ol class="minicart-items">
+                <each args="items()">
+                    <li class="product-item">
+                        <div class="product">
+                            <each args="$parent.elems()" render=""/>
+                        </div>
+                    </li>
+                </each>
+            </ol>
+        </div>
+    </div>
+
+    <div class="actions-toolbar" if="maxCartItemsToDisplay < getCartLineItemsCount()">
+        <div class="secondary">
+            <a class="action viewcart" data-bind="attr: {href: cartUrl}">
+                <span data-bind="i18n: 'View and Edit Cart'"></span>
+            </a>
+        </div>
+    </div>
+</div>

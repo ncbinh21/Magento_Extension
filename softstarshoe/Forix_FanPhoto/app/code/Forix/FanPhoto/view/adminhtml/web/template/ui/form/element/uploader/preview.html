@@ -1,0 +1,27 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="file-uploader-summary">
+    <div class="file-uploader-preview">
+        <a class="preview-link"
+           css="'preview-image'"
+           attr="href: $parent.getFilePreview($file), title: $file.name" target="_blank">
+            <img
+                tabindex="0"
+                event="load: $parent.onPreviewLoad.bind($parent)"
+                attr="
+                    src: $parent.getFilePreview($file),
+                    alt: $file.name">
+        </a>
+    </div>
+
+    <div class="file-uploader-filename" text="$file.name"/>
+</div>
+<style>
+    .file-uploader-area{
+        display: none;
+    }
+</style>

@@ -1,0 +1,56 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Template for filter items block
+ *
+ * @var $block \Magento\LayeredNavigation\Block\Navigation\FilterRenderer
+ */
+?>
+<?php $countCheck= count($filterItems);?>
+<div class="option-select">
+    <span class="option-select-title" data-mage-init='{"forix/toggle": {"toggleSingle": true,"toggleNext": true}}'><?php /* @escapeNotVerified */ echo __('All')?></span>
+    <?php if($countCheck > 4 ) : ?>
+    <div class="option-select-content have-scroll" data-mage-init='{"forix/scroll": {"eleScroll": "[data-action=scroll]", "item": "[data-role=item]","numberScroll": 0 ,"useMobile": true }}'>
+    <?php else: ?>
+    <div class="option-select-content">
+    <?php endif;?>
+    <ol class="items">
+        <li class="item">
+            <form class="form fprice" id="fprice-form" method="post">
+                <ul>
+                    <li><span>$</span><input type="text" name="price_from" id="price_from" /></li>
+                    <li><span><span>to</span> $</span><input type="text" name="price_to" id="price_to" /></li>
+                    <li><button id="fgo" class="action btn-go">Go</button></li>
+                </ul>
+            </form>
+        </li>
+        <?php foreach ($filterItems as $filterItem): ?>
+            <li class="item">
+                <?php if ($filterItem->getCount() > 0): ?>
+                    <a href="<?php echo $block->escapeUrl($filterItem->getUrl()) ?>">
+                        <?php /* @escapeNotVerified */ echo $filterItem->getLabel() ?>
+                        <?php if ($this->helper('\Magento\Catalog\Helper\Data')->shouldDisplayProductCountOnLayer()): ?>
+                            <span class="count"><?php /* @escapeNotVerified */ echo $filterItem->getCount()?><span class="filter-count-label">
+                                <?php if ($filterItem->getCount() == 1):?> <?php /* @escapeNotVerified */ echo __('item')?><?php else:?> <?php /* @escapeNotVerified */ echo __('items') ?><?php endif;?></span></span>
+                        <?php endif; ?>
+                    </a>
+                <?php else:?>
+                    <?php /* @escapeNotVerified */ echo $filterItem->getLabel() ?>
+                    <?php if ($this->helper('\Magento\Catalog\Helper\Data')->shouldDisplayProductCountOnLayer()): ?>
+                        <span class="count"><?php /* @escapeNotVerified */ echo $filterItem->getCount()?><span class="filter-count-label">
+                            <?php if ($filterItem->getCount() == 1):?><?php /* @escapeNotVerified */ echo __('item')?><?php else:?><?php /* @escapeNotVerified */ echo __('items') ?><?php endif;?></span></span>
+                    <?php endif; ?>
+                <?php endif; ?>
+            </li>
+        <?php endforeach ?>
+    </ol>
+    </div>
+</div>

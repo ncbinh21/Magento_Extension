@@ -1,0 +1,81 @@
+/*amasty paction css styles*/
+.action-menu > li._parent {
+    position: relative;
+}
+
+.action-select-wrap ul.action-menu {
+    max-height: 500px !important;
+    overflow-y: scroll;
+}
+
+.paction-item {
+    display: inline-block;
+}
+
+.paction-item:first-child{
+    width: 70px;
+    text-align: center;
+}
+
+.paction-item-input {
+    max-width: 153px;
+}
+
+.amasty-paction-form{
+    padding: 8px;
+    max-width: 250px;
+}
+
+.action-submenu._active{
+    z-index: 99;
+}
+
+.paction-item-button{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.amasty-paction-form label{
+    display: inline-block;
+    margin-right: 5px;
+    max-width: 70px;
+    vertical-align: middle;
+}
+
+.amasty-paction-form input{
+    vertical-align: middle;
+    margin-right: 8px;
+    width: 100%;
+}
+
+.amasty-paction-form select{
+    vertical-align: middle;
+    max-width: 158px;
+    margin-right: 8px;
+}
+
+.amasty-paction-form button{
+    vertical-align: middle;
+}
+
+.amasty-paction-form td:nth-child(3) {
+    text-align: right;
+}
+
+.amasty-paction-form td:nth-child(2) {
+    text-align: center;
+}
+
+.action-select-wrap ul.action-menu{
+    max-height: none;
+}
+
+@-moz-document url-prefix() {
+    .action-select-wrap ul.action-menu{
+        max-height: 45rem;
+    }
+}
+
+.action-menu .action-submenu {
+    left: 0;
+}

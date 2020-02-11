@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget
+            id="instagram_image_slider"
+            class="Yosto\InstagramConnect\Block\Instagram\ImageSlider"
+            is_email_compatible="false"
+            placeholder_image="Magento_Widget::placeholder.gif">
+        <label translate="true">Instagram Images Slider</label>
+        <description translate="true">List of Images from Store owner instagram</description>
+        <parameters>
+            <parameter name="title" xsi:type="text" required="true"
+                       visible="true">
+                <label translate="true">Title (frontend)</label>
+            </parameter>
+            <parameter name="template" xsi:type="select" required="true"
+                       visible="true">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="default" value="instagram/slider/list.phtml"
+                            selected="true">
+                        <label translate="true">Instagram list slider</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="sliderTag" xsi:type="text"
+                       visible="true">
+                <label translate="true">Instagram hash tag for slider Images</label>
+                <description>Choose the Instagram hash tag for slider's images. It will display all images on Store Owner
+                    Instagram account which have the same hash tag. If the hash tag is blank, the slider will display all
+                    Instagram images order by uploaded time from newest to oldest.
+                </description>
+            </parameter>
+            <parameter name="imageNumber" xsi:type="text" required="true"
+                       visible="true">
+                <label translate="true">Max number of image in slider</label>
+                <description>Choose the maximum number of image for instagram slider.
+                    The image number should not be more than 50 for make sure the slider display with hight quality.
+                </description>
+                <value>20</value>
+            </parameter>
+            <parameter name="columnNumber" xsi:type="text" required="true"
+                       visible="true">
+                <label translate="true">Number of columns</label>
+                <description>Choose the number of columns will be displayed in one page of widget. Based on the place of widget, the number
+                    should change for fit with current UI. If the number is 0, the number of columns will be 1 for default.
+                </description>
+                <value>2</value>
+            </parameter>
+            <parameter name="rowNumber" xsi:type="text" required="true"
+                       visible="true">
+                <label translate="true">Number of rows</label>
+                <description>Choose the number of rows will be displayed in one page of widget. Based on the place of widget, the number
+                    should change for fit with current UI. If the number is 0, the number of rows will be 1 for default.
+                </description>
+                <value>2</value>
+            </parameter>
+            <parameter name="isDisplayLikeComment" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Display likes and comments</label>
+            </parameter>
+        </parameters>
+    </widget>
+    <widget id="instagram_follower_slider"
+    class="Yosto\InstagramConnect\Block\Instagram\FollowerSlider"
+    is_email_compatible="false"
+    placeholder_image="Magento_Widget::placeholder.gif">
+        <label translate="true">Instagram Follower Slider</label>
+        <description translate="true">List of Instagram users which Store owner's instagram user is followed by.</description>
+        <parameters>
+            <parameter name="title" xsi:type="text" required="true"
+                       visible="true">
+                <label translate="true">Title (frontend)</label>
+            </parameter>
+            <parameter name="template" xsi:type="select" required="true"
+                       visible="true">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="default" value="instagram/follower/list.phtml"
+                            selected="true">
+                        <label translate="true">Instagram follower slider</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="followerNumber" xsi:type="text" required="true"
+                       visible="true">
+                <label translate="true">Max number of follower in slider</label>
+                <description>Choose the maximum number of follower for instagram slider.
+                    The image number should not be more than 50 for make sure the slider display with hight quality.
+                </description>
+                <value>20</value>
+            </parameter>
+            <parameter name="columnNumber" xsi:type="text" required="true"
+                       visible="true">
+                <label translate="true">Number of columns</label>
+                <description>Choose the number of columns will be displayed in one page of widget. Based on the place of widget, the number
+                    should change for fit with current UI. If the number is 0, the number of columns will be 1 for default.
+                </description>
+                <value>2</value>
+            </parameter>
+            <parameter name="rowNumber" xsi:type="text" required="true"
+                       visible="true">
+                <label translate="true">Number of rows</label>
+                <description>Choose the number of rows will be displayed in one page of widget. Based on the place of widget, the number
+                    should change for fit with current UI. If the number is 0, the number of rows will be 1 for default.
+                </description>
+                <value>2</value>
+            </parameter>
+        </parameters>
+    </widget>
+
+    <widget id="instagram_shopping_page"
+            class="Yosto\InstagramConnect\Block\Instagram\ShoppingPage"
+            is_email_compatible="false"
+            placeholder_image="Magento_Widget::placeholder.gif">
+        <label translate="true">Instagram Shopping Page</label>
+        <description translate="true">Create a shopping page widget using Instagram images.</description>
+        <parameters>
+            <parameter name="title" xsi:type="text" required="true"
+                       visible="true">
+                <label translate="true">Title (frontend)</label>
+            </parameter>
+            <parameter name="template" xsi:type="select" required="true"
+                       visible="true">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="default" value="instagram/shoppingpage/page.phtml"
+                            selected="true">
+                        <label translate="true">Shopping Page</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="shoppingTemplate" xsi:type="select" visible="true"
+                       source_model="Yosto\InstagramConnect\Model\Template\Source\Template">
+                <label translate="true">Choose template for shopping page.</label>
+            </parameter>
+        </parameters>
+    </widget>
+
+</widgets>

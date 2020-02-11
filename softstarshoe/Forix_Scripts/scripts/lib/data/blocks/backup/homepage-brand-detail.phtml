@@ -1,0 +1,36 @@
+<!--[[Header]]: [Homepage] Brand Details-->
+<h1>SoftStar Shoes are ...</h1>
+<ul>
+    <li class="default"><img src="{{media url="wysiwyg/mattschu_hand.png"}}" alt="" /><span>Minimal</span><span class="dot"></span>
+        <p>Thin, lightweight shoes with wide toe boxes and flexible zero-drop soles.</p>
+    </li>
+    <li><img src="{{media url="wysiwyg/leather.png"}}" alt="" /><span>Leather</span><span class="dot"></span>
+        <p>We use soft, high-quality top-grain leather, tanned naturally and colored with non-toxic food-grade dye.</p>
+    </li>
+    <li><span>Simple</span><span class="dot"></span>
+        <p>A natural layer of leather lightly wrapping your foot ... what could be simpler?</p>
+    </li>
+    <li><span>Handcrafted</span><span class="dot"></span>
+        <p>Every one of our shoes is crafted by our team of skilled leather artisans at our Oregon workshop.</p>
+    </li>
+    <li><span>Customizable</span><span class="dot"></span>
+        <p>We make every product by hand, so you can design your own shoes with your favorite colors and motifs!</p>
+    </li>
+</ul>
+
+<script type="text/javascript" xml="space">
+    require([
+        "jquery",
+        "domReady!"
+        ], function($){
+            $(".homepage-brand-detail ul li").each(function(){
+                $(this).mouseover(function() {
+                    $(this).parent().find("li:first-child").removeClass('default');
+                });
+                $(this).mouseout(function() {
+                    $(this).parent().find("li:first-child").addClass('default');
+                });
+            });
+        }
+    );
+</script>

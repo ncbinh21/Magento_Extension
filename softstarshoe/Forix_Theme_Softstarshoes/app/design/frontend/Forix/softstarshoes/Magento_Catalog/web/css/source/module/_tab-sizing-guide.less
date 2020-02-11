@@ -1,0 +1,333 @@
+@use-module-catalog-pdp-core__enable: true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+
+@tab-guide__boder: 1px solid @sss-color-4;
+// ------------------------------------
+// Variables
+// ------------------------------------
+.table.table-guide thead td{
+    &:extend(.table.table-comparison thead td);
+}
+.block-download.block-download-two-col{
+    &:extend(.forix-abs-clearfix all);
+}
+.block-feet .block-images div:last-of-type:before{
+    &:extend(.forix-abs-icon-base all);
+}
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .guide__col-full{
+        border-bottom: @tab-guide__boder;
+    }
+    .table.table-guide{
+        background-color: @color-white;
+        text-align: center;
+        &.table-guide-type-2{
+            thead{
+                border: @tab-guide__boder;
+                border-bottom: 0;
+                background-color: @sss-color-2;
+                color: @color-white;
+            }
+            thead tr th{
+                text-align: center;
+                border-right: @tab-guide__boder;
+                display: table-cell!important;
+                padding: 10px!important;
+                &:last-of-type{
+                    border-right: 0;
+                }
+            }
+            tbody{
+                border: @tab-guide__boder!important;;
+            }
+            tbody tr td{
+                border-right: @tab-guide__boder!important;
+                &:first-child{
+                    color: @color-white;
+                    background-color: @color-sky-blue1;
+                }
+                &:nth-child(2){
+                    background-color: @color-gray82;
+                }
+                &:last-of-type{
+                    border-right: 0!important;
+                }
+            }
+        }
+
+    }
+    .guide__block-download{
+        text-align: center;
+    }
+    .block-download{
+        .image-full{
+            text-align: center;
+            display: table;
+            margin: 0 auto;
+        }
+        .box-image{
+            font-size: 0;
+            line-height: 0;
+        }
+        .image-caption{
+            display: table-caption;
+            caption-side: bottom;
+            background-color: @color-white;
+            color: @color-black;
+            padding: 10px 10px;
+        }
+    }
+
+    .block-feet .block-images{
+        margin-bottom: 16px;
+        img{
+            display: block;
+        }
+        div{
+            position: relative;
+            &:first-of-type{
+                .number{
+                    display: block;
+                    height: 55px;
+                    width: 55px;
+                    background: url(../images/bg-size.png) no-repeat center;
+                    background-size: contain;
+                    font-size: @forix-font-size__xml;
+                    color: @color-white;
+                    font-family: @forix-font-face-name__secondary;
+                    position: absolute;
+                    left: 15px;
+                    top: 15px;
+                    text-align: center;
+                }
+            }
+            &:last-of-type{
+                position: relative;
+                &:before{
+                    content: @sss-icon-left-arr;
+                    position: absolute;
+                    top: 50%;
+                    .lib-css(transform,translateY(-50%),1);
+                    left: -25px;
+                    font-size: 40px;
+                }
+            }
+        }
+        .block-content{
+            font-family: @forix-font-family__secondary;
+        }
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .block-feet{
+        .block-images{
+            display: table;
+            div{
+                display: table-cell;
+                width: 50%;
+                vertical-align: middle;
+            }
+            .block-content{
+                padding-left: 15px;
+                font-size: 15px;
+            }
+        }
+    }
+    .guide .table.table-guide{
+        display: table!important;
+        tbody{
+            display: table-row-group!important;
+            tr{
+                display: table-row!important;
+                td{
+                    display: table-cell!important;
+                    &:before{
+                        display: none!important;
+                    }
+                    &:first-of-type{
+                        width: 90px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    .product.attribute.guide{
+        .guide__col-right{
+            section{
+                .block-title{
+                    font-size: 16px;
+                    margin-bottom: 5px;
+                }
+            }
+        }
+    }
+    .image-full{
+        .image-caption{
+            font-size: 14px;
+        }
+    }
+    .guide__block-download{
+        margin: 15px 0;
+        .block-title{
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+        .block-content{
+            margin-bottom: 20px;
+            p{
+                margin-bottom: 17px;
+                &:last-of-type{
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+    .block-download{
+        &.block-download-two-col{
+            .box{
+                margin-bottom: 15px;
+                &:last-of-type{
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .block-feet{
+        .block-images{
+            display: table;
+            div{
+                display: table-cell;
+                &:first-of-type{
+                    max-width: 321px;
+                    max-height: 233px;
+                    position: relative;
+
+                }
+                &:last-of-type{
+                    padding-left: 30px;
+                    vertical-align: middle;
+                    max-width: 300px;
+                }
+            }
+            .block-content{
+                font-size: 22px;
+            }
+        }
+    }
+}
+
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    .guide .table.table-guide{
+        tbody{
+            tr{
+                td{
+                    &:first-of-type{
+                        width: 150px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    .product.attribute.guide{
+        .guide__col-right{
+            section{
+                .block-title{
+                    font-size: 20px;
+                    margin-bottom: 8px;
+                }
+            }
+            .block-feet{
+                .block-title{
+                    margin-bottom: 22px;
+                }
+            }
+        }
+    }
+    .block-feet{
+        .block-images{
+            margin-bottom: 16px;
+        }
+    }
+    .guide__col-full{
+        .forix-lib-vendor-prefix-display(flex);
+        .forix-lib-vendor-prefix-flex-wrap(wrap);
+
+        padding-bottom: 70px;
+
+        .guide__col-left{
+            width: 50%;
+            border-right: @tab-guide__boder;
+            padding-right: 50px;
+        }
+        .guide__col-right{
+            width: 50%;
+            padding-left: 50px;
+        }
+    }
+    .table.table-guide thead td{
+        padding: 10px 30px;
+    }
+    .guide__block-download{
+        max-width: 914px;
+        margin: 30px auto 0;
+        .block-title{
+            font-size: 25px;
+            margin-bottom: 30px;
+        }
+        .block-content{
+            margin-bottom: 35px;
+            p{
+                margin-bottom: 20px;
+                &:last-of-type{
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+    .block-download{
+        &.block-download-two-col{
+            .box{
+                float: left;
+                width: 50%;
+                &:first-of-type{
+                    padding-right: 15px;
+                }
+                &:last-of-type{
+                    padding-left: 15px;
+                }
+            }
+        }
+        .image-caption{
+            font-size: 16px;
+        }
+    }
+
+}
+
+// [1024 - 1200]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__l) and (@break-max = @screen__xl) {
+
+}

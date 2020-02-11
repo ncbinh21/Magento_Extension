@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <credit>
+            <email>
+                <email_identity>general</email_identity>
+                <send_balance_update>1</send_balance_update>
+                <balance_update_template>credit_email_balance_update_template</balance_update_template>
+            </email>
+            <calculation>
+                <include_tax>1</include_tax>
+                <include_shipping>1</include_shipping>
+            </calculation>
+        </credit>
+    </default>
+</config>

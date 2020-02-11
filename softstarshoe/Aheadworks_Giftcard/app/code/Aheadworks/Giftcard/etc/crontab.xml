@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="aw_giftcard_expiration_check" instance="Aheadworks\Giftcard\Cron\ExpirationCheck" method="execute">
+            <schedule>0 0 * * *</schedule>
+        </job>
+        <job name="aw_giftcard_delivery_date_check" instance="Aheadworks\Giftcard\Cron\DeliveryDateCheck" method="execute">
+            <schedule>*/5 * * * *</schedule>
+        </job>
+    </group>
+</config>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2017 Amasty (https://www.amasty.com)
+ * @package Amasty_SeoRichData
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Save Breadcrumb Info -->
+    <type name="Magento\Theme\Block\Html\Breadcrumbs">
+        <plugin name="Amasty_SeoRichData::Block_Breadcrumbs" type="Amasty\SeoRichData\Plugin\Block\Breadcrumbs" />
+    </type>
+    <!-- Remove Malformed Review Rich Data -->
+    <type name="\Magento\Review\Block\Product\ReviewRenderer">
+        <plugin name="Amasty_SeoRichData::Block_Review" type="Amasty\SeoRichData\Plugin\Block\Review" />
+    </type>
+    <!-- Remove Malformed Price Rich Data -->
+    <type name="\Magento\Framework\Pricing\Render\Amount">
+        <plugin name="Amasty_SeoRichData::Price_Amount" type="Amasty\SeoRichData\Plugin\Pricing\Render\Amount" />
+    </type>
+</config>

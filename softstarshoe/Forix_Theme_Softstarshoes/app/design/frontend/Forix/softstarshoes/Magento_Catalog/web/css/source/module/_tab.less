@@ -1,0 +1,80 @@
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.data.item.content ul li:before{
+    &:extend(.forix-abs-icon-base all);
+}
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true) {
+    .data.item.content{
+        font-size: 16px;
+    }
+    .tab-pdp--col{
+        .forix-lib-vendor-prefix-display(flex);
+        .forix-lib-vendor-prefix-flex-wrap(wrap);
+        .tab-pdp--col-left,
+        .tab-pdp--col-right{
+            .forix-lib-vendor-prefix-display(flex);
+        }
+        .tab-pdp-outer{
+            position: relative;
+            width: 100%;
+        }
+        .tab-pdp-content{
+            background-color: @color-white;
+            border-radius: 10px;
+        }
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .tab-pdp--col{
+        .tab-pdp--col-left,
+        .tab-pdp--col-right{
+            width: 100%;
+        }
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .tab-pdp--col{
+        .tab-pdp--col-left,
+        .tab-pdp--col-right{
+           width: 50%;
+        }
+    }
+}
+
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l) {
+    .product.info.detailed .product.attribute{
+        font-size: 14px;
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .product.info.detailed .product.attribute{
+        font-size: 16px;
+    }
+    .product.data.items{
+        > .item.content{
+            padding: 35px 0;
+        }
+    }
+    .tab-pdp--col .tab-pdp-content{
+        padding: 35px 20px;
+    }
+}

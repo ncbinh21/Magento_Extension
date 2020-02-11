@@ -1,0 +1,231 @@
+@use-checkout-progress-bar-core__enable: true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.opc-progress-bar-item._complete > span:after,
+.opc-progress-bar-item._active > span:after{
+    &:extend(.forix-abs-icon-base all);
+}
+
+.opc-progress-bar-item > span{
+    &:extend(.forix-abs-secondary-size all);
+}
+
+.opc-progress-bar-item > span:after{
+    &:extend(.forix-abs-three-size all);
+}
+// ------------------------------------
+// Variables
+// ------------------------------------
+@opc-progress-bar-item-background__color: @secondary-background__color;
+@opc-progress-bar-item-background__color-active: @color-green;
+@opc-progress-bar-item-text__color: @color-green;
+@opc-progress-bar-item-text__color-active:  @color-white;
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .opc-progress-bar{
+        counter-reset: i;
+        font-size: 0;
+
+        &:before {
+            left: 0;
+            position: absolute;
+            border-bottom: @forix-border__base;
+            height: 0;
+            width: 100%;
+            content: "";
+        }
+    }
+
+    .opc-progress-bar-item{
+        display: inline-block;
+        position: relative;
+        text-align: center;
+        vertical-align: top;
+        margin: 0 0 @forix-indent__s;
+
+        &:before{
+            width: 100%;
+            position: absolute;
+            left: 0;
+            content: '';
+            top: 19px;
+            background: @opc-progress-bar-item-background__color;
+            .forix-lib-css(transition,background .3s,1);
+        }
+
+        &._complete{
+            cursor: pointer;
+
+            > span:after{
+                content: @font-awesome-check;
+                font-weight: @forix-font-weight__regular;
+                background: @opc-progress-bar-item-background__color;
+            }
+        }
+
+        &._complete:hover{
+            opacity: 0.7;
+
+            > span:before{
+                background: @opc-progress-bar-item-background__color;
+            }
+        }
+
+        &._complete:hover:before{
+            background: @opc-progress-bar-item-background__color;
+        }
+
+        &._active{
+            > span{
+                color: @opc-progress-bar-item-text__color;
+
+                &:before{
+                    background: @opc-progress-bar-item-background__color-active;
+                }
+
+                &:after{
+                    background: @opc-progress-bar-item-background__color-active;
+                    content: @font-awesome-check;
+                    color: @opc-progress-bar-item-text__color-active;
+                    font-weight: @forix-font-weight__regular;
+                }
+            }
+        }
+
+        &._active:before{
+            background: @opc-progress-bar-item-background__color-active;
+        }
+
+        &:last-child._active{
+            > span:after{
+                content: counter(i);
+                counter-increment: i;
+                font-family: @forix-font-family__base;
+                font-weight: @forix-font-weight__bold;
+            }
+        }
+
+        > span{
+            display: inline-block;
+            width: 100%;
+            word-wrap: break-word;
+            color: @primary-text__color;
+            font-weight: @forix-font-weight__bold;
+
+            &:before{
+                left: 50%;
+                position: absolute;
+                border-radius: 50%;
+                background: @opc-progress-bar-item-background__color;
+                content: '';
+                .lib-css(transition,background 0.3s,1);
+            }
+
+            &:after{
+                border-radius: 50%;
+                background: @opc-progress-bar-item-text__color-active;
+                content: counter(i);
+                counter-increment: i;
+                color: inherit;
+                left: 50%;
+                padding: 7px;
+                position: absolute;
+                font-weight: 700;
+                .lib-css(transition,background 0.3s,1);
+            }
+        }
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .opc-progress-bar{
+        display: none;
+    }
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    .opc-progress-bar-item{
+        width: 220px;
+
+        &:before{
+            height: 4px;
+        }
+
+        > span{
+            padding-top: 50px;
+
+            &:before{
+                height: 44px;
+                width: 44px;
+                top: -1px;
+                margin-left: -22px;
+            }
+
+            &:after{
+                line-height: 20px;
+                top: 4px;
+                margin-left: -17px;
+                width: 34px;
+                height: 34px;
+            }
+        }
+    }
+}
+
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    .opc-progress-bar{
+        margin: @forix-indent__xs 0 @forix-indent__l;
+        display: block;
+
+        &:before{
+            margin-top: 90px;
+        }
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    .opc-progress-bar{
+        margin: @forix-indent__xs 0 @forix-indent__xxl;
+        display: block;
+
+        &:before{
+            margin-top: 100px;
+        }
+    }
+
+    .opc-progress-bar-item{
+        width: 250px;
+
+        &:before{
+            height: 5px;
+        }
+
+        > span{
+            padding-top: 57px;
+
+            &:before{
+                height: 50px;
+                width: 50px;
+                top: -3px;
+                margin-left: -@forix-indent__m;
+            }
+
+            &:after{
+                top: 2px;
+                margin-left: -20px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
+}

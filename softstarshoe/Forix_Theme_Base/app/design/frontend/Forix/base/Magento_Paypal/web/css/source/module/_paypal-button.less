@@ -1,0 +1,53 @@
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.paypal-button-widget .paypal-button {
+    &:extend(.alink all);
+}
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .paypal{
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .block-minicart .paypal{
+        display: block;
+        margin-top: @forix-indent__base;
+    }
+
+    .cart-summary .paypal{
+        display: block;
+
+        & + .paypal{
+            margin-top: @forix-indent__m;
+        }
+    }
+
+    .paypal img{
+        @forix-paypal-img__display: block;
+        @forix-paypal-img__margin: @forix-indent__xs auto 0;
+    }
+
+    .opc .paypal{
+        vertical-align: middle;
+    }
+
+    .paypal.acceptance{
+        display: block;
+        margin: 0 0 @forix-indent__base;
+    }
+
+    .map-form-addtocart .paypal{
+        display: block;
+        margin: @forix-indent__s auto @forix-indent__xs;
+    }
+}

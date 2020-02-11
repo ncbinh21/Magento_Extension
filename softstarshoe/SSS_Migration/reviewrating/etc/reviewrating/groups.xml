@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<groups xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="../groups.xsd">
+    <group name="source_documents">
+        <document>review</document>
+        <document>review_detail</document>
+        <document>review_entity</document>
+        <document>review_entity_summary</document>
+        <document>review_status</document>
+        <document>review_store</document>
+        <document>rating</document>
+        <document>rating_entity</document>
+        <document>rating_option</document>
+        <document>rating_option_vote</document>
+        <document>rating_option_vote_aggregated</document>
+        <document>rating_store</document>
+        <document>rating_title</document>
+    </group>
+</groups>

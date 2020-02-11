@@ -1,0 +1,19 @@
+<?php
+/**
+ * @var $block \Magento\Catalog\Block\Category\View
+ */
+$category = $block->getCurrentCategory();
+$modalContent = $this->helper('Magento\Catalog\Helper\Output')->categoryAttribute($block->getCurrentCategory(),$category->getData('sss_category_cms_modal'),'sss_category_cms_modal');
+?>
+<?php if ($modalContent && $block->getCurrentCategory()): ?>
+    <div class="compare-runamocs sss_category_cms_modal"><a href="javascript:void(0)" class="open-modal"
+            data-mage-init='{"categoryOpenModal":{"target":".modal-content-<?php echo $block->getCurrentCategory()->getId(); ?>", "title": "<?php echo $block->getTitle() ?: __("Compare Styles"); ?>"}}'>
+            <?php echo $block->getTitle() ?: __("Compare Styles"); ?>
+        </a>
+    </div>
+    <div class="no-display">
+        <div class="modal-content-<?php echo $block->getCurrentCategory()->getId(); ?>">
+            <?php echo $modalContent; ?>
+        </div>
+    </div>
+<?php endif; ?>

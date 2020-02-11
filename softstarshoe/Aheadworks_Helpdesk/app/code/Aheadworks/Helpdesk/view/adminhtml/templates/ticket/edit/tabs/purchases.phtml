@@ -1,0 +1,46 @@
+<?php
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+
+/* @var $block \Magento\Backend\Block\Template */
+
+// @codingStandardsIgnoreFile
+?>
+<table class="admin__table-primary">
+    <?php $orders = $block->getOrderCollection(); ?>
+    <tbody>
+    <?php foreach ($orders as $order): ?>
+        <tr class="order-row">
+            <td class="order-link">
+                <a href="<?php echo $block->escapeUrl($block->getUrl('sales/order/view', ['order_id' => $order->getEntityId()]))?>" target="_blank">
+                    <?php echo $block->escapeHtml('#' . $order->getIncrementId()) ?>
+                </a>
+            </td>
+            <td class="order-date">
+                <?php /* @noEscape */ echo $block->formatDate($order->getCreatedAt(), \IntlDateFormatter::MEDIUM, false) ?>
+            </td>
+            <td class="order-status">
+                <span class="<?php echo $block->escapeHtml($order->getStatus())?>">
+                    <?php echo $block->escapeHtml($order->getStatusLabel()) ?>
+                </span>
+            </td>
+            <td>
+                <span class="price">
+                    <span class="price"><?php /* @noEscape */ echo $order->formatPrice($order->getGrandTotal()); ?></span>
+                </span>
+            </td>
+        </tr>
+        <?php foreach ($order->getItemsCollection() as $item): ?>
+            <tr class="order-item">
+                <td colspan="4">
+                    <a href="<?php echo $block->escapeUrl($block->getUrl('catalog/product/edit', ['id' => $item->getProductId()]))?>" target="_blank">
+                        <?php echo $block->escapeHtml($item->getName()) ?>
+                    </a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    <?php endforeach; ?>
+    </tbody>
+</table>

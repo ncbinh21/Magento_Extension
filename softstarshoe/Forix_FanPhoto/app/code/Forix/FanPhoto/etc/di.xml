@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Forix\FanPhoto\Api\PhotoRepositoryInterface" type="Forix\FanPhoto\Model\PhotoRepository"/>
+	<preference for="Forix\FanPhoto\Api\Data\PhotoInterface" type="Forix\FanPhoto\Model\Photo"/>
+	<preference for="Forix\FanPhoto\Api\Data\PhotoSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Forix\FanPhoto\Model\ResourceModel\Photo\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">forix_fanphoto_photo</argument>
+			<argument name="resourceModel" xsi:type="string">Forix\FanPhoto\Model\ResourceModel\Photo\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="forix_fanphoto_photo_grid_data_source" xsi:type="string">Forix\FanPhoto\Model\ResourceModel\Photo\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<virtualType name="photoImageUploader" type="Magento\Catalog\Model\ImageUploader">
+		<arguments>
+			<argument name="baseTmpPath" xsi:type="string">fanphoto/tmp</argument>
+			<argument name="basePath" xsi:type="string">fanphoto</argument>
+			<argument name="allowedExtensions" xsi:type="array">
+				<item name="jpg" xsi:type="string">jpg</item>
+				<item name="jpeg" xsi:type="string">jpeg</item>
+				<item name="gif" xsi:type="string">gif</item>
+				<item name="png" xsi:type="string">png</item>
+			</argument>
+		</arguments>
+	</virtualType>
+	<type name="Forix\FanPhoto\Controller\Adminhtml\Photo\Image\Upload">
+		<arguments>
+			<argument name="imageUploader" xsi:type="object">photoImageUploader</argument>
+		</arguments>
+	</type>
+</config>

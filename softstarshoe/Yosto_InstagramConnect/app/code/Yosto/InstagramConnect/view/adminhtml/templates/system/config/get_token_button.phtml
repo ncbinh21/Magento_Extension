@@ -1,0 +1,126 @@
+<?php
+/**
+ * Copyright © 2017 x-mage2(Yosto). All rights reserved.
+ * See README.md for details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var $block Yosto\InstagramConnect\Block\Adminhtml\System\Config\GetTokenButton
+ * @var $jsonHelper \Magento\Framework\Json\Helper\Data
+ */
+$jsonHelper = $this->helper('Magento\Framework\Json\Helper\Data');
+?>
+<?php echo $block->getButtonHtml() ?>
+<p style="margin-top: 10px; font-style: italic"><?php echo __('On tab "security" of page "Manage client", "Valid redirect URIs" must be same as your base url. For example: https://mage.dev/') ?></p>
+<div id="yosto-ic-get-token-popup" style="display: none">
+    <div class="yosto-ic-get-token-form" style="text-align: center">
+        <input style="min-width: 20em" type="text" placeholder="<?php echo __('Code') ?>" class="required-entry input-text admin__control-text" name="return_code" id="return_code">
+        <button name="ic_get_token" id="ic_get_token">Get Token</button>
+        <div class="oath-message" style="font-style: italic; margin-top: 15px; color: #83aa35"></div>
+        <div style="width: 50%;
+             margin: auto;
+             text-align: left;
+             padding: 20px 50px;
+             box-sizing: border-box;
+             border: 2px dotted whitesmoke;
+             margin-top: 40px; ">
+            <p><?php echo __('How to get access token') ?></p>
+            <ul style="list-style: decimal-leading-zero;">
+                <li>
+                    <?php echo __('Enter client_id and client_secret'); ?>
+                    <p>
+                        <?php echo _('You need signup a developer account and create a new client at') ?>
+                        <a href="https://www.instagram.com/developer/clients/manage/">
+                            <?php echo __(' Instagram Developer Page') ?>
+                        </a>
+                    </p>
+
+                </li>
+                <li><?php echo __('Click on button "Get Access Token"'); ?></li>
+                <li><?php echo __('Copy value of parameter "code" from popup'); ?></li>
+                <li><?php echo __('Paste value of parameter "code" to text field and click on button "Get Token"'); ?></li>
+                <li><?php echo __('If you get a trouble with this task, feel free to contact us'); ?><span>: support@x-mage2.com</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<script>
+    require([
+        'jquery',
+        'Magento_Ui/js/modal/modal'
+    ], function ($, modal) {
+        var instagramOAth = "<?php echo \Yosto\InstagramConnect\Helper\InstagramClient::API_OAUTH_URL ?>";
+        var baseUrl = "<?php echo urlencode($block->getBaseUrl())?>";
+        var scope = "<?php echo $block->getAvailableScope()?>";
+        var clientId = $('#yosto_instagram_connect_instagram_connect_config_instagram_client_id').val();
+        var secretId = $('#yosto_instagram_connect_instagram_connect_config_instagram_client_secret').val();
+        var $modal = $("#yosto-ic-get-token-popup");
+        $modal.modal({
+            type: 'slide',
+            responsive: true,
+            innerScroll: true,
+            title: "<?php __('Get Token') ?>",
+            trigger: "#yosto-ic-get-token-button",
+            wrapperClass: 'yosto-mp-modal-wrapper',
+            buttons: [],
+            opened: function(){
+                clientId = $('#yosto_instagram_connect_instagram_connect_config_instagram_client_id').val();
+                secretId = $('#yosto_instagram_connect_instagram_connect_config_instagram_client_secret').val();
+                if (secretId !="" && clientId != "") {
+                    var src = instagramOAth
+                        + '/?client_id=' + clientId
+                        + '&redirect_uri=' + baseUrl
+                        + '&scope=' +  scope
+                        + '&response_type=code';
+                   window.open(src , '', "width=600,height=500");
+                } else {
+                    $(".oath-message").html("<p><?php echo __('Client Id and Client Secret must be not empty') ?></p>");
+                }
+            },
+            closed: function(){
+                $(".oath-message").html('');
+            }
+        });
+
+        $('#ic_get_token').on('click', function () {
+            var returnCode = $('#return_code').val();
+            clientId = $('#yosto_instagram_connect_instagram_connect_config_instagram_client_id').val();
+            secretId = $('#yosto_instagram_connect_instagram_connect_config_instagram_client_secret').val();
+            if (returnCode != '') {
+                $.ajax({
+                    url: '<?php echo $block->getAdminUrl() ?>',
+                    type: 'post',
+                    cache: false,
+                    dataType: 'html',
+                    data: {
+                        form_key: FORM_KEY,
+                        client_id: clientId,
+                        client_secret: secretId,
+                        code: returnCode
+                    },
+                    showLoader: true
+                }).done(function (data) {
+                    if (data.indexOf('error_type') !== -1) {
+                        var errorInfo = JSON.parse(data);
+                        $(".oath-message").html('<p>' + errorInfo['error_type'] + ": " + errorInfo['error_message'] + '</p>');
+                    } else {
+                        $("#yosto_instagram_connect_instagram_connect_config_instagram_access_token").val(data);
+                        $(".oath-message").html('');
+                        $(".yosto-mp-modal-wrapper .action-close").click();
+                    }
+                }).fail(function (data) {
+                    var errorInfo = JSON.parse(data);
+                    $(".oath-message").html('<p>' + errorInfo['error_type'] + ": " + errorInfo['error_message'] + '</p>');
+                });
+            } else  {
+                $(".oath-message").html("<p><?php echo __('Code must not empty') ?></p>");
+            }
+        });
+    });
+</script>
+
+

@@ -1,0 +1,50 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     FishPig_WordPress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <ben@fishpig.co.uk>
+ */
+?>
+<div class="featured-post-container">
+<div class="featured-post-title">
+    Softstar Blog
+</div>
+<div class="featured-post">
+    <?php $posts = $this->getFeaturedPosts();?>
+    <?php foreach($posts as $post): ?>
+        <div class="post-view item">
+            <div class="post-entry">
+                <?php if ($image = $post->getImage()): ?>
+                    <div class="post-image">
+                        <a href="<?php echo $post->getUrl() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"><img src="<?php echo $image->getMediumImage() ? $image->getMediumImage() : $image->getAvailableImage() ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/></a>
+                        <div class="post-title"><a href="<?php echo $post->getUrl() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"><span data-mage-init='{"forix/formattext":{}}'><?php echo $this->escapeHtml($post->getPostTitle()) ?></span></a></div>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
+<script type="text/javascript">
+    require(['jquery', 'forix/plugins/slick'], function ($) {
+        $('.featured-post').slick({
+            infinite: true,
+            arrows: false,
+            dots: true,
+            responsive: [
+                {
+                    breakpoint: 9999,
+                    settings: "unslick"
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+    });
+</script>
+</div>

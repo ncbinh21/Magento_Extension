@@ -1,0 +1,25 @@
+theme: Base Theme
+title: Order status changed
+template_subject: 'Order status changed'
+template_areas:
+  header: <h1>Dear <?=$this->getCustomerName() ?></h1>
+  content: |
+    <p>On <?=$this->formatDate($this->getOrder()->getUpdatedAt()) ?> an order status has been changed to <b><?=$this->getOrder()->getStatusLabel() ?></b>.</p>
+    <p>The order contains the following items:</p>
+    <table width="0" border="0" cellspacing="5" cellpadding="10">
+    <?php foreach($this->getOrder()->getAllVisibleItems() as $item): ?>
+      <tr>
+        <td>
+          <img src="<?=$this->getImageUrl($item->getProduct(), 'image', 300) ?>" style="max-width: 15rem" />
+        </td>
+        <td valign="top">
+          <a href="<?=$item->getProduct()->getProductUrl() ?>"><?=$item->getName() ?></a>
+          <hr>
+          <?=intval($item->getQtyOrdered()) ?> x <?=$this->formatPrice($item->getProduct()->getPrice()) ?>
+        </td>
+      </tr>
+    <?php endforeach ?>
+    </table>
+
+  footer: |
+    <p>If you have any questions about our products or services, please <a href="<?=$this->getStoreUrl() ?>/contact/">contact with us.</a></p>

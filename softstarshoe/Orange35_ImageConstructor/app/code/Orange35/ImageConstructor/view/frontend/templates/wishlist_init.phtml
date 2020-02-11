@@ -1,0 +1,13 @@
+<?php
+/**
+ * @var $block Orange35\ImageConstructor\Block\ConstructorMin
+ */
+$options = $block->getOptionsJson($block::WISHLIST, false);
+?>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "imageConstructorWishlist": <?php echo $options;?>
+    }
+}
+</script>

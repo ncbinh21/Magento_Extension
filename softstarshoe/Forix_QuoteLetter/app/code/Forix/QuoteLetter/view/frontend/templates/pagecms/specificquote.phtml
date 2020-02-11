@@ -1,0 +1,46 @@
+<?php
+/**
+ * @var $block \Forix\QuoteLetter\Block\AbstractSpecificQuote
+ */
+
+$quoteCollection = $block->getQuote();
+?>
+<?php if ($quoteCollection->getData()): ?>
+    <div class="quote-pdp-container">
+        <div class="quote-pdp">
+            <div class="owl-quote-product owl-carousel">
+                <?php foreach ($quoteCollection as $item): ?>
+                    <div class="item">
+                        <?php echo $item->getComment() ?>
+                        <div class="quote-letter-owner">
+                            <?php if($item->getPosition()): ?>
+                                <span><?php echo __("%1, %2", $item->getName(), $item->getPosition()); ?></span>
+                            <?php else: ?>
+                                <span><?php echo $item->getName()?></span>
+                            <?php endif; ?>
+                            <?php if($item->getAddress()): ?>
+                                <span><?php echo $item->getAddress()?></span>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+    <script>
+        require([
+            "jquery",
+            "owl"
+        ], function ($) {
+            $('.owl-quote-product').owlCarousel({
+                items: 1,
+                navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+                mouseDrag: true,
+               
+                
+            });
+        });
+    </script>
+<?php endif; ?>
+
+

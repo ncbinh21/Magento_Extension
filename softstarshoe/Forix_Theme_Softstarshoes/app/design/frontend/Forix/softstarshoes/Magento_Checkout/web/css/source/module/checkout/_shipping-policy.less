@@ -1,0 +1,100 @@
+@use-checkout-shipping-policy-core__enable: true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+
+// ------------------------------------
+// Variables Extends
+// ------------------------------------
+
+// ------------------------------------
+// Extend Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .checkout-shipping-method{
+        position: relative;
+        margin: 0;
+    }
+
+    .shipping-policy-block.field-tooltip{
+        top: 0;
+
+        .field-tooltip-action{
+            display: inline-block;
+            font-weight: @forix-font-weight__bold;
+            color: @primary-link__color;
+
+            &:before{
+                display: none;
+            }
+
+            &:hover{
+                color: @primary-link__color__hover;
+            }
+
+            span{
+                display: inline-block;
+                text-decoration: underline;
+            }
+        }
+
+        .field-tooltip-content{
+            top: 35px;
+            right: 0;
+            margin-left: 0;
+
+            &:before{
+                top: 1px;
+                .forix-lib-css(transform,rotate(136deg),1);
+                .forix-lib-css(transform-origin,0 0,1);
+                border: 7px solid transparent;
+                border-color: transparent transparent @color-gray-7 @color-gray-7;
+                height: 0;
+                width: 0;
+                position: absolute;
+                content: "";
+                box-shadow: -2px 2px 7px -4px rgba(0, 0, 0, 0.4);
+            }
+        }
+    }
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    .shipping-policy-block.field-tooltip{
+        position: relative;
+        left: 0;
+        margin: 0 0 @forix-indent__m;
+
+        .field-tooltip-content{
+            min-width: 285px;
+            width: 100%;
+            left: 0;
+
+            &:before{
+                right: auto;
+                left: 75px;
+            }
+        }
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    .shipping-policy-block.field-tooltip{
+        position: absolute;
+        right: 0;
+
+        .field-tooltip-content{
+            left: auto;
+            width: 420px;
+
+            &:before{
+                right: 60px;
+                left: auto;
+            }
+        }
+    }
+}

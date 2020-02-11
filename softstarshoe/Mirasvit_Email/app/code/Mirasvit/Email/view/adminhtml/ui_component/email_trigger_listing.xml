@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">email_trigger_listing.email_trigger_listing_data_source</item>
+            <item name="deps" xsi:type="string">email_trigger_listing.email_trigger_listing_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">trigger_columns</item>
+        <item name="buttons" xsi:type="array">
+            <item name="save-split-button" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Add new Trigger</item>
+                <item name="class_name" xsi:type="string">Mirasvit\Email\Ui\Component\Control\SplitButton</item>
+                <item name="data_attribute" xsi:type="array">
+
+                </item>
+                <item name="options" xsi:type="array">
+                    <item name="customer-trigger-button" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Add Customer Trigger</item>
+                        <item name="default" xsi:type="boolean">true</item>
+                        <item name="onclick" xsi:type="string">*/*/new</item>
+                    </item>
+                    <item name="admin-trigger-button" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Add Administrator Trigger</item>
+                        <item name="onclick" xsi:type="string">*/*/new/is_admin/1</item>
+                    </item>
+                </item>
+            </item>
+        </item>
+    </argument>
+
+    <dataSource name="email_trigger_listing_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Mirasvit\Email\Ui\Trigger\Listing\DataProvider</argument>
+            <argument name="name" xsi:type="string">email_trigger_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">trigger_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                </item>
+            </argument>
+        </argument>
+    </dataSource>
+
+    <listingToolbar name="listing_top">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="sticky" xsi:type="boolean">true</item>
+            </item>
+        </argument>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+        <massaction name="listing_massaction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Mirasvit_Email/js/grid/tree-massactions</item>
+                    <item name="indexField" xsi:type="string">trigger_id</item>
+                </item>
+            </argument>
+            <action name="delete">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">delete</item>
+                        <item name="label" xsi:type="string" translate="true">Delete</item>
+                        <item name="url" xsi:type="url" path="*/*/massDelete"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Delete items</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure you want to delete selected triggers? All pending emails related with this trigger will be cancelled.</item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+            <action name="is_active">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">is_active</item>
+                        <item name="label" xsi:type="string" translate="true">Change Status</item>
+                    </item>
+                </argument>
+                <argument name="actions" xsi:type="array">
+                    <item name="0" xsi:type="array">
+                        <item name="type" xsi:type="string">disable</item>
+                        <item name="label" xsi:type="string" translate="true">Disable</item>
+                        <item name="url" xsi:type="url" path="*/*/massStatus">
+                            <param name="is_active">0</param>
+                        </item>
+                    </item>
+                    <item name="1" xsi:type="array">
+                        <item name="type" xsi:type="string">enable</item>
+                        <item name="label" xsi:type="string" translate="true">Enable</item>
+                        <item name="url" xsi:type="url" path="*/*/massStatus">
+                            <param name="is_active">1</param>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+            <action name="send_test">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="advn_actions" xsi:type="boolean">true</item>
+                        <item name="buttonLabel" xsi:type="string">Send</item>
+                        <item name="label" xsi:type="string" translate="true">Send test email</item>
+                        <item name="type" xsi:type="string">advn_send_test</item>
+                        <item name="url" xsi:type="url" path="*/*/massSend"/>
+                    </item>
+                </argument>
+                <argument name="actions" xsi:type="array">
+                    <item name="0" xsi:type="array">
+                        <item name="rendererType" xsi:type="string">text</item>
+                        <item name="title" xsi:type="string">Email</item>
+                        <item name="type" xsi:type="string">advn_send_test</item>
+                        <item name="label" xsi:type="string" translate="true">Label Email</item>
+                        <item name="placeholder" xsi:type="string">jhondoe@example.com</item>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+    </listingToolbar>
+
+    <columns name="trigger_columns">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="childDefaults" xsi:type="array">
+                    <item name="fieldAction" xsi:type="array">
+                        <item name="provider" xsi:type="string">email_trigger_listing.email_trigger_listing.trigger_columns.actions</item>
+                        <item name="target" xsi:type="string">applyAction</item>
+                        <item name="params" xsi:type="array">
+                            <item name="0" xsi:type="string">edit</item>
+                            <item name="1" xsi:type="string">${ $.$data.rowIndex }</item>
+                        </item>
+                    </item>
+                </item>
+            </item>
+        </argument>
+
+        <selectionsColumn name="ids">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="indexField" xsi:type="string">trigger_id</item>
+                    <item name="sortOrder" xsi:type="number">0</item>
+                </item>
+            </argument>
+        </selectionsColumn>
+
+        <column name="is_active">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Cms\Model\Block\Source\IsActive</item>
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">select</item>
+                    <item name="label" xsi:type="string" translate="true">Is Active</item>
+                    <item name="component" xsi:type="string">Mirasvit_Email/js/grid/columns/onoff</item>
+                    <item name="headerTmpl" xsi:type="string">ui/grid/columns/text</item>
+                    <item name="bodyTmpl" xsi:type="string">Mirasvit_Email/grid/cells/onoff</item>
+                    <item name="indexField" xsi:type="string">is_active</item>
+                    <item name="actionUrl" xsi:type="url" path="*/*/massStatus"/>
+                    <item name="sortOrder" xsi:type="number">5</item>
+                </item>
+            </argument>
+        </column>
+        <column name="title" class="Mirasvit\Email\Ui\Trigger\Listing\Column\Info">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Title</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+        </column>
+        <column name="email_qty" class="Mirasvit\Email\Ui\Trigger\Listing\Column\Email">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                    <item name="fieldClass" xsi:type="string">email__trigger-stat-cell email-stat</item>
+                    <!--<item name="filter" xsi:type="string">textRange</item>-->
+                    <item name="label" xsi:type="string" translate="true">Sent</item>
+                    <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                </item>
+            </argument>
+        </column>
+        <column name="open_qty" class="Mirasvit\Email\Ui\Trigger\Listing\Column\Open">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                    <item name="fieldClass" xsi:type="string">email__trigger-stat-cell open-stat</item>
+                    <!--<item name="filter" xsi:type="string">textRange</item>-->
+                    <item name="label" xsi:type="string" translate="true">Opened</item>
+                    <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                </item>
+            </argument>
+        </column>
+        <column name="click_qty" class="Mirasvit\Email\Ui\Trigger\Listing\Column\Click">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                    <item name="fieldClass" xsi:type="string">email__trigger-stat-cell click-stat</item>
+                    <!--<item name="filter" xsi:type="string">textRange</item>-->
+                    <item name="label" xsi:type="string" translate="true">Clicked</item>
+                    <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                </item>
+            </argument>
+        </column>
+        <column name="order_qty" class="Mirasvit\Email\Ui\Trigger\Listing\Column\Order">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                    <item name="fieldClass" xsi:type="string">email__trigger-stat-cell order-stat</item>
+                    <!--<item name="filter" xsi:type="string">textRange</item>-->
+                    <item name="label" xsi:type="string" translate="true">Orders</item>
+                    <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">50</item>
+                </item>
+            </argument>
+        </column>
+        <column name="review_qty" class="Mirasvit\Email\Ui\Trigger\Listing\Column\Review">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                    <item name="fieldClass" xsi:type="string">email__trigger-stat-cell review-stat</item>
+                    <!--<item name="filter" xsi:type="string">textRange</item>-->
+                    <item name="label" xsi:type="string" translate="true">Reviews</item>
+                    <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="number">60</item>
+                </item>
+            </argument>
+        </column>
+
+        <actionsColumn name="actions" class="Mirasvit\Email\Ui\Trigger\Listing\Column\Actions">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="indexField" xsi:type="string">trigger_id</item>
+                    <item name="urlEntityParamName" xsi:type="string">trigger_id</item>
+                    <item name="sortOrder" xsi:type="number">80</item>
+                </item>
+            </argument>
+        </actionsColumn>
+    </columns>
+</listing>

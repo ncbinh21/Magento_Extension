@@ -1,0 +1,41 @@
+<?php
+    if ($isEnabled = $this->isEnabled()) {
+        $post = $this->getPost();
+    }
+?>
+<?php if ($isEnabled ): ?>
+    <script type="application/ld+json">
+    { "@context": "http://schema.org",
+     "@type": "BlogPosting",
+     "headline": "<?php echo $post->getHeadline() ?>",
+     "description": "<?php echo $post->getPreparedContent() ?>",
+     "articleBody": "<?php echo $post->getPreparedContent() ?>",
+     "url": "<?php echo $post->getUrl() ?>",
+     "keywords": "<?php echo $post->getKeywords() ?>",
+     "datePublished": "<?php echo $post->getDatePublished() ?>",
+     "dateModified": "<?php echo $post->getDatePublished() ?>",
+     "author": {
+        "@type": "Person",
+        "name": "<?php echo $post->getAuthorName() ?>"
+     },
+     "publisher": {
+        "@type": "Organization",
+        "name": "<?php echo $post->getPublisherName() ?>",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "<?php echo $post->getLogoUrl() ?>"
+        }
+     },
+     "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "<?php echo $post->getUrl() ?>"
+      },
+     "image": {
+        "@type": "ImageObject",
+        "url": "<?php echo $post->getImageUrl() ?>",
+        "width": "<?php echo $post->getImageWith() ?>",
+        "height": "<?php echo $post->getImageHeight() ?>"
+      }
+     }
+    </script>
+<?php endif; ?>

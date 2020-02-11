@@ -1,0 +1,34 @@
+<?php
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+
+// @codingStandardsIgnoreFile
+
+/** @var $block Aheadworks\Giftcard\Pricing\Render\FinalPriceBox */
+?>
+<?php if ($block->isRenderFromTo()): ?>
+    <p class="price-from">
+        <?php /* @noEscape */ echo $block->renderAmount($block->getMinimalPrice(), [
+            'display_label'     => __('From'),
+            'price_id'          => $block->getPriceId('from-'),
+            'price_type'        => 'minPrice',
+            'include_container' => true
+        ]); ?>
+    </p>
+    <p class="price-to">
+        <?php /* @noEscape */ echo $block->renderAmount($block->getMaximalPrice(), [
+            'display_label'     => __('To'),
+            'price_id'          => $block->getPriceId('to-'),
+            'price_type'        => 'maxPrice',
+            'include_container' => true
+        ]); ?>
+    </p>
+<?php elseif ($block->isRenderSingle()): ?>
+    <?php /* @noEscape */ echo $block->renderAmount($block->getAmount(), [
+        'price_id'          => $block->getPriceId('product-price-' . $block->getIdSuffix()),
+        'price_type'        => 'finalPrice',
+        'include_container' => true,
+    ]); ?>
+<?php endif; ?>

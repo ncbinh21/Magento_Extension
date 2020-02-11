@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Mirasvit_Credit::credit_transaction" title="Store Credit" module="Mirasvit_Credit"
+             resource="Mirasvit_Credit::credit_transaction" sortOrder="1000" parent="Magento_Sales::sales_operation"
+             action="credit/transaction" />
+    </menu>
+</config>

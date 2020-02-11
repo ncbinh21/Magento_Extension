@@ -1,0 +1,405 @@
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.minilogin-wrapper .push-close:before{
+    &:extend(.forix-abs-icon-base);
+}
+
+.minilogin-wrapper .block-authentication{
+    &:extend(.forix-abs-dropdown-content all);
+}
+
+.block-customer-login .actions-toolbar .action.action-register{
+    &:extend(.abutton);
+    &:extend(.forix-abs-button-type5);
+}
+.block-customer-login .actions-toolbar .action.action-login{
+    &:extend(.abutton);
+    &:extend(.forix-abs-button-type2 all);
+}
+.block-customer-login .actions-toolbar a.action{
+    &:extend(.forix-abs-link1 all);
+}
+.block-customer-logged  ul{
+    &:extend(.forix-abs-list-reset);
+}
+.block-customer-login .block-title{
+    &:extend(.forix-abs-visually-hidden all);
+}
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+@minilogin__link__color: @three-link__color;
+@minilogin__link__hover__color: @three-link__color__hover;
+
+@minilogin__icon__content: @forix-icon-add;
+
+@minilogin-push-close__background: @m2-color-gray-18;
+
+@minilogin__background: @primary-background__color;
+@minilogin__width__m: 275px;
+@minilogin__width__l: 370px;
+
+@minilogin-title__color: @secondary-text__color;
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .block-customer-login .actions-toolbar .action.action-register{
+        &:hover{
+            color: @color-white;
+            background-color: @primary-button__color__hover;
+            border-color: @primary-button__color__hover;
+        }
+    }
+    .minilogin-container{
+        display: none;
+        position: absolute;
+        z-index: 3;
+
+        .action.showlogin{
+            color: @color-white;
+            text-decoration: none;
+
+            &:hover{
+                //color: @minilogin__link__hover__color;
+                //color: @sss-color-1;
+            }
+        }
+
+        &:hover{
+            .action.showlogin:before{
+                color: @minilogin__link__hover__color;
+            }
+        }
+
+        .block-authentication{
+            display:none;
+            &:after{
+                position: absolute;
+            }
+        }
+
+        .push-close{
+            position: fixed;
+            width: 45px;
+            height: 100%;
+            right: 0;
+            background-color: #000;
+            z-index: 102;
+            top: 0;
+            cursor: pointer;
+            text-align: center;
+            opacity: 1!important;
+
+            &:before{
+                font-size: 25px;
+                line-height: inherit;
+                color: @color-white;
+                content: @minilogin__icon__content;
+                vertical-align: middle;
+                display: inline-block;
+                font-weight: normal;
+                margin-top: 10px;
+            }
+        }
+
+        .block-customer-login{
+            .block-title{
+                display: none;
+            }
+            .block-content{
+                margin-top: 5px;
+            }
+        }
+    }
+
+    .block-customer-login{
+        width: 100%;
+
+        .actions-toolbar{
+            width: 100%;
+
+            .action{
+                width: 100%;
+                .lib-font-size(16px);
+            }
+
+            .action.action-login{
+                margin-bottom: @forix-indent__base;
+            }
+
+            .action.action-register {
+                text-align: center;
+            }
+            p{
+                text-align: center;
+                font-weight: bold;
+                .lib-font-size(16px);
+                margin: 40px 0 20px;
+                position: relative;
+                &:before{
+                    content: '';
+                    background: url(../images/img-sprite.png) no-repeat center -1342px;
+                    height: 4px;
+                    position: absolute;
+                    top: -20px;
+                    left: -20px;
+                    right: -20px;
+                }
+            }
+        }
+
+        .forgot-password-form{
+            text-align: center;
+        }
+
+        .form-forgotpwd{
+            padding:  @forix-indent__xxl 0 0;
+            position: relative;
+            .fieldset{
+                margin-bottom: @forix-indent__base;
+            }
+
+            .fieldset .field.note{
+                line-height: 18px;
+                margin-bottom: @forix-indent__s;
+            }
+        }
+    }
+
+    .block-customer-logged{
+        text-align: left;
+
+        li{
+            margin: 0;
+        }
+    }
+
+    .toggle-login-close{
+        display: none;
+    }
+
+    .login-before-open{
+        overflow: hidden;
+
+        .page-wrapper{
+            .forix-lib-css(transition,left .7s,1);
+            position: relative;
+            left: 0;
+        }
+
+        .minilogin-wrapper{
+            .block-authentication{
+                position: fixed;
+                height: 100%;
+                top: 0;
+                z-index: 100;
+                overflow-x: hidden;
+                display: block;
+                text-align: left;
+                left: -100%;
+                background: @color-white;
+                /*width: 100%;*/
+                width: ~"calc(100% - 45px)";
+                padding: 20px;
+                .forix-lib-css(transition,left 0.7s);
+                margin: 0;
+                .border-radius(0);
+            }
+        }
+
+        .push-close{
+            opacity:0;
+            .forix-lib-css(transition,opacity .7s,1);
+        }
+
+        &.push.right{
+            .page-wrapper{
+                right: 0;
+                left: auto;
+                .forix-lib-css(transition,right 0.7s,1);
+            }
+
+            .minilogin-wrapper .block-authentication{
+                right: -100%;
+                left: auto;
+                .forix-lib-css(transition,right 0.7s,1);
+            }
+
+            .push-close{
+                left: 0;
+                right: auto;
+            }
+        }
+    }
+
+    .login-open{
+        .page-wrapper{
+            left: 100%;
+        }
+
+        .minilogin-wrapper{
+            .block-authentication {
+                left: 0;
+            }
+        }
+
+        .push-close{
+            opacity: 1;
+        }
+
+        &.push.right{
+            .page-wrapper{
+                right: 100%;
+            }
+
+            .minilogin-wrapper .block-authentication{
+                right: 0;
+            }
+        }
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l) {
+    .minilogin-wrapper{
+        .action.showlogin{
+            &:before{
+                font-size: (@forix-font-size__l + 1);
+                line-height: 21px;
+            }
+        }
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m){
+
+}
+
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    .minilogin-container{
+        right: 67px;
+        top: 31px;
+        display: block;
+
+        .block-authentication{
+            width: @minilogin__width__m;
+            padding: @forix-indent__xm @forix-indent__base @forix-indent__m;
+            right: -59px;
+            top: 42px;
+
+            &:before{
+                top: 4px;
+                right: 35px;
+            }
+
+            &:after{
+                height: 20px;
+                width: 100%;
+                top: -20px;
+                right: 0;
+            }
+        }
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .minilogin-container{
+        top: -40px;
+        right: 112px;
+        display: block;
+        .minilogin-wrapper{
+            display: inline-block;
+            position: relative;
+            &:hover{
+                .block-authentication{
+                    display: block;
+                    opacity: 1;
+                    visibility: visible;
+                    left: 50%;
+                }
+            }
+
+            &.active {
+                .block-authentication{
+                    left: 50%;
+                    opacity: 1;
+                    visibility: visible;
+                }
+
+                .action.showlogin:before{
+                    color: @sss-color-6;
+                }
+            }
+            .block-authentication{
+                left: -9999px;
+                visibility: hidden;
+                opacity: 0;
+                transition: opacity 0.5s ease;
+            }
+        }
+        .size-guide{
+            position: relative;
+            margin: 0 22px;
+            display: inline-block;
+            line-height: 41px;
+            a{
+                color: @color-white;
+            }
+        }
+        .action.showlogin{
+            line-height: 41px;
+            &:before{
+                font-size: 25px;
+                line-height: 27px;
+            }
+        }
+        .minilogin-wrapper:not(.logged){
+            .block-authentication{
+                width: @minilogin__width__l;
+                padding: @forix-indent__xm @forix-indent__base @forix-indent__base;
+                right: -101px;
+                top: 40px;
+                left: auto;
+                &:before{
+                    left: 252px;
+                }
+                &:after{
+                    left: 252px;
+                }
+            }
+        }
+
+        .minilogin-wrapper.logged{
+            .block-authentication{
+                width: 190px;
+                margin-left: -95px;
+                &:before{
+                    right: 94px;
+                }
+            }
+        }
+
+        .push-close{
+            display: none;
+        }
+    }
+}
+// [1024-1199]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__l) and (@break-max = @screen__xl) {
+    .minilogin-container{
+        right: 100px;
+    }
+}

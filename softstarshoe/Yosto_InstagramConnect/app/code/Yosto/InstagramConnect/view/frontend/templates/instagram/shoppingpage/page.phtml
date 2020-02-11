@@ -1,0 +1,119 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+//Template for display instagram shopping page images.
+/**@var Yosto\InstagramConnect\Block\Instagram\ShoppingPage $block */
+?>
+
+<?php
+
+/** widget data */
+$templateId = $this->getData('template');
+$templateCode = [];
+if ($templateId != null && $templateId != 0) {
+    $templateCode = $block->getTemplateCodeById($templateId);
+} else {
+
+    $templateCode = $block->getTemplateCode();
+}
+
+
+?>
+<?php if ($templateCode): ?>
+    <?php
+        $currentTemplatePcCode = $templateCode['pc_code'];
+        $currentTemplateMobileCode = $templateCode['mobile_code'];
+        $baseURL = $block->getBaseUrl();
+    ?>
+
+<div class="container-fluid">
+
+    <div class="grid-stack" style="width:100%">
+    </div>
+
+</div>
+<script type="text/javascript">
+    var isShoppingPage = true;
+    var baseUrl = '<?=$baseURL?>';
+    var loaderImageLink = "<?php echo $block->getViewFileUrl('images/loader-1.gif') ?>";
+
+    require(
+        [
+            'jquery',
+            'jquery/ui',
+            'Yosto_InstagramConnect/js/gridstack',
+            'Yosto_InstagramConnect/js/gridstackJQueryUI',
+            'Yosto_InstagramConnect/js/lodash',
+            'Yosto_InstagramConnect/js/lightboxshoppingpage'
+        ],
+        function ($) {
+            $(function () {
+                loadGrid();
+                function loadGrid() {
+                    //initial grid by device
+                    var deviceWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+                    var gridWidth = 0;
+
+                    if (deviceWidth > 480) {
+                        var templateCode = <?=$currentTemplatePcCode?>;
+                        gridWidth = 8;
+                        $('.grid-stack').addClass('pc-grid-stack');
+                    } else {
+                        var templateCode = <?=$currentTemplateMobileCode?>;
+                        gridWidth = 4;
+                        $('.grid-stack').addClass('mobile-grid-stack');
+                    }
+
+                    var options = {
+                        cellHeight: 'auto',
+                        verticalMargin: 6,
+                        horizontalMargin: 6,
+                        width: gridWidth,
+                        oneColumnModeClass: 'no_enable_one_column_mode',
+                        disableDrag: true
+                    };
+
+                    $('.grid-stack').gridstack(options);
+
+                    //load grid
+                    var grid = $('.grid-stack').data('gridstack');
+
+                    grid.removeAll();
+                    var items = GridStackUI.Utils.sort(templateCode);
+
+                    _.each(items, function (node) {
+                        if (node.imgURL != null && node.imgURL != '') {
+                            var htmlStr = '<div class="grid-stack-item-content  view view-first" style="left:3px; right:3px"></div>';
+                            $boundDiv = $.parseHTML('<div data-gs-no-resize="yes"></div>');
+                            $widget = $.parseHTML(htmlStr);
+                            if(node.width == 4){
+                                var logoClass = 'fa fa-instagram fa-5x instagram-logo';
+                            } else if(node.width == 3) {
+                                var logoClass = 'fa fa-instagram fa-4x instagram-logo';
+                            } else {
+                                var logoClass = 'fa fa-instagram fa-3x instagram-logo';
+                            }
+
+                            $hoverAnimation = $.parseHTML('<div class="mask"><span class="overlay-effect"></span><span class="info hover"><a href="javascript:void(0)" data-link="' + node.imgURL + '" data-lightbox="test" class="' + node.productId + '"><i class="'+ logoClass +'" aria-hidden="true"></i></a></span></div>');
+                            if (node.productId != '' && node.productId != null) {
+                                $imgPiece = jQuery('<a href="javascript:void(0)" data-link="' + node.imgURL + '" data-lightbox="test" class="' + node.productId + '"><img src=' + node.imgURL + ' alt="Instagram Images"    ></a>');
+                                $imgPiece.appendTo($widget);
+                                $imgPiece.css("width", "100%").css("height", "100%").css("margin-left", "0").css("margin-bottom", "0");
+                            }
+                            jQuery($hoverAnimation).appendTo($widget);
+                            jQuery($widget).appendTo($boundDiv);
+                            grid.addWidget($boundDiv,
+                                node.x, node.y, node.width, node.height);
+                        }
+                    });
+                }
+
+
+            });
+        });
+</script>
+
+<?php endif; ?>

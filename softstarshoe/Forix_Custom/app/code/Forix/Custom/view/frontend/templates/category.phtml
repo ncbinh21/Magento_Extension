@@ -1,0 +1,66 @@
+<?php
+$categoryList = $block->getCategoryCollection();
+$categoryFirst = $block->getCategoryFirst();
+$categorySecond = $block->getCategorySecond();
+$categoryFirstChild = $block->getCategoryChild($categoryFirst->getId());
+$categorySecondChild = $block->getCategoryChild($categorySecond->getId());
+$type = 'related';
+?>
+<div class="home-tab-container">
+    <ul class="tabs">
+        <li><h2><a href="#tab-parent-<?php echo  $categoryFirst->getId() ?>" class="category-link category-link-autoload" data-cid="<?php echo $categoryFirst->getId() ?>"><?php echo  $categoryFirst->getName() ?></a></h2></li>
+        <li><h2><a href="#tab-parent-<?php echo  $categorySecond->getId() ?>" class="category-link" data-cid="<?php echo $categorySecond->getId() ?>"><?php echo  $categorySecond->getName() ?></a></h2></li>
+    </ul>
+    <div id="tab-parent-<?php echo  $categoryFirst->getId() ?>" class="tab_content">
+        <ul class="tabs">
+            <li><a href="#tab-<?php echo  $categoryFirst->getId() ?>" class="category-link" data-cid="<?php echo $categoryFirst->getId() ?>"><?php echo __('All ' . $categoryFirst->getName()) ?></a>
+            </li>
+            <?php foreach ($categoryFirstChild as $item): ?>
+                <?php if($item->getSssIsLoad()): ?>
+                    <li><a href="#tab-<?php echo  $item->getId() ?>" class="category-link" data-cid="<?php echo $item->getId() ?>"><?php echo $item->getName() ?></a></li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </ul>
+        <div id="tab-<?php echo  $categoryFirst->getId() ?>">
+            <div id="category-<?php echo $categoryFirst->getId() ?>"></div>
+        </div>
+        <?php foreach ($categoryFirstChild as $item): ?>
+            <?php if($item->getSssIsLoad()): ?>
+                <div id="tab-<?php echo  $item->getId() ?>">
+                    <div id="category-<?php echo $item->getId() ?>"></div>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+
+    <div id="tab-parent-<?php echo  $categorySecond->getId() ?>" class="tab_content" style="display: none;">
+        <ul class="tabs">
+            <li><a href="#tab-<?php echo  $categorySecond->getId() ?>" class="category-link" data-cid="<?php echo $categorySecond->getId() ?>"><?php echo __('All ' . $categorySecond->getName()) ?></a>
+            </li>
+            <?php foreach ($categorySecondChild as $item): ?>
+                <?php if($item->getSssIsLoad()): ?>
+                    <li><a href="#tab-<?php echo  $item->getId() ?>" class="category-link" data-cid="<?php echo $item->getId() ?>"><?php echo $item->getName() ?></a></li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </ul>
+        <div id="tab-<?php echo  $categorySecond->getId() ?>">
+            <div id="category-<?php echo $categorySecond->getId() ?>"></div>
+        </div>
+        <?php foreach ($categorySecondChild as $item): ?>
+            <?php if($item->getSssIsLoad()): ?>
+                <div id="tab-<?php echo  $item->getId() ?>">
+                    <div id="category-<?php echo $item->getId() ?>"></div>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+    <script type="text/x-magento-init">
+    {
+        "*": {
+            "forix/homepage": {
+                "urlPost": "<?php echo $block->getUrl("custom/category/product") ?>"
+            }
+        }
+    }
+</script>
+</div>

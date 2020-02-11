@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <image_constructor_section>
+            <product_page>
+                <small_image_width></small_image_width>
+                <small_image_height>110</small_image_height>
+                <small_keep_frame>1</small_keep_frame>
+
+                <medium_image_width></medium_image_width>
+                <medium_image_height>560</medium_image_height>
+                <medium_keep_frame></medium_keep_frame>
+
+                <large_image_width></large_image_width>
+                <large_image_height></large_image_height>
+                <large_keep_frame></large_keep_frame>
+
+                <product_form_selector><![CDATA[#product_addtocart_form]]></product_form_selector>
+                <media_gallery_placeholder_selector><![CDATA[[data-gallery-role=gallery-placeholder]]]></media_gallery_placeholder_selector>
+                <media_gallery_selector><![CDATA[[data-gallery-role="gallery"]]]></media_gallery_selector>
+                <image_holder_selector><![CDATA[.fotorama__stage__frame:first]]></image_holder_selector>
+                <image_selector><![CDATA[.fotorama__img]]></image_selector>
+                <image_zoom_selector><![CDATA[.fotorama__img--full]]></image_zoom_selector>
+            </product_page>
+            <mini_cart>
+                <image_width>75</image_width>
+                <image_height>75</image_height>
+                <keep_frame>1</keep_frame>
+                <items_block_selector><![CDATA[[data-block='minicart']]]></items_block_selector>
+                <item_block_selector><![CDATA[.minicart-items .product-item]]></item_block_selector>
+                <image_wrapper_selector><![CDATA[.product-image-container .product-image-wrapper]]></image_wrapper_selector>
+                <edit_action_selector><![CDATA[.action.edit]]></edit_action_selector>
+            </mini_cart>
+            <cart>
+                <image_width>165</image_width>
+                <image_height>165</image_height>
+                <keep_frame>1</keep_frame>
+                <items_block_selector><![CDATA[.cart.table-wrapper]]></items_block_selector>
+                <item_block_selector><![CDATA[tbody.cart.item]]></item_block_selector>
+                <image_wrapper_selector><![CDATA[.product-image-container .product-image-wrapper]]></image_wrapper_selector>
+                <edit_action_selector><![CDATA[.action.action-edit]]></edit_action_selector>
+            </cart>
+            <checkout>
+                <image_width>75</image_width>
+                <image_height>75</image_height>
+                <keep_frame>1</keep_frame>
+                <items_block_selector><![CDATA[.block.items-in-cart]]></items_block_selector>
+                <item_block_selector><![CDATA[li.product-item]]></item_block_selector>
+                <image_wrapper_selector><![CDATA[.product-image-container .product-image-wrapper]]></image_wrapper_selector>
+                <edit_action_selector><![CDATA[.action.action-edit]]></edit_action_selector>
+            </checkout>
+            <wishlist>
+                <image_width>300</image_width>
+                <image_height>240</image_height>
+                <keep_frame>1</keep_frame>
+                <items_block_selector><![CDATA[.products-grid.wishlist]]></items_block_selector>
+                <item_block_selector><![CDATA[li.product-item]]></item_block_selector>
+                <image_wrapper_selector><![CDATA[.product-image-container .product-image-wrapper]]></image_wrapper_selector>
+                <edit_action_selector><![CDATA[.action.edit]]></edit_action_selector>
+            </wishlist>
+            <mini_wishlist>
+                <image_width>90</image_width>
+                <image_height>75</image_height>
+                <keep_frame>1</keep_frame>
+                <items_block_selector><![CDATA[#wishlist-sidebar]]></items_block_selector>
+                <item_block_selector><![CDATA[li.product-item]]></item_block_selector>
+                <image_wrapper_selector><![CDATA[.product-image-container .product-image-wrapper]]></image_wrapper_selector>
+                <edit_action_selector><![CDATA[.action.action-edit]]></edit_action_selector>
+            </mini_wishlist>
+
+        </image_constructor_section>
+    </default>
+</config>

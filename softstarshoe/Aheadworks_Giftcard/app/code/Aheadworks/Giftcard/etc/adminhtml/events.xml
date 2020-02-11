@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="adminhtml_catalog_product_form_prepare_excluded_field_list">
+        <observer name="awgiftcard_catalog_product_form_prepare_excluded_field_list" instance="Aheadworks\Giftcard\Observer\UpdateExcludedFieldListObserver" />
+    </event>
+    <event name="controller_action_predispatch">
+        <observer name="awgiftcard_controller_action_predispatch" instance="Aheadworks\Giftcard\Observer\ControllerActionPredispatchObserver" />
+    </event>
+    <event name="adminhtml_sales_order_create_process_data">
+        <observer name="awgiftcard_order_create_process_data" instance="Aheadworks\Giftcard\Observer\OrderCreationProcessDataObserver"/>
+    </event>
+</config>

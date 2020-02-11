@@ -1,0 +1,27 @@
+@use-module-recaptcha-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.required-captcha input[type="checkbox"] + label{
+    &:extend(.forix-abs-visually-hidden all);
+}
+
+// ------------------------------------
+// Variables Extends
+// ------------------------------------
+
+// ------------------------------------
+// Extend Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .recaptcha-wrap{
+        margin-bottom: @forix-indent__l;
+    }
+
+    .recaptcha-holder > div div{
+        width: 100% !important;
+        max-width: 330px;
+    }
+}

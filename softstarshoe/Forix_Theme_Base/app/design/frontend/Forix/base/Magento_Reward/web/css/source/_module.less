@@ -1,0 +1,103 @@
+@use-module-reward-core__enable: true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.block-reward-info .reward-limit,
+.block-reward-info .reward-expiring{
+    &:extend(.block-reward-info .reward-rates all);
+}
+.block-reward-info .block-title,
+.block-reward-history .block-title{
+    &:extend(.forix-abs-account-blocks .block-title all);
+}
+.magento-reward-customer-info .column.main > .actions-toolbar{
+    &:extend(.forix-abs-visually-hidden all);
+}
+.block-reward-info .reward-balance{
+    &:extend(.forix-abs-three-size all);
+}
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true) {
+    .block-reward-info{
+        margin-bottom: @forix-indent__m;
+
+        .reward-balance{
+            margin: @forix-indent__s 0;
+        }
+
+        .reward-rates{
+            margin-bottom: @forix-indent__m;
+
+            &:last-child{
+                margin-bottom: 0;
+            }
+
+            .title{
+                display: inline-block;
+                margin-bottom: @forix-indent__s;
+            }
+        }
+    }
+
+    .table-reward-history th{
+        &.amount{
+            border-bottom: @forix-border__base;
+            font-weight: @forix-font-weight__semibold;
+            text-align: left;
+            padding: @forix-indent__s;
+        }
+    }
+
+    .reward-settings{
+        .fieldset{
+            padding: @forix-indent__s 0 0;
+
+            & > .field.choice > .label{
+                display: inline-block;
+            }
+        }
+    }
+
+    .block-reward-history{
+        .pager{
+            display: none;
+        }
+
+        .reward-history + .pager{
+            display: block;
+            margin-bottom: @forix-indent__m;
+        }
+        .message.empty{
+            margin-bottom: @forix-indent__base;
+        }
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .cart-container .rewards{
+        padding: @forix-indent__base 0 0;
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .cart-container .rewards{
+        padding: @forix-indent__xm 0 0;
+    }
+}
+
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    .block-reward-history .block-content{
+        padding-top: @forix-indent__xs;
+    }
+}

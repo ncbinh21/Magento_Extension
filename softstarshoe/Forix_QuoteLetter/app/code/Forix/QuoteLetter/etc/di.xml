@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Forix\QuoteLetter\Api\QuoteLetterRepositoryInterface" type="Forix\QuoteLetter\Model\QuoteLetterRepository"/>
+	<preference for="Forix\QuoteLetter\Api\Data\QuoteLetterInterface" type="Forix\QuoteLetter\Model\QuoteLetter"/>
+	<preference for="Forix\QuoteLetter\Api\Data\QuoteLetterSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Forix\QuoteLetter\Model\ResourceModel\QuoteLetter\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">forix_quoteletter</argument>
+			<argument name="resourceModel" xsi:type="string">Forix\QuoteLetter\Model\ResourceModel\QuoteLetter\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="forix_quoteletter_quoteletter_grid_data_source" xsi:type="string">Forix\QuoteLetter\Model\ResourceModel\QuoteLetter\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<type name="Magento\Cms\Helper\Page">
+		<plugin name="add_quote_letter_cmspage" type="Forix\QuoteLetter\Plugin\CmsPageTemplate" sortOrder="3"/>
+	</type>
+</config>

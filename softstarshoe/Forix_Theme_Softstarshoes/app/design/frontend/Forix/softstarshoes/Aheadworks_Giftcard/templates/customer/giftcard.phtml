@@ -1,0 +1,46 @@
+<?php
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Aheadworks\Giftcard\Block\Customer\Giftcard */
+?>
+<div id="aw_giftcard__code_info"></div>
+<?php echo $block->getChildHtml('aw_giftcard_codes') ?>
+<form id="aw_giftcard__check_code_form"
+      class="form"
+      action=""
+      method="post"
+      data-mage-init='{"awGiftCardManagement":{}}'>
+    <fieldset class="fieldset aw_giftcard__check">
+        <?php echo $block->getBlockHtml('formkey')?>
+        <div class="field required">
+
+            <div class="control">
+                <input type="text"
+                       name="code"
+                       value=""
+                       title="<?php echo $block->escapeHtml(__('Enter Gift Card code')) ?>"
+                       class="input-text"
+                       data-validate="{required:true}" required="required">
+                <label class="label" for="code">
+                    <span><?php echo $block->escapeHtml(__('Enter Gift Card code')) ?></span>
+                </label>
+            </div>
+        </div>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="button"
+                    class="action primary"
+                    title="<?php echo $block->escapeHtml(__('Check Status and Balance')) ?>"
+                    data-role="aw-giftcard-check-code-action"
+                    data-url="<?php /* @noEscape */ echo $block->escapeUrl($block->getCheckCodeUrl()) ?>">
+                <span><?php echo $block->escapeHtml(__('Check Status and Balance')) ?></span>
+            </button>
+        </div>
+    </div>
+</form>

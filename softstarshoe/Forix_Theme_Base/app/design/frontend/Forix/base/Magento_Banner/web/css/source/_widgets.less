@@ -1,0 +1,45 @@
+@use-widget-banner-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.block-banners-inline {
+    &:extend(.block-banners all);
+}
+
+.block-banners  .banner-items {
+    &:extend(.forix-abs-list-reset);
+}
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true) {
+    .block-banners{
+        margin-bottom: @forix-indent__xxl;
+
+        .banner-items {
+            > li{
+                margin: 0;
+            }
+        }
+
+        .banner-item{
+            display: block;
+
+            &-content{
+                margin-bottom: @forix-indent__base;
+
+                img{
+                    display: block;
+                    margin: 0 auto;
+                }
+            }
+
+        }
+    }
+}

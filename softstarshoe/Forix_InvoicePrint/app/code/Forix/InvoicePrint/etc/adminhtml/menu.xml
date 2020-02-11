@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Forix_InvoicePrint::invoiceprint" title="Invoice Print" translate="title" module="Forix_InvoicePrint" sortOrder="25" dependsOnModule="Magento_Sales" parent="Magento_Sales::sales" resource="Forix_InvoicePrint::invoiceprint"/>
+        <add id="Forix_InvoicePrint::invoiceprint_rules" action="invoiceprint/rule/index" title="Break Items Rules" translate="title" module="Forix_InvoicePrint" sortOrder="10" parent="Forix_InvoicePrint::invoiceprint" resource="Forix_InvoicePrint::invoiceprint_rules" />
+    </menu>
+</config>

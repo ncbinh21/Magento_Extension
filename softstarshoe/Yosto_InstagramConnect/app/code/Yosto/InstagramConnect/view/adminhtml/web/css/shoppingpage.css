@@ -1,0 +1,100 @@
+/*Remove current container of Magento*/
+.page-main-actions .page-actions._fixed {
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 501;
+}
+
+header.page-header.row {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.menu-wrapper, .side-col {
+    display: none;
+}
+
+.menu-wrapper._fixed ~ .page-wrapper {
+    margin-left: 0;
+}
+
+.ui-widget-content {
+    border: 0;
+}
+
+.main-col, .page-wrapper {
+    width: 100% !important;
+}
+
+.page-columns {
+    margin-left: 0 !important;
+}
+
+/*Main css for shopping page*/
+.grid-stack {
+    background: lightgoldenrodyellow;
+}
+
+.grid-stack-tablet {
+    background: lightgoldenrodyellow;
+}
+
+.grid-stack-mobile {
+    background: lightgoldenrodyellow;
+}
+
+.grid-stack-item-content {
+    color: #2c3e50;
+    text-align: center;
+    background-color: #18bc9c;
+}
+
+.ui-state-disabled {
+    opacity: 1 !important;
+    cursor: default !important;
+    pointer-events: auto !important;
+}
+
+/*Hidden code for pc, mobile, tablet*/
+
+#template_pc_code, #template_tablet_code, #template_mobile_code, #saved-data-pc, #saved-data-tablet, #saved-data-mobile {
+    display: none;
+}
+
+/*Css for add image page*/
+
+.small-pierce {
+    width: 60px;
+    height: 60px;
+    float: left;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    z-index: 200;
+}
+
+.images-container {
+    width: 267px;
+    box-sizing: border-box;
+    margin-right: 5px;
+    padding-top: 10px;
+    border: solid 2px whitesmoke;
+}
+
+.main-container {
+    width: 100%;
+    display: flex;
+}
+
+#tabs {
+    width: 100%;
+    border: 2px whitesmoke solid;
+}
+
+.instagram-delete-item {
+    width: 100%;
+    height: 30%;
+    position: absolute;
+    align-items: center;
+}

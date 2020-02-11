@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+		<meta name="description" content="Stay up to date with the latest news from Softstar, including new shoe styles, foot health tips and our fun workshop adventures."/>
+	</head>
+	<body></body>
+</page>

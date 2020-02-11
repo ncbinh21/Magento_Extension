@@ -1,0 +1,14 @@
+<?php
+/** @var \Magento\Backend\Block\Page\RequireJs $block */
+?>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {
+        'packages':   ['geochart'],
+        'mapsApiKey': 'AIzaSyBr3pLR_c6dttTc4X1zYhTdduVEiktpRHM'
+    });
+</script>
+
+<script src="<?= $block->getViewFileUrl('Mirasvit_Report/js/lib/chart.js') ?>"></script>
+
+<?= $block->getChildHtml() ?>

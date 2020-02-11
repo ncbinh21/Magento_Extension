@@ -1,0 +1,104 @@
+@use-header-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.header.content{
+    &:extend(.forix-abs-clearfix all);
+}
+// ------------------------------------
+// Variables
+// ------------------------------------
+@header__background: @three-background__color;
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .page-header{
+        background: @header__background;
+    }
+
+    .header.content {
+        .logo{
+            position: relative;
+            z-index: 1;
+            margin: 0;
+
+            img{
+                width: 100%;
+            }
+        }
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .header.content{
+        padding-top: @forix-indent__s;
+        text-align: center;
+        min-height: 75px;
+
+        .logo{
+            width: 100%;
+            display: inline-block;
+            padding: @forix-indent__xs 85px 0 @forix-indent__sl;
+            max-width: 300px;
+            margin-bottom: @forix-indent__xs;
+        }
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .page-wrapper {
+        .forix-lib-vendor-prefix-display(flex);
+        .forix-lib-vendor-prefix-flex-direction(column);
+        margin: 0;
+        min-height: 100%;
+    }
+
+    .header.content {
+        .logo {
+            float: left;
+        }
+    }
+}
+
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    .header.content{
+        padding-top: @forix-indent__base;
+        padding-bottom: @forix-indent__s;
+        position: relative;
+
+        .logo{
+            width: 195px;
+        }
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    .header.content{
+        padding-top: @forix-indent__base;
+        padding-bottom: (@forix-indent__s + 2);
+        position: relative;
+
+        .logo{
+            width: 250px;
+        }
+    }
+}
+
+// [1024-1199]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__l) and (@break-max = @screen__xl) {
+    .header.content {
+        .logo {
+            width: 210px;
+            margin-top: (@forix-indent__s - 2);
+            margin-bottom:(@forix-indent__s - 2);
+        }
+    }
+}

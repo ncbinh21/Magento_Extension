@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+		<meta name="description" content="Stay up to date with the latest news from Softstar, including new shoe styles, foot health tips and our fun workshop adventures."/>
+	</head>
+	<body>
+		<referenceContainer name="content">
+			<block class="FishPig\WordPress\Block\Homepage\View" name="wp.homepage.view" template="post/list/wrapper.phtml">
+				<block class="FishPig\WordPress\Block\Post\ListPost" name="wp.post.list" template="post/list.phtml">
+					<block class="FishPig\WordPress\Block\Post\PostList\Pager" name="wp.post_list.pager" as="pager" />
+				</block>
+			</block>
+			<block class="FishPig\WordPress\Block\Term\View" name="page_header" template="page/page_header.phtml" before="wp.homepage.view"/>
+		</referenceContainer>
+		<referenceContainer name="page.wrapper">
+			<block class="FishPig\WordPress\Block\Homepage\View" name="featured_post" template="FishPig_WordPress::page/featured_post.phtml" before="main.content" />
+			<block class="Forix\Ajaxscroll\Block\Main" name="ajax.scroll" template="Forix_Ajaxscroll::ajaxscroll/ias_blog.phtml" after="-"/>
+		</referenceContainer>
+	</body>
+</page>

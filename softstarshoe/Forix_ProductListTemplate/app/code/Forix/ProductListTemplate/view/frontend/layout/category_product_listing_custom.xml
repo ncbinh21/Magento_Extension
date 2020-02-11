@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="category_product_listing_default"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Forix\ProductListTemplate\Block\Category\Tabs" name="catalog.category.child.tab"  as="category_child_tab" template="category/tabs.phtml" before="-" />
+            <referenceContainer name="category.view.tab.container">
+                <block class="Magento\Catalog\Block\Category\View" name="category.modal.cms" template="Forix_ProductListTemplate::category/modal-cms.phtml">
+                    <arguments>
+                        <argument name="title" xsi:type="string" translate="true">Compare Styles</argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Catalog\Block\Category\View" name="category.products" after="category.modal.cms" template="Magento_Catalog::category/products.phtml">
+                    <block class="Magento\Catalog\Block\Product\ListProduct" name="category.products.list" as="product_list" template="Forix_ProductListTemplate::product/custom_list.phtml">
+                        <container name="category.product.list.additional" as="additional" />
+                        <block class="Magento\Framework\View\Element\RendererList" name="category.product.type.details.renderers" as="details.renderers">
+                            <block class="Magento\Framework\View\Element\Template" name="category.product.type.details.renderers.default" as="default"/>
+                        </block>
+                        <block class="Magento\Catalog\Block\Product\ProductList\Item\Container" name="category.product.addto" as="addto">
+                            <block class="Magento\Catalog\Block\Product\ProductList\Item\AddTo\Compare"
+                                   name="category.product.addto.compare" as="compare"
+                                   template="Magento_Catalog::product/list/addto/compare.phtml"/>
+                        </block>
+                        <block class="Magento\Catalog\Block\Product\ProductList\Toolbar" name="product_list_toolbar" template="Magento_Catalog::product/list/toolbar.phtml">
+                            <block class="Magento\Theme\Block\Html\Pager" name="product_list_toolbar_pager"/>
+                        </block>
+                        <action method="setToolbarBlockName">
+                            <argument name="name" xsi:type="string">product_list_toolbar</argument>
+                        </action>
+                    </block>
+                </block>
+            </referenceContainer>
+        </referenceContainer>
+        <referenceBlock name="category.description">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Forix_ProductListTemplate::category/read-more-content.phtml</argument>
+            </action>
+            <arguments>
+                <argument name="attribute_code" xsi:type="string">description</argument>
+                <argument name="max_line_num" xsi:type="number">3</argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceBlock name="product_list_toolbar">
+            <action method="disableExpanded">
+                <argument name="isExpanded" xsi:type="boolean">true</argument>
+            </action>
+        </referenceBlock>
+
+        <referenceBlock name="category.product.type.details.renderers">
+            <block class="Forix\ProductListTemplate\Block\Product\Renderer\Listing\Configurable"
+                   name="category.product.type.details.renderers.configurable" as="configurable"
+                   template="Forix_ProductListTemplate::product/listing/renderer.phtml"
+                   ifconfig="catalog/frontend/show_swatches_in_product_list"/>
+        </referenceBlock>
+
+        <move element="category.description" destination="category.view.tab.container" before="-" />
+        <move element="category.cms" destination="category.view.tab.container" after="-"/>
+
+        <referenceBlock name="catalog.leftnav" remove="true"/>
+        <referenceBlock name="breadcrumbs" remove="true"/>
+    </body>
+</page>

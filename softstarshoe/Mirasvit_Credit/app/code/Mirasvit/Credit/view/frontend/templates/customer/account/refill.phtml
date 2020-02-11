@@ -1,0 +1,59 @@
+<?php
+//@codingStandardsIgnoreFile
+
+/** @var \Mirasvit\Credit\Block\Customer\Refill $block */
+
+/** @var \Magento\Framework\Pricing\Helper\Data $pricingHelper */
+$pricingHelper = $this->helper('Magento\Framework\Pricing\Helper\Data');
+$product = $block->getRefillProduct();
+?>
+<?php if ($block->isAllowed()): ?>
+    <div class="block credit__account-refill">
+        <div class="block-title">
+            <strong><?= __('Refill balance') ?></strong>
+        </div>
+        <div class="block-content">
+            <form action="<?= $block->getUrl('credit/account/refill') ?>" method="post" autocomplete="off"
+                  id="form-send2friend">
+                <fieldset class="fieldset info">
+                    <?= $block->getBlockHtml('formkey') ?>
+
+                    <?= $product->getDescription() ?>
+
+                    <input type="hidden" name="product" value="<?= $block->getRefillProduct()->getId() ?>" />
+
+                    <?php if ($block->getOptions()): ?>
+                    <div class="options">
+                        <?php foreach ($block->getOptions() as $option): ?>
+                            <?php foreach ($option->getValues() as $value): ?>
+                                <div class="field choice">
+                                    <input type="radio" class="radio" name="options[<?= $option->getId() ?>]"
+                                           id="option<?= $value->getId() ?>" value="<?= $value->getId() ?>"/>
+
+                                    <label class="label" for="option<?= $value->getId() ?>">
+                                        <span><?= $pricingHelper->currency($value['price'], true, false) ?></span>
+                                    </label>
+                                </div>
+                            <?php endforeach ?>
+                        <?php endforeach ?>
+                    </div>
+                    <?php else: ?>
+                        <div class="field price">
+                            <label class="label" for="price" style="width: 10rem;"><span><?=__('Price') ?></span></label>
+                            <?= $pricingHelper->currency($product->getFinalPrice(), true, false) ?>
+                        </div>
+                        <div class="field qty">
+                            <label class="label" for="amount" style="width: 10rem;"><span><?=__('Quantity') ?></span></label>
+                            <input id="amount" type="number" name="qty" value="1" style="max-width: 10rem;" />
+                        </div>
+
+                    <?php endif ?>
+                </fieldset>
+
+                <div class="buttons-set">
+                    <button type="submit" class="action primary"><?= __('Add to Сart') ?></button>
+                </div>
+            </form>
+        </div>
+    </div>
+<?php endif ?>

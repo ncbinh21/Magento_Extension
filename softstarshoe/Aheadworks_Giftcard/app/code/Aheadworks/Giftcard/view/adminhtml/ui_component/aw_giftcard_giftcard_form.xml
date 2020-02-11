@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">aw_giftcard_giftcard_form.aw_giftcard_giftcard_form_data_source</item>
+            <item name="deps" xsi:type="string">aw_giftcard_giftcard_form.aw_giftcard_giftcard_form_data_source</item>
+            <item name="component" xsi:type="string">Aheadworks_Giftcard/js/ui/form/form</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Gift Card Code</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">aw_giftcard_giftcard_form</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">Aheadworks\Giftcard\Block\Adminhtml\Giftcard\Edit\Button\Back</item>
+            <item name="delete" xsi:type="string">Aheadworks\Giftcard\Block\Adminhtml\Giftcard\Edit\Button\Delete</item>
+            <item name="activate_deactivate" xsi:type="string">Aheadworks\Giftcard\Block\Adminhtml\Giftcard\Edit\Button\ActivateDeactivate</item>
+            <item name="reset" xsi:type="string">Aheadworks\Giftcard\Block\Adminhtml\Giftcard\Edit\Button\Reset</item>
+            <item name="save" xsi:type="string">Aheadworks\Giftcard\Block\Adminhtml\Giftcard\Edit\Button\Save</item>
+            <item name="save_and_continue" xsi:type="string">Aheadworks\Giftcard\Block\Adminhtml\Giftcard\Edit\Button\SaveAndContinue</item>
+            <item name="save_and_send" xsi:type="string">Aheadworks\Giftcard\Block\Adminhtml\Giftcard\Edit\Button\SaveAndSend</item>
+        </item>
+    </argument>
+    <dataSource name="aw_giftcard_giftcard_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Aheadworks\Giftcard\Ui\DataProvider\Giftcard\FormDataProvider</argument>
+            <argument name="name" xsi:type="string">aw_giftcard_giftcard_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="aw_giftcard_admin/giftcard/save"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="gift_card_information">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Gift Card Information</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">10</item>
+                <item name="opened" xsi:type="boolean">true</item>
+            </item>
+        </argument>
+        <field name="id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">giftcard</item>
+                    <item name="dataScope" xsi:type="string">id</item>
+                </item>
+            </argument>
+        </field>
+        <field name="type">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Aheadworks\Giftcard\Model\Source\Entity\Attribute\GiftcardType</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="label" xsi:type="string" translate="true">Type</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">giftcard</item>
+                    <item name="sortOrder" xsi:type="number">1</item>
+                    <item name="dataScope" xsi:type="string">type</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="switcherConfig" xsi:type="array">
+                        <item name="component" xsi:type="string">Aheadworks_Giftcard/js/ui/form/switcher</item>
+                        <item name="enabled" xsi:type="boolean">true</item>
+                        <item name="rules" xsi:type="array">
+                            <item name="0" xsi:type="array">
+                                <item name="value" xsi:type="number">1</item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="array">
+                                        <item name="selector" xsi:type="string">button[data-ui-id="save-and-send-button"]</item>
+                                        <item name="callback" xsi:type="string">show</item>
+                                    </item>
+                                    <item name="1" xsi:type="array">
+                                        <item name="target" xsi:type="string">${ $.ns }.${ $.ns }.recipient_details.recipient_email</item>
+                                        <item name="callback" xsi:type="string">show</item>
+                                    </item>
+                                    <item name="2" xsi:type="array">
+                                        <item name="target" xsi:type="string">${ $.ns }.${ $.ns }.recipient_details.email_template</item>
+                                        <item name="callback" xsi:type="string">show</item>
+                                    </item>
+                                    <item name="3" xsi:type="array">
+                                        <item name="target" xsi:type="string">${ $.ns }.${ $.ns }.sender_details.sender_email</item>
+                                        <item name="callback" xsi:type="string">show</item>
+                                    </item>
+                                    <item name="4" xsi:type="array">
+                                        <item name="selector" xsi:type="string">button[data-new-entity="save-button"]</item>
+                                        <item name="callback" xsi:type="string">removeClass</item>
+                                        <item name="params" xsi:type="array">
+                                            <item name="0" xsi:type="string">primary</item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                            <item name="1" xsi:type="array">
+                                <item name="value" xsi:type="number">2</item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="array">
+                                        <item name="selector" xsi:type="string">button[data-ui-id="save-and-send-button"]</item>
+                                        <item name="callback" xsi:type="string">hide</item>
+                                    </item>
+                                    <item name="1" xsi:type="array">
+                                        <item name="target" xsi:type="string">${ $.ns }.${ $.ns }.recipient_details.recipient_email</item>
+                                        <item name="callback" xsi:type="string">hide</item>
+                                    </item>
+                                    <item name="2" xsi:type="array">
+                                        <item name="target" xsi:type="string">${ $.ns }.${ $.ns }.recipient_details.email_template</item>
+                                        <item name="callback" xsi:type="string">hide</item>
+                                    </item>
+                                    <item name="3" xsi:type="array">
+                                        <item name="target" xsi:type="string">${ $.ns }.${ $.ns }.sender_details.sender_email</item>
+                                        <item name="callback" xsi:type="string">hide</item>
+                                    </item>
+                                    <item name="4" xsi:type="array">
+                                        <item name="selector" xsi:type="string">button[data-new-entity="save-button"]</item>
+                                        <item name="callback" xsi:type="string">addClass</item>
+                                        <item name="params" xsi:type="array">
+                                            <item name="0" xsi:type="string">primary</item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                            <item name="2" xsi:type="array">
+                                <item name="value" xsi:type="number">3</item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="array">
+                                        <item name="selector" xsi:type="string">button[data-ui-id="save-and-send-button"]</item>
+                                        <item name="callback" xsi:type="string">show</item>
+                                    </item>
+                                    <item name="1" xsi:type="array">
+                                        <item name="target" xsi:type="string">${ $.ns }.${ $.ns }.recipient_details.recipient_email</item>
+                                        <item name="callback" xsi:type="string">show</item>
+                                    </item>
+                                    <item name="2" xsi:type="array">
+                                        <item name="target" xsi:type="string">${ $.ns }.${ $.ns }.recipient_details.email_template</item>
+                                        <item name="callback" xsi:type="string">show</item>
+                                    </item>
+                                    <item name="3" xsi:type="array">
+                                        <item name="target" xsi:type="string">${ $.ns }.${ $.ns }.sender_details.sender_email</item>
+                                        <item name="callback" xsi:type="string">show</item>
+                                    </item>
+                                    <item name="4" xsi:type="array">
+                                        <item name="selector" xsi:type="string">button[data-new-entity="save-button"]</item>
+                                        <item name="callback" xsi:type="string">removeClass</item>
+                                        <item name="params" xsi:type="array">
+                                            <item name="0" xsi:type="string">primary</item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="code_pool" class="Aheadworks\Giftcard\Ui\Component\Form\Field">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Aheadworks\Giftcard\Model\Source\Entity\Attribute\GiftcardPool</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="label" xsi:type="string" translate="true">Code Pool</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">giftcard</item>
+                    <item name="sortOrder" xsi:type="number">2</item>
+                    <item name="dataScope" xsi:type="string">code_pool</item>
+                    <item name="visibleIsSetGcId" xsi:type="boolean">false</item>
+                    <item name="service" xsi:type="array">
+                        <item name="template" xsi:type="string">Aheadworks_Giftcard/ui/form/element/giftcard/helper/service-settings</item>
+                        <item name="configSettingsUrl" xsi:type="string">adminhtml/system_config/edit/section/aw_giftcard</item>
+                        <item name="label" xsi:type="string" translate="true">Use pattern from</item>
+                    </item>
+                    <item name="usedDefault" xsi:type="string">true</item>
+                    <item name="disabled" xsi:type="string">true</item>
+                    <item name="notice" xsi:type="string" translate="true">if selected pool is empty a new code will be generated as per pool configuration</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="validate-select" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="code_label" class="Aheadworks\Giftcard\Ui\Component\Form\Field">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="label" xsi:type="string" translate="true">Code</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">giftcard</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="dataScope" xsi:type="string">code</item>
+                    <item name="elementTmpl" xsi:type="string">Aheadworks_Giftcard/ui/form/element/label</item>
+                    <item name="visibleIsSetGcId" xsi:type="boolean">true</item>
+                    <item name="additionalClasses" xsi:type="string">aw-giftcard-admin-bold-label-control</item>
+                </item>
+            </argument>
+        </field>
+        <field name="initial_balance_label" class="Aheadworks\Giftcard\Ui\Component\Form\Field">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="label" xsi:type="string" translate="true">Initial Amount</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">giftcard</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="dataScope" xsi:type="string">initial_balance</item>
+                    <item name="elementTmpl" xsi:type="string">Aheadworks_Giftcard/ui/form/element/label</item>
+                    <item name="visibleIsSetGcId" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+        </field>
+        <field name="initial_balance" class="Aheadworks\Giftcard\Ui\Component\Form\Field">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="label" xsi:type="string" translate="true">Initial Amount</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">giftcard</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="dataScope" xsi:type="string">initial_balance</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="validate-number" xsi:type="boolean">true</item>
+                        <item name="validate-zero-or-greater" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="visibleIsSetGcId" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </field>
+        <field name="availability_label" class="Aheadworks\Giftcard\Ui\Component\Form\Field">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Aheadworks\Giftcard\Model\Source\Giftcard\Status</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="label" xsi:type="string" translate="true">Availability</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">giftcard</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                    <item name="dataScope" xsi:type="string">state</item>
+                    <item name="elementTmpl" xsi:type="string">Aheadworks_Giftcard/ui/form/element/label</item>
+                    <item name="visibleIsSetGcId" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+        </field>
+        <field name="expire_at" class="Aheadworks\Giftcard\Ui\Component\Form\Field">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Expire At</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">date</item>
+                    <item name="source" xsi:type="string">giftcard</item>
+                    <item name="dataScope" xsi:type="string">expire_at</item>
+                    <item name="sortOrder" xsi:type="number">50</item>
+                    <item name="options" xsi:type="array">
+                        <item name="dateFormat" xsi:type="string">MMM d, y</item>
+                    </item>
+                    <item name="validation" xsi:type="array">
+                        <item name="validate-date" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="visibleIsSetGcId" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+        </field>
+        <field name="expire_after" class="Aheadworks\Giftcard\Ui\Component\Form\Giftcard\ExpireAfter">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="label" xsi:type="string" translate="true">Expires After, days</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">giftcard</item>
+                    <item name="sortOrder" xsi:type="number">50</item>
+                    <item name="dataScope" xsi:type="string">expire_after</item>
+                    <item name="service" xsi:type="array">
+                        <item name="template" xsi:type="string">Aheadworks_Giftcard/ui/form/element/giftcard/helper/service-settings</item>
+                        <item name="configSettingsUrl" xsi:type="string">adminhtml/system_config/edit/section/aw_giftcard</item>
+                    </item>
+                    <item name="usedDefault" xsi:type="string">true</item>
+                    <item name="disabled" xsi:type="string">true</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="validate-digits" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="visibleIsSetGcId" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </field>
+        <field name="delivery_date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Delivery Date</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">date</item>
+                    <item name="source" xsi:type="string">giftcard</item>
+                    <item name="dataScope" xsi:type="string">delivery_date</item>
+                    <item name="sortOrder" xsi:type="number">51</item>
+                    <item name="options" xsi:type="array">
+                        <item name="dateFormat" xsi:type="string">MMM d, y</item>
+                    </item>
+                    <item name="validation" xsi:type="array">
+                        <item name="validate-date" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="delivery_date_timezone">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Locale\Timezone</item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Delivery Date Timezone</item>
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">giftcard</item>
+                    <item name="dataScope" xsi:type="string">delivery_date_timezone</item>
+                    <item name="sortOrder" xsi:type="number">52</item>
+                </item>
+            </argument>
+        </field>
+        <field name="email_sent_label" class="Aheadworks\Giftcard\Ui\Component\Form\Field">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Aheadworks\Giftcard\Model\Source\EmailStatus</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="label" xsi:type="string" translate="true">Email Sent</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">giftcard</item>
+                    <item name="sortOrder" xsi:type="number">53</item>
+                    <item name="dataScope" xsi:type="string">email_sent</item>
+                    <item name="elementTmpl" xsi:type="string">Aheadworks_Giftcard/ui/form/element/label</item>
+                    <item name="visibleIsSetGcId" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+        </field>
+        <field name="created_at_label" class="Aheadworks\Giftcard\Ui\Component\Form\Giftcard\CreatedAt">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Created At</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">giftcard</item>
+                    <item name="sortOrder" xsi:type="number">60</item>
+                    <item name="dataScope" xsi:type="string">created_at</item>
+                    <item name="elementTmpl" xsi:type="string">Aheadworks_Giftcard/ui/form/element/label</item>
+                    <item name="visibleIsSetGcId" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+        </field>
+        <field name="website_label" class="Aheadworks\Giftcard\Ui\Component\Form\Field">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Aheadworks\Giftcard\Model\Source\Website</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Website</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">giftcard</item>
+                    <item name="sortOrder" xsi:type="number">70</item>
+                    <item name="dataScope" xsi:type="string">website_id</item>
+                    <item name="elementTmpl" xsi:type="string">Aheadworks_Giftcard/ui/form/element/label</item>
+                    <item name="visibleIsSetGcId" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+        </field>
+        <field name="website_id" class="Aheadworks\Giftcard\Ui\Component\Form\Field">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Aheadworks\Giftcard\Model\Source\Website</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Website</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">giftcard</item>
+                    <item name="dataScope" xsi:type="string">website_id</item>
+                    <item name="default" xsi:type="string">0</item>
+                    <item name="sortOrder" xsi:type="number">70</item>
+                    <item name="visibleIsSetGcId" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="sender_details" class="Aheadworks\Giftcard\Ui\Component\Form\Fieldset">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="component" xsi:type="string">Aheadworks_Giftcard/js/ui/form/components/fieldset</item>
+                <item name="label" xsi:type="string" translate="true">Sender Details</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">20</item>
+                <item name="opened" xsi:type="boolean">true</item>
+            </item>
+        </argument>
+        <field name="sender_name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Sender Name</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">giftcard</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="dataScope" xsi:type="string">sender_name</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="sender_email">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Sender Email</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">giftcard</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="dataScope" xsi:type="string">sender_email</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="validate-email" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="order_information" class="Aheadworks\Giftcard\Ui\Component\Form\Fieldset">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Order Information</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">20</item>
+                <item name="opened" xsi:type="boolean">true</item>
+                <item name="visibleIsSetOrderId" xsi:type="boolean">true</item>
+            </item>
+        </argument>
+        <field name="product" class="Aheadworks\Giftcard\Ui\Component\Form\Giftcard\OrderInfo">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Product</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">giftcard</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="dataScope" xsi:type="string">product</item>
+                    <item name="component" xsi:type="string">Aheadworks_Giftcard/js/ui/form/element/label-url</item>
+                </item>
+            </argument>
+        </field>
+        <field name="order" class="Aheadworks\Giftcard\Ui\Component\Form\Giftcard\OrderInfo">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Order</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">giftcard</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="dataScope" xsi:type="string">order</item>
+                    <item name="component" xsi:type="string">Aheadworks_Giftcard/js/ui/form/element/label-url</item>
+                </item>
+            </argument>
+        </field>
+        <field name="customer" class="Aheadworks\Giftcard\Ui\Component\Form\Giftcard\OrderInfo">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Customer Name</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">giftcard</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                    <item name="dataScope" xsi:type="string">customer</item>
+                    <item name="component" xsi:type="string">Aheadworks_Giftcard/js/ui/form/element/label-url</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="recipient_details">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Recipient Details</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">30</item>
+                <item name="opened" xsi:type="boolean">true</item>
+            </item>
+        </argument>
+        <field name="recipient_name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Recipient Name</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">giftcard</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="dataScope" xsi:type="string">recipient_name</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="recipient_email" class="Aheadworks\Giftcard\Ui\Component\Form\Field">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Recipient Email</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">giftcard</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="dataScope" xsi:type="string">recipient_email</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="validate-email" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="balance" class="Aheadworks\Giftcard\Ui\Component\Form\Field">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Balance</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">giftcard</item>
+                    <item name="dataScope" xsi:type="string">balance</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="validate-number" xsi:type="boolean">true</item>
+                        <item name="validate-zero-or-greater" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="visibleIsSetGcId" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+        </field>
+        <field name="email_template" class="Aheadworks\Giftcard\Ui\Component\Form\Field">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Aheadworks\Giftcard\Model\Source\Giftcard\EmailTemplate</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string" translate="true">Email Template</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">giftcard</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                    <item name="dataScope" xsi:type="string">email_template</item>
+                </item>
+            </argument>
+        </field>
+        <field name="headline" class="Aheadworks\Giftcard\Ui\Component\Form\Field">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Headline</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">giftcard</item>
+                    <item name="sortOrder" xsi:type="number">50</item>
+                    <item name="dataScope" xsi:type="string">headline</item>
+                </item>
+            </argument>
+        </field>
+        <field name="message" class="Aheadworks\Giftcard\Ui\Component\Form\Field">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Message</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="source" xsi:type="string">giftcard</item>
+                    <item name="sortOrder" xsi:type="number">60</item>
+                    <item name="dataScope" xsi:type="string">message</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="history" class="Aheadworks\Giftcard\Ui\Component\Form\Fieldset">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">History</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">40</item>
+                <item name="opened" xsi:type="boolean">true</item>
+                <item name="visibleIsSetGcId" xsi:type="boolean">true</item>
+            </item>
+        </argument>
+        <insertListing name="aw_giftcard_history_listing">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="cssclass" xsi:type="string">aw-giftcard-history-listing</item>
+                    <item name="autoRender" xsi:type="boolean">true</item>
+                    <item name="dataScope" xsi:type="string">aw_giftcard_history_listing</item>
+                    <item name="externalProvider" xsi:type="string">${ $.ns }.aw_giftcard_history_listing_data_source</item>
+                    <item name="ns" xsi:type="string">aw_giftcard_history_listing</item>
+                    <item name="loading" xsi:type="boolean">false</item>
+                    <item name="imports" xsi:type="array">
+                        <item name="id" xsi:type="string">${ $.provider }:data.id</item>
+                    </item>
+                    <item name="exports" xsi:type="array">
+                        <item name="id" xsi:type="string">${ $.externalProvider }:params.giftcard_id</item>
+                    </item>
+                </item>
+            </argument>
+        </insertListing>
+    </fieldset>
+</form>

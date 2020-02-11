@@ -1,0 +1,203 @@
+<?php
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Aheadworks\Giftcard\Block\Adminhtml\Product\Composite\Fieldset\Giftcard */
+$product = $block->getProduct();
+?>
+<?php if ($block->canRenderOptions()): ?>
+    <fieldset id="catalog_product_composite_configure_fields_aw_giftcard" class="fieldset admin__fieldset">
+        <legend class="legend admin__legend">
+            <span><?php echo $block->escapeHtml(__('Gift Card Options')) ?></span>
+        </legend>
+        <?php if ($block->isFixedAmount()): ?>
+            <input type="hidden" name="aw_gc_amount" value="<?php /* @noEscape */ echo $block->getFixedAmount() ?>" />
+        <?php else: ?>
+            <div class="field admin__field required _required">
+                <label for="aw_gc_amount" class="label admin__field-label">
+                    <span><?php echo $block->escapeHtml(__('Amount')) ?></span>
+                </label>
+                <?php if ($block->getAmountOptions()): ?>
+                    <div class="control admin__field-control">
+                        <select name="aw_gc_amount"
+                                class="required-entry select admin__control-select">
+                            <?php foreach ($block->getGiftcardAmounts() as $amount): ?>
+                                <option value="<?php /* @noEscape */ echo $amount['value'] ?>"
+                                        <?php /* @noEscape */ echo $amount['value'] == $block->getAmountOptionValue() ? 'selected' : '' ?>>
+                                    <?php /* @noEscape */ echo $amount['label'] ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <script>
+                        require([
+                            'jquery',
+                            'awGiftCardChangeAmount'
+                        ], function($, awGiftCardChangeAmount) {
+                            $(document).ready(function() {
+                                $('select[name="aw_gc_amount"]').awGiftCardChangeAmount();
+                            });
+                        });
+                    </script>
+                <?php endif; ?>
+                <?php if ($block->isAllowOpenAmount()): ?>
+                    <div id="aw-gc-custom-amount-box"
+                         class="control admin__field-control"
+                         <?php /* @noEscape */ echo $block->getAmountOptions() ? 'style="display: none"' : '' ?>>
+                        <input type="text"
+                               name="aw_gc_custom_amount"
+                               value="<?php /* @noEscape */ echo $block->getCustomAmountOptionValue() ?>"
+                               placeholder="(<?php /* @noEscape */ echo $block->getMinCustomAmount() . '-' . $block->getMaxCustomAmount() ?>)"
+                               class="input-text required-entry admin__control-text"
+                               data-validate="{
+                                                number: true,
+                                                required: true,
+                                                min: <?php /* @noEscape */ echo $block->getMinCustomAmount() ?>,
+                                                max: <?php /* @noEscape */ echo $block->getMaxCustomAmount() ?>
+                                            }"
+                            <?php /* @noEscape */ echo $block->getAmountOptions() ? 'disabled="disabled"' : '' ?> />
+                    </div>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
+        <?php if ($block->isAllowDesignSelect()): ?>
+            <div class="field admin__field required _required">
+                <label class="label admin__field-label" for="aw_gc_template">
+                    <span><?php echo $block->escapeHtml(__('Select a design')) ?></span>
+                </label>
+                <div class="control admin__field-control">
+                    <select name="aw_gc_template"
+                            class="required-entry select admin__control-select aw-gc-amount-entry">
+                        <option value=""><?php echo $block->escapeHtml(__('Choose a Template...')) ?></option>
+                        <?php foreach ($block->getGiftcardTemplates() as $template): ?>
+                            <option value="<?php /* @noEscape */ echo $template['value'] ?>"
+                                    <?php /* @noEscape */ echo $template['value'] == $block->getTemplateOptionValue() ? 'selected' : '' ?>>
+                                <?php /* @noEscape */ echo $block->stripTags($template['name']) ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+        <?php endif; ?>
+        <?php if ($block->isSingleDesign()): ?>
+            <input type="hidden" id="aw_gc_template" name="aw_gc_template" value="<?php /* @noEscape */ echo $block->getTemplateValue(); ?>">
+        <?php endif; ?>
+        <div class="field admin__field _required required">
+            <label class="label admin__field-label" for="aw_gc_sender_name">
+                <span><?php echo $block->escapeHtml(__('Sender Name')) ?></span>
+            </label>
+            <div class="control admin__field-control">
+                <input type="text" name="aw_gc_sender_name"
+                       class="required-entry input-text admin__control-text"
+                       value="<?php /* @noEscape */ echo $block->getSenderNameValue() ?>" />
+            </div>
+        </div>
+        <?php if ($block->isAllowDeliveryDate()): ?>
+            <div class="field admin__field">
+                <label class="label admin__field-label" for="aw_gc_delivery_date">
+                    <span><?php echo $block->escapeHtml(__('Delivery Date')) ?></span>
+                </label>
+                <div class="control admin__field-control">
+                    <input type="text"
+                           name="aw_gc_delivery_date"
+                           class="input-text admin__control-text"
+                           value="<?php /* @noEscape */ echo $block->getDeliveryDateValue() ?>"  />
+                </div>
+            </div>
+            <div class="field admin__field">
+                <label class="label admin__field-label" for="aw_gc_delivery_date_timezone">
+                    <span><?php echo $block->escapeHtml(__('Delivery Date Timezone')) ?></span>
+                </label>
+                <div class="control admin__field-control">
+                    <select id="aw_gc_delivery_date_timezone" class="select admin__control-select"
+                            name="aw_gc_delivery_date_timezone">
+                        <?php foreach ($block->getTimezones() as $timezone): ?>
+                            <option value="<?php /* @noEscape */ echo $timezone['value'] ?>"
+                                <?php /* @noEscape */ echo $timezone['value'] == $block->getDeliveryDateTimezoneValue() ? 'selected' : '' ?>>
+                                <?php /* @noEscape */ echo $timezone['label'] ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+            <script>
+                require([
+                    'jquery',
+                    'awGiftCardCalendar'
+                ], function($, awGiftCardCalendar) {
+                    $(document).ready(function() {
+                        $('input[name="aw_gc_delivery_date"]')
+                            .awGiftCardCalendar({"addDays": "<?php /* @noEscape */ echo $block->getDaysOrderBetweenDelivery() ?>"});
+                    });
+                });
+            </script>
+        <?php endif; ?>
+        <?php if ($block->isAllowEmail()): ?>
+            <div class="field admin__field _required required">
+                <label class="label admin__field-label" for="aw_gc_sender_email">
+                    <span><?php echo $block->escapeHtml(__('Sender Email')) ?></span>
+                </label>
+                <div class="control admin__field-control">
+                    <input type="text"
+                           name="aw_gc_sender_email"
+                           class="required-entry input-text validate-email admin__control-text"
+                           value="<?php /* @noEscape */ echo $block->getSenderEmailValue() ?>" />
+                </div>
+            </div>
+        <?php endif; ?>
+        <div class="field admin__field _required required">
+            <label class="label admin__field-label" for="aw_gc_recipient_name">
+                <span><?php echo $block->escapeHtml(__('Recipient Name')) ?></span>
+            </label>
+            <div class="control admin__field-control">
+                <input type="text"
+                       name="aw_gc_recipient_name"
+                       class="required-entry input-text admin__control-text"
+                       value="<?php /* @noEscape */ echo $block->getRecipientNameValue() ?>" />
+            </div>
+        </div>
+        <?php if ($block->isAllowEmail()): ?>
+            <div class="field admin__field _required required">
+                <label class="label admin__field-label" for="aw_gc_recipient_email">
+                    <span><?php echo $block->escapeHtml(__('Recipient Email')) ?></span>
+                </label>
+                <div class="control admin__field-control">
+                    <input type="text"
+                           name="aw_gc_recipient_email"
+                           class="required-entry input-text validate-email admin__control-text"
+                           value="<?php /* @noEscape */ echo $block->getRecipientEmailValue() ?>" />
+                </div>
+            </div>
+        <?php endif; ?>
+        <?php if ($block->isAllowHeadline()): ?>
+            <div class="field admin__field">
+                <label class="label admin__field-label" for="aw_gc_headline">
+                    <span><?php echo $block->escapeHtml(__('Headline')) ?></span>
+                </label>
+                <div class="control admin__field-control">
+                    <input type="text"
+                           name="aw_gc_headline"
+                           class="input-text admin__control-text"
+                           value="<?php /* @noEscape */ echo $block->getHeadlineValue() ?>" />
+                </div>
+            </div>
+        <?php endif; ?>
+        <?php if ($block->isAllowMessage()): ?>
+            <div class="field admin__field">
+                <label class="label admin__field-label" for="aw_gc_message">
+                    <span><?php echo $block->escapeHtml(__('Message')) ?></span>
+                </label>
+                <div class="control admin__field-control">
+                    <textarea name="aw_gc_message"
+                              class="input-text admin__control-textarea"
+                              cols="50"
+                              rows="3"><?php /* @noEscape */ echo $block->getMessageValue() ?></textarea>
+                </div>
+            </div>
+        <?php endif; ?>
+    </fieldset>
+<?php endif; ?>

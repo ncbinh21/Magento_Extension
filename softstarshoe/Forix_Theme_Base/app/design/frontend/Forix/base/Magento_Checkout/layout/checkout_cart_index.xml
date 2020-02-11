@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Moving some Block -->
+        <move element="checkout.cart.coupon" destination="cart.summary.group.top" before="-"/>
+        <move element="checkout.cart.shipping" destination="cart.summary.group.top" after="checkout.cart.giftcardaccount"/>
+        <move element="checkout.cart.totals.container" destination="cart.summary.group.bottom" before="-"/>
+        <move element="checkout.cart.methods.bottom" destination="cart.summary.group.bottom" after="-"/>
+        <move element="cart.summary" destination="cart.summary.sticky"/>
+        <!-- Adding some Block -->
+        <referenceBlock name="cart.summary">
+            <container name="cart.summary.group.top" as="cart_summary_group_top" label="Cart Summary Group Top" htmlTag="div" htmlClass="block-group group-1" after="checkout.cart.summary.title"/>
+            <container name="cart.summary.group.bottom" as="cart_summary_group_bottom" label="Cart Summary Group Bottom" htmlTag="div" htmlClass="block-group group-2" after="-"/>
+        </referenceBlock>
+        <referenceContainer name="checkout.cart.container">
+            <container name="cart.summary.sticky" as="cart_summary_sticky" label="Cart Summary Sticky" htmlTag="div" htmlClass="cart-summary-sticky" before="checkout.cart.form"/>
+            <block class="Magento\Framework\View\Element\Template" name="cart.confirm.delete" template="Magento_Checkout::cart/confirmdelete.phtml" after="-"/>
+        </referenceContainer>
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Framework\View\Element\Template" name="cart.script" template="Magento_Checkout::cart/script.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,162 @@
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+.data.item.content .product.attribute a{
+    &:extend(.forix-abs-link1 all);
+}
+.data.item.content .product.attribute .block-faq-lists .block-faqs .item .title{
+    &:extend(.alink all);
+}
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true) {
+
+    .value{
+        .homepage-cms-container-1{
+            padding: 0;
+            a{
+                color: @color-white;
+            }
+        }
+    }
+    .product.attribute{
+        &.optional{
+            .block{
+                margin: 0 0 30px;
+                >img{
+                    display: block;
+                }
+            }
+        }
+    }
+    .tab-description__col-left{
+        background-color: @color-white;
+        border-radius: 10px;
+    }
+
+    .product.attribute.description{
+        .title{
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+        .list-background{
+            margin: 15px 0;
+        }
+    }
+    .homepage-video{
+        >div{
+            position: relative;
+        }
+    }
+
+    .homepage-cms-container-1.block-images .homepage-video{
+        >div{
+            display: inline-block;
+            >img{
+                display: block;
+            }
+            >a.btn-play-video{
+                color: @color-white!important;
+                &:hover{
+                    color: @sss-color-7!important;
+                }
+            }
+        }
+        .icon-play-video{
+            display: block;
+        }
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .tab-description__col-full{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .tab-description__col-full{
+        //.forix-lib-vendor-prefix-display(flex);
+        //.forix-lib-vendor-prefix-flex-wrap(wrap);
+        display: block;
+        clear: both;
+        overflow: hidden;umx humx
+    .tab-description__col-left{
+        width: percentage(6/12);
+        padding: 40px 20px 20px;
+    }
+        .tab-description__col-right + .tab-description__col-left{
+            width: percentage(6/12);
+        }
+        .tab-description__col-left{
+            width: 100%;
+            float: left;
+            padding: 30px 15px 5px;
+            .product.attribute.description{
+                position: relative;
+                &:after{
+                   // content: '';
+                    background: url(../images/img-sprite.png) no-repeat 25% -1350px;
+                    height: 4px;
+                    position: absolute;
+                    bottom: -50px;
+                    left: 0;
+                    right: 50px;
+                }
+            }
+        }
+        .tab-description__col-right{
+            float: right;
+            width: 50%;
+            .product.attribute.optional{
+                width: 93%;
+                float: right;
+                .block-images{
+                    margin-bottom: 20px;
+                }
+            }
+        }
+        //.tab-description__col-right{
+        //    width: percentage(6/12);
+        //    padding-left: 60px;
+        //}
+    }
+}
+
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l) {
+    .tab-description__col-full{
+        .tab-description__col-left{
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+    }
+    .product.attribute.description{
+        .title{
+            margin-bottom: 15px;
+        }
+        .list-background{
+            margin: 10px 0;
+        }
+    }
+    .product.attribute.description{
+        margin-bottom: 30px;
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .product.attribute.description{
+        margin-bottom: 40px;
+    }
+}

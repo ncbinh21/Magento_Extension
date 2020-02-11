@@ -1,0 +1,40 @@
+<!--
+/**
+* @author Amasty Team
+* @copyright Copyright (c) 2016 Amasty (http://www.amasty.com)
+* @package Amasty_Paction
+*/
+-->
+
+<ul
+    class="action-submenu"
+    data-bind="foreach: {data: action.actions, as: 'action'},
+    css: { _active: action.visible }">
+    <li data-bind="css: { '_visible': $data.visible}">
+        <div data-bind="" class="amasty-paction-form">
+            <div class="paction-item paction-item-label">
+                <label data-bind="i18n: action.fieldLabel"></label>
+            </div>
+            <div class="paction-item paction-item-input">
+                <!-- ko if: $data.typefield == 'textbox' && $data.hide_input != '1' -->
+                <input type="text" class="admin__control-text" data-bind="attr: { placeholder: action.placeholder}">
+                <!-- /ko -->
+                <!-- ko if: $data.typefield == 'select' -->
+                <select id="amasty-paction-select"
+                        class="admin__control-select"
+                        data-bind="
+                                options: action.child,
+                                optionsText: 'label',
+                                optionsValue: 'fieldvalue',
+                                optionsCaption: 'Algorithm'">
+                </select>
+                <!-- /ko -->
+            </div>
+            <div class="paction-item-button">
+                <button type="button" data-bind="click: function() {$parent.applyMassaction(action)}" class="action-save">
+                    <span data-bind="i18n: 'Apply'"></span>
+                </button>
+            </div>
+        </div>
+    </li>
+</ul>

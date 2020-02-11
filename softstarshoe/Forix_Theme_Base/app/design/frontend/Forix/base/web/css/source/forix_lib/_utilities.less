@@ -1,0 +1,460 @@
+// box model change
+.forix-lib-box-model(
+    @_border:false,
+    @_margin:false,
+    @_padding:false,
+    @_border-radius:false
+){
+    .lib-css(border,@_border);
+    .lib-css(border-radius,@_border-radius,1);
+    .lib-css(margin,@_margin);
+    .lib-css(padding,@_padding);
+}
+.forix-lib-box-model-miss-padding(
+    @_padding-top:false,
+    @_padding-bottom:false,
+    @_margin:false,
+    @_border:false
+){
+    .lib-css(padding-top,@_padding-top);
+    .lib-css(padding-bottom,@_padding-bottom);
+    .lib-css(border,@_border);
+    .lib-css(margin,@_margin);
+}
+
+.forix-lib-miss-margin(
+    @_margin-top:false,
+    @_margin-bottom:false,
+    @_margin-left:false,
+    @_margin-right:false
+){
+    .lib-css(margin-top,@_margin);
+    .lib-css(margin-bottom,@_margin);
+    .lib-css(margin-left,@_margin);
+    .lib-css(margin-right,@_margin);
+}
+
+.forix-lib-miss-padding(
+    @_padding-top:false,
+    @_padding-bottom:false,
+    @_padding-left:false,
+    @_padding-right:false
+){
+    .lib-css(padding-top,@_padding);
+    .lib-css(padding-bottom,@_padding);
+    .lib-css(padding-left,@_padding);
+    .lib-css(padding-right,@_padding);
+}
+
+.forix-lib-box-model-border-width(
+    @_border-width:false,
+    @_border-radius:false,
+    @_margin:false,
+    @_padding:false
+){
+    .lib-css(border-width,@_border-width);
+    .lib-css(border-radius,@_border-radius,1);
+    .lib-css(margin,@_margin);
+    .lib-css(padding,@_padding);
+}
+
+// dimension change
+.forix-lib-dimension(
+    @_width:false,
+    @_min-width:false,
+    @_max-width:false,
+    @_height:false,
+    @_min-height:false,
+    @_max-height:false
+){
+    .lib-css(width,@_width);
+    .lib-css(min-width,@_min-width);
+    .lib-css(max-width,@_max-width);
+    .lib-css(height,@_height);
+    .lib-css(min-height,@_min-height);
+    .lib-css(max-height,@_max-height);
+}
+
+// font apply
+.forix-lib-font-apply(
+    @_font-family: false,
+    @_font-weight: false,
+    @_text-align: false,
+    @_text-transform: false,
+    @_color: false,
+    @_text-decoration: false,
+    @_vertical-align: false
+){
+    .lib-css(font-family, @_font-family);
+    .lib-css(font-weight, @_font-weight);
+    .lib-css(text-align, @_text-align);
+    .lib-css(text-transform, @_text-transform);
+    .lib-css(color, @_color);
+    .lib-css(text-decoration, @_text-decoration);
+    .lib-css(vertical-align, @_vertical-align);
+}
+
+// font change
+.forix-lib-font-resize(
+    @_font-size:false,
+    @_line-height:false
+){
+    .lib-font-size(@_font-size);
+    .lib-line-height(@_line-height);
+}
+
+// position change
+.forix-lib-position(
+    @_position-left:false,
+    @_position-right:false,
+    @_position-top:false,
+    @_position-bottom:false
+){
+    .lib-css(left,@_position-left);
+    .lib-css(right,@_position-right);
+    .lib-css(top,@_position-top);
+    .lib-css(bottom,@_position-bottom);
+}
+.forix-lib-position-change(
+    @_position:false,
+    @_position-left:false,
+    @_position-right:false,
+    @_position-top:false,
+    @_position-bottom:false
+){
+    .lib-css(position,@_position);
+    .forix-lib-position(
+        @_position-left,
+        @_position-right,
+        @_position-top,
+        @_position-bottom
+    )
+}
+
+//
+//  Flex layout
+//  ---------------------------------------------
+.forix-lib-vendor-prefix-flex(
+    @_display:false,
+    @_flex-grow:false,
+    @_flex-shrink:false,
+    @_flex-basis:false,
+    @_flex-wrap:false,
+    @_flex-direction:false,
+    @_order:false,
+    @_box-align:false,
+    @_appearance:false,
+    @_column-count:false
+){
+    .forix-lib-vendor-prefix-display(@_display);
+    .forix-lib-vendor-prefix-flex-grow(@_flex-grow);
+    .forix-lib-vendor-prefix-flex-shrink(@_flex-shrink);
+    .forix-lib-vendor-prefix-flex-basis(@_flex-basis);
+    .forix-lib-vendor-prefix-flex-wrap(@_flex-wrap);
+    .forix-lib-vendor-prefix-flex-direction(@_flex-direction);
+    .forix-lib-vendor-prefix-order(@_order);
+    .forix-lib-vendor-box-align(@_box-align);
+    .forix-lib-vendor-prefix-appearance(@_appearance);
+    .forix-lib-vendor-prefix-column-count(@_column-count);
+}
+.forix-lib-vendor-prefix-display(
+    @_value: flex
+) when not (@_value = false) and not (@_value =''){
+    display: ~"-webkit-@{_value}";
+    display: ~"-ms-@{_value}box";
+    display: @_value;
+}
+
+.forix-lib-vendor-prefix-flex-grow(
+    @_value: 0
+) when not (@_value = false) and not (@_value ='') {
+    -webkit-flex-grow: @_value;
+    flex-grow: @_value;
+}
+
+.forix-lib-vendor-prefix-flex-shrink (
+    @_value: 1
+) when not (@_value = false) and not (@_value ='') {
+    -webkit-flex-shrink: @_value;
+    flex-shrink: @_value;
+}
+
+.forix-lib-vendor-prefix-flex-basis (
+    @_value: auto
+) when not (@_value = false) and not (@_value ='') {
+    -webkit-flex-basis: @_value;
+    flex-basis: @_value;
+}
+
+.forix-lib-vendor-prefix-flex-wrap (
+    @_value: wrap
+) when not (@_value = false) and not (@_value ='') {
+    -webkit-flex-wrap: @_value;
+    flex-wrap: @_value;
+}
+
+.forix-lib-vendor-prefix-flex-direction (
+    @_value: column
+) when not (@_value = false) and not (@_value ='') {
+    -webkit-flex-direction: @_value;
+    -ms-flex-direction: @_value;
+    flex-direction: @_value;
+}
+
+.forix-lib-vendor-prefix-order (
+    @_value: 0
+) when not (@_value = false) and not (@_value ='') {
+    -ms-flex-order: @_value;
+    -webkit-order: @_value;
+    order: @_value;
+}
+
+.forix-lib-vendor-box-align (
+    @_value: stretch
+) when not (@_value = false) and not (@_value ='') {
+    -webkit-align-items: @_value;
+    -ms-align-items: @_value;
+    align-items: @_value;
+}
+
+.forix-lib-vendor-prefix-appearance (
+    @value: none
+) when not (@value = false) and not (@value ='') {
+    -webkit-appearance: @value;
+    -moz-appearance: @value;
+    appearance: @value;
+}
+
+.forix-lib-vendor-prefix-column-count (
+    @_value
+) when not (@_value = false) and not (@_value ='') {
+    -webkit-column-count: @_value;
+    -moz-column-count: @_value;
+    column-count: @_value;
+}
+
+// Background images
+.forix-lib-background-image (
+    @_background-image-url
+) {
+    background: url("@{_background-image-url}");
+}
+
+.forix-lib-background-image (
+    @_module,
+    @_background-image-url,
+    @_background-color,
+    @_background-repeat,
+    @_background-attachment,
+    @_background-image-position
+) when not (@_module = false) and not (@_module = ''){
+    background-image: url("@{baseDir}@{_module}/@{_background-image-url}");
+    .lib-css(background-color, @_background-color);
+    .lib-css(background-repeat, @_background-repeat);
+    .lib-css(background-attachment, @_background-attachment);
+    .lib-css(background-position, @_background-image-position);
+}
+
+// Background Gradient Horizontal
+.forix-lib-background-gradient(
+    @_background-gradient-color-start,
+    @_background-gradient-color-end,
+    @_background-gradient-percent-start,
+    @_background-gradient-percent-end,
+    @_background-gradient-direction,
+    @_background-gradient,
+    @_background-gradient-color-position: true
+) when (@_background-gradient-direction = horizontal) and (@_background-gradient = true) {
+    #lib-gradient > .horizontal(
+        @_start-color: @_background-gradient-color-start,
+        @_end-color: @_background-gradient-color-end,
+        @_start-percent: @_background-gradient-percent-start,
+        @_end-percent: @_background-gradient-percent-end,
+        @_background-color-position: @_background-gradient-color-position
+    );
+}
+
+.forix-lib-background-gradient(
+    @_background-gradient-color-start,
+    @_background-gradient-color-end,
+    @_background-gradient-percent-start,
+    @_background-gradient-percent-end,
+    @_background-gradient-direction,
+    @_background-gradient,
+    @_background-gradient-color-position: true
+) when (@_background-gradient-direction = vertical) and (@_background-gradient = true) {
+    #lib-gradient > .vertical(
+        @_start-color: @_background-gradient-color-start,
+        @_end-color: @_background-gradient-color-end,
+        @_start-percent: @_background-gradient-percent-start,
+        @_end-percent: @_background-gradient-percent-end,
+        @_background-color-position: @_background-gradient-color-position
+    );
+}
+// Justin
+
+.forix-lib-box-model-no-border(
+    @_margin : false,
+    @_padding : false,
+    @_border-radius : false
+) {
+    .lib-css(margin, @_margin);
+    .lib-css(padding, @_padding);
+    .lib-css(border-radius, @_border-radius, 1);
+}
+
+//border
+// Case 1: [border-width, border-style, border-color]
+// Sample case 1: .forix-lib-box-border(1px 2px 0 0, solid, #333);
+// Case 2: border-width border-style border-color
+// Sample case 2: .forix-lib-box-border(1px solid #333);
+.forix-lib-box-border(@_array) {
+    & when (length(@_array) = 3) {
+        @borderWidth: extract(@_array, 1);
+        @borderStyle: extract(@_array, 2);
+        @borderColor: extract(@_array, 3);
+        .lib-css(border-width, @borderWidth);
+        .lib-css(border-style, @borderStyle);
+        .lib-css(border-color, @borderColor);
+    }
+}
+
+// position change
+.forix-lib-position(
+    @_position-left,
+    @_position-right,
+    @_position-top,
+    @_position-bottom
+) {
+    .lib-css(left, @_position-left);
+    .lib-css(right, @_position-right);
+    .lib-css(top, @_position-top);
+    .lib-css(bottom, @_position-bottom);
+}
+
+//gradient
+.forix-lib-gradient-basic(
+    @_gradient,
+    @_gradient-direction,
+    @_gradient-color-start,
+    @_gradient-color-end,
+    @_gradient-percent-start,
+    @_gradient-percent-end
+) {
+    & when (@_gradient = true) and (@_gradient-direction = horizontal) {
+        #lib-gradient > .horizontal(
+            @_gradient-color-start,
+            @_gradient-color-end,
+            @_gradient-percent-start,
+            @_gradient-percent-end
+        );
+    }
+    & when (@_gradient = true) and (@_gradient-direction = vertical) {
+        #lib-gradient > .vertical(
+            @_gradient-color-start,
+            @_gradient-color-end,
+            @_gradient-percent-start,
+            @_gradient-percent-end
+        );
+    }
+}
+
+//box-type
+.forix-lib-box-type(
+    @_display : false,
+    @_position : false,
+    @_z-index : false,
+    @_top : false,
+    @_right : false,
+    @_bottom : false,
+    @_left : false
+) {
+    .forix-lib-display(@_display);
+    .lib-css(position, @_position);
+    .lib-css(z-index, @_z-index);
+
+    .lib-css(top, @_top);
+    .lib-css(right, @_right);
+    .lib-css(bottom, @_bottom);
+    .lib-css(left, @_left);
+}
+
+//display
+.forix-lib-display(@_display) {
+    & when (@_display = flex) {
+        display: -webkit-box;
+        display: ~"-webkit-@{_display}";
+        display: -moz-box;
+        display: ~"-ms-@{_display}box";
+    }
+    .lib-css(display, @_display);
+}
+
+// Adding
+.lib-font-size(@sizeValue) when (ispercentage(@sizeValue)){
+    font-size: @sizeValue;
+}
+
+// Adding
+.forix-lib-line-height(@heightValue) when (ispercentage(@heightValue)) and not (@heightValue = false) {
+    line-height: @heightValue;
+}
+.forix-lib-line-height(@heightValue) when not (ispercentage(@heightValue)) and not (@heightValue = false) and not (isunit(@heightValue, em)) and not (isunit(@heightValue, @font-size-unit)) and not (isunit(@heightValue, px))  and not (isunit(@heightValue, pt)){
+    line-height: @heightValue;
+}
+.forix-lib-line-height(@heightValue) when not (@heightValue = false) and not (ispercentage(@heightValue)) {
+    & when (isunit(@heightValue, em)){
+        .lib-font-size-value(@heightValue);
+        line-height: @fontValue;
+    }
+    & when (isunit(@heightValue, @font-size-unit)){
+        .lib-font-size-value(@heightValue);
+        line-height: @fontValue;
+    }
+    & when (isunit(@heightValue, px)){
+        .lib-font-size-value(@heightValue);
+        line-height: @fontValue;
+    }
+    & when (isunit(@heightValue, pt)){
+        .lib-font-size-value(@heightValue);
+        line-height: @fontValue;
+    }
+}
+
+
+// Lib Table Responsive
+.forix-lib-table-responsive(){
+    display: block;
+    thead{
+        th,td{
+            display: none;
+        }
+    }
+    tbody {
+        display: block;
+        tr {
+            display: block;
+        }
+        td,
+        th {
+            display: block;
+            &:before {
+                content: attr(data-th)': ';
+                display: inline-block;
+            }
+        }
+    }
+}
+
+// Place holder
+.forix-lib-placeholder(@content){
+    &::-moz-placeholder {
+        @content();
+    }
+    &::-webkit-input-placeholder {
+        @content();
+    }
+    &:-ms-input-placeholder {
+        @content();
+    }
+}

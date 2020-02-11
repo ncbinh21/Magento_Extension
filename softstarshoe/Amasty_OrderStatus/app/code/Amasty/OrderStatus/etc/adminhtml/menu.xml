@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2017 Amasty (https://www.amasty.com)
+ * @package Amasty_OrderStatus
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Amasty_OrderStatus::amostatus" title="Order Statuses" module="Amasty_OrderStatus" sortOrder="100" parent="Magento_Sales::sales_operation" action="amostatus/status/index" resource="Amasty_OrderStatus::amostatus"/>
+    </menu>
+</config>

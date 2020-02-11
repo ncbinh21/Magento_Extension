@@ -1,0 +1,31 @@
+<?php if($this->isOrganizationSnippets()): ?>
+    <?php
+        $name            = $this->getName();
+        $countryAddress  = $this->getCountryAddress();
+        $addressLocality = $this->getAddressLocality();
+        $postalCode      = $this->getPostalCode();
+        $streetAddress   = $this->getStreetAddress();
+        $telephone       = $this->getTelephone();
+        $faxNumber       = $this->getFaxNumber();
+        $email           = $this->getEmail();
+        $postalAddress   = $this->preparePostalAddress($countryAddress, $addressLocality, $postalCode, $streetAddress);
+    ?>
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        <?php echo $name; ?>
+        <?php echo $telephone; ?>
+        <?php echo $faxNumber; ?>
+        <?php echo $email; ?>
+        <?php if($postalAddress): ?>
+            "address": {
+                "@type": "PostalAddress",
+                <?php echo $postalAddress; ?>
+            },
+        <?php endif; ?>
+        "url" : "<?php echo $this->getBaseUrl(); ?>",
+        "logo": "<?php echo $this->getLogoUrl(); ?>"
+    }
+    </script>
+<?php endif; ?>

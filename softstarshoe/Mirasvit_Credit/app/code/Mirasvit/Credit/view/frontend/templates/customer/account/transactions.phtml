@@ -1,0 +1,57 @@
+<?php
+//@codingStandardsIgnoreFile
+/** @var \Mirasvit\Credit\Block\Customer\Account $block */
+
+$balance = $block->getBalance();
+$transactions = $block->getTransactionCollection();
+
+/** @var \Magento\Framework\Pricing\Helper\Data $pricingHelper */
+$pricingHelper = $this->helper('Magento\Framework\Pricing\Helper\Data');
+?>
+
+<div class="block">
+    <div class="block-title">
+        <strong><?= __('Transactions History') ?></strong>
+    </div>
+    <div class="block-content">
+        <?php if ($transactions->count()): ?>
+            <div class="table-wrapper orders-recent">
+                <table class="data table table-order-items">
+                    <thead>
+                    <tr>
+                        <th><?= __('Balance') ?></th>
+                        <th><?= __('Balance Change') ?></th>
+                        <th><?= __('Action') ?></th>
+                        <th><?= __('Comment') ?></th>
+                        <th><?= __('Created At') ?></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php $odd = 0 ?>
+                    <?php foreach ($transactions as $transaction): ?>
+                        <tr>
+                            <td data-th="<?= __('Balance') ?>">
+                                <?= $pricingHelper->currency($transaction->getBalanceAmount()) ?>
+                            </td>
+                            <td data-th="<?= __('Balance Change') ?>">
+                                <span style="color: <?= $transaction->getBalanceDelta() > 0 ? '#0a0' : '#f00' ?>">
+                                    <?= $pricingHelper->currency($transaction->getBalanceDelta()) ?>
+                                </span>
+                            </td>
+                            <td data-th="<?= __('Action') ?>"><?= ucfirst($transaction->getAction()) ?></td>
+                            <td data-th="<?= __('Comment') ?>"><?= $transaction->getFrontendMessage() ?></td>
+                            <td class="last" data-th="<?= __('Created At') ?>" nowrap>
+                                <?= $block->formatDate($transaction->getCreatedAt(), \IntlDateFormatter::MEDIUM, true) ?>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                    </tbody>
+                </table>
+            </div>
+        <?php else: ?>
+            <div class="message info empty">
+                <span><?= __('There are no transactions yet.') ?></span>
+            </div>
+        <?php endif ?>
+    </div>
+</div>

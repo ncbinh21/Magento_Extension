@@ -1,0 +1,353 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Backend\Block\Widget\Form\Container */
+?>
+
+
+
+<?php /* @escapeNotVerified */
+echo $block->getFormInitScripts() ?>
+<?php if ($block->getButtonsHtml('header')): ?>
+    <div class="page-form-actions" <?php /* @escapeNotVerified */
+    echo $block->getUiId('content-header') ?>><?php echo $block->getButtonsHtml('header') ?></div>
+<?php endif; ?>
+<?php echo $block->getFormHtml() ?>
+<?php if ($block->hasFooterButtons()): ?>
+    <div class="content-footer">
+        <p class="form-buttons"><?php echo $block->getButtonsHtml('footer') ?></p>
+    </div>
+<?php endif; ?>
+<script>
+    require([
+        'jquery',
+        'mage/backend/form',
+        'mage/backend/validation'
+    ], function ($) {
+
+        $('#edit_form').form()
+            .validation({
+                validationUrl: '<?php /* @escapeNotVerified */ echo $block->getValidationUrl() ?>',
+                highlight: function (element) {
+                    var detailsElement = $(element).closest('details');
+                    if (detailsElement.length && detailsElement.is('.details')) {
+                        var summaryElement = detailsElement.find('summary');
+                        if (summaryElement.length && summaryElement.attr('aria-expanded') === "false") {
+                            summaryElement.trigger('click');
+                        }
+                    }
+                    $(element).trigger('highlight.validate');
+                }
+            });
+
+    });
+</script>
+<?php /* @escapeNotVerified */
+echo $block->getFormScripts() ?>
+<fieldset class="fieldset admin__fieldset">
+    <legend class="legend admin__legend">
+        <span>Design template for Shopping page.</span>
+    </legend>
+    <div class="container-fluid">
+
+        <br/>
+
+        <div>
+            <a class="action-default" href="#" id="add1">Add 1 x 1</a>
+            <a class="action-default" href="#" id="add2">Add 2 x 2</a>
+            <a class="action-default" href="#" id="add3">Add 3 x 3</a>
+            <a class="action-default" href="#" id="add4">Add 4 x 4</a>
+            <a class="action-default" id="save-grid" href="#">Save Grid</a>
+            <a class="action-default" id="reload-grid" href="#">Load Grid</a>
+            <a class="action-default" id="clear-grid" href="#">Clear Grid</a>
+        </div>
+
+        <br/>
+        <br/>
+
+        <div id="tabs">
+            <ul>
+                <li><a href="#tabs-1" class="instagram-pc-tab">PC</a></li>
+                <li><a href="#tabs-3" class="instagram-mobile-tab">Mobile</a></li>
+            </ul>
+            <div id="tabs-1">
+                <div class="grid-stack" style="width:1200px">
+                </div>
+            </div>
+            <div id="tabs-3">
+                <div class="grid-stack-mobile" style="width:480px">
+                </div>
+            </div>
+        </div>
+
+        <br/>
+
+        <hr/>
+
+        <textarea id="saved-data-pc" cols="100" rows="20" readonly="readonly"></textarea>
+        <textarea id="saved-data-mobile" cols="100" rows="20" readonly="readonly"></textarea>
+    </div>
+</fieldset>
+
+<script type="text/javascript">
+    require(
+        [
+            'jquery',
+            'jquery/ui',
+            'Yosto_InstagramConnect/js/gridstack',
+            'Yosto_InstagramConnect/js/gridstackJQueryUI',
+            'Yosto_InstagramConnect/js/lodash'
+        ],
+        function ($) {
+
+            $(function () {
+
+                var pcOptions = {
+                    cellHeight: 'auto',
+                    verticalMargin: 6,
+                    horizontalMargin: 6,
+                    width: 8,
+                    oneColumnModeClass: 'no_enable_one_column_mode'
+                };
+
+                var mobileOptions = {
+                    cellHeight: 'auto',
+                    verticalMargin: 6,
+                    horizontalMargin: 6,
+                    width: 4,
+                    oneColumnModeClass: 'no_enable_one_column_mode'
+                };
+
+                function uniqId() {
+                    return Math.round(new Date().getTime() + (Math.random() * 100));
+                }
+
+                $('.grid-stack').gridstack(pcOptions);
+                $('.grid-stack-mobile').gridstack(mobileOptions);
+
+                loadGrid('pc');
+                loadGrid('mobile');
+
+                $('a[id^="add"]').click(function () {
+
+                    var uniqueId = uniqId();
+                    var squareEdgeLength = this.getAttribute("id").replace("add", "");
+                    addTile('pc', squareEdgeLength, uniqueId);
+                    addTile('mobile', squareEdgeLength, uniqueId);
+                    return false;
+                });
+
+                function addTile(device, squareEdgeLength, uniqueId) {
+                    if (device == 'pc') {
+                        var grid = $('.grid-stack').data('gridstack');
+                    } else if (device == 'mobile') {
+                        var grid = $('.grid-stack-mobile').data('gridstack');
+                    }
+
+                    var maxContainerHeight = grid.container.attr("data-gs-current-height");
+                    var node = {
+                        x: 0,
+                        y: maxContainerHeight,
+                        width: squareEdgeLength,
+                        height: squareEdgeLength,
+                        imgUrl: '',
+                        productId: '',
+                        uniqueId: uniqueId
+                    }
+
+                    grid.addWidget($('<div data-gs-no-resize="yes"><div class="grid-stack-item-content id' + uniqueId + '" style="left:3px; right:3px"><button class="remove">Delete</button></div></div>'),
+                        node.x, node.y, node.width, node.height);
+
+                }
+
+                $('#save-grid').click(function () {
+                    saveCurrentCode('pc');
+                    saveCurrentCode('mobile');
+                    return false;
+                });
+
+                $('#reload-grid').click(function () {
+                    reloadCurrentCode('pc');
+                    reloadCurrentCode('mobile');
+                    return false;
+                });
+
+                $('#clear-grid').click(function () {
+                    var grid = $('.grid-stack').data('gridstack');
+                    var gridMobile = $('.grid-stack-mobile').data('gridstack');
+                    grid.removeAll();
+                    gridMobile.removeAll();
+                    return false;
+                });
+
+                $('#save').click(function () {
+                    updateNewCodeForJson('pc');
+                    updateNewCodeForJson('mobile');
+                });
+
+                $('#saveandcontinue').click(function () {
+                    updateNewCodeForJson('pc');
+                    updateNewCodeForJson('mobile');
+                });
+
+                function saveCurrentCode(device) {
+                    if (device == 'pc') {
+                        var itemClass = '.grid-stack > .grid-stack-item';
+                        var deviceSavedCodeId = '#saved-data-pc';
+                    } else if (device == 'mobile') {
+                        var itemClass = '.grid-stack-mobile > .grid-stack-item';
+                        var deviceSavedCodeId = '#saved-data-mobile';
+                    }
+
+                    this.serializedData = _.map($(itemClass), function (el) {
+                        el = $(el);
+                        var node = el.data('_gridstack_node');
+                        var imgURL = "";
+                        var productId = "";
+                        var uniqueIdClass = el.find('.grid-stack-item-content')[0].getAttribute("class").match(/\bid[^\b]*?\b/gi)[0];
+                        uniqueId = uniqueIdClass.replace("id","");
+                        if (node.el.find('img').size() > 0) {
+                            imgURL = node.el.find('img').attr('src');
+                            productId = node.el.find('img').attr('class').match(/product-id[\w-]*\b/)[0]
+                        }
+                        return {
+                            x: node.x,
+                            y: node.y,
+                            width: node.width,
+                            height: node.height,
+                            imgURL: imgURL,
+                            productId: productId,
+                            uniqueId: uniqueId
+                        };
+                    }, this);
+                    $(deviceSavedCodeId).val(JSON.stringify(this.serializedData, null, ''));
+                }
+
+                function reloadCurrentCode(device) {
+                    if (device == 'pc') {
+                        var grid = $('.grid-stack').data('gridstack');
+                        this.serializedData = eval($('#saved-data-pc').val());
+                    } else if (device == 'mobile') {
+                        var grid = $('.grid-stack-mobile').data('gridstack');
+                        this.serializedData = eval($('#saved-data-mobile').val());
+                    }
+
+                    grid.removeAll();
+                    var items = GridStackUI.Utils.sort(this.serializedData);
+
+                    _.each(items, function (node) {
+                        var htmlStr = '<div class="grid-stack-item-content id' + node.uniqueId + '" style="left:3px; right:3px"><button class="remove">Delete</button></div>';
+                        $boundDiv = $.parseHTML('<div data-gs-no-resize="yes"></div>');
+                        $widget = $.parseHTML(htmlStr);
+                        if (node.productId != '' && node.productId != null) {
+                            $imgPiece = jQuery('<img src=' + node.imgURL + ' alt="Instagram Images" class="small-pierce ' + node.productId + '">');
+                            $imgPiece.appendTo($widget);
+                            $imgPiece.css("width", "100%").css("height", "100%").css("margin-left", "0").css("margin-bottom", "0");
+                        }
+                        jQuery($widget).appendTo($boundDiv);
+                        grid.addWidget($boundDiv,
+                            node.x, node.y, node.width, node.height);
+                    });
+                }
+
+                function loadGrid(device) {
+                    if (device == 'pc') {
+                        var grid = $('.grid-stack').data('gridstack');
+                        this.serializedData = eval($('#template_pc_code').val());
+                    } else if (device == 'mobile') {
+                        var grid = $('.grid-stack-mobile').data('gridstack');
+                        this.serializedData = eval($('#template_mobile_code').val());
+                    }
+
+                    grid.removeAll();
+                    var items = GridStackUI.Utils.sort(this.serializedData);
+
+                    _.each(items, function (node) {
+                        var htmlStr = '<div class="grid-stack-item-content id' + node.uniqueId + '" style="left:3px; right:3px"><div class="instagram-delete-item"><button class="remove">Delete</button></div></div>';
+                        $boundDiv = $.parseHTML('<div data-gs-no-resize="yes"></div>');
+                        $widget = $.parseHTML(htmlStr);
+                        if (node.productId != '' && node.productId != null) {
+                            $imgPiece = jQuery('<img src=' + node.imgURL + ' alt="Instagram Images" class="small-pierce ' + node.productId + '">');
+                            $imgPiece.appendTo($widget);
+                            $imgPiece.css("width", "100%").css("height", "100%").css("margin-left", "0").css("margin-bottom", "0");
+                        }
+                        jQuery($widget).appendTo($boundDiv);
+                        grid.addWidget($boundDiv,
+                            node.x, node.y, node.width, node.height);
+                    });
+                }
+
+                function updateNewCodeForJson(device) {
+                    if (device == 'pc') {
+                        var itemClass = '.grid-stack > .grid-stack-item';
+                        var deviceCodeId = '#template_pc_code';
+                        var tabletDeviceCodeId = '#template_tablet_code';
+                    } else if (device == 'mobile') {
+                        var itemClass = '.grid-stack-mobile > .grid-stack-item';
+                        var deviceCodeId = '#template_mobile_code';
+                    }
+                    this.serializedData = _.map($(itemClass), function (el) {
+                        el = $(el);
+                        var node = el.data('_gridstack_node');
+                        var imgURL = "";
+                        var productId = "";
+                        var uniqueIdClass = el.find('.grid-stack-item-content')[0].getAttribute("class").match(/\bid[^\b]*?\b/gi)[0];
+                        uniqueId = uniqueIdClass.replace("id","");
+                        if (node.el.find('img').size() > 0) {
+                            imgURL = node.el.find('img').attr('src');
+                            productId = node.el.find('img').attr('class').match(/product-id[\w-]*\b/)[0]
+                        }
+                        return {
+                            x: node.x,
+                            y: node.y,
+                            width: node.width,
+                            height: node.height,
+                            imgURL: imgURL,
+                            productId: productId,
+                            uniqueId: uniqueId
+                        };
+                    }, this);
+                    $(deviceCodeId).val(JSON.stringify(this.serializedData, null, ''));
+                    if(tabletDeviceCodeId != null) {
+                        $(tabletDeviceCodeId).val(JSON.stringify(this.serializedData, null, ''));
+                    }
+                }
+
+                $("#tabs").tabs({
+                    activate: function (event, ui) {
+//                        if(event.currentTarget.getAttribute('class').indexOf('instagram-mobile-tab') != -1){
+//                            loadGrid('mobile');
+//                        } else {
+//                            loadGrid('pc');
+//                        }
+                    }
+                });
+
+            });
+
+            $('body').on('click', '.remove', function (e) {
+                e.preventDefault();
+                var grid = $('.grid-stack').data('gridstack');
+                var gridMobile = $('.grid-stack-mobile').data('gridstack');
+                var el = $(this).closest('.grid-stack-item');
+                var uniqueId = el.find('.grid-stack-item-content')[0].getAttribute("class").match(/\bid[^\b]*?\b/gi)[0];
+                if(el.parent().attr('class').indexOf('grid-stack-mobile') != -1){
+                    var sameIdEl = grid.container.find('.' + uniqueId).parent();
+                    grid.removeWidget(sameIdEl);
+                    gridMobile.removeWidget(el);
+                } else {
+                    var sameIdEl = gridMobile.container.find('.' + uniqueId).parent();
+                    grid.removeWidget(el);
+                    gridMobile.removeWidget(sameIdEl);
+                }
+            });
+
+        });
+
+
+</script>

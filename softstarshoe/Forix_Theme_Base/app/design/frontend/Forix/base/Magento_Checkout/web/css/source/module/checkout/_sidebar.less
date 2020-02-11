@@ -1,0 +1,105 @@
+@use-checkout-sidebar-core__enable: true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+
+// ------------------------------------
+// Variables Extends
+// ------------------------------------
+
+// ------------------------------------
+// Extend Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .opc-sidebar{
+        float: right;
+        position: static;
+        width: 50%;
+        visibility: visible;
+        .forix-lib-vendor-prefix-order(2);
+
+        .minicart-wrapper{
+            position: static;
+
+            &:before{
+                display: none;
+            }
+
+            .action.showcart{
+                position: absolute;
+                right: 23px;
+                top: 25px;
+                z-index: 9;
+                opacity: 0;
+            }
+        }
+
+        .block-minicart{
+            position: static;
+            visibility: visible;
+            box-shadow: none;
+            width: 100%;
+
+            &:before{
+                content: "";
+                display: none;
+            }
+        }
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .opc-sidebar{
+        .minicart-wrapper{
+            .action.showcart{
+                display: block;
+            }
+        }
+
+        .block-minicart{
+            display: none;
+        }
+    }
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    .opc-sidebar{
+        padding-left: 70px;
+        margin: @forix-indent__s 0 0;
+
+        .block-minicart{
+            padding: @forix-indent__xm;
+        }
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .opc-sidebar{
+        .minicart-wrapper{
+            .action.showcart{
+                display: none;
+            }
+        }
+
+        .block-minicart{
+            display: block;
+        }
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    .opc-sidebar{
+        padding-left: 120px;
+        margin: @forix-indent__s 0 0;
+
+        .block-minicart{
+            padding: @forix-indent__base;
+        }
+    }
+}

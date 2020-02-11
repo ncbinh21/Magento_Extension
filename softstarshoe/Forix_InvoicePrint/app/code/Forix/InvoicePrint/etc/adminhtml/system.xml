@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+  ~ /**
+  ~  *
+  ~  * Copyright © 2017 Forix. All rights reserved.
+  ~  * See COPYING.txt for license details.
+  ~  */
+  -->
+<config	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="invoice_print" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1"	showInStore="1">
+            <label>Invoice PDF Setting</label>
+            <tab>sales</tab>
+            <resource>Forix_InvoicePrint::invoiceprint</resource>
+            <group id="settings" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Settings</label>
+                <field id="explanation_message" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Invoice Footer Text Message</label>
+                </field>
+                <field id="shipping_agreement" translate="label" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Shipping Agreement Message</label>
+                </field>
+                <field id="shipping_agreement_country" translate="label" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Shipping Agreement Countries</label>
+                </field>
+             </group>
+        </section>
+    </system>
+</config>

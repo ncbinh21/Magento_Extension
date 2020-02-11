@@ -1,0 +1,20 @@
+<?php /** @var \Mirasvit\Credit\Block\Adminhtml\Sales\Order\Totals\Credit $block */ ?>
+<?php /** @var \Magento\Sales\Model\Order $source */?>
+<?php $source = $block->getSource() ?>
+<?php $block->setPriceDataObject($source); ?>
+<?php if ($source->getCreditAmount()): ?>
+    <tr>
+        <td class="label"><?= __('Used Store Credit') ?></td>
+        <td>
+            <?= $block->displayPrices(-$source->getBaseCreditAmount(), -$source->getCreditAmount()); ?>
+        </td>
+    </tr>
+<?php endif ?>
+<?php if ($credits = $block->getPurchasedCredits()): ?>
+    <tr>
+        <td class="label"><?= __('Purchased Store Credits') ?></td>
+        <td>
+            <?= $block->displayPrices($credits, $credits); ?>
+        </td>
+    </tr>
+<?php endif ?>

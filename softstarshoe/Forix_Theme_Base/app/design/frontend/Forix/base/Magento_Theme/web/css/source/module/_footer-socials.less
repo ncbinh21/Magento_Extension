@@ -1,0 +1,73 @@
+@use-footer-box-socials-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+
+// ------------------------------------
+// Variables Extends
+// ------------------------------------
+@footer-socials__link__color: @secondary-link__color;
+@footer-socials__link__color__hover: @secondary-link__color__hover;
+
+// ------------------------------------
+// Extend Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .footer .box-socials{
+        margin: 0 0 @forix-indent__base;
+
+        a{
+            background: none;
+            color: @footer-socials__link__color;
+            text-decoration: none;
+            font: ~"0/0 a";
+            width: auto;
+            height: auto;
+
+            &:hover{
+                color: @footer-socials__link__color__hover;
+            }
+
+            &:before{
+                font-size: 20px;
+                line-height: 44px;
+            }
+        }
+
+        li{
+            margin-right: @forix-indent__base;
+
+            &:last-child{
+                margin-right: 0;
+            }
+
+            &.ico-facebook a{
+                background: none;
+
+                &:before{
+                    content: @font-awesome-facebook;
+                    font-size: 20px;
+                }
+            }
+
+            &.ico-instagram a{
+                background: none;
+
+                &:before{
+                    content: @font-entypo-instagram;
+                    font-size: 19px;
+                }
+            }
+
+            &.ico-pinit a{
+                background: none;
+
+                &:before{
+                    content: @font-awesome-pinterest;
+                }
+            }
+        }
+    }
+}

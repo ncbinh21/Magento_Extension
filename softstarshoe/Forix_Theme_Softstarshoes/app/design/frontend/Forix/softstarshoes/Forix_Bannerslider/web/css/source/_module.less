@@ -1,0 +1,180 @@
+@use-module-bannerslider-core__enable: true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.main-slider{
+    &:extend(.forix-abs-list-reset);
+}
+
+.main-slider-wrapper .slick-arrow{
+    &:extend(.forix-abs-visually-hidden all);
+}
+
+.main-slider .banner-link{
+    &:extend(.abutton all);
+    &:extend(.forix-abs-button-type1 all);}
+// ------------------------------------
+// Variables
+// ------------------------------------
+@main-slider__background: @m2-color-gray-19;
+@main-slider__text__color: @color-white;
+@main-slider__link__color: @color-white;
+@main-slider__title__font-size: 40px;
+@main-slider__title__font-size__l: 90px;
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .main-slider-wrapper{
+        position: relative;
+    }
+    .main-slider .box-image{
+        font-size: 0;
+        line-height: 0;
+    }
+    .main-slider{
+        .banner-content {
+            position: absolute;
+            z-index: 1;
+            width: 100%;
+            top: 50%;
+            left: 0;
+            .forix-lib-css(transform,translate(0,-50%),1);
+            &.align_right{
+                text-align: right;
+            }
+            &.align_center{
+                text-align: center;
+            }
+            &.align_left{
+                text-align: left;
+            }
+        }
+        .box-outer{
+            position: relative;
+            cursor: default;
+        }
+        .box-image img{
+            width: 100%;
+        }
+        .banner-title{
+            //text-transform: uppercase;
+            color: @main-slider__text__color;
+            line-height: 78px;
+            font-weight: 900;
+        }
+
+        .banner-text{
+            color: @main-slider__text__color;
+            line-height: 46px;
+            .lib-font-size(28px);
+            font-weight: 500;
+            b{
+                font-weight: 900;
+            }
+        }
+
+        .banner-link{
+            text-transform: uppercase;
+            color: @main-slider__link__color;
+            text-align: center;
+            min-width: 145px!important;
+            line-height: 40px!important;
+            font-size: 16px!important;
+        }
+
+        .item{
+            display: none;
+
+            &:first-child{
+                display: block;
+            }
+        }
+
+        &.slick-loaded{
+            .item{
+                display: block;
+            }
+        }
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .main-slider{
+        .banner-content {
+            padding: 10px!important;
+            text-align: center;
+        }
+        .banner-text{
+            margin-bottom: 10px;
+        }
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    .main-slider{
+        .banner-title{
+            margin: 0 0 @forix-indent__xs;
+            font-size: 40px;
+            line-height: 1;
+        }
+        .banner-content {
+            padding: @forix-indent__l;
+        }
+
+        .banner-text{
+            font-size: 20px;
+            line-height: 1;
+            margin-bottom: @forix-indent__xm;
+        }
+        
+    }
+}
+
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    .main-slider{
+        .banner-content{
+            padding: 80px @forix-indent__l;
+        }
+
+        .banner-title{
+            margin: 0 0 15px;
+            font-size: @main-slider__title__font-size__l;
+        }
+
+        .banner-text{
+            margin-bottom: 20px;
+        }
+        .banner-link{
+            line-height: 45px!important;
+            font-size: 17px!important;
+            height: 45px!important;
+            min-width: 200px!important;
+        }
+    }
+}
+
+@media screen and (max-width: 320px){
+    .main-slider{
+        .banner-title{
+            font-size: 25px !important;
+        }
+        .banner-text {
+            font-size: 16px !important;
+        }
+    }
+}

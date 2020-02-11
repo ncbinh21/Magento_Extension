@@ -1,0 +1,33 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Product list toolbar
+ *
+ * @var $block \Magento\Catalog\Block\Product\ProductList\Toolbar
+ */
+use Magento\Catalog\Model\Product\ProductList\Toolbar;
+function remove_qs_key($url, $key) {
+    return preg_replace('/(?:&|(\?))' . $key . '=[^&]*(?(1)&|)?/i', "$1", $url);
+}
+$pager_url = remove_qs_key(remove_qs_key($this->getPagerUrl(), 'product_list_order'), 'product_list_dir');
+$pager_url = rtrim($pager_url, '?');
+?>
+<div class="toolbar-sorter sorter">
+    <label class="sorter-label" for="sorter"><?php /* @escapeNotVerified */ echo __('Sort By') ?></label>
+    <?php foreach ($block->getAvailableOrders() as $_key => $_order): ?>
+        <?php if($_key == 'position' || $_key == 'relevance'): ?>
+            <a class="action abutton most-popular <?php if ($block->isOrderCurrent($_key)): ?>selected<?php endif;?>" title="<?php echo __('Popularity')?>" href="<?php echo $pager_url . (strpos($pager_url, '?') !== false ? '&' : '?') ?>product_list_order=<?php echo $_key ?>&product_list_dir=asc"><span><?php echo __('Popularity')?></span></a>
+        <?php elseif($_key == 'price'): ?>
+            <a class="action abutton price-low-hight <?php if ($block->isOrderCurrent($_key) && $block->getCurrentDirection() == 'asc'): ?>selected<?php endif;?>" title="<?php echo __('Price Low to High')?>" href="<?php echo $pager_url . (strpos($pager_url, '?') !== false ? '&' : '?') ?>product_list_order=<?php echo $_key ?>&product_list_dir=asc"><span><?php echo __('Price Low to High')?></span></a>
+            <a class="action abutton price-hight-low <?php if ($block->isOrderCurrent($_key) && $block->getCurrentDirection() == 'desc'): ?>selected<?php endif;?>" title="<?php echo __('Price High to Low')?>" href="<?php echo $pager_url . (strpos($pager_url, '?') !== false ? '&' : '?') ?>product_list_order=<?php echo $_key ?>&product_list_dir=desc"><span><?php echo __('Price High to Low')?></span></a>
+        <?php endif;?>
+    <?php endforeach; ?>
+</div>

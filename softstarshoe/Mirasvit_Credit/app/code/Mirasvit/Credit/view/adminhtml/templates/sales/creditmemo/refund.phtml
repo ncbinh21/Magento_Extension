@@ -1,0 +1,51 @@
+<?php
+//@codingStandardsIgnoreFile
+/** @var \Mirasvit\Credit\Block\Adminhtml\Sales\Order\Creditmemo\Controls $block */
+?>
+<?php if ($block->canRefundToCredit()): ?>
+    <div class="field admin__field admin__field-option choice admin__field-option">
+        <p>
+            <input type="hidden" name="creditmemo[refund_to_credit_enabled]" value="0">
+            <input type="checkbox" name="creditmemo[refund_to_credit_enabled]" value="1" class="admin__control-checkbox"
+                   id="refund_to_credit_enabled"<?php if ($block->getCreditData()->isAutoRefundEnabled()): ?> checked="checked"<?php endif ?>>
+
+            <label for="refund_to_credit_enabled" class="admin__field-label">
+                <?= __('Refund to Store Credit') ?>
+            </label>
+
+            <input type="text" name="creditmemo[refund_to_credit_amount]"
+                   value="<?= $block->getReturnValue() ?>" id="refund_to_credit_amount"
+                   class="input-text admin__control-text not-negative-amount" style="width: 7rem; margin-left: 1rem; text-align: right;"
+                   data-return-value="<?= $block->getReturnValue() ?>">
+
+            <script type="text/javascript">
+                require([
+                    "jquery"
+                ], function ($) {
+                    function toggleCreditRefundAmount(event) {
+                        var elementId = null;
+                        if (typeof event != 'undefined' && typeof event.srcElement != 'undefined') {
+                            elementId = event.srcElement.id;
+                        }
+                        if (typeof event != 'undefined' && typeof event.target != 'undefined') {
+                            elementId = event.target.id;
+                        }
+
+                        if (elementId != 'refund_to_credit_amount') {
+                            if ($('#refund_to_credit_enabled:checked').length) {
+                                $('#refund_to_credit_amount').prop("disabled", false);
+                                $('#refund_to_credit_amount').val($('#refund_to_credit_amount').data('return-value'));
+                            } else {
+                                $('#refund_to_credit_amount').prop("disabled", true);
+                                $('#refund_to_credit_amount').val(0);
+                            }
+                        }
+                    }
+
+                    $('body').on('change', $('#refund_to_credit_enabled'), toggleCreditRefundAmount);
+                    toggleCreditRefundAmount();
+                });
+            </script>
+        </p>
+    </div>
+<?php endif ?>

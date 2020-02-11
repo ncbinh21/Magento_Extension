@@ -1,0 +1,23 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!-- ko foreach: getRegion('messages') -->
+<!-- ko template: getTemplate() --><!-- /ko -->
+<!--/ko-->
+<!-- ko if: isFormVisible -->
+<div class="tracking-email"><span data-bind="i18n: 'You can track your order status by creating a Softstar account with your'"></span><br><span data-bind="i18n: 'email address'"></span>: <span data-bind="text: getEmailAddress()"></span></div>
+<form class="order-create-account" method="post" data-bind="submit: createAccount">
+    <button type="submit" class="action primary" data-bind="value: $t('Create Account'), disable: creationStarted">Create Account</button>
+</form>
+<div class="contact-information">
+    <p data-bind="i18n: 'Got questions?'"></p>
+    <p data-bind="i18n: 'Our Elves are standing by'"></p>
+    <p data-bind="i18n: 'Call us: 541-753-5845'"></p>
+</div>
+<!-- /ko -->
+<!-- ko if: accountCreated -->
+<p data-bind="i18n: 'A letter with further instructions will be sent to your email.'"></p>
+<!-- /ko -->

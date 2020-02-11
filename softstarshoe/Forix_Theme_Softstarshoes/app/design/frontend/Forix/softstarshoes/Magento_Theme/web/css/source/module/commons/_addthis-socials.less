@@ -1,0 +1,90 @@
+@use-socials-addthis-core__enable: true;
+.share-container .at-share-btn-elements .at-share-btn:before{
+    &:extend(.forix-abs-icon-base all);
+}
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+
+// ------------------------------------
+// Variables Extends
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .addthis_inline_share_toolbox{
+        vertical-align: middle;
+    }
+
+    .at-style-responsive .at-share-btn,
+    .at-resp-share-element .at-share-btn{
+        padding: @forix-indent__xs!important;
+
+        &.mailto:last-child{
+            margin-bottom: 0!important;
+        }
+    }
+
+    .addthis_inline_share_toolbox,
+    .at-resp-share-element{
+        margin: 0;
+        padding: 0;
+        border: none;
+        float: left;
+    }
+    .share-container .at-share-btn-elements{
+        .at-share-btn{
+            width: auto;
+            margin: 0 10px 0 0!important;
+            height: 20px;
+            background: 0!important;
+            color: @sss-color-1;
+            font-size: 20px;
+            float: left !important;
+            padding: 0!important;
+            border-radius: 0!important;
+            text-align: left;
+            &:hover{
+                color: @sss-color-5;
+                transform: none;
+            }
+            &:before{
+                line-height: 1;
+            }
+            &.at-svc-twitter:before {
+                content: "\f099";
+            }
+            &.at-svc-facebook:before {
+                content: '\f09a';
+            }
+            &.at-svc-pinterest_share:before{
+                content: '\f0d2';
+            }
+            &.at-svc-google_plusone_share:before{
+                content: '\f0d5';
+            }
+            .at-icon-wrapper{
+                float: none;
+                width: auto!important;
+                display: none;
+            }
+
+            .at-label{
+               display: none;
+            }
+        }
+    }
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l) {
+
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+
+}

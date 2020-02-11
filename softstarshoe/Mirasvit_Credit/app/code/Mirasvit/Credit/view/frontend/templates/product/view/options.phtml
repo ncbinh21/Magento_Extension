@@ -1,0 +1,29 @@
+<?php
+/** @var $block \Mirasvit\Credit\Block\Product\View\Options */
+?>
+
+<?php if ($block->isShowOptions()): ?>
+    <?php
+    $productId = $block->escapeHtml($block->getProduct()->getId());
+    ?>
+    <div class="fieldset">
+        <div class="field">
+            <label class="label" for="creditOption"><span><?= __('Store Credits'); ?></span></label>
+            <div class="control">
+                <?= $block->getChildHtml('product.credit.options.'.$block->getOptionType()) ?>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/x-magento-init">
+        {
+            "#product_addtocart_form": {
+                "creditOptions": {
+                    "controlContainer": ".field",
+                    "optionType": "<?= $block->getOptionType() ?>",
+                    "priceHolderSelector": "[data-product-id='<?= $productId; ?>'][data-role=priceBox]"
+                }
+            }
+        }
+    </script>
+<?php endif; ?>

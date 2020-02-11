@@ -1,0 +1,21 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+$_category  = $block->getCurrentCategory();
+?>
+<div class="page-title-wrapper">
+    <h1 class="page-title" id="page-title-heading" aria-labelledby="page-title-heading toolbar-amount">
+<?php if($_category->getSssBannerTitleCategory()): ?>
+        <span class="base" data-ui-id="page-title-wrapper"><?php echo $_category->getSssBannerTitleCategory(); ?></span>
+<?php else: ?>
+        <span class="base" data-ui-id="page-title-wrapper">  <?php echo $_category->getName(); ?></span>
+<?php endif; ?>
+    </h1>
+</div>

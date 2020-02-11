@@ -1,0 +1,16 @@
+theme: Base Theme
+title: Customer coming back
+template_subject: Thank you for coming back to us!
+template_areas:
+  header: <h1>Dear <?=$this->getCustomerName() ?></h1>
+  content: |
+    <p>Thank you for coming back to us! We really appreciate it!</p>
+  footer: |
+    <?php if ($this->getCoupon()): ?>
+    <div class="offer">
+      Let us offer you a <b>discount</b> to complete your purchase.<br>
+      Your coupon code: <span class="coupon"><?php echo $this->getCoupon()->getCode() ?></span>
+    </div>
+    <?php endif ?>
+
+    <p>If you have any questions about our products or services, please <a href="<?=$this->getStoreUrl() ?>/contact/">contact with us.</a></p>

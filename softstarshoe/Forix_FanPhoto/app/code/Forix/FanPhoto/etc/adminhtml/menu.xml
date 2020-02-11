@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Forix_FanPhoto::fanphoto" module="Forix_FanPhoto" parent="Magento_Backend::content" resource="Magento_Backend::content" sortOrder="9999" title="Forix Fan Photo"/>
+		<add action="forix_fanphoto/photo/index" id="Forix_FanPhoto::forix_fanphoto_photo" module="Forix_FanPhoto" parent="Forix_FanPhoto::fanphoto" resource="Forix_FanPhoto::Photo" sortOrder="1" title="Photo"/>
+		<add id="Forix_FanPhoto::settings" title="Settings" module="Forix_FanPhoto" sortOrder="2" parent="Forix_FanPhoto::fanphoto" action="adminhtml/system_config/edit/section/fanphoto" resource="Forix_FanPhoto::settings"/>
+	</menu>
+</config>

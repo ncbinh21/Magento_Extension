@@ -1,0 +1,46 @@
+@use-page-title-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+
+// ------------------------------------
+// Variables Extends
+// ------------------------------------
+
+// ------------------------------------
+// Extend Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .page-title{
+        margin: 0;
+        text-transform: none;
+        color: @three-text__color;
+        font-weight: @forix-font-weight__semibold;
+    }
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    .page-title{
+        font-size: 30px;
+
+        &-wrapper{
+            padding: @forix-indent__s 0 0;
+            margin: 0 0 @forix-indent__s;
+        }
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    .page-title{
+        font-size: 34px;
+
+        &-wrapper{
+            padding: @forix-indent__xm 0 0;
+            margin: 0 0 @forix-indent__xm;
+        }
+    }
+}

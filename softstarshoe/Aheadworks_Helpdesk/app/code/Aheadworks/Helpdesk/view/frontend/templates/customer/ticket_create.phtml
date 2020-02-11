@@ -1,0 +1,66 @@
+<?php
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+
+/** @var \Aheadworks\Helpdesk\Block\Customer\TicketCreate $block */
+
+// @codingStandardsIgnoreFile
+?>
+<form class="form form-create-ticket" action="<?php echo $block->escapeUrl($block->getFormActionUrl()) ?>" method="post" id="form-validate" data-mage-init='{"validation":{}}'>
+    <fieldset class="fieldset">
+        <?php echo $block->getBlockHtml('formkey')?>
+        <legend class="legend"><span><?php echo $block->escapeHtml(__('Create New Ticket')) ?></span></legend><br>
+        <div class="field subject required">
+            <label class="label" for="subject"><span><?php echo $block->escapeHtml(__('Subject')) ?></span></label>
+            <div class="control">
+                <input type="text" id="subject" name="subject" data-validate='{"required":true}' title="<?php echo $block->escapeHtml(__('Subject')) ?>" class="input-text">
+            </div>
+        </div>
+        <?php if ($block->getDepartments()) :?>
+        <div class="field department_id required">
+            <label for="department_id" class="label"><span><?php echo $block->escapeHtml(__('Department')) ?></span></label>
+            <div class="control">
+                <select id="department_id" name="department_id" data-validate='{"required":true}'>
+                    <?php foreach ($block->getDepartments() as $departmentId => $name): ?>
+                        <option value="<?php echo $block->escapeHtml($departmentId); ?>">
+                            <?php echo $block->escapeHtml($name); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+        <?php endif; ?>
+        <div class="field order_id">
+            <label for="order_id" class="label"><span><?php echo $block->escapeHtml(__('Order')) ?></span></label>
+            <div class="control">
+                <select id="order_id" name="order_id">
+                    <option value=""><?php echo $block->escapeHtml(__('Unassigned'));?></option>
+                    <?php foreach ($block->getOrdersAsOptionArray() as $orderId => $incrementId): ?>
+                        <option
+                            value="<?php echo $block->escapeHtml($orderId); ?>"
+                            <?php /* @noEscape */ echo $block->isPreselectedOrder($orderId) ? "selected='selected'" : ""?> >
+                            <?php echo $block->escapeHtml($incrementId); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+        <div class="field content required">
+            <label class="label" for="content"><span><?php echo $block->escapeHtml(__('Message')) ?></span></label>
+            <div class="control">
+                <textarea id="content" name="content" data-validate='{"required":true}' title="<?php echo $block->escapeHtml(__('Message')) ?>" class="input-text" cols="5" rows="3"></textarea>
+            </div>
+        </div>
+        <div class="field attachment">
+            <label class="label" for="attachment"><span><?php echo $block->escapeHtml(__('Attachments')) ?></span></label>
+            <div class="control">
+                <?php echo $block->getChildHtml('fileUpload') ?>
+            </div>
+        </div>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary"><button type="submit" title="<?php echo $block->escapeHtml(__('Submit Ticket')) ?>" class="action submit primary"><span><?php echo $block->escapeHtml(__('Submit Ticket')) ?></span></button></div>
+    </div>
+</form>

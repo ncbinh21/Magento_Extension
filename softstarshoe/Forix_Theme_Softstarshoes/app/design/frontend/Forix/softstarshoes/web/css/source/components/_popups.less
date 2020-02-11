@@ -1,0 +1,141 @@
+@use-popup-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.window.popup {
+    &:extend(.forix-abs-popup all);
+}
+
+.window.popup .popup-actions .action.close {
+    &:extend(.forix-abs-popup-close all);
+}
+
+.window.popup .popup-actions .action.close.disabled,
+.window.popup .popup-actions .action.close[disabled],
+fieldset[disabled] .window.popup .popup-actions .action.close {
+    &:extend(.forix-abs-popup-close-disabled all);
+}
+
+.window.overlay {
+    &:extend(.forix-abs-overlay all,.forix-abs-popup.overlay all);
+}
+
+.ui-dialog.popup .action span{
+    &:extend(.forix-abs-visually-hidden all);
+}
+
+.ui-dialog.popup .action.close:before{
+    &:extend(.forix-abs-icon-base all);
+}
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .ui-dialog.popup .action.close{
+        position: absolute;
+        height: 40px;
+        right: 0;
+        top: 0;
+        width: 40px;
+        z-index: 1001;
+        display: inline-block;
+        background-image: none;
+        background: none;
+        border: 0;
+        box-shadow: none;
+        line-height: inherit;
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        text-shadow: none;
+        font-weight: @forix-font-weight__regular;
+
+        &:before{
+            font-size: 16px;
+            line-height: 16px;
+            color: @color-gray55;
+            content: @font-awesome-remove2;
+            margin: 0;
+            vertical-align: top;
+            display: inline-block;
+            font-weight: normal;
+            text-align: center;
+        }
+    }
+
+    .popup-pointer{
+        margin-left: -14px;
+        position: absolute;
+        top: -14px;
+
+        &:before{
+            content: '';
+            position: absolute;
+            display: block;
+            width: 0;
+            height: 0;
+            border-bottom-style: solid;
+            left: 2px;
+            top: 2px;
+            border: solid 6px;
+            border-color: transparent transparent @color-white transparent;
+            z-index: 99;
+        }
+
+        &:after{
+            content: '';
+            position: absolute;
+            display: block;
+            width: 0;
+            height: 0;
+            border-bottom-style: solid;
+            left: 1px;
+            top: 0px;
+            border: solid 7px;
+            border-color: transparent transparent #aeaeae transparent;
+            z-index: 98;
+        }
+    }
+}
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .ui-dialog.popup{
+        width:90%;
+        max-width: 640px;
+    }
+}
+// [480-767]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__xs) and (@break-max = @screen__m) {
+    .window.popup .actions-toolbar .primary {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .window.popup .actions-toolbar .secondary {
+        display: inline-block;
+    }
+}
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .ui-dialog.popup{
+        width: 640px;
+    }
+}
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+
+}
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+
+}
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Checkout\Block\Cart\Crosssell" type="Forix\Checkout\Block\Cart\CrosssellCustom" />
+    <preference for="Magento\Checkout\CustomerData\DefaultItem" type="Forix\Checkout\CustomerData\DefaultItem" />
+    <preference for="Temando\Shipping\Observer\SaveCheckoutFieldsObserver" type="Forix\Checkout\Observer\SaveCheckoutFieldsObserver" />
+    <preference for="Magento\Checkout\Controller\Index\Index" type="Forix\Checkout\Rewrite\Controller\Index" />
+
+    <type name="Magento\Quote\Model\Cart\Totals\ItemConverter">
+        <plugin name="show-points-item" type="Forix\Checkout\Plugin\Cart\Totals\ItemConverterPlugin" sortOrder="10"/>
+    </type>
+    <!--<type name="Magento\Quote\Model\QuoteManagement">-->
+        <!--<plugin name="check-full-name" type="Forix\Checkout\Plugin\Quote\Model\QuoteManagementPlugin" sortOrder="11"/>-->
+    <!--</type>-->
+</config>

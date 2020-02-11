@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<map xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="../map.xsd">
+    <source>
+        <field_rules>
+            <transform>
+                <field>customer_entity.website_id</field>
+                <handler class="\Migration\Handler\SetValue">
+                    <param name="value" value="1" />
+                </handler>
+            </transform>
+            <!--<rename>-->
+                <!--<document>enterprise_customer_sales_flat_order</document>-->
+                <!--<to>magento_customercustomattributes_sales_flat_order</to>-->
+            <!--</rename>-->
+            <!--<rename>-->
+                <!--<document>enterprise_customer_sales_flat_order_address</document>-->
+                <!--<to>magento_customercustomattributes_sales_flat_order_address</to>-->
+            <!--</rename>-->
+            <!--<rename>-->
+                <!--<document>enterprise_customer_sales_flat_quote</document>-->
+                <!--<to>magento_customercustomattributes_sales_flat_quote</to>-->
+            <!--</rename>-->
+            <!--<rename>-->
+                <!--<document>enterprise_customer_sales_flat_quote_address</document>-->
+                <!--<to>magento_customercustomattributes_sales_flat_quote_address</to>-->
+            <!--</rename>-->
+        </field_rules>
+    </source>
+    <destination>
+        <field_rules>
+            <transform>
+                <field>customer_entity.website_id</field>
+                <handler class="\Migration\Handler\SetValue">
+                    <param name="value" value="1" />
+                </handler>
+            </transform>
+            <transform>
+                <field>customer_entity.store_id</field>
+                <handler class="\Migration\Handler\SetValue">
+                    <param name="value" value="1" />
+                </handler>
+            </transform>
+        </field_rules>
+    </destination>
+</map>

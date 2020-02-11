@@ -1,0 +1,28 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * New Customer block template
+ *
+ * @var \Magento\Customer\Block\Form\Login\Info $block
+ */
+?>
+<?php if ($block->getRegistration()->isAllowed()): ?>
+<div class="block block-new-customer">
+    <div class="block-content" aria-labelledby="block-new-customer-heading">
+        <?php echo $block->getChildHtml('content_login_create_block');?>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <a href="<?php echo $block->escapeUrl($block->getCreateAccountUrl()) ?>" class="action create primary"><span><?php echo $block->escapeHtml(__('Create a New Account')) ?></span></a>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endif; ?>

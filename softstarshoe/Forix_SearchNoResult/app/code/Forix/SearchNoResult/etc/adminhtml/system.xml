@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<tab id="forix" translate="label">
+			<label>Forix</label>
+		</tab>
+		<section id="search_no_result" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+			<class>separator-top</class>
+			<label>Search No Result</label>
+			<tab>forix</tab>
+			<resource>Magento_Backend::all</resource>
+			<group id="setting" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>General</label>
+				<field id="is_active" type="select" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Enable Search No Result</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id="search_page_title" type="text" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Page title</label>
+					<depends>
+						<field id="is_active">1</field>
+					</depends>
+					<frontend_class>required-entry</frontend_class>
+				</field>
+				<field id="no_result_text" type="text" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>No result text</label>
+					<frontend_class>required-entry</frontend_class>
+					<depends>
+						<field id="is_active">1</field>
+					</depends>
+				</field>
+				<field id="note" type="textarea" translate="label" sortOrder="21" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Note</label>
+					<depends>
+						<field id="is_active">1</field>
+					</depends>
+				</field>
+				<field id="show_category" type="select" translate="label" sortOrder="22" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Show category list</label>
+					<depends>
+						<field id="is_active">1</field>
+					</depends>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id="remove_breadcrumbs" type="select" translate="label" sortOrder="23" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Remove breadcrumbs</label>
+					<depends>
+						<field id="is_active">1</field>
+					</depends>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+			</group>
+		</section>
+	</system>
+</config>

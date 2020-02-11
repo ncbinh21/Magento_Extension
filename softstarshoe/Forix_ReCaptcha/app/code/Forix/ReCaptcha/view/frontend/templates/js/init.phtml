@@ -1,0 +1,16 @@
+<?php
+/**
+ * Created by: Bruce
+ * @var $block \Forix\ReCaptcha\Block\Explicit
+ */
+?>
+<?php echo $block->getRecaptchaScriptSrc() ?>
+<script>
+	require(["jquery",'recaptcha'], function($){
+		var keys = {
+			"site_key" : "<?php echo $block->getSiteKey() ?>",
+			"secret_key" : "<?php echo $block->getSecretKey() ?>"
+		};
+		reCaptcha.init(keys);
+	});
+</script>

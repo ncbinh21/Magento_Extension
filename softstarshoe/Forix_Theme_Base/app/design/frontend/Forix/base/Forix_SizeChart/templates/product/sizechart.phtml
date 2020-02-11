@@ -1,0 +1,9 @@
+<?php if($block->canShowBlock()): ?>
+    <script>
+        var scPosition = '<?php echo $block->getPositionAttribute() ?>';
+    </script>
+    <a id="sizechart" class="product-size-chart" href="#sizechart-modal" data-mage-init='{"forix/fancybox": {"mode": "inline"}}'>Size Chart</a>
+    <div id="sizechart-modal" title="Product Size Chart" class="modal-size-chart">
+        <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($block->getBlockId())->toHtml(); ?>
+    </div>
+<?php endif; ?>

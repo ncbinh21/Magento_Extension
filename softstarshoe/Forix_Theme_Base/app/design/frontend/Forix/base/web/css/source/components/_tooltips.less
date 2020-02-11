@@ -1,0 +1,71 @@
+@use-tooltip-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+
+// ------------------------------------
+// Variables Extends
+// ------------------------------------
+
+// ------------------------------------
+// Extend Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .tooltip.wrapper{
+        position: relative;
+
+        .tooltip.toggle{
+            cursor: help;
+        }
+
+        .tooltip.content{
+            background: @primary-background__color;
+            max-width: 360px;
+            min-width: 210px;
+            padding: @forix-indent__s @forix-indent__xm;
+            z-index: 100;
+            display: none;
+            position: absolute;
+            text-align: left;
+            color: @three-text__color;
+            line-height: 1.4;
+            border: @forix-border__base;
+            margin-top: @forix-indent__xs;
+            left: 0;
+            top: 100%;
+
+            dl{
+                margin-bottom: 0;
+            }
+
+            .subtitle{
+                display: inline-block;
+                margin-bottom: @forix-indent__xm;
+                font-size: @forix-font-size__m;
+                font-weight: @forix-font-weight__heavier;
+            }
+
+            .label{
+                margin-top: @forix-indent__s;
+
+                &:first-child{
+                    margin-top: 0;
+                }
+            }
+
+            .values{
+                margin: 0;
+            }
+        }
+    }
+
+    .ui-tooltip{
+        position: absolute;
+        z-index: 9999;
+        border: @forix-border__base;
+        background: @primary-background__color;
+        padding: @forix-indent__s;
+    }
+}

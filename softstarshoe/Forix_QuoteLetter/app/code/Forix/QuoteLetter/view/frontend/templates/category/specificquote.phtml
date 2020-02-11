@@ -1,0 +1,14 @@
+<?php
+/**
+ * @var $block \Forix\QuoteLetter\Block\AbstractSpecificQuote
+ */
+
+$quoteCollection =  $block->getQuotes();
+?>
+<?php if($quoteCollection): ?>
+    <?php foreach ($quoteCollection as $item): ?>
+        <div>
+            <?php echo $item->getComment() ?>
+        </div>
+    <?php endforeach; ?>
+<?php endif; ?>

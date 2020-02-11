@@ -1,0 +1,90 @@
+<?php
+/**
+ * @var $block \Forix\FanPhoto\Block\Index\Index
+ */
+?>
+<div class="bg-gray">
+    <div class="page-title-wrapper">
+        <h1 class="page-title" id="page-title-heading">
+            <span class="base"><?php echo __( 'Fan Photos' ) ?></span>
+        </h1>
+    </div>
+    <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('fanphoto_header_desc1')->toHtml();?>
+
+    <div class="cms-fan-photo-container">
+        <?php echo $block->getChildHtml() ?>
+        <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('fanphoto_header_desc2')->toHtml();?>
+    </div>
+    <div class="custom-button">
+    <a href="#" class="abutton fan-photo-action popup"><?php echo __( 'Send Us Your Photo To Win' ) ?></a>
+    </div>
+</div>
+
+
+<?php echo $block->getLayout()->createBlock( "Forix\FanPhoto\Block\Index\Index" )->setTemplate( 'Forix_FanPhoto::index/list.phtml' )->toHtml(); ?>
+<?php echo $block->getLayout()->createBlock( "Forix\FanPhoto\Block\Register\Form" )->setTemplate( 'Forix_FanPhoto::register/form.phtml' )->toHtml(); ?>
+<?php echo $block->getLayout()->createBlock( "Forix\Ajaxscroll\Block\Main" )->setTemplate( 'Forix_Ajaxscroll::ajaxscroll/ias_photo.phtml' )->toHtml(); ?>
+<script>
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal',
+            'jquery/ui',
+            'jquery/validate',
+            'mage/translate',
+            'slick'
+        ],
+        function ($, modal) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                clickableOverlay: false,
+                modalClass: 'custom-modal',
+                buttons: false
+            };
+
+            var popup = modal(options, $('.form-register'));
+            $(".popup").on('click', function () {
+                $(".form-register").modal("openModal");
+            });
+
+            var popup2 = modal(options, $('.view-photo'));
+            $(".photo-item").on('click', function () {
+                position = $(this).attr('data-position');
+                $('.slider-for').slick('slickGoTo', position);
+                $(".view-photo").modal("openModal");
+            });
+            $('.grid').on('loadImageFanPhoto', function () {
+                $(".photo-item").on('click', function () {
+                    position = $(this).attr('data-position');
+                    $('.slider-for').slick('slickGoTo', position);
+                    $(".view-photo").modal("openModal");
+                });
+            });
+            $.validator.addMethod(
+                'validate-fileextensions', function (v, elm) {
+                    var extensions = ['jpeg', 'jpg', 'png', 'gif'];
+                    if (!v) {
+                        return true;
+                    }
+                    with (elm) {
+                        var ext = value.substring(value.lastIndexOf('.') + 1);
+                        for (i = 0; i < extensions.length; i++) {
+                            if (ext == extensions[i]) {
+                                return true;
+                            }
+                        }
+                    }
+                    return false;
+                }, $.mage.__('Disallowed file type. (Only \'jpeg\', \'jpg\', \'png\', \'gif\')'));
+        },
+    );
+</script>
+<script type="text/x-magento-init">
+        {
+            "#form-register": {
+                "validation": {}
+            }
+        }
+</script>

@@ -1,0 +1,1693 @@
+// Rule: @forix-[block-name]__[properties]
+//block-name : table
+@use-table-core__enable: true;
+//@use-block-name-class-default__enable: true;
+
+// Format Table Basic
+// ================================
+//.table-scroll
+@forix-table-scroll__name: "forix-table-scroll";
+@forix-table-scroll__commons: overflow-x,overflow-y,width;
+@forix-table-scroll__responsives: false;
+@forix-table-scroll__check-have: false;
+@forix-table-scroll__status: false;
+@forix-table-scroll__prefix: false;
+@forix-table-scroll__format: false;
+@forix-table-scroll__use-flex: false;
+
+@forix-table-scroll__overflow-x: auto;
+@forix-table-scroll__overflow-y: hidden;
+@forix-table-scroll__width: 100%;
+
+//.table-wrapper
+@forix-table-wrapper__name: "forix-table-wrapper";
+@forix-table-wrapper__commons: margin-bottom;
+@forix-table-wrapper__responsives: false;
+@forix-table-wrapper__check-have: false;
+@forix-table-wrapper__status: false;
+@forix-table-wrapper__prefix: false;
+@forix-table-wrapper__format: false;
+@forix-table-wrapper__use-flex: false;
+
+@forix-table-wrapper__margin-bottom: @forix-indent__base;
+
+//table
+@forix-table__name: "forix-table";
+@forix-table__commons: width,border-collapse,border-spacing,max-width;
+@forix-table__responsives: false;
+@forix-table__check-have: false;
+@forix-table__status: false;
+@forix-table__prefix: false;
+@forix-table__format: false;
+@forix-table__use-flex: false;
+
+@forix-table__width: 100%;
+@forix-table__border-collapse: collapse;
+@forix-table__border-spacing: 0;
+@forix-table__max-width: 100%;
+
+//table th
+@forix-table-th__name: "forix-table-th";
+@forix-table-th__commons: text-align,padding,border-bottom;
+@forix-table-th__responsives: false;
+@forix-table-th__check-have: first-child,last-child;
+@forix-table-th__status: false;
+@forix-table-th__prefix: false;
+@forix-table-th__format: false;
+@forix-table-th__use-flex: false;
+
+@forix-table-th__first-child__commons: padding-left;
+@forix-table-th__first-child__responsives: false;
+@forix-table-th__last-child__commons: padding-right;
+@forix-table-th__last-child__responsives: false;
+
+@forix-table-th__text-align: left;
+@forix-table-th__padding: @forix-indent__s;
+@forix-table-th__border-bottom: @forix-border__base;
+
+@forix-table-th__first-child__padding-left: 0;
+@forix-table-th__last-child__padding-right: 0;
+
+//table td
+@forix-table-td__name: "forix-table-td";
+@forix-table-td__commons: border-bottom;
+@forix-table-td__responsives: padding;
+@forix-table-td__check-have: first-child,last-child;
+@forix-table-td__status: false;
+@forix-table-td__prefix: false;
+@forix-table-td__format: false;
+@forix-table-td__use-flex: false;
+
+@forix-table-td__first-child__commons: padding-left;
+@forix-table-td__first-child__responsives: false;
+@forix-table-td__last-child__commons: padding-right;
+@forix-table-td__last-child__responsives: false;
+
+@forix-table-td__padding: @forix-indent__s;
+@forix-table-td__border-bottom: @forix-border__base;
+
+@forix-table-td__first-child__padding-left: 0;
+@forix-table-td__last-child__padding-right: 0;
+
+@forix-table-td__change__m: true;
+@forix-table-td__padding__m: @forix-indent__xs @forix-indent__s;
+
+@forix-table-td__change__l: false;
+
+//table tr
+@forix-table-tr__name: "forix-table-tr";
+@forix-table-tr__commons: false;
+@forix-table-tr__responsives: false;
+@forix-table-tr__check-have: false;
+@forix-table-tr__status: false;
+@forix-table-tr__prefix: false;
+@forix-table-tr__format: false;
+@forix-table-tr__use-flex: false;
+//table caption
+@forix-table-caption__name: "forix-table-caption";
+@forix-table-caption__commons: false;
+@forix-table-caption__responsives: false;
+@forix-table-caption__check-have: false;
+@forix-table-caption__status: false;
+@forix-table-caption__prefix: false;
+@forix-table-caption__format: false;
+@forix-table-caption__use-flex: false;
+//table thead
+@forix-table-thead__name: "forix-table-thead";
+@forix-table-thead__commons: false;
+@forix-table-thead__responsives: false;
+@forix-table-thead__check-have: false;
+@forix-table-thead__status: false;
+@forix-table-thead__prefix: false;
+@forix-table-thead__format: false;
+@forix-table-thead__use-flex: false;
+//table thead tr
+@forix-table-thead-tr__name: "forix-table-thead-tr";
+@forix-table-thead-tr__commons: false;
+@forix-table-thead-tr__responsives: false;
+@forix-table-thead-tr__check-have: false;
+@forix-table-thead-tr__status: false;
+@forix-table-thead-tr__prefix: false;
+@forix-table-thead-tr__format: false;
+@forix-table-thead-tr__use-flex: false;
+//table thead th
+@forix-table-thead-th__name: "forix-table-thead-th";
+@forix-table-thead-th__commons: vertical-align,font-weight,padding;
+@forix-table-thead-th__responsives: font-size;
+@forix-table-thead-th__check-have: false;
+@forix-table-thead-th__status: false;
+@forix-table-thead-th__prefix: false;
+@forix-table-thead-th__format: false;
+@forix-table-thead-th__use-flex: false;
+
+@forix-table-thead-th__vertical-align: middle;
+@forix-table-thead-th__padding: @forix-indent__s;
+@forix-table-thead-th__font-weight: @forix-font-weight__bold;
+@forix-table-thead-th__font-size: 14px;
+
+@forix-table-thead-th__change__m: false;
+
+@forix-table-thead-th__change__l: true;
+@forix-table-thead-th__font-size__l: 16px;
+
+//table thead td
+@forix-table-thead-td__name: "forix-table-thead-td";
+@forix-table-thead-td__commons: vertical-align,font-weight,padding;
+@forix-table-thead-td__responsives: font-size;
+@forix-table-thead-td__check-have: false;
+@forix-table-thead-td__status: false;
+@forix-table-thead-td__prefix: false;
+@forix-table-thead-td__format: false;
+@forix-table-thead-td__use-flex: false;
+
+@forix-table-thead-td__vertical-align: bottom;
+@forix-table-thead-td__padding: @forix-indent__s;
+@forix-table-thead-td__font-weight: @forix-font-weight__semibold;
+@forix-table-thead-td__font-size: 14px;
+
+@forix-table-thead-td__change__m: false;
+
+@forix-table-thead-td__change__l: true;
+@forix-table-thead-td__font-size__l: 16px;
+
+//table tbody
+@forix-table-tbody__name: "forix-table-tbody";
+@forix-table-tbody__commons: false;
+@forix-table-tbody__responsives: false;
+@forix-table-tbody__check-have: false;
+@forix-table-tbody__status: false;
+@forix-table-tbody__prefix: false;
+@forix-table-tbody__format: false;
+@forix-table-tbody__use-flex: false;
+//table tbody th
+@forix-table-tbody-th__name: "forix-table-tbody-th";
+@forix-table-tbody-th__commons: vertical-align,font-weight;
+@forix-table-tbody-th__responsives: false;
+@forix-table-tbody-th__check-have: false;
+@forix-table-tbody-th__status: false;
+@forix-table-tbody-th__prefix: false;
+@forix-table-tbody-th__format: false;
+@forix-table-tbody-th__use-flex: false;
+
+@forix-table-tbody-th__vertical-align: middle;
+@forix-table-tbody-th__font-weight: @forix-font-weight__bold;
+
+//table tbody td
+@forix-table-tbody-td__name: "forix-table-tbody-td";
+@forix-table-tbody-td__commons: vertical-align;
+@forix-table-tbody-td__responsives: padding,font-size;
+@forix-table-tbody-td__check-have: false;
+@forix-table-tbody-td__status: false;
+@forix-table-tbody-td__prefix: false;
+@forix-table-tbody-td__format: false;
+@forix-table-tbody-td__use-flex: false;
+
+@forix-table-tbody-td__vertical-align: middle;
+@forix-table-tbody-td__padding: false;
+@forix-table-tbody-td__font-size: 14px;
+
+@forix-table-tbody-td__change__m: true;
+@forix-table-tbody-td__padding__m: @forix-indent__s;
+@forix-table-tbody-td__font-size__m: false;
+
+@forix-table-tbody-td__change__l: true;
+@forix-table-tbody-td__padding__l: false;
+@forix-table-tbody-td__font-size__l: 16px;
+
+//table tbody tr
+@forix-table-tbody-tr__name: "forix-table-tbody-tr";
+@forix-table-tbody-tr__commons: false;
+@forix-table-tbody-tr__responsives: false;
+@forix-table-tbody-tr__check-have: false;
+@forix-table-tbody-tr__status: false;
+@forix-table-tbody-tr__prefix: false;
+@forix-table-tbody-tr__format: false;
+@forix-table-tbody-tr__use-flex: false;
+//table tfoot
+@forix-table-tfoot__name: "forix-table-tfoot";
+@forix-table-tfoot__commons: false;
+@forix-table-tfoot__responsives: false;
+@forix-table-tfoot__check-have: false;
+@forix-table-tfoot__status: false;
+@forix-table-tfoot__prefix: false;
+@forix-table-tfoot__format: false;
+@forix-table-tfoot__use-flex: false;
+//table tfoot tr
+@forix-table-tfoot-tr__name: "forix-table-tfoot-tr";
+@forix-table-tfoot-tr__commons: false;
+@forix-table-tfoot-tr__responsives: false;
+@forix-table-tfoot-tr__check-have: false;
+@forix-table-tfoot-tr__status: false;
+@forix-table-tfoot-tr__prefix: false;
+@forix-table-tfoot-tr__format: false;
+@forix-table-tfoot-tr__use-flex: false;
+//table tfoot th
+@forix-table-tfoot-th__name: "forix-table-tfoot-th";
+@forix-table-tfoot-th__commons: false;
+@forix-table-tfoot-th__responsives: false;
+@forix-table-tfoot-th__check-have: false;
+@forix-table-tfoot-th__status: false;
+@forix-table-tfoot-th__prefix: false;
+@forix-table-tfoot-th__format: false;
+@forix-table-tfoot-th__use-flex: false;
+//table tfoot td
+@forix-table-tfoot-td__name: "forix-table-tfoot-td";
+@forix-table-tfoot-td__commons: false;
+@forix-table-tfoot-td__responsives: false;
+@forix-table-tfoot-td__check-have: false;
+@forix-table-tfoot-td__status: false;
+@forix-table-tfoot-td__prefix: false;
+@forix-table-tfoot-td__format: false;
+@forix-table-tfoot-td__use-flex: false;
+//table tbody + tbody
+@forix-table-tbody-tbody__name: "forix-table-tbody-tbody";
+@forix-table-tbody-tbody__commons: false;
+@forix-table-tbody-tbody__responsives: border-top;
+@forix-table-tbody-tbody__check-have: false;
+@forix-table-tbody-tbody__status: false;
+@forix-table-tbody-tbody__prefix: false;
+@forix-table-tbody-tbody__format: false;
+@forix-table-tbody-tbody__use-flex: false;
+
+@forix-table-tbody-tbody__border-top: @forix-border__base;
+
+@forix-table-tbody-tbody__change__m: desktop;
+@forix-table-tbody-tbody__border-top__m: false;
+
+@forix-table-tbody-tbody__change__l: tablet;
+
+//table tbody + tbody tr
+@forix-table-tbody-tbody-tr__name: "forix-table-tbody-tbody-tr";
+@forix-table-tbody-tbody-tr__commons: false;
+@forix-table-tbody-tbody-tr__responsives: false;
+@forix-table-tbody-tbody-tr__check-have: false;
+@forix-table-tbody-tbody-tr__status: false;
+@forix-table-tbody-tbody-tr__prefix: false;
+@forix-table-tbody-tbody-tr__format: false;
+@forix-table-tbody-tbody-tr__use-flex: false;
+//table tbody + tbody th
+@forix-table-tbody-tbody-th__name: "forix-table-tbody-tbody-th";
+@forix-table-tbody-tbody-th__commons: false;
+@forix-table-tbody-tbody-th__responsives: false;
+@forix-table-tbody-tbody-th__check-have: false;
+@forix-table-tbody-tbody-th__status: false;
+@forix-table-tbody-tbody-th__prefix: false;
+@forix-table-tbody-tbody-th__format: false;
+@forix-table-tbody-tbody-th__use-flex: false;
+//table tbody + tbody td
+@forix-table-tbody-tbody-td__name: "forix-table-tbody-tbody-td";
+@forix-table-tbody-tbody-td__commons: false;
+@forix-table-tbody-tbody-td__responsives: false;
+@forix-table-tbody-tbody-td__check-have: false;
+@forix-table-tbody-tbody-td__status: false;
+@forix-table-tbody-tbody-td__prefix: false;
+@forix-table-tbody-tbody-td__format: false;
+@forix-table-tbody-tbody-td__use-flex: false;
+
+// Format Table For Module Magento
+// ================================
+
+//.data.table
+@forix-data-table__name: "forix-data-table";
+@forix-data-table__commons: false;
+@forix-data-table__responsives: false;
+@forix-data-table__check-have: false;
+@forix-data-table__status: false;
+@forix-data-table__prefix: false;
+@forix-data-table__format: false;
+@forix-data-table__use-flex: false;
+//.data.table .table-caption
+@forix-data-table-caption__name: "forix-data-table-caption";
+@forix-data-table-caption__commons: false;
+@forix-data-table-caption__responsives: false;
+@forix-data-table-caption__check-have: false;
+@forix-data-table-caption__status: false;
+@forix-data-table-caption__prefix: false;
+@forix-data-table-caption__format: false;
+@forix-data-table-caption__use-flex: false;
+//.data.table thead
+@forix-data-table-thead__name: "forix-data-table-thead";
+@forix-data-table-thead__commons: false;
+@forix-data-table-thead__responsives: false;
+@forix-data-table-thead__check-have: false;
+@forix-data-table-thead__status: false;
+@forix-data-table-thead__prefix: false;
+@forix-data-table-thead__format: false;
+@forix-data-table-thead__use-flex: false;
+//.data.table thead tr
+@forix-data-table-thead-tr__name: "forix-data-table-thead-tr";
+@forix-data-table-thead-tr__commons: false;
+@forix-data-table-thead-tr__responsives: false;
+@forix-data-table-thead-tr__check-have: false;
+@forix-data-table-thead-tr__status: false;
+@forix-data-table-thead-tr__prefix: false;
+@forix-data-table-thead-tr__format: false;
+@forix-data-table-thead-tr__use-flex: false;
+//.data.table thead th
+@forix-data-table-thead-th__name: "forix-data-table-thead-th";
+@forix-data-table-thead-th__commons: false;
+@forix-data-table-thead-th__responsives: false;
+@forix-data-table-thead-th__check-have: false;
+@forix-data-table-thead-th__status: false;
+@forix-data-table-thead-th__prefix: false;
+@forix-data-table-thead-th__format: false;
+@forix-data-table-thead-th__use-flex: false;
+//.data.table thead td
+@forix-data-table-thead-td__name: "forix-data-table-thead-td";
+@forix-data-table-thead-td__commons: false;
+@forix-data-table-thead-td__responsives: false;
+@forix-data-table-thead-td__check-have: false;
+@forix-data-table-thead-td__status: false;
+@forix-data-table-thead-td__prefix: false;
+@forix-data-table-thead-td__format: false;
+@forix-data-table-thead-td__use-flex: false;
+//.data.table tbody
+@forix-data-table-tbody__name: "forix-data-table-tbody";
+@forix-data-table-tbody__commons: false;
+@forix-data-table-tbody__responsives: false;
+@forix-data-table-tbody__check-have: false;
+@forix-data-table-tbody__status: false;
+@forix-data-table-tbody__prefix: false;
+@forix-data-table-tbody__format: false;
+@forix-data-table-tbody__use-flex: false;
+//.data.table tbody tr
+@forix-data-table-tbody-tr__name: "forix-data-table-tbody-tr";
+@forix-data-table-tbody-tr__commons: false;
+@forix-data-table-tbody-tr__responsives: false;
+@forix-data-table-tbody-tr__check-have: false;
+@forix-data-table-tbody-tr__status: false;
+@forix-data-table-tbody-tr__prefix: false;
+@forix-data-table-tbody-tr__format: false;
+@forix-data-table-tbody-tr__use-flex: false;
+//.data.table tbody th
+@forix-data-table-tbody-th__name: "forix-data-table-tbody-th";
+@forix-data-table-tbody-th__commons: false;
+@forix-data-table-tbody-th__responsives: false;
+@forix-data-table-tbody-th__check-have: false;
+@forix-data-table-tbody-th__status: false;
+@forix-data-table-tbody-th__prefix: false;
+@forix-data-table-tbody-th__format: false;
+@forix-data-table-tbody-th__use-flex: false;
+//.data.table tbody td
+@forix-data-table-tbody-td__name: "forix-data-table-tbody-td";
+@forix-data-table-tbody-td__commons: false;
+@forix-data-table-tbody-td__responsives: false;
+@forix-data-table-tbody-td__check-have: false;
+@forix-data-table-tbody-td__status: false;
+@forix-data-table-tbody-td__prefix: false;
+@forix-data-table-tbody-td__format: false;
+@forix-data-table-tbody-td__use-flex: false;
+//.data.table tfoot
+@forix-data-table-tfoot__name: "forix-data-table-tfoot";
+@forix-data-table-tfoot__commons: background;
+@forix-data-table-tfoot__responsives: display,width,padding;
+@forix-data-table-tfoot__check-have: false;
+@forix-data-table-tfoot__status: false;
+@forix-data-table-tfoot__prefix: false;
+@forix-data-table-tfoot__format: false;
+@forix-data-table-tfoot__use-flex: false;
+
+@forix-data-table-tfoot__background: @secondary-background__color;
+@forix-data-table-tfoot__display: table;
+@forix-data-table-tfoot__width: 100%;
+@forix-data-table-tfoot__padding: @forix-indent__s 0;
+
+@forix-data-table-tfoot__change__m: desktop;
+@forix-data-table-tfoot__display__m: false;
+@forix-data-table-tfoot__width__m: false;
+@forix-data-table-tfoot__padding__m: false;
+
+@forix-data-table-tfoot__change__l: tablet;
+
+//.data.table tfoot tr
+@forix-data-table-tfoot-tr__name: "forix-data-table-tfoot-tr";
+@forix-data-table-tfoot-tr__commons: false;
+@forix-data-table-tfoot-tr__responsives:  display,width;
+@forix-data-table-tfoot-tr__check-have: false;
+@forix-data-table-tfoot-tr__status: false;
+@forix-data-table-tfoot-tr__prefix: false;
+@forix-data-table-tfoot-tr__format: false;
+@forix-data-table-tfoot-tr__use-flex: false;
+
+@forix-data-table-tfoot-tr__display: block;
+@forix-data-table-tfoot-tr__width: 100%;
+
+@forix-data-table-tfoot-tr__change__m: desktop;
+@forix-data-table-tfoot-tr__display__m: false;
+@forix-data-table-tfoot-tr__width__m: false;
+
+@forix-data-table-tfoot-tr__change__l: tablet;
+
+//.data.table tfoot td
+@forix-data-table-tfoot-td__name: "forix-data-table-tfoot-td";
+@forix-data-table-tfoot-td__commons: false;
+@forix-data-table-tfoot-td__responsives: false;
+@forix-data-table-tfoot-td__check-have: false;
+@forix-data-table-tfoot-td__status: false;
+@forix-data-table-tfoot-td__prefix: false;
+@forix-data-table-tfoot-td__format: false;
+@forix-data-table-tfoot-td__use-flex: false;
+//.data.table tfoot th
+@forix-data-table-tfoot-th__name: "forix-data-table-tfoot-th";
+@forix-data-table-tfoot-th__commons: false;
+@forix-data-table-tfoot-th__responsives: false;
+@forix-data-table-tfoot-th__check-have: false;
+@forix-data-table-tfoot-th__status: false;
+@forix-data-table-tfoot-th__prefix: false;
+@forix-data-table-tfoot-th__format: false;
+@forix-data-table-tfoot-th__use-flex: false;
+//.data.table tbody + tbody
+@forix-data-table-tbody-tbody__name: "forix-data-table-tbody-tbody";
+@forix-data-table-tbody-tbody__commons: false;
+@forix-data-table-tbody-tbody__responsives: false;
+@forix-data-table-tbody-tbody__check-have: false;
+@forix-data-table-tbody-tbody__status: false;
+@forix-data-table-tbody-tbody__prefix: false;
+@forix-data-table-tbody-tbody__format: false;
+@forix-data-table-tbody-tbody__use-flex: false;
+//.data.table tbody + tbody tr
+@forix-data-table-tbody-tbody-tr__name: "forix-data-table-tbody-tbody-tr";
+@forix-data-table-tbody-tbody-tr__commons: false;
+@forix-data-table-tbody-tbody-tr__responsives: false;
+@forix-data-table-tbody-tbody-tr__check-have: false;
+@forix-data-table-tbody-tbody-tr__status: false;
+@forix-data-table-tbody-tbody-tr__prefix: false;
+@forix-data-table-tbody-tbody-tr__format: false;
+@forix-data-table-tbody-tbody-tr__use-flex: false;
+//.data.table tbody + tbody th
+@forix-data-table-tbody-tbody-th__name: "forix-data-table-tbody-tbody-th";
+@forix-data-table-tbody-tbody-th__commons: false;
+@forix-data-table-tbody-tbody-th__responsives: false;
+@forix-data-table-tbody-tbody-th__check-have: false;
+@forix-data-table-tbody-tbody-th__status: false;
+@forix-data-table-tbody-tbody-th__prefix: false;
+@forix-data-table-tbody-tbody-th__format: false;
+@forix-data-table-tbody-tbody-th__use-flex: false;
+//.data.table tbody + tbody td
+@forix-data-table-tbody-tbody-td__name: "forix-data-table-tbody-tbody-td";
+@forix-data-table-tbody-tbody-td__commons: false;
+@forix-data-table-tbody-tbody-td__responsives: false;
+@forix-data-table-tbody-tbody-td__check-have: false;
+@forix-data-table-tbody-tbody-td__status: false;
+@forix-data-table-tbody-tbody-td__prefix: false;
+@forix-data-table-tbody-tbody-td__format: false;
+@forix-data-table-tbody-tbody-td__use-flex: false;
+
+// Format Responsive Table
+// ==========================
+// table-responsive (.forix-abs-table-reponsive)
+//.forix-abs-table-reponsive
+@forix-table-reponsive__name: "forix-table-reponsive";
+@forix-table-reponsive__commons: false;
+@forix-table-reponsive__responsives: display,border;
+@forix-table-reponsive__check-have: false;
+@forix-table-reponsive__status: false;
+@forix-table-reponsive__prefix: false;
+@forix-table-reponsive__format: false;
+@forix-table-reponsive__use-flex: false;
+
+@forix-table-reponsive__display: block;
+@forix-table-reponsive__border: none;
+
+@forix-table-reponsive__change__m: true;
+@forix-table-reponsive__display__m: false;
+@forix-table-reponsive__border__m: false;
+
+@forix-table-reponsive__change__l: true;
+@forix-table-reponsive__display__l: false;
+@forix-table-reponsive__border__l: false;
+
+//.forix-abs-table-reponsive thead
+@forix-table-reponsive-thead__name: "forix-table-reponsive-thead";
+@forix-table-reponsive-thead__commons: false;
+@forix-table-reponsive-thead__responsives: false;
+@forix-table-reponsive-thead__check-have: false;
+@forix-table-reponsive-thead__status: false;
+@forix-table-reponsive-thead__prefix: false;
+@forix-table-reponsive-thead__format: false;
+@forix-table-reponsive-thead__use-flex: false;
+//.forix-abs-table-reponsive thead th
+@forix-table-reponsive-thead-th__name: "forix-table-reponsive-thead-th";
+@forix-table-reponsive-thead-th__commons: false;
+@forix-table-reponsive-thead-th__responsives: display;
+@forix-table-reponsive-thead-th__check-have: false;
+@forix-table-reponsive-thead-th__status: false;
+@forix-table-reponsive-thead-th__prefix: false;
+@forix-table-reponsive-thead-th__format: false;
+@forix-table-reponsive-thead-th__use-flex: false;
+
+@forix-table-reponsive-thead-th__display: none;
+
+@forix-table-reponsive-thead-th__change__m: true;
+@forix-table-reponsive-thead-th__display__m: false;
+
+@forix-table-reponsive-thead-th__change__l: true;
+@forix-table-reponsive-thead-th__display__l: false;
+
+//.forix-abs-table-reponsive thead tr
+@forix-table-reponsive-thead-tr__name: "forix-table-reponsive-thead-tr";
+@forix-table-reponsive-thead-tr__commons: false;
+@forix-table-reponsive-thead-tr__responsives: false;
+@forix-table-reponsive-thead-tr__check-have: false;
+@forix-table-reponsive-thead-tr__status: false;
+@forix-table-reponsive-thead-tr__prefix: false;
+@forix-table-reponsive-thead-tr__format: false;
+@forix-table-reponsive-thead-tr__use-flex: false;
+//.forix-abs-table-reponsive thead td
+@forix-table-reponsive-thead-td__name: "forix-table-reponsive-thead-td";
+@forix-table-reponsive-thead-td__commons: false;
+@forix-table-reponsive-thead-td__responsives: display;
+@forix-table-reponsive-thead-td__check-have: false;
+@forix-table-reponsive-thead-td__status: false;
+@forix-table-reponsive-thead-td__prefix: false;
+@forix-table-reponsive-thead-td__format: false;
+@forix-table-reponsive-thead-td__use-flex: false;
+
+@forix-table-reponsive-thead-td__display: none;
+
+@forix-table-reponsive-thead-td__change__m: true;
+@forix-table-reponsive-thead-td__display__m: false;
+
+@forix-table-reponsive-thead-td__change__l: true;
+@forix-table-reponsive-thead-td__display__l: false;
+
+//.forix-abs-table-reponsive tbody
+@forix-table-reponsive-tbody__name: "forix-table-reponsive-tbody";
+@forix-table-reponsive-tbody__commons: false;
+@forix-table-reponsive-tbody__responsives: display;
+@forix-table-reponsive-tbody__check-have: false;
+@forix-table-reponsive-tbody__status: false;
+@forix-table-reponsive-tbody__prefix: false;
+@forix-table-reponsive-tbody__format: false;
+@forix-table-reponsive-tbody__use-flex: false;
+
+@forix-table-reponsive-tbody__display: block;
+
+@forix-table-reponsive-tbody__change__m: true;
+@forix-table-reponsive-tbody__display__m: false;
+
+@forix-table-reponsive-tbody__change__l: true;
+@forix-table-reponsive-tbody__display__l: false;
+
+//.forix-abs-table-reponsive tbody th
+@forix-table-reponsive-tbody-th__name: "forix-table-reponsive-tbody-th";
+@forix-table-reponsive-tbody-th__commons: false;
+@forix-table-reponsive-tbody-th__responsives: display,padding;
+@forix-table-reponsive-tbody-th__check-have: before;
+@forix-table-reponsive-tbody-th__status: false;
+@forix-table-reponsive-tbody-th__prefix: false;
+@forix-table-reponsive-tbody-th__format: false;
+@forix-table-reponsive-tbody-th__use-flex: false;
+
+@forix-table-reponsive-tbody-th__before__commons: font-weight;
+@forix-table-reponsive-tbody-th__before__responsives: content,display,margin-right,font-size;
+
+@forix-table-reponsive-tbody-th__display: block;
+@forix-table-reponsive-tbody-th__padding: @forix-indent__s 0px;
+@forix-table-reponsive-tbody-th__before__content: attr(data-th)': ';
+@forix-table-reponsive-tbody-th__before__display: inline-block;
+@forix-table-reponsive-tbody-th__before__margin-right: @forix-indent__l;
+@forix-table-reponsive-tbody-th__before__font-size: 12px;
+@forix-table-reponsive-tbody-th__before__font-weight: @forix-font-weight__semibold;
+
+@forix-table-reponsive-tbody-th__change__m: true;
+@forix-table-reponsive-tbody-th__display__m: false;
+@forix-table-reponsive-tbody-th__padding__m: false;
+@forix-table-reponsive-tbody-th__before__content__m: false;
+@forix-table-reponsive-tbody-th__before__display__m: false;
+@forix-table-reponsive-tbody-th__before__margin-right__m: false;
+@forix-table-reponsive-tbody-th__before__font-size__m: 12px;
+
+@forix-table-reponsive-tbody-th__change__l: true;
+@forix-table-reponsive-tbody-th__display__l: false;
+@forix-table-reponsive-tbody-th__padding__l: false;
+@forix-table-reponsive-tbody-th__before__content__l: false;
+@forix-table-reponsive-tbody-th__before__display__l: false;
+@forix-table-reponsive-tbody-th__before__margin-right__l: false;
+@forix-table-reponsive-tbody-th__before__font-size__l: 13px;
+
+//.forix-abs-table-reponsive tbody tr
+@forix-table-reponsive-tbody-tr__name: "forix-table-reponsive-tbody-tr";
+@forix-table-reponsive-tbody-tr__commons: false;
+@forix-table-reponsive-tbody-tr__responsives: display;
+@forix-table-reponsive-tbody-tr__check-have: false;
+@forix-table-reponsive-tbody-tr__status: false;
+@forix-table-reponsive-tbody-tr__prefix: false;
+@forix-table-reponsive-tbody-tr__format: false;
+@forix-table-reponsive-tbody-tr__use-flex: false;
+
+@forix-table-reponsive-tbody-tr__display: block;
+
+@forix-table-reponsive-tbody-tr__change__m: true;
+@forix-table-reponsive-tbody-tr__display__m: false;
+
+@forix-table-reponsive-tbody-tr__change__l: true;
+@forix-table-reponsive-tbody-tr__display__l: false;
+
+//.forix-abs-table-reponsive tbody td
+@forix-table-reponsive-tbody-td__name: "forix-table-reponsive-tbody-td";
+@forix-table-reponsive-tbody-td__commons: false;
+@forix-table-reponsive-tbody-td__responsives: display,padding;
+@forix-table-reponsive-tbody-td__check-have: before;
+@forix-table-reponsive-tbody-td__status: false;
+@forix-table-reponsive-tbody-td__prefix: false;
+@forix-table-reponsive-tbody-td__format: false;
+@forix-table-reponsive-tbody-td__use-flex: false;
+
+@forix-table-reponsive-tbody-td__padding: @forix-indent__s 0px;
+@forix-table-reponsive-tbody-td__before__commons: font-weight;
+@forix-table-reponsive-tbody-td__before__responsives: content,display,margin-right,font-size;
+
+@forix-table-reponsive-tbody-td__display: block;
+@forix-table-reponsive-tbody-td__before__content: attr(data-th)': ';
+@forix-table-reponsive-tbody-td__before__display: inline-block;
+@forix-table-reponsive-tbody-td__before__margin-right: @forix-indent__l;
+@forix-table-reponsive-tbody-td__before__font-size: 14px;
+@forix-table-reponsive-tbody-td__before__font-weight: @forix-font-weight__semibold;
+
+@forix-table-reponsive-tbody-td__change__m: true;
+@forix-table-reponsive-tbody-td__display__m: false;
+@forix-table-reponsive-tbody-td__padding__m: false;
+@forix-table-reponsive-tbody-td__before__content__m: false;
+@forix-table-reponsive-tbody-td__before__display__m: false;
+@forix-table-reponsive-tbody-td__before__margin-right__m: false;
+@forix-table-reponsive-tbody-td__before__font-size__m: 12px;
+
+@forix-table-reponsive-tbody-td__change__l: true;
+@forix-table-reponsive-tbody-td__display__l: false;
+@forix-table-reponsive-tbody-td__padding__l: false;
+@forix-table-reponsive-tbody-td__before__content__l: false;
+@forix-table-reponsive-tbody-td__before__display__l: false;
+@forix-table-reponsive-tbody-td__before__margin-right__l: false;
+@forix-table-reponsive-tbody-td__before__font-size__l: 13px;
+
+//.forix-abs-table-reponsive tfoot
+@forix-table-reponsive-tfoot__name: "forix-table-reponsive-tfoot";
+@forix-table-reponsive-tfoot__commons: false;
+@forix-table-reponsive-tfoot__responsives: false;
+@forix-table-reponsive-tfoot__check-have: false;
+@forix-table-reponsive-tfoot__status: false;
+@forix-table-reponsive-tfoot__prefix: false;
+@forix-table-reponsive-tfoot__format: false;
+@forix-table-reponsive-tfoot__use-flex: false;
+//.forix-abs-table-reponsive tfoot tr
+@forix-table-reponsive-tfoot-tr__name: "forix-table-reponsive-tfoot-tr";
+@forix-table-reponsive-tfoot-tr__commons: false;
+@forix-table-reponsive-tfoot-tr__responsives: false;
+@forix-table-reponsive-tfoot-tr__check-have: false;
+@forix-table-reponsive-tfoot-tr__status: false;
+@forix-table-reponsive-tfoot-tr__prefix: false;
+@forix-table-reponsive-tfoot-tr__format: false;
+@forix-table-reponsive-tfoot-tr__use-flex: false;
+//.forix-abs-table-reponsive tfoot th
+@forix-table-reponsive-tfoot-th__name: "forix-table-reponsive-tfoot-th";
+@forix-table-reponsive-tfoot-th__commons: false;
+@forix-table-reponsive-tfoot-th__responsives: false;
+@forix-table-reponsive-tfoot-th__check-have: false;
+@forix-table-reponsive-tfoot-th__status: false;
+@forix-table-reponsive-tfoot-th__prefix: false;
+@forix-table-reponsive-tfoot-th__format: false;
+@forix-table-reponsive-tfoot-th__use-flex: false;
+//.forix-abs-table-reponsive tfoot td
+@forix-table-reponsive-tfoot-td__name: "forix-table-reponsive-tfoot-td";
+@forix-table-reponsive-tfoot-td__commons: false;
+@forix-table-reponsive-tfoot-td__responsives: false;
+@forix-table-reponsive-tfoot-td__check-have: false;
+@forix-table-reponsive-tfoot-td__status: false;
+@forix-table-reponsive-tfoot-td__prefix: false;
+@forix-table-reponsive-tfoot-td__format: false;
+@forix-table-reponsive-tfoot-td__use-flex: false;
+
+// Responsive Table for .data.table
+// =================================
+//.forix-abs-data-table-reponsive
+@forix-table-reponsive-data-table__name: "forix-table-reponsive-data-table";
+@forix-table-reponsive-data-table__commons: false;
+@forix-table-reponsive-data-table__responsives: display,border;
+@forix-table-reponsive-data-table__check-have: false;
+@forix-table-reponsive-data-table__status: false;
+@forix-table-reponsive-data-table__prefix: false;
+@forix-table-reponsive-data-table__format: false;
+@forix-table-reponsive-data-table__use-flex: false;
+
+@forix-table-reponsive-data-table__display: block;
+@forix-table-reponsive-data-table__border: none;
+
+@forix-table-reponsive-data-table__change__m: true;
+@forix-table-reponsive-data-table__display__m: false;
+@forix-table-reponsive-data-table__border__m: false;
+
+@forix-table-reponsive-data-table__change__l: true;
+@forix-table-reponsive-data-table__display__l: false;
+@forix-table-reponsive-data-table__border__l: false;
+
+//.forix-abs-data-table-reponsive thead
+@forix-table-reponsive-data-table-thead__name: "forix-table-reponsive-data-table-thead";
+@forix-table-reponsive-data-table-thead__commons: false;
+@forix-table-reponsive-data-table-thead__responsives: false;
+@forix-table-reponsive-data-table-thead__check-have: false;
+@forix-table-reponsive-data-table-thead__status: false;
+@forix-table-reponsive-data-table-thead__prefix: false;
+@forix-table-reponsive-data-table-thead__format: false;
+@forix-table-reponsive-data-table-thead__use-flex: false;
+//.forix-abs-data-table-reponsive thead tr
+@forix-table-reponsive-data-table-thead-tr__name: "forix-table-reponsive-data-table-thead-tr";
+@forix-table-reponsive-data-table-thead-tr__commons: false;
+@forix-table-reponsive-data-table-thead-tr__responsives: false;
+@forix-table-reponsive-data-table-thead-tr__check-have: false;
+@forix-table-reponsive-data-table-thead-tr__status: false;
+@forix-table-reponsive-data-table-thead-tr__prefix: false;
+@forix-table-reponsive-data-table-thead-tr__format: false;
+@forix-table-reponsive-data-table-thead-tr__use-flex: false;
+//.forix-abs-data-table-reponsive thead td
+@forix-table-reponsive-data-table-thead-td__name: "forix-table-reponsive-data-table-thead-td";
+@forix-table-reponsive-data-table-thead-td__commons: false;
+@forix-table-reponsive-data-table-thead-td__responsives: display;
+@forix-table-reponsive-data-table-thead-td__check-have: false;
+@forix-table-reponsive-data-table-thead-td__status: false;
+@forix-table-reponsive-data-table-thead-td__prefix: false;
+@forix-table-reponsive-data-table-thead-td__format: false;
+@forix-table-reponsive-data-table-thead-td__use-flex: false;
+
+@forix-table-reponsive-data-table-thead-td__display: none;
+
+@forix-table-reponsive-data-table-thead-td__change__m: true;
+@forix-table-reponsive-data-table-thead-td__display__m: false;
+
+@forix-table-reponsive-data-table-thead-td__change__l: true;
+@forix-table-reponsive-data-table-thead-td__display__l: false;
+
+//.forix-abs-data-table-reponsive thead th
+@forix-table-reponsive-data-table-thead-th__name: "forix-table-reponsive-data-table-thead-th";
+@forix-table-reponsive-data-table-thead-th__commons: false;
+@forix-table-reponsive-data-table-thead-th__responsives: display;
+@forix-table-reponsive-data-table-thead-th__check-have: false;
+@forix-table-reponsive-data-table-thead-th__status: false;
+@forix-table-reponsive-data-table-thead-th__prefix: false;
+@forix-table-reponsive-data-table-thead-th__format: false;
+@forix-table-reponsive-data-table-thead-th__use-flex: false;
+
+@forix-table-reponsive-data-table-thead-th__display: none;
+
+@forix-table-reponsive-data-table-thead-th__change__m: true;
+@forix-table-reponsive-data-table-thead-th__display__m: false;
+
+@forix-table-reponsive-data-table-thead-th__change__l: true;
+@forix-table-reponsive-data-table-thead-th__display__l: false;
+
+//.forix-abs-data-table-reponsive tbody
+@forix-table-reponsive-data-table-tbody__name: "forix-table-reponsive-data-table-tbody";
+@forix-table-reponsive-data-table-tbody__commons: false;
+@forix-table-reponsive-data-table-tbody__responsives: display;
+@forix-table-reponsive-data-table-tbody__check-have: false;
+@forix-table-reponsive-data-table-tbody__status: false;
+@forix-table-reponsive-data-table-tbody__prefix: false;
+@forix-table-reponsive-data-table-tbody__format: false;
+@forix-table-reponsive-data-table-tbody__use-flex: false;
+
+@forix-table-reponsive-data-table-tbody__display: block;
+
+@forix-table-reponsive-data-table-tbody__change__m: true;
+@forix-table-reponsive-data-table-tbody__display__m: false;
+
+@forix-table-reponsive-data-table-tbody__change__l: true;
+@forix-table-reponsive-data-table-tbody__display__l: false;
+
+//.forix-abs-data-table-reponsive tbody tr
+@forix-table-reponsive-data-table-tbody-tr__name: "forix-table-reponsive-data-table-tbody-tr";
+@forix-table-reponsive-data-table-tbody-tr__commons: false;
+@forix-table-reponsive-data-table-tbody-tr__responsives: display,border-bottom,padding;
+@forix-table-reponsive-data-table-tbody-tr__check-have: last-child;
+@forix-table-reponsive-data-table-tbody-tr__status: false;
+@forix-table-reponsive-data-table-tbody-tr__prefix: false;
+@forix-table-reponsive-data-table-tbody-tr__format: false;
+@forix-table-reponsive-data-table-tbody-tr__use-flex: false;
+
+@forix-table-reponsive-data-table-tbody-tr__last-child__commons: false;
+@forix-table-reponsive-data-table-tbody-tr__last-child__responsives: border-bottom;
+
+@forix-table-reponsive-data-table-tbody-tr__display: block;
+@forix-table-reponsive-data-table-tbody-tr__border-bottom: @forix-border__base;
+@forix-table-reponsive-data-table-tbody-tr__padding: @forix-indent__s 0;
+@forix-table-reponsive-data-table-tbody-tr__last-child__border-bottom: 0;
+
+@forix-table-reponsive-data-table-tbody-tr__change__m: true;
+@forix-table-reponsive-data-table-tbody-tr__display__m: false;
+@forix-table-reponsive-data-table-tbody-tr__border-bottom__m: false;
+@forix-table-reponsive-data-table-tbody-tr__padding__m: false;
+@forix-table-reponsive-data-table-tbody-tr__last-child__border-bottom__m: false;
+
+@forix-table-reponsive-data-table-tbody-tr__change__l: true;
+@forix-table-reponsive-data-table-tbody-tr__display__l: false;
+@forix-table-reponsive-data-table-tbody-tr__border-bottom__l: false;
+@forix-table-reponsive-data-table-tbody-tr__padding__l: false;
+@forix-table-reponsive-data-table-tbody-tr__last-child__border-bottom__l: false;
+
+//.forix-abs-data-table-reponsive tbody td
+@forix-table-reponsive-data-table-tbody-td__name: "forix-table-reponsive-data-table-tbody-td";
+@forix-table-reponsive-data-table-tbody-td__commons: false;
+@forix-table-reponsive-data-table-tbody-td__responsives: display,padding,border;
+@forix-table-reponsive-data-table-tbody-td__check-have: before;
+@forix-table-reponsive-data-table-tbody-td__status: true;
+@forix-table-reponsive-data-table-tbody-td__prefix: false;
+@forix-table-reponsive-data-table-tbody-td__format: false;
+@forix-table-reponsive-data-table-tbody-td__use-flex: false;
+
+@forix-table-reponsive-data-table-tbody-td__before__commons: font-weight,vertical-align;
+@forix-table-reponsive-data-table-tbody-td__before__responsives: content,display,margin-right,font-size,min-width;
+
+@forix-table-reponsive-data-table-tbody-td__display: block;
+@forix-table-reponsive-data-table-tbody-td__padding: @forix-indent__xs 0;
+@forix-table-reponsive-data-table-tbody-td__border: 0;
+@forix-table-reponsive-data-table-tbody-td__before__vertical-align: top;
+@forix-table-reponsive-data-table-tbody-td__before__font-weight: @forix-font-weight__semibold;
+@forix-table-reponsive-data-table-tbody-td__before__content: attr(data-th)': ';
+@forix-table-reponsive-data-table-tbody-td__before__display: inline-block;
+@forix-table-reponsive-data-table-tbody-td__before__margin-right: @forix-indent__l;
+@forix-table-reponsive-data-table-tbody-td__before__font-size: 12px;
+@forix-table-reponsive-data-table-tbody-td__before__min-width: 55px;
+
+@forix-table-reponsive-data-table-tbody-td__status__list: op1;
+@forix-table-reponsive-data-table-tbody-td__status__listclass: ~'.actions: before';
+@forix-table-reponsive-data-table-tbody-td__status__listsub: false;
+@forix-table-reponsive-data-table-tbody-td__status__listsubclass: false;
+
+@forix-table-reponsive-data-table-tbody-td__status__op1__commons: display;
+@forix-table-reponsive-data-table-tbody-td__status__op1__responsives: false;
+
+@forix-table-reponsive-data-table-tbody-td__status__op1__display: none;
+
+@forix-table-reponsive-data-table-tbody-td__change__m: true;
+@forix-table-reponsive-data-table-tbody-td__display__m: false;
+@forix-table-reponsive-data-table-tbody-td__padding__m: false;
+@forix-table-reponsive-data-table-tbody-td__border__m: false;
+@forix-table-reponsive-data-table-tbody-td__before__content__m: false;
+@forix-table-reponsive-data-table-tbody-td__before__display__m: false;
+@forix-table-reponsive-data-table-tbody-td__before__margin-right__m: false;
+@forix-table-reponsive-data-table-tbody-td__before__font-size__m: 12px;
+@forix-table-reponsive-data-table-tbody-td__before__min-width__m: false;
+
+@forix-table-reponsive-data-table-tbody-td__change__l: true;
+@forix-table-reponsive-data-table-tbody-td__display__l: false;
+@forix-table-reponsive-data-table-tbody-td__padding__l: false;
+@forix-table-reponsive-data-table-tbody-td__border__l: false;
+@forix-table-reponsive-data-table-tbody-td__before__content__l: false;
+@forix-table-reponsive-data-table-tbody-td__before__display__l: false;
+@forix-table-reponsive-data-table-tbody-td__before__margin-right__l: false;
+@forix-table-reponsive-data-table-tbody-td__before__font-size__l: 13px;
+@forix-table-reponsive-data-table-tbody-td__before__min-width__l: false;
+
+//.forix-abs-data-table-reponsive tbody th
+@forix-table-reponsive-data-table-tbody-th__name: "forix-table-reponsive-data-table-tbody-th";
+@forix-table-reponsive-data-table-tbody-th__commons: false;
+@forix-table-reponsive-data-table-tbody-th__responsives: display,padding,border;
+@forix-table-reponsive-data-table-tbody-th__check-have: before;
+@forix-table-reponsive-data-table-tbody-th__status: false;
+@forix-table-reponsive-data-table-tbody-th__prefix: false;
+@forix-table-reponsive-data-table-tbody-th__format: false;
+@forix-table-reponsive-data-table-tbody-th__use-flex: false;
+
+@forix-table-reponsive-data-table-tbody-th__before__commons: font-weight;
+@forix-table-reponsive-data-table-tbody-th__before__responsives: content,display,margin-right,font-size;
+
+@forix-table-reponsive-data-table-tbody-th__display: block;
+@forix-table-reponsive-data-table-tbody-th__padding: @forix-indent__xs 0;
+@forix-table-reponsive-data-table-tbody-th__border: 0;
+@forix-table-reponsive-data-table-tbody-th__before__content: attr(data-th)': ';
+@forix-table-reponsive-data-table-tbody-th__before__display: inline-block;
+@forix-table-reponsive-data-table-tbody-th__before__margin-right: @forix-indent__l;
+@forix-table-reponsive-data-table-tbody-th__before__font-size: 12px;
+@forix-table-reponsive-data-table-tbody-th__before__font-weight: @forix-font-weight__semibold;
+
+@forix-table-reponsive-data-table-tbody-th__change__m: true;
+@forix-table-reponsive-data-table-tbody-th__display__m: false;
+@forix-table-reponsive-data-table-tbody-th__padding__m: false;
+@forix-table-reponsive-data-table-tbody-th__border__m: false;
+@forix-table-reponsive-data-table-tbody-th__before__content__m: false;
+@forix-table-reponsive-data-table-tbody-th__before__display__m: false;
+@forix-table-reponsive-data-table-tbody-th__before__margin-right__m: false;
+@forix-table-reponsive-data-table-tbody-th__before__font-size__m: 12px;
+
+@forix-table-reponsive-data-table-tbody-th__change__l: true;
+@forix-table-reponsive-data-table-tbody-th__display__l: false;
+@forix-table-reponsive-data-table-tbody-th__padding__l: false;
+@forix-table-reponsive-data-table-tbody-th__border__l: false;
+@forix-table-reponsive-data-table-tbody-th__before__content__l: false;
+@forix-table-reponsive-data-table-tbody-th__before__display__l: false;
+@forix-table-reponsive-data-table-tbody-th__before__margin-right__l: false;
+@forix-table-reponsive-data-table-tbody-th__before__font-size__l: 13px;
+
+//.forix-abs-data-table-reponsive tfoot
+@forix-table-reponsive-data-table-tfoot__name: "forix-table-reponsive-data-table-tfoot";
+@forix-table-reponsive-data-table-tfoot__commons: false;
+@forix-table-reponsive-data-table-tfoot__responsives: false;
+@forix-table-reponsive-data-table-tfoot__check-have: false;
+@forix-table-reponsive-data-table-tfoot__status: false;
+@forix-table-reponsive-data-table-tfoot__prefix: false;
+@forix-table-reponsive-data-table-tfoot__format: false;
+@forix-table-reponsive-data-table-tfoot__use-flex: false;
+//.forix-abs-data-table-reponsivetfoot tr
+@forix-table-reponsive-data-table-tfoot-tr__name: "forix-table-reponsive-data-table-tfoot-tr";
+@forix-table-reponsive-data-table-tfoot-tr__commons: false;
+@forix-table-reponsive-data-table-tfoot-tr__responsives: false;
+@forix-table-reponsive-data-table-tfoot-tr__check-have: false;
+@forix-table-reponsive-data-table-tfoot-tr__status: false;
+@forix-table-reponsive-data-table-tfoot-tr__prefix: false;
+@forix-table-reponsive-data-table-tfoot-tr__format: false;
+@forix-table-reponsive-data-table-tfoot-tr__use-flex: false;
+//.forix-abs-data-table-reponsive tfoot td
+@forix-table-reponsive-data-table-tfoot-td__name: "forix-table-reponsive-data-table-tfoot-td";
+@forix-table-reponsive-data-table-tfoot-td__commons: false;
+@forix-table-reponsive-data-table-tfoot-td__responsives: false;
+@forix-table-reponsive-data-table-tfoot-td__check-have: false;
+@forix-table-reponsive-data-table-tfoot-td__status: false;
+@forix-table-reponsive-data-table-tfoot-td__prefix: false;
+@forix-table-reponsive-data-table-tfoot-td__format: false;
+@forix-table-reponsive-data-table-tfoot-td__use-flex: false;
+//.forix-abs-data-table-reponsive tfoot th
+@forix-table-reponsive-data-table-tfoot-th__name: "forix-table-reponsive-data-table-tfoot-th";
+@forix-table-reponsive-data-table-tfoot-th__commons: false;
+@forix-table-reponsive-data-table-tfoot-th__responsives: false;
+@forix-table-reponsive-data-table-tfoot-th__check-have: false;
+@forix-table-reponsive-data-table-tfoot-th__status: false;
+@forix-table-reponsive-data-table-tfoot-th__prefix: false;
+@forix-table-reponsive-data-table-tfoot-th__format: false;
+@forix-table-reponsive-data-table-tfoot-th__use-flex: false;
+//.forix-abs-data-table-reponsive tbody + tbody
+@forix-table-reponsive-data-table-tbody-tbody__name: "forix-table-reponsive-data-table-tbody-tbody";
+@forix-table-reponsive-data-table-tbody-tbody__commons: false;
+@forix-table-reponsive-data-table-tbody-tbody__responsives: false;
+@forix-table-reponsive-data-table-tbody-tbody__check-have: false;
+@forix-table-reponsive-data-table-tbody-tbody__status: false;
+@forix-table-reponsive-data-table-tbody-tbody__prefix: false;
+@forix-table-reponsive-data-table-tbody-tbody__format: false;
+@forix-table-reponsive-data-table-tbody-tbody__use-flex: false;
+//.forix-abs-data-table-reponsive tbody + tbody tr
+@forix-table-reponsive-data-table-tbody-tbody-tr__name: "forix-table-reponsive-data-table-tbody-tbody-tr";
+@forix-table-reponsive-data-table-tbody-tbody-tr__commons: false;
+@forix-table-reponsive-data-table-tbody-tbody-tr__responsives: false;
+@forix-table-reponsive-data-table-tbody-tbody-tr__check-have: false;
+@forix-table-reponsive-data-table-tbody-tbody-tr__status: false;
+@forix-table-reponsive-data-table-tbody-tbody-tr__prefix: false;
+@forix-table-reponsive-data-table-tbody-tbody-tr__format: false;
+@forix-table-reponsive-data-table-tbody-tbody-tr__use-flex: false;
+//.forix-abs-data-table-reponsive tbody + tbody td
+@forix-table-reponsive-data-table-tbody-tbody-td__name: "forix-table-reponsive-data-table-tbody-tbody-td";
+@forix-table-reponsive-data-table-tbody-tbody-td__commons: false;
+@forix-table-reponsive-data-table-tbody-tbody-td__responsives: false;
+@forix-table-reponsive-data-table-tbody-tbody-td__check-have: false;
+@forix-table-reponsive-data-table-tbody-tbody-td__status: false;
+@forix-table-reponsive-data-table-tbody-tbody-td__prefix: false;
+@forix-table-reponsive-data-table-tbody-tbody-td__format: false;
+@forix-table-reponsive-data-table-tbody-tbody-td__use-flex: false;
+//.forix-abs-data-table-reponsive tbody + tbody th
+@forix-table-reponsive-data-table-tbody-tbody-th__name: "forix-table-reponsive-data-table-tbody-tbody-th";
+@forix-table-reponsive-data-table-tbody-tbody-th__commons: false;
+@forix-table-reponsive-data-table-tbody-tbody-th__responsives: false;
+@forix-table-reponsive-data-table-tbody-tbody-th__check-have: false;
+@forix-table-reponsive-data-table-tbody-tbody-th__status: false;
+@forix-table-reponsive-data-table-tbody-tbody-th__prefix: false;
+@forix-table-reponsive-data-table-tbody-tbody-th__format: false;
+@forix-table-reponsive-data-table-tbody-tbody-th__use-flex: false;
+
+// Format Some Element Public
+// ==========================
+
+//table th a
+@forix-table-th-a__name: "forix-table-th-a";
+@forix-table-th-a__commons: font-weight;
+@forix-table-th-a__responsives: false;
+@forix-table-th-a__check-have: false;
+@forix-table-th-a__status: false;
+@forix-table-th-a__prefix: false;
+@forix-table-th-a__format: false;
+@forix-table-th-a__use-flex: false;
+
+@forix-table-th-a__font-weight: @forix-font-weight__regular;
+
+//table td a
+@forix-table-td-a__name: "forix-table-td-a";
+@forix-table-td-a__commons: font-weight;
+@forix-table-td-a__responsives: false;
+@forix-table-td-a__check-have: false;
+@forix-table-td-a__status: false;
+@forix-table-td-a__prefix: false;
+@forix-table-td-a__format: false;
+@forix-table-td-a__use-flex: false;
+
+@forix-table-td-a__font-weight: @forix-font-weight__regular;
+
+//table td a.action
+@forix-table-td-a-action__name: "forix-table-td-a-action";
+@forix-table-td-a-action__commons: color,font-weight;
+@forix-table-td-a-action__responsives: false;
+@forix-table-td-a-action__check-have: false;
+@forix-table-td-a-action__status: false;
+@forix-table-td-a-action__prefix: false;
+@forix-table-td-a-action__format: false;
+@forix-table-td-a-action__use-flex: false;
+@forix-table-td-a-action__color: @sss-color-6;
+@forix-table-td-a-action__font-weight: bold;
+//table td a.action span
+@forix-table-td-a-action-span__name: "forix-table-td-a-action-span";
+@forix-table-td-a-action-span__commons: false;
+@forix-table-td-a-action-span__responsives: false;
+@forix-table-td-a-action-span__check-have: false;
+@forix-table-td-a-action-span__status: false;
+@forix-table-td-a-action-span__prefix: false;
+@forix-table-td-a-action-span__format: false;
+@forix-table-td-a-action-span__use-flex: false;
+//table td a.view
+@forix-table-td-a-view__name: "forix-table-td-a-view";
+@forix-table-td-a-view__commons: margin-right,position,display;
+@forix-table-td-a-view__responsives: margin-top;
+@forix-table-td-a-view__check-have: false;
+@forix-table-td-a-view__status: false;
+@forix-table-td-a-view__prefix: false;
+@forix-table-td-a-view__format: false;
+@forix-table-td-a-view__use-flex: false;
+
+@forix-table-td-a-view__margin-right: @forix-indent__xs;
+@forix-table-td-a-view__position: relative;
+@forix-table-td-a-view__display: inline-block;
+@forix-table-td-a-view__margin-top: -3px;
+
+@forix-table-td-a-view__change__m: desktop;
+@forix-table-td-a-view__margin-top__m: false;
+
+@forix-table-td-a-view__change__l: tablet;
+
+//table td a.view span
+@forix-table-td-a-view-span__name: "forix-table-td-a-view-span";
+@forix-table-td-a-view-span__commons: false;
+@forix-table-td-a-view-span__responsives: false;
+@forix-table-td-a-view-span__check-have: false;
+@forix-table-td-a-view-span__status: false;
+@forix-table-td-a-view-span__prefix: false;
+@forix-table-td-a-view-span__format: false;
+@forix-table-td-a-view-span__use-flex: false;
+//table td a.order
+@forix-table-td-a-order__name: "forix-table-td-a-order";
+@forix-table-td-a-order__commons: position,display,margin-left;
+@forix-table-td-a-order__responsives: margin-top;
+@forix-table-td-a-order__check-have: before;
+@forix-table-td-a-order__status: false;
+@forix-table-td-a-order__prefix: false;
+@forix-table-td-a-order__format: false;
+@forix-table-td-a-order__use-flex: false;
+
+@forix-table-td-a-order__position: relative;
+@forix-table-td-a-order__margin-left: @forix-indent__xs ;
+@forix-table-td-a-order__display: inline-block;
+@forix-table-td-a-order__margin-top: -@forix-indent__xs;
+
+@forix-table-td-a-order__before__commons: content,width,height,background,position,display,left,top;
+@forix-table-td-a-order__before__responsives: false;
+
+@forix-table-td-a-order__before__height: 14px;
+@forix-table-td-a-order__before__content: '';
+@forix-table-td-a-order__before__width: 1px;
+@forix-table-td-a-order__before__background: @sss-color-4;
+@forix-table-td-a-order__before__display: inline-block;
+@forix-table-td-a-order__before__position: absolute;
+@forix-table-td-a-order__before__left: -7px;
+@forix-table-td-a-order__before__top: 7px;
+
+@forix-table-td-a-order__change__m: desktop;
+@forix-table-td-a-order__margin-top__m: false;
+
+@forix-table-td-a-order__change__l: tablet;
+
+//table td a.order span
+@forix-table-td-a-order-span__name: "forix-table-td-a-order-span";
+@forix-table-td-a-order-span__commons: false;
+@forix-table-td-a-order-span__responsives: false;
+@forix-table-td-a-order-span__check-have: false;
+@forix-table-td-a-order-span__status: false;
+@forix-table-td-a-order-span__prefix: false;
+@forix-table-td-a-order-span__format: false;
+@forix-table-td-a-order-span__use-flex: false;
+
+//table td .product-item-name
+@forix-table-td-product-item-name__name: "forix-table-td-product-item-name";
+@forix-table-td-product-item-name__commons: display,font-weight,margin-bottom,padding-top;
+@forix-table-td-product-item-name__responsives: line-height;
+@forix-table-td-product-item-name__check-have: false;
+@forix-table-td-product-item-name__status: false;
+@forix-table-td-product-item-name__prefix: false;
+@forix-table-td-product-item-name__format: false;
+@forix-table-td-product-item-name__use-flex: false;
+
+@forix-table-td-product-item-name__font-weight: bold;
+@forix-table-td-product-item-name__display: block;
+@forix-table-td-product-item-name__margin-bottom: @forix-indent__xs;
+@forix-table-td-product-item-name__padding-top: @forix-indent__xs;
+@forix-table-td-product-item-name__line-height: 16px;
+
+@forix-table-td-product-item-name__change__m: true;
+@forix-table-td-product-item-name__line-height__m: 18px;
+
+@forix-table-td-product-item-name__change__l: true;
+@forix-table-td-product-item-name__line-height__l: 16px;
+
+//table td .product-item-name a
+@forix-table-td-product-item-name-a__name: "forix-table-td-product-item-name-a";
+@forix-table-td-product-item-name-a__commons: display,font-weight;
+@forix-table-td-product-item-name-a__responsives: false;
+@forix-table-td-product-item-name-a__check-have: false;
+@forix-table-td-product-item-name-a__status: false;
+@forix-table-td-product-item-name-a__prefix: false;
+@forix-table-td-product-item-name-a__format: false;
+@forix-table-td-product-item-name-a__use-flex: false;
+
+@forix-table-td-product-item-name-a__font-weight: bold;
+@forix-table-td-product-item-name-a__display: inline-block;
+
+
+//table td .item-options
+@forix-table-td-item-options__name: "forix-table-td-item-options";
+@forix-table-td-item-options__commons: margin,line-height,padding,margin-bottom;
+@forix-table-td-item-options__responsives: font-size;
+@forix-table-td-item-options__check-have: false;
+@forix-table-td-item-options__status: false;
+@forix-table-td-item-options__prefix: false;
+@forix-table-td-item-options__format: false;
+@forix-table-td-item-options__use-flex: false;
+
+@forix-table-td-item-options__font-size: 12px;
+@forix-table-td-item-options__margin: 0;
+@forix-table-td-item-options__line-height: 16px;
+@forix-table-td-item-options__padding: 0;
+@forix-table-td-item-options__margin-bottom: @forix-indent__xs;
+
+@forix-table-td-item-options__change__m: true;
+@forix-table-td-item-options__font-size__m: 12px;
+
+@forix-table-td-item-options__change__l: true;
+@forix-table-td-item-options__font-size__l: 13px;
+
+//table td .item-options dt
+@forix-table-td-item-options-dt__name: "forix-table-td-item-options-dt";
+@forix-table-td-item-options-dt__commons: float,clear,margin-bottom,display,font-weight;
+@forix-table-td-item-options-dt__responsives: false;
+@forix-table-td-item-options-dt__check-have: after;
+@forix-table-td-item-options-dt__status: false;
+@forix-table-td-item-options-dt__prefix: false;
+@forix-table-td-item-options-dt__format: false;
+@forix-table-td-item-options-dt__use-flex: false;
+
+@forix-table-td-item-options-dt__after__commons: content,display,margin-right;
+@forix-table-td-item-options-dt__after__responsives: false;
+
+@forix-table-td-item-options-dt__font-weight: @forix-font-weight__regular;
+@forix-table-td-item-options-dt__display: inline-block;
+@forix-table-td-item-options-dt__float: left;
+@forix-table-td-item-options-dt__clear: both;
+@forix-table-td-item-options-dt__margin-bottom: 0;
+@forix-table-td-item-options-dt__after__content: ": ";
+@forix-table-td-item-options-dt__after__display: inline-block;
+@forix-table-td-item-options-dt__after__margin-right: @forix-indent__xs;
+
+//table td .item-options dd
+@forix-table-td-item-options-dd__name: "forix-table-td-item-options-dd";
+@forix-table-td-item-options-dd__commons: display,float,margin-bottom;
+@forix-table-td-item-options-dd__responsives: false;
+@forix-table-td-item-options-dd__check-have: false;
+@forix-table-td-item-options-dd__status: false;
+@forix-table-td-item-options-dd__prefix: false;
+@forix-table-td-item-options-dd__format: false;
+@forix-table-td-item-options-dd__use-flex: false;
+
+@forix-table-td-item-options-dd__display: inline-block;
+@forix-table-td-item-options-dd__float: left;
+@forix-table-td-item-options-dd__margin-bottom: 0;
+
+//table td .item-options dd br
+@forix-table-td-item-options-dd-br__name: "forix-table-td-item-options-dd-br";
+@forix-table-td-item-options-dd-br__commons: false;
+@forix-table-td-item-options-dd-br__responsives: false;
+@forix-table-td-item-options-dd-br__check-have: false;
+@forix-table-td-item-options-dd-br__status: false;
+@forix-table-td-item-options-dd-br__prefix: false;
+@forix-table-td-item-options-dd-br__format: false;
+@forix-table-td-item-options-dd-br__use-flex: false;
+//table td .price
+@forix-table-td-price__name: "forix-table-td-price";
+@forix-table-td-price__commons: false;
+@forix-table-td-price__responsives: false;
+@forix-table-td-price__check-have: false;
+@forix-table-td-price__status: false;
+@forix-table-td-price__prefix: false;
+@forix-table-td-price__format: false;
+@forix-table-td-price__use-flex: false;
+//table td .cart-price
+@forix-table-td-cart-price__name: "forix-table-td-cart-price";
+@forix-table-td-cart-price__commons: font-weight;
+@forix-table-td-cart-price__responsives: false;
+@forix-table-td-cart-price__check-have: false;
+@forix-table-td-cart-price__status: false;
+@forix-table-td-cart-price__prefix: false;
+@forix-table-td-cart-price__format: false;
+@forix-table-td-cart-price__use-flex: false;
+
+@forix-table-td-cart-price__font-weight: @forix-font-weight__bold;
+
+//table td .cart-price .price
+@forix-table-td-cart-price-price__name: "forix-table-td-cart-price-price";
+@forix-table-td-cart-price-price__commons: false;
+@forix-table-td-cart-price-price__responsives: false;
+@forix-table-td-cart-price-price__check-have: false;
+@forix-table-td-cart-price-price__status: false;
+@forix-table-td-cart-price-price__prefix: false;
+@forix-table-td-cart-price-price__format: false;
+@forix-table-td-cart-price-price__use-flex: false;
+
+//table td .product-item-photo
+@forix-table-td-product-item-photo__name: "forix-table-td-product-item-photo";
+@forix-table-td-product-item-photo__commons: float,margin-bottom,margin-right;
+@forix-table-td-product-item-photo__responsives: width,padding-top,padding-bottom;
+@forix-table-td-product-item-photo__check-have: false;
+@forix-table-td-product-item-photo__status: false;
+@forix-table-td-product-item-photo__prefix: false;
+@forix-table-td-product-item-photo__format: false;
+@forix-table-td-product-item-photo__use-flex: false;
+
+@forix-table-td-product-item-photo__float: left;
+@forix-table-td-product-item-photo__margin-bottom: 0;
+@forix-table-td-product-item-photo__margin-right: @forix-indent__xm;
+@forix-table-td-product-item-photo__padding-top: @forix-indent__xm;
+@forix-table-td-product-item-photo__padding-bottom: @forix-indent__xs;
+@forix-table-td-product-item-photo__width: 88px;
+
+@forix-table-td-product-item-photo__change__m: true;
+@forix-table-td-product-item-photo__width__m: 95px;
+@forix-table-td-product-item-photo__padding-top__m: @forix-indent__xs;
+@forix-table-td-product-item-photo__padding-bottom__m: @forix-indent__xs;
+
+@forix-table-td-product-item-photo__change__l: true;
+@forix-table-td-product-item-photo__width__l: 81px;
+@forix-table-td-product-item-photo__padding-top__l: @forix-indent__s;
+@forix-table-td-product-item-photo__padding-bottom__l: @forix-indent__s;
+
+//table td .product-image-container
+@forix-table-td-product-image-container__name: "forix-table-td-product-image-container";
+@forix-table-td-product-image-container__commons: false;
+@forix-table-td-product-image-container__responsives: false;
+@forix-table-td-product-image-container__check-have: false;
+@forix-table-td-product-image-container__status: false;
+@forix-table-td-product-image-container__prefix: false;
+@forix-table-td-product-image-container__format: false;
+@forix-table-td-product-image-container__use-flex: false;
+//table td .product-image-wrapper
+@forix-table-td-product-image-wrapper__name: "forix-table-td-product-image-wrapper";
+@forix-table-td-product-image-wrapper__commons: display;
+@forix-table-td-product-image-wrapper__responsives: false;
+@forix-table-td-product-image-wrapper__check-have: false;
+@forix-table-td-product-image-wrapper__status: false;
+@forix-table-td-product-image-wrapper__prefix: false;
+@forix-table-td-product-image-wrapper__format: false;
+@forix-table-td-product-image-wrapper__use-flex: false;
+
+@forix-table-td-product-image-wrapper__display: inline;
+
+//table td .product-image-photo
+@forix-table-td-product-image-photo__name: "forix-table-td-product-image-photo";
+@forix-table-td-product-image-photo__commons: position;
+@forix-table-td-product-image-photo__responsives: false;
+@forix-table-td-product-image-photo__check-have: false;
+@forix-table-td-product-image-photo__status: false;
+@forix-table-td-product-image-photo__prefix: false;
+@forix-table-td-product-image-photo__format: false;
+@forix-table-td-product-image-photo__use-flex: false;
+
+@forix-table-td-product-image-photo__position: static;
+
+//table td .product-item-details
+@forix-table-td-product-item-details__name: "forix-table-td-product-item-details";
+@forix-table-td-product-item-details__commons: display,vertical-align,white-space,width,min-width;
+@forix-table-td-product-item-details__responsives: padding;
+@forix-table-td-product-item-details__check-have: false;
+@forix-table-td-product-item-details__status: false;
+@forix-table-td-product-item-details__prefix: false;
+@forix-table-td-product-item-details__format: false;
+@forix-table-td-product-item-details__use-flex: false;
+
+@forix-table-td-product-item-details__display: table-cell;
+@forix-table-td-product-item-details__vertical-align: top;
+@forix-table-td-product-item-details__white-space: normal;
+@forix-table-td-product-item-details__width: 99%;
+@forix-table-td-product-item-details__min-width: 100px;
+@forix-table-td-product-item-details__padding: @forix-indent__s 0 0;
+
+@forix-table-td-product-item-details__change__m: false;
+
+@forix-table-td-product-item-details__change__l: true;
+@forix-table-td-product-item-details__padding__l: @forix-indent__xs 0 0;
+
+//table td .product-item-details .product-item-name
+@forix-table-td-product-item-details-product-item-name__name: "forix-table-td-product-item-details-product-item-name";
+@forix-table-td-product-item-details-product-item-name__commons: false;
+@forix-table-td-product-item-details-product-item-name__responsives: false;
+@forix-table-td-product-item-details-product-item-name__check-have: false;
+@forix-table-td-product-item-details-product-item-name__status: false;
+@forix-table-td-product-item-details-product-item-name__prefix: false;
+@forix-table-td-product-item-details-product-item-name__format: false;
+@forix-table-td-product-item-details-product-item-name__use-flex: false;
+//table td .product-item-details .product-item-name a
+@forix-table-td-product-item-details-product-item-name-a__name: "forix-table-td-product-item-details-product-item-name-a";
+@forix-table-td-product-item-details-product-item-name-a__commons: false;
+@forix-table-td-product-item-details-product-item-name-a__responsives: false;
+@forix-table-td-product-item-details-product-item-name-a__check-have: false;
+@forix-table-td-product-item-details-product-item-name-a__status: false;
+@forix-table-td-product-item-details-product-item-name-a__prefix: false;
+@forix-table-td-product-item-details-product-item-name-a__format: false;
+@forix-table-td-product-item-details-product-item-name-a__use-flex: false;
+//table td .product-item-details .item-options
+@forix-table-td-product-item-details-item-options__name: "forix-table-td-product-item-details-item-options";
+@forix-table-td-product-item-details-item-options__commons: false;
+@forix-table-td-product-item-details-item-options__responsives: false;
+@forix-table-td-product-item-details-item-options__check-have: false;
+@forix-table-td-product-item-details-item-options__status: false;
+@forix-table-td-product-item-details-item-options__prefix: false;
+@forix-table-td-product-item-details-item-options__format: false;
+@forix-table-td-product-item-details-item-options__use-flex: false;
+//table td .product-item-details .item-options dt
+@forix-table-td-product-item-details-item-options-dt__name: "forix-table-td-product-item-details-item-options-dt";
+@forix-table-td-product-item-details-item-options-dt__commons: false;
+@forix-table-td-product-item-details-item-options-dt__responsives: false;
+@forix-table-td-product-item-details-item-options-dt__check-have: false;
+@forix-table-td-product-item-details-item-options-dt__status: false;
+@forix-table-td-product-item-details-item-options-dt__prefix: false;
+@forix-table-td-product-item-details-item-options-dt__format: false;
+@forix-table-td-product-item-details-item-options-dt__use-flex: false;
+//table td .product-item-details .item-options dd
+@forix-table-td-product-item-details-item-options-dd__name: "forix-table-td-product-item-details-item-options-dd";
+@forix-table-td-product-item-details-item-options-dd__commons: false;
+@forix-table-td-product-item-details-item-options-dd__responsives: false;
+@forix-table-td-product-item-details-item-options-dd__check-have: false;
+@forix-table-td-product-item-details-item-options-dd__status: false;
+@forix-table-td-product-item-details-item-options-dd__prefix: false;
+@forix-table-td-product-item-details-item-options-dd__format: false;
+@forix-table-td-product-item-details-item-options-dd__use-flex: false;
+//table td .product-item-details .item-options dd br
+@forix-table-td-product-item-details-item-options-dd-br__name: "forix-table-td-product-item-details-item-options-dd-br";
+@forix-table-td-product-item-details-item-options-dd-br__commons: false;
+@forix-table-td-product-item-details-item-options-dd-br__responsives: false;
+@forix-table-td-product-item-details-item-options-dd-br__check-have: false;
+@forix-table-td-product-item-details-item-options-dd-br__status: false;
+@forix-table-td-product-item-details-item-options-dd-br__prefix: false;
+@forix-table-td-product-item-details-item-options-dd-br__format: false;
+@forix-table-td-product-item-details-item-options-dd-br__use-flex: false;
+//table td .message
+@forix-table-td-message__name: "forix-table-td-message";
+@forix-table-td-message__commons: clear,margin;
+@forix-table-td-message__responsives: false;
+@forix-table-td-message__check-have: false;
+@forix-table-td-message__status: false;
+@forix-table-td-message__prefix: false;
+@forix-table-td-message__format: false;
+@forix-table-td-message__use-flex: false;
+
+@forix-table-td-message__clear: both;
+@forix-table-td-message__margin: @forix-indent__s 0;
+
+//table td .message div
+@forix-table-td-message-div__name: "forix-table-td-message-div";
+@forix-table-td-message-div__commons: false;
+@forix-table-td-message-div__responsives: false;
+@forix-table-td-message-div__check-have: false;
+@forix-table-td-message-div__status: false;
+@forix-table-td-message-div__prefix: false;
+@forix-table-td-message-div__format: false;
+@forix-table-td-message-div__use-flex: false;
+//table td input.qty
+@forix-table-td-input-qty__name: "forix-table-td-input-qty";
+@forix-table-td-input-qty__commons: border,padding,text-align;
+@forix-table-td-input-qty__responsives: height,width;
+@forix-table-td-input-qty__check-have: false;
+@forix-table-td-input-qty__status: false;
+@forix-table-td-input-qty__prefix: false;
+@forix-table-td-input-qty__format: false;
+@forix-table-td-input-qty__use-flex: false;
+
+@forix-table-td-input-qty__border: @forix-border__base;
+@forix-table-td-input-qty__height: 34px;
+@forix-table-td-input-qty__padding: @forix-indent__xs;
+@forix-table-td-input-qty__text-align: center;
+@forix-table-td-input-qty__width: 42px;
+
+@forix-table-td-input-qty__change__m: true;
+@forix-table-td-input-qty__height__m: 34px;
+@forix-table-td-input-qty__width__m: 42px;
+
+@forix-table-td-input-qty__change__l: true;
+@forix-table-td-input-qty__height__l: 38px;
+@forix-table-td-input-qty__width__l: 49px;
+
+//table td.mark,
+//table th.mark
+@forix-table-td-th-mark__name: "forix-table-td-th-mark";
+@forix-table-td-th-mark__commons: text-align,font-weight,border;
+@forix-table-td-th-mark__responsives: padding;
+@forix-table-td-th-mark__check-have: false;
+@forix-table-td-th-mark__status: false;
+@forix-table-td-th-mark__prefix: false;
+@forix-table-td-th-mark__format: false;
+@forix-table-td-th-mark__use-flex: false;
+
+@forix-table-td-th-mark__text-align: right;
+@forix-table-td-th-mark__font-weight: @forix-font-weight__regular;
+@forix-table-td-th-mark__border: 0;
+@forix-table-td-th-mark__padding: @forix-indent__xs 55px @forix-indent__xs 0;
+
+@forix-table-td-th-mark__change__m: true;
+@forix-table-td-th-mark__padding__m: @forix-indent__xs @forix-indent__xxl @forix-indent__xs 0;
+
+@forix-table-td-th-mark__change__l: true;
+@forix-table-td-th-mark__padding__l:@forix-indent__xs 55px @forix-indent__xs 0;
+
+//table td.amount,
+//table th.amount
+@forix-table-td-th-amount__name: "forix-table-td-th-amount";
+@forix-table-td-th-amount__commons: text-align,font-weight,border,padding;
+@forix-table-td-th-amount__responsives: false;
+@forix-table-td-th-amount__check-have: false;
+@forix-table-td-th-amount__status: false;
+@forix-table-td-th-amount__prefix: false;
+@forix-table-td-th-amount__format: false;
+@forix-table-td-th-amount__use-flex: false;
+
+@forix-table-td-th-amount__text-align: right;
+@forix-table-td-th-amount__padding: @forix-indent__xs 0;
+@forix-table-td-th-amount__font-weight: @forix-font-weight__bold;
+@forix-table-td-th-amount__border: 0;
+
+//table td .price,
+//table th .price
+@forix-table-td-th-price__name: "forix-table-td-th-price";
+@forix-table-td-th-price__commons: false;
+@forix-table-td-th-price__responsives: false;
+@forix-table-td-th-price__check-have: false;
+@forix-table-td-th-price__status: false;
+@forix-table-td-th-price__prefix: false;
+@forix-table-td-th-price__format: false;
+@forix-table-td-th-price__use-flex: false;
+//table td.mark strong,
+//table th.mark strong
+@forix-table-td-th-mark-strong__name: "forix-table-td-th-mark-strong";
+@forix-table-td-th-mark-strong__commons: false;
+@forix-table-td-th-mark-strong__responsives: false;
+@forix-table-td-th-mark-strong__check-have: false;
+@forix-table-td-th-mark-strong__status: false;
+@forix-table-td-th-mark-strong__prefix: false;
+@forix-table-td-th-mark-strong__format: false;
+@forix-table-td-th-mark-strong__use-flex: false;
+//table td.amount strong,
+//table th.amount strong
+@forix-table-td-th-amount-strong__name: "forix-table-td-th-amount-strong";
+@forix-table-td-th-amount-strong__commons: false;
+@forix-table-td-th-amount-strong__responsives: false;
+@forix-table-td-th-amount-strong__check-have: false;
+@forix-table-td-th-amount-strong__status: false;
+@forix-table-td-th-amount-strong__prefix: false;
+@forix-table-td-th-amount-strong__format: false;
+@forix-table-td-th-amount-strong__use-flex: false;
+//table tbody td.mark,
+//table tbody th.mark
+@forix-table-tbody-td-th-mark__name: "forix-table-tbody-td-th-mark";
+@forix-table-tbody-td-th-mark__commons: false;
+@forix-table-tbody-td-th-mark__responsives: false;
+@forix-table-tbody-td-th-mark__check-have: false;
+@forix-table-tbody-td-th-mark__status: false;
+@forix-table-tbody-td-th-mark__prefix: false;
+@forix-table-tbody-td-th-mark__format: false;
+@forix-table-tbody-td-th-mark__use-flex: false;
+//table tbody td.amount,
+//table tbody th.amount
+@forix-table-tbody-td-th-amount__name: "forix-table-tbody-td-th-amount";
+@forix-table-tbody-td-th-amount__commons: false;
+@forix-table-tbody-td-th-amount__responsives: false;
+@forix-table-tbody-td-th-amount__check-have: false;
+@forix-table-tbody-td-th-amount__status: false;
+@forix-table-tbody-td-th-amount__prefix: false;
+@forix-table-tbody-td-th-amount__format: false;
+@forix-table-tbody-td-th-amount__use-flex: false;
+//table tbody td .price,
+//table tbody th .price
+@forix-table-tbody-td-th-price__name: "forix-table-tbody-td-th-price";
+@forix-table-tbody-td-th-price__commons: false;
+@forix-table-tbody-td-th-price__responsives: false;
+@forix-table-tbody-td-th-price__check-have: false;
+@forix-table-tbody-td-th-price__status: false;
+@forix-table-tbody-td-th-price__prefix: false;
+@forix-table-tbody-td-th-price__format: false;
+@forix-table-tbody-td-th-price__use-flex: false;
+//table tbody td.mark strong,
+//table tbody th.mark strong
+@forix-table-tbody-td-th-mark-strong__name: "forix-table-tbody-td-th-mark-strong";
+@forix-table-tbody-td-th-mark-strong__commons: false;
+@forix-table-tbody-td-th-mark-strong__responsives: false;
+@forix-table-tbody-td-th-mark-strong__check-have: false;
+@forix-table-tbody-td-th-mark-strong__status: false;
+@forix-table-tbody-td-th-mark-strong__prefix: false;
+@forix-table-tbody-td-th-mark-strong__format: false;
+@forix-table-tbody-td-th-mark-strong__use-flex: false;
+//table tbody td.amount strong,
+//table tbody th.amount strong
+@forix-table-tbody-td-th-amount-strong__name: "forix-table-tbody-td-th-amount-strong";
+@forix-table-tbody-td-th-amount-strong__commons: color;
+@forix-table-tbody-td-th-amount-strong__responsives: false;
+@forix-table-tbody-td-th-amount-strong__check-have: false;
+@forix-table-tbody-td-th-amount-strong__status: false;
+@forix-table-tbody-td-th-amount-strong__prefix: false;
+@forix-table-tbody-td-th-amount-strong__format: false;
+@forix-table-tbody-td-th-amount-strong__use-flex: false;
+
+@forix-table-tbody-td-th-amount-strong__color: @three-text__color;
+
+//table tfoot td.mark,
+//table tfoot th.mark
+@forix-table-tfoot-td-th-mark__name: "forix-table-tfoot-td-th-mark";
+@forix-table-tfoot-td-th-mark__commons: text-align,padding,border,padding,font-weight;
+@forix-table-tfoot-td-th-mark__responsives: float,width;
+@forix-table-tfoot-td-th-mark__check-have: false;
+@forix-table-tfoot-td-th-mark__status: false;
+@forix-table-tfoot-td-th-mark__prefix: false;
+@forix-table-tfoot-td-th-mark__format: false;
+@forix-table-tfoot-td-th-mark__use-flex: false;
+
+@forix-table-tfoot-td-th-mark__text-align: right;
+@forix-table-tfoot-td-th-mark__font-weight: @forix-font-weight__regular;
+@forix-table-tfoot-td-th-mark__border: 0;
+@forix-table-tfoot-td-th-mark__padding: @forix-indent__xs 55px @forix-indent__xs @forix-indent__s;
+
+@forix-table-tfoot-td-th-mark__float: left;
+@forix-table-tfoot-td-th-mark__width: ~'calc(100% - 80px)';
+
+@forix-table-tfoot-td-th-mark__change__m: desktop;
+@forix-table-tfoot-td-th-mark__float__m: false;
+@forix-table-tfoot-td-th-mark__width__m: false;
+
+@forix-table-tfoot-td-th-mark__change__l: tablet;
+
+//table tfoot td.amount,
+//table tfoot th.amount
+@forix-table-tfoot-td-th-amount__name: "forix-table-tfoot-td-th-amount";
+@forix-table-tfoot-td-th-amount__commons: text-align,padding,font-weight,border;
+@forix-table-tfoot-td-th-amount__responsives: display,width;
+@forix-table-tfoot-td-th-amount__check-have: false;
+@forix-table-tfoot-td-th-amount__status: false;
+@forix-table-tfoot-td-th-amount__prefix: false;
+@forix-table-tfoot-td-th-amount__format: false;
+@forix-table-tfoot-td-th-amount__use-flex: false;
+
+@forix-table-tfoot-td-th-amount__text-align: right;
+@forix-table-tfoot-td-th-amount__padding: @forix-indent__xs @forix-indent__s;
+@forix-table-tfoot-td-th-amount__font-weight: bold;
+@forix-table-tfoot-td-th-amount__border: 0;
+
+@forix-table-tfoot-td-th-amount__display: table-cell;
+@forix-table-tfoot-td-th-amount__width: 1%;
+
+@forix-table-tfoot-td-th-amount__change__m: desktop;
+@forix-table-tfoot-td-th-amount__display__m: false;
+@forix-table-tfoot-td-th-amount__width__m: false;
+
+@forix-table-tfoot-td-th-amount__change__l: tablet;
+
+//table tfoot td .price,
+//table tfoot th .price
+@forix-table-tfoot-td-th-price__name: "forix-table-tfoot-td-th-price";
+@forix-table-tfoot-td-th-price__commons: false;
+@forix-table-tfoot-td-th-price__responsives: false;
+@forix-table-tfoot-td-th-price__check-have: false;
+@forix-table-tfoot-td-th-price__status: false;
+@forix-table-tfoot-td-th-price__prefix: false;
+@forix-table-tfoot-td-th-price__format: false;
+@forix-table-tfoot-td-th-price__use-flex: false;
+//table tfoot td.mark strong,
+//table tfoot th.mark strong
+@forix-table-tfoot-td-th-mark-strong__name: "forix-table-tfoot-td-th-mark-strong";
+@forix-table-tfoot-td-th-mark-strong__commons: false;
+@forix-table-tfoot-td-th-mark-strong__responsives: false;
+@forix-table-tfoot-td-th-mark-strong__check-have: false;
+@forix-table-tfoot-td-th-mark-strong__status: false;
+@forix-table-tfoot-td-th-mark-strong__prefix: false;
+@forix-table-tfoot-td-th-mark-strong__format: false;
+@forix-table-tfoot-td-th-mark-strong__use-flex: false;
+//table tfoot td.amount strong,
+//table tfoot th.amount strong
+@forix-table-tfoot-td-th-amount-strong__name: "forix-table-tfoot-td-th-amount-strong";
+@forix-table-tfoot-td-th-amount-strong__commons: color;
+@forix-table-tfoot-td-th-amount-strong__responsives: false;
+@forix-table-tfoot-td-th-amount-strong__check-have: false;
+@forix-table-tfoot-td-th-amount-strong__status: false;
+@forix-table-tfoot-td-th-amount-strong__prefix: false;
+@forix-table-tfoot-td-th-amount-strong__format: false;
+@forix-table-tfoot-td-th-amount-strong__use-flex: false;
+
+@forix-table-tfoot-td-th-amount-strong__color: @three-text__color;
+
+//.table .additional-attributes
+@forix-table-additional-attributes__name: "forix-table-additional-attributes";
+@forix-table-additional-attributes__commons: false;
+@forix-table-additional-attributes__responsives: false;
+@forix-table-additional-attributes__check-have: false;
+@forix-table-additional-attributes__status: false;
+@forix-table-additional-attributes__prefix: false;
+@forix-table-additional-attributes__format: false;
+@forix-table-additional-attributes__use-flex: false;
+//.table .additional-attributes tbody
+@forix-table-additional-attributes-tbody__name: "forix-table-additional-attributes-tbody";
+@forix-table-additional-attributes-tbody__commons: false;
+@forix-table-additional-attributes-tbody__responsives: false;
+@forix-table-additional-attributes-tbody__check-have: false;
+@forix-table-additional-attributes-tbody__status: false;
+@forix-table-additional-attributes-tbody__prefix: false;
+@forix-table-additional-attributes-tbody__format: false;
+@forix-table-additional-attributes-tbody__use-flex: false;
+//.table .additional-attributes tbody th
+@forix-table-additional-attributes-tbody-th__name: "forix-table-additional-attributes-tbody-th";
+@forix-table-additional-attributes-tbody-th__commons: border,padding;
+@forix-table-additional-attributes-tbody-th__responsives: false;
+@forix-table-additional-attributes-tbody-th__check-have: false;
+@forix-table-additional-attributes-tbody-th__status: false;
+@forix-table-additional-attributes-tbody-th__prefix: false;
+@forix-table-additional-attributes-tbody-th__format: false;
+@forix-table-additional-attributes-tbody-th__use-flex: false;
+
+@forix-table-additional-attributes-tbody-th__border: 0;
+@forix-table-additional-attributes-tbody-th__padding: @forix-indent__s @forix-indent__s @forix-indent__s 0;
+
+//.table .additional-attributes tbody td
+@forix-table-additional-attributes-tbody-td__name: "forix-table-additional-attributes-tbody-td";
+@forix-table-additional-attributes-tbody-td__commons: border,padding;
+@forix-table-additional-attributes-tbody-td__responsives: false;
+@forix-table-additional-attributes-tbody-td__check-have: false;
+@forix-table-additional-attributes-tbody-td__status: false;
+@forix-table-additional-attributes-tbody-td__prefix: false;
+@forix-table-additional-attributes-tbody-td__format: false;
+@forix-table-additional-attributes-tbody-td__use-flex: false;
+
+@forix-table-additional-attributes-tbody-td__border: 0;
+@forix-table-additional-attributes-tbody-td__padding: @forix-indent__s 0 @forix-indent__s @forix-indent__s;

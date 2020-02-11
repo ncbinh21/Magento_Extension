@@ -1,0 +1,79 @@
+<?php
+/** @var \Mirasvit\SeoSitemap\Block\Map $block */
+?>
+<?php echo $block->getChildHtml('map.pager') ?>
+<div class="seositemap-map">
+    <?php
+        $config = $block->getConfig();
+        $cmsSitemapConfig = $block->getCmsSitemapConfig();
+        $linkSitemapConfig = $block->getLinkSitemapConfig();
+    ?>
+
+    <table>
+        <tr>
+            <td width="50%">
+                <h3><?php echo __('Catalog')?></h3>
+                <?php
+                if ($block->getLimitPerPage()) {
+                    $categories = $block->getCategoryLimitedSortedTree();
+                } else {
+                    $categories = $block->getCategoriesTree();
+                }
+                ?>
+                <ul>
+                <?php foreach ($categories as $category):?>
+                    <li class="level-<?php echo $category->getLevel() ?>">
+                        <a href="<?php echo $category->getUrl() ?>">
+                            <?php echo $category->getName() ?>
+                        </a>
+                    </li>
+                <?php endforeach ?>
+                </ul>
+            </td>
+            <td width="50%">
+                <?php if ($block->isFirstPage()): ?>
+                    <?php if ($config->getIsShowStores()):?>
+                        <h3><?php echo __('Stores')?></h3>
+                        <ul class="stores">
+                        <?php foreach ($block->getStores() as $store): ?>
+                            <li><a href="<?php echo $store->getBaseUrl() ?>"><?php echo $store->getName() ?></a></li>
+                        <?php endforeach ?>
+                        </ul>
+                    <?php endif ?>
+                    <?php if ($cmsSitemapConfig->getIsShowCmsPages()
+                            && ($block->getCmsPages()->getSize() > 0)
+                            || count($linkSitemapConfig->getAdditionalLinks()) > 0 ):?>
+                        <h3><?php echo __('Pages')?></h3>
+                        <ul>
+                        <?php foreach ($block->getCmsPages() as $page):?>
+                            <li>
+                                <a href="<?php echo $block->getCmsPageUrl($page) ?>">
+                                    <?php echo $page->getTitle() ?>
+                                </a>
+                            </li>
+                        <?php endforeach ?>
+                        <?php
+                        $links = $linkSitemapConfig->getAdditionalLinks();
+                        if (count($links) > 0): ?>
+                            <?php foreach ($links as $link):?>
+                            <li><a href="<?php echo $link->getUrl() ?>"><?php echo $link->getTitle() ?></a></li>
+                            <?php endforeach ?>
+                        <?php endif ?>
+                        </ul>
+                    <?php endif ?>
+                <?php endif ?>
+                <?php if ($block->isAwBlogInstalled()): ?>
+                    <h3><?php echo __('Blog')?></h3>
+                    <ul>
+                        <?php foreach($block->getAwBlogData() as $data):?>
+                        <li>
+                            <a href="<?php echo $data->getUrl() ?>"><?php echo $data->getName() ?></a>
+                        </li>
+                        <?php endforeach ?>
+                    </ul>
+                <?php endif ?>
+            </td>
+        </tr>
+    </table>
+</div>
+<?php echo $block->getChildHtml('map.pager') ?>

@@ -1,0 +1,41 @@
+<?php
+/**
+ * @category FishPig
+ * @package FishPig_WordPress
+ * @notes This template is used when there post/list.phtml doesn't have a child block called 'renderer'
+ * @notes This happens when post/list.phtml is called in via PHP rather than via the default layout handles
+ */
+?>
+<?php if ($post = $this->getPost()): ?>
+	<div class="post-list-item">
+		<div class="post-entry">
+			<?php if ($image = $post->getImage()): ?>
+				<div class="post-image">
+					<a href="<?php echo $post->getUrl() ?>" title="<?php echo $this->escapeHtml($post->getName()) ?>"><img src="<?php echo $image->getAvailableImage() ?>" alt="<?php echo $this->escapeHtml($post->getName()) ?>"/></a>
+				</div>
+			<?php endif; ?>
+            <div class="post-content">
+                <h2>
+                    <a href="<?php echo $post->getUrl() ?>" title="<?php echo $this->escapeHtml($post->getName()) ?>">
+                        <?php echo $this->escapeHtml($post->getName()) ?>
+                    </a>
+                </h2>
+                <div class="post-meta">
+                    <div class="post-user post-meta-item">
+                        <a href="<?php echo $post->getUser()->getUrl() ?>"><?php echo $post->getUser() ->getDisplayName() ?></a>
+                    </div><div class="post-date post-meta-item"><?php echo $post->getPostDate() ?></div>
+                </div>
+                <div class="post-excerpt"><div data-mage-init='{"forix/formattext":{}}'><?php echo $post->getExcerpt(60) ?></div></div>
+                <div class="readmore"><a href="<?php echo $post->getUrl() ?>" title="<?php echo __('Read More') ?>"><?php echo __('Read More') ?></a></div>
+            </div>
+		</div>
+	</div>
+<?php endif; ?>
+<?php
+/*
+ * If you are using custom post types, you can create a custom render for the post type easily
+ * Simply create a file using the name of the custom post type in this folder (in your custom theme)
+ * For example, if your custom post type is 'news_article', you would create a file named news_article.phtml
+ * This file would live in the templates/post/list/renderer/news_article.phtml in your custom theme
+ */
+?>

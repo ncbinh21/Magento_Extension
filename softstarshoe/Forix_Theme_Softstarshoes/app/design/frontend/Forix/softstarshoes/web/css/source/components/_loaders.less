@@ -1,0 +1,58 @@
+@use-loaders-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.loading-mask .loader > p,
+.load.indicator > span{
+    &:extend(.forix-abs-visually-hidden all);
+}
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .loading-mask{
+        background: rgba(255, 255, 255, .75);
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        position: fixed;
+        right: 0;
+        top: 0;
+        z-index: 102;
+
+        .loader > img{
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            position: fixed;
+            right: 0;
+            top: 0;
+            z-index: 90;
+        }
+    }
+
+    body > .loading-mask{
+        z-index: 9999;
+    }
+
+    ._block-content-loading{
+        position: relative;
+        min-height: 90px;
+    }
+    .loader{
+        width: 32px;
+        height: 32px;
+        background: 0;
+        animation: none;
+        border-radius: 0;
+        display: block;
+    }
+
+}

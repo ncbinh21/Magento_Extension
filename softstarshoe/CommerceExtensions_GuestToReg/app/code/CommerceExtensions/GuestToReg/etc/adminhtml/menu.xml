@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 CommerceExtensions. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Backend/etc/menu.xsd">
+    <menu>
+        <!--AddMenu Under Customer Section ( Magento_Customer::customer ) -->
+		<add id="CommerceExtensions_GuestToReg::guestcustomer" title="Guests To Registered Customers" module="CommerceExtensions_GuestToReg" sortOrder="200" parent="Magento_Customer::customer" action="guesttoreg/guesttoregform" resource="CommerceExtensions_GuestToReg::guestcustomer"/>
+    </menu>
+</config>

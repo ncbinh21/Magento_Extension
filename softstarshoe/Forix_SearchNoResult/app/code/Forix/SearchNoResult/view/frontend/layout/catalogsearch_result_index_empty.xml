@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <attribute name="class" value="page-search-noresult" />
+        <referenceContainer name="content">
+            <block class="Forix\SearchNoResult\Block\Noresult" name="search.result.forix" template="noresult.phtml" cacheable="false"></block>
+            <block class="Forix\SearchNoResult\Block\CategoryTree" name="search.category" template="categories.phtml" cacheable="true"  after="-"></block>
+        </referenceContainer>
+       <!-- <referenceContainer name="page.top">
+            <referenceBlock name="breadcrumbs" remove="true"/>
+        </referenceContainer>-->
+    </body>
+</page>

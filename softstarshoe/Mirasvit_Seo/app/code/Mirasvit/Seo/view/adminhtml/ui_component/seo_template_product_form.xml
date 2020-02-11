@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">seo_template_product_form.seo_template_product_form_data_source</item>
+            <item name="deps" xsi:type="string">seo_template_product_form.seo_template_product_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">General Information</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">seo_template_product_form</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">Mirasvit\Seo\Ui\General\Form\Control\BackButton</item>
+            <item name="delete" xsi:type="string">Mirasvit\Seo\Ui\General\Form\Control\DeleteButton</item>
+            <item name="reset" xsi:type="string">Mirasvit\Seo\Ui\General\Form\Control\ResetButton</item>
+            <item name="save" xsi:type="string">Mirasvit\Seo\Ui\General\Form\Control\SaveButton</item>
+            <item name="save_and_continue" xsi:type="string">Mirasvit\Seo\Ui\General\Form\Control\SaveAndContinueButton</item>
+        </item>
+    </argument>
+    <dataSource name="seo_template_product_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Mirasvit\Seo\Ui\Template\DataProvider\SeoTemplateFormDataProvider</argument>
+            <argument name="name" xsi:type="string">seo_template_product_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">template_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="*/*/save"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="general">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string">General Information</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="opened" xsi:type="boolean">true</item>
+            </item>
+        </argument>
+        <field name="rule_type">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Mirasvit\Seo\Ui\Template\Form\Source\RuleType</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" translate="true" xsi:type="string">Type</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">popup</item>
+                    <item name="dataScope" xsi:type="string">rule_type</item>
+                    <item name="disabled" xsi:type="boolean">true</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Internal rule name</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="meta_title">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Meta title</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                </item>
+            </argument>
+        </field>
+        <field name="meta_keywords">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Meta keywords</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                </item>
+            </argument>
+        </field>
+        <field name="meta_description">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Meta description</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                </item>
+            </argument>
+        </field>
+        <field name="title">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Title (H1)</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                </item>
+            </argument>
+        </field>
+        <field name="description_position">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Mirasvit\Seo\Ui\Template\Form\Source\ProductDescriptionPosition</item>
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Mirasvit_Seo/js/form/fields/templateonoptions</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" translate="true" xsi:type="string">SEO description position</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">popup</item>
+                    <item name="dataScope" xsi:type="string">description_position</item>
+                    <item name="exports" xsi:type="array">
+                        <item name="visible" xsi:type="string">5 = ${ $.ns }, index = description_template :disabled</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="description_template" class="Mirasvit\Seo\Ui\Template\Form\Component\DescriptionTemplate">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Template for adding SEO description</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="visibleValue" xsi:type="number">5</item>
+                    <item name="additionalClasses" xsi:type="string">admin__field-note</item>
+                    <item name="additionalInfo" xsi:type="string"><![CDATA[
+                        Block template
+                        ]]>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="description">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">SEO description</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="additionalClasses" xsi:type="string">admin__field-note</item>
+                    <item name="additionalInfo" xsi:type="string"><![CDATA[
+                        Will be added in position which you can configure in "SEO description position"
+                        and "Template for adding SEO description" field.
+                        ]]>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="short_description">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Product short description</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                </item>
+            </argument>
+        </field>
+        <field name="full_description">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Product description</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="additionalClasses" xsi:type="string">admin__field-note</item>
+                    <item name="additionalInfo" xsi:type="string"><![CDATA[
+                        <b>Template variables</b><br>
+                        [product_&lt;product field or attribute&gt;] (e.g. [product_name], [product_price],
+                         [product_color]) <br>
+                        [category_name], [category_description], [category_url],
+                         [category_parent_name], [category_parent_url], <br>
+                        [store_name], [store_url], [store_address], [store_phone], [store_email]
+                        ]]>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="is_active">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Is Active</item>
+                    <item name="dataType" xsi:type="string">boolean</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="dataScope" xsi:type="string">is_active</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+        </field>
+        <container name="store_ids_container">
+            <argument name="data" xsi:type="array">
+                <item name="type" xsi:type="string">group</item>
+                <item name="config" xsi:type="array">
+                    <item name="breakLine" xsi:type="boolean">true</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/form/components/group</item>
+                    <item name="required" xsi:type="boolean">true</item>
+                    <item name="sortOrder" xsi:type="number">80</item>
+                    <item name="label" xsi:type="string" translate="true">Visible in Store View</item>
+                </item>
+            </argument>
+            <field name="store_ids" class="Mirasvit\Seo\Ui\Template\Form\Component\StoreField">
+                <argument name="data" xsi:type="array">
+                    <item name="options" xsi:type="object">Mirasvit\Seo\Ui\General\Form\Source\Store</item>
+                    <item name="config" xsi:type="array">
+                        <item name="dataType" xsi:type="string">text</item>
+                        <item name="label" translate="true" xsi:type="string">Apply for Store View</item>
+                        <item name="formElement" xsi:type="string">multiselect</item>
+                        <item name="source" xsi:type="string">popup</item>
+                        <item name="dataScope" xsi:type="string">store_id</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                </argument>
+            </field>
+            <field name="use_config.store_ids" class="Mirasvit\Seo\Ui\Template\Form\Component\ConfigField">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="description" xsi:type="string" translate="true">All Store Views</item>
+                        <item name="dataType" xsi:type="string">boolean</item>
+                        <item name="formElement" xsi:type="string">checkbox</item>
+                        <item name="valueMap" xsi:type="array">
+                            <item name="true" xsi:type="boolean">true</item>
+                            <item name="false" xsi:type="boolean">false</item>
+                        </item>
+                        <item name="exports" xsi:type="array">
+                            <item name="checked" xsi:type="string">ns = ${ $.ns }, index = store_ids :disabled</item>
+                        </item>
+                    </item>
+                </argument>
+            </field>
+        </container>
+        <field name="sort_order">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Sort Order</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="rule">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string">Rules Processing</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="opened" xsi:type="boolean">true</item>
+            </item>
+        </argument>
+        <field name="stop_rules_processing">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Stop Further Rules Processing</item>
+                    <item name="dataType" xsi:type="string">boolean</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="dataScope" xsi:type="string">stop_rules_processing</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+        </field>
+        <field name="apply_for_child_categories">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Apply to child categories</item>
+                    <item name="dataType" xsi:type="string">boolean</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="dataScope" xsi:type="string">apply_for_child_categories</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="default" xsi:type="number">0</item>
+                    <item name="additionalClasses" xsi:type="string">admin__field-note</item>
+                    <item name="additionalInfo" xsi:type="string"><![CDATA[
+                        If category is set in Conditions, template will also be applied to all child categories.
+                        ]]>
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="conditions">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string">Conditions</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="opened" xsi:type="boolean">true</item>
+            </item>
+        </argument>
+        <container name="conditions_serialized">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="componentType" xsi:type="string">fieldset</item>
+                </item>
+            </argument>
+            <htmlContent name="html_content_product" class="Mirasvit\Seo\Ui\Template\Form\Component\ProductHtmlContent">
+                <argument name="block" xsi:type="object">Mirasvit\Seo\Block\Adminhtml\Template\Edit\Tab\Rule</argument>
+            </htmlContent>
+        </container>
+    </fieldset>
+</form>

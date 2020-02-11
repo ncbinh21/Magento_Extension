@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Remove some Block -->
+        <referenceBlock name="product.attributes" remove="true"/>
+
+        <!-- Adding Container -->
+        <referenceContainer name="content">
+            <container name="product.info.main.container" label="Product Info Left" htmlTag="div" htmlClass="product-main-container" after="product.info.media"/>
+        </referenceContainer>
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Framework\View\Element\Template" name="pdp.script" template="Magento_Catalog::product/view/script.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="product.info.social">
+            <block class="Magento\Framework\View\Element\Template" name="pdp.socials.addthis" template="Magento_Catalog::product/view/socials-addthis.phtml" before="-"/>
+        </referenceContainer>
+
+        <!-- Move Elements -->
+        <move element="product.info.sku" destination="product.info.main" before="-" />
+        <move element="product.info.label" destination="product.info.main"  after="product.info.sku"/>
+        <move element="page.main.title" destination="product.info.main" after="product.info.label"/>
+        <move element="product.info.stock.sku" destination="product.info.price" after="-"/>
+        <move element="product.info" destination="product.info.main" after="-" />
+        <move element="product.info.social" destination="product.info.main" after="-" />
+        <move element="product.info.main" destination="product.info.main.container"/>
+        <move element="view.addto.compare" destination="product.info.addto" before="-"/>
+        <move element="product.info.mailto" destination="pdp.socials.addthis" after="-"/>
+        <move element="pdp.socials.addthis" destination="product.info.addto" before="view.addto.wishlist"/>
+
+    </body>
+</page>

@@ -1,0 +1,41 @@
+<?php
+/* @var $block \Mirasvit\Credit\Block\Adminhtml\Catalog\Product\Composite\Fieldset\Options\Type\Range */
+$product = $block->getProduct();
+$option  = $block->getOptions()->getFirstItem();
+$validationClass = 'validate-digits-range digits-range-'.
+    $option->getOptionMinCredits().'-'.$option->getOptionMaxCredits();
+?>
+<?php if ($block->isAllowed()):?>
+    <fieldset id="catalog_product_composite_configure_fields_configurable" class="fieldset admin__fieldset">
+        <div class="field admin__field _required required">
+            <label class="label admin__field-label"><?= __('Credits') ?></label>
+            <div class="control admin__field-control">
+                <input type="text"
+                       id="range-credit-option"
+                       name="creditOption"
+                       class="input-text admin__control-text qty <?= $validationClass ?>"
+                       value="<?= $option->getOptionMinCredits() ?>"
+                       credit-price="<?= $option->getOptionPrice(); ?>"
+                       price="0" />
+                <input type="hidden"
+                       name="creditOptionId"
+                       value="<?= $option->getId() ?>" />
+                <div>
+                    <?= __('From: %1, To: %2', $option->getOptionMinCredits(), $option->getOptionMaxCredits()); ?>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <script>
+        require([
+            'jquery',
+            "Magento_ConfigurableProduct/js/configurable",
+            "Magento_Catalog/catalog/product/composite/configure"
+        ], function($){
+            $('#range-credit-option').change(function () {
+                $(this).attr('price', $(this).val()*$(this).attr('credit-price'));
+            });
+
+        });
+    </script>
+<?php endif;?>

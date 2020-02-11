@@ -1,0 +1,72 @@
+//
+//    Common
+//--------------------------------------
+
+& when (@media-common = true) {
+    .credit__account {
+        .credit__account-blocks {
+            list-style: none;
+            padding: 0;
+        }
+    }
+}
+
+//
+//    Desktop
+//--------------------------------------
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .credit__account {
+        .credit__account-blocks {
+            margin-left: -1%;
+
+            > li {
+                float: left;
+                width: 48%;
+                margin: 0 1%;
+            }
+        }
+    }
+}
+
+
+.credit__account-refill {
+    .options {
+        .lib-clearfix();
+        margin-left: -1rem;
+
+        .field {
+            float: left;
+            width: 33.333%;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+    }
+}
+
+.credit__account-send2friend {
+    fieldset.general {
+        .lib-clearfix();
+        margin-left: -1rem;
+        margin-bottom: 0;
+
+        .field.email, .field.amount {
+            float: left;
+            padding-left: 1rem;
+            box-sizing: border-box;
+        }
+        .field.email {
+            width: 70%;
+        }
+        .field.amount {
+            width: 30%;
+        }
+    }
+}
+
+.credit__account-balance {
+    .credit__account-subscription {
+        float: none;
+        margin-top: 15px;
+        min-height: 4rem;
+    }
+}

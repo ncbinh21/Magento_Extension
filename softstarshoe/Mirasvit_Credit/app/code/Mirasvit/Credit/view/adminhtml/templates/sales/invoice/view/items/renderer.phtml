@@ -1,0 +1,20 @@
+<?php /** @var $block \Mirasvit\Credit\Block\Adminhtml\Sales\Order\View\Items\Renderer */ ?>
+<?php
+$item = $block->getItem();
+$item->setStoreId($item->getInvoice()->getStoreId());
+$block->setPriceDataObject($item);
+?>
+<tr>
+    <td class="col-product">
+        <?= $block->getColumnHtml($item, 'name'); ?>
+        <div>
+            <?= __('Store Credits: %1', $block->getColumnHtml($item->getOrderItem(), 'credit')); ?>
+        </div>
+    </td>
+    <td class="col-price"><?= $block->getColumnHtml($item, 'price'); ?></td>
+    <td class="col-qty"><?= $item->getQty() * 1 ?></td>
+    <td class="col-subtotal"><?= $block->getColumnHtml($item, 'subtotal'); ?></td>
+    <td class="col-tax"><?= $block->displayPriceAttribute('tax_amount'); ?></td>
+    <td class="col-discount"><?= $block->displayPriceAttribute('discount_amount'); ?></td>
+    <td class="col-total last"><?= $block->getColumnHtml($item, 'total'); ?></td>
+</tr>

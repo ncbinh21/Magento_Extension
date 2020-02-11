@@ -1,0 +1,59 @@
+<?php
+//@codingStandardsIgnoreFile
+
+/** @var \Mirasvit\EmailDesigner\Model\Template $model */
+$model = $block->getModel();
+?>
+
+<div class="email-designer__editor"
+     data-mage-init='{
+        "editor": {
+            "url": "<?php echo $block->getUrl('*/*/drop', ['id' => $model->getId()]) ?>"
+        }
+     }'>
+
+    <div class="email-designer__editor-areas">
+        <?php foreach ($model->getAreas() as $code => $label): ?>
+            <section>
+                <label for="area_<?= $code ?>"><?= $label ?></label>
+
+                <textarea name="template_areas[<?= $code ?>]" id="area_<?= $code ?>"
+                          data-area="<?= $code ?>"
+                          class="editor"><?= $model->getAreaText($code) ?></textarea>
+            </section>
+        <?php endforeach ?>
+    </div>
+
+    <div class="email-designer__editor-preview">
+        <div class="spinner" data-role="spinner">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="toolbar">
+            <div class="admin__field admin__field-mode">
+                <button class="secondary" data-role="desktop-view"><?php echo __('Desktop') ?></button>
+                <button class="tertiary" data-role="mobile-view"><?php echo __('Mobile') ?></button>
+            </div>
+
+            <div class="admin__field admin__field-option">
+                <input type="checkbox" class="admin__control-checkbox" data-role="auto-refresh" id="auto-refresh">
+                <label class="admin__field-label" for="auto-refresh">
+                    <span><?php echo __('Auto Refresh') ?></span>
+                </label>
+            </div>
+
+            <div class="admin__field admin__field-refresh">
+                <button class="action-default" data-role="refresh"><?php echo __('Refresh') ?></button>
+            </div>
+        </div>
+
+        <iframe data-role="preview"></iframe>
+    </div>
+</div>

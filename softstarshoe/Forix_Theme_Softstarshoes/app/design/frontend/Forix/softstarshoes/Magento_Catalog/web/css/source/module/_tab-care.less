@@ -1,0 +1,115 @@
+@use-module-catalog-pdp-core__enable: true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .care__col-full{
+        .care-box-content{
+            background-color: @color-white;
+        }
+    }
+    .care-box-images{
+        .image-full{
+            .box-image{
+                font-size: 0;
+                line-height: 0;
+            }
+        }
+        .box-image + .image-caption{
+            line-height: 20px;
+        }
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    .product.attribute.care .care__col-left{
+        .care-title{
+            font-size: 18px;
+        }
+        section{
+            .care-content-title{
+                font-size: 16px;
+            }
+        }
+    }
+    .care-box-images{
+        >div{
+            margin-bottom: 15px;
+        }
+        .image-caption{
+            font-size: 12px;
+            line-height: 16px;
+        }
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+}
+
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    .product.attribute.care .care__col-left{
+        .care-title{
+            font-size: 25px;
+            margin-bottom: 42px;
+        }
+        section{
+            .care-content-title{
+                font-size: 20px;
+                margin-bottom: 7px;
+            }
+        }
+    }
+
+    .care__col-full{
+        .forix-lib-vendor-prefix-display(flex);
+        .forix-lib-vendor-prefix-flex-wrap(wrap);
+        .care__col-left{
+            width: percentage(8/12);
+            padding-right: 40px;
+        }
+        .care__col-right{
+            width: percentage(4/12);
+            padding-left: 40px;
+        }
+        .care-box-content{
+            border-radius: 10px;
+            padding: 30px 20px;
+        }
+    }
+
+    .care-box-images{
+        >div{
+            margin-bottom: 28px;
+        }
+    }
+}
+
+// [1024 - 1200]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__l) and (@break-max = @screen__xl) {
+
+}

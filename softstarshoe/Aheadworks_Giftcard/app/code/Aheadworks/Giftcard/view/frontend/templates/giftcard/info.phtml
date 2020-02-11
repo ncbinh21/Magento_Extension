@@ -1,0 +1,67 @@
+<?php
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Aheadworks\Giftcard\Block\Giftcard\Info */
+
+$giftcard = $block->getGiftcard()
+?>
+<div id="aw_giftcard__code_info_block">
+    <?php if ($giftcard && $giftcard->getId()): ?>
+        <div class="block-title">
+            <span><?php echo $block->escapeHtml(__('Gift Card code Information')) ?></span>
+        </div>
+        <div class="block-content">
+            <div class="box">
+                <div class="box-content">
+                    <table>
+                        <tr>
+                            <td class="label">
+                                <?php echo $block->escapeHtml(__('Code')) ?>
+                            </td>
+                            <td class="giftcard-code">
+                                <?php echo $block->escapeHtml($giftcard->getCode()) ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">
+                                <?php echo $block->escapeHtml(__('Availability')) ?>
+                            </td>
+                            <td class="giftcard-state">
+                                <?php echo $block->escapeHtml($block->formatState($giftcard->getState())) ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">
+                                <?php echo $block->escapeHtml(__('Balance')) ?>
+                            </td>
+                            <td class="giftcard-balance">
+                                <?php /* @noEscape */ echo $block->formatPrice($giftcard->getBalance()) ?>
+                            </td>
+                        </tr>
+                        <?php if ($giftcard->getExpireAt()): ?>
+                            <tr>
+                                <td class="label">
+                                    <?php echo $block->escapeHtml(__('Expire At')) ?>
+                                </td>
+                                <td class="giftcard-expire-at">
+                                    <?php /* @noEscape */ echo $block->formatDate($giftcard->getExpireAt(), \IntlDateFormatter::MEDIUM) ?>
+                                </td>
+                            </tr>
+                        <?php endif;?>
+                    </table>
+                </div>
+            </div>
+        </div>
+    <?php else: ?>
+        <?php foreach ($block->getMessages() as $message): ?>
+            <div class="message <?php /* @noEscape */ echo $message->getType() ?>">
+                <span><?php echo $block->escapeHtml($message->getText()) ?></span>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</div>

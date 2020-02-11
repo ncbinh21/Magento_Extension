@@ -1,0 +1,23 @@
+<?php
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Framework\View\Element\Template */
+?>
+<?php if ($block->hasGiftcards()): ?>
+    <?php foreach ($this->getGiftcards() as $code): ?>
+        <strong class="gift-card-info__code"
+                style="font-size: 16px;
+                       font-family: Arial, 'Helvetica', Helvetica, sans-serif;
+                       line-height: 1.5em;
+                       color: #4176d9;
+                       margin: 0;
+                       padding: 0;">
+            <?php /* @noEscape */ echo $code ?>
+        </strong><br />
+    <?php endforeach; ?>
+<?php endif; ?>

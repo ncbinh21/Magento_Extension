@@ -1,0 +1,20 @@
+<!--@subject [#{{var ticket.uid}}] Ticket is about to be closed: {{var ticket.subject}}@-->
+<!--@styles .aw-hdu-note {color: gray; font-size: 85%;}@-->
+
+{{template config_path="design/email/header_template"}}
+
+<strong>Hello, {{var ticket.customer_name}}.</strong><br/><br/>
+
+This is an automatic message to remind you that your ticket [#{{var ticket.uid}}] "{{var ticket.subject}}" has been set to Pending status, so our team is waiting for either your reply to this ticket or a confirmation that it can be closed.<br/><br/>
+
+<strong>Best Regards,</strong><br/>
+
+<strong>{{var author_name}}</strong><br/>
+{{var store.frontend_name}}<br/><br/>
+
+<div class="aw-hdu-note">
+    You can update the ticket <a href="{{var external_url}}">via web interface</a> or by replying to this email.<br/>
+    When updating the ticket via email, keep the ticket ID in the subject line to ensure that your reply will be tracked appropriately.
+</div>
+
+{{template config_path="design/email/footer_template"}}

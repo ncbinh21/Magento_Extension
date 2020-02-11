@@ -1,0 +1,92 @@
+<div class="fieldset-wrapper customer-information">
+
+    <div class="admin__page-section-title">
+        <span class="title"><?php echo __('Notes On Customer') ?></span>
+    </div>
+
+    <style>
+        .notes li .notes-body .post-header {
+            padding-bottom: 5px;
+            border-bottom: 1px solid #f1f5fc;
+        }
+        .notes li .notes-body .post-footer {
+            padding-top: 5px;
+            border-top: 1px solid #f1f5fc;
+        }
+        .notes {
+            list-style: none;
+            margin: 0;
+        }
+        .notes li {
+            margin-bottom: 15px;
+        }
+        .notes-body {
+            position: relative;
+            font-size: 11px;
+            padding: 10px;
+            border: 1px solid #f1f5fc;
+            box-shadow: 0 1px 1px rgba(0,0,0,.05);
+            -moz-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+            -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+            background: #fff;
+        }
+        .notes-holder {
+            background: #E7EFEF;
+            padding: 10px;
+        }
+        .notes-holder textarea {
+            width: 100%;
+        }
+    </style>
+
+    <?php $notes = $this->getCollection();?>
+    <form id="mascnotes-form" action="<?php echo $this->getUrl('makarovsoft_notesoncustomers/notes/update', ['_current' => true]) ?>">
+        <div class="notes-holder">
+            <div class="notes-message">
+                <?php if (!$this->getIsOrder()):?>
+                    <div style="float:right;">
+                        <button class="action- scalable save primary ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" onclick="notesoncustomersupdate();return false;">
+                            <span><?php echo __('Save Changes')?></span>
+                        </button>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <div>
+                        <b><?php echo __('New Note')?></b><br />
+                        <textarea name="mascnotes_new[0][note]" id="mascnote_new"></textarea>
+                        <br />
+                        <input type="hidden" name="mascnotes_new[0][status]" value="0" />
+                        <br />
+                        <br />
+                    </div>
+                <?php endif;?>
+                <div id="notes-holder">
+                <?php
+                    include "items.phtml";
+                ?>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script>
+        require([
+            'prototype'
+        ], function() {
+
+        });
+        jQuery('.mascnotes_edit').on('change', function() {
+            jQuery(this).next().val(1);
+        });
+        function notesoncustomersupdate()
+        {
+            new Ajax.Request($('mascnotes-form').action, {
+                parameters: Form.serialize($('mascnotes-form'), true),
+                area: $('mascnotes-form'),
+                onComplete: function (transport) {
+                    $('mascnote_new').value = '';
+                    $('notes-holder').innerHTML = transport.responseText;
+                }
+            });
+        }
+    </script>
+
+</div>

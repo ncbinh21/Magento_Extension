@@ -1,0 +1,53 @@
+@use-checkout-estimated-total-core__enable: true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.checkout-agreements-block .action-show {
+    &:extend(.alink all);
+}
+
+.checkout-agreements-items{
+    &:extend(.forix-abs-list-reset);
+}
+
+.checkout-agreements-item-title{
+    &:extend(.forix-abs-primary-title-size all);
+}
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .checkout-agreements-block {
+        //margin-bottom: @forix-indent__base;
+        padding: 0;
+
+        .action-show {
+            vertical-align: baseline;
+        }
+    }
+
+    //  Checkout Agreements in popup
+    .checkout-agreements-items {
+        padding-bottom: @forix-indent__l;
+
+        .checkout-agreements-item {
+            margin-bottom: @forix-indent__base;
+        }
+
+        .checkout-agreements-item-title {
+            border-bottom: 0;
+        }
+    }
+
+    //  Checkout Agreements
+    .checkout-agreement-item-content {
+        overflow: auto;
+    }
+}

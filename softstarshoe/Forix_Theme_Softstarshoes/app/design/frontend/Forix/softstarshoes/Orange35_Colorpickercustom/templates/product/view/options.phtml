@@ -1,0 +1,51 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/* @var $block \Orange35\Colorpickercustom\Block\Product\View\Options */
+?>
+
+<?php $_options = $block->decorateArray($block->getOptions()) ?>
+<?php $_swatches = $block->decorateArray($block->getSwatches()) ?>
+<?php $_productId = $block->getProduct()->getId() ?>
+<?php if (count($_options)): ?>
+    <script type="text/x-magento-init">
+    {
+        "#product_addtocart_form": {
+            "priceOptions": {
+                "optionConfig": <?php /* @escapeNotVerified */
+        echo $block->getJsonConfig() ?>,
+                "controlContainer": ".field",
+                "priceHolderSelector": "[data-product-id='<?php echo $block->escapeHtml($_productId) ?>'][data-role=priceBox]"
+            }
+        }
+        <?php if (count($_swatches)): ?>
+        ,"[data-role=o35-colorpicker-swatch-options]": {
+             "Orange35_Colorpickercustom/js/swatches": {
+                    "jsonConfig": <?php /* @escapeNotVerified */
+            echo $swatchOptions = $block->getJsonConfig(); ?>,
+                    "jsonSliderConfig": <?php /* @escapeNotVerified */
+            echo $swatchOptions = $block->getJsonSliderConfig(); ?>
+             }
+        }
+        <?php endif; ?>
+    }
+
+    </script>
+    <?php $i =1; ?>
+    <?php if (count($_swatches)): ?>
+    <div class="o35-swatch-opt" data-role="o35-colorpicker-swatch-options">
+        <?php endif; ?>
+        <?php foreach ($_options as $_option): ?>
+            <?php $_option->setData('position', $i); ?>
+            <?php $i++; ?>
+            <?php echo $block->getOptionHtml($_option) ?>
+        <?php endforeach; ?>
+        <?php if (count($_swatches)): ?>
+    </div>
+<?php endif; ?>
+<?php endif; ?>

@@ -1,0 +1,14 @@
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ *
+ * Overrided template to get item id for product
+ */
+-->
+<span class="product-image-container"
+      data-bind="attr: {'style': 'height: ' + getHeight($parents[1]) + 'px; width: ' + getWidth($parents[1]) + 'px;' }">
+    <span class="product-image-wrapper" attr="'item-id': $parents[1].item_id">
+        <img data-bind="attr: {'src': getSrc($parents[1]), 'width': getWidth($parents[1]), 'height': getHeight($parents[1]), 'alt': getAlt($parents[1]) }"/>
+    </span>
+</span>

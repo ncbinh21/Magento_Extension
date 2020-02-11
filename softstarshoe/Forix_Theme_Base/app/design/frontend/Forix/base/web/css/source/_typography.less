@@ -1,0 +1,3909 @@
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+body,
+h6{
+    &:extend(.forix-abs-primary-size all);
+}
+
+small,
+.small{
+    &:extend(.forix-abs-medium-size all);
+}
+
+h1{
+    &:extend(.forix-abs-secondary-title-size all);
+}
+
+h2{
+    &:extend(.forix-abs-primary-title-size all);
+}
+
+h3{
+    &:extend(.forix-abs-three-title-size all);
+}
+
+h4{
+    &:extend(.forix-abs-medium-title-size all);
+}
+
+h5{
+    &:extend(.forix-abs-small-title-size all);
+}
+
+.items{
+    &:extend(.forix-abs-reset all);
+}
+
+// ------------------------------------
+// Core
+// ------------------------------------
+// common
+& when (@media-common = true){
+    & when(@use-typography-core__enable= true) {
+        // Base
+        // ------------
+        //* (all)
+        *,
+        *:before,
+        *:after{
+            .forix-global-call(
+                @_block-name: @forix-all__name,
+                @_version: false
+            );
+        }
+        html{
+            .forix-global-call(
+                @_block-name: @forix-root__name,
+                @_version: false
+            );
+        }
+        body{
+            .forix-global-call(
+                @_block-name: @forix-body__name,
+                @_version: false
+            );
+        }
+        p{
+            .forix-global-call(
+                @_block-name: @forix-p__name,
+                @_version: false
+            );
+        }
+        abbr[title]{
+            .forix-global-call(
+                @_block-name: @forix-abbr__name,
+                @_version: false
+            );
+        }
+        b,strong{
+            .forix-global-call(
+                @_block-name: @forix-strong__name,
+                @_version: false
+            );
+        }
+        em,i{
+            .forix-global-call(
+                @_block-name: @forix-em__name,
+                @_version: false
+            );
+        }
+        mark{
+            .forix-global-call(
+                @_block-name: @forix-mark__name,
+                @_version: false
+            );
+        }
+        small,.small{
+            .forix-global-call(
+                @_block-name: @forix-small__name,
+                @_version: false
+            );
+        }
+        hr{
+            .forix-global-call(
+                @_block-name: @forix-hr__name,
+                @_version: false
+            );
+        }
+        sub,sup{
+            .forix-global-call(
+                @_block-name: @forix-sub-all__name,
+                @_version: false
+            );
+        }
+        sub{
+            .forix-global-call(
+                @_block-name: @forix-sub__name,
+                @_version: false
+            );
+        }
+        sup{
+            .forix-global-call(
+                @_block-name: @forix-sup__name,
+                @_version: false
+            );
+        }
+        dfn{
+            .forix-global-call(
+                @_block-name: @forix-dfn__name,
+                @_version: false
+            );
+        }
+
+        // Heading
+        // ------------
+
+        //h1->h6(heading)
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6{
+            .forix-global-call(
+                @_block-name: @forix-heading__name,
+                @_version: false
+            );
+        }
+        //h1->h6 small (heading-small)
+        h1 small,
+        h2 small,
+        h3 small,
+        h4 small,
+        h5 small,
+        h6 small{
+            .forix-global-call(
+                @_block-name: @forix-heading-small__name,
+                @_version: false
+            );
+        }
+        h1{
+            .forix-global-call(
+                @_block-name: @forix-h1__name,
+                @_version: false
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h1-small__name,
+                    @_version: false
+                );
+            }
+        }
+        h2{
+            .forix-global-call(
+                @_block-name: @forix-h2__name,
+                @_version: false
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h2-small__name,
+                    @_version: false
+                );
+            }
+        }
+        h3{
+            .forix-global-call(
+                @_block-name: @forix-h3__name,
+                @_version: false
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h3-small__name,
+                    @_version: false
+                );
+            }
+        }
+        h4{
+            .forix-global-call(
+                @_block-name: @forix-h4__name,
+                @_version: false
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h4-small__name,
+                    @_version: false
+                );
+            }
+        }
+        h5{
+            .forix-global-call(
+                @_block-name: @forix-h5__name,
+                @_version: false
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h5-small__name,
+                    @_version: false
+                );
+            }
+        }
+        h6{
+            .forix-global-call(
+                @_block-name: @forix-h6__name,
+                @_version: false
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h6-small__name,
+                    @_version: false
+                );
+            }
+        }
+
+        // Link
+        // ------------
+        a,
+        .alink{
+            .forix-global-call(
+                @_block-name: @forix-a__name,
+                @_version: false
+            );
+        }
+        // link-list__name:type1,type2,type3.... // Maximum 20 types
+        .forix-abs-link1{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 1,
+                @_version:  false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-link2{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 2,
+                @_version:  false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-link3{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 3,
+                @_version:  false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-link4{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 4,
+                @_version:  false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-link5{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 5,
+                @_version:  false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-link6{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 6,
+                @_version:  false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-link7{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 7,
+                @_version:  false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-link8{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 8,
+                @_version:  false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-link9{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 9,
+                @_version:  false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-link10{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 10,
+                @_version:  false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-link11{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 11,
+                @_version:  false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-link12{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 12,
+                @_version:  false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-link13{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 13,
+                @_version:  false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-link14{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 14,
+                @_version:  false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-link15{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 15,
+                @_version:  false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-link16{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 16,
+                @_version:  false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-link17{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 17,
+                @_version:  false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-link18{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 18,
+                @_version:  false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-link19{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 19,
+                @_version:  false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-link20{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 20,
+                @_version:  false,
+                @_type: 'commons'
+            );
+        }
+        // List
+        // ------------
+        ul,ol{
+            .forix-global-call(
+                @_block-name: @forix-list__name,
+                @_version: false
+            );
+            > li{
+                .forix-global-call(
+                    @_block-name: @forix-list-li__name,
+                    @_version: false
+                );
+            }
+        }
+        // reset ul,ol (reset list)
+        .forix-abs-list-reset{
+            .forix-global-call(
+                @_block-name: @forix-reset-list__name,
+                @_version: false
+            );
+            > li{
+                .forix-global-call(
+                    @_block-name: @forix-reset-list-li__name,
+                    @_version: false
+                );
+            }
+        }
+        ul{
+            .forix-global-call(
+                @_block-name: @forix-ul__name,
+                @_version: false
+            );
+            > li{
+                .forix-global-call(
+                    @_block-name: @forix-ul-li__name,
+                    @_version: false
+                );
+            }
+        }
+        ol{
+            .forix-global-call(
+                @_block-name: @forix-ol__name,
+                @_version: false
+            );
+            > li{
+                .forix-global-call(
+                    @_block-name: @forix-ol-li__name,
+                    @_version: false
+                );
+            }
+        }
+        ul,ol{
+            ul,ol{
+                .forix-global-call(
+                    @_block-name: @forix-sub-list__name,
+                    @_version: false
+                );
+                li{
+                    .forix-global-call(
+                        @_block-name: @forix-sub-list-li__name,
+                        @_version: false
+                    );
+                }
+            }
+        }
+        ul ul {
+            .forix-global-call(
+                @_block-name: @forix-ul-ul__name,
+                @_version: false
+            );
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-ul-ul-li__name,
+                    @_version: false
+                );
+            }
+        }
+        ul ol {
+            .forix-global-call(
+                @_block-name: @forix-ul-ol__name,
+                @_version: false
+            );
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-ul-ol-li__name,
+                    @_version: false
+                );
+            }
+        }
+        ol ol {
+            .forix-global-call(
+                @_block-name: @forix-ol-ol__name,
+                @_version: false
+            );
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-ol-ol-li__name,
+                    @_version: false
+                );
+            }
+        }
+        ol ul {
+            .forix-global-call(
+                @_block-name: @forix-ol-ul__name,
+                @_version: false
+            );
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-ol-ul-li__name,
+                    @_version: false
+                );
+            }
+        }
+        dl{
+            .forix-global-call(
+                @_block-name: @forix-dl__name,
+                @_version: false
+            );
+        }
+        dt{
+            .forix-global-call(
+                @_block-name: @forix-dt__name,
+                @_version: false
+            );
+        }
+        dd{
+            .forix-global-call(
+                @_block-name: @forix-dd__name,
+                @_version: false
+            );
+        }
+
+        // Code
+        // ------------
+        code,kbd,pre,samp{
+            .forix-global-call(
+                @_block-name: @forix-code-all__name,
+                @_version: false
+            );
+        }
+        code{
+            .forix-global-call(
+                @_block-name: @forix-code__name,
+                @_version: false
+            );
+        }
+        kbd{
+            .forix-global-call(
+                @_block-name: @forix-kbd__name,
+                @_version: false
+            );
+        }
+        pre{
+            .forix-global-call(
+                @_block-name: @forix-pre__name,
+                @_version: false
+            );
+        }
+        samp{
+            .forix-global-call(
+                @_block-name: @forix-samp__name,
+                @_version: false
+            );
+        }
+
+        // Blockquote
+        // ------------
+        blockquote{
+            .forix-global-call(
+                @_block-name: @forix-blockquote__name,
+                @_version: false
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-p__name,
+                    @_version: false
+                );
+            }
+            ul{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-ul__name,
+                    @_version: false
+                );
+            }
+            ol{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-ol__name,
+                    @_version: false
+                );
+            }
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-li__name,
+                    @_version: false
+                );
+            }
+            footer{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-footer__name,
+                    @_version: false
+                );
+            }
+            small,.small{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-small__name,
+                    @_version: false
+                );
+            }
+            cite{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-cite__name,
+                    @_version: false
+                );
+            }
+        }
+        q{
+            .forix-global-call(
+                @_block-name: @forix-q__name,
+                @_version: false
+            );
+        }
+        cite{
+            .forix-global-call(
+                @_block-name: @forix-cite__name,
+                @_version: false
+            );
+        }
+
+        .items{
+            .forix-global-call(
+                @_block-name: @forix-items__name,
+                @_version: false
+            );
+        }
+        .a-center{
+            .forix-global-call(
+                @_block-name:  @forix-a-center__name,
+                @_version:  false
+            );
+        }
+        .a-left{
+            .forix-global-call(
+                @_block-name:  @forix-a-left__name,
+                @_version:  false
+            );
+        }
+        .a-right{
+            .forix-global-call(
+                @_block-name:  @forix-a-right__name,
+                @_version:  false
+            );
+        }
+        iframe{
+            .forix-global-call(
+                @_block-name:  @forix-iframe__name,
+                @_version:  false
+            );
+        }
+    }
+
+    .no-display{
+        &:extend(.forix-abs-no-display all);
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    & when(@use-typography-core__enable= true) {
+        // Base
+        // ------------
+        //* (all)
+        *,
+        *:before,
+        *:after{
+            .forix-global-call(
+                @_block-name: @forix-all__name,
+                @_version: ''
+            );
+        }
+        html{
+            .forix-global-call(
+                @_block-name: @forix-root__name,
+                @_version: ''
+            );
+        }
+        body{
+            .forix-global-call(
+                @_block-name: @forix-body__name,
+                @_version: ''
+            );
+        }
+        p{
+            .forix-global-call(
+                @_block-name: @forix-p__name,
+                @_version: ''
+            );
+        }
+        abbr[title]{
+            .forix-global-call(
+                @_block-name: @forix-abbr__name,
+                @_version: ''
+            );
+        }
+        b,strong{
+            .forix-global-call(
+                @_block-name: @forix-strong__name,
+                @_version: ''
+            );
+        }
+        em,i{
+            .forix-global-call(
+                @_block-name: @forix-em__name,
+                @_version: ''
+            );
+        }
+        mark{
+            .forix-global-call(
+                @_block-name: @forix-mark__name,
+                @_version: ''
+            );
+        }
+        small,.small{
+            .forix-global-call(
+                @_block-name: @forix-small__name,
+                @_version: ''
+            );
+        }
+        hr{
+            .forix-global-call(
+                @_block-name: @forix-hr__name,
+                @_version: ''
+            );
+        }
+        sub,sup{
+            .forix-global-call(
+                @_block-name: @forix-sub-all__name,
+                @_version: ''
+            );
+        }
+        sub{
+            .forix-global-call(
+                @_block-name: @forix-sub__name,
+                @_version: ''
+            );
+        }
+        sup{
+            .forix-global-call(
+                @_block-name: @forix-sup__name,
+                @_version: ''
+            );
+        }
+        dfn{
+            .forix-global-call(
+                @_block-name: @forix-dfn__name,
+                @_version: ''
+            );
+        }
+
+        // Heading
+        // ------------
+
+        //h1->h6(heading)
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6{
+            .forix-global-call(
+                @_block-name: @forix-heading__name,
+                @_version: ''
+            );
+        }
+        //h1->h6 small (heading-small)
+        h1 small,
+        h2 small,
+        h3 small,
+        h4 small,
+        h5 small,
+        h6 small{
+            .forix-global-call(
+                @_block-name: @forix-heading-small__name,
+                @_version: ''
+            );
+        }
+        h1{
+            .forix-global-call(
+                @_block-name: @forix-h1__name,
+                @_version: ''
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h1-small__name,
+                    @_version: ''
+                );
+            }
+        }
+        h2{
+            .forix-global-call(
+                @_block-name: @forix-h2__name,
+                @_version: ''
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h2-small__name,
+                    @_version: ''
+                );
+            }
+        }
+        h3{
+            .forix-global-call(
+                @_block-name: @forix-h3__name,
+                @_version: ''
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h3-small__name,
+                    @_version: ''
+                );
+            }
+        }
+        h4{
+            .forix-global-call(
+                @_block-name: @forix-h4__name,
+                @_version: ''
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h4-small__name,
+                    @_version: ''
+                );
+            }
+        }
+        h5{
+            .forix-global-call(
+                @_block-name: @forix-h5__name,
+                @_version: ''
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h5-small__name,
+                    @_version: ''
+                );
+            }
+        }
+        h6{
+            .forix-global-call(
+                @_block-name: @forix-h6__name,
+                @_version: ''
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h6-small__name,
+                    @_version: ''
+                );
+            }
+        }
+
+        // Link
+        // ------------
+        a,
+        .alink{
+            .forix-global-call(
+                @_block-name: @forix-a__name,
+                @_version: ''
+            );
+        }
+        // link-list__name:type1,type2,type3.... // Maximum 20 types
+        .forix-abs-link1{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 1,
+                @_version:  '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link2{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 2,
+                @_version:  '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link3{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 3,
+                @_version:  '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link4{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 4,
+                @_version:  '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link5{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 5,
+                @_version:  '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link6{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 6,
+                @_version:  '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link7{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 7,
+                @_version:  '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link8{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 8,
+                @_version:  '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link9{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 9,
+                @_version:  '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link10{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 10,
+                @_version:  '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link11{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 11,
+                @_version:  '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link12{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 12,
+                @_version:  '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link13{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 13,
+                @_version:  '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link14{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 14,
+                @_version:  '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link15{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 15,
+                @_version:  '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link16{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 16,
+                @_version:  '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link17{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 17,
+                @_version:  '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link18{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 18,
+                @_version:  '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link19{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 19,
+                @_version:  '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link20{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 20,
+                @_version:  '',
+                @_type: 'responsives'
+            );
+        }
+        // List
+        // ------------
+        ul,ol{
+            .forix-global-call(
+                @_block-name: @forix-list__name,
+                @_version: ''
+            );
+            > li{
+                .forix-global-call(
+                    @_block-name: @forix-list-li__name,
+                    @_version: ''
+                );
+            }
+        }
+        // reset ul,ol (reset list)
+        .forix-abs-list-reset{
+            .forix-global-call(
+                @_block-name: @forix-reset-list__name,
+                @_version: ''
+            );
+            > li{
+                .forix-global-call(
+                    @_block-name: @forix-reset-list-li__name,
+                    @_version: ''
+                );
+            }
+        }
+        ul{
+            .forix-global-call(
+                @_block-name: @forix-ul__name,
+                @_version: ''
+            );
+            > li{
+                .forix-global-call(
+                    @_block-name: @forix-ul-li__name,
+                    @_version: ''
+                );
+            }
+        }
+        ol{
+            .forix-global-call(
+                @_block-name: @forix-ol__name,
+                @_version: ''
+            );
+            > li{
+                .forix-global-call(
+                    @_block-name: @forix-ol-li__name,
+                    @_version: ''
+                );
+            }
+        }
+        ul,ol{
+            ul,ol{
+                .forix-global-call(
+                    @_block-name: @forix-sub-list__name,
+                    @_version: ''
+                );
+                li{
+                    .forix-global-call(
+                        @_block-name: @forix-sub-list-li__name,
+                        @_version: ''
+                    );
+                }
+            }
+        }
+        ul ul {
+            .forix-global-call(
+                @_block-name: @forix-ul-ul__name,
+                @_version: ''
+            );
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-ul-ul-li__name,
+                    @_version: ''
+                );
+            }
+        }
+        ul ol {
+            .forix-global-call(
+                @_block-name: @forix-ul-ol__name,
+                @_version: ''
+            );
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-ul-ol-li__name,
+                    @_version: ''
+                );
+            }
+        }
+        ol ol {
+            .forix-global-call(
+                @_block-name: @forix-ol-ol__name,
+                @_version: ''
+            );
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-ol-ol-li__name,
+                    @_version: ''
+                );
+            }
+        }
+        ol ul {
+            .forix-global-call(
+                @_block-name: @forix-ol-ul__name,
+                @_version: ''
+            );
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-ol-ul-li__name,
+                    @_version: ''
+                );
+            }
+        }
+        dl{
+            .forix-global-call(
+                @_block-name: @forix-dl__name,
+                @_version: ''
+            );
+        }
+        dt{
+            .forix-global-call(
+                @_block-name: @forix-dt__name,
+                @_version: ''
+            );
+        }
+        dd{
+            .forix-global-call(
+                @_block-name: @forix-dd__name,
+                @_version: ''
+            );
+        }
+
+        // Code
+        // ------------
+        code,kbd,pre,samp{
+            .forix-global-call(
+                @_block-name: @forix-code-all__name,
+                @_version: ''
+            );
+        }
+        code{
+            .forix-global-call(
+                @_block-name: @forix-code__name,
+                @_version: ''
+            );
+        }
+        kbd{
+            .forix-global-call(
+                @_block-name: @forix-kbd__name,
+                @_version: ''
+            );
+        }
+        pre{
+            .forix-global-call(
+                @_block-name: @forix-pre__name,
+                @_version: ''
+            );
+        }
+        samp{
+            .forix-global-call(
+                @_block-name: @forix-samp__name,
+                @_version: ''
+            );
+        }
+
+        // Blockquote
+        // ------------
+        blockquote{
+            .forix-global-call(
+                @_block-name: @forix-blockquote__name,
+                @_version: ''
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-p__name,
+                    @_version: ''
+                );
+            }
+            ul{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-ul__name,
+                    @_version: ''
+                );
+            }
+            ol{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-ol__name,
+                    @_version: ''
+                );
+            }
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-li__name,
+                    @_version: ''
+                );
+            }
+            footer{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-footer__name,
+                    @_version: ''
+                );
+            }
+            small,.small{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-small__name,
+                    @_version: ''
+                );
+            }
+            cite{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-cite__name,
+                    @_version: ''
+                );
+            }
+        }
+        q{
+            .forix-global-call(
+                @_block-name: @forix-q__name,
+                @_version: ''
+            );
+        }
+        cite{
+            .forix-global-call(
+                @_block-name: @forix-cite__name,
+                @_version: ''
+            );
+        }
+
+        .items{
+            .forix-global-call(
+                @_block-name: @forix-items__name,
+                @_version: ''
+            );
+        }
+        .a-center{
+            .forix-global-call(
+                @_block-name:  @forix-a-center__name,
+                @_version:  ''
+            );
+        }
+        .a-left{
+            .forix-global-call(
+                @_block-name:  @forix-a-left__name,
+                @_version:  ''
+            );
+        }
+        .a-right{
+            .forix-global-call(
+                @_block-name:  @forix-a-right__name,
+                @_version:  ''
+            );
+        }
+        iframe{
+            .forix-global-call(
+                @_block-name:  @forix-iframe__name,
+                @_version:  ''
+            );
+        }
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    & when(@use-typography-core__enable= true) {
+        // Base
+        // ------------
+        //* (all)
+        *,
+        *:before,
+        *:after{
+            .forix-global-call(
+                @_block-name: @forix-all__name,
+                @_version: 'ml'
+            );
+        }
+        html{
+            .forix-global-call(
+                @_block-name: @forix-root__name,
+                @_version: 'ml'
+            );
+        }
+        body{
+            .forix-global-call(
+                @_block-name: @forix-body__name,
+                @_version: 'ml'
+            );
+        }
+        p{
+            .forix-global-call(
+                @_block-name: @forix-p__name,
+                @_version: 'ml'
+            );
+        }
+        abbr[title]{
+            .forix-global-call(
+                @_block-name: @forix-abbr__name,
+                @_version: 'ml'
+            );
+        }
+        b,strong{
+            .forix-global-call(
+                @_block-name: @forix-strong__name,
+                @_version: 'ml'
+            );
+        }
+        em,i{
+            .forix-global-call(
+                @_block-name: @forix-em__name,
+                @_version: 'ml'
+            );
+        }
+        mark{
+            .forix-global-call(
+                @_block-name: @forix-mark__name,
+                @_version: 'ml'
+            );
+        }
+        small,.small{
+            .forix-global-call(
+                @_block-name: @forix-small__name,
+                @_version: 'ml'
+            );
+        }
+        hr{
+            .forix-global-call(
+                @_block-name: @forix-hr__name,
+                @_version: 'ml'
+            );
+        }
+        sub,sup{
+            .forix-global-call(
+                @_block-name: @forix-sub-all__name,
+                @_version: 'ml'
+            );
+        }
+        sub{
+            .forix-global-call(
+                @_block-name: @forix-sub__name,
+                @_version: 'ml'
+            );
+        }
+        sup{
+            .forix-global-call(
+                @_block-name: @forix-sup__name,
+                @_version: 'ml'
+            );
+        }
+        dfn{
+            .forix-global-call(
+                @_block-name: @forix-dfn__name,
+                @_version: 'ml'
+            );
+        }
+
+        // Heading
+        // ------------
+
+        //h1->h6(heading)
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6{
+            .forix-global-call(
+                @_block-name: @forix-heading__name,
+                @_version: 'ml'
+            );
+        }
+        //h1->h6 small (heading-small)
+        h1 small,
+        h2 small,
+        h3 small,
+        h4 small,
+        h5 small,
+        h6 small{
+            .forix-global-call(
+                @_block-name: @forix-heading-small__name,
+                @_version: 'ml'
+            );
+        }
+        h1{
+            .forix-global-call(
+                @_block-name: @forix-h1__name,
+                @_version: 'ml'
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h1-small__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        h2{
+            .forix-global-call(
+                @_block-name: @forix-h2__name,
+                @_version: 'ml'
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h2-small__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        h3{
+            .forix-global-call(
+                @_block-name: @forix-h3__name,
+                @_version: 'ml'
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h3-small__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        h4{
+            .forix-global-call(
+                @_block-name: @forix-h4__name,
+                @_version: 'ml'
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h4-small__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        h5{
+            .forix-global-call(
+                @_block-name: @forix-h5__name,
+                @_version: 'ml'
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h5-small__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        h6{
+            .forix-global-call(
+                @_block-name: @forix-h6__name,
+                @_version: 'ml'
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h6-small__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+
+        // Link
+        // ------------
+        a,
+        .alink{
+            .forix-global-call(
+                @_block-name: @forix-a__name,
+                @_version: 'ml'
+            );
+        }
+        // link-list__name:type1,type2,type3.... // Maximum 20 types
+        .forix-abs-link1{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 1,
+                @_version:  'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link2{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 2,
+                @_version:  'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link3{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 3,
+                @_version:  'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link4{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 4,
+                @_version:  'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link5{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 5,
+                @_version:  'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link6{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 6,
+                @_version:  'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link7{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 7,
+                @_version:  'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link8{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 8,
+                @_version:  'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link9{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 9,
+                @_version:  'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link10{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 10,
+                @_version:  'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link11{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 11,
+                @_version:  'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link12{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 12,
+                @_version:  'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link13{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 13,
+                @_version:  'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link14{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 14,
+                @_version:  'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link15{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 15,
+                @_version:  'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link16{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 16,
+                @_version:  'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link17{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 17,
+                @_version:  'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link18{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 18,
+                @_version:  'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link19{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 19,
+                @_version:  'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link20{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 20,
+                @_version:  'ml',
+                @_type: 'responsives'
+            );
+        }
+        // List
+        // ------------
+        ul,ol{
+            .forix-global-call(
+                @_block-name: @forix-list__name,
+                @_version: 'ml'
+            );
+            > li{
+                .forix-global-call(
+                    @_block-name: @forix-list-li__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        // reset ul,ol (reset list)
+        .forix-abs-list-reset{
+            .forix-global-call(
+                @_block-name: @forix-reset-list__name,
+                @_version: 'ml'
+            );
+            > li{
+                .forix-global-call(
+                    @_block-name: @forix-reset-list-li__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        ul{
+            .forix-global-call(
+                @_block-name: @forix-ul__name,
+                @_version: 'ml'
+            );
+            > li{
+                .forix-global-call(
+                    @_block-name: @forix-ul-li__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        ol{
+            .forix-global-call(
+                @_block-name: @forix-ol__name,
+                @_version: 'ml'
+            );
+            > li{
+                .forix-global-call(
+                    @_block-name: @forix-ol-li__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        ul,ol{
+            ul,ol{
+                .forix-global-call(
+                    @_block-name: @forix-sub-list__name,
+                    @_version: 'ml'
+                );
+                li{
+                    .forix-global-call(
+                        @_block-name: @forix-sub-list-li__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+        }
+        ul ul {
+            .forix-global-call(
+                @_block-name: @forix-ul-ul__name,
+                @_version: 'ml'
+            );
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-ul-ul-li__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        ul ol {
+            .forix-global-call(
+                @_block-name: @forix-ul-ol__name,
+                @_version: 'ml'
+            );
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-ul-ol-li__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        ol ol {
+            .forix-global-call(
+                @_block-name: @forix-ol-ol__name,
+                @_version: 'ml'
+            );
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-ol-ol-li__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        ol ul {
+            .forix-global-call(
+                @_block-name: @forix-ol-ul__name,
+                @_version: 'ml'
+            );
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-ol-ul-li__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        dl{
+            .forix-global-call(
+                @_block-name: @forix-dl__name,
+                @_version: 'ml'
+            );
+        }
+        dt{
+            .forix-global-call(
+                @_block-name: @forix-dt__name,
+                @_version: 'ml'
+            );
+        }
+        dd{
+            .forix-global-call(
+                @_block-name: @forix-dd__name,
+                @_version: 'ml'
+            );
+        }
+
+        // Code
+        // ------------
+        code,kbd,pre,samp{
+            .forix-global-call(
+                @_block-name: @forix-code-all__name,
+                @_version: 'ml'
+            );
+        }
+        code{
+            .forix-global-call(
+                @_block-name: @forix-code__name,
+                @_version: 'ml'
+            );
+        }
+        kbd{
+            .forix-global-call(
+                @_block-name: @forix-kbd__name,
+                @_version: 'ml'
+            );
+        }
+        pre{
+            .forix-global-call(
+                @_block-name: @forix-pre__name,
+                @_version: 'ml'
+            );
+        }
+        samp{
+            .forix-global-call(
+                @_block-name: @forix-samp__name,
+                @_version: 'ml'
+            );
+        }
+
+        // Blockquote
+        // ------------
+        blockquote{
+            .forix-global-call(
+                @_block-name: @forix-blockquote__name,
+                @_version: 'ml'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-p__name,
+                    @_version: 'ml'
+                );
+            }
+            ul{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-ul__name,
+                    @_version: 'ml'
+                );
+            }
+            ol{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-ol__name,
+                    @_version: 'ml'
+                );
+            }
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-li__name,
+                    @_version: 'ml'
+                );
+            }
+            footer{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-footer__name,
+                    @_version: 'ml'
+                );
+            }
+            small,.small{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-small__name,
+                    @_version: 'ml'
+                );
+            }
+            cite{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-cite__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        q{
+            .forix-global-call(
+                @_block-name: @forix-q__name,
+                @_version: 'ml'
+            );
+        }
+        cite{
+            .forix-global-call(
+                @_block-name: @forix-cite__name,
+                @_version: 'ml'
+            );
+        }
+
+        .items{
+            .forix-global-call(
+                @_block-name: @forix-items__name,
+                @_version: 'ml'
+            );
+        }
+        .a-center{
+            .forix-global-call(
+                @_block-name:  @forix-a-center__name,
+                @_version:  'ml'
+            );
+        }
+        .a-left{
+            .forix-global-call(
+                @_block-name:  @forix-a-left__name,
+                @_version:  'ml'
+            );
+        }
+        .a-right{
+            .forix-global-call(
+                @_block-name:  @forix-a-right__name,
+                @_version:  'ml'
+            );
+        }
+        iframe{
+            .forix-global-call(
+                @_block-name:  @forix-iframe__name,
+                @_version:  'ml'
+            );
+        }
+    }
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    & when(@use-typography-core__enable= true) {
+        // Base
+        // ------------
+        //* (all)
+        *,
+        *:before,
+        *:after{
+            .forix-global-call(
+                @_block-name: @forix-all__name,
+                @_version: 'sm'
+            );
+        }
+        html{
+            .forix-global-call(
+                @_block-name: @forix-root__name,
+                @_version: 'sm'
+            );
+        }
+        body{
+            .forix-global-call(
+                @_block-name: @forix-body__name,
+                @_version: 'sm'
+            );
+        }
+        p{
+            .forix-global-call(
+                @_block-name: @forix-p__name,
+                @_version: 'sm'
+            );
+        }
+        abbr[title]{
+            .forix-global-call(
+                @_block-name: @forix-abbr__name,
+                @_version: 'sm'
+            );
+        }
+        b,strong{
+            .forix-global-call(
+                @_block-name: @forix-strong__name,
+                @_version: 'sm'
+            );
+        }
+        em,i{
+            .forix-global-call(
+                @_block-name: @forix-em__name,
+                @_version: 'sm'
+            );
+        }
+        mark{
+            .forix-global-call(
+                @_block-name: @forix-mark__name,
+                @_version: 'sm'
+            );
+        }
+        small,.small{
+            .forix-global-call(
+                @_block-name: @forix-small__name,
+                @_version: 'sm'
+            );
+        }
+        hr{
+            .forix-global-call(
+                @_block-name: @forix-hr__name,
+                @_version: 'sm'
+            );
+        }
+        sub,sup{
+            .forix-global-call(
+                @_block-name: @forix-sub-all__name,
+                @_version: 'sm'
+            );
+        }
+        sub{
+            .forix-global-call(
+                @_block-name: @forix-sub__name,
+                @_version: 'sm'
+            );
+        }
+        sup{
+            .forix-global-call(
+                @_block-name: @forix-sup__name,
+                @_version: 'sm'
+            );
+        }
+        dfn{
+            .forix-global-call(
+                @_block-name: @forix-dfn__name,
+                @_version: 'sm'
+            );
+        }
+
+        // Heading
+        // ------------
+
+        //h1->h6(heading)
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6{
+            .forix-global-call(
+                @_block-name: @forix-heading__name,
+                @_version: 'sm'
+            );
+        }
+        //h1->h6 small (heading-small)
+        h1 small,
+        h2 small,
+        h3 small,
+        h4 small,
+        h5 small,
+        h6 small{
+            .forix-global-call(
+                @_block-name: @forix-heading-small__name,
+                @_version: 'sm'
+            );
+        }
+        h1{
+            .forix-global-call(
+                @_block-name: @forix-h1__name,
+                @_version: 'sm'
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h1-small__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        h2{
+            .forix-global-call(
+                @_block-name: @forix-h2__name,
+                @_version: 'sm'
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h2-small__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        h3{
+            .forix-global-call(
+                @_block-name: @forix-h3__name,
+                @_version: 'sm'
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h3-small__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        h4{
+            .forix-global-call(
+                @_block-name: @forix-h4__name,
+                @_version: 'sm'
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h4-small__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        h5{
+            .forix-global-call(
+                @_block-name: @forix-h5__name,
+                @_version: 'sm'
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h5-small__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        h6{
+            .forix-global-call(
+                @_block-name: @forix-h6__name,
+                @_version: 'sm'
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h6-small__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+
+        // Link
+        // ------------
+        a,
+        .alink{
+            .forix-global-call(
+                @_block-name: @forix-a__name,
+                @_version: 'sm'
+            );
+        }
+        // link-list__name:type1,type2,type3.... // Maximum 20 types
+        .forix-abs-link1{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 1,
+                @_version:  'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link2{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 2,
+                @_version:  'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link3{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 3,
+                @_version:  'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link4{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 4,
+                @_version:  'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link5{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 5,
+                @_version:  'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link6{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 6,
+                @_version:  'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link7{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 7,
+                @_version:  'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link8{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 8,
+                @_version:  'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link9{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 9,
+                @_version:  'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link10{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 10,
+                @_version:  'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link11{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 11,
+                @_version:  'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link12{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 12,
+                @_version:  'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link13{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 13,
+                @_version:  'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link14{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 14,
+                @_version:  'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link15{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 15,
+                @_version:  'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link16{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 16,
+                @_version:  'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link17{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 17,
+                @_version:  'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link18{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 18,
+                @_version:  'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link19{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 19,
+                @_version:  'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link20{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 20,
+                @_version:  'sm',
+                @_type: 'responsives'
+            );
+        }
+        // List
+        // ------------
+        ul,ol{
+            .forix-global-call(
+                @_block-name: @forix-list__name,
+                @_version: 'sm'
+            );
+            > li{
+                .forix-global-call(
+                    @_block-name: @forix-list-li__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        // reset ul,ol (reset list)
+        .forix-abs-list-reset{
+            .forix-global-call(
+                @_block-name: @forix-reset-list__name,
+                @_version: 'sm'
+            );
+            > li{
+                .forix-global-call(
+                    @_block-name: @forix-reset-list-li__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        ul{
+            .forix-global-call(
+                @_block-name: @forix-ul__name,
+                @_version: 'sm'
+            );
+            > li{
+                .forix-global-call(
+                    @_block-name: @forix-ul-li__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        ol{
+            .forix-global-call(
+                @_block-name: @forix-ol__name,
+                @_version: 'sm'
+            );
+            > li{
+                .forix-global-call(
+                    @_block-name: @forix-ol-li__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        ul,ol{
+            ul,ol{
+                .forix-global-call(
+                    @_block-name: @forix-sub-list__name,
+                    @_version: 'sm'
+                );
+                li{
+                    .forix-global-call(
+                        @_block-name: @forix-sub-list-li__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+        }
+        ul ul {
+            .forix-global-call(
+                @_block-name: @forix-ul-ul__name,
+                @_version: 'sm'
+            );
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-ul-ul-li__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        ul ol {
+            .forix-global-call(
+                @_block-name: @forix-ul-ol__name,
+                @_version: 'sm'
+            );
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-ul-ol-li__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        ol ol {
+            .forix-global-call(
+                @_block-name: @forix-ol-ol__name,
+                @_version: 'sm'
+            );
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-ol-ol-li__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        ol ul {
+            .forix-global-call(
+                @_block-name: @forix-ol-ul__name,
+                @_version: 'sm'
+            );
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-ol-ul-li__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        dl{
+            .forix-global-call(
+                @_block-name: @forix-dl__name,
+                @_version: 'sm'
+            );
+        }
+        dt{
+            .forix-global-call(
+                @_block-name: @forix-dt__name,
+                @_version: 'sm'
+            );
+        }
+        dd{
+            .forix-global-call(
+                @_block-name: @forix-dd__name,
+                @_version: 'sm'
+            );
+        }
+
+        // Code
+        // ------------
+        code,kbd,pre,samp{
+            .forix-global-call(
+                @_block-name: @forix-code-all__name,
+                @_version: 'sm'
+            );
+        }
+        code{
+            .forix-global-call(
+                @_block-name: @forix-code__name,
+                @_version: 'sm'
+            );
+        }
+        kbd{
+            .forix-global-call(
+                @_block-name: @forix-kbd__name,
+                @_version: 'sm'
+            );
+        }
+        pre{
+            .forix-global-call(
+                @_block-name: @forix-pre__name,
+                @_version: 'sm'
+            );
+        }
+        samp{
+            .forix-global-call(
+                @_block-name: @forix-samp__name,
+                @_version: 'sm'
+            );
+        }
+
+        // Blockquote
+        // ------------
+        blockquote{
+            .forix-global-call(
+                @_block-name: @forix-blockquote__name,
+                @_version: 'sm'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-p__name,
+                    @_version: 'sm'
+                );
+            }
+            ul{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-ul__name,
+                    @_version: 'sm'
+                );
+            }
+            ol{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-ol__name,
+                    @_version: 'sm'
+                );
+            }
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-li__name,
+                    @_version: 'sm'
+                );
+            }
+            footer{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-footer__name,
+                    @_version: 'sm'
+                );
+            }
+            small,.small{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-small__name,
+                    @_version: 'sm'
+                );
+            }
+            cite{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-cite__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        q{
+            .forix-global-call(
+                @_block-name: @forix-q__name,
+                @_version: 'sm'
+            );
+        }
+        cite{
+            .forix-global-call(
+                @_block-name: @forix-cite__name,
+                @_version: 'sm'
+            );
+        }
+
+        .items{
+            .forix-global-call(
+                @_block-name: @forix-items__name,
+                @_version: 'sm'
+            );
+        }
+        .a-center{
+            .forix-global-call(
+                @_block-name:  @forix-a-center__name,
+                @_version:  'sm'
+            );
+        }
+        .a-left{
+            .forix-global-call(
+                @_block-name:  @forix-a-left__name,
+                @_version:  'sm'
+            );
+        }
+        .a-right{
+            .forix-global-call(
+                @_block-name:  @forix-a-right__name,
+                @_version:  'sm'
+            );
+        }
+        iframe{
+            .forix-global-call(
+                @_block-name:  @forix-iframe__name,
+                @_version:  'sm'
+            );
+        }
+    }
+}
+
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    & when(@use-typography-core__enable= true) {
+        // Base
+        // ------------
+        //* (all)
+        *,
+        *:before,
+        *:after{
+            .forix-global-call(
+                @_block-name: @forix-all__name,
+                @_version: 'm'
+            );
+        }
+        html{
+            .forix-global-call(
+                @_block-name: @forix-root__name,
+                @_version: 'm'
+            );
+        }
+        body{
+            .forix-global-call(
+                @_block-name: @forix-body__name,
+                @_version: 'm'
+            );
+        }
+        p{
+            .forix-global-call(
+                @_block-name: @forix-p__name,
+                @_version: 'm'
+            );
+        }
+        abbr[title]{
+            .forix-global-call(
+                @_block-name: @forix-abbr__name,
+                @_version: 'm'
+            );
+        }
+        b,strong{
+            .forix-global-call(
+                @_block-name: @forix-strong__name,
+                @_version: 'm'
+            );
+        }
+        em,i{
+            .forix-global-call(
+                @_block-name: @forix-em__name,
+                @_version: 'm'
+            );
+        }
+        mark{
+            .forix-global-call(
+                @_block-name: @forix-mark__name,
+                @_version: 'm'
+            );
+        }
+        small,.small{
+            .forix-global-call(
+                @_block-name: @forix-small__name,
+                @_version: 'm'
+            );
+        }
+        hr{
+            .forix-global-call(
+                @_block-name: @forix-hr__name,
+                @_version: 'm'
+            );
+        }
+        sub,sup{
+            .forix-global-call(
+                @_block-name: @forix-sub-all__name,
+                @_version: 'm'
+            );
+        }
+        sub{
+            .forix-global-call(
+                @_block-name: @forix-sub__name,
+                @_version: 'm'
+            );
+        }
+        sup{
+            .forix-global-call(
+                @_block-name: @forix-sup__name,
+                @_version: 'm'
+            );
+        }
+        dfn{
+            .forix-global-call(
+                @_block-name: @forix-dfn__name,
+                @_version: 'm'
+            );
+        }
+
+        // Heading
+        // ------------
+
+        //h1->h6(heading)
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6{
+            .forix-global-call(
+                @_block-name: @forix-heading__name,
+                @_version: 'm'
+            );
+        }
+        //h1->h6 small (heading-small)
+        h1 small,
+        h2 small,
+        h3 small,
+        h4 small,
+        h5 small,
+        h6 small{
+            .forix-global-call(
+                @_block-name: @forix-heading-small__name,
+                @_version: 'm'
+            );
+        }
+        h1{
+            .forix-global-call(
+                @_block-name: @forix-h1__name,
+                @_version: 'm'
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h1-small__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        h2{
+            .forix-global-call(
+                @_block-name: @forix-h2__name,
+                @_version: 'm'
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h2-small__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        h3{
+            .forix-global-call(
+                @_block-name: @forix-h3__name,
+                @_version: 'm'
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h3-small__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        h4{
+            .forix-global-call(
+                @_block-name: @forix-h4__name,
+                @_version: 'm'
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h4-small__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        h5{
+            .forix-global-call(
+                @_block-name: @forix-h5__name,
+                @_version: 'm'
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h5-small__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        h6{
+            .forix-global-call(
+                @_block-name: @forix-h6__name,
+                @_version: 'm'
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h6-small__name,
+                    @_version: 'm'
+                );
+            }
+        }
+
+        // Link
+        // ------------
+        a,
+        .alink{
+            .forix-global-call(
+                @_block-name: @forix-a__name,
+                @_version: 'm'
+            );
+        }
+        // link-list__name:type1,type2,type3.... // Maximum 20 types
+        .forix-abs-link1{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 1,
+                @_version:  'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link2{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 2,
+                @_version:  'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link3{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 3,
+                @_version:  'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link4{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 4,
+                @_version:  'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link5{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 5,
+                @_version:  'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link6{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 6,
+                @_version:  'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link7{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 7,
+                @_version:  'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link8{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 8,
+                @_version:  'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link9{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 9,
+                @_version:  'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link10{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 10,
+                @_version:  'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link11{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 11,
+                @_version:  'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link12{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 12,
+                @_version:  'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link13{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 13,
+                @_version:  'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link14{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 14,
+                @_version:  'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link15{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 15,
+                @_version:  'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link16{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 16,
+                @_version:  'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link17{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 17,
+                @_version:  'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link18{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 18,
+                @_version:  'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link19{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 19,
+                @_version:  'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link20{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 20,
+                @_version:  'm',
+                @_type: 'responsives'
+            );
+        }
+        // List
+        // ------------
+        ul,ol{
+            .forix-global-call(
+                @_block-name: @forix-list__name,
+                @_version: 'm'
+            );
+            > li{
+                .forix-global-call(
+                    @_block-name: @forix-list-li__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        // reset ul,ol (reset list)
+        .forix-abs-list-reset{
+            .forix-global-call(
+                @_block-name: @forix-reset-list__name,
+                @_version: 'm'
+            );
+            > li{
+                .forix-global-call(
+                    @_block-name: @forix-reset-list-li__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        ul{
+            .forix-global-call(
+                @_block-name: @forix-ul__name,
+                @_version: 'm'
+            );
+            > li{
+                .forix-global-call(
+                    @_block-name: @forix-ul-li__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        ol{
+            .forix-global-call(
+                @_block-name: @forix-ol__name,
+                @_version: 'm'
+            );
+            > li{
+                .forix-global-call(
+                    @_block-name: @forix-ol-li__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        ul,ol{
+            ul,ol{
+                .forix-global-call(
+                    @_block-name: @forix-sub-list__name,
+                    @_version: 'm'
+                );
+                li{
+                    .forix-global-call(
+                        @_block-name: @forix-sub-list-li__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+        }
+        ul ul {
+            .forix-global-call(
+                @_block-name: @forix-ul-ul__name,
+                @_version: 'm'
+            );
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-ul-ul-li__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        ul ol {
+            .forix-global-call(
+                @_block-name: @forix-ul-ol__name,
+                @_version: 'm'
+            );
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-ul-ol-li__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        ol ol {
+            .forix-global-call(
+                @_block-name: @forix-ol-ol__name,
+                @_version: 'm'
+            );
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-ol-ol-li__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        ol ul {
+            .forix-global-call(
+                @_block-name: @forix-ol-ul__name,
+                @_version: 'm'
+            );
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-ol-ul-li__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        dl{
+            .forix-global-call(
+                @_block-name: @forix-dl__name,
+                @_version: 'm'
+            );
+        }
+        dt{
+            .forix-global-call(
+                @_block-name: @forix-dt__name,
+                @_version: 'm'
+            );
+        }
+        dd{
+            .forix-global-call(
+                @_block-name: @forix-dd__name,
+                @_version: 'm'
+            );
+        }
+
+        // Code
+        // ------------
+        code,kbd,pre,samp{
+            .forix-global-call(
+                @_block-name: @forix-code-all__name,
+                @_version: 'm'
+            );
+        }
+        code{
+            .forix-global-call(
+                @_block-name: @forix-code__name,
+                @_version: 'm'
+            );
+        }
+        kbd{
+            .forix-global-call(
+                @_block-name: @forix-kbd__name,
+                @_version: 'm'
+            );
+        }
+        pre{
+            .forix-global-call(
+                @_block-name: @forix-pre__name,
+                @_version: 'm'
+            );
+        }
+        samp{
+            .forix-global-call(
+                @_block-name: @forix-samp__name,
+                @_version: 'm'
+            );
+        }
+
+        // Blockquote
+        // ------------
+        blockquote{
+            .forix-global-call(
+                @_block-name: @forix-blockquote__name,
+                @_version: 'm'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-p__name,
+                    @_version: 'm'
+                );
+            }
+            ul{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-ul__name,
+                    @_version: 'm'
+                );
+            }
+            ol{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-ol__name,
+                    @_version: 'm'
+                );
+            }
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-li__name,
+                    @_version: 'm'
+                );
+            }
+            footer{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-footer__name,
+                    @_version: 'm'
+                );
+            }
+            small,.small{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-small__name,
+                    @_version: 'm'
+                );
+            }
+            cite{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-cite__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        q{
+            .forix-global-call(
+                @_block-name: @forix-q__name,
+                @_version: 'm'
+            );
+        }
+        cite{
+            .forix-global-call(
+                @_block-name: @forix-cite__name,
+                @_version: 'm'
+            );
+        }
+
+        .items{
+            .forix-global-call(
+                @_block-name: @forix-items__name,
+                @_version: 'm'
+            );
+        }
+        .a-center{
+            .forix-global-call(
+                @_block-name:  @forix-a-center__name,
+                @_version:  'm'
+            );
+        }
+        .a-left{
+            .forix-global-call(
+                @_block-name:  @forix-a-left__name,
+                @_version:  'm'
+            );
+        }
+        .a-right{
+            .forix-global-call(
+                @_block-name:  @forix-a-right__name,
+                @_version:  'm'
+            );
+        }
+        iframe{
+            .forix-global-call(
+                @_block-name:  @forix-iframe__name,
+                @_version:  'm'
+            );
+        }
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    & when(@use-typography-core__enable= true) {
+        // Base
+        // ------------
+        //* (all)
+        *,
+        *:before,
+        *:after{
+            .forix-global-call(
+                @_block-name: @forix-all__name,
+                @_version: 'l'
+            );
+        }
+        html{
+            .forix-global-call(
+                @_block-name: @forix-root__name,
+                @_version: 'l'
+            );
+        }
+        body{
+            .forix-global-call(
+                @_block-name: @forix-body__name,
+                @_version: 'l'
+            );
+        }
+        p{
+            .forix-global-call(
+                @_block-name: @forix-p__name,
+                @_version: 'l'
+            );
+        }
+        abbr[title]{
+            .forix-global-call(
+                @_block-name: @forix-abbr__name,
+                @_version: 'l'
+            );
+        }
+        b,strong{
+            .forix-global-call(
+                @_block-name: @forix-strong__name,
+                @_version: 'l'
+            );
+        }
+        em,i{
+            .forix-global-call(
+                @_block-name: @forix-em__name,
+                @_version: 'l'
+            );
+        }
+        mark{
+            .forix-global-call(
+                @_block-name: @forix-mark__name,
+                @_version: 'l'
+            );
+        }
+        small,.small{
+            .forix-global-call(
+                @_block-name: @forix-small__name,
+                @_version: 'l'
+            );
+        }
+        hr{
+            .forix-global-call(
+                @_block-name: @forix-hr__name,
+                @_version: 'l'
+            );
+        }
+        sub,sup{
+            .forix-global-call(
+                @_block-name: @forix-sub-all__name,
+                @_version: 'l'
+            );
+        }
+        sub{
+            .forix-global-call(
+                @_block-name: @forix-sub__name,
+                @_version: 'l'
+            );
+        }
+        sup{
+            .forix-global-call(
+                @_block-name: @forix-sup__name,
+                @_version: 'l'
+            );
+        }
+        dfn{
+            .forix-global-call(
+                @_block-name: @forix-dfn__name,
+                @_version: 'l'
+            );
+        }
+
+        // Heading
+        // ------------
+
+        //h1->h6(heading)
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6{
+            .forix-global-call(
+                @_block-name: @forix-heading__name,
+                @_version: 'l'
+            );
+        }
+        //h1->h6 small (heading-small)
+        h1 small,
+        h2 small,
+        h3 small,
+        h4 small,
+        h5 small,
+        h6 small{
+            .forix-global-call(
+                @_block-name: @forix-heading-small__name,
+                @_version: 'l'
+            );
+        }
+        h1{
+            .forix-global-call(
+                @_block-name: @forix-h1__name,
+                @_version: 'l'
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h1-small__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        h2{
+            .forix-global-call(
+                @_block-name: @forix-h2__name,
+                @_version: 'l'
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h2-small__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        h3{
+            .forix-global-call(
+                @_block-name: @forix-h3__name,
+                @_version: 'l'
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h3-small__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        h4{
+            .forix-global-call(
+                @_block-name: @forix-h4__name,
+                @_version: 'l'
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h4-small__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        h5{
+            .forix-global-call(
+                @_block-name: @forix-h5__name,
+                @_version: 'l'
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h5-small__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        h6{
+            .forix-global-call(
+                @_block-name: @forix-h6__name,
+                @_version: 'l'
+            );
+            small{
+                .forix-global-call(
+                    @_block-name: @forix-h6-small__name,
+                    @_version: 'l'
+                );
+            }
+        }
+
+        // Link
+        // ------------
+        a,
+        .alink{
+            .forix-global-call(
+                @_block-name: @forix-a__name,
+                @_version: 'l'
+            );
+        }
+        // link-list__name:type1,type2,type3.... // Maximum 20 types
+        .forix-abs-link1{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 1,
+                @_version:  'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link2{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 2,
+                @_version:  'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link3{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 3,
+                @_version:  'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link4{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 4,
+                @_version:  'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link5{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 5,
+                @_version:  'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link6{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 6,
+                @_version:  'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link7{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 7,
+                @_version:  'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link8{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 8,
+                @_version:  'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link9{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 9,
+                @_version:  'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link10{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 10,
+                @_version:  'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link11{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 11,
+                @_version:  'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link12{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 12,
+                @_version:  'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link13{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 13,
+                @_version:  'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link14{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 14,
+                @_version:  'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link15{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 15,
+                @_version:  'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link16{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 16,
+                @_version:  'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link17{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 17,
+                @_version:  'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link18{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 18,
+                @_version:  'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link19{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 19,
+                @_version:  'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-link20{
+            .forix-call-set-styles(
+                @_name: link,
+                @_list-type: @forix-link-list__name,
+                @_number: 20,
+                @_version:  'l',
+                @_type: 'responsives'
+            );
+        }
+        // List
+        // ------------
+        ul,ol{
+            .forix-global-call(
+                @_block-name: @forix-list__name,
+                @_version: 'l'
+            );
+            > li{
+                .forix-global-call(
+                    @_block-name: @forix-list-li__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        // reset ul,ol (reset list)
+        .forix-abs-list-reset{
+            .forix-global-call(
+                @_block-name: @forix-reset-list__name,
+                @_version: 'l'
+            );
+            > li{
+                .forix-global-call(
+                    @_block-name: @forix-reset-list-li__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        ul{
+            .forix-global-call(
+                @_block-name: @forix-ul__name,
+                @_version: 'l'
+            );
+            > li{
+                .forix-global-call(
+                    @_block-name: @forix-ul-li__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        ol{
+            .forix-global-call(
+                @_block-name: @forix-ol__name,
+                @_version: 'l'
+            );
+            > li{
+                .forix-global-call(
+                    @_block-name: @forix-ol-li__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        ul,ol{
+            ul,ol{
+                .forix-global-call(
+                    @_block-name: @forix-sub-list__name,
+                    @_version: 'l'
+                );
+                li{
+                    .forix-global-call(
+                        @_block-name: @forix-sub-list-li__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+        }
+        ul ul {
+            .forix-global-call(
+                @_block-name: @forix-ul-ul__name,
+                @_version: 'l'
+            );
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-ul-ul-li__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        ul ol {
+            .forix-global-call(
+                @_block-name: @forix-ul-ol__name,
+                @_version: 'l'
+            );
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-ul-ol-li__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        ol ol {
+            .forix-global-call(
+                @_block-name: @forix-ol-ol__name,
+                @_version: 'l'
+            );
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-ol-ol-li__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        ol ul {
+            .forix-global-call(
+                @_block-name: @forix-ol-ul__name,
+                @_version: 'l'
+            );
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-ol-ul-li__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        dl{
+            .forix-global-call(
+                @_block-name: @forix-dl__name,
+                @_version: 'l'
+            );
+        }
+        dt{
+            .forix-global-call(
+                @_block-name: @forix-dt__name,
+                @_version: 'l'
+            );
+        }
+        dd{
+            .forix-global-call(
+                @_block-name: @forix-dd__name,
+                @_version: 'l'
+            );
+        }
+
+        // Code
+        // ------------
+        code,kbd,pre,samp{
+            .forix-global-call(
+                @_block-name: @forix-code-all__name,
+                @_version: 'l'
+            );
+        }
+        code{
+            .forix-global-call(
+                @_block-name: @forix-code__name,
+                @_version: 'l'
+            );
+        }
+        kbd{
+            .forix-global-call(
+                @_block-name: @forix-kbd__name,
+                @_version: 'l'
+            );
+        }
+        pre{
+            .forix-global-call(
+                @_block-name: @forix-pre__name,
+                @_version: 'l'
+            );
+        }
+        samp{
+            .forix-global-call(
+                @_block-name: @forix-samp__name,
+                @_version: 'l'
+            );
+        }
+
+        // Blockquote
+        // ------------
+        blockquote{
+            .forix-global-call(
+                @_block-name: @forix-blockquote__name,
+                @_version: 'l'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-p__name,
+                    @_version: 'l'
+                );
+            }
+            ul{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-ul__name,
+                    @_version: 'l'
+                );
+            }
+            ol{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-ol__name,
+                    @_version: 'l'
+                );
+            }
+            li{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-li__name,
+                    @_version: 'l'
+                );
+            }
+            footer{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-footer__name,
+                    @_version: 'l'
+                );
+            }
+            small,.small{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-small__name,
+                    @_version: 'l'
+                );
+            }
+            cite{
+                .forix-global-call(
+                    @_block-name: @forix-blockquote-cite__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        q{
+            .forix-global-call(
+                @_block-name: @forix-q__name,
+                @_version: 'l'
+            );
+        }
+        cite{
+            .forix-global-call(
+                @_block-name: @forix-cite__name,
+                @_version: 'l'
+            );
+        }
+
+        .items{
+            .forix-global-call(
+                @_block-name: @forix-items__name,
+                @_version: 'l'
+            );
+        }
+        .a-center{
+            .forix-global-call(
+                @_block-name:  @forix-a-center__name,
+                @_version:  'l'
+            );
+        }
+        .a-left{
+            .forix-global-call(
+                @_block-name:  @forix-a-left__name,
+                @_version:  'l'
+            );
+        }
+        .a-right{
+            .forix-global-call(
+                @_block-name:  @forix-a-right__name,
+                @_version:  'l'
+            );
+        }
+        iframe{
+            .forix-global-call(
+                @_block-name:  @forix-iframe__name,
+                @_version:  'l'
+            );
+        }
+    }
+}
+
+// Start custom CSS

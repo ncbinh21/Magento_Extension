@@ -1,0 +1,13 @@
+<?php
+/**
+ * @var $block Orange35\ImageConstructor\Block\Constructor
+ */
+$options = $block->getOptionsJson();
+?>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "imageConstructor": <?php echo $options;?>
+    }
+}
+</script>

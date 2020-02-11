@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<page layout="1column-full-width" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <container name="homepage-brand-container" htmlTag="div" htmlClass="homepage-brand-container" before="-">
+                <container name="homepage-brand-inner" htmlTag="div" htmlClass="homepage-brand-inner">
+                    <container name="homepage-brand-text-container" htmlTag="div" htmlClass="homepage-brand-text" before="-">
+                        <block class="Magento\Cms\Block\Block" name="homepage-brand-text">
+                            <arguments>
+                                <argument name="block_id" xsi:type="string">homepage-brand-text</argument>
+                            </arguments>
+                        </block>
+                    </container>
+                    <container name="homepage-brand-detail-container" htmlTag="div" htmlClass="homepage-brand-detail" after="homepage-brand-text-container">
+                        <block class="Magento\Cms\Block\Block" name="homepage-brand-detail">
+                            <arguments>
+                                <argument name="block_id" xsi:type="string">homepage-brand-detail</argument>
+                            </arguments>
+                        </block>
+                    </container>
+                </container>
+            </container>
+            <block name="category-tab" template="Forix_Custom::category.phtml" class="Forix\Custom\Block\Category" after="homepage-brand-container"/>
+            <container name="homepage-cms-container-1" htmlTag="div" htmlClass="homepage-cms-container-1" after="category-tab">
+                <container name="homepage-introduce-container" htmlTag="div" htmlClass="homepage-introduce float" after="-">
+                    <block class="Magento\Cms\Block\Block" name="homepage-introduce">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">homepage-introduce</argument>
+                        </arguments>
+                    </block>
+                </container>
+                <container name="homepage-video-container" htmlTag="div" htmlClass="homepage-video float" after="homepage-introduce-container">
+                    <block class="Magento\Cms\Block\Block" name="homepage-video">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">homepage-video</argument>
+                        </arguments>
+                    </block>
+                </container>
+            </container>
+            <container name="homepage-cms-container-2" htmlTag="div" htmlClass="homepage-cms-container-2" after="homepage-cms-container-1">
+                <container name="homepage-cms-inner-2" htmlTag="div" htmlClass="homepage-cms-inner-2">
+                    <container name="homepage-custom-shoe-container" htmlTag="div" htmlClass="homepage-video float" after="-">
+                        <block class="Magento\Cms\Block\Block" name="homepage-custom-shoe">
+                            <arguments>
+                                <argument name="block_id" xsi:type="string">homepage-custom-shoe</argument>
+                            </arguments>
+                        </block>
+                    </container>
+                    <container name="homepage-fan-photo-container" htmlTag="div" htmlClass="homepage-fan-photo float" after="homepage-custom-shoe-container">
+                        <block class="Magento\Cms\Block\Block" name="homepage-fan-photo">
+                            <arguments>
+                                <argument name="block_id" xsi:type="string">homepage-fan-photo</argument>
+                            </arguments>
+                        </block>
+                    </container>
+                </container>
+            </container>
+            <container name="instagram-title-container" htmlTag="div" htmlClass="instagram-title float" after="homepage-cms-container-2">
+                <block class="Magento\Cms\Block\Block" name="instagram-title">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">instagram-title</argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceContainer>
+    </body>
+</page>

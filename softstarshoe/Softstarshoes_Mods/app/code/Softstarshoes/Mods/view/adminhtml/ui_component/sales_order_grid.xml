@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <listingToolbar name="listing_top">
+        <massaction name="listing_massaction">
+            <action name="print_gift_receipt">
+                <settings>
+                    <url path="softstar/order/massprintgiftreceipt"/>
+                    <type>print_gift_receipt</type>
+                    <label translate="true">Print Gift Receipt</label>
+                </settings>
+            </action>
+        </massaction>
+    </listingToolbar>
+</listing>

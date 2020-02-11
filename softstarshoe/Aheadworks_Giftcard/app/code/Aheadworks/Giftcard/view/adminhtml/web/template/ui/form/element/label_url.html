@@ -1,0 +1,7 @@
+<if args="getUrl()">
+    <a href="#" class="aw-giftcard-admin-control-label" data-bind="attr: {href: getUrl()}, text: getLabel()"></a>
+</if>
+<ifnot args="getUrl()">
+    <label class="aw-giftcard-admin-control-label" text="getLabel()" />
+</ifnot>
+<text args="getAfter()"/>

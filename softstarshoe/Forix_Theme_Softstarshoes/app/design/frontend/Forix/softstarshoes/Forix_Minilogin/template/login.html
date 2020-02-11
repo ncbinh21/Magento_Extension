@@ -1,0 +1,89 @@
+<div class="block-authentication swipe-minilogin"  data-bind="mageInit: {
+            'forix/pushdata':{
+                'type': 'form'
+            }}, blockLoader: isLoading">
+    <!-- ko foreach: getRegion('before') -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <!-- /ko -->
+    <div class="block block-customer-login"
+         data-bind="attr: {'data-label': $t('or')}">
+        <div class="block-title">
+            <strong id="block-customer-login-heading"
+                    role="heading"
+                    aria-level="2"
+                    data-bind="i18n: 'Login'"></strong>
+        </div>
+        <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+        <div class="block-content" aria-labelledby="block-customer-login-heading">
+            <form class="form form-minilogin" data-role="login"
+                  data-bind="submit:login"
+                  method="post">
+                <div class="fieldset"
+                     data-bind="attr: {'data-hasrequired': $t('* Required Fields')}">
+                    <div class="field field-email required">
+                        <label class="label" for="login-email"><span data-bind="i18n: 'Email Address'"></span></label>
+                        <div class="control">
+                            <input type="text" class="input-text" id="login-email" name="username"
+                                   data-bind="attr: {autocomplete: autocomplete}"
+                                   data-validate="{required:true, 'validate-email':true}" required="required"/>
+                            <label class="label" for="login-email"><span data-bind="i18n: 'Email Address'"></span></label>
+                        </div>
+                    </div>
+                    <div class="field field-password required">
+                        <label for="login-password" class="label"><span data-bind="i18n: 'Password'"></span></label>
+                        <div class="control">
+                            <input type="password" class="input-text" id="login-password" name="password"
+                                   data-bind="attr: {autocomplete: autocomplete}"
+                                   data-validate="{required:true, 'validate-password':true}"
+                                   autocomplete="off" required/>
+                            <label for="login-password" class="label"><span data-bind="i18n: 'Password'"></span></label>
+                        </div>
+                    </div>
+                    <!-- ko foreach: getRegion('additional-login-form-fields') -->
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                    <!-- /ko -->
+                </div>
+                <div class="actions-toolbar">
+                    <input name="context" type="hidden" value="checkout" />
+
+                    <div class="buttons">
+                        <button type="submit" class="action action-login secondary" name="send" id="send2" title="Login">
+                            <span> Sign in</span>
+                        </button>
+                        <div class="forgot-password-form">
+                            <a class="action" title="Forgot your password?" data-bind="attr: {href: forgotPasswordUrl}">
+                                <span data-bind="i18n: 'Forgot your password?'"></span>
+                            </a>
+                        </div>
+                        <p>Don’t have an account?</p>
+                        <a class="action action-register" data-bind="attr: {href: registerUrl}" title="Register">
+                            <span>Sign up</span>
+                        </a>
+                    </div>
+                </div>
+            </form>
+            <form class="form form-forgotpwd no-display" method="post" data-bind="submit:forgotpwd" id="forgotpwd-form">
+                <div class="fieldset forgotpwd" data-bind="attr: {'data-hasrequired': $t('* Required Fields')}">
+                    <div class="field note">Enter your email and we'll email you instructions on how to reset your password.</div>
+                    <div class="field email required">
+                        <label for="forgotpwd-email" class="label"><span>Email</span></label>
+                        <div class="control">
+                            <input type="text" name="email" alt="email" id="forgotpwd-email" class="input-text" value="" data-validate="{required:true, 'validate-email':true}" required>
+                            <label for="forgotpwd-email" class="label"><span>Email</span></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="actions-toolbar">
+                    <div class="buttons">
+                        <div>
+                            <button type="submit" class="action" name="send" id="send3" title="Send"><span data-bind="i18n: 'Send'"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,54 @@
+<?php
+/** @var \Forix\Bannerslider\Block\SliderItem $block */
+$styleSlide = $block->getSlider()->getStyleSlide();
+$slider = $block->getSlider();
+$htmlId   = $block->getFlexsliderHtmlId();
+$bannerCollection = $block->getBannerCollection();
+$bannerHelper = $this->helper('Forix\Bannerslider\Helper\Data');
+$isCurrentHttps = $block->isCurrentHttps();
+?>
+<div class="main-slider">
+	<div class="forix-bannerslide">
+		<div id="<?php echo $htmlId ?>" class="static-banner flexslider-content-image <?php echo $htmlId ?>">
+            <div class="banner-slider">
+				<?php foreach ($bannerCollection as $banner): ?>
+					<div class="slide">
+						<div class="box-outer">
+                            <?php
+                                $tabletData = '';
+                                if ($tabletImage = $banner->getTablet()) {
+                                    $tabletData = ' data-image-tablet="' . $bannerHelper->getBaseUrlMedia($tabletImage, $isCurrentHttps) . '"';
+                                }
+                                $phoneData = '';
+                                if ($phoneImage = $banner->getPhone()) {
+                                    $phoneData = ' data-image-mobile="' . $bannerHelper->getBaseUrlMedia($phoneImage, $isCurrentHttps) . '"';
+                                }
+                                $bannerImage = $block->getBannerImageUrl($banner);
+                            ?>
+                            <div class="box-image">
+                                <img class="image-responsive" alt="glossary banner"
+                                         src="<?php echo $bannerImage ?>"
+                                         data-image-desktop="<?php echo $bannerImage ?>" <?php echo $tabletData . $phoneData ?>/>
+                            </div>
+                            <div class="banner-content-container">
+                                <div class="banner-content <?php echo $banner->getAlignText(); ?>">
+                                        <h2 class="banner-title"><span><?php echo $banner->getName(); ?></span></h2>
+                                    <?php if($banner->getImageAlt()):?>
+                                        <p class="banner-text"><?php echo $banner->getImageAlt(); ?></p>
+                                    <?php endif; ?>
+                                    <?php if($banner->getClickUrl()): ?>
+                                        <?php if($btext = $banner->getButtonText()): ?>
+                                            <a target="<?php echo $banner->getTargetValue()?>" href="<?php echo $banner->getClickUrl() ?>" class="banner-link"><?php echo __($btext); ?></a>
+                                        <?php else: ?>
+                                            <a target="<?php echo $banner->getTargetValue()?>" href="<?php echo $banner->getClickUrl() ?>" class="banner-link"><?php echo __('Shop Now'); ?></a>
+                                        <?php endif;?>
+                                    <?php endif;?>
+                                </div>
+                            </div>
+						</div>
+					</div>
+				<?php endforeach ?>
+            </div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,161 @@
+@use-account-nav-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.block-collapsible-nav .title{
+    &:extend(.forix-abs-toggling-title all);
+}
+
+.block.account-nav{
+    &:extend(.block-collapsible-nav all);
+}
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+//@block-collapsible-nav-item__background: @three-background__color;
+@block-collapsible-nav-item__text__color: @sss-color-6;
+@block-collapsible-nav-item__link__color: @sss-color-1;
+@block-collapsible-nav-item__link__color__hover: @sss-color-7;
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .block-collapsible-nav{
+        left: 0;
+        top: 0;
+        z-index: 5;
+
+        .title{
+            &:after{
+                top: 50%;
+                right: 10px;
+                .forix-lib-css(transform,translate(0,-50%),1);
+            }
+        }
+
+        .content{
+            &.active{
+                display: block;
+            }
+        }
+
+        .item{
+            margin: 0 0 @forix-indent__s;
+            &:last-child{
+                margin: 0;
+            }
+            strong,
+            a{
+                line-height: 18px;
+                .lib-font-size(16px);
+            }
+
+            a{
+                font-weight: @forix-font-weight__bold;
+                text-decoration: none;
+                color: @block-collapsible-nav-item__link__color;
+                &:hover{
+                    color: @block-collapsible-nav-item__link__color__hover;
+                    font-weight: @forix-font-weight__bold;
+                }
+            }
+
+            strong{
+                color: @block-collapsible-nav-item__text__color;
+            }
+        }
+
+        .item.current{
+            a{
+                font-weight: @forix-font-weight__bold;
+                color: @block-collapsible-nav-item__text__color;
+
+                &:hover {
+                    font-weight: @forix-font-weight__bold;
+                }
+            }
+
+            strong{
+                color: @block-collapsible-nav-item__text__color;
+            }
+        }
+    }
+    .block.account-nav .title.account-nav-title{
+        background: transparent;
+        padding: 5px 30px 15px 0;
+        border-bottom: 1px solid transparent;
+        text-transform: none;
+        font-weight: @forix-font-weight__bold;
+        color: @sss-color-1;
+        text-decoration: none;
+        cursor: pointer;
+        display: block;
+        font-size: @medium-title__font-size__l;
+        &:after{
+            color: @color-gray-1;
+        }
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .block-collapsible-nav{
+        padding: 0 @forix-gutter-width/2;
+        position: absolute;
+        width: 100%;
+
+        .title{
+            display:block;
+            position:relative;
+
+            &:after{
+                position: absolute;
+            }
+        }
+
+        .content{
+            background: url('../images/gray-bg.jpg') repeat;
+            .border-radius(10px 10px 0 0);
+            padding: @forix-indent__xm @forix-indent__s @forix-indent__xs;
+            display: none;
+        }
+    }
+    .block.account-nav .title.account-nav-title{
+        padding: 15px 30px 15px 12px;
+        &:after{
+            display: block;
+        }
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .block-collapsible-nav{
+        //background: url('../images/gray-bg.jpg') repeat;
+        position: static;
+        padding: 20px 15px;
+        .border-radius(10px);
+        .title{
+            //display: none;
+        }
+    }
+    .block.account-nav .title.account-nav-title{
+        &:after{
+            display: none;
+        }
+    }
+}
+
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+
+}

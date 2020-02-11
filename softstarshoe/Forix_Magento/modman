@@ -1,0 +1,5 @@
+vendor/magento/module-page-cache/view/frontend/web/js/page-cache.js             vendor/magento/module-page-cache/view/frontend/web/js/page-cache.js
+vendor/magento/module-review/view/frontend/web/js/process-reviews.js            vendor/magento/module-review/view/frontend/web/js/process-reviews.js
+vendor/magento/module-quote/Model/Cart/CartTotalRepository.php                  vendor/magento/module-quote/Model/Cart/CartTotalRepository.php
+lib/web/jquery/jquery.validate.js                                               lib/web/jquery/jquery.validate.js
+lib/internal/Magento/Framework/View/Element/UiComponentFactory.php lib/internal/Magento/Framework/View/Element/UiComponentFactory.php

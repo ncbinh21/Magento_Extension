@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="product.info.form.content">
+            <block class="Mirasvit\Credit\Block\Product\View\Options" name="product.credit.options"
+                   template="product/view/options.phtml" before="-">
+                <block class="Mirasvit\Credit\Block\Product\View\Options\Type\Fixed"
+                       name="product.credit.options.fixed" template="product/view/options/type/fixed.phtml" />
+                <block class="Mirasvit\Credit\Block\Product\View\Options\Type\Range"
+                       name="product.credit.options.range" template="product/view/options/type/range.phtml" />
+            </block>
+        </referenceContainer>
+    </body>
+</page>

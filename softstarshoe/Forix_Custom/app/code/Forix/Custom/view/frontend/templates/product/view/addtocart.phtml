@@ -1,0 +1,122 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Catalog\Block\Product\View */
+?>
+<?php $_product = $block->getProduct(); ?>
+<?php $buttonTitle = __('Add to Cart'); ?>
+<?php if ($_product->isSaleable()): ?>
+    <div class="box-tocart">
+        <div class="fieldset">
+            <div class="product-price"></div>
+            <?php if ($block->shouldRenderQuantity()): ?>
+            <div class="box-right">
+                <div class="field qty">
+                    <label class="label" for="qty"><span><?php /* @escapeNotVerified */ echo __('QTY') ?></span></label>
+                    <div class="control">
+                        <input type="number"
+                               name="qty"
+                               id="qty"
+                               value="<?php /* @escapeNotVerified */ echo $block->getProductDefaultQty() * 1 ?>"
+                               title="<?php /* @escapeNotVerified */ echo __('Qty') ?>" class="input-text qty"
+                               data-validate="<?php echo $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>"
+                        />
+                    </div>
+                </div>
+                <?php endif; ?>
+                <div class="actions">
+                    <button type="submit"
+                            title="<?php /* @escapeNotVerified */ echo $buttonTitle ?>"
+                            class="action primary tocart"
+                            id="product-addtocart-button">
+                        <span><?php /* @escapeNotVerified */ echo $buttonTitle ?></span>
+                    </button>
+                    <?php echo $block->getChildHtml('', true) ?>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+<?php if ($block->isRedirectToCartEnabled()) : ?>
+    <script type="text/x-magento-init">
+    {
+        "#product_addtocart_form": {
+            "Magento_Catalog/product/view/validation": {
+                "radioCheckboxClosest": ".nested"
+            }
+        }
+    }
+</script>
+<?php else : ?>
+    <script>
+        require([
+            'jquery',
+            'mage/mage',
+            'Magento_Catalog/product/view/validation',
+            'Magento_Catalog/js/catalog-add-to-cart-ext'
+        ], function ($) {
+            'use strict';
+
+            $('#product_addtocart_form').mage('validation', {
+                radioCheckboxClosest: '.nested',
+                submitHandler: function (form) {
+                    var widget = $(form).catalogAddToCartExt({
+                        bindSubmit: false
+                    });
+
+                    widget.catalogAddToCartExt('submitForm', $(form));
+
+                    return false;
+                }
+            });
+
+            var priceCustom = '';
+            $('#aw_gc_amount').change(function() {
+                var int = parseInt($('#aw_gc_custom_amount').val());
+                var checkVar = int + "";
+                if($.isNumeric(parseInt($('#aw_gc_amount :selected').val()))) {
+                    $('.product-price').html($("#aw_gc_amount :selected").text());
+                }else if($.isNumeric(parseInt($('#aw_gc_custom_amount').val())) && checkVar == $('#aw_gc_custom_amount').val() && $("#aw_gc_amount :selected").val() == 'custom'){
+                    $('.product-price').html(priceCustom);
+                }else{
+                    $('.product-price').html('');
+                }
+            });
+            $('#aw_gc_custom_amount').change(function() {
+                var int = parseInt($('#aw_gc_custom_amount').val());
+                var checkVar = int + "";
+                if($.isNumeric(parseInt($('#aw_gc_custom_amount').val())) && checkVar == $('#aw_gc_custom_amount').val()){
+                    var validate = '';
+                    var minInt = '';
+                    var maxInt = '';
+                    $('#aw_gc_custom_amount').each(function(){
+                        validate = jQuery(this).data('validate');
+                    });
+                    var minStr = validate.match(/min: \d*/g);
+                    if(minStr[0]) {
+                        minInt = parseInt(minStr[0].replace('min: ',''));
+                    }
+                    var maxStr = validate.match(/max: \d*/g);
+                    if(maxStr[0]) {
+                        maxInt = parseInt(maxStr[0].replace('max: ',''));
+                    }
+
+                    if(parseInt($('#aw_gc_custom_amount').val()) >= minInt && parseInt($('#aw_gc_custom_amount').val()) <= maxInt){
+                        $('.product-price').html('$' + $("#aw_gc_custom_amount").val() + '.00');
+                        priceCustom = '$' + $("#aw_gc_custom_amount").val() + '.00';
+                    } else {
+                        $('.product-price').html('');
+                        priceCustom = '';
+                    }
+                } else {
+                    $('.product-price').html('');
+                }
+            });
+        });
+    </script>
+<?php endif; ?>

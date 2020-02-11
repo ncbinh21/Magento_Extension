@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+<body>
+    <referenceContainer name="content">
+        <block before="product.info.details" class="Yosto\InstagramConnect\Block\Instagram\ImageSlider" cacheable="true" name="yosto.instagramconnect.block.instagram.imagesliderlist" template="Yosto_InstagramConnect::instagram/slider/list.phtml"/>
+    </referenceContainer>
+    <referenceContainer name="alert.urls">
+        <block class="Yosto\InstagramConnect\Block\Instagram\ImageSlider" cacheable="true" name="yosto.instagramconnect.block.instagram.imageslidertag" template="Yosto_InstagramConnect::instagram/slider/tag.phtml"/>
+    </referenceContainer>
+</body>
+</page>

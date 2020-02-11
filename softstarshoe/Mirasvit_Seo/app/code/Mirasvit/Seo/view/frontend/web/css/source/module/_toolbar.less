@@ -1,0 +1,170 @@
+.seo__toolbar {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 1.3rem;
+    outline: 5px solid rgba(74, 69, 66, 0.6);
+    border-radius: 0;
+    z-index: 1000000;
+    box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.25);
+    max-width: 40rem;
+
+    b, p, span, i {
+        font-size: 1.3rem;
+    }
+
+    .seo__toolbar-header {
+        font-weight: 600;
+        color: #fff;
+        background: #315aa5;
+        padding: 1rem 2rem 1rem 4rem;
+        text-align: center;
+        position: relative;
+
+        > i {
+            position: absolute;
+            left: 1rem;
+            font-size: 15px;
+        }
+
+        .close {
+            position: absolute;
+            right: 1rem;
+            top: 0.7rem;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    }
+
+    .seo__toolbar-content {
+        background: #fefefe;
+        padding: 1rem 1rem 1rem 0;
+        height: 550px;
+        overflow-y: auto;
+
+        .seo__toolbar-section {
+            .lib-clearfix();
+            padding: .2rem .2rem .2rem 0;
+            position: relative;
+            border-left: 2.5rem solid transparent;
+            word-wrap: break-word;
+            border-bottom: 1px solid #eee;
+
+            .seo__toolbar-section-label {
+                float: left;
+                font-weight: 600;
+                margin-right: 1rem;
+            }
+
+            .seo__toolbar-section-value {
+            }
+
+            .seo__toolbar-section-message {
+                font-size: 12px;
+            }
+
+            .fa {
+                position: absolute;
+                top: 0.4rem;
+                font-size: 15px;
+                left: -2.2rem;
+            }
+
+            &.status-success {
+                .fa {
+                    color: #1d9d74;
+                    &:before {
+                        content: "\f00c";
+                    }
+                }
+
+                .seo__toolbar-section-message {
+                    color: #1d9d74;
+                }
+            }
+            &.status-warning {
+                .fa {
+                    color: #FF5501;
+                    &:before {
+                        content: "\f05a";
+                    }
+                }
+
+                .seo__toolbar-section-message {
+                    color: #FF5501;
+                }
+            }
+            &.status-error {
+                .fa {
+                    color: #FF5501;
+                    &:before {
+                        content: "\f071";
+                    }
+                }
+
+                .seo__toolbar-section-message {
+                    color: #FF5501;
+                }
+            }
+        }
+
+        .seo__toolbar-keywords {
+            margin-top: 1rem;
+            > div {
+                span {
+                    width: 20rem;
+                    overflow: hidden;
+                    display: inline-block;
+                    margin-right: 1rem;
+                }
+
+                i {
+                    width: 10rem;
+                    background: rgba(29, 157, 116, 0.27);
+                    height: 5px;
+                    display: inline-block;
+                    position: relative;
+                    margin-bottom: 5px;
+                    border-radius: 1px;
+                    overflow: hidden;
+                    margin-right: 1rem;
+
+                    > i {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        background: #1D9D74;
+                    }
+                }
+            }
+        }
+
+        .seo__toolbar-images {
+            a {
+                line-height: 14px;
+                display: block;
+                margin-bottom: 4px;
+                font-size: 12px;
+            }
+        }
+    }
+
+    &.toolbar-hidden {
+        outline: none;
+        box-shadow: none;
+
+        .seo__toolbar-content {
+            display: none;
+        }
+
+        .seo__toolbar-header {
+            box-shadow: 2px 2px 2px 0 rgba(50, 50, 50, 0.25);
+            cursor: pointer;
+            border-radius: 3px;
+
+            .close {
+                display: none;
+            }
+        }
+    }
+}

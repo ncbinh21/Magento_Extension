@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="empty" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+		<css src="Forix_Custom::css/slider/owl.carousel.css"/>
+	</head>
+	<body>
+		<block class="Forix\Custom\Block\Product" name="catalog-product-homepage" template="Forix_Custom::product.phtml"/>
+	</body>
+</page>

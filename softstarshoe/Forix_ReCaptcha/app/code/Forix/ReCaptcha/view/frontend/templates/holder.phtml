@@ -1,0 +1,29 @@
+<?php
+/**
+ * Created by: Bruce
+ */
+?>
+<div class="recaptcha-wrap">
+    <div class="recaptcha-holder"></div>
+    <div class="required-captcha">
+        <input type="checkbox" value=""
+               class="checkbox"
+               name="recaptcha-validate-<?php echo $block->getFormId() ?>"
+               data-validate="{required:true,messages:{required:'<?php echo __("Make sure you are not robots."); ?>'}}"
+        />
+        <label></label>
+    </div>
+</div>
+<script src="<?php echo $block->getRecaptchaScriptSrc() ?>" async defer></script>
+<script>    
+    var onloadCallback = function(){
+        require(['jquery', 'recaptcha'], function($){
+            var options = {
+                "site_key": "<?php echo $block->getSiteKey() ?>",
+                "secret_key": "<?php echo $block->getSecretKey() ?>",
+                "wrap" : $("input[name=recaptcha-validate-<?php echo $block->getFormId() ?>]").parents(".recaptcha-wrap")
+            };
+            $('.recaptcha-wrap').reCaptcha(options);
+        });     
+    };
+</script>

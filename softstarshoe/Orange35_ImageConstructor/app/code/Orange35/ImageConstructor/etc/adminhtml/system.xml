@@ -1,0 +1,211 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="orange35_tab" translate="label" sortOrder="1000">
+            <label>Orange35</label>
+        </tab>
+        <section id="image_constructor_section" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Image Constructor</label>
+            <tab>orange35_tab</tab>
+            <resource>Orange35_ImageConstructor::config</resource>
+            <group id="product_page" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Product Page</label>
+
+                <field id="small_image_width" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Small Image Width</label>
+                </field>
+                <field id="small_image_height" translate="label" type="text" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Small Image Height</label>
+                </field>
+                <field id="small_keep_frame" translate="label" type="select" sortOrder="12"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Keep Frame for Small Images</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="medium_image_width" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Medium Image Width</label>
+                </field>
+                <field id="medium_image_height" translate="label" type="text" sortOrder="21" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Medium Image Height</label>
+                </field>
+                <field id="medium_keep_frame" translate="label" type="select" sortOrder="22"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Keep Frame for Medium Images</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="large_image_width" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Large Image Width</label>
+                </field>
+                <field id="large_image_height" translate="label" type="text" sortOrder="31" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Large Image Height</label>
+                </field>
+                <field id="large_keep_frame" translate="label" type="select" sortOrder="32"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Keep Frame for Large Images</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="product_form_selector" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Form Selector</label>
+                </field>
+                <field id="media_gallery_placeholder_selector" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Media Gallery Placeholder Selector</label>
+                </field>
+                <field id="media_gallery_selector" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Media Gallery Selector</label>
+                </field>
+                <field id="image_holder_selector" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image Holder Selector</label>
+                </field>
+                <field id="image_selector" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image Selector</label>
+                </field>
+                <field id="image_zoom_selector" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image Zoom Selector</label>
+                </field>
+            </group>
+            <group id="mini_cart" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Mini Cart Block</label>
+
+                <field id="image_width" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image Width</label>
+                </field>
+                <field id="image_height" translate="label" type="text" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image Height</label>
+                </field>
+                <field id="keep_frame" translate="label" type="select" sortOrder="12"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Keep Frame for Images</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="items_block_selector" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>All Items Block Selector</label>
+                </field>
+                <field id="item_block_selector" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Item Block Selector</label>
+                </field>
+                <field id="image_wrapper_selector" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Item Image Wrapper Selector</label>
+                </field>
+                <field id="edit_action_selector" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Edit Action Selector</label>
+                </field>
+            </group>
+            <group id="cart" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Cart Page</label>
+
+                <field id="image_width" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image Width</label>
+                </field>
+                <field id="image_height" translate="label" type="text" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image Height</label>
+                </field>
+                <field id="keep_frame" translate="label" type="select" sortOrder="12"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Keep Frame for Images</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="items_block_selector" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>All Items Block Selector</label>
+                </field>
+                <field id="item_block_selector" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Item Block Selector</label>
+                </field>
+                <field id="image_wrapper_selector" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Item Image Wrapper Selector</label>
+                </field>
+                <field id="edit_action_selector" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Edit Action Selector</label>
+                </field>
+            </group>
+            <group id="checkout" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Checkout Page</label>
+
+                <field id="image_width" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image Width</label>
+                </field>
+                <field id="image_height" translate="label" type="text" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image Height</label>
+                </field>
+                <field id="keep_frame" translate="label" type="select" sortOrder="12"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Keep Frame for Images</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="items_block_selector" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>All Items Block Selector</label>
+                </field>
+                <field id="item_block_selector" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Item Block Selector</label>
+                </field>
+                <field id="image_wrapper_selector" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Item Image Wrapper Selector</label>
+                </field>
+                <field id="edit_action_selector" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Edit Action Selector</label>
+                </field>
+            </group>
+            <group id="wishlist" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Wishlist Page</label>
+
+                <field id="image_width" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image Width</label>
+                </field>
+                <field id="image_height" translate="label" type="text" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image Height</label>
+                </field>
+                <field id="keep_frame" translate="label" type="select" sortOrder="12"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Keep Frame for Images</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="items_block_selector" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>All Items Block Selector</label>
+                </field>
+                <field id="item_block_selector" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Item Block Selector</label>
+                </field>
+                <field id="image_wrapper_selector" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Item Image Wrapper Selector</label>
+                </field>
+                <field id="edit_action_selector" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Edit Action Selector</label>
+                </field>
+            </group>
+            <group id="mini_wishlist" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Mini Wishlist Block</label>
+
+                <field id="image_width" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image Width</label>
+                </field>
+                <field id="image_height" translate="label" type="text" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image Height</label>
+                </field>
+                <field id="keep_frame" translate="label" type="select" sortOrder="12"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Keep Frame for Images</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="items_block_selector" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>All Items Block Selector</label>
+                </field>
+                <field id="item_block_selector" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Item Block Selector</label>
+                </field>
+                <field id="image_wrapper_selector" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Item Image Wrapper Selector</label>
+                </field>
+                <field id="edit_action_selector" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Edit Action Selector</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

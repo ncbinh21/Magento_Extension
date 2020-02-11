@@ -1,0 +1,32 @@
+// Tooltip
+// ---- Left
+.forix-lib-tooltip-left(@forix-tooltip-left__left,@forix-tooltip-left-before__left,@forix-tooltip-left-after__left){
+    left: @forix-tooltip-left__left;
+    right: auto;
+
+    &:before{
+        right: auto;
+        left: @forix-tooltip-left-before__left;
+    }
+
+    &:after{
+        right: auto;
+        left: @forix-tooltip-left-after__left;
+    }
+}
+
+// ---- Right
+.forix-lib-tooltip-right(@forix-tooltip-left__right,@forix-tooltip-left-before__right,@forix-tooltip-left-after__right){
+    right: @forix-tooltip-left__right;
+    left: auto;
+
+    &:before{
+        right: @forix-tooltip-left-before__right;
+        left: auto;
+    }
+
+    &:after{
+        right: @forix-tooltip-left-after__right;
+        left: auto;
+    }
+}

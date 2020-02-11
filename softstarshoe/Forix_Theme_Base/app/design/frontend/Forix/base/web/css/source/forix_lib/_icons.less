@@ -1,0 +1,683 @@
+//
+// Icons Lib Build
+// ------------------------
+
+.forix-lib-icon(
+    @_icon__font-name: @forix-icon__font-name,
+    @_icon__text-decoration: @forix-icon__text-decoration,
+    @_icon__vertical-align: @forix-icon__vertical-align,
+    @_icon__position-pseudo: @forix-icon__position-pseudo
+){
+    .lib-css(text-decoration, @_icon__text-decoration);
+    & when(@_icon__position-pseudo = before){
+        &:before{
+            -webkit-font-smoothing: antialiased;
+            .lib-css(font-family, @_icon__font-name);
+            .lib-css(vertical-align, @_icon__vertical-align);
+            display: inline-block;
+            font-weight: normal;
+            overflow: hidden;
+            speak: none;
+            text-align: center;
+        }
+    }
+    & when(@_icon__position-pseudo = after){
+        &:after{
+            -webkit-font-smoothing: antialiased;
+            .lib-css(font-family, @_icon__font-name);
+            .lib-css(vertical-align, @_icon__vertical-align);
+            display: inline-block;
+            font-weight: normal;
+            overflow: hidden;
+            speak: none;
+            text-align: center;
+        }
+    }
+}
+
+.forix-lib-icon-content(
+    @_icon__content:@forix-icon__content,
+    @_icon__content-active:@forix-icon__content-active,
+    @_icon__position-pseudo: @forix-icon__position-pseudo
+){
+    & when(@_icon__position-pseudo = before){
+        &:before{
+            .lib-css(content,@_icon__content);
+        }
+        &:active,
+        &.active{
+            &:before{
+                .lib-css(content,@_icon__content-active);
+            }
+        }
+    }
+    & when(@_icon__position-pseudo = after){
+        &:after{
+            .lib-css(content,@_icon__content);
+        }
+        &:active,
+        &.active{
+            &:after{
+                .lib-css(content,@_icon__content-active);
+            }
+        }
+    }
+}
+
+.forix-lib-icon-text-hide(
+    @_icon__text-hide: @forix-icon__text-hide,
+    @_icon__display: @forix-icon__display,
+    //@_icon__font-text-hide: @forix-icon__font-text-hide,
+    @_icon__show-text-sub: @forix-icon__show-text-sub
+){
+    & when (@_icon__text-hide = true) and (@_icon__show-text-sub = false){
+        .lib-visually-hidden();
+    }
+    & when (@_icon__text-hide = true) and (@_icon__show-text-sub = true){
+        font: 0/0 a;
+    }
+    .lib-css(display,@_icon__display);
+}
+
+.forix-lib-icon-text-hide-reset(
+    @_icon__text-hide: @forix-icon__text-hide,
+    @_icon__display: @forix-icon__display,
+    @_icon__font-text-hide: inherit,
+    @_icon__show-text-sub: @forix-icon__show-text-sub
+){
+    & when (@_icon__text-hide = false) and (@_icon__show-text-sub = false){
+        .lib-visually-hidden-reset();
+    }
+    & when (@_icon__text-hide = false) and (@_icon__show-text-sub = true){
+        .lib-css(font,inherit);
+    }
+    .lib-css(display,@_icon__display);
+}
+
+.forix-lib-icon-font(
+    @_icon__font-size: @forix-icon__font-size,
+    @_icon__line-height: @forix-icon__line-height,
+    @_icon__position-pseudo: @forix-icon__position-pseudo
+){
+    & when(@_icon__position-pseudo = before){
+        &:before{
+            .forix-lib-font-resize(
+                @_icon__font-size,
+                @_icon__line-height
+            );
+        }
+    }
+    & when(@_icon__position-pseudo = after){
+        &:after{
+            .forix-lib-font-resize(
+                @_icon__font-size,
+                @_icon__line-height
+            );
+        }
+    }
+}
+
+.forix-lib-icon-font-status(
+    @_icon__color: @forix-icon__color,
+    @_icon__color-hover: @forix-icon__color-hover,
+    @_icon__color-active: @forix-icon__color-active,
+    @_icon__position-pseudo: @forix-icon__position-pseudo
+){
+    & when(@_icon__position-pseudo = before){
+        &:before{
+            .lib-css(color,@_icon__color);
+        }
+        &:hover,
+        &.hover{
+            &:before{
+                .lib-css(color,@_icon__color-hover);
+            }
+        }
+        &:active,
+        &.active{
+            &:before{
+                .lib-css(color,@_icon__color-active);
+            }
+        }
+    }
+    & when(@_icon__position-pseudo = after){
+        &:after{
+            .lib-css(color,@_icon__color);
+        }
+        &:hover,
+        &.hover{
+            &:after{
+                .lib-css(color,@_icon__color-hover);
+            }
+        }
+        &:active,
+        &.active{
+            &:after{
+                .lib-css(color,@_icon__color-active);
+            }
+        }
+    }
+}
+
+.forix-lib-icon-dimension(
+    @_icon__width: @forix-icon__width,
+    @_icon__max-width: @forix-icon__max-width,
+    @_icon__min-width: @forix-icon__min-width,
+    @_icon__height: @forix-icon__height,
+    @_icon__max-height: @forix-icon__max-height,
+    @_icon__min-height: @forix-icon__min-height,
+    @_icon__position-pseudo: @forix-icon__position-pseudo
+){
+    & when(@_icon__position-pseudo = before){
+        &:before{
+            .forix-lib-dimension(
+                @_icon__width,
+                @_icon__min-width,
+                @_icon__max-width,
+                @_icon__height,
+                @_icon__min-height,
+                @_icon__max-height
+            );
+        }
+    }
+    & when(@_icon__position-pseudo = after){
+        &:after{
+            .forix-lib-dimension(
+                @_icon__width,
+                @_icon__min-width,
+                @_icon__max-width,
+                @_icon__height,
+                @_icon__min-height,
+                @_icon__max-height
+            );
+        }
+    }
+}
+
+.forix-lib-icon-box-model(
+    @_icon__margin: @forix-icon__margin,
+    @_icon__padding: @forix-icon__padding,
+    @_icon__border: @forix-icon__border,
+    @_icon__border-radius: @forix-icon__border-radius,
+    @_icon__position-pseudo: @forix-icon__position-pseudo
+){
+    & when(@_icon__position-pseudo = before){
+        &:before{
+            .forix-lib-box-model(
+                @_icon__border,
+                @_icon__margin,
+                @_icon__padding,
+                @_icon__border-radius
+            );
+        }
+    }
+    & when(@_icon__position-pseudo = after){
+        &:after{
+            .forix-lib-box-model(
+                @_icon__border,
+                @_icon__margin,
+                @_icon__padding
+            );
+        }
+    }
+}
+
+.forix-lib-icon-image(
+    @_icon-image__path: @forix-icon-image__path,
+    @_icon-image__repeat: @forix-icon-image__repeat,
+    @_icon-image__display: @forix-icon-image__display,
+    @_icon__position-pseudo: @forix-icon__position-pseudo
+){
+    .lib-css(display,@_icon-image__display);
+    & when(@_icon__position-pseudo = before){
+        &:before{
+            .lib-css(background-image,url(@_icon-image__path));
+            .lib-css(background-repeat,@_icon-image__repeat);
+        }
+    }
+    & when(@_icon__position-pseudo = after){
+        &:after{
+            .lib-css(background-image,url(@_icon-image__path));
+            .lib-css(background-repeat,@_icon-image__repeat);
+        }
+    }
+}
+
+.forix-lib-icon-image-position(
+    @_icon-image__position-x: @forix-icon-image__position-x,
+    @_icon-image__position-y: @forix-icon-image__position-y,
+    @_icon__position-pseudo: @forix-icon__position-pseudo
+){
+    & when(@_icon__position-pseudo = before){
+        &:before{
+            .lib-css(background-position,@_icon-image__position-x @_icon-image__position-y);
+        }
+    }
+    & when(@_icon__position-pseudo = after){
+        &:after{
+            .lib-css(background-position,@_icon-image__position-x @_icon-image__position-y);
+        }
+    }
+}
+
+.forix-lib-icon-sprite-position(
+    @_icon-sprite__position-x: @forix-icon-sprite__position-x,
+    @_icon-sprite__position-y: @forix-icon-sprite__position-y,
+    @_icon-sprite__grid: @forix-icon-sprite__grid,
+    @_icon__position-pseudo: @forix-icon__position-pseudo
+){
+    & when(@_icon__position-pseudo = before){
+        &:before{
+            .lib-css(background-position, -(@_icon-sprite__position-x*@_icon-sprite__grid) -(@_icon-sprite__position-y*@_icon-sprite__grid));
+        }
+    }
+    & when(@_icon__position-pseudo = after){
+        &:after{
+            .lib-css(background-position, -(@_icon-sprite__position-x*@_icon-sprite__grid) -(@_icon-sprite__position-y*@_icon-sprite__grid));
+        }
+    }
+}
+
+.forix-lib-icon-base(
+    @_icon__font-name: @forix-icon__font-name,
+
+    @_icon__text-decoration: @forix-icon__text-decoration,
+    @_icon__position-pseudo: @forix-icon__position-pseudo,
+    @_icon__vertical-align: @forix-icon__vertical-align,
+
+    @_icon__text-hide: @forix-icon__text-hide,
+    @_icon__display: @forix-icon__display,
+
+    @_icon__font-size: @forix-icon__font-size,
+    @_icon__line-height: @forix-icon__line-height,
+
+    @_icon__color: @forix-icon__color,
+    @_icon__color-hover: @forix-icon__color-hover,
+    @_icon__color-active: @forix-icon__color-active,
+
+    @_icon__width: @forix-icon__width,
+    @_icon__max-width: @forix-icon__max-width,
+    @_icon__min-width: @forix-icon__min-width,
+    @_icon__height: @forix-icon__height,
+    @_icon__max-height: @forix-icon__max-height,
+    @_icon__min-height: @forix-icon__min-height,
+
+    @_icon__margin: @forix-icon__margin,
+    @_icon__padding: @forix-icon__padding,
+    @_icon__border: @forix-icon__border,
+
+    @_icon__content: @forix-icon__content,
+    @_icon__content-active: @forix-icon__content-active
+){
+    .forix-lib-icon-text-hide(
+        @forix-icon__text-hide,
+        @forix-icon__display
+    );
+    .forix-lib-icon(
+        @_icon__font-name,
+        @_icon__text-decoration,
+        @_icon__vertical-align,
+        @_icon__position-pseudo
+    );
+    .forix-lib-icon-font(
+        @_icon__font-size,
+        @_icon__line-height,
+        @_icon__position-pseudo
+    );
+    .forix-lib-icon-font-status(
+        @_icon__color,
+        @_icon__color-hover,
+        @_icon__color-active,
+        @_icon__position-pseudo
+    );
+    .forix-lib-icon-dimension(
+        @_icon__width,
+        @_icon__max-width,
+        @_icon__min-width,
+        @_icon__height,
+        @_icon__max-height,
+        @_icon__min-height,
+        @_icon__position-pseudo
+    );
+    .forix-lib-icon-box-model(
+        @_icon__margin,
+        @_icon__padding,
+        @_icon__border,
+        @_icon__position-pseudo
+    );
+    .forix-lib-icon-content(
+        @_icon__content,
+        @_icon__content-active,
+        @_icon__position-pseudo
+    );
+}
+.forix-lib-icon-image-base(
+    @_icon__text-decoration: @forix-icon__text-decoration,
+    @_icon__position-pseudo: @forix-icon__position-pseudo,
+    @_icon__vertical-align: @forix-icon__vertical-align,
+
+    @_icon__text-hide: @forix-icon__text-hide,
+    @_icon__display: @forix-icon__display,
+
+    @_icon__font-size: @forix-icon__font-size,
+    @_icon__line-height: @forix-icon__line-height,
+
+    @_icon__width: @forix-icon__width,
+    @_icon__max-width: @forix-icon__max-width,
+    @_icon__min-width: @forix-icon__min-width,
+    @_icon__height: @forix-icon__height,
+    @_icon__max-height: @forix-icon__max-height,
+    @_icon__min-height: @forix-icon__min-height,
+
+    @_icon__margin: @forix-icon__margin,
+    @_icon__padding: @forix-icon__padding,
+    @_icon__border: @forix-icon__border,
+
+    @_icon__content: @forix-icon__content,
+    @_icon__content-active: @forix-icon__content-active,
+
+    @_icon-image__path: @forix-icon-image__path,
+    @_icon-image__repeat: @forix-icon-image__repeat,
+
+    @_icon-image__position-x: @forix-icon-image__position-x,
+    @_icon-image__position-y: @forix-icon-image__position-y,
+    @_icon-image__position-x__hover: @forix-icon-image__position-x__hover,
+    @_icon-image__position-y__hover: @forix-icon-image__position-y__hover,
+    @_icon-image__position-x__active: @forix-icon-image__position-x__active,
+    @_icon-image__position-y__active: @forix-icon-image__position-y__active
+){
+    .forix-lib-icon-text-hide(
+        @forix-icon__text-hide,
+        @forix-icon__display
+    );
+    .forix-lib-icon(
+        false,
+        @_icon__text-decoration,
+        @_icon__vertical-align,
+        @_icon__position-pseudo
+    );
+    .forix-lib-icon-font(
+        @_icon__font-size,
+        @_icon__line-height,
+        @_icon__position-pseudo
+    );
+    .forix-lib-icon-dimension(
+        @_icon__width,
+        @_icon__max-width,
+        @_icon__min-width,
+        @_icon__height,
+        @_icon__max-height,
+        @_icon__min-height,
+        @_icon__position-pseudo
+    );
+    .forix-lib-icon-box-model(
+        @_icon__margin,
+        @_icon__padding,
+        @_icon__border,
+        @_icon__position-pseudo
+    );
+    .forix-lib-icon-content(
+        @_icon__content,
+        @_icon__content-active,
+        @_icon__position-pseudo
+    );
+    .forix-lib-icon-image(
+        @_icon-image__path,
+        @_icon-image__repeat,
+        @_icon__position-pseudo
+    );
+    .forix-lib-icon-image-position(
+        @_icon-image__position-x,
+        @_icon-image__position-y,
+        @_icon__position-pseudo
+    );
+    &:hover,
+    &.hover{
+        .forix-lib-icon-image-position(
+            @_icon-image__position-x__hover,
+            @_icon-image__position-y__hover,
+            @_icon__position-pseudo
+        );
+    }
+    &:active,
+    &.active{
+        .forix-lib-icon-image-position(
+            @_icon-image__position-x__active,
+            @_icon-image__position-y__active,
+            @_icon__position-pseudo
+        );
+    }
+}
+.forix-lib-icon-sprite-base(
+    @_icon__text-decoration: @forix-icon__text-decoration,
+    @_icon__position-pseudo: @forix-icon__position-pseudo,
+    @_icon__vertical-align: @forix-icon__vertical-align,
+
+    @_icon__text-hide: @forix-icon__text-hide,
+    @_icon__display: @forix-icon__display,
+
+    @_icon__font-size: @forix-icon__font-size,
+    @_icon__line-height: @forix-icon__line-height,
+
+    @_icon__width: @forix-icon__width,
+    @_icon__max-width: @forix-icon__max-width,
+    @_icon__min-width: @forix-icon__min-width,
+    @_icon__height: @forix-icon__height,
+    @_icon__max-height: @forix-icon__max-height,
+    @_icon__min-height: @forix-icon__min-height,
+
+    @_icon__margin: @forix-icon__margin,
+    @_icon__padding: @forix-icon__padding,
+    @_icon__border: @forix-icon__border,
+
+    @_icon__content: @forix-icon__content,
+    @_icon__content-active: @forix-icon__content-active,
+
+    @_icon-image__path: @forix-icon-image__path,
+    @_icon-image__repeat: @forix-icon-image__repeat,
+
+    @_icon-sprite__position-x: @forix-icon-sprite__position-x,
+    @_icon-sprite__position-y: @forix-icon-sprite__position-y,
+    @_icon-sprite__position-x__hover: @forix-icon-sprite__position-x__hover,
+    @_icon-sprite__position-y__hover: @forix-icon-sprite__position-y__hover,
+    @_icon-sprite__position-x__active: @forix-icon-sprite__position-x__active,
+    @_icon-sprite__position-y__active: @forix-icon-sprite__position-y__active,
+    @_icon-sprite__grid: @forix-icon-sprite__grid
+){
+    .forix-lib-icon-text-hide(
+        @forix-icon__text-hide,
+        @forix-icon__display
+    );
+    .forix-lib-icon(
+        false,
+        @_icon__text-decoration,
+        @_icon__vertical-align,
+        @_icon__position-pseudo
+    );
+    .forix-lib-icon-font(
+        @_icon__font-size,
+        @_icon__line-height,
+        @_icon__position-pseudo
+    );
+    .forix-lib-icon-dimension(
+        @_icon__width,
+        @_icon__max-width,
+        @_icon__min-width,
+        @_icon__height,
+        @_icon__max-height,
+        @_icon__min-height,
+        @_icon__position-pseudo
+    );
+    .forix-lib-icon-box-model(
+        @_icon__margin,
+        @_icon__padding,
+        @_icon__border,
+        @_icon__position-pseudo
+    );
+    .forix-lib-icon-content(
+        @_icon__content,
+        @_icon__content-active,
+        @_icon__position-pseudo
+    );
+    .forix-lib-icon-image(
+        @_icon-image__path,
+        @_icon-image__repeat,
+        @_icon__position-pseudo
+    );
+
+    .forix-lib-icon-sprite-position(
+        @_icon-sprite__position-x,
+        @_icon-sprite__position-y,
+        @_icon-sprite__grid,
+        @_icon__position-pseudo
+    );
+
+    &:hover,
+    &.hover{
+        .forix-lib-icon-sprite-position(
+            @_icon-sprite__position-x__hover,
+            @_icon-sprite__position-y__hover,
+            @_icon-sprite__grid,
+            @_icon__position-pseudo
+        );
+    }
+    &:active,
+    &.active{
+        .forix-lib-icon-sprite-position(
+            @_icon-sprite__position-x__active,
+            @_icon-sprite__position-y__active,
+            @_icon-sprite__grid,
+            @_icon__position-pseudo
+        );
+    }
+}
+
+
+
+// General Icon Lib -- usage for icon multi change
+.forix-lib-icon-primary(
+    @_icon-font,
+    @_icon-vertical-align,
+    @_icon-position-pseudo,
+    @_icon-text-hide
+) when(@_icon-position-pseudo = before) {
+    ._lib-icon-text-hide(@_icon-text-hide);
+    &:before{
+        .lib-css(font-family, @_icon-font);
+        .lib-css(vertical-align, @_icon-vertical-align);
+    }
+}
+
+.forix-lib-icon-primary(
+    @_icon-font,
+    @_icon-vertical-align,
+    @_icon-position-pseudo,
+    @_icon-text-hide
+) when(@_icon-position-pseudo = after) {
+    ._lib-icon-text-hide(@_icon-text-hide);
+    &:after{
+        .lib-css(font-family, @_icon-font);
+        .lib-css(vertical-align, @_icon-vertical-align);
+    }
+}
+
+.forix-lib-icon-primary-content(
+    @_icon-content,
+    @_icon-position-pseudo
+) when(@_icon-position-pseudo = before){
+    &:before{
+        .lib-css(content, @_icon-content);
+    }
+
+    &:after{
+        content: none;
+    }
+}
+
+.forix-lib-icon-primary-content(
+    @_icon-content,
+    @_icon-position-pseudo
+) when(@_icon-position-pseudo = after){
+    &:after{
+        .lib-css(content, @_icon-content);
+    }
+
+    &:before{
+        content: none;
+    }
+}
+
+
+.forix-lib-icon-primary-font-status(
+    @_icon-color,
+    @_icon-color-hover,
+    @_icon-color-active,
+    @_icon-position-pseudo
+) when(@_icon-position-pseudo = before){
+    &:before{
+        .lib-css(color, @_icon-color);
+    }
+
+    &:hover{
+        &:before{
+            .lib-css(color, @_icon-color-hover);
+        }
+    }
+
+    &:focus,
+    &:active{
+        &:before{
+            .lib-css(color, @_icon-color-active);
+        }
+    }
+}
+
+.forix-lib-icon-primary-font-status(
+    @_icon-color,
+    @_icon-color-hover,
+    @_icon-color-active,
+    @_icon-position-pseudo
+) when(@_icon-position-pseudo = after){
+    &:after{
+        .lib-css(color, @_icon-color);
+    }
+
+    &:hover{
+        &:after{
+            .lib-css(color, @_icon-color-hover);
+        }
+    }
+
+    &:focus,
+    &:active{
+        &:after{
+            .lib-css(color, @_icon-color-active);
+        }
+    }
+}
+
+.forix-lib-icon-primary-font(
+    @_icon-font-size,
+    @_icon-line-height,
+    @_icon-margin,
+    @_icon-position-pseudo
+) when(@_icon-position-pseudo = before){
+    &:before{
+        .lib-css(font-size, @_icon-font-size);
+        .lib-css(line-height, @_icon-line-height);
+        .lib-css(margin, @_icon-margin);
+    }
+}
+
+.forix-lib-icon-primary-font(
+    @_icon-font-size,
+    @_icon-line-height,
+    @_icon-margin,
+    @_icon-position-pseudo
+) when(@_icon-position-pseudo = after){
+    &:after{
+        .lib-css(font-size, @_icon-font-size);
+        .lib-css(line-height, @_icon-line-height);
+        .lib-css(margin, @_icon-margin);
+    }
+}

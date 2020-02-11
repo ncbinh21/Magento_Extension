@@ -1,0 +1,39 @@
+<?php
+/*************************************************
+ * *
+ *  *
+ *  * Copyright © 2017 Forix. All rights reserved.
+ *  * See COPYING.txt for license details.
+ *
+ */
+?>
+<?php /** @var $block \Magento\Catalog\Block\Product\Image */ ?>
+<?php
+    $productLabelCollection = $block->getData('product_label');
+?>
+<img class="photo image"
+     <?php /* @escapeNotVerified */ echo $block->getCustomAttributes(); ?>
+     src="<?php /* @escapeNotVerified */ echo $block->getImageUrl(); ?>"
+     width="<?php /* @escapeNotVerified */ echo $block->getWidth(); ?>"
+     height="<?php /* @escapeNotVerified */ echo $block->getHeight(); ?>"
+     alt="<?php /* @escapeNotVerified */ echo $block->stripTags($block->getLabel(), null, true); ?>"
+/>
+<?php if ($productLabelCollection->getSize() > 0): ?>
+    <span class="product-label-info">
+        <?php
+        /** @var \Forix\ProductLabel\Model\Rule $label */
+        foreach ($productLabelCollection as $label):?>
+            <span class="product-label <?php /* @escapeNotVerified */ echo $label->getCategoryPosition()?>"
+                  style="<?php /* @escapeNotVerified */ echo $label->getCategoryCssBackground() ?>">
+            <?php if ($label->getCategoryImage()):?>
+                <img class="label"
+                     src="<?php /* @escapeNotVerified */ echo $label->getCategoryImageUrl()?>">
+            <?php else:?>
+                <span class="text-label" style="<?php /* @escapeNotVerified */ echo $label->getCategoryCssBackground() ?>">
+                    <?php /* @escapeNotVerified */echo $label->getCategoryText()?>
+                </span>
+            <?php endif;?>
+            </span>
+        <?php endforeach;?>
+    </span>
+<?php endif;?>

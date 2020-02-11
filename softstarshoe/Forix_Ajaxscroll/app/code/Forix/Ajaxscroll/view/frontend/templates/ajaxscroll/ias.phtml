@@ -1,0 +1,41 @@
+<?php
+$loading_img = $block->getViewFileUrl('images/loader-1.gif');
+
+// Get the default setting for grid or list mode
+$productListMode = \Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('catalog/frontend/list_mode');
+$grid_per_page = \Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('catalog/frontend/grid_per_page');
+$list_per_page = \Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('catalog/frontend/list_per_page');
+/**
+ * @var $productListToolbar \Magento\Catalog\Block\Product\ProductList\Toolbar
+ */
+$productListToolbar = \Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Catalog\Block\Product\ProductList\Toolbar');
+if ($productListMode == 'grid-list') {
+    $productListMode = 'grid';
+    $per_page = $grid_per_page;
+}elseif($productListMode == 'list-grid') {
+    $productListMode = 'list';
+    $per_page = $list_per_page;
+}
+// Check if this setting is overwritten by the user
+if ($this->getRequest()->getParam('mode')) {
+    if ($this->getRequest()->getParam('mode') == 'grid') {
+        $productListMode = 'grid';
+        $per_page = $grid_per_page;
+    } else {
+        $productListMode = 'list';
+        $per_page = $list_per_page;
+    }
+}
+?>
+
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Forix_Ajaxscroll/js/ias": {
+            "srcLoading" : "<?php echo $loading_img ?>",
+            "currentItemCount" : "<?php echo $productListToolbar->getLimit() * $productListToolbar->getCurrentPage();?>",
+            "totalItem" : "<?php echo $productListToolbar->getTotalNum(); ?>"
+        }
+    }
+}
+</script>

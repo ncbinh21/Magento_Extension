@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <fanphoto>
+            <general>
+                <email_title>Fan Photo Submited Title!</email_title>
+                <email_content>Fan Photo Submited Content !</email_content>
+                <email_from>emailfrom@test.com</email_from>
+                <email_to>emailto@test.com</email_to>
+            </general>
+        </fanphoto>
+    </default>
+</config>

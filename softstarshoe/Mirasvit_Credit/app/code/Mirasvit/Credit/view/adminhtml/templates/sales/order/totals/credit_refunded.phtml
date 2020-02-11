@@ -1,0 +1,18 @@
+<?php
+    $source = $block->getSource();
+    $order = $block->getOrder();
+?>
+<?php if ($source->getCreditTotalRefunded() > 0): ?>
+<tr>
+    <td <?= $block->getLabelProperties()?>>
+        <?= __('Refunded to Store Credit'); ?>
+    </td>
+    <td <?= $block->getValueProperties()?>><?= $order->formatPrice($source->getCreditTotalRefunded() - $source->getCreditRefunded()) ?></td>
+</tr>
+<tr>
+    <td <?= $block->getLabelProperties()?>>
+        <?= __('Total Refunded to Store Credit'); ?>
+    </td>
+    <td <?= $block->getValueProperties()?>><?= $order->formatPrice($source->getCreditTotalRefunded()) ?></td>
+</tr>
+<?php endif ?>

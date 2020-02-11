@@ -1,0 +1,311 @@
+//
+//  Icons variables
+//  ---------------------------------------------
+// Rule
+// [section-name=icon]
+// @forix-[section-name]-[parent-name]-[name]__[properties]
+
+//  Fonts
+@forix-icon__font-path: '@{baseDir}fonts/fonticon/M2-icons';
+@forix-icon__font-name: 'm2-icons';
+@icons__font-name: @forix-icon__font-name;
+
+@forix-icon__text-decoration:none;
+@forix-icon__position-pseudo:before;
+@forix-icon__vertical-align:middle;
+
+@forix-icon__text-hide:false;
+@forix-icon__display:inline-block;
+//@forix-icon__font-text-hide: '0/0 a';
+@forix-icon__show-text-sub: true;
+
+@forix-icon__font-size:inherit;
+@forix-icon__line-height:@forix-icon__font-size;
+
+@forix-icon__color:false;
+@forix-icon__color-hover:false;
+@forix-icon__color-active:false;
+
+@forix-icon__width:false;
+@forix-icon__max-width:false;
+@forix-icon__min-width:false;
+@forix-icon__height:false;
+@forix-icon__max-height:false;
+@forix-icon__min-height:false;
+
+@forix-icon__margin:false;
+@forix-icon__padding:false;
+@forix-icon__border:false;
+@forix-icon__border-radius:false;
+
+@forix-icon__content:false;
+@forix-icon__content-active:false;
+
+@forix-icon-image__path:false;
+@forix-icon-image__repeat:false;
+@forix-icon-image__display:inline-block;
+
+@forix-icon-image__position-x:false;
+@forix-icon-image__position-y:false;
+@forix-icon-image__position-x__hover:false;
+@forix-icon-image__position-y__hover:false;
+@forix-icon-image__position-x__active:false;
+@forix-icon-image__position-y__active:false;
+
+@forix-icon-sprite__position-x:false;
+@forix-icon-sprite__position-y:false;
+@forix-icon-sprite__position-x__hover:false;
+@forix-icon-sprite__position-y__hover:false;
+@forix-icon-sprite__position-x__active:false;
+@forix-icon-sprite__position-y__active:false;
+@forix-icon-sprite__grid:false;
+
+// Default magento icons, do not remove it
+@icon-wishlist-full: '\e600';
+@icon-wishlist-empty: '\e601';
+@icon-warning: '\e602';
+@icon-update: '\e603';
+@icon-trash: '\e604';
+@icon-star: '\e605';
+@icon-settings: '\e606';
+@icon-pointer-down: '\e607';
+@icon-next: '\e608';
+@icon-menu: '\e609';
+@icon-location: '\e60a';
+@icon-list: '\e60b';
+@icon-info: '\e60c';
+@icon-grid: '\e60d';
+@icon-comment: '\e620';
+@icon-collapse: '\e60f';
+@icon-checkmark: '\e610';
+@icon-cart: '\e611';
+@icon-calendar: '\e612';
+@icon-arrow-up: '\e613';
+@icon-arrow-down: '\e614';
+@icon-search: '\e615';
+@icon-remove: '\e616';
+@icon-prev: '\e617';
+@icon-pointer-up: '\e618';
+@icon-pointer-right: '\e619';
+@icon-pointer-left: '\e61a';
+@icon-flag: '\e61b';
+@icon-expand: '\e61c';
+@icon-envelope: '\e61d';
+@icon-compare-full: '\e61e';
+@icon-compare-empty: '\e61f';
+@icon-comment-reflected: '\e60e';
+@icon-up: '\e621';
+@icon-down: '\e622';
+@icon-help: '\e623';
+@icon-arrow-right-thin: '\e624';
+@icon-arrow-left-thin: '\e625';
+@icon-arrow-down-thin: '\e626';
+@icon-account: '\e627';
+@icon-gift-registry: '\e62b';
+@icon-present: '\e62a';
+@icon-arrow-up-thin: '\e633';
+
+@icon-success: '\e60e';
+@icon-error: '\e62e';
+@icon-edit: '\e62f';
+@icon-print: '\e624';
+@icon-star-empty: '\e630';
+@icon-download: '\e628';
+@icon-private: '\e629';
+@icon-calendar__font-size: 23px;
+
+//////////////////////////////////////////////////////////////////////////////
+//M2 Icons custom
+@forix-icon-remove: '\e912';
+@forix-icon-sizechart: '\e90f';
+@forix-icon-search: '\e90e';
+@forix-icon-minus: '\e90b';
+@forix-icon-menu: '\e90a';
+@forix-icon-cart: '\e905';
+@forix-icon-plus: '\e904';
+@forix-icon-add: '\e903';
+@forix-icon-account: '\e902';
+@forix-icon-transfer: '\e901';
+@forix-icon-star: '\e918';
+@forix-icon-checkbox: '\e917';
+@forix-icon-home: '\e907';
+@forix-icon-size-chart: '\e908';
+@forix-icon-help: '\e909';
+
+//M2 icons from Font Entypo+
+@font-entypo-instagram-with-circle: '\e900';
+@font-entypo-instagram: '\e901';
+
+//M2 icons from Font Awesome
+@font-awesome-search2: "\f002";
+@font-awesome-envelope-o: "\f003";
+@font-awesome-heart: "\f004";
+@font-awesome-star2: "\f005";
+@font-awesome-star-o: "\f006";
+@font-awesome-user: "\f007";
+@font-awesome-check: "\f00c";
+@font-awesome-close: "\f00d";
+@font-awesome-remove2: "\f00d";
+@font-awesome-times: "\f00d";
+@font-awesome-search-plus: "\f00e";
+@font-awesome-search-minus: "\f010";
+@font-awesome-cog: "\f013";
+@font-awesome-gear: "\f013";
+@font-awesome-trash-o: "\f014";
+@font-awesome-home: "\f015";
+@font-awesome-clock-o: "\f017";
+@font-awesome-arrow-circle-o-down: "\f01a";
+@font-awesome-arrow-circle-o-up: "\f01b";
+@font-awesome-play-circle-o: "\f01d";
+@font-awesome-pencil: "\f040";
+@font-awesome-map-marker: "\f041";
+@font-awesome-edit: "\f044";
+@font-awesome-pencil-square-o: "\f044";
+@font-awesome-share-square-o: "\f045";
+@font-awesome-check-square-o: "\f046";
+@font-awesome-arrows: "\f047";
+@font-awesome-step-backward: "\f048";
+@font-awesome-fast-backward: "\f049";
+@font-awesome-backward: "\f04a";
+@font-awesome-play: "\f04b";
+@font-awesome-pause: "\f04c";
+@font-awesome-stop: "\f04d";
+@font-awesome-forward: "\f04e";
+@font-awesome-fast-forward: "\f050";
+@font-awesome-step-forward: "\f051";
+@font-awesome-chevron-left: "\f053";
+@font-awesome-chevron-right: "\f054";
+@font-awesome-plus-circle: "\f055";
+@font-awesome-minus-circle: "\f056";
+@font-awesome-times-circle: "\f057";
+@font-awesome-check-circle: "\f058";
+@font-awesome-question-circle: "\f059";
+@font-awesome-info-circle: "\f05a";
+@font-awesome-times-circle-o: "\f05c";
+@font-awesome-check-circle-o: "\f05d";
+@font-awesome-arrow-left: "\f060";
+@font-awesome-arrow-right: "\f061";
+@font-awesome-arrow-up2: "\f062";
+@font-awesome-arrow-down2: "\f063";
+@font-awesome-mail-forward: "\f064";
+@font-awesome-share: "\f064";
+@font-awesome-plus: "\f067";
+@font-awesome-minus2: "\f068";
+@font-awesome-exclamation-circle: "\f06a";
+@font-awesome-exclamation-triangle: "\f071";
+@font-awesome-warning2: "\f071";
+@font-awesome-calendar2: "\f073";
+@font-awesome-chevron-up: "\f077";
+@font-awesome-chevron-down: "\f078";
+@font-awesome-twitter-square: "\f081";
+@font-awesome-facebook-square: "\f082";
+@font-awesome-heart-o: "\f08a";
+@font-awesome-sign-out: "\f08b";
+@font-awesome-linkedin-square: "\f08c";
+@font-awesome-external-link: "\f08e";
+@font-awesome-sign-in: "\f090";
+@font-awesome-phone: "\f095";
+@font-awesome-square-o: "\f096";
+@font-awesome-phone-square: "\f098";
+@font-awesome-twitter: "\f099";
+@font-awesome-facebook: "\f09a";
+@font-awesome-facebook-f: "\f09a";
+@font-awesome-arrow-circle-left: "\f0a8";
+@font-awesome-arrow-circle-right: "\f0a9";
+@font-awesome-arrow-circle-up: "\f0aa";
+@font-awesome-arrow-circle-down: "\f0ab";
+@font-awesome-chain: "\f0c1";
+@font-awesome-link: "\f0c1";
+@font-awesome-paperclip: "\f0c6";
+@font-awesome-square: "\f0c8";
+@font-awesome-truck: "\f0d1";
+@font-awesome-pinterest: "\f0d2";
+@font-awesome-pinterest-square: "\f0d3";
+@font-awesome-google-plus-square: "\f0d4";
+@font-awesome-google-plus: "\f0d5";
+@font-awesome-caret-down: "\f0d7";
+@font-awesome-caret-up: "\f0d8";
+@font-awesome-caret-left: "\f0d9";
+@font-awesome-caret-right: "\f0da";
+@font-awesome-sort-desc: "\f0dd";
+@font-awesome-sort-down: "\f0dd";
+@font-awesome-sort-asc: "\f0de";
+@font-awesome-sort-up: "\f0de";
+@font-awesome-envelope2: "\f0e0";
+@font-awesome-linkedin: "\f0e1";
+@font-awesome-exchange: "\f0ec";
+@font-awesome-plus-square: "\f0fe";
+@font-awesome-angle-double-left: "\f100";
+@font-awesome-angle-double-right: "\f101";
+@font-awesome-angle-double-up: "\f102";
+@font-awesome-angle-double-down: "\f103";
+@font-awesome-angle-left: "\f104";
+@font-awesome-angle-right: "\f105";
+@font-awesome-angle-up: "\f106";
+@font-awesome-angle-down: "\f107";
+@font-awesome-circle-o: "\f10c";
+@font-awesome-circle: "\f111";
+@font-awesome-mail-reply: "\f112";
+@font-awesome-reply: "\f112";
+@font-awesome-mail-reply-all: "\f122";
+@font-awesome-reply-all: "\f122";
+@font-awesome-question: "\f128";
+@font-awesome-info2: "\f129";
+@font-awesome-exclamation: "\f12a";
+@font-awesome-chevron-circle-left: "\f137";
+@font-awesome-chevron-circle-right: "\f138";
+@font-awesome-chevron-circle-up: "\f139";
+@font-awesome-chevron-circle-down: "\f13a";
+@font-awesome-rss-square: "\f143";
+@font-awesome-play-circle: "\f144";
+@font-awesome-minus-square: "\f146";
+@font-awesome-minus-square-o: "\f147";
+@font-awesome-check-square: "\f14a";
+@font-awesome-share-square: "\f14d";
+@font-awesome-youtube-square: "\f166";
+@font-awesome-youtube: "\f167";
+@font-awesome-youtube-play: "\f16a";
+@font-awesome-tumblr: "\f173";
+@font-awesome-tumblr-square: "\f174";
+@font-awesome-arrow-circle-o-right: "\f18e";
+@font-awesome-arrow-circle-o-left: "\f190";
+@font-awesome-caret-square-o-left: "\f191";
+@font-awesome-toggle-left: "\f191";
+@font-awesome-dot-circle-o: "\f192";
+@font-awesome-vimeo-square: "\f194";
+@font-awesome-plus-square-o: "\f196";
+@font-awesome-envelope-square: "\f199";
+@font-awesome-file-pdf-o: "\f1c1";
+@font-awesome-file-word-o: "\f1c2";
+@font-awesome-file-excel-o: "\f1c3";
+@font-awesome-file-powerpoint-o: "\f1c4";
+@font-awesome-file-image-o: "\f1c5";
+@font-awesome-file-photo-o: "\f1c5";
+@font-awesome-file-picture-o: "\f1c5";
+@font-awesome-facebook-official: "\f230";
+@font-awesome-pinterest-p: "\f231";
+@font-awesome-vimeo: "\f27d";
+@font-awesome-question-circle-o: "\f29c";
+@font-awesome-google-plus-circle: "\f2b3";
+@font-awesome-google-plus-official: "\f2b3";
+@font-awesome-instagram: '\f16d';
+
+//Overwite default icon by new icon
+@icon-star: @forix-icon-star;
+@icon-edit: @font-awesome-pencil;
+@icon-location: @font-awesome-map-marker;
+@icon-envelope: @font-awesome-envelope-o;
+@icon-search: @forix-icon-search;
+
+@forix-icon-sizechart: @forix-icon-size-chart;
+@icon-help: @forix-icon-help;
+
+////////////////////////////////////////////////////////////////////////////
+// Themes icons
+
+// Themes icons from FontAwesome
+
+// Overwrite icon
+
+// Image Sprites
+

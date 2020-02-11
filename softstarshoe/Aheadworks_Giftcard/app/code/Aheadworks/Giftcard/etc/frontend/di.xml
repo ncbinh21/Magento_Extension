@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Wishlist\Block\Catalog\Product\View\AddTo\Wishlist">
+        <plugin name="aw-giftcard-wishlist-options" type="Aheadworks\Giftcard\Plugin\Block\Wishlist\OptionsPlugin" />
+    </type>
+    <type name="Magento\Wishlist\Block\Item\Configure">
+        <plugin name="aw-giftcard-wishlist-options" type="Aheadworks\Giftcard\Plugin\Block\Wishlist\OptionsPlugin" />
+    </type>
+    <type name="Magento\Customer\CustomerData\Customer">
+        <plugin name="aw-giftcard-customer-data" type="Aheadworks\Giftcard\Plugin\CustomerData\CustomerPlugin" />
+    </type>
+    <type name="Magento\Framework\Data\Structure">
+        <plugin name="aw-giftcard-set-as-child" type="Aheadworks\Giftcard\Plugin\Data\StructurePlugin" />
+    </type>
+    <type name="Magento\Framework\Url\SecurityInfo">
+        <arguments>
+            <argument name="secureUrlList" xsi:type="array">
+                <item name="aw_giftcard" xsi:type="string">/awgiftcard/card/</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+        <arguments>
+            <argument name="configProviders" xsi:type="array">
+                <item name="aw_giftcard_config_provider" xsi:type="object">Aheadworks\Giftcard\Model\ConfigProvider</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Catalog\Helper\Product\ConfigurationPool">
+        <arguments>
+            <argument name="instancesByType" xsi:type="array">
+                <item name="aw_giftcard" xsi:type="object">Aheadworks\Giftcard\Model\Product\Configuration</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

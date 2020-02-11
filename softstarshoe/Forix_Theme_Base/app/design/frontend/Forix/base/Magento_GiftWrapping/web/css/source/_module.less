@@ -1,0 +1,200 @@
+@use-module-giftwrapping-core__enable: true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+
+.gift-wrapping-list{
+    &:extend(.forix-abs-list-reset);
+}
+
+.gift-wrapping-list{
+    &:extend(.forix-abs-clearfix all);
+}
+
+.gift-wrapping-list .no-image:after{
+    &:extend(.forix-abs-icon-base all);
+}
+
+.gift-wrapping-list .no-image > span {
+    &:extend(.forix-abs-visually-hidden all);
+}
+
+.gift-wrapping-title .action-remove {
+    &:extend(.forix-abs-action-delete all);
+}
+
+.opc-wrapper .data.table .gift-wrapping,
+.table-order-items .gift-wrapping{
+    &:extend(.forix-abs-table-items-gift-wrapping all);
+}
+
+.item-actions .actions-toolbar .gift-options .gift-message {
+    &:extend(.item-actions .actions-toolbar .gift-options .gift-wrapping all);
+}
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .field.gift-wrapping .label{
+        color: @secondary-text__color;
+        display: block;
+        font-weight: @forix-font-weight__semibold;
+        margin: 0 0 @forix-indent__s;
+    }
+
+    .gift-wrapping-info{
+        font-weight: @forix-font-weight__light;
+        font-size: @forix-font-size__l;
+        margin: @forix-indent__base 0;
+    }
+
+    .gift-wrapping-list{
+        width: 100%;
+
+        li{
+            padding: @forix-indent__s 0;
+        }
+
+        .no-image{
+            background: @color-gray95;
+            display: inline-block;
+            text-decoration: none;
+
+            &:after{
+                color: @forix-border-color__base;
+                content: @icon-present;
+                display: block;
+                font-size: 22px;
+                line-height: 40px;
+            }
+        }
+    }
+
+    .gift-wrapping-preview{
+        cursor: pointer;
+        display: block;
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+    }
+
+    .gift-wrapping-item{
+        float: left;
+        margin: 0 @forix-indent__s @forix-indent__s 0;
+
+        &:last-child{
+            margin-right: 0;
+        }
+
+        &._active span:before{
+            border: 3px solid @forix-border-color__base;
+            content: '';
+            display: block;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            z-index: 2;
+        }
+
+        > span{
+            cursor: pointer;
+            display: block;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            height: auto;
+            width: 75px;
+
+            img{
+                height: auto;
+                display: block;
+            }
+        }
+    }
+
+    .gift-wrapping-title{
+        margin: @forix-indent__s 0;
+
+        .action-remove{
+            color: @primary-text__color;
+            position: relative;
+            z-index: 1;
+
+            &:after{
+                margin: -2px 0 0 @forix-indent__xs;
+            }
+        }
+    }
+
+    .gift-options-content .fieldset .field{
+        margin: @forix-indent__s 0;
+    }
+
+    .gift-wrapping-summary{
+        padding-right: 70px;
+
+        .gift-wrapping-title{
+            border: 0;
+            display: inline-block;
+            padding: 0;
+        }
+    }
+
+    .gift-wrapping + .gift-message{
+        float: left;
+    }
+
+    .opc-wrapper .fieldset.gift-message .field.gift-wrapping{
+        padding: 0;
+        width: 100%;
+    }
+
+    .gift-summary .regular-price:before,
+    .gift-options .regular-price:before {
+        content: attr(data-label) ': ';
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .gift-wrapping{
+        padding-right: 0;
+        margin-bottom: -@forix-indent__base;
+        width:100%;
+    }
+
+    .gift-wrapping + .gift-message{
+        padding-left: 0;
+        padding-top: @forix-indent__base;
+        width: 100%;
+        margin: 0 0 -@forix-indent__base;
+    }
+
+    .gift-wrapping-summary + .gift-message-summary{
+        padding-right: 0;
+    }
+
+    .item-actions .actions-toolbar .gift-options .gift-wrapping{
+        display: block;
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .gift-wrapping{
+        padding-right: @forix-indent__base;
+        width: 50%;
+    }
+
+    .gift-wrapping + .gift-message{
+        padding-left: @forix-indent__base;
+        width: 50%;
+    }
+}

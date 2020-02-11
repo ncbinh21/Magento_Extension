@@ -1,0 +1,42 @@
+<?php
+
+namespace Mirasvit\Seo\Test\Unit\Model\SeoObject;
+
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManager;
+
+/**
+ * @covers \Mirasvit\Seo\Model\SeoObject\Filter
+ */
+class FilterTest extends \PHPUnit_Framework_TestCase
+{
+    /**
+     * @var ObjectManager
+     */
+    protected $objectManager;
+
+    /**
+     * @var \Mirasvit\Seo\Model\SeoObject\Filter|\PHPUnit_Framework_MockObject_MockObject
+     */
+    protected $filterModel;
+
+    /**
+     * setup tests.
+     */
+    public function setUp()
+    {
+        $this->objectManager = new ObjectManager($this);
+        $this->filterModel = $this->objectManager->getObject(
+            '\Mirasvit\Seo\Model\SeoObject\Filter',
+            [
+            ]
+        );
+    }
+
+    /**
+     * dummy test.
+     */
+    public function testDummy()
+    {
+        $this->assertEquals($this->filterModel, $this->filterModel);
+    }
+}

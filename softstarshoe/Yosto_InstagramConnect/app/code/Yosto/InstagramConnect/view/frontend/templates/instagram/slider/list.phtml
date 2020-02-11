@@ -1,0 +1,168 @@
+<?php
+/**
+ * Copyright © 2016 x-mage2(Yosto). All rights reserved.
+ * See README.md for details.
+ */
+
+//Template for display instagram image slider.
+?>
+
+
+<?php
+/** @var \Yosto\InstagramConnect\Block\Instagram\ImageSlider $block */
+$imageNumber = $this->getData('imageNumber');
+$column = $this->getData('columnNumber');
+$row = $this->getData('rowNumber');
+if ($row == 0 || !is_numeric($row)) {
+    $row = 1;
+}
+$listColumns = [];
+if ($column == 0 || !is_numeric($column)) {
+    $column = 1;
+}
+
+$isDisplayLikesComments = 0;
+$data  = [];
+$divClass = "";
+if ($block->isDisplayOnCatalog() && $block->isCatalogPage()) {
+    $data = $block->getInstagramMediaByTagOnProductPage();
+    if ($data == null) {
+        $data = [];
+    }
+    $row = 1;
+    if ($data != null && count($data) > 0) {
+        $divClass = 'product media';
+        if ($block->getIsDisplayLikesComments()) {
+            $isDisplayLikesComments = 1;
+        }
+        $listColumns['320'] = 2;
+        $listColumns['480'] = 4;
+        $listColumns['640'] = 4;
+        $listColumns['768'] = 5;
+        $listColumns['1024'] = 7;
+        $listColumns['1440'] = 7;
+    }
+} elseif ($block->isCatalogPage() && !$block->isDisplayOnCatalog()) {
+    $data = [];
+} else {
+    $sliderTag = $this->getData('sliderTag');
+    if ($sliderTag != null || preg_replace('/\s/', '', $sliderTag) != "") {
+        $data = $block->getInstagramMediaByTagWithTag(preg_replace('/\s/', '', $sliderTag), $imageNumber);
+    } else {
+        $data = $block->getAllInstagramMedia($imageNumber);
+    }
+
+    if ($data != null && count($data) > 0) {
+        $divClass = 'widget block block-static-block';
+        if ($this->getData('isDisplayLikeComment')) {
+            $isDisplayLikesComments = 1;
+        }
+    }
+
+    $listColumns['320'] = 1;
+    $listColumns['480'] = 2;
+    $listColumns['640'] = 3;
+    $listColumns['768'] = $column;
+    $listColumns['1024'] = $column;
+    $listColumns['1440'] = $column;
+}
+
+$imageLikeComments = [];
+
+foreach ($data as $item) {
+    $imageLikeComments[$item->images->standard_resolution->url] = [
+        $item->likes->count,
+        $item->comments->count
+    ];
+}
+
+$jsonString = json_encode($imageLikeComments);
+
+$numberOfMedia =  count($data);
+
+?>
+<?php if ($block->isCatalogPage() && !$block->isDisplayOnCatalog()): ?>
+
+<?php else: ?>
+<?php if ($data != null && $numberOfMedia > 0) : ?>
+
+    <div class="<?= $divClass ?> ">
+        <div class="yosto-instagram-connect-wrapper">
+            <?php if ($block->isDisplayOnCatalog()) : ?>
+                <label class="label"><span>Instagram Images</span></label>
+                <br><br>
+            <?php else: ?>
+                <h2 class="instagram-widget-title"><?php echo $this->getData('title');?></h2>
+            <?php endif; ?>
+            <?php if ($row == 1): ?>
+                <div class="owl-carousel ista-image-owl-carousel yosto-owl-theme">
+                    <?php foreach ($data as $media) : ?>
+                        <div class="insta-item">
+                            <a href="<?= $media->images->standard_resolution->url ?>" data-lightbox="test">
+                                <img src="<?= $media->images->standard_resolution->url ?>"
+                                     title="<?php echo $media->caption->text ?>">
+                            </a>
+                            <a class="insta-item-link" href="<?php echo $media->link ?>" target="_blank" title="<?php echo __('Go to Instagram') ?>">
+                                <i class="fa fa-instagram fa-2x"></i>
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php else: ?>
+                <?php
+                    $loopCount = (int) $numberOfMedia / $row;
+                    $surplus = $numberOfMedia % $row;
+                    if ($surplus > 0) {
+                        $loopCount += 1;
+                    }
+                ?>
+                <div class="owl-carousel ista-image-owl-carousel yosto-owl-theme">
+                    <?php for ($i = 0; $i < $loopCount; $i++): ?>
+                        <div class="insta-item-wrapper">
+                            <?php for ($j = $i * $row; $j < ($i + 1) * $row; $j++): ?>
+                                <?php if (key_exists($j, $data)): ?>
+                                    <div class="insta-item">
+                                        <a href="<?= $data[$j]->images->standard_resolution->url ?>" data-lightbox="test">
+                                            <img src="<?= $data[$j]->images->standard_resolution->url ?>"
+                                                 title="<?php echo  $data[$j]->caption != null ? $data[$j]->caption->text : '' ?>">
+                                        </a>
+                                        <a class="insta-item-link" href="<?php echo $data[$j]->link ?>" target="_blank" title="<?php echo __('Go to Instagram') ?>">
+                                            <i class="fa fa-instagram fa-2x"></i>
+                                        </a>
+                                    </div>
+                                <?php else: ?>
+                                    <?php break; ?>
+                                <?php endif; ?>
+                            <?php endfor; ?>
+                        </div>
+                    <?php endfor; ?>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var testOnOff = <?=$isDisplayLikesComments?>;
+
+        var mediaInfor = <?=$jsonString?>;
+    </script>
+    <script type="text/x-magento-init">
+        {
+            ".yosto-instagram-connect-wrapper .ista-image-owl-carousel": {
+                "Yosto_InstagramConnect/js/view/slider-list": {
+                    "config": {
+                        "items320": <?=$listColumns['320']?>,
+                        "items480": <?=$listColumns['480']?>,
+                        "items640": <?=$listColumns['640']?>,
+                        "items768": <?=$listColumns['768']?>,
+                        "items1024": <?=$listColumns['1024']?>,
+                        "items1440": <?=$listColumns['1440']?>
+                    }
+                }
+            }
+        }
+    </script>
+
+
+<?php endif; ?>
+
+<?php endif; ?>

@@ -1,0 +1,96 @@
+@forix-modal-size-chart__padding: 30px 10px;
+@forix-modal-size-chart__padding__m: 40px;
+@use-module-forix-sizechart-core__enable: true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.product-size-chart:before{
+    &:extend(.forix-abs-icon-base all);
+}
+
+.modal-size-chart{
+    &:extend(.forix-abs-visually-hidden all);
+}
+
+.modal-size-chart h3{
+    &:extend(.forix-abs-primary-title-size all);
+}
+
+.modal-size-chart table th{
+    &:extend(.forix-abs-three-size all);
+}
+
+.product-size-chart{
+    &:extend(.forix-abs-small-size all);
+}
+
+// ------------------------------------
+// Variables Extends
+// ------------------------------------
+@product-size-chart__text__color: @secondary-text__color;
+
+// ------------------------------------
+// Extend Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .product-size-chart{
+        color: @product-size-chart__text__color;
+        font-weight: @forix-font-weight__bold;
+        display: none;
+        vertical-align: middle;
+        cursor: pointer;
+        text-decoration: none;
+        margin-top: -2px;
+
+        &:before{
+            content: @forix-icon-sizechart;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 5px;
+            margin-bottom: 2px;
+            font-size: 20px;
+            line-height: 20px;
+            font-weight: @forix-font-weight__regular;
+        }
+
+        &:hover{
+            text-decoration: none;
+        }
+
+        &.show{
+            display: inline-block;
+        }
+    }
+
+    .modal-size-chart{
+        h3{
+            text-transform: none;
+            margin: 0 0 @forix-indent__m;
+        }
+
+        .box-image{
+            display: block;
+            margin: 0 0 @forix-indent__l;
+        }
+
+        table th{
+            font-weight: @forix-font-weight__bold;
+        }
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .modal-size-chart{
+        padding: @forix-indent__m @forix-indent__xm;
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .modal-size-chart{
+        padding: @forix-indent__xxl;
+    }
+}

@@ -1,0 +1,1717 @@
+// Support Css base on W3School
+// Support Input attr and value by array
+.forix-lib-css(
+    @_property,
+    @_value,
+    @_prefix: 0
+) when (@_prefix = 1)
+  and not (@_value = '')
+  and not (@_value = false)
+  and not (extract(@_value, 1) = false)
+  and not (extract(@_value, 2) = false)
+  and not (extract(@_value, 3) = false)
+  and not (extract(@_value, 4) = false)
+  and not (extract(@_value, 5) = false) {
+    -webkit-@{_property}: @_value;
+    -moz-@{_property}: @_value;
+    -ms-@{_property}: @_value;
+}
+
+.forix-lib-css(
+    @_property,
+    @_value,
+    @_prefix: 0
+) when not (@_value = '')
+  and not (@_value = false)
+  and not (extract(@_value, 1) = false)
+  and not (extract(@_value, 2) = false)
+  and not (extract(@_value, 3) = false)
+  and not (extract(@_value, 4) = false)
+  and not (extract(@_value, 5) = false) {
+        & when(@_property = content) and not(@_property = false){
+            content:@_value;
+        }
+        & when not(@_property = content){
+            @{_property}: @_value;
+        }
+}
+
+// ===========================================
+// Adding Mixin Need for Build lib
+// ===========================================
+
+// Loop attr:value
+// @_block-name:'forix-block-search' (name variables)
+// @_block__commons : array properties
+// @_block__responsives : array properties
+
+.forix-lib-apply-css-commons(
+    @_block-name: false,
+    @_block__commons: false
+){
+    & when not (@_block__commons = false) and not (@_block__commons =''){
+        @count-commons: length(@_block__commons);
+        ._forix-loop-commons(@_block-name, @_block__commons, @count-commons);
+    }
+}
+
+.forix-lib-apply-css-responsives(
+    @_block-name: false,
+    @_block__responsives: false,
+    @_version: false
+){
+    & when not (@_block__responsives = false) and not (@_block__responsives =''){
+        & when not (@_block__responsives = true){
+            @count-responsives: length(@_block__responsives);
+            ._forix-loop-responsive(@_block-name, @_block__responsives, @_version, @count-responsives);
+        }
+    }
+}
+
+.forix-lib-apply-css-check-have-responsives(
+    @_block-name: false,
+    @_block__check-have: false,
+    @_block__responsives: false,
+    @_version: false
+){
+    & when not (@_block__responsives = false) and not (@_block__responsives =''){
+        @count-responsives: length(@_block__responsives);
+        ._forix-loop-css-check-have-responsive(@_block-name,@_block__check-have, @_block__responsives, @_version, @count-responsives);
+    }
+}
+
+//@forix-block-search-form-actions-button__check-have
+.forix-lib-check-have-commons(
+    @_block-name: false,
+    @_block__check-have: false
+){
+    & when not (@_block__check-have = false) and not (@_block__check-have =''){
+        @count-check-have: length(@_block__check-have);
+        ._forix-loop-check-have-commons(@_block-name, @_block__check-have, @count-check-have);
+    }
+}
+.forix-lib-check-have-responsive(
+    @_block-name: false,
+    @_block__check-have: false,
+    @_version:false
+){
+    & when not (@_block__check-have = false) and not (@_block__check-have =''){
+        @count-check-have: length(@_block__check-have);
+        ._forix-loop-check-have-responsive(@_block-name, @_block__check-have,@_version, @count-check-have);
+    }
+}
+//@forix-[block-name]__prefix : true
+//@forix-[block-name]__prefix__commons: transform,....
+//@forix-[block-name]__prefix__responsive: transform,...
+.forix-lib-prefix-commons(
+    @_block-name: false,
+    @_block__prefix: false
+){
+    & when not (@_block__prefix = false) and not (@_block__prefix =''){
+        & when (@_block__prefix = true){
+            ._forix-lib-prefix-commons(@_block-name);
+        }
+    }
+}
+.forix-lib-prefix-responsive(
+    @_block-name: false,
+    @_block__prefix: false,
+    @_version:false
+){
+    & when not (@_block__prefix = false) and not (@_block__prefix =''){
+        @count-prefix: length(@_block__prefix);
+        ._forix-loop-prefix-responsive(@_block-name, @_block__prefix,@_version, @count-prefix);
+    }
+}
+//@forix-[block-name]__format : true
+//@forix-[block-name]__format__commons: button-reset,ul-reset,clearfix ...
+//@forix-[block-name]__format__responsive: button-reset,ul-reset,clearfix ...
+.forix-lib-format-commons(
+    @_block-name: false,
+    @_block__format: false
+){
+    & when not (@_block__format = false) and not (@_block__format =''){
+        @count-block-format: length(@_block__format);
+        ._forix-lib-block-format-commons(@_block-name);
+    }
+}
+.forix-lib-format-responsive(
+    @_block-name: false,
+    @_block__format: false,
+    @_version:false
+){
+    & when not (@_block__format = false) and not (@_block__format =''){
+        @count-block-format: length(@_block__format);
+        ._forix-loop-block-format-responsive(@_block-name, @_version);
+    }
+}
+
+// Loop common
+._forix-loop-commons(@_block-name,@_block__commons,@_count){
+    & when(isnumber(@_count)) and (@_count>0){
+        @properties: extract(@_block__commons, @_count);
+        @value:"@{_block-name}__@{properties}";
+
+        & when(@properties = font-size){
+            .lib-font-size(@@value);
+        }
+        & when(@properties = line-height){
+            .forix-lib-line-height(@@value);
+        }
+        & when(@properties = content){
+            & when not (@@value = false){
+                content: @@value;
+            }
+        }
+        & when not (@properties = font-size) and not (@properties = line-height) and not (@properties = content){
+            .forix-lib-css(@properties, @@value);
+        }
+
+        ._forix-loop-commons(@_block-name,@_block__commons,(@_count - 1));
+    }
+}
+// Loop responsive
+// @_version:''|'__m'|'__l'
+._forix-loop-responsive(@_block-name,@_block__responsives,@_version,@_count){
+    & when(isnumber(@_count)) and (@_count>0){
+        @properties: extract(@_block__responsives, @_count);
+        @value:"@{_block-name}__@{properties}@{_version}";
+        & when(@properties = font-size){
+            .lib-font-size(@@value);
+        }
+        & when(@properties = line-height){
+            .forix-lib-line-height(@@value);
+        }
+        & when not (@properties = font-size) and not (@properties = line-height){
+            .forix-lib-css(@properties, @@value);
+        }
+        ._forix-loop-responsive(@_block-name,@_block__responsives,@_version,(@_count - 1));
+    }
+}
+
+._forix-loop-css-check-have-responsive(@_block-name,@_block__check-have, @_block__responsives, @_version, @_count){
+    & when(isnumber(@_count)) and (@_count>0){
+        @properties: extract(@_block__responsives, @_count);
+        @value:"@{_block-name}__@{properties}@{_version}";
+        @position-pseudo: "@{_block-name}__position-pseudo";
+        & when (@@position-pseudo = before) {
+            & when(@properties = content-active){
+                &:active:before,
+                &.active:before{
+                    & when(@@value = false){
+                        display:none;
+                    }
+                    & when not (@@value = false){
+                        .forix-lib-css(content, @@value);
+                    }
+                }
+            }
+            & when not (@properties = content-active){
+                &:before{
+                    .forix-lib-css(@properties, @@value);
+                }
+            }
+        }
+        & when (@@position-pseudo = after) {
+            & when(@properties = content-active){
+                &:active:after,
+                &.active:after{
+                    & when(@@value = false){
+                        display:none;
+                    }
+                    & when not (@@value = false){
+                        .forix-lib-css(content, @@value);
+                    }
+                }
+            }
+            & when not (@properties = content-active){
+                &:after{
+                    .forix-lib-css(@properties, @@value);
+                }
+            }
+        }
+        ._forix-loop-css-check-have-responsive(@_block-name,@_block__check-have, @_block__responsives, @_version,(@_count - 1));
+    }
+}
+// Check Have (icon,placeholder)
+// @_version:''|'__m'|'__l'
+._forix-loop-check-have-commons(@_block-name,@_block__check-have,@_count){
+    & when(isnumber(@_count)) and (@_count>0){
+        @properties: extract(@_block__check-have, @_count); //[icon|placeholder]
+        @name:"@{_block-name}__@{properties}";
+        @arr-commons:"@{_block-name}__@{properties}__commons";
+        & when(@properties = icon) {
+            // Requried for icon
+            @position-pseudo: "@{_block-name}__@{properties}__position-pseudo";
+            @content-active: "@{_block-name}__@{properties}__content-active";
+            @color-hover: "@{_block-name}__@{properties}__color-hover";
+            @color-active: "@{_block-name}__@{properties}__color-active";
+            @text-hide: "@{_block-name}__@{properties}__text-hide";
+            @show-text-sub: "@{_block-name}__@{properties}__show-text-sub";
+            & when (@@position-pseudo = before) {
+                &:before{
+                    -webkit-font-smoothing: antialiased;
+                    display: inline-block;
+                    font-weight: normal;
+                    overflow: hidden;
+                    speak: none;
+                    text-align: center;
+                    .forix-lib-apply-css-commons(
+                        @_block-name: @name,
+                        @_block__commons: @@arr-commons
+                    );
+                }
+                .forix-lib-icon-content(
+                    @_icon__content:false,
+                    @_icon__content-active:@@content-active,
+                    @_icon__position-pseudo: @@position-pseudo
+                );
+
+                .forix-lib-icon-font-status(
+                    @_icon__color: false,
+                    @_icon__color-hover: @@color-hover,
+                    @_icon__color-active: @@color-hover,
+                    @_icon__position-pseudo: @@position-pseudo
+                );
+                .forix-lib-icon-text-hide(
+                    @_icon__text-hide: @@text-hide,
+                    @_icon__display: false,
+                    @_icon__show-text-sub: @@show-text-sub
+                );
+            }
+            & when (@@position-pseudo = after) {
+                &:after{
+                    -webkit-font-smoothing: antialiased;
+                    display: inline-block;
+                    font-weight: normal;
+                    overflow: hidden;
+                    speak: none;
+                    text-align: center;
+                    .forix-lib-apply-css-commons(
+                        @_block-name: @name,
+                        @_block__commons: @@arr-commons
+                    );
+                }
+                .forix-lib-icon-content(
+                    @_icon__content:false,
+                    @_icon__content-active:@@content-active,
+                    @_icon__position-pseudo: @@position-pseudo
+                );
+
+                .forix-lib-icon-font-status(
+                    @_icon__color: false,
+                    @_icon__color-hover: @@color-hover,
+                    @_icon__color-active: @@color-hover,
+                    @_icon__position-pseudo: @@position-pseudo
+                );
+                .forix-lib-icon-text-hide(
+                    @_icon__text-hide: @@text-hide,
+                    @_icon__display: false,
+                    @_icon__show-text-sub: @@show-text-sub
+                );
+            }
+        }
+        // for placeholder
+        & when(@properties = placeholder){
+            &::-moz-placeholder {
+                .forix-lib-apply-css-commons(
+                    @_block-name: @name,
+                    @_block__commons: @@arr-commons
+                );
+            }
+            &::-webkit-input-placeholder {
+                .forix-lib-apply-css-commons(
+                    @_block-name: @name,
+                    @_block__commons: @@arr-commons
+                );
+            }
+            &:-ms-input-placeholder {
+                .forix-lib-apply-css-commons(
+                    @_block-name: @name,
+                    @_block__commons: @@arr-commons
+                );
+            }
+        }
+        ._forix-loop-check-have-commons(@_block-name,@_block__check-have,(@_count - 1));
+    }
+}
+
+// Check Have (icon,placeholder)
+// @_version:''|'__m'|'__l'
+._forix-loop-check-have-responsive(@_block-name,@_block__check-have,@_version,@_count){
+    & when(isnumber(@_count)) and (@_count>0){
+        @properties: extract(@_block__check-have, @_count); //[icon|placeholder]
+        @name:"@{_block-name}__@{properties}";
+        @arr-responsives:"@{_block-name}__@{properties}__responsives";
+        & when(@properties = icon) {
+            // Requried for icon
+            .forix-lib-apply-css-check-have-responsives(
+                @name,
+                @_block__check-have,
+                @@arr-responsives,
+                @_version
+            );
+        }
+        & when(@properties = placeholder){
+            &::-moz-placeholder {
+                .forix-lib-apply-css-responsives(
+                    @name,
+                    @@arr-responsives,
+                    @_version
+                );
+            }
+            &::-webkit-input-placeholder {
+                .forix-lib-apply-css-responsives(
+                    @name,
+                    @@arr-responsives,
+                    @_version
+                );
+            }
+            &:-ms-input-placeholder {
+                .forix-lib-apply-css-responsives(
+                    @name,
+                    @@arr-responsives,
+                    @_version
+                );
+            }
+        }
+        ._forix-loop-check-have-responsive(@_block-name,@_block__check-have,@_version,(@_count - 1));
+    }
+}
+// Have Check New Version
+//@_block-name
+//@_block__check-have
+//@_type : responsive
+//@_count : length(@_block__check-have)
+//@_version:''|'__m'|'__l'
+.forix-check-have(
+    @_block-name:false,
+    @_block__check-have:false,
+    @_type:false,
+    @_version:false
+){
+    & when not (@_block__check-have = '') and not (@_block__check-have = false){
+        @_count: length(@_block__check-have);
+        ._forix-loop-check-have-new(
+            @_block-name,
+            @_block__check-have,
+            @_type,
+            @_version,
+            @_count
+        );
+    }
+}
+._forix-loop-check-have-new(
+    @_block-name:false,
+    @_block__check-have:false,
+    @_type:false,
+    @_version:false,
+    @_count:false
+){
+    & when(isnumber(@_count)) and (@_count>0){
+        @properties: extract(@_block__check-have, @_count);
+        @name: "@{_block-name}__@{properties}"; // forix-block-name__first
+        @arr-commons: "@{_block-name}__@{properties}__commons"; // array commons - forix-block-name__first__commons
+        @arr-responsives: "@{_block-name}__@{properties}__responsives"; // array responsives - forix-block-name__first__responsives
+        // for not,nth-child,nth-last-child,nth-last-of-type,nth-of-type
+        & when (@properties = nth-child){
+            ._forix-list-nth(
+                @_block-name,
+                @properties,
+                @_type,
+                @_version
+            );
+        }
+        & when (@properties = nth-last-child){
+            ._forix-list-nth(
+                @_block-name,
+                @properties,
+                @_type,
+                @_version
+            );
+        }
+        & when (@properties = nth-last-of-type){
+            ._forix-list-nth(
+                @_block-name,
+                @properties,
+                @_type,
+                @_version
+            );
+        }
+        & when (@properties = nth-of-type){
+            ._forix-list-nth(
+                @_block-name,
+                @properties,
+                @_type,
+                @_version
+            );
+        }
+        & when (@properties = not){
+            ._forix-list-nth(
+                @_block-name,
+                @properties,
+                @_type,
+                @_version
+            );
+        }
+        & when (@_type = commons){
+            // for all selector default
+            & when not (@properties = placeholder) and not (@properties = not)  and not (@properties = nth-child) and not (@properties = nth-last-child) and not (@properties = nth-last-of-type) and not (@properties = nth-of-type){
+                @ele: ~":@{properties}";
+                &@{ele} {
+                    .forix-lib-apply-css-commons(
+                        @_block-name: @name,
+                        @_block__commons: @@arr-commons
+                    );
+                }
+            }
+            // for placeholder
+            & when (@properties = placeholder) {
+                &::-moz-placeholder {
+                    .forix-lib-apply-css-commons(
+                        @_block-name: @name,
+                        @_block__commons: @@arr-commons
+                    );
+                }
+                &::-webkit-input-placeholder {
+                    .forix-lib-apply-css-commons(
+                        @_block-name: @name,
+                        @_block__commons: @@arr-commons
+                    );
+                }
+                &:-ms-input-placeholder {
+                    .forix-lib-apply-css-commons(
+                        @_block-name: @name,
+                        @_block__commons: @@arr-commons
+                    );
+                }
+            }
+        }
+        & when (@_type = responsives){
+            // for all selector default
+            & when not (@properties = placeholder) and not (@properties = not)  and not (@properties = nth-child) and not (@properties = nth-last-child) and not (@properties = nth-last-of-type) and not (@properties = nth-of-type){
+                @ele: ~":@{properties}";
+                &@{ele} {
+                    .forix-lib-apply-css-responsives(
+                        @name,
+                        @@arr-responsives,
+                        @_version
+                    );
+                }
+            }
+
+            // for placeholder
+            & when (@properties = placeholder) {
+                &::-moz-placeholder {
+                    .forix-lib-apply-css-responsives(
+                        @name,
+                        @@arr-responsives,
+                        @_version
+                    );
+                }
+                &::-webkit-input-placeholder {
+                    .forix-lib-apply-css-responsives(
+                        @name,
+                        @@arr-responsives,
+                        @_version
+                    );
+                }
+                &:-ms-input-placeholder {
+                    .forix-lib-apply-css-responsives(
+                        @name,
+                        @@arr-responsives,
+                        @_version
+                    );
+                }
+            }
+        }
+        ._forix-loop-check-have-new(
+            @_block-name,
+            @_block__check-have,
+            @_type,
+            @_version,
+            (@_count - 1)
+        );
+    }
+}
+
+._forix-list-nth(
+    @_block-name:false,
+    @_properties:false,
+    @_type:false,
+    @_version:false
+){
+    @_list: "@{_block-name}__@{_properties}__list";
+    @_selector: "@{_block-name}__@{_properties}__selector";
+    & when not (@@_list = false) and not (@@_list = '') and not (@_selector = false) and not (@_selector = ''){
+         @count-list:length(@@_list);
+         @count-selector:length(@@_selector);
+        & when(@count-list = @count-selector){
+            ._forix-loop-list-nth(
+                @_block-name,
+                @_properties,
+                @@_list,
+                @@_selector,
+                @_type,
+                @_version,
+                @count-list
+            );
+        }
+    }
+}
+
+._forix-loop-list-nth(
+    @_block-name:false,
+    @_properties:false,
+    @_list:false,
+    @_selector:false,
+    @_type:false,
+    @_version:false,
+    @_count: false
+){
+    & when(isnumber(@_count)) and (@_count>0){
+        @opt: extract(@_list, @_count);
+        @selector: extract(@_selector, @_count);
+        @name: "@{_block-name}__@{_properties}__@{opt}";
+        @arr-commons: "@{_block-name}__@{_properties}__commons";
+        @arr-responsives: "@{_block-name}__@{_properties}__responsives";
+        @_ele: ~":@{_properties}(@{selector})";
+        & when (@_type = commons){
+            &@{_ele} {
+                .forix-lib-apply-css-commons(
+                    @_block-name: @name,
+                    @_block__commons: @@arr-commons
+                );
+            }
+        }
+        & when (@_type = responsives){
+            &@{_ele} {
+                .forix-lib-apply-css-responsives(
+                    @name,
+                    @@arr-responsives,
+                    @_version
+                );
+            }
+        }
+        ._forix-loop-list-nth(
+            @_block-name,
+            @_properties,
+            @_list,
+            @_selector,
+            @_type,
+            @_version,
+            @_count - 1
+        );
+    }
+}
+
+// Prefix
+._forix-lib-prefix(
+    @_block-name,
+    @_commons,
+    @_version:false,
+    @_count
+){
+    & when(isnumber(@_count)) and (@_count>0) and not (@_commons = '') and not (@_commons = false) {
+        @properties: extract(@_commons, @_count);
+        & when(@_version = false){
+            @value: "@{_block-name}__@{properties}";
+            .forix-lib-css(@properties,@@value,1);
+        }
+        & when not (@_version = false){
+            @value: "@{_block-name}__@{properties}@{_version}";
+            .forix-lib-css(@properties,@@value,1);
+        }
+        ._forix-lib-prefix(
+            @_block-name,
+            @_commons,
+            @_version,
+                @_count - 1
+        );
+    }
+}
+
+._forix-lib-prefix-commons(
+    @_block-name
+){
+    @commons: "@{_block-name}__prefix__commons";
+    ._forix-lib-prefix(
+        @_block-name,
+        @@commons,
+        @_version:false,
+        length(@@commons)
+    );
+}
+._forix-loop-prefix-responsive(
+    @_block-name,
+    @_block__prefix,
+    @_version,
+    @count
+){
+    @commons: "@{_block-name}__prefix__responsives";
+    & when not (@@commons = '') and not (@@commons = false){
+        ._forix-lib-prefix(
+            @_block-name,
+            @@commons,
+            @_version,
+            length(@@commons)
+        );
+    }
+}
+// Format
+._forix-lib-block-format(
+    @_block-name,
+    @_block__format,
+    @_count,
+    @_version:false
+){
+    & when(isnumber(@_count)) and (@_count>0) and not (@_block__format = '') and not (@_block__format = false) {
+        @properties: extract(@_block__format, @_count);
+        & when (@_version = false){
+            & when(@properties = button-reset){
+                .lib-button-reset();
+            }
+            & when(@properties = ul-reset){
+                .forix-lib-list-reset();
+            }
+            & when(@properties = clearfix){
+                .lib-clearfix();
+            }
+        }
+        & when not (@_version = false) and not (@_block__format = false){
+            @check: "@{_block-name}__@{properties}@{_version}";
+            & when(@properties = button-reset) and (@@check = true){
+                .lib-button-reset();
+            }
+            & when(@properties = ul-reset) and (@@check = true){
+                .lib-list-reset-styles();
+            }
+            & when(@properties = clearfix) and (@@check = true){
+                .lib-clearfix();
+            }
+        }
+
+        ._forix-lib-block-format(@_block-name,@_block__format,(@_count - 1),@_version);
+    }
+}
+._forix-lib-block-format-commons(
+    @_block-name
+){
+    @block-format: "@{_block-name}__format__commons";
+    ._forix-lib-block-format(
+        @_block-name,
+        @@block-format,
+        length(@@block-format)
+    );
+}
+._forix-loop-block-format-responsive(
+    @_block-name,
+    @_version
+){
+    @block-format: "@{_block-name}__format__responsives";
+    ._forix-lib-block-format(
+        @_block-name,
+        @@block-format,
+        length(@@block-format),
+        @_version
+    );
+}
+
+// Common
+// <767 ~ ''
+// >=768 ~ 'ml'
+// < 1024  ~'sm'
+// >=1024 ~ 'l'
+// [768,1024] 'm'
+
+// @_version:[''|'ml'|'sm'|'l'|'m']
+
+// Check Condition Responsive
+// Required
+.forix-check-responsive(
+    @_block-name,
+    @_block__responsives,
+    @_block__have-check,
+    @_block__status,
+    @_block__prefix,
+    @_block__format,
+    @_version
+){
+    @change__m:"@{_block-name}__change__m";
+    @change__l:"@{_block-name}__change__l";
+    @flex:"@{_block-name}__use-flex";
+    & when not (@_block__responsives = false) and not (@_block__responsives =''){
+        // 'common'
+        & when (@_version = 'common') {
+            & when(@@change__m = false) and (@@change__l = false){
+                .forix-lib-format-responsive(
+                    @_block-name,
+                    @_block__format,
+                    ''
+                );
+                //.forix-lib-check-have-responsive(
+                //    @_block-name,
+                //    @_block__have-check,
+                //    ''
+                //);
+                .forix-check-have(
+                    @_block-name,
+                    @_block__have-check,
+                    @_type:responsives,
+                    @_version:''
+                );
+                //.forix-lib-status-responsive(
+                //    @_block-name,
+                //    @_block__status,
+                //    ''
+                //);
+                .forix-lib-status(
+                    @_block-name,
+                    @_block__status,
+                    @_type:responsives,
+                    @_version:''
+                );
+                .forix-lib-prefix-responsive(
+                    @_block-name,
+                    @_block__prefix,
+                    ''
+                );
+                & when(@@flex = true){
+                    .forix-apply-flex(
+                        @_block-name,
+                        @_type:responsives,
+                        @_version:''
+                    );
+                }
+                .forix-lib-apply-css-responsives(
+                    @_block-name,
+                    @_block__responsives,
+                    ''
+                );
+            }
+        }
+        // <767 ~ ''
+        & when (@_version = '') {
+            & when not (@@change__m = false) {
+                .forix-lib-format-responsive(
+                    @_block-name,
+                    @_block__format,
+                    ''
+                );
+                //.forix-lib-check-have-responsive(
+                //    @_block-name,
+                //    @_block__have-check,
+                //    ''
+                //);
+                .forix-check-have(
+                    @_block-name,
+                    @_block__have-check,
+                    @_type:responsives,
+                    @_version:''
+                );
+                //.forix-lib-status-responsive(
+                //    @_block-name,
+                //    @_block__status,
+                //    ''
+                //);
+                .forix-lib-status(
+                    @_block-name,
+                    @_block__status,
+                    @_type:responsives,
+                    @_version:''
+                );
+                .forix-lib-prefix-responsive(
+                    @_block-name,
+                    @_block__prefix,
+                    ''
+                );
+                & when(@@flex = true){
+                    .forix-apply-flex(
+                        @_block-name,
+                        @_type:responsives,
+                        @_version:''
+                    );
+                }
+                .forix-lib-apply-css-responsives(
+                    @_block-name,
+                    @_block__responsives,
+                    ''
+                );
+            }
+        }
+        // >=768 ~ 'ml'
+        & when (@_version = 'ml') {
+            & when (@@change__m = desktop) and (@@change__l = tablet) {
+                .forix-lib-format-responsive(
+                    @_block-name,
+                    @_block__format,
+                    '__m'
+                );
+                //.forix-lib-check-have-responsive(
+                //    @_block-name,
+                //    @_block__have-check,
+                //    '__m'
+                //);
+                .forix-check-have(
+                    @_block-name,
+                    @_block__have-check,
+                    @_type:responsives,
+                    @_version:'__m'
+                );
+                //.forix-lib-status-responsive(
+                //    @_block-name,
+                //    @_block__status,
+                //    '__m'
+                //);
+                .forix-lib-status(
+                    @_block-name,
+                    @_block__status,
+                    @_type:responsives,
+                    @_version:'__m'
+                );
+                .forix-lib-prefix-responsive(
+                    @_block-name,
+                    @_block__prefix,
+                    '__m'
+                );
+                & when(@@flex = true){
+                    .forix-apply-flex(
+                        @_block-name,
+                        @_type:responsives,
+                        @_version:'__m'
+                    );
+                }
+                .forix-lib-apply-css-responsives(
+                    @_block-name,
+                    @_block__responsives,
+                    '__m'
+                );
+            }
+        }
+        // < 1024  ~'sm'
+        & when (@_version = 'sm') {
+            & when (@@change__m = false) and (@@change__l = true) {
+                .forix-lib-format-responsive(
+                    @_block-name,
+                    @_block__format,
+                    ''
+                );
+                //.forix-lib-check-have-responsive(
+                //    @_block-name,
+                //    @_block__have-check,
+                //    ''
+                //);
+                .forix-check-have(
+                    @_block-name,
+                    @_block__have-check,
+                    @_type:responsives,
+                    @_version:''
+                );
+                //.forix-lib-status-responsive(
+                //    @_block-name,
+                //    @_block__status,
+                //    ''
+                //);
+                .forix-lib-status(
+                    @_block-name,
+                    @_block__status,
+                    @_type:responsives,
+                    @_version:''
+                );
+                .forix-lib-prefix-responsive(
+                    @_block-name,
+                    @_block__prefix,
+                    ''
+                );
+                & when(@@flex = true){
+                    .forix-apply-flex(
+                        @_block-name,
+                        @_type:responsives,
+                        @_version:''
+                    );
+                }
+                .forix-lib-apply-css-responsives(
+                    @_block-name,
+                    @_block__responsives,
+                    ''
+                );
+            }
+        }
+        // >=1024 ~ 'l'
+        & when (@_version = 'l') {
+            & when not (@@change__m = desktop) and not (@@change__l = tablet){
+                & when (@@change__l = true) {
+                    .forix-lib-format-responsive(
+                        @_block-name,
+                        @_block__format,
+                        '__l'
+                    );
+                    //.forix-lib-check-have-responsive(
+                    //    @_block-name,
+                    //    @_block__have-check,
+                    //    '__l'
+                    //);
+                    .forix-check-have(
+                        @_block-name,
+                        @_block__have-check,
+                        @_type:responsives,
+                        @_version:'__l'
+                    );
+                    //.forix-lib-status-responsive(
+                    //    @_block-name,
+                    //    @_block__status,
+                    //    '__l'
+                    //);
+                    .forix-lib-status(
+                        @_block-name,
+                        @_block__status,
+                        @_type:responsives,
+                        @_version:'__l'
+                    );
+                    .forix-lib-prefix-responsive(
+                        @_block-name,
+                        @_block__prefix,
+                        '__l'
+                    );
+                    & when(@@flex = true){
+                        .forix-apply-flex(
+                            @_block-name,
+                            @_type:responsives,
+                            @_version:'__l'
+                        );
+                    }
+                    .forix-lib-apply-css-responsives(
+                        @_block-name,
+                        @_block__responsives,
+                        '__l'
+                    );
+                }
+                & when (@@change__m = true) and (@@change__l = false){
+                    .forix-lib-format-responsive(
+                        @_block-name,
+                        @_block__format,
+                        ''
+                    );
+                    //.forix-lib-check-have-responsive(
+                    //    @_block-name,
+                    //    @_block__have-check,
+                    //    ''
+                    //);
+                    .forix-check-have(
+                        @_block-name,
+                        @_block__have-check,
+                        @_type:responsives,
+                        @_version:''
+                    );
+                    //.forix-lib-status-responsive(
+                    //    @_block-name,
+                    //    @_block__status,
+                    //    ''
+                    //);
+                    .forix-lib-status(
+                        @_block-name,
+                        @_block__status,
+                        @_type:responsives,
+                        @_version:''
+                    );
+                    .forix-lib-prefix-responsive(
+                        @_block-name,
+                        @_block__prefix,
+                        ''
+                    );
+                    & when(@@flex = true){
+                        .forix-apply-flex(
+                            @_block-name,
+                            @_type:responsives,
+                            @_version:''
+                        );
+                    }
+                    .forix-lib-apply-css-responsives(
+                        @_block-name,
+                        @_block__responsives,
+                        ''
+                    );
+                }
+            }
+        }
+        // [768,1024] 'm'
+        & when (@_version = 'm') {
+            & when (@@change__m = true) {
+                .forix-lib-format-responsive(
+                    @_block-name,
+                    @_block__format,
+                    '__m'
+                );
+                //.forix-lib-check-have-responsive(
+                //    @_block-name,
+                //    @_block__have-check,
+                //    '__m'
+                //);
+                .forix-check-have(
+                    @_block-name,
+                    @_block__have-check,
+                    @_type:responsives,
+                    @_version:'__m'
+                );
+                //.forix-lib-status-responsive(
+                //    @_block-name,
+                //    @_block__status,
+                //    '__m'
+                //);
+                .forix-lib-status(
+                    @_block-name,
+                    @_block__status,
+                    @_type:responsives,
+                    @_version:'__m'
+                );
+                .forix-lib-prefix-responsive(
+                    @_block-name,
+                    @_block__prefix,
+                    '__m'
+                );
+                & when(@@flex = true){
+                    .forix-apply-flex(
+                        @_block-name,
+                        @_type:responsives,
+                        @_version:'__m'
+                    );
+                }
+                .forix-lib-apply-css-responsives(
+                    @_block-name,
+                    @_block__responsives,
+                    '__m'
+                );
+            }
+        }
+    }
+}
+
+// Lib Call build lib function
+
+.forix-build-lib-commons(
+    @_block-name:false
+){
+    @common:"@{_block-name}__commons";
+    @responsives:"@{_block-name}__responsives";
+    @check-have:"@{_block-name}__check-have";
+    @status:"@{_block-name}__status";
+    @prefix:"@{_block-name}__prefix";
+    @format:"@{_block-name}__format";
+    @flex:"@{_block-name}__use-flex";
+
+    .forix-lib-apply-css-commons(
+        @_block-name: @_block-name,
+        @_block__commons: @@common
+    );
+    //.forix-lib-check-have-commons(
+    //    @_block-name,
+    //    @@check-have
+    //);
+    .forix-check-have(
+        @_block-name,
+        @@check-have,
+        commons
+    );
+    //.forix-lib-status-commons(
+    //    @_block-name,
+    //    @@status
+    //);
+    .forix-lib-status(
+        @_block-name,
+        @@status,
+        @_type:commons
+    );
+    .forix-lib-prefix-commons(
+        @_block-name,
+        @@prefix
+    );
+    .forix-lib-format-commons(
+        @_block-name,
+        @@format
+    );
+    & when(@@flex = true){
+        .forix-apply-flex(
+            @_block-name:@_block-name,
+            @_type:commons
+        );
+    }
+    .forix-check-responsive(
+        @_block-name,
+        @@responsives,
+        @@check-have,
+        @@status,
+        @@prefix,
+        @@format,
+        'common'
+    );
+}
+
+.forix-build-lib-responsives(
+    @_block-name:false,
+    @_version:''
+){
+    @responsives:"@{_block-name}__responsives";
+    @check-have:"@{_block-name}__check-have";
+    @status:"@{_block-name}__status";
+    @prefix:"@{_block-name}__prefix";
+    @format:"@{_block-name}__format";
+    .forix-check-responsive(
+        @_block-name,
+        @@responsives,
+        @@check-have,
+        @@status,
+        @@prefix,
+        @@format,
+        @_version
+    );
+}
+
+
+// Loop for a,button,font
+// @_name: link|button|font
+// @_list-type:array // Ex : type1,type2,type3..../maximum 20 types
+// @forix-[link|button|font]__properties:value;
+// @_type : commons|responsives
+// @_version:'','ml','sm','m','l'
+.forix-loop-ele-commons(
+    @_name:false,
+    @_list-type:false,
+    @_type:false,
+    @_version:false
+){
+    & when not (@_list-type = false) and not (@_list-type = ''){
+        @_count:length(@_list-type);
+        ._forix-loop-ele-commons(
+            @_name,
+            @_list-type,
+            @_count,
+            @_type,
+            @_version
+        )
+    }
+}
+._forix-loop-ele-commons(
+    @_name:false,
+    @_list-type:false,
+    @_count:false,
+    @_type:false,
+    @_version:false
+){
+    & when(isnumber(@_count)) and (@_count>0) and (@_count < 21){
+        @type: extract(@_list-type, @_count);
+        @block-name:"forix-@{_name}-@{type}";
+        & when(@_type = commons){
+            .forix-build-lib-commons(
+                @block-name
+            );
+        }
+        & when(@_type = responsives){
+            .forix-build-lib-responsives(
+                @block-name,
+                @_version
+            );
+        }
+        ._forix-loop-ele-commons(@_name,@_list-type,(@_count - 1),@_type,@_version);
+    }
+}
+
+// Set Style For a Format Commons
+.forix-set-styles-for-commons(
+    @_name:false,
+    @_list-type:false,
+    @_type:false,
+    @_version:false,
+    @_number:false
+){
+    & when not (@_list-type = false) and not (@_list-type = ''){
+        @_count:length(@_list-type);
+        & when(@_number > 0) and (@_number <= @_count){
+            @type: extract(@_list-type, @_number);
+            @block-name:"forix-@{_name}-@{type}";
+            & when(@_type = commons){
+                .forix-build-lib-commons(
+                    @block-name
+                );
+            }
+            & when(@_type = responsives){
+                .forix-build-lib-responsives(
+                    @block-name,
+                    @_version
+                );
+            }
+        }
+    }
+}
+
+
+// ===============
+// Mixin for Apply Flex-box
+// ===============
+// @_block-name : name block need apply
+// @_type : commons|responsives
+// @_version:'','ml','sm','m','l'
+// @forix-block-name__use-flex:true;
+// @forix-block-name__flex__commons:display,flex-grow.....array attribute css for flexbox;
+// @forix-block-name__flex__responsives:array attribute css for flexbox;
+// @forix-block-name__properties:value;
+
+.forix-apply-flex(
+    @_block-name:false,
+    @_type:false,
+    @_version:false
+){
+    @use:"@{_block-name}__use-flex";
+    @commons:"@{_block-name}__flex__commons";
+    @responsives:"@{_block-name}__flex__responsives";
+    & when not (@@use = false) and not (@@use = ''){
+        ._forix-loop-apply-flex(
+            @_block-name,
+            @@commons,
+            @@responsives,
+            @_type,
+            @_version
+        );
+    }
+}
+._forix-loop-apply-flex(
+    @_block-name,
+    @_commons,
+    @_responsives,
+    @_type:false,
+    @_version:false
+){
+    & when(@_type = commons){
+        @_count:length(@_commons);
+        ._loop-for-apply-flex(
+            @_block-name,
+            @_attrs:@_commons,
+            @_count,
+            @_version
+        );
+    }
+    & when(@_type = responsives){
+        @_count:length(@_responsives);
+        ._loop-for-apply-flex(
+            @_block-name,
+            @_attrs:@_responsives,
+            @_count,
+            @_version
+        );
+    }
+}
+
+._loop-for-apply-flex(
+    @_block-name,
+    @_attrs:false,
+    @_count:false,
+    @_version:false
+){
+    & when not (@_attrs = false) and not (@_attrs = '') and (@_count>0) and (isnumber(@_count)){
+        @_properties: extract(@_attrs, @_count);
+        & when not (@_version = false) and not (_version = ''){
+            @_value:"@{_block-name}__@{_properties}@{_version}";
+            & when(@_properties = display) and (@@_value = flex){
+                .forix-lib-vendor-prefix-display(@@_value);
+            }
+            & when(@_properties = display) and (@@_value = inline-flex){
+                .forix-lib-vendor-prefix-display(@@_value);
+            }
+            & when(@_properties = display) and not (@@_value = flex) and not (@@_value = inline-flex){
+                .forix-lib-css(display,@@_value);
+            }
+            & when(@_properties = flex-grow){
+                .forix-lib-vendor-prefix-flex-grow(@@_value);
+            }
+            & when(@_properties = flex-shrink){
+                .forix-lib-vendor-prefix-flex-shrink(@@_value);
+            }
+            & when(@_properties = flex-basis){
+                .forix-lib-vendor-prefix-flex-basis(@@_value);
+            }
+            & when(@_properties = flex-wrap){
+                .forix-lib-vendor-prefix-flex-wrap(@@_value);
+            }
+            & when(@_properties = flex-direction){
+                .forix-lib-vendor-prefix-flex-direction(@@_value);
+            }
+            & when(@_properties = order){
+                .forix-lib-vendor-prefix-order(@@_value);
+            }
+            & when(@_properties = align-items){
+                .forix-lib-vendor-box-align(@@_value);
+            }
+            & when(@_properties = appearance){
+                .forix-lib-vendor-prefix-appearance(@@_value);
+            }
+            & when(@_properties = column-count){
+                .forix-lib-vendor-prefix-column-count(@@_value);
+            }
+        }
+        & when (@_version = false){
+            @_value:"@{_block-name}__@{_properties}";
+            & when(@_properties = display) and (@@_value = flex){
+                .forix-lib-vendor-prefix-display(@@_value);
+            }
+            & when(@_properties = display) and (@@_value = inline-flex){
+                .forix-lib-vendor-prefix-display(@@_value);
+            }
+            & when(@_properties = display) and not (@@_value = flex) and not (@@_value = inline-flex){
+                .forix-lib-css(display,@@_value);
+            }
+            & when(@_properties = flex-grow){
+                .forix-lib-vendor-prefix-flex-grow(@@_value);
+            }
+            & when(@_properties = flex-shrink){
+                .forix-lib-vendor-prefix-flex-shrink(@@_value);
+            }
+            & when(@_properties = flex-basis){
+                .forix-lib-vendor-prefix-flex-basis(@@_value);
+            }
+            & when(@_properties = flex-wrap){
+                .forix-lib-vendor-prefix-flex-wrap(@@_value);
+            }
+            & when(@_properties = flex-direction){
+                .forix-lib-vendor-prefix-flex-direction(@@_value);
+            }
+            & when(@_properties = order){
+                .forix-lib-vendor-prefix-order(@@_value);
+            }
+            & when(@_properties = align-items){
+                .forix-lib-vendor-box-align(@@_value);
+            }
+            & when(@_properties = appearance){
+                .forix-lib-vendor-prefix-appearance(@@_value);
+            }
+            & when(@_properties = column-count){
+                .forix-lib-vendor-prefix-column-count(@@_value);
+            }
+        }
+        ._loop-for-apply-flex(@_block-name,@_attrs,(@_count - 1),@_version);
+    }
+}
+
+// ===============
+// Mixin for Apply Socials
+// ===============
+///////////
+// @_list-socials:array // Ex : twitter,facebook,type3..../maximum 20 types
+// @_list-socials__name:"socials";
+// @forix-[@_list-socials__name]-[twitter]
+// @forix-[@_list-socials__name]-[facebook]
+// @forix-[@_list-socials__name]-[type3]
+// @_type : commons|responsives
+// @_version:'','ml','sm','m','l'
+.forix-apply-socials(
+    @_list-socials:false,
+    @_list-socials__name:false,
+    @_type:false,
+    @_version:false
+){
+    & when not (@_list-socials = false) and not (@_list-socials = ''){
+        @_count:length(@_list-socials);
+        ._forix-loop-apply-socials(
+            @_list-socials,
+            @_list-socials__name,
+            @_count,
+            @_type,
+            @_version
+        );
+    }
+}
+//
+._forix-loop-apply-socials(
+    @_list-socials:false,
+    @_list-socials__name:false,
+    @_count:false,
+    @_type:false,
+    @_version:false
+){
+    & when(isnumber(@_count)) and (@_count>0) and (@_count < 21){
+        @_social: extract(@_list-socials, @_count);
+        @block-name:"forix-@{_list-socials__name}-@{_social}";
+        @block-name-a:"forix-@{_list-socials__name}-@{_social}-a";
+        & when(@_type = commons){
+            &.@{_social}{
+                .forix-build-lib-commons(
+                    @block-name
+                );
+                a{
+                    .forix-build-lib-commons(
+                        @block-name-a
+                    );
+                }
+            }
+        }
+        & when(@_type = responsives){
+            &.@{_social} {
+                .forix-build-lib-responsives(
+                    @block-name,
+                    @_version
+                );
+                a{
+                    .forix-build-lib-responsives(
+                        @block-name-a,
+                        @_version
+                    );
+                }
+            }
+        }
+        ._forix-loop-apply-socials(@_list-socials,@_list-socials__name,(@_count - 1),@_type,@_version);
+    }
+}
+
+// ===============
+// Mixin for Status Block (.active,.selected .....)
+// ===============
+// @_block-name : name block need apply
+// @_type : commons|responsives
+// @_block__status: true|false
+// @_version:'','ml','sm','m','l'
+
+.forix-lib-status(
+    @_block-name: false,
+    @_block__status: false,
+    @_type:false,
+    @_version:false
+){
+    & when not (@_block__status = false) and not (@_block__status =''){
+        ._forix-lib-status(
+            @_block-name,
+            @_type,
+            @_version
+        );
+    }
+}
+
+._forix-lib-status(
+    @_block-name: false,
+    @_type:false,
+    @_version:false
+){
+    @block-status__list:"@{_block-name}__status__list";
+    @block-status__listclass:"@{_block-name}__status__listclass";
+    & when not (@@block-status__list  = '') and not (@@block-status__list = false) and not (@@block-status__listclass  = '') and not (@@block-status__listclass = false){
+        @length-list:length(@@block-status__list);
+        @length-listclass:length(@@block-status__listclass);
+        & when(@length-list = @length-listclass) and (@length-list > 0) and (@length-listclass > 0){
+            ._forix-lib-status-list(
+                @_block-name,
+                @@block-status__list,
+                @@block-status__listclass,
+                @_type,
+                @_version,
+                @_count:@length-list
+            );
+        }
+    }
+}
+
+._forix-lib-status-list(
+    @_block-name: false,
+    @block-status__list:false,
+    @block-status__listclass:false,
+    @_type:false,
+    @_version:false,
+    @_count:false
+){
+    & when(isnumber(@_count)) and (@_count>0){
+        @opt: extract(@block-status__list, @_count);
+        @class: extract(@block-status__listclass, @_count);
+        @name: "@{_block-name}__status__@{opt}";
+        @arr-commons: "@{_block-name}__status__@{opt}__commons";
+        @arr-responsives: "@{_block-name}__status__@{opt}__responsives";
+        & when (@_type = commons) and not (@@arr-commons='') and not (@@arr-commons=false){
+            &@{class} {
+                & when not (@@arr-commons=true){
+                    .forix-lib-apply-css-commons(
+                        @_block-name: @name,
+                        @_block__commons: @@arr-commons
+                    );
+                }
+                ._forix-lib-call-status-sublist(
+                    @_block-name,
+                    @opt,
+                    @_type,
+                    @_version
+                );
+            }
+        }
+        & when (@_type = responsives) and not (@@arr-responsives='') and not (@@arr-responsives=false){
+            &@{class} {
+                & when not (@@arr-responsives=true){
+                    .forix-lib-apply-css-responsives(
+                        @name,
+                        @@arr-responsives,
+                        @_version
+                    );
+                }
+                ._forix-lib-call-status-sublist(
+                    @_block-name,
+                    @opt,
+                    @_type,
+                    @_version
+                );
+            }
+        }
+        ._forix-lib-status-list(
+            @_block-name,
+            @block-status__list,
+            @block-status__listclass,
+            @_type,
+            @_version,
+            @_count - 1
+        );
+    }
+}
+._forix-lib-call-status-sublist(
+    @_block-name: false,
+    @_opt_list:false,
+    @_type:false,
+    @_version:false
+){
+    @block-status__listsub:"@{_block-name}__status__listsub";
+    @block-status__listsubclass:"@{_block-name}__status__listsubclass";
+    & when not (@@block-status__listsub  = '') and not (@@block-status__listsub = false) and not (@@block-status__listsubclass  = '') and not (@@block-status__listsubclass = false){
+        @length-listsub:length(@@block-status__listsub);
+        @length-listsubclass:length(@@block-status__listsubclass);
+        & when(@length-listsub = @length-listsubclass) and (@length-listsub > 0) and (@length-listsubclass > 0){
+            ._forix-lib-status-sublist(
+                @_block-name,
+                @_opt_list,
+                @@block-status__listsub,
+                @@block-status__listsubclass,
+                @_type,
+                @_version,
+                @_count:@length-listsub
+            );
+        }
+    }
+}
+._forix-lib-status-sublist(
+    @_block-name: false,
+    @_opt_list:false,
+    @block-status__listsub:false,
+    @block-status__listsubclass:false,
+    @_type:false,
+    @_version:false,
+    @_count:false
+){
+    & when(isnumber(@_count)) and (@_count>0){
+        @opt: extract(@block-status__listsub, @_count);
+        @class: extract(@block-status__listsubclass, @_count);
+        @name: "@{_block-name}__status__listsub__@{_opt_list}-@{opt}";
+        @arr-commons: "@{_block-name}__status__listsub__@{_opt_list}-@{opt}__commons";
+        @arr-responsives: "@{_block-name}__status__listsub__@{_opt_list}-@{opt}__responsives";
+        & when (@_type = commons) and not (@@arr-commons='') and not (@@arr-commons=false){
+            @{class} {
+                .forix-lib-apply-css-commons(
+                    @_block-name: @name,
+                    @_block__commons: @@arr-commons
+                );
+            }
+        }
+        & when (@_type = responsives) and not (@@arr-responsives='') and not (@@arr-responsives=false){
+            @{class} {
+                .forix-lib-apply-css-responsives(
+                    @name,
+                    @@arr-responsives,
+                    @_version
+                );
+            }
+        }
+        ._forix-lib-status-sublist(
+            @_block-name,
+            @_opt_list,
+            @block-status__listsub,
+            @block-status__listsubclass,
+            @_type,
+            @_version,
+            @_count - 1
+        );
+    }
+}
+
+// Global Function Call All
+// @_block-name:false,
+// @_type:false, ['commons','responsives']
+// @_version:false [''|'ml'|'sm'|'m'|'l']
+.forix-global-call(
+    @_block-name:false,
+    @_version:false,
+    @_type:false
+){
+    & when not(@_type='') and not(@_type= false){
+        & when(@_type = 'commons'){
+            .forix-build-lib-commons(
+                @_block-name: @_block-name
+            );
+        }
+        & when(@_type = 'responsives'){
+            .forix-build-lib-responsives(
+                @_block-name: @_block-name,
+                @_version: @_version
+            );
+        }
+    }
+    & when (@_version = false) and (@_type= false){
+        .forix-build-lib-commons(
+            @_block-name: @_block-name
+        );
+    }
+    & when not (@_version = false) and (@_type= false){
+        .forix-build-lib-responsives(
+            @_block-name: @_block-name,
+            @_version: @_version
+        );
+    }
+}
+// Global Call set Styles for a list
+//@_name:false, [link,button,accordion,collapsible,...]
+//@_list-type:false, [list]
+//@_number:false, [1,2,3.....] < 20 or 10
+//@_version:false,  [''|'ml'|'sm'|'m'|'l']
+//@_type:false ['commons','responsives']
+.forix-call-set-styles(
+    @_name:false,
+    @_list-type:false,
+    @_number:false,
+    @_version:false,
+    @_type:false
+){
+    & when not(@_type='') and not(@_type= false){
+        & when(@_type = 'commons'){
+            .forix-set-styles-for-commons(
+                @_name:@_name,
+                @_list-type:@_list-type,
+                @_type:commons,
+                @_number:@_number
+            );
+        }
+        & when(@_type = 'responsives'){
+            .forix-set-styles-for-commons(
+                @_name:@_name,
+                @_list-type:@_list-type,
+                @_type:responsives,
+                @_version:@_version,
+                @_number:@_number
+            );
+        }
+    }
+    & when (@_version = false) and (@_type= false){
+        .forix-set-styles-for-commons(
+            @_name:@_name,
+            @_list-type:@_list-type,
+            @_type:commons,
+            @_number:@_number
+        );
+    }
+    & when not (@_version = false) and (@_type= false){
+        .forix-set-styles-for-commons(
+            @_name:@_name,
+            @_list-type:@_list-type,
+            @_type:responsives,
+            @_version:@_version,
+            @_number:@_number
+        );
+    }
+}

@@ -1,0 +1,9 @@
+<?php
+$product = $block->getProduct();
+?>
+<?php if($block->isCustomOption($product)): ?>
+    <div class="page-title-wrapper product"><p class="page-title"><?php echo $product->getName() ?></p></div>
+    <div class="product-addto-links" data-role="add-to-links">
+        <?php echo $block->getChildHtml() ?>
+    </div>
+<?php endif; ?>

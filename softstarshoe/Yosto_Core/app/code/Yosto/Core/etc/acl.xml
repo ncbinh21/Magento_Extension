@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2017 x-mage2(Yosto). All rights reserved.
+ * See README.md for details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Yosto_Core::xmage" title="X-MAGE2" translate="title" sortOrder="10">
+                    <resource id="Yosto_Slider::slider" title="Yosto Slider"
+                              sortOrder="100">
+                        <resource id="Yosto_Slider::manage_slide" title="Manage Slide"
+                                  sortOrder="2"/>
+                        <resource id="Yosto_Slider::manage_image" title="Manage Image"
+                                  sortOrder="5"/>
+                    </resource>
+                    <resource id="Yosto_CustomerInvitation::customer_invitation" sortOrder="20" title="Customer Invitation" translate="title">
+                        <resource id="Yosto_CustomerInvitation::invitation" sortOrder="10" title="Invitations" translate="title" />
+                        <resource id="Yosto_CustomerInvitation::configuration" sortOrder="20" title="Configuration" translate="title"/>
+                    </resource>
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Yosto_Core::xmage_configuration" title="X-MAGE2" sortOrder="10">
+                                <resource id="Yosto_Ajaxscroll::ajaxscroll_configuration" title="Ajax Scroll"  sortOrder="10"/>
+                                <resource id="Yosto_QuickShop::quickshop_configuration" title="QuickShop" sortOrder="20"/>
+                                <resource id="Yosto_CustomerInvitation::config_customer_invitation" title="Customer Invitation" sortOrder="30"/>
+                            </resource>
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,38 @@
+@use-block-product-core__enable:true;
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.product-item-details .product-item-name{
+    &:extend(.product-item-details .product-name all);
+}
+
+.product-items-names .product-item-name{
+    &:extend(.product-items-names .product-name all);
+}
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .product-item-details .product-name{
+        font-weight: @forix-font-weight__bold;
+        line-height: 18px;
+    }
+
+    .product-items-names {
+        .product-name{
+            display: block;
+            line-height: 16px;
+            font-weight: @forix-font-weight__regular;
+
+            a{
+                line-height: inherit;
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+"Purchased Products (%1)","Purchased Products (%1)"
+CSV,CSV
+"Order ID","Order ID"
+Status,Status
+Purchased,Purchased
+"Customer Name","Customer Name"
+"Customer Email","Customer Email"
+Qty,Qty
+"Order Total","Order Total"
+"Purchase Point","Purchase Point"
+Delete,Delete
+"Are you sure?","Are you sure?"
+"Product Orders (%1)","Product Orders (%1)"
+Name,Name
+SKU,SKU
+customers_purchased_product_%1.csv,customers_purchased_product_%1.csv
+purchased_products_by_%1.csv,purchased_products_by_%1.csv
+"Product Orders","Product Orders"

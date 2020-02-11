@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../module-core/src/Core/etc/manual.xsd">
+    <link action="__________" title="" url="" />
+     <!-- Configuration -->
+    <link action="system_config_seositemap" title="Learn more about Sitemap Settings" url="module-seo/current/sitemap/frontend_sitemap" />
+</config>

@@ -1,0 +1,10 @@
+<?php
+/**
+ * @var $block \Magento\Framework\View\Element\Template
+ */
+$childHtml = $block->getChildHtml();
+$childHtml = trim($childHtml);
+?>
+<?php if ($childHtml): ?>
+    <div class="category-split-content"><?php echo $childHtml; ?></div>
+<?php endif; ?>

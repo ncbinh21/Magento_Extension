@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="../../map.xsd">
+    <source>
+        <document_rules>
+            <rename>
+                <document>magecon_customer_notes</document>
+                <to>ams_notesoncustomers_notes</to>
+            </rename>
+        </document_rules>
+        <field_rules>
+            <move>
+                <field>magecon_customer_notes.note_id</field>
+                <to>ams_notesoncustomers_notes.id</to>
+            </move>
+            <move>
+                <field>magecon_customer_notes.created_time</field>
+                <to>ams_notesoncustomers_notes.created_at</to>
+            </move>
+            <transform>
+                <field>magecon_customer_notes.user_id</field>
+                <handler class="\Migration\Handler\CustomerNotes\MapAdmin" />
+            </transform>
+        </field_rules>
+    </source>
+    <destination>
+    <field_rules>
+        <transform>
+            <field>ams_notesoncustomers_notes.visible</field>
+            <handler class="\Migration\Handler\SetValue">
+                <param name="value" value="0" />
+            </handler>
+        </transform>
+        <transform>
+            <field>ams_notesoncustomers_notes.updated_at</field>
+            <handler class="\Migration\Handler\FieldCopy">
+                <param name="fieldCopy" value="created_at" />
+            </handler>
+        </transform>
+    </field_rules>
+    </destination>
+</map>

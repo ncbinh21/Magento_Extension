@@ -1,0 +1,10 @@
+<?php
+/** @var $block \Mirasvit\Credit\Block\Product\View\Options\Type\Fixed */
+?>
+<?php $options = $block->getOptionData(); ?>
+<select name="creditOption" class="credit-option" data-validate="{'required-number':true}">
+    <option value="0"></option>
+    <?php foreach ($options as $option): ?>
+        <option value="<?= $option['id']; ?>" data-price="<?= $option['price']; ?>"><?= $option['credits']; ?></option>
+    <?php endforeach; ?>
+</select>

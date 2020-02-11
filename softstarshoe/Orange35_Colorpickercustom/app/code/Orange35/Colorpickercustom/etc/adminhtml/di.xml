@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Pool" type="Magento\Ui\DataProvider\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="custom-options-images" xsi:type="array">
+                    <item name="class" xsi:type="string">Orange35\Colorpickercustom\Ui\DataProvider\Product\Form\Modifier\CustomOptions</item>
+                    <item name="sortOrder" xsi:type="number">75</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Orange35\Colorpickercustom\Controller\Adminhtml\Image\Upload">
+        <arguments>
+            <argument name="uploader" xsi:type="object">Orange35ColorpickercustomImageUploader</argument>
+        </arguments>
+    </type>
+    <type name="Orange35\Colorpickercustom\Observer\ProductSave">
+        <arguments>
+            <argument name="uploader" xsi:type="object">Orange35ColorpickercustomImageUploader</argument>
+        </arguments>
+    </type>
+    <type name="Orange35\Colorpickercustom\Ui\DataProvider\Product\Form\Modifier\CustomOptions">
+        <arguments>
+            <argument name="helper" xsi:type="object">Orange35ColorpickercustomImageHelper</argument>
+        </arguments>
+    </type>
+    <type name="Orange35\Colorpickercustom\Plugin\CacheCleaning">
+        <arguments>
+            <argument name="helper" xsi:type="object">Orange35ColorpickercustomImageHelper</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Catalog\Model\Product\Image">
+        <plugin name="clean-cache-swatches" type="Orange35\Colorpickercustom\Plugin\CacheCleaning" sortOrder="40"/>
+    </type>
+</config>

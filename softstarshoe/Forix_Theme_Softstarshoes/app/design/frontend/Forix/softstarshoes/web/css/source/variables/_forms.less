@@ -1,0 +1,1691 @@
+// Rule: @forix-[block-name]__[properties]
+// block-name = form
+@use-form-core__enable: true;
+
+//@use-form-class-default__enable: true;
+// for all elements below
+//[.input-text|input]
+//input-text
+@forix-input-text__name: "forix-input-text";
+@forix-input-text__commons: border-radius,background,background-clip,border,font-family,line-height,vertical-align,width,font-weight;
+@forix-input-text__responsives: height,padding,font-size;
+@forix-input-text__check-have: false;
+@forix-input-text__status: true;
+@forix-input-text__status__list: op1,op2;
+@forix-input-text__status__listclass: ~':focus',~':hover';
+@forix-input-text__status__listsub: false;
+@forix-input-text__status__listsubclass: false;
+@forix-input-text__prefix: true;
+@forix-input-text__format: false;
+@forix-input-text__use-flex: false;
+
+@forix-input-text__background: @color-white;
+@forix-input-text__background-clip: padding-box;
+@forix-input-text__border: @forix-border__base;
+@forix-input-text__font-family: @forix-font-family__base;
+@forix-input-text__line-height: @forix-line-height__base;
+@forix-input-text__vertical-align: baseline;
+@forix-input-text__width: 100%;
+@forix-input-text__border-radius: 10px;
+@forix-input-text__height: 40px;
+@forix-input-text__font-size: 16px;
+@forix-input-text__font-weight: bold;
+
+//input-text:focus
+@forix-input-text__status__op1__commons: border;
+@forix-input-text__status__op1__responsives: false;
+@forix-input-text__status__op1__border: 1px solid @sss-color-1;
+
+//input-text:hover
+@forix-input-text__status__op2__commons: border;
+@forix-input-text__status__op2__responsives: false;
+@forix-input-text__status__op2__border: 1px solid @sss-color-1;
+
+@forix-input-text__prefix__commons: box-shadow;
+@forix-input-text__prefix__responsives: false;
+@forix-input-text__padding: 18px 9px 0 9px;
+
+
+
+@forix-input-text__box-shadow: none;
+
+@forix-input-text__change__m: false;
+
+@forix-input-text__change__l: true;
+@forix-input-text__height__l: 55px;
+@forix-input-text__padding__l: 22px 14px 0 14px;
+@forix-input-text__font-size__l: 20px;
+
+//number---
+//input[type="number"]
+@forix-input-number__name: "forix-input-number";
+@forix-input-number__commons: false;
+@forix-input-number__responsives: false;
+@forix-input-number__check-have: false;
+@forix-input-number__status: false;
+@forix-input-number__prefix: false;
+@forix-input-number__format: false;
+@forix-input-number__use-flex: false;
+//search---
+//input[type="search"]
+@forix-input-search__name: "forix-input-search";
+@forix-input-search__commons: false;
+@forix-input-search__responsives: false;
+@forix-input-search__check-have: false;
+@forix-input-search__status: false;
+@forix-input-search__prefix: false;
+@forix-input-search__format: false;
+@forix-input-search__use-flex: false;
+//select
+@forix-select__name: "forix-select";
+@forix-select__commons: border-radius,background,background-clip,font-family,vertical-align,line-height,border,width,text-overflow;
+@forix-select__responsives: height,padding,font-size, background-size;
+@forix-select__check-have: false;
+@forix-select__status: false;
+@forix-select__prefix: true;
+@forix-select__format: false;
+@forix-select__use-flex: false;
+
+@forix-select__background: @primary-background__color url('../images/select-bg.svg') no-repeat 98% 50%;
+@forix-select__background-clip: padding-box;
+//@forix-select__background-size: 30px 60px;
+@forix-select__font-family: @forix-font-family__base;
+@forix-select__vertical-align: baseline;
+@forix-select__line-height: @forix-line-height__base;
+@forix-select__border: @forix-input-text__border;
+@forix-select__width: 100%;
+@forix-select__text-overflow: '';
+@forix-select__height: 40px;
+@forix-select__padding: 0 10px;
+@forix-select__border-radius: 10px;
+
+@forix-select__prefix__commons: box-shadow;
+@forix-select__prefix__responsives: false;
+@forix-select__box-shadow: none;
+@forix-select__font-size: 16px;
+@forix-select__background-size: 17px 9px;
+
+@forix-select__change__m: false;
+
+@forix-select__change__l: true;
+@forix-select__height__l: 55px;
+@forix-select__padding__l: 0 35px 0 15px;
+@forix-select__font-size__l: 20px;
+@forix-select__background-size__l: 21px 11px;
+
+//select[multiple="multiple"]
+@forix-select-multiple__name: "forix-select-multiple";
+@forix-select-multiple__commons: background,height;
+@forix-select-multiple__responsives: false;
+@forix-select-multiple__check-have: false;
+@forix-select-multiple__status: false;
+@forix-select-multiple__prefix: false;
+@forix-select-multiple__format: false;
+@forix-select-multiple__use-flex: false;
+
+@forix-select-multiple__background: @primary-background__color;
+@forix-select-multiple__height: auto;
+
+//textarea
+@forix-textarea__name: "forix-textarea";
+@forix-textarea__commons: border-radius,background,background-clip,border,font-family,height,line-height,margin,vertical-align,width,resize,min-height, color;
+@forix-textarea__responsives: padding;
+@forix-textarea__check-have: false;
+@forix-textarea__status: false;
+@forix-textarea__prefix: true;
+@forix-textarea__format: false;
+@forix-textarea__use-flex: false;
+
+@forix-textarea__background: @primary-background__color;
+@forix-textarea__background-clip: padding-box;
+@forix-textarea__border: @forix-input-text__border;
+@forix-textarea__font-family: @forix-font-family__base;
+@forix-textarea__height: auto;
+@forix-textarea__line-height: @forix-line-height__base;
+@forix-textarea__border-radius: 10px;
+@forix-textarea__margin: 0;
+@forix-textarea__vertical-align: baseline;
+@forix-textarea__width: 100%;
+@forix-textarea__min-height: 132px;
+@forix-textarea__resize: vertical;
+@forix-textarea__padding: 18px 9px 9px;
+@forix-textarea__color: @sss-color-1;
+
+@forix-textarea__prefix__commons: box-shadow;
+@forix-textarea__prefix__responsives: false;
+
+@forix-textarea__box-shadow: none;
+
+@forix-textarea__change__m: false;
+
+@forix-textarea__change__l: true;
+@forix-textarea__padding__l: 22px 14px 10px;
+
+//checkbox---
+//input[type="checkbox"]
+@forix-checkbox__name: "forix-checkbox";
+@forix-checkbox__commons: border,clip,height,margin,overflow,padding,position,width;
+@forix-checkbox__responsives: false;
+@forix-checkbox__check-have: false;
+@forix-checkbox__status: false;
+@forix-checkbox__prefix: false;
+@forix-checkbox__format: false;
+@forix-checkbox__use-flex: false;
+
+@forix-checkbox__border: 0;
+@forix-checkbox__clip: rect(0, 0, 0, 0);
+@forix-checkbox__height: 1px;
+@forix-checkbox__margin: -1px;
+@forix-checkbox__overflow: hidden;
+@forix-checkbox__padding: 0;
+@forix-checkbox__position: absolute;
+@forix-checkbox__width: 1px;
+
+//checkbox---
+//input[type="checkbox"] + label
+@forix-checkout-label__name: "forix-checkout-label";
+@forix-checkout-label__commons: margin,padding,position,display,font-weight,font-size;
+@forix-checkout-label__responsives: padding;
+@forix-checkout-label__check-have: before;
+@forix-checkout-label__status: false;
+@forix-checkout-label__prefix: false;
+@forix-checkout-label__format: false;
+@forix-checkout-label__use-flex: false;
+
+@forix-checkout-label__position: relative;
+@forix-checkout-label__padding: 0 0 0 25px;
+@forix-checkout-label__margin: 0;
+@forix-checkout-label__display: inline-block;
+@forix-checkout-label__font-weight: bold;
+@forix-checkout-label__font-size: 16px;
+
+@forix-checkout-label__before__commons: content,position,border,background,width,height,left,top;
+@forix-checkout-label__before__responsives: false;
+
+@forix-checkout-label__before__content: '';
+@forix-checkout-label__before__position: absolute;
+@forix-checkout-label__before__border: 1px solid @sss-color-1;
+@forix-checkout-label__before__background: @color-white;
+@forix-checkout-label__before__width: 15px;
+@forix-checkout-label__before__height: 15px;
+@forix-checkout-label__before__left: 0;
+@forix-checkout-label__before__top: 2px;
+
+
+@forix-checkout-label__change__m: false;
+
+@forix-checkout-label__change__l: false;
+//checkbox---
+//input[type="checkbox"]: checked + label
+@forix-checkout-checked-label__name: "forix-checkout-checked-label";
+@forix-checkout-checked-label__commons: font-size,font-weight;
+@forix-checkout-checked-label__responsives: true;
+@forix-checkout-checked-label__check-have: before,after;
+@forix-checkout-checked-label__status: false;
+@forix-checkout-checked-label__prefix: false;
+@forix-checkout-checked-label__format: false;
+@forix-checkout-checked-label__use-flex: false;
+@forix-checkout-checked-label__font-size: 16px;
+@forix-checkout-checked-label__font-weight: @forix-font-weight__bold;
+
+@forix-checkout-checked-label__before__commons: background;
+@forix-checkout-checked-label__before__responsives: false;
+@forix-checkout-checked-label__after__commons: content,position,font-family,color,font-size,left,top,font-size,font-weight;
+@forix-checkout-checked-label__after__responsives: false;
+
+//@forix-checkout-checked-label__before__border: @forix-border__base;
+@forix-checkout-checked-label__before__background: @color-white;
+
+@forix-checkout-checked-label__after__position: absolute;
+@forix-checkout-checked-label__after__font-family: @icons__font-name;
+@forix-checkout-checked-label__after__content: @forix-icon-checkbox;
+@forix-checkout-checked-label__after__color: @sss-color-1;
+@forix-checkout-checked-label__after__font-size: 11px;
+@forix-checkout-checked-label__after__left: 2px;
+@forix-checkout-checked-label__after__top: 2px;
+@forix-checkout-checked-label__after__font-weight: @forix-font-weight__regular;
+
+@forix-checkout-checked-label__change__m: false;
+
+@forix-checkout-checked-label__change__l: false;
+
+//checkbox---
+//input[type="checkbox"]: disabled + label
+@forix-checkout-disabled-label__name: "forix-checkout-disabled-label";
+@forix-checkout-disabled-label__commons: false;
+@forix-checkout-disabled-label__responsives: false;
+@forix-checkout-disabled-label__check-have: false;
+@forix-checkout-disabled-label__status: false;
+@forix-checkout-disabled-label__prefix: false;
+@forix-checkout-disabled-label__format: false;
+@forix-checkout-disabled-label__use-flex: false;
+//checkbox---
+//input[type="checkbox"]: enabled + label
+@forix-checkout-enabled-label__name: "forix-checkout-enabled-label";
+@forix-checkout-enabled-label__commons: false;
+@forix-checkout-enabled-label__responsives: false;
+@forix-checkout-enabled-label__check-have: false;
+@forix-checkout-enabled-label__status: false;
+@forix-checkout-enabled-label__prefix: false;
+@forix-checkout-enabled-label__format: false;
+@forix-checkout-enabled-label__use-flex: false;
+//radio---
+//input[type="radio"]: not([name*='ratings'])
+@forix-radio__name: "forix-radio";
+@forix-radio__commons: border,clip,height,margin,overflow,padding,position,width;
+@forix-radio__responsives: false;
+@forix-radio__check-have: false;
+@forix-radio__status: false;
+@forix-radio__prefix: false;
+@forix-radio__format: false;
+@forix-radio__use-flex: false;
+
+@forix-radio__border: 0;
+@forix-radio__clip: rect(0, 0, 0, 0);
+@forix-radio__height: 1px;
+@forix-radio__margin: -1px;
+@forix-radio__overflow: hidden;
+@forix-radio__padding: 0;
+@forix-radio__position: absolute;
+@forix-radio__width: 1px;
+
+//radio---
+//input[type="radio"]: not([name*='ratings']) + label
+@forix-radio-label__name: "forix-radio-label";
+@forix-radio-label__commons: position,margin,display,font-weight,font-size;
+@forix-radio-label__responsives: padding;
+@forix-radio-label__check-have: before;
+@forix-radio-label__status: false;
+@forix-radio-label__prefix: false;
+@forix-radio-label__format: false;
+@forix-radio-label__use-flex: false;
+
+@forix-radio-label__position: relative;
+@forix-radio-label__display: inline-block;
+@forix-radio-label__margin: 0;
+@forix-radio-label__padding: 0 0 0 35px;
+@forix-radio-label__font-weight: @forix-font-weight__bold;
+@forix-radio-label__font-size: 16px;
+
+@forix-radio-label__before__commons: content,position,border,background,border-radius,width,height,left,top;
+@forix-radio-label__before__responsives: false;
+
+@forix-radio-label__before__content: '';
+@forix-radio-label__before__position: absolute;
+@forix-radio-label__before__border: 1px solid @sss-color-1;
+@forix-radio-label__before__background: @color-white;
+@forix-radio-label__before__border-radius: 50%;
+@forix-radio-label__before__width: 25px;
+@forix-radio-label__before__height: 25px;
+@forix-radio-label__before__left: 0;
+@forix-radio-label__before__top: -3px;
+
+@forix-radio-label__change__m: false;
+
+@forix-radio-label__change__l: false;
+
+//radio---
+//input[type="radio"]: not([name*='ratings']): checked + label
+@forix-radio-checked-label__name: "forix-radio-checked-label";
+@forix-radio-checked-label__commons: false;
+@forix-radio-checked-label__responsives: true;
+@forix-radio-checked-label__check-have: before,after;
+@forix-radio-checked-label__status: false;
+@forix-radio-checked-label__prefix: false;
+@forix-radio-checked-label__format: false;
+@forix-radio-checked-label__use-flex: false;
+
+@forix-radio-checked-label__before__commons: background;
+@forix-radio-checked-label__before__responsives: false;
+@forix-radio-checked-label__after__commons: position,content,font,border-radius,background,top,left,width,height;
+@forix-radio-checked-label__after__responsives: false;
+
+@forix-radio-checked-label__before__background: @color-white;
+
+@forix-radio-checked-label__after__position: absolute;
+@forix-radio-checked-label__after__content: '';
+@forix-radio-checked-label__after__font: ~"0/0 a";
+@forix-radio-checked-label__after__border-radius: 50%;
+@forix-radio-checked-label__after__background: @sss-color-1;
+@forix-radio-checked-label__after__width: 17px;
+@forix-radio-checked-label__after__height: 17px;
+@forix-radio-checked-label__after__top: 1px;
+@forix-radio-checked-label__after__left: 4px;
+
+@forix-radio-checked-label__change__m: false;
+
+@forix-radio-checked-label__change__l: false;
+
+//radio---
+//input[type="radio"]: not([name*='ratings']): disabled + label
+@forix-radio-disabled-label__name: "forix-radio-disabled-label";
+@forix-radio-disabled-label__commons: false;
+@forix-radio-disabled-label__responsives: false;
+@forix-radio-disabled-label__check-have: false;
+@forix-radio-disabled-label__status: false;
+@forix-radio-disabled-label__prefix: false;
+@forix-radio-disabled-label__format: false;
+@forix-radio-disabled-label__use-flex: false;
+//radio---
+//input[type="radio"]: not([name*='ratings']): enabled + label
+@forix-radio-enabled-label__name: "forix-radio-enabled-label";
+@forix-radio-enabled-label__commons: false;
+@forix-radio-enabled-label__responsives: false;
+@forix-radio-enabled-label__check-have: false;
+@forix-radio-enabled-label__status: false;
+@forix-radio-enabled-label__prefix: false;
+@forix-radio-enabled-label__format: false;
+@forix-radio-enabled-label__use-flex: false;
+//element-validation for (3case)
+//input,
+//select,
+//textarea
+//&.mage-error
+//&.valid
+@forix-input-valid__name: "forix-input-valid";
+@forix-input-valid__commons: false;
+@forix-input-valid__responsives: false;
+@forix-input-valid__check-have: false;
+@forix-input-valid__status: false;
+@forix-input-valid__prefix: false;
+@forix-input-valid__format: false;
+@forix-input-valid__use-flex: false;
+
+//element-validation for (3case)
+//input,
+//select,
+//textarea
+//&.mage-error
+@forix-input-mage-error__name: "forix-input-mage-error";
+@forix-input-mage-error__commons: border-color;
+@forix-input-mage-error__responsives: false;
+@forix-input-mage-error__check-have: false;
+@forix-input-mage-error__status: false;
+@forix-input-mage-error__prefix: false;
+@forix-input-mage-error__format: false;
+@forix-input-mage-error__use-flex: false;
+
+@forix-input-mage-error__border-color: @m2-color-red-1;
+
+//div.mage-error[generated]
+@forix-mage-error-generated__name: "forix-mage-error-generated";
+@forix-mage-error-generated__commons: margin-top,color;
+@forix-mage-error-generated__responsives: font-size;
+@forix-mage-error-generated__check-have: false;
+@forix-mage-error-generated__status: false;
+@forix-mage-error-generated__prefix: false;
+@forix-mage-error-generated__format: false;
+@forix-mage-error-generated__use-flex: false;
+
+@forix-mage-error-generated__margin-top: 7px;
+@forix-mage-error-generated__color: @m2-color-red-1;
+@forix-mage-error-generated__font-size: 11px;
+
+@forix-mage-error-generated__change__m: true;
+@forix-mage-error-generated__font-size__m: 11px;
+
+@forix-mage-error-generated__change__l: true;
+@forix-mage-error-generated__font-size__l: 12px;
+
+// Forms Elements
+// ===============
+//.form
+@forix-form__name: "forix-form";
+@forix-form__commons: max-width;
+@forix-form__responsives: false;
+@forix-form__check-have: false;
+@forix-form__status: false;
+@forix-form__prefix: false;
+@forix-form__format: false;
+@forix-form__use-flex: false;
+
+@forix-form__max-width: 660px;
+
+//.legend
+@forix-legend__name: "forix-legend";
+@forix-legend__commons: font-weight,text-transform,color;
+@forix-legend__responsives: margin-bottom;
+@forix-legend__check-have: false;
+@forix-legend__status: false;
+@forix-legend__prefix: false;
+@forix-legend__format: false;
+@forix-legend__use-flex: false;
+
+@forix-legend__font-weight: @forix-font-weight__bold;
+@forix-legend__text-transform: uppercase;
+@forix-legend__color: @three-text__color;
+@forix-legend__margin-bottom: @forix-indent__s;
+
+@forix-legend__change__m: false;
+
+@forix-legend__change__l: true;
+@forix-legend__margin-bottom__l: @forix-indent__xm;
+
+//.legend strong
+@forix-legend-strong__name: "forix-legend-strong";
+@forix-legend-strong__commons: false;
+@forix-legend-strong__responsives: false;
+@forix-legend-strong__check-have: false;
+@forix-legend-strong__status: false;
+@forix-legend-strong__prefix: false;
+@forix-legend-strong__format: false;
+@forix-legend-strong__use-flex: false;
+//.legend span
+@forix-legend-span__name: "forix-legend-span";
+@forix-legend-span__commons: margin-right;
+@forix-legend-span__responsives: false;
+@forix-legend-span__check-have: false;
+@forix-legend-span__status: false;
+@forix-legend-span__prefix: false;
+@forix-legend-span__format: false;
+@forix-legend-span__use-flex: false;
+
+@forix-legend-span__margin-right: @forix-indent__xs;
+
+//.legend + .fieldset,
+//.legend + div
+@forix-legend-fieldset__name: "forix-legend-fieldset";
+@forix-legend-fieldset__commons: clear;
+@forix-legend-fieldset__responsives: false;
+@forix-legend-fieldset__check-have: false;
+@forix-legend-fieldset__status: false;
+@forix-legend-fieldset__prefix: false;
+@forix-legend-fieldset__format: false;
+@forix-legend-fieldset__use-flex: false;
+
+@forix-legend-fieldset__clear: both;
+
+//.field.date
+@forix-field-date__name: "forix-field-date";
+@forix-field-date__commons: false;
+@forix-field-date__responsives: false;
+@forix-field-date__check-have: false;
+@forix-field-date__status: false;
+@forix-field-date__prefix: false;
+@forix-field-date__format: false;
+@forix-field-date__use-flex: false;
+
+//.field.date input
+@forix-field-date-input__name: "forix-field-date-input";
+@forix-field-date-input__commons: margin-right,width;
+@forix-field-date-input__responsives: false;
+@forix-field-date-input__check-have: false;
+@forix-field-date-input__status: false;
+@forix-field-date-input__prefix: false;
+@forix-field-date-input__format: false;
+@forix-field-date-input__use-flex: false;
+
+@forix-field-date-input__margin-right: @forix-indent__s;
+@forix-field-date-input__width: ~"calc(100% - (23px + 10px))";
+
+//.field.date .time-picker
+@forix-field-date-time-picker__name: "forix-field-date-time-picker";
+@forix-field-date-time-picker__commons: white-space,margin-top,display;
+@forix-field-date-time-picker__responsives: false;
+@forix-field-date-time-picker__check-have: false;
+@forix-field-date-time-picker__status: false;
+@forix-field-date-time-picker__prefix: false;
+@forix-field-date-time-picker__format: false;
+@forix-field-date-time-picker__use-flex: false;
+
+@forix-field-date-time-picker__white-space: nowrap;
+@forix-field-date-time-picker__margin-top: @forix-indent__s;
+@forix-field-date-time-picker__display: inline-block;
+
+//.field .message
+@forix-field-dot-message__name: "forix-field-dot-message";
+@forix-field-dot-message__commons: false;
+@forix-field-dot-message__responsives: false;
+@forix-field-dot-message__check-have: false;
+@forix-field-dot-message__status: false;
+@forix-field-dot-message__prefix: false;
+@forix-field-dot-message__format: false;
+@forix-field-dot-message__use-flex: false;
+//.field .message.warning
+@forix-field-message-warning__name: "forix-field-message-warning";
+@forix-field-message-warning__commons: margin-top,margin-bottom;
+@forix-field-message-warning__responsives: false;
+@forix-field-message-warning__check-have: false;
+@forix-field-message-warning__status: false;
+@forix-field-message-warning__prefix: false;
+@forix-field-message-warning__format: false;
+@forix-field-message-warning__use-flex: false;
+
+@forix-field-message-warning__margin-top: @forix-indent__s;
+@forix-field-message-warning__margin-bottom: @forix-indent__s;
+
+//.field.sp-methods
+@forix-field-sp-methods__name: "forix-field-sp-methods";
+@forix-field-sp-methods__commons: false;
+@forix-field-sp-methods__responsives: false;
+@forix-field-sp-methods__check-have: false;
+@forix-field-sp-methods__status: false;
+@forix-field-sp-methods__prefix: false;
+@forix-field-sp-methods__format: false;
+@forix-field-sp-methods__use-flex: false;
+//.field.type
+@forix-field-type__name: "forix-field-type";
+@forix-field-type__commons: false;
+@forix-field-type__responsives: false;
+@forix-field-type__check-have: false;
+@forix-field-type__status: false;
+@forix-field-type__prefix: false;
+@forix-field-type__format: false;
+@forix-field-type__use-flex: false;
+//.field.default
+@forix-field-default__name: "forix-field-default";
+@forix-field-default__commons: false;
+@forix-field-default__responsives: false;
+@forix-field-default__check-have: false;
+@forix-field-default__status: false;
+@forix-field-default__prefix: false;
+@forix-field-default__format: false;
+@forix-field-default__use-flex: false;
+//.field.message
+@forix-field-message__name: "forix-field-message";
+@forix-field-message__commons: background,padding,margin,position,display,color;
+@forix-field-message__responsives: false;
+@forix-field-message__check-have: false;
+@forix-field-message__status: false;
+@forix-field-message__prefix: false;
+@forix-field-message__format: false;
+@forix-field-message__use-flex: false;
+
+@forix-field-message__background: none;
+@forix-field-message__padding: 0;
+@forix-field-message__margin: 0;
+@forix-field-message__position: static;
+@forix-field-message__display: inline;
+@forix-field-message__color: inherit;
+
+//.field .tooltip
+@forix-field-tooltip__name: "forix-field-tooltip";
+@forix-field-tooltip__commons: position,display;
+@forix-field-tooltip__responsives: false;
+@forix-field-tooltip__check-have: false;
+@forix-field-tooltip__status: false;
+@forix-field-tooltip__prefix: false;
+@forix-field-tooltip__format: false;
+@forix-field-tooltip__use-flex: false;
+
+@forix-field-tooltip__position: relative;
+@forix-field-tooltip__display: inline-block;
+
+//.field .tooltip .tooltip-toggle
+@forix-field-tooltip-toggle__name: "forix-field-tooltip-toggle";
+@forix-field-tooltip-toggle__commons: cursor;
+@forix-field-tooltip-toggle__responsives: false;
+@forix-field-tooltip-toggle__check-have: false;
+@forix-field-tooltip-toggle__status: false;
+@forix-field-tooltip-toggle__prefix: false;
+@forix-field-tooltip-toggle__format: false;
+@forix-field-tooltip-toggle__use-flex: false;
+
+@forix-field-tooltip-toggle__cursor: help;
+
+//.field .tooltip .tooltip-content
+@forix-field-tooltip-content__name: "forix-field-tooltip-content";
+@forix-field-tooltip-content__commons: background,max-width,min-width,box-shadow,padding,z-index,display,position,text-align,color,line-height,white-space,margin-top,margin-left,left,top;
+@forix-field-tooltip-content__responsives: false;
+@forix-field-tooltip-content__check-have: before;
+@forix-field-tooltip-content__status: false;
+@forix-field-tooltip-content__prefix: false;
+@forix-field-tooltip-content__format: false;
+@forix-field-tooltip-content__use-flex: false;
+
+@forix-field-tooltip-content__before__commons:
+    content,position,width,height,border-color,border,-webkit-transform-origin,-webkit-transform,transform-origin,transform,top,left;
+@forix-field-tooltip-content__before__responsives: false;
+
+@forix-field-tooltip-content__background: @secondary-background__color;
+@forix-field-tooltip-content__box-shadow: 0 0px 7px 0px rgba(0, 0, 0, 0.3);
+@forix-field-tooltip-content__max-width: 360px;
+@forix-field-tooltip-content__min-width: 210px;
+@forix-field-tooltip-content__padding: @forix-indent__base;
+@forix-field-tooltip-content__z-index: 100;
+@forix-field-tooltip-content__display: none;
+@forix-field-tooltip-content__position: absolute;
+@forix-field-tooltip-content__text-align: left;
+@forix-field-tooltip-content__color: @three-text__color;
+@forix-field-tooltip-content__line-height: 1.4;
+@forix-field-tooltip-content__white-space: normal;
+@forix-field-tooltip-content__left: 100%;
+@forix-field-tooltip-content__top: -7px;
+@forix-field-tooltip-content__margin-left: 7px;
+@forix-field-tooltip-content__margin-top: false;
+
+@forix-field-tooltip-content__before__content: "";
+@forix-field-tooltip-content__before__position: absolute;
+@forix-field-tooltip-content__before__width: 0;
+@forix-field-tooltip-content__before__height: 0;
+@forix-field-tooltip-content__before__border: 7px solid transparent;
+@forix-field-tooltip-content__before__border-color: transparent transparent @secondary-background__color @secondary-background__color;
+@forix-field-tooltip-content__before__-webkit-transform-origin: 0 0;
+@forix-field-tooltip-content__before__-webkit-transform: rotate(47deg);
+@forix-field-tooltip-content__before__transform-origin: 0 0;
+@forix-field-tooltip-content__before__transform: rotate(47deg);
+@forix-field-tooltip-content__before__box-shadow: -2px 2px 7px -4px rgba(0, 0, 0, 0.4);
+@forix-field-tooltip-content__before__top: 7px;
+@forix-field-tooltip-content__before__left: 2px;
+
+//.field .tooltip .tooltip-toggle: hover + .tooltip-content,
+//.field .tooltip .tooltip-toggle: focus + .tooltip-content,
+@forix-field-tooltip-toggle-hover-tooltip-content__name: "forix-field-tooltip-toggle-hover-tooltip-content";
+@forix-field-tooltip-toggle-hover-tooltip-content__commons: display;
+@forix-field-tooltip-toggle-hover-tooltip-content__responsives: false;
+@forix-field-tooltip-toggle-hover-tooltip-content__check-have: false;
+@forix-field-tooltip-toggle-hover-tooltip-content__status: false;
+@forix-field-tooltip-toggle-hover-tooltip-content__prefix: false;
+@forix-field-tooltip-toggle-hover-tooltip-content__format: false;
+@forix-field-tooltip-toggle-hover-tooltip-content__use-flex: false;
+
+@forix-field-tooltip-toggle-hover-tooltip-content__display: block;
+//.field .tooltip: hover .tooltip-content
+@forix-field-tooltip-hover-tooltip-content__name: "forix-field-tooltip-hover-tooltip-content";
+@forix-field-tooltip-hover-tooltip-content__commons: display;
+@forix-field-tooltip-hover-tooltip-content__responsives: false;
+@forix-field-tooltip-hover-tooltip-content__check-have: false;
+@forix-field-tooltip-hover-tooltip-content__status: false;
+@forix-field-tooltip-hover-tooltip-content__prefix: false;
+@forix-field-tooltip-hover-tooltip-content__format: false;
+@forix-field-tooltip-hover-tooltip-content__use-flex: false;
+
+@forix-field-tooltip-hover-tooltip-content__display: block;
+
+// Fieldset
+// ===============
+//.fieldset
+@forix-fieldset__name: "forix-fieldset";
+@forix-fieldset__commons: border,margin,padding,letter-spacing;
+@forix-fieldset__responsives: false;
+@forix-fieldset__check-have: last-child;
+@forix-fieldset__status: false;
+@forix-fieldset__prefix: false;
+@forix-fieldset__format: false;
+@forix-fieldset__use-flex: false;
+
+@forix-fieldset__border: 0;
+@forix-fieldset__margin: 0 0 @forix-indent__xxl;
+@forix-fieldset__padding: 0;
+@forix-fieldset__letter-spacing: -0.31em;
+
+@forix-fieldset__last-child__commons: margin-bottom;
+@forix-fieldset__last-child__responsives: false;
+
+@forix-fieldset__last-child__margin-bottom: 0;
+
+//.fieldset *
+@forix-fieldset-all__name: "forix-fieldset-all";
+@forix-fieldset-all__commons: letter-spacing;
+@forix-fieldset-all__responsives: false;
+@forix-fieldset-all__check-have: false;
+@forix-fieldset-all__status: false;
+@forix-fieldset-all__prefix: false;
+@forix-fieldset-all__format: false;
+@forix-fieldset-all__use-flex: false;
+
+@forix-fieldset-all__letter-spacing: normal;
+
+//.fieldset > .legend
+@forix-fieldset-legend__name: "forix-fieldset-legend";
+@forix-fieldset-legend__commons: false;
+@forix-fieldset-legend__responsives: false;
+@forix-fieldset-legend__check-have: false;
+@forix-fieldset-legend__status: false;
+@forix-fieldset-legend__prefix: false;
+@forix-fieldset-legend__format: false;
+@forix-fieldset-legend__use-flex: false;
+//.fieldset > .legend + br
+@forix-fieldset-legend-br__name: "forix-fieldset-legend-br";
+@forix-fieldset-legend-br__commons: clear,display,height,overflow,visibility;
+@forix-fieldset-legend-br__responsives: false;
+@forix-fieldset-legend-br__check-have: false;
+@forix-fieldset-legend-br__status: false;
+@forix-fieldset-legend-br__prefix: false;
+@forix-fieldset-legend-br__format: false;
+@forix-fieldset-legend-br__use-flex: false;
+
+@forix-fieldset-legend-br__clear: both;
+@forix-fieldset-legend-br__display: none;
+@forix-fieldset-legend-br__height: 0;
+@forix-fieldset-legend-br__overflow: hidden;
+@forix-fieldset-legend-br__visibility: hidden;
+
+//.fieldset .field
+@forix-fieldset-field__name: "forix-fieldset-field";
+@forix-fieldset-field__commons: false;
+@forix-fieldset-field__responsives: margin;
+@forix-fieldset-field__check-have: last-child;
+@forix-fieldset-field__status: false;
+@forix-fieldset-field__prefix: false;
+@forix-fieldset-field__format: false;
+@forix-fieldset-field__use-flex: false;
+
+@forix-fieldset-field__margin: 0 0 @forix-indent__xm;
+
+@forix-fieldset-field__last-child__commons: margin-bottom;
+@forix-fieldset-field__last-child__responsives: false;
+
+@forix-fieldset-field__last-child__margin-bottom: 0;
+
+@forix-fieldset-field__change__m: false;
+
+@forix-fieldset-field__change__l: true;
+@forix-fieldset-field__margin__l: 0 0 @forix-indent__base;
+
+//.fieldset .field .label
+@forix-fieldset-field-label__name: "forix-fieldset-field-label";
+@forix-fieldset-field-label__commons: font-weight,display,margin;
+@forix-fieldset-field-label__responsives: false;
+@forix-fieldset-field-label__check-have: false;
+@forix-fieldset-field-label__status: false;
+@forix-fieldset-field-label__prefix: false;
+@forix-fieldset-field-label__format: false;
+@forix-fieldset-field-label__use-flex: false;
+
+@forix-fieldset-field-label__font-weight: @forix-font-weight__semibold;
+@forix-fieldset-field-label__margin: 0 0 @forix-indent__s;
+@forix-fieldset-field-label__display: inline-block;
+
+//.fieldset .field .label + br
+@forix-fieldset-field-label-br__name: "forix-fieldset-field-label-br";
+@forix-fieldset-field-label-br__commons: display;
+@forix-fieldset-field-label-br__responsives: false;
+@forix-fieldset-field-label-br__check-have: false;
+@forix-fieldset-field-label-br__status: false;
+@forix-fieldset-field-label-br__prefix: false;
+@forix-fieldset-field-label-br__format: false;
+@forix-fieldset-field-label-br__use-flex: false;
+
+@forix-fieldset-field-label-br__display: none;
+
+//.fieldset .field .control
+@forix-fieldset-field-control__name: "forix-fieldset-field-control";
+@forix-fieldset-field-control__commons: false;
+@forix-fieldset-field-control__responsives: false;
+@forix-fieldset-field-control__check-have: false;
+@forix-fieldset-field-control__status: false;
+@forix-fieldset-field-control__prefix: false;
+@forix-fieldset-field-control__format: false;
+@forix-fieldset-field-control__use-flex: false;
+//.fieldset .field: not(.choice)
+@forix-fieldset-field-not-choice__name: "forix-fieldset-field-not-choice";
+@forix-fieldset-field-not-choice__commons: false;
+@forix-fieldset-field-not-choice__responsives: false;
+@forix-fieldset-field-not-choice__check-have: false;
+@forix-fieldset-field-not-choice__status: false;
+@forix-fieldset-field-not-choice__prefix: false;
+@forix-fieldset-field-not-choice__format: false;
+@forix-fieldset-field-not-choice__use-flex: false;
+//.fieldset .field: not(.choice) .label
+@forix-fieldset-field-not-choice-label__name: "forix-fieldset-field-not-choice-label";
+@forix-fieldset-field-not-choice-label__commons: false;
+@forix-fieldset-field-not-choice-label__responsives: false;
+@forix-fieldset-field-not-choice-label__check-have: false;
+@forix-fieldset-field-not-choice-label__status: false;
+@forix-fieldset-field-not-choice-label__prefix: false;
+@forix-fieldset-field-not-choice-label__format: false;
+@forix-fieldset-field-not-choice-label__use-flex: false;
+//.fieldset .field: not(.choice) .control
+@forix-fieldset-field-not-choice-control__name: "forix-fieldset-field-not-choice-control";
+@forix-fieldset-field-not-choice-control__commons: false;
+@forix-fieldset-field-not-choice-control__responsives: false;
+@forix-fieldset-field-not-choice-control__check-have: false;
+@forix-fieldset-field-not-choice-control__status: false;
+@forix-fieldset-field-not-choice-control__prefix: false;
+@forix-fieldset-field-not-choice-control__format: false;
+@forix-fieldset-field-not-choice-control__use-flex: false;
+//.fieldset .field + .fieldset
+@forix-fieldset-field-fieldset__name: "forix-fieldset-field-fieldset";
+@forix-fieldset-field-fieldset__commons: clear;
+@forix-fieldset-field-fieldset__responsives: false;
+@forix-fieldset-field-fieldset__check-have: false;
+@forix-fieldset-field-fieldset__status: false;
+@forix-fieldset-field-fieldset__prefix: false;
+@forix-fieldset-field-fieldset__format: false;
+@forix-fieldset-field-fieldset__use-flex: false;
+
+@forix-fieldset-field-fieldset__clear: both;
+
+//.fieldset .field + .fieldset .field
+@forix-fieldset-field-fieldset-field__name: "forix-fieldset-field-fieldset-field";
+@forix-fieldset-field-fieldset-field__commons: false;
+@forix-fieldset-field-fieldset-field__responsives: false;
+@forix-fieldset-field-fieldset-field__check-have: false;
+@forix-fieldset-field-fieldset-field__status: false;
+@forix-fieldset-field-fieldset-field__prefix: false;
+@forix-fieldset-field-fieldset-field__format: false;
+@forix-fieldset-field-fieldset-field__use-flex: false;
+//.fieldset .field + .fieldset .field .label
+@forix-fieldset-field-fieldset-field-label__name: "forix-fieldset-field-fieldset-field-label";
+@forix-fieldset-field-fieldset-field-label__commons: false;
+@forix-fieldset-field-fieldset-field-label__responsives: false;
+@forix-fieldset-field-fieldset-field-label__check-have: false;
+@forix-fieldset-field-fieldset-field-label__status: false;
+@forix-fieldset-field-fieldset-field-label__prefix: false;
+@forix-fieldset-field-fieldset-field-label__format: false;
+@forix-fieldset-field-fieldset-field-label__use-flex: false;
+//.fieldset .field + .fieldset .field .label + br
+@forix-fieldset-field-fieldset-field-label-br__name: "forix-fieldset-field-fieldset-field-label-br";
+@forix-fieldset-field-fieldset-field-label-br__commons: false;
+@forix-fieldset-field-fieldset-field-label-br__responsives: false;
+@forix-fieldset-field-fieldset-field-label-br__check-have: false;
+@forix-fieldset-field-fieldset-field-label-br__status: false;
+@forix-fieldset-field-fieldset-field-label-br__prefix: false;
+@forix-fieldset-field-fieldset-field-label-br__format: false;
+@forix-fieldset-field-fieldset-field-label-br__use-flex: false;
+//.fieldset .field + .fieldset .field .control
+@forix-fieldset-field-fieldset-field-control__name: "forix-fieldset-field-fieldset-field-control";
+@forix-fieldset-field-fieldset-field-control__commons: false;
+@forix-fieldset-field-fieldset-field-control__responsives: false;
+@forix-fieldset-field-fieldset-field-control__check-have: false;
+@forix-fieldset-field-fieldset-field-control__status: false;
+@forix-fieldset-field-fieldset-field-control__prefix: false;
+@forix-fieldset-field-fieldset-field-control__format: false;
+@forix-fieldset-field-fieldset-field-control__use-flex: false;
+
+//.fieldset .field .fields.group
+@forix-fieldset-field-fields-group__name: "forix-fieldset-field-fields-group";
+@forix-fieldset-field-fields-group__commons: false;
+@forix-fieldset-field-fields-group__responsives: false;
+@forix-fieldset-field-fields-group__check-have: false;
+@forix-fieldset-field-fields-group__status: false;
+@forix-fieldset-field-fields-group__prefix: false;
+@forix-fieldset-field-fields-group__format: false;
+@forix-fieldset-field-fields-group__use-flex: false;
+//.fieldset .field .fields.group .field
+@forix-fieldset-field-fields-group-field__name: "forix-fieldset-field-fields-group-field";
+@forix-fieldset-field-fields-group-field__commons: float,margin-bottom;
+@forix-fieldset-field-fields-group-field__responsives: false;
+@forix-fieldset-field-fields-group-field__check-have: false;
+@forix-fieldset-field-fields-group-field__status: false;
+@forix-fieldset-field-fields-group-field__prefix: false;
+@forix-fieldset-field-fields-group-field__format: false;
+@forix-fieldset-field-fields-group-field__use-flex: false;
+
+@forix-fieldset-field-fields-group-field__float: left;
+@forix-fieldset-field-fields-group-field__margin-bottom: 0;
+
+//.fieldset .field .fields.group.group-2 .field
+@forix-fieldset-field-fields-group-2-field__name: "forix-fieldset-field-fields-group-2-field";
+@forix-fieldset-field-fields-group-2-field__commons: width;
+@forix-fieldset-field-fields-group-2-field__responsives: true;
+@forix-fieldset-field-fields-group-2-field__check-have: first-child,last-child;
+@forix-fieldset-field-fields-group-2-field__status: false;
+@forix-fieldset-field-fields-group-2-field__prefix: false;
+@forix-fieldset-field-fields-group-2-field__format: false;
+@forix-fieldset-field-fields-group-2-field__use-flex: false;
+
+@forix-fieldset-field-fields-group-2-field__first-child__commons: false;
+@forix-fieldset-field-fields-group-2-field__first-child__responsives: padding-right;
+
+@forix-fieldset-field-fields-group-2-field__last-child__commons: false;
+@forix-fieldset-field-fields-group-2-field__last-child__responsives: padding-left;
+
+@forix-fieldset-field-fields-group-2-field__width: percentage(1/2);
+@forix-fieldset-field-fields-group-2-field__first-child__padding-right: @forix-gutter-width/2;
+@forix-fieldset-field-fields-group-2-field__last-child__padding-left: @forix-gutter-width/2;
+
+@forix-fieldset-field-fields-group-2-field__change__m: true;
+@forix-fieldset-field-fields-group-2-field__first-child__padding-right__m: @forix-gutter-width__m/2;
+@forix-fieldset-field-fields-group-2-field__last-child__padding-left__m: @forix-gutter-width__m/2;
+
+@forix-fieldset-field-fields-group-2-field__change__l: true;
+@forix-fieldset-field-fields-group-2-field__first-child__padding-right__l: @forix-gutter-width__l/2;
+@forix-fieldset-field-fields-group-2-field__last-child__padding-left__l: @forix-gutter-width__l/2;
+
+//.fieldset .field .fields.group.group-3 .field
+@forix-fieldset-field-fields-group-3-field__name: "forix-fieldset-field-fields-group-3-field";
+@forix-fieldset-field-fields-group-3-field__commons: width;
+@forix-fieldset-field-fields-group-3-field__responsives: width;
+@forix-fieldset-field-fields-group-3-field__check-have: nth-of-type;
+@forix-fieldset-field-fields-group-3-field__status: false;
+@forix-fieldset-field-fields-group-3-field__prefix: false;
+@forix-fieldset-field-fields-group-3-field__format: false;
+@forix-fieldset-field-fields-group-3-field__use-flex: false;
+
+@forix-fieldset-field-fields-group-3-field__width: percentage(1/1);
+
+@forix-fieldset-field-fields-group-3-field__nth-of-type__commons: false;
+@forix-fieldset-field-fields-group-3-field__nth-of-type__responsives: padding-top,padding-right,padding-left;
+
+@forix-fieldset-field-fields-group-3-field__nth-of-type__list: op1,op2,op3;
+@forix-fieldset-field-fields-group-3-field__nth-of-type__selector: "1","2","3";
+
+@forix-fieldset-field-fields-group-3-field__nth-of-type__op1__padding-top: 0;
+@forix-fieldset-field-fields-group-3-field__nth-of-type__op1__padding-right: false;
+@forix-fieldset-field-fields-group-3-field__nth-of-type__op1__padding-left: false;
+@forix-fieldset-field-fields-group-3-field__nth-of-type__op2__padding-top: @forix-indent__s;
+@forix-fieldset-field-fields-group-3-field__nth-of-type__op2__padding-right: false;
+@forix-fieldset-field-fields-group-3-field__nth-of-type__op2__padding-left: false;
+@forix-fieldset-field-fields-group-3-field__nth-of-type__op3__padding-top: @forix-indent__s;
+@forix-fieldset-field-fields-group-3-field__nth-of-type__op3__padding-right: false;
+@forix-fieldset-field-fields-group-3-field__nth-of-type__op3__padding-left: false;
+
+@forix-fieldset-field-fields-group-3-field__change__m: true;
+@forix-fieldset-field-fields-group-3-field__width__m: percentage(1/3);
+@forix-fieldset-field-fields-group-3-field__nth-of-type__op1__padding-top__m: false;
+@forix-fieldset-field-fields-group-3-field__nth-of-type__op1__padding-right__m: @forix-gutter-width__m/2;
+@forix-fieldset-field-fields-group-3-field__nth-of-type__op1__padding-left__m: false;
+@forix-fieldset-field-fields-group-3-field__nth-of-type__op2__padding-top__m: false;
+@forix-fieldset-field-fields-group-3-field__nth-of-type__op2__padding-right__m: @forix-gutter-width__m/2;
+@forix-fieldset-field-fields-group-3-field__nth-of-type__op2__padding-left__m: @forix-gutter-width__m/2;
+@forix-fieldset-field-fields-group-3-field__nth-of-type__op3__padding-top__m: false;
+@forix-fieldset-field-fields-group-3-field__nth-of-type__op3__padding-right__m: false;
+@forix-fieldset-field-fields-group-3-field__nth-of-type__op3__padding-left__m: @forix-gutter-width__m/2;
+
+@forix-fieldset-field-fields-group-3-field__change__l: true;
+@forix-fieldset-field-fields-group-3-field__width__l: percentage(1/3);
+@forix-fieldset-field-fields-group-3-field__nth-of-type__op1__padding-top__l: false;
+@forix-fieldset-field-fields-group-3-field__nth-of-type__op1__padding-right__l: @forix-gutter-width__l/2;
+@forix-fieldset-field-fields-group-3-field__nth-of-type__op1__padding-left__l: false;
+@forix-fieldset-field-fields-group-3-field__nth-of-type__op2__padding-top__l: false;
+@forix-fieldset-field-fields-group-3-field__nth-of-type__op2__padding-right__l: @forix-gutter-width__l/2;
+@forix-fieldset-field-fields-group-3-field__nth-of-type__op2__padding-left__l: @forix-gutter-width__l/2;
+@forix-fieldset-field-fields-group-3-field__nth-of-type__op3__padding-top__l: false;
+@forix-fieldset-field-fields-group-3-field__nth-of-type__op3__padding-right__l: false;
+@forix-fieldset-field-fields-group-3-field__nth-of-type__op3__padding-left__l: @forix-gutter-width__l/2;
+
+//.fieldset .field .fields.group.group-4 .field
+@forix-fieldset-field-fields-group-4-field__name: "forix-fieldset-field-fields-group-4-field";
+@forix-fieldset-field-fields-group-4-field__commons: width;
+@forix-fieldset-field-fields-group-4-field__responsives: width;
+@forix-fieldset-field-fields-group-4-field__check-have: nth-of-type;
+@forix-fieldset-field-fields-group-4-field__status: false;
+@forix-fieldset-field-fields-group-4-field__prefix: false;
+@forix-fieldset-field-fields-group-4-field__format: false;
+@forix-fieldset-field-fields-group-4-field__use-flex: false;
+
+@forix-fieldset-field-fields-group-4-field__width: percentage(1/1);
+
+@forix-fieldset-field-fields-group-4-field__nth-of-type__commons: false;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__responsives:  padding-top,padding-right,padding-left;
+
+@forix-fieldset-field-fields-group-4-field__nth-of-type__list: op1,op2,op3,op4;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__selector: "1","2","3","4";
+
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op1__padding-top: fase;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op1__padding-right: fase;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op1__padding-left: false;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op2__padding-top: @forix-indent__s;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op2__padding-right: false;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op2__padding-left: false;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op3__padding-top: @forix-indent__s;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op3__padding-right: false;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op3__padding-left: false;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op4__padding-top: @forix-indent__s;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op4__padding-right: false;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op4__padding-left: false;
+
+@forix-fieldset-field-fields-group-4-field__change__m: desktop;
+@forix-fieldset-field-fields-group-4-field__width__m: percentage(1/4);
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op1__padding-top__m: false;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op1__padding-right__m: @forix-gutter-width__m/2;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op1__padding-left__m: false;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op2__padding-top__m: false;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op2__padding-right__m: @forix-gutter-width__m/2;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op2__padding-left__m: @forix-gutter-width__m/2;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op3__padding-top__m: false;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op3__padding-right__m: @forix-gutter-width__m/2;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op3__padding-left__m: @forix-gutter-width__m/2;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op4__padding-top__m: false;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op4__padding-right__m: false;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op4__padding-left__m: 7px;
+
+@forix-fieldset-field-fields-group-4-field__change__l: tablet;
+@forix-fieldset-field-fields-group-4-field__width__l: percentage(1/4);
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op1__padding-top__l: false;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op1__padding-right__l: @forix-gutter-width__l/2;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op1__padding-left__l: false;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op2__padding-top__l: false;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op2__padding-right__l: @forix-gutter-width__l/2;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op2__padding-left__l: @forix-gutter-width__l/2;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op3__padding-top__l: false;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op3__padding-right__l: @forix-gutter-width__l/2;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op3__padding-left__l: @forix-gutter-width__l/2;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op4__padding-top__l: false;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op4__padding-right__l: false;
+@forix-fieldset-field-fields-group-4-field__nth-of-type__op4__padding-left__l: @forix-gutter-width__l/2;
+
+//.fieldset .field .fields.group.group-5 .field
+@forix-fieldset-field-fields-group-5-field__name: "forix-fieldset-field-fields-group-5-field";
+@forix-fieldset-field-fields-group-5-field__commons: false;
+@forix-fieldset-field-fields-group-5-field__responsives: width;
+@forix-fieldset-field-fields-group-5-field__check-have: nth-of-type;
+@forix-fieldset-field-fields-group-5-field__status: false;
+@forix-fieldset-field-fields-group-5-field__prefix: false;
+@forix-fieldset-field-fields-group-5-field__format: false;
+@forix-fieldset-field-fields-group-5-field__use-flex: false;
+
+@forix-fieldset-field-fields-group-5-field__width: percentage(1/1);
+
+@forix-fieldset-field-fields-group-5-field__nth-of-type__commons: false;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__responsives: padding-top,padding-left,padding-right;
+
+@forix-fieldset-field-fields-group-5-field__nth-of-type__list: op1,op2,op3,op4,op5;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__selector: "1","2","3","4","5";
+
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op1__padding-top: false;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op1__padding-right: false;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op1__padding-left: false;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op2__padding-top: @forix-indent__s;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op2__padding-right: false;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op2__padding-left: false;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op3__padding-top: @forix-indent__s;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op3__padding-right: false;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op3__padding-left: false;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op4__padding-top: @forix-indent__s;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op4__padding-right: false;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op4__padding-left: false;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op5__padding-top: @forix-indent__s;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op5__padding-right: false;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op5__padding-left: false;
+
+@forix-fieldset-field-fields-group-5-field__change__m: desktop;
+@forix-fieldset-field-fields-group-5-field__width__m: percentage(1/5);
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op1__padding-top__m: false;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op1__padding-right__m: @forix-gutter-width__m/2;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op1__padding-left__m: false;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op2__padding-top__m: false;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op2__padding-right__m: @forix-gutter-width__m/2;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op2__padding-left__m: @forix-gutter-width__m/2;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op3__padding-top__m: false;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op3__padding-right__m: @forix-gutter-width__m/2;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op3__padding-left__m: @forix-gutter-width__m/2;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op4__padding-top__m: false;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op4__padding-right__m: @forix-gutter-width__m/2;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op4__padding-left__m: @forix-gutter-width__m/2;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op5__padding-top__m: false;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op5__padding-right__m: false;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op5__padding-left__m: @forix-gutter-width__m/2;
+
+@forix-fieldset-field-fields-group-5-field__change__l: tablet;
+@forix-fieldset-field-fields-group-5-field__width__l: percentage(1/5);
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op1__padding-top__l: false;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op1__padding-right__l: @forix-gutter-width__l/2;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op1__padding-left__l: false;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op2__padding-top__l: false;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op2__padding-right__l: @forix-gutter-width__l/2;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op2__padding-left__l: @forix-gutter-width__l/2;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op3__padding-top__l: false;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op3__padding-right__l: @forix-gutter-width__l/2;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op3__padding-left__l: @forix-gutter-width__l/2;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op4__padding-top__l: false;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op4__padding-right__l: @forix-gutter-width__l/2;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op4__padding-left__l: @forix-gutter-width__l/2;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op5__padding-top__l: false;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op5__padding-right__l: false;
+@forix-fieldset-field-fields-group-5-field__nth-of-type__op5__padding-left__l: @forix-gutter-width__l/2;
+
+//.fieldset .field.no-label
+@forix-fieldset-field-no-label__name: "forix-fieldset-field-no-label";
+@forix-fieldset-field-no-label__commons: false;
+@forix-fieldset-field-no-label__responsives: false;
+@forix-fieldset-field-no-label__check-have: false;
+@forix-fieldset-field-no-label__status: false;
+@forix-fieldset-field-no-label__prefix: false;
+@forix-fieldset-field-no-label__format: false;
+@forix-fieldset-field-no-label__use-flex: false;
+//.fieldset .field.no-label label
+@forix-fieldset-field-no-label-label__name: "forix-fieldset-field-no-label-label";
+@forix-fieldset-field-no-label-label__commons: display;
+@forix-fieldset-field-no-label-label__responsives: false;
+@forix-fieldset-field-no-label-label__check-have: false;
+@forix-fieldset-field-no-label-label__status: false;
+@forix-fieldset-field-no-label-label__prefix: false;
+@forix-fieldset-field-no-label-label__format: false;
+@forix-fieldset-field-no-label-label__use-flex: false;
+
+@forix-fieldset-field-no-label-label__display: none;
+
+//.fieldset .field.required
+@forix-fieldset-field-required__name: "forix-fieldset-field-required";
+@forix-fieldset-field-required__commons: false;
+@forix-fieldset-field-required__responsives: false;
+@forix-fieldset-field-required__check-have: false;
+@forix-fieldset-field-required__status: false;
+@forix-fieldset-field-required__prefix: false;
+@forix-fieldset-field-required__format: false;
+@forix-fieldset-field-required__use-flex: false;
+//.fieldset .field.required .label
+@forix-fieldset-field-required-label__name: "forix-fieldset-field-required-label";
+@forix-fieldset-field-required-label__commons: false;
+@forix-fieldset-field-required-label__responsives: true;
+@forix-fieldset-field-required-label__check-have: after;
+@forix-fieldset-field-required-label__status: false;
+@forix-fieldset-field-required-label__prefix: false;
+@forix-fieldset-field-required-label__format: false;
+@forix-fieldset-field-required-label__use-flex: false;
+
+@forix-fieldset-field-required-label__after__commons: content,color;
+@forix-fieldset-field-required-label__after__responsives: margin;
+
+@forix-fieldset-field-required-label__after__content: '*';
+@forix-fieldset-field-required-label__after__color: @m2-color-red-1;
+@forix-fieldset-field-required-label__after__margin: 0; //0 0 0 3px;
+
+@forix-fieldset-field-required-label__change__m: true;
+@forix-fieldset-field-required-label__after__margin__m: 0;//0 0 0 4px;
+
+@forix-fieldset-field-required-label__change__l: true;
+@forix-fieldset-field-required-label__after__margin__l: 0; //0 0 0 5px;
+
+//.fieldset .field.choice
+@forix-fieldset-field-choice__name: "forix-fieldset-field-choice";
+@forix-fieldset-field-choice__commons: false;
+@forix-fieldset-field-choice__responsives: false;
+@forix-fieldset-field-choice__check-have: false;
+@forix-fieldset-field-choice__status: false;
+@forix-fieldset-field-choice__prefix: false;
+@forix-fieldset-field-choice__format: false;
+@forix-fieldset-field-choice__use-flex: false;
+//.fieldset .field.choice .label
+@forix-fieldset-field-choice-label__name: "forix-fieldset-field-choice-label";
+@forix-fieldset-field-choice-label__commons: false;
+@forix-fieldset-field-choice-label__responsives: false;
+@forix-fieldset-field-choice-label__check-have: false;
+@forix-fieldset-field-choice-label__status: false;
+@forix-fieldset-field-choice-label__prefix: false;
+@forix-fieldset-field-choice-label__format: false;
+@forix-fieldset-field-choice-label__use-flex: false;
+//.fieldset .field.choice .control
+@forix-fieldset-field-choice-control__name: "forix-fieldset-field-choice-control";
+@forix-fieldset-field-choice-control__commons: false;
+@forix-fieldset-field-choice-control__responsives: false;
+@forix-fieldset-field-choice-control__check-have: false;
+@forix-fieldset-field-choice-control__status: false;
+@forix-fieldset-field-choice-control__prefix: false;
+@forix-fieldset-field-choice-control__format: false;
+@forix-fieldset-field-choice-control__use-flex: false;
+//.fieldset .field.note
+@forix-fieldset-field-note__name: "forix-fieldset-field-note";
+@forix-fieldset-field-note__commons: font-weight;
+@forix-fieldset-field-note__responsives: false;
+@forix-fieldset-field-note__check-have: false;
+@forix-fieldset-field-note__status: false;
+@forix-fieldset-field-note__prefix: false;
+@forix-fieldset-field-note__format: false;
+@forix-fieldset-field-note__use-flex: false;
+
+@forix-fieldset-field-note__font-weight: @forix-font-weight__semibold;
+
+//.fieldset .field .description
+@forix-fieldset-field-description__name: "forix-fieldset-field-description";
+@forix-fieldset-field-description__commons: false;
+@forix-fieldset-field-description__responsives: false;
+@forix-fieldset-field-description__check-have: false;
+@forix-fieldset-field-description__status: false;
+@forix-fieldset-field-description__prefix: false;
+@forix-fieldset-field-description__format: false;
+@forix-fieldset-field-description__use-flex: false;
+
+//.fieldset .field .note
+@forix-fieldset-field-dot-note__name: "forix-fieldset-field-dot-note";
+@forix-fieldset-field-dot-note__commons: margin-top;
+@forix-fieldset-field-dot-note__responsives: false;
+@forix-fieldset-field-dot-note__check-have: false;
+@forix-fieldset-field-dot-note__status: false;
+@forix-fieldset-field-dot-note__prefix: false;
+@forix-fieldset-field-dot-note__format: false;
+@forix-fieldset-field-dot-note__use-flex: false;
+
+@forix-fieldset-field-dot-note__margin-top: @forix-indent__s;
+
+//.fieldset .field .addon
+@forix-fieldset-field-addon__name: "forix-fieldset-field-addon";
+@forix-fieldset-field-addon__commons: padding,width;
+@forix-fieldset-field-addon__responsives: false;
+@forix-fieldset-field-addon__check-have: false;
+@forix-fieldset-field-addon__status: false;
+@forix-fieldset-field-addon__prefix: false;
+@forix-fieldset-field-addon__format: false;
+@forix-fieldset-field-addon__use-flex: true;
+
+@forix-fieldset-field-addon__flex__commons: display,flex-wrap;
+@forix-fieldset-field-addon__flex__responsives: false;
+@forix-fieldset-field-addon__display: inline-flex;
+@forix-fieldset-field-addon__flex-wrap: nowrap;
+@forix-fieldset-field-addon__padding: 0;
+@forix-fieldset-field-addon__width: 100%;
+
+//.fieldset .field .addon input,
+//.fieldset .field .addon textarea,
+//.fieldset .field .addon select,
+@forix-fieldset-field-addon-input__name: "forix-fieldset-field-addon-input";
+@forix-fieldset-field-addon-input__commons: display,margin,width;
+@forix-fieldset-field-addon-input__responsives: false;
+@forix-fieldset-field-addon-input__check-have: false;
+@forix-fieldset-field-addon-input__status: false;
+@forix-fieldset-field-addon-input__prefix: false;
+@forix-fieldset-field-addon-input__format: false;
+@forix-fieldset-field-addon-input__use-flex: true;
+
+@forix-fieldset-field-addon-input__flex__commons: order,flex-basis;
+@forix-fieldset-field-addon-input__flex__responsives: false;
+
+@forix-fieldset-field-addon-input__order: 2;
+@forix-fieldset-field-addon-input__flex-basis: 100%;
+@forix-fieldset-field-addon-input__display: inline-block;
+@forix-fieldset-field-addon-input__margin: 0;
+@forix-fieldset-field-addon-input__width: 100%;
+
+//.fieldset .field .addon .addbefore,
+//.fieldset .field .addon .addafter
+@forix-fieldset-field-addon-add__name: "forix-fieldset-field-addon-add";
+@forix-fieldset-field-addon-add__commons: background,padding,background-clip,border,border-radius,font-family,vertical-align,width,display,vertical-align,white-space,width;
+@forix-fieldset-field-addon-add__responsives: height,line-height;
+@forix-fieldset-field-addon-add__check-have: false;
+@forix-fieldset-field-addon-add__status: false;
+@forix-fieldset-field-addon-add__prefix: false;
+@forix-fieldset-field-addon-add__format: false;
+@forix-fieldset-field-addon-add__use-flex: true;
+
+@forix-fieldset-field-addon-add__flex__commons: order;
+@forix-fieldset-field-addon-add__flex__responsives: false;
+
+@forix-fieldset-field-addon-add__background: @primary-background__color;
+@forix-fieldset-field-addon-add__background-clip: padding-box;
+@forix-fieldset-field-addon-add__border: @forix-border__base;
+@forix-fieldset-field-addon-add__border-radius: 1px;
+@forix-fieldset-field-addon-add__font-family: @forix-font-family__base;
+@forix-fieldset-field-addon-add__padding: 0 @forix-gutter-width/2;
+@forix-fieldset-field-addon-add__vertical-align: baseline;
+@forix-fieldset-field-addon-add__width: 100%;
+@forix-fieldset-field-addon-add__display: inline-block;
+@forix-fieldset-field-addon-add__vertical-align: middle;
+@forix-fieldset-field-addon-add__white-space: nowrap;
+@forix-fieldset-field-addon-add__width: auto;
+@forix-fieldset-field-addon-add__order: 3;
+@forix-fieldset-field-addon-add__height: 34px;
+@forix-fieldset-field-addon-add__line-height: 32px;
+
+@forix-fieldset-field-addon-add__change__m: false;
+
+@forix-fieldset-field-addon-add__change__l: true;
+@forix-fieldset-field-addon-add__height__l: 38px;
+@forix-fieldset-field-addon-add__line-height__l: 38px;
+
+//.fieldset .field .addon .addbefore
+@forix-fieldset-field-addon-addbefore__name: "forix-fieldset-field-addon-addbefore";
+@forix-fieldset-field-addon-addbefore__commons: float,margin-right;
+@forix-fieldset-field-addon-addbefore__responsives: false;
+@forix-fieldset-field-addon-addbefore__check-have: false;
+@forix-fieldset-field-addon-addbefore__status: false;
+@forix-fieldset-field-addon-addbefore__prefix: false;
+@forix-fieldset-field-addon-addbefore__format: false;
+@forix-fieldset-field-addon-addbefore__use-flex: true;
+
+@forix-fieldset-field-addon-addbefore__flex__commons: order;
+@forix-fieldset-field-addon-addbefore__flex__responsives: false;
+
+@forix-fieldset-field-addon-addbefore__float: left;
+@forix-fieldset-field-addon-addbefore__margin-right: -1px;
+@forix-fieldset-field-addon-addbefore__order: 1;
+
+//.fieldset .field .addon .addafter
+@forix-fieldset-field-addon-addafter__name: "forix-fieldset-field-addon-addafter";
+@forix-fieldset-field-addon-addafter__commons: margin-left;
+@forix-fieldset-field-addon-addafter__responsives: false;
+@forix-fieldset-field-addon-addafter__check-have: false;
+@forix-fieldset-field-addon-addafter__status: false;
+@forix-fieldset-field-addon-addafter__prefix: false;
+@forix-fieldset-field-addon-addafter__format: false;
+@forix-fieldset-field-addon-addafter__use-flex: false;
+
+@forix-fieldset-field-addon-addafter__margin-left: -1px;
+
+//.fieldset .field .additional
+@forix-fieldset-field-additional__name: "forix-fieldset-field-additional";
+@forix-fieldset-field-additional__commons: margin-top;
+@forix-fieldset-field-additional__responsives: false;
+@forix-fieldset-field-additional__check-have: false;
+@forix-fieldset-field-additional__status: false;
+@forix-fieldset-field-additional__prefix: false;
+@forix-fieldset-field-additional__format: false;
+@forix-fieldset-field-additional__use-flex: false;
+
+@forix-fieldset-field-additional__margin-top: 20px;
+
+//.fieldset .field .additional label
+@forix-fieldset-field-additional-label__name: "forix-fieldset-field-additional-label";
+@forix-fieldset-field-additional-label__commons: display;
+@forix-fieldset-field-additional-label__responsives: false;
+@forix-fieldset-field-additional-label__check-have: false;
+@forix-fieldset-field-additional-label__status: false;
+@forix-fieldset-field-additional-label__prefix: false;
+@forix-fieldset-field-additional-label__format: false;
+@forix-fieldset-field-additional-label__use-flex: false;
+
+@forix-fieldset-field-additional-label__display: none;
+
+//.fieldset .field .field.choice
+@forix-fieldset-field-field-choice__name: "forix-fieldset-field-field-choice";
+@forix-fieldset-field-field-choice__commons: margin-bottom;
+@forix-fieldset-field-field-choice__responsives: false;
+@forix-fieldset-field-field-choice__check-have: last-child;
+@forix-fieldset-field-field-choice__status: false;
+@forix-fieldset-field-field-choice__prefix: false;
+@forix-fieldset-field-field-choice__format: false;
+@forix-fieldset-field-field-choice__use-flex: false;
+
+@forix-fieldset-field-field-choice__margin-bottom: @forix-indent__s;
+
+@forix-fieldset-field-field-choice__last-child__commons: margin-bottom;
+@forix-fieldset-field-field-choice__last-child__responsives: false;
+
+@forix-fieldset-field-field-choice__last-child__margin-bottom: 0;
+
+//.fieldset .field.choice label
+@forix-fieldset-field-choice-label__name: "forix-fieldset-field-choice-label";
+@forix-fieldset-field-choice-label__commons: margin,display;
+@forix-fieldset-field-choice-label__responsives: false;
+@forix-fieldset-field-choice-label__check-have: false;
+@forix-fieldset-field-choice-label__status: false;
+@forix-fieldset-field-choice-label__prefix: false;
+@forix-fieldset-field-choice-label__format: false;
+@forix-fieldset-field-choice-label__use-flex: false;
+
+@forix-fieldset-field-choice-label__margin: 0;
+@forix-fieldset-field-choice-label__display: inline-block;
+
+//.fieldset .field.choice input
+@forix-fieldset-field-choice-input__name: "forix-fieldset-field-choice-input";
+@forix-fieldset-field-choice-input__commons: false;
+@forix-fieldset-field-choice-input__responsives: false;
+@forix-fieldset-field-choice-input__check-have: false;
+@forix-fieldset-field-choice-input__status: false;
+@forix-fieldset-field-choice-input__prefix: false;
+@forix-fieldset-field-choice-input__format: false;
+@forix-fieldset-field-choice-input__use-flex: false;
+//.fieldset .field.choice input[type="checkbox"] + label
+@forix-fieldset-field-choice-checkbox-label__name: "forix-fieldset-field-choice-checkbox-label";
+@forix-fieldset-field-choice-checkbox-label__commons: false;
+@forix-fieldset-field-choice-checkbox-label__responsives: false;
+@forix-fieldset-field-choice-checkbox-label__check-have: false;
+@forix-fieldset-field-choice-checkbox-label__status: false;
+@forix-fieldset-field-choice-checkbox-label__prefix: false;
+@forix-fieldset-field-choice-checkbox-label__format: false;
+@forix-fieldset-field-choice-checkbox-label__use-flex: false;
+//.fieldset .field.choice input[type="radio"] + label
+@forix-fieldset-field-choice-radio-label__name: "forix-fieldset-field-choice-radio-label";
+@forix-fieldset-field-choice-radio-label__commons: false;
+@forix-fieldset-field-choice-radio-label__responsives: false;
+@forix-fieldset-field-choice-radio-label__check-have: false;
+@forix-fieldset-field-choice-radio-label__status: false;
+@forix-fieldset-field-choice-radio-label__prefix: false;
+@forix-fieldset-field-choice-radio-label__format: false;
+@forix-fieldset-field-choice-radio-label__use-flex: false;
+//.fieldset .field input[type=file]
+@forix-fieldset-field-input-file__name: "forix-fieldset-field-input-file";
+@forix-fieldset-field-input-file__commons: false;
+@forix-fieldset-field-input-file__responsives: false;
+@forix-fieldset-field-input-file__check-have: false;
+@forix-fieldset-field-input-file__status: false;
+@forix-fieldset-field-input-file__prefix: false;
+@forix-fieldset-field-input-file__format: false;
+@forix-fieldset-field-input-file__use-flex: false;
+//.fieldset + .actions-toolbar
+@forix-fieldset-actions-toolbar__name: "forix-fieldset-actions-toolbar";
+@forix-fieldset-actions-toolbar__commons: clear;
+@forix-fieldset-actions-toolbar__responsives: false;
+@forix-fieldset-actions-toolbar__check-have: false;
+@forix-fieldset-actions-toolbar__status: false;
+@forix-fieldset-actions-toolbar__prefix: false;
+@forix-fieldset-actions-toolbar__format: false;
+@forix-fieldset-actions-toolbar__use-flex: false;
+
+@forix-fieldset-actions-toolbar__clear: both;
+
+//fieldset.field
+@forix-fieldset-dot-field__name: "forix-fieldset-dot-field";
+@forix-fieldset-dot-field__commons: border,padding;
+@forix-fieldset-dot-field__responsives: false;
+@forix-fieldset-dot-field__check-have: false;
+@forix-fieldset-dot-field__status: false;
+@forix-fieldset-dot-field__prefix: false;
+@forix-fieldset-dot-field__format: false;
+@forix-fieldset-dot-field__use-flex: false;
+
+@forix-fieldset-dot-field__border: 0;
+@forix-fieldset-dot-field__padding: 0;
+
+//.fieldset .fields
+@forix-fieldset-fields__name: "forix-fieldset-fields";
+@forix-fieldset-fields__commons: position;
+@forix-fieldset-fields__responsives: margin-bottom;
+@forix-fieldset-fields__check-have: false;
+@forix-fieldset-fields__status: false;
+@forix-fieldset-fields__prefix: false;
+@forix-fieldset-fields__format: false;
+@forix-fieldset-fields__use-flex: false;
+
+@forix-fieldset-fields__margin-bottom: @forix-indent__base;
+@forix-fieldset-fields__position: relative;
+
+@forix-fieldset-fields__change__m: desktop;
+@forix-fieldset-fields__margin-bottom__m: false;
+
+@forix-fieldset-fields__change__l: tablet;
+@forix-fieldset-fields__margin-bottom__l: false;
+
+//.fieldset .fields .field
+@forix-fieldset-fields-field__name: "forix-fieldset-fields-field";
+@forix-fieldset-fields-field__commons: false;
+@forix-fieldset-fields-field__responsives: false;
+@forix-fieldset-fields-field__check-have: false;
+@forix-fieldset-fields-field__status: false;
+@forix-fieldset-fields-field__prefix: false;
+@forix-fieldset-fields-field__format: false;
+@forix-fieldset-fields-field__use-flex: false;
+//.fieldset .fields .actions-toolbar
+@forix-fieldset-fields-actions-toolbar__name: "forix-fieldset-fields-actions-toolbar";
+@forix-fieldset-fields-actions-toolbar__commons: margin-top,display,position;
+@forix-fieldset-fields-actions-toolbar__responsives: right,top;
+@forix-fieldset-fields-actions-toolbar__check-have: false;
+@forix-fieldset-fields-actions-toolbar__status: false;
+@forix-fieldset-fields-actions-toolbar__prefix: false;
+@forix-fieldset-fields-actions-toolbar__format: false;
+@forix-fieldset-fields-actions-toolbar__use-flex: false;
+
+@forix-fieldset-fields-actions-toolbar__display: inline-block;
+@forix-fieldset-fields-actions-toolbar__position: absolute;
+@forix-fieldset-fields-actions-toolbar__transform: false;
+@forix-fieldset-fields-actions-toolbar__margin-top: @forix-indent__xs;
+@forix-fieldset-fields-actions-toolbar__right: 1px;
+@forix-fieldset-fields-actions-toolbar__top: 21px;
+
+@forix-fieldset-fields-actions-toolbar__change__m: false;
+
+@forix-fieldset-fields-actions-toolbar__change__l: true;
+@forix-fieldset-fields-actions-toolbar__right__l: 10px;
+@forix-fieldset-fields-actions-toolbar__top__l: 25px;
+
+//.fieldset .fields .actions-toolbar .action
+@forix-fieldset-fields-actions-toolbar-action__name: "forix-fieldset-fields-actions-toolbar-action";
+@forix-fieldset-fields-actions-toolbar-action__commons: false;
+@forix-fieldset-fields-actions-toolbar-action__responsives: false;
+@forix-fieldset-fields-actions-toolbar-action__check-have: false;
+@forix-fieldset-fields-actions-toolbar-action__status: false;
+@forix-fieldset-fields-actions-toolbar-action__prefix: false;
+@forix-fieldset-fields-actions-toolbar-action__format: false;
+@forix-fieldset-fields-actions-toolbar-action__use-flex: false;
+//.fieldset .fields .actions-toolbar .action.remove
+@forix-fieldset-fields-actions-toolbar-action-remove__name: "forix-fieldset-fields-actions-toolbar-action-remove";
+@forix-fieldset-fields-actions-toolbar-action-remove__commons: background,padding,min-width,color,display,font;
+@forix-fieldset-fields-actions-toolbar-action-remove__responsives: true;
+@forix-fieldset-fields-actions-toolbar-action-remove__check-have: before,hover;
+@forix-fieldset-fields-actions-toolbar-action-remove__status: false;
+@forix-fieldset-fields-actions-toolbar-action-remove__prefix: false;
+@forix-fieldset-fields-actions-toolbar-action-remove__format: false;
+@forix-fieldset-fields-actions-toolbar-action-remove__use-flex: false;
+
+@forix-fieldset-fields-actions-toolbar-action-remove__background: none;
+@forix-fieldset-fields-actions-toolbar-action-remove__padding: 0;
+@forix-fieldset-fields-actions-toolbar-action-remove__min-width: 0;
+@forix-fieldset-fields-actions-toolbar-action-remove__color: @three-text__color;
+@forix-fieldset-fields-actions-toolbar-action-remove__display: inline-block;
+@forix-fieldset-fields-actions-toolbar-action-remove__font: ~"0/0 a";
+
+@forix-fieldset-fields-actions-toolbar-action-remove__hover__commons: color;
+@forix-fieldset-fields-actions-toolbar-action-remove__hover__responsives: false;
+
+@forix-fieldset-fields-actions-toolbar-action-remove__hover__color: @color-black;
+
+@forix-fieldset-fields-actions-toolbar-action-remove__before__commons: content,font-family,font-weight,display,vertical-align;
+@forix-fieldset-fields-actions-toolbar-action-remove__before__responsives: font-size,line-height;
+
+@forix-fieldset-fields-actions-toolbar-action-remove__before__content: @icon-remove;
+@forix-fieldset-fields-actions-toolbar-action-remove__before__font-family: @icons__font-name;
+@forix-fieldset-fields-actions-toolbar-action-remove__before__font-weight: bold;
+@forix-fieldset-fields-actions-toolbar-action-remove__before__display: inline-block;
+@forix-fieldset-fields-actions-toolbar-action-remove__before__vertical-align: middle;
+@forix-fieldset-fields-actions-toolbar-action-remove__before__font-size: 12px;
+@forix-fieldset-fields-actions-toolbar-action-remove__before__line-height: 12px;
+
+@forix-fieldset-fields-actions-toolbar-action-remove__change__m: false;
+
+@forix-fieldset-fields-actions-toolbar-action-remove__change__l: true;
+@forix-fieldset-fields-actions-toolbar-action-remove__before__font-size__l: 14px;
+@forix-fieldset-fields-actions-toolbar-action-remove__before__line-height__l: 14px;
+
+//input: focus ~ .tooltip .tooltip-content,
+//select: focus ~ .tooltip .tooltip-content
+@forix-input-focus-tooltip-content__name: "forix-input-focus-tooltip-content";
+@forix-input-focus-tooltip-content__commons: display;
+@forix-input-focus-tooltip-content__responsives: false;
+@forix-input-focus-tooltip-content__check-have: false;
+@forix-input-focus-tooltip-content__status: false;
+@forix-input-focus-tooltip-content__prefix: false;
+@forix-input-focus-tooltip-content__format: false;
+@forix-input-focus-tooltip-content__use-flex: false;
+
+@forix-input-focus-tooltip-content__display: block;
+
+//.datetime-picker
+@forix-hasDatepicker__name: "forix-hasDatepicker";
+@forix-hasDatepicker__commons: false;
+@forix-hasDatepicker__responsives: false;
+@forix-hasDatepicker__check-have: false;
+@forix-hasDatepicker__status: false;
+@forix-hasDatepicker__prefix: false;
+@forix-hasDatepicker__format: false;
+@forix-hasDatepicker__use-flex: false;
+//.datetime-picker + .ui-datepicker-trigger
+@forix-hasDatepicker-ui-datepicker-trigger__name: "forix-hasDatepicker-ui-datepicker-trigger";
+@forix-hasDatepicker-ui-datepicker-trigger__commons: background,border,box-shadow,line-height,padding,text-shadow,font-weight,text-decoration,display,vertical-align,min-width;
+@forix-hasDatepicker-ui-datepicker-trigger__responsives: margin;
+@forix-hasDatepicker-ui-datepicker-trigger__check-have: before;
+@forix-hasDatepicker-ui-datepicker-trigger__status: false;
+@forix-hasDatepicker-ui-datepicker-trigger__prefix: true;
+@forix-hasDatepicker-ui-datepicker-trigger__format: false;
+@forix-hasDatepicker-ui-datepicker-trigger__use-flex: false;
+
+@forix-hasDatepicker-ui-datepicker-trigger__prefix__commons: box-sizing;
+@forix-hasDatepicker-ui-datepicker-trigger__prefix__responsives: false;
+
+@forix-hasDatepicker-ui-datepicker-trigger__background: none;
+@forix-hasDatepicker-ui-datepicker-trigger__box-sizing: content-box;
+@forix-hasDatepicker-ui-datepicker-trigger__border: 0;
+@forix-hasDatepicker-ui-datepicker-trigger__box-shadow: none;
+@forix-hasDatepicker-ui-datepicker-trigger__line-height: inherit;
+@forix-hasDatepicker-ui-datepicker-trigger__margin: -@forix-indent__xs 0 0;
+@forix-hasDatepicker-ui-datepicker-trigger__padding: 0;
+@forix-hasDatepicker-ui-datepicker-trigger__text-shadow: none;
+@forix-hasDatepicker-ui-datepicker-trigger__font-weight: @forix-font-weight__regular;
+@forix-hasDatepicker-ui-datepicker-trigger__text-decoration: none;
+@forix-hasDatepicker-ui-datepicker-trigger__display: inline-block;
+@forix-hasDatepicker-ui-datepicker-trigger__vertical-align: middle;
+@forix-hasDatepicker-ui-datepicker-trigger__min-width: 0;
+
+@forix-hasDatepicker-ui-datepicker-trigger__before__commons: font-size,line-height,color,content,font-family,vertical-align,display,font-weight,overflow,speak,text-align;
+@forix-hasDatepicker-ui-datepicker-trigger__before__responsives: false;
+
+@forix-hasDatepicker-ui-datepicker-trigger__before__font-size: 23px;
+@forix-hasDatepicker-ui-datepicker-trigger__before__line-height: 23px;
+@forix-hasDatepicker-ui-datepicker-trigger__before__color: @primary__color__lighter;
+@forix-hasDatepicker-ui-datepicker-trigger__before__content: @icon-calendar;
+@forix-hasDatepicker-ui-datepicker-trigger__before__font-family: @icons__font-name;
+@forix-hasDatepicker-ui-datepicker-trigger__before__vertical-align: middle;
+@forix-hasDatepicker-ui-datepicker-trigger__before__display: inline-block;
+@forix-hasDatepicker-ui-datepicker-trigger__before__font-weight: normal;
+@forix-hasDatepicker-ui-datepicker-trigger__before__overflow: hidden;
+@forix-hasDatepicker-ui-datepicker-trigger__before__speak: none;
+@forix-hasDatepicker-ui-datepicker-trigger__before__text-align: center;
+
+@forix-hasDatepicker-ui-datepicker-trigger__change__m: true;
+@forix-hasDatepicker-ui-datepicker-trigger__margin__m: -@forix-indent__xs 0 0;
+
+@forix-hasDatepicker-ui-datepicker-trigger__change__l: true;
+@forix-hasDatepicker-ui-datepicker-trigger__margin__l: 0;
+
+
+//.datetime-picker + .ui-datepicker-trigger span
+@forix-hasDatepicker-ui-datepicker-trigger-span__name: "forix-hasDatepicker-ui-datepicker-trigger-span";
+@forix-hasDatepicker-ui-datepicker-trigger-span__commons: display;
+@forix-hasDatepicker-ui-datepicker-trigger-span__responsives: false;
+@forix-hasDatepicker-ui-datepicker-trigger-span__check-have: false;
+@forix-hasDatepicker-ui-datepicker-trigger-span__status: false;
+@forix-hasDatepicker-ui-datepicker-trigger-span__prefix: false;
+@forix-hasDatepicker-ui-datepicker-trigger-span__format: false;
+@forix-hasDatepicker-ui-datepicker-trigger-span__use-flex: false;
+
+@forix-hasDatepicker-ui-datepicker-trigger-span__display: none;
+
+//.sidebar .fieldset
+@forix-sidebar-fieldset__name: "forix-sidebar-fieldset";
+@forix-sidebar-fieldset__commons: margin;
+@forix-sidebar-fieldset__responsives: false;
+@forix-sidebar-fieldset__check-have: false;
+@forix-sidebar-fieldset__status: false;
+@forix-sidebar-fieldset__prefix: false;
+@forix-sidebar-fieldset__format: false;
+@forix-sidebar-fieldset__use-flex: false;
+
+@forix-sidebar-fieldset__margin: 0;
+
+//.sidebar .fieldset .field: not(.choice) >,
+//.sidebar .fieldset .fields .field
+@forix-sidebar-fieldset-field__name: "forix-sidebar-fieldset-field";
+@forix-sidebar-fieldset-field__commons: false;
+@forix-sidebar-fieldset-field__responsives: false;
+@forix-sidebar-fieldset-field__check-have: not;
+@forix-sidebar-fieldset-field__status: false;
+@forix-sidebar-fieldset-field__prefix: false;
+@forix-sidebar-fieldset-field__format: false;
+@forix-sidebar-fieldset-field__use-flex: false;
+
+@forix-sidebar-fieldset-field__not__commons: margin;
+@forix-sidebar-fieldset-field__not__responsives: false;
+
+@forix-sidebar-fieldset-field__not__list: op1;
+@forix-sidebar-fieldset-field__not__selector: ": last-child";
+
+@forix-sidebar-fieldset-field__not__op1__margin: 0 0 @forix-indent__s;
+
+//.sidebar .fieldset .fields .field: not(: last-child)
+//.sidebar .fieldset .fields .field .label
+@forix-sidebar-fieldset-fields-field-label__name: "forix-sidebar-fieldset-fields-field-label";
+@forix-sidebar-fieldset-fields-field-label__commons: margin,padding,text-align,width;
+@forix-sidebar-fieldset-fields-field-label__responsives: false;
+@forix-sidebar-fieldset-fields-field-label__check-have: false;
+@forix-sidebar-fieldset-fields-field-label__status: false;
+@forix-sidebar-fieldset-fields-field-label__prefix: false;
+@forix-sidebar-fieldset-fields-field-label__format: false;
+@forix-sidebar-fieldset-fields-field-label__use-flex: false;
+
+@forix-sidebar-fieldset-fields-field-label__margin: 0 0 @forix-indent__xs;
+@forix-sidebar-fieldset-fields-field-label__padding: 0 0 @forix-indent__s;
+@forix-sidebar-fieldset-fields-field-label__text-align: left;
+@forix-sidebar-fieldset-fields-field-label__width: 100%;
+
+//.sidebar .fieldset .fields .field .control
+@forix-sidebar-fieldset-fields-field-control__name: "forix-sidebar-fieldset-fields-field-control";
+@forix-sidebar-fieldset-fields-field-control__commons: width;
+@forix-sidebar-fieldset-fields-field-control__responsives: false;
+@forix-sidebar-fieldset-fields-field-control__check-have: false;
+@forix-sidebar-fieldset-fields-field-control__status: false;
+@forix-sidebar-fieldset-fields-field-control__prefix: false;
+@forix-sidebar-fieldset-fields-field-control__format: false;
+@forix-sidebar-fieldset-fields-field-control__use-flex: false;
+
+@forix-sidebar-fieldset-fields-field-control__width: 100%;

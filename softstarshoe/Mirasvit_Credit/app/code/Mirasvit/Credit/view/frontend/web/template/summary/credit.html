@@ -1,0 +1,13 @@
+<!-- ko if: isDisplayed() -->
+<tr class="credit-amount">
+    <th class="mark" scope="row">
+        <!-- ko i18n: 'Store Credit'--><!-- /ko -->
+    </th>
+    <td class="amount">
+        <span class="price" data-bind="text: getValue(), attr:{'data-label': 'Store Credit'}"></span>
+        <!-- ko foreach: elems() -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!-- /ko -->
+    </td>
+</tr>
+<!-- /ko -->

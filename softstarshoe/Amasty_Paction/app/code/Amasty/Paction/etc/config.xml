@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2017 Amasty (https://www.amasty.com)
+ * @package Amasty_Paction
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <amasty_paction>
+            <general>
+                <commands>0,addcategory,removecategory,replacecategory,4,modifycost,modifyprice,modifyspecial,modifyallprices,addspecial,addprice,addspecialbycost,11,relate,upsell,crosssell,13,copyrelate,copyupsell,copycrosssell,15,unrelate,unupsell,uncrosssell,19,copyoptions,copyattr,copyimg,removeimg,24,changeattributeset,26,amdelete,28,appendtext,replacetext,32</commands>
+                <round>math</round>
+                <fixed>0.99</fixed>
+                <attr></attr>
+                <replace_in_attr>description,short_description,name</replace_in_attr>
+                <append_text_position>after</append_text_position>
+            </general>
+            <links>
+                <upsell>0</upsell>
+                <upsell_reverse>0</upsell_reverse>
+                <crosssell>0</crosssell>
+                <crosssell_reverse>0</crosssell_reverse>
+                <relate>0</relate>
+                <relate_reverse>0</relate_reverse>
+            </links>
+        </amasty_paction>
+    </default>
+</config>

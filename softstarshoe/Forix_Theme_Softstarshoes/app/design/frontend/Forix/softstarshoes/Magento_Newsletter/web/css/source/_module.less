@@ -1,0 +1,187 @@
+@use-module-newsletter-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+//.block.newsletter .title {
+//    &:extend(.footer_links .title all);
+//}
+
+.block.newsletter .actions .action{
+    &:extend(.forix-abs-button-type1 all);
+}
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+
+    .block.newsletter{
+        .title{
+            .lib-font-size(18px);
+            color: @color-white;
+        }
+        .content{
+            position: relative;
+            #newsletter{
+                background: #4f4e5c;
+                color: @color-white;
+                font-weight: 400;
+                &:-webkit-autofill,
+                &:-webkit-autofill:hover,
+                &:-webkit-autofill:focus
+                &:-webkit-autofill,
+                &:-webkit-autofill,
+                &:-webkit-autofill:hover
+                &:-webkit-autofill:focus,
+                &:-webkit-autofill,
+                &:-webkit-autofill:hover,
+                &:-webkit-autofill:focus{
+                   ~ .label{
+                        color: @color-black!important;
+                   }
+                }
+            }
+            .label{
+                color: @color-white!important;
+                opacity: 0.5!important;
+                background: transparent!important;
+            }
+        }
+
+        .form{
+            display: table;
+            width: 100%;
+        }
+
+        .field{
+            padding: 0 10px 0 0;
+            display: table-cell;
+        }
+
+        .actions{
+            display: table-cell;
+            vertical-align: top;
+        }
+
+        div.mage-error[generated] {
+            position: absolute;
+            margin-top: 0;
+            padding: 5px 0 0;
+            width: 100%;
+            text-align: left;
+        }
+    }
+    .form-newsletter-manage{
+        label[for=subscription]{
+            font-weight: normal!important;
+        }
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .block.newsletter{
+        .forix-lib-vendor-prefix-flex(
+            @_display: false,
+            @_flex-grow: 1,
+            @_flex-shrink:false,
+            @_flex-basis: 100%,
+            @_flex-wrap:false,
+            @_flex-direction:false,
+            @_order: 2,
+            @_box-align:false,
+            @_appearance:false,
+            @_column-count:false
+        );
+
+        float: none;
+
+        .title{
+            padding: 0;
+            border-bottom: none;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .field{
+            .label{
+                margin-bottom: @forix-indent__xm;
+            }
+        }
+
+        .action.subscribe{
+            min-width: 0;
+        }
+    }
+}
+
+// >768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .block.newsletter{
+        float: left;
+        display: table;
+        .title,
+        .content{
+            display: table-cell;
+            vertical-align: middle;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 768px) {
+    .block.newsletter{
+        padding-top: 6px;
+        width: 69%;
+        .title{
+            padding-left: 12px;
+        }
+
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .block.newsletter{
+        width: 69%;
+        .title{
+            .lib-font-size(18px);
+        }
+        .action.subscribe{
+            min-width: 105px;
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1024px){
+    .block.newsletter #newsletter{
+        width: 300px;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .block.newsletter{
+        width: 77%;
+        .title{
+            .lib-font-size(25px);
+            padding: 0 percentage(20/1348) 0 percentage(92/1348);
+        }
+        .action.subscribe{
+            min-width: 200px;
+        }
+        .control{
+            width: 393px;
+        }
+    }
+}
+
+@media screen and (min-width: 1366px) {
+    .block.newsletter{
+        .title{
+            padding: 0 percentage(33/1348) 0 percentage(140/1348);
+        }
+    }
+}

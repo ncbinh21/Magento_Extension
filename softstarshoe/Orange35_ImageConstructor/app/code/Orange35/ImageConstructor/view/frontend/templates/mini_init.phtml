@@ -1,0 +1,13 @@
+<?php
+/**
+ * @var $block Orange35\ImageConstructor\Block\ConstructorMin
+ */
+$options = $block->getOptionsJson($block::MINI_CART);
+?>
+<script type="text/x-magento-init">
+{
+    "[data-block='minicart']": {
+        "imageConstructorMini": <?php echo $options;?>
+    }
+}
+</script>

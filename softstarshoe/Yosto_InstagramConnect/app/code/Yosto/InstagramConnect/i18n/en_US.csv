@@ -1,0 +1,98 @@
+"Get Access Token","Get Access Token"
+"Template Management","Template Management"
+"Add Template","Add Template"
+General,General
+Title,Title
+Description,Description
+Status,Status
+"Template Info","Template Info"
+"Template information","Template information"
+"Template info","Template info"
+"Save and Continue Edit","Save and Continue Edit"
+"Edit Template","Edit Template"
+"New Template","New Template"
+Templates,Templates
+"Templates Management","Templates Management"
+"A total of %1 record(s) have been deleted.","A total of %1 record(s) have been deleted."
+". . ' !'",". . ' !'"
+"No Template Available","No Template Available"
+Enable,Enable
+Disable,Disable
+None,None
+Edit,Edit
+"Add Image","Add Image"
+"On tab ""security"" of page ""Manage client"", ""Valid redirect URIs"" must be same as your base url. For example: https://mage.dev/","On tab ""security"" of page ""Manage client"", ""Valid redirect URIs"" must be same as your base url. For example: https://mage.dev/"
+Code,Code
+"How to get access token","How to get access token"
+"Enter client_id and client_secret","Enter client_id and client_secret"
+" Instagram Developer Page"," Instagram Developer Page"
+"Click on button ""Get Access Token""","Click on button ""Get Access Token"""
+"Copy value of parameter ""code"" from popup","Copy value of parameter ""code"" from popup"
+"Paste value of parameter ""code"" to text field and click on button ""Get Token""","Paste value of parameter ""code"" to text field and click on button ""Get Token"""
+"If you get a trouble with this task, feel free to contact us","If you get a trouble with this task, feel free to contact us"
+"Get Token","Get Token"
+"Client Id and Client Secret must be not empty","Client Id and Client Secret must be not empty"
+"Code must not empty","Code must not empty"
+"Go to Instagram","Go to Instagram"
+"Instagram Connect","Instagram Connect"
+"Client Id","Client Id"
+"Client id receive when register on Instagram developer.
+                    ","Client id receive when register on Instagram developer.
+                    "
+"Client Secret","Client Secret"
+"Client secret receive when register on Instagram developer.
+                    ","Client secret receive when register on Instagram developer.
+                    "
+"Access Token","Access Token"
+"Access token receive when authenticate on Instagram developer.
+                    ","Access token receive when authenticate on Instagram developer.
+                    "
+"Instagram Images on Product Pages","Instagram Images on Product Pages"
+"Product Detail Page Display","Product Detail Page Display"
+"Choose to display instagram image in product detail page.
+                    ","Choose to display instagram image in product detail page.
+                    "
+"Product Detail Image Number","Product Detail Image Number"
+"
+                        Choose the maximum image number to display in product detail page.
+                        The maximum number should be less than 20 for hight quality display.
+                    ","
+                        Choose the maximum image number to display in product detail page.
+                        The maximum number should be less than 20 for hight quality display.
+                    "
+"Display Likes And Comments","Display Likes And Comments"
+"Choose to display likes and comments count of image on Instagram.
+                    ","Choose to display likes and comments count of image on Instagram.
+                    "
+"Instagram Shopping Page","Instagram Shopping Page"
+"Enter link's label","Enter link's label"
+"Shopping Page Template","Shopping Page Template"
+"Enable link on Navigation menu","Enable link on Navigation menu"
+"Choose to display link to Instagram Shopping Page on navigation menu.
+                    ","Choose to display link to Instagram Shopping Page on navigation menu.
+                    "
+"Enable link on Footer","Enable link on Footer"
+"Choose to display link to Instagram Shopping Page on footer.
+                    ","Choose to display link to Instagram Shopping Page on footer.
+                    "
+"Instagram Images Slider","Instagram Images Slider"
+"List of Images from Store owner instagram","List of Images from Store owner instagram"
+"Title (frontend)","Title (frontend)"
+Template,Template
+"Instagram list slider","Instagram list slider"
+"Instagram hash tag for slider Images","Instagram hash tag for slider Images"
+"Max number of image in slider","Max number of image in slider"
+"Number of columns","Number of columns"
+"Number of rows","Number of rows"
+"Display likes and comments","Display likes and comments"
+"Instagram Follower Slider","Instagram Follower Slider"
+"List of Instagram users which Store owner's instagram user is followed by.","List of Instagram users which Store owner's instagram user is followed by."
+"Instagram follower slider","Instagram follower slider"
+"Max number of follower in slider","Max number of follower in slider"
+"Create a shopping page widget using Instagram images.","Create a shopping page widget using Instagram images."
+"Shopping Page","Shopping Page"
+"Choose template for shopping page.","Choose template for shopping page."
+Delete,Delete
+"Delete items","Delete items"
+"Are you sure you wan't to delete selected items?","Are you sure you wan't to delete selected items?"
+ID,ID

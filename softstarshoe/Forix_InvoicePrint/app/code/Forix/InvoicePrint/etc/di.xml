@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+  ~ /**********************************************
+  ~  *
+  ~  * Copyright © 2017 Forix. All rights reserved.
+  ~  * See COPYING.txt for license details.
+  ~  */
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="\Magento\OfflinePayments\Block\Info\Checkmo" type="\Forix\InvoicePrint\Block\OfflinePayments\Info\Checkmo"/>
+    <preference for="\Magento\Sales\Model\Order\Pdf\Invoice" type="\Forix\InvoicePrint\Model\Order\Pdf\Invoice"/>
+    <preference for="\Magento\Sales\Controller\Order\PrintInvoice" type="\Forix\InvoicePrint\Controller\Order\PrintInvoice"/>
+    <preference for="\Magento\Sales\Controller\Guest\PrintInvoice" type="\Forix\InvoicePrint\Controller\Guest\PrintInvoice"/>
+
+    <virtualType name="ForixInvoicePrintRuleGrid" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">forix_invoiceprint_rule</argument>
+            <argument name="resourceModel" xsi:type="string">Forix\InvoicePrint\Model\ResourceModel\Rule</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="invoiceprint_rule_listing_data_source" xsi:type="string">ForixInvoicePrintRuleGrid</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Quote\Model\Quote\Item\ToOrderItem">
+        <plugin name="copy_quote_files_to_order" type="Forix\InvoicePrint\Plugin\QuoteItemProductOption"/>
+    </type>
+</config>

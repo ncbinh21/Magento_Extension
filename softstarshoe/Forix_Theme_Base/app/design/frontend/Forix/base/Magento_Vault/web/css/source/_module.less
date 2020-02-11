@@ -1,0 +1,63 @@
+@use-module-vault-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.my-credit-cards .action.delete,
+.my-credit-cards-popup .action.secondary{
+    &:extend(.alink all);
+}
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .my-credit-cards .status{
+        font-style: @forix-font-style__emphasis;
+    }
+
+    .my-credit-cards-popup .modal-footer{
+        text-align: right;
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .my-credit-cards{
+        .card-type img{
+            vertical-align: middle;
+        }
+
+        .table{
+            &:not(.totals):not(.cart):not(.table-comparison){
+                .status{
+                    display: none;
+                }
+
+                .status:before{
+                    display: none;
+                }
+
+                .status._default{
+                    display: block;
+                }
+            }
+        }
+    }
+
+    .account .table-wrapper .table.table-credit-cards:not(.cart):not(.totals):not(.table-comparison) tbody td::before{
+        min-width: 90px;
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .my-credit-cards .card-type img{
+        display: block;
+    }
+}

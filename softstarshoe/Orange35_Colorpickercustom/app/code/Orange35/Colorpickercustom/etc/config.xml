@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <colorpickercustom_section>
+            <swatch>
+                <swatch_width>35</swatch_width>
+                <swatch_height>35</swatch_height>
+            </swatch>
+            <slider>
+                <slider_type>0</slider_type>
+                <slider_swatches>4</slider_swatches>
+                <slider_step>1</slider_step>
+            </slider>
+            <tooltip>
+                <tooltip_width>120</tooltip_width>
+                <tooltip_height>120</tooltip_height>
+                <tooltip_padding>5</tooltip_padding>
+            </tooltip>
+        </colorpickercustom_section>
+    </default>
+</config>

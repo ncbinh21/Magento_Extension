@@ -1,0 +1,607 @@
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.cms-fan-photo-container .float{
+  &:extend(.homepage-cms-container-1 .float all);
+}
+.cms-fan-photo-container .float p .title{
+  &:extend(.homepage-cms-container-2 .title all);
+}
+.fan-photo-action{
+  &:extend(.forix-abs-button-type3 all);
+}
+.fanphoto-index-index .page-main h2{
+  &:extend(.fanphoto-index-index .page-title-wrapper all);
+}
+.fanphoto-index-index .photo-gallery .box-actions{
+  &:extend(.products-grid .product-items .box-actions all);
+}
+.slick-arrow:before{
+  &:extend(.forix-abs-icon-base);
+}
+// ------------------------------------
+// Variables
+// ------------------------------------
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+
+  .fanphoto-index-index{
+    .bg-gray{
+      padding: 24px 0 30px;
+      margin: 0 0 37px;
+    }
+    .page-main{
+      padding-top: 0;
+    }
+    .page-title-wrapper{
+      margin: 0 0 23px;
+      text-align: center;
+      + h4{
+        text-align: center;
+        margin: 0 0 43px;
+      }
+    }
+    .fan-photo-action{
+      margin: 0 auto;
+      height: 40px;
+      line-height: 38px;
+      display: block;
+      text-align: center;
+      font-size: 16px;
+    }
+  }
+  .cms-fan-photo-container{
+    text-align: center;
+    .float > div{
+      position: relative;
+      height:auto!important;
+      img{
+        display: block!important;
+        height:auto!important;
+      }
+    }
+    .float p .title{
+      margin: 0 0 20px!important;
+    }
+    .float div .title{
+      width: 413px;
+      background-image: url(../images/img-sprite.png);
+      background-repeat: no-repeat;
+      background-position: left -868px;
+      position: absolute;
+      left: 50%;
+      margin-left: -206px;
+      bottom: 11px;
+      height: 61px;
+      line-height: 61px;
+      display: block;
+      font-size: 20px;
+      color: #fff;
+      text-align: center;
+      font-weight: normal;
+      strong{
+        font-weight: bold;
+      }
+    }
+    .cms-fan-photo{
+      overflow: hidden;
+    }
+    .cms-fan-photo-desc{
+      clear: both;
+      margin: 27px 10px 12px;
+    }
+  }
+  .photo-filter{
+    clear: both;
+    margin: 12px 0 28px;
+    text-align: center;
+    display:  flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    justify-content: center;
+    -webkit-justify-content: center;
+    line-height: 30px;
+    font-weight: @forix-font-weight__bold;
+    >span{
+      font-size: 16px;
+    }
+    a{
+      height: 30px;
+      line-height: 30px;
+      width: 130px;
+      border: 1px solid @sss-color-6;
+      border-radius: 14px;
+      margin: 0 0 8px 8px;
+      color: @sss-color-6;
+      &.selected{
+        color: @sss-color-9;
+        border: 1px solid @sss-color-9;
+      }
+      &:hover{
+        color: @sss-color-9;
+        border: 1px solid @sss-color-9;
+      }
+    }
+  }
+  .photo-gallery{
+    .photo-caption{
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.7);
+      padding: 15px 17px;
+      color: @color-white;
+      display: none;
+      font-size: 16px;
+      line-height: 20px;
+      font-weight: 400;
+    }
+    ul{
+      list-style: none;
+      margin: 0;
+      font-size: 0;
+      &:after{
+        content: "";
+        display: table;
+        clear: both;
+      }
+    }
+    li{
+      font-size: 15px;
+      padding: 9px;
+      margin: 0;
+      float: left;
+      .photo-item{
+        display: block;
+        position: relative;
+        font-size: 0;
+        line-height: 0;
+        &:hover{
+          .photo-caption{
+            display: block;
+          }
+        }
+      }
+      > .img{
+        background: @sss-color-4;
+      }
+      &.item{
+        width: 25%;
+        overflow: hidden;
+      }
+    }
+  }
+  .fanphoto-index-index{
+    .modals-wrapper{
+      .modal-header{
+        min-height: 0;
+      }
+      .form-register{
+        max-width: 100%;
+        .form-all{
+          margin: 34px 0 0;
+          padding: 40px 0 0;
+          border-top: 1px solid @sss-color-4;
+        }
+        ul.form-section{
+          margin: 0;
+          list-style: none;
+        }
+        .fieldset > .field{
+          display: table;
+          width: 100%;
+          &[data-type=control_address] > .label{
+            padding-top: 15px;
+          }
+          &:first-child{
+            margin-bottom: 30px;
+          }
+          &:last-child{
+            font-size: 18px;
+            margin: 40px 0 30px;
+            padding: 40px 0 0;
+            border-top: 1px solid @sss-color-4;
+            text-align: center;
+          }
+          &.v-middle{
+            > .label,
+            > .control{
+              vertical-align: middle;
+            }
+          }
+          input[type="checkbox"] + label,
+          input[type="radio"] + label{
+            font-weight: bold!important;
+            color: @sss-color-1!important;
+            top: 0!important;
+            font-size: 16px!important;
+          }
+        }
+        .fieldset > .field > .label{
+          display: table-cell;
+          text-align: right;
+          width: percentage(271/786);
+          font-size: 16px;
+          line-height: 20px;
+          padding-right: 18px;
+          vertical-align: top;
+        }
+        .fieldset > .field > .control{
+          display: table-cell;
+          width: percentage(497/786);
+          vertical-align: top;
+          .form-radio-item + .form-radio-item{
+            margin-left: 30px;
+          }
+        }
+        .form-buttons-wrapper{
+          margin-left: percentage(271/786);
+          padding-left: 18px;
+        }
+
+        .form-sub-label-container{
+          display: block;
+          &.clearfix{
+            clear: both;
+          }
+          &.f-left{
+            float: left;
+            width: 48%;
+            margin-bottom: 20px;
+          }
+          &.f-right{
+            float: right;
+            width: 48%;
+            margin-bottom: 20px;
+          }
+        }
+      }
+    }
+  }
+  .fanphoto-index-index .photo-gallery .box-actions{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding-top: 50px;
+  }
+  .view-photo .slick-arrow{
+    &:before{
+      &:hover{
+        color: @secondary-link__color!important;
+      }
+    }
+    &:hover{
+      &:before{
+        color: @secondary-link__color!important;
+      }
+    }
+  }
+  .fanphoto-index-index .slider-photos{
+    .photo_caption{
+      margin: 13px 0 30px;
+      font-size: 16px;
+      line-height: 20px;
+      text-align: center;
+    }
+  }
+  .fanphoto-index-index .slider-nav{
+    margin: 0 0 32px;
+  }
+  .slider-nav.slick-initialized .slick-slide{
+    margin: 0 5px!important;
+  }
+  .slick-arrow{
+    background: 0!important;
+    &:before{
+      font-size: 45px!important;
+      color: @sss-color-3!important;
+    }
+    &.slick-prev{
+      left: -30px!important;
+      &:before{
+        content: @sss-icon-prev;
+        float: left;
+      }
+    }
+    &.slick-next{
+      right: -30px!important;
+      &:before{
+        content: @sss-icon-next;
+        float: right;
+      }
+    }
+  }
+
+  .fanphoto-index-index .page-title-wrapper{
+    .page-title{
+      text-transform: capitalize;
+      font-weight: @forix-font-weight__bold;
+      color: @sss-color-1;
+    }
+    +h4{
+      font-weight: @forix-font-weight__bold;
+    }
+  }
+  .fanphoto-index-index .bg-gray{
+    position: relative;
+    &:before{
+      content: "";
+      display: block;
+      position: absolute;
+      width: 100vw;
+      margin-left: -50vw;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      z-index: -1;
+      background: url(../images/gray-bg.jpg) repeat;
+      transform: translateZ(0);
+    }
+  }
+  .fanphoto-index-index .modal-popup .modal-header .action-close{
+    top: 10px;
+    right: 20px;
+  }
+  .fanphoto-index-index .modal-popup .form.form-fanphoto{
+    .form-header-group{
+      text-align: center;
+      .form-header{
+        font-weight: @forix-font-weight__bold;
+      }
+      .form-subHeader{
+        font-size: 18px;
+      }
+    }
+    .form-footer{
+      text-align: center;
+    }
+    .form-submit-button-simple_green_apple{
+      min-width: 208px;
+    }
+  }
+  .fanphoto-index-index .modal-popup .form.form-fanphoto .form-sub-label-container{
+    position: relative;
+  }
+  .fanphoto-index-index .custom-button{
+    text-align: center;
+  }
+
+  .modal-popup .form.form-fanphoto .custom-upload .custom-input{
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: 600;
+    border-radius: 4px;
+    font-size: 12px;
+    line-height: 11px;
+    padding: 5px 5px 3px;
+    min-width: 80px;
+  }
+  .modal-popup .form.form-fanphoto .custom-upload .custom-text{
+    display: none;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+    vertical-align: middle;
+    font-size: 12px;
+    margin-left: 5px;
+  }
+
+  .photos.photo-gallery{
+    position: relative;
+    width: 100vw;
+    margin-left: -50vw;
+    left: 50%;
+    padding-bottom: 106px;
+    .photo-item{
+      img{
+        width: 100%;
+      }
+    }
+  }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+
+  .fan-photo-child{
+    margin: 0 0 20px;
+  }
+  .fanphoto-index-index{
+    .modals-wrapper{
+      .form-register{
+        .form-all{
+          margin: 24px 0 0;
+          padding: 30px 0 0;
+        }
+        .fieldset > .field{
+          display: block;
+          &:last-child{
+            font-size: 16px;
+            margin: 30px 0 30px;
+            padding: 30px 0 0;
+          }
+          input[type="checkbox"] + label,
+          input[type="radio"] + label{
+            font-size: 14px!important;
+          }
+        }
+        .fieldset > .field > .label{
+          display: block;
+          text-align: left;
+          width: auto;
+          font-size: 14px;
+          padding-right: 0;
+        }
+        .fieldset > .field > .control{
+          display: block;
+          width: 100%;
+          .form-radio-item + .form-radio-item{
+            margin-left: 20px;
+          }
+        }
+        .form-buttons-wrapper{
+          margin-left: 0;
+          padding-left: 0;
+        }
+
+        .form-sub-label-container{
+
+          &.f-left{
+            float: none;
+            width: 100%;
+          }
+          &.f-right{
+            float: none;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+  .photos.photo-gallery{
+    padding-bottom: 61px;
+  }
+  .fanphoto-index-index .photo-gallery .box-actions{
+    padding-top: 20px;
+  }
+  .photo-gallery li{
+    &.col-1-1{
+      width: 50%;
+    }
+  }
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+  .cms-fan-photo-container .float div .title{
+    background-position: left -1408px;
+    height: 43px;
+    line-height: 43px;
+    padding-left: 9px;
+    width: 290px;
+    margin-left: -145px;
+  }
+
+  .fanphoto-index-index .fan-photo-action{
+    min-width: 280px;
+    display: inline-block;
+  }
+  .slick-arrow:before{
+    font-size: 35px!important;
+  }
+  .fanphoto-index-index .modal-popup .form.form-fanphoto{
+    font-size: 14px;
+  }
+  .fanphoto-index-index .modals-wrapper .form-register .fieldset > .field:last-child{
+    font-size: 14px;
+  }
+
+  .fanphoto-index-index .modal-popup .form.form-fanphoto{
+    .form-header-group .form-subHeader{
+      font-size: 16px;
+    }
+    .form-all {
+      >.field{
+        &:last-child{
+          p{
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+  .fanphoto-index-index .photo-gallery .box-actions .action{
+    font-size: 16px;
+  }
+  .photo-gallery li{
+    padding: 5px;
+  }
+  .photo-gallery li .photo-item:hover .photo-caption{
+    display: none;
+  }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+}
+
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+  .cms-fan-photo-container{
+    .float > div{
+      img{
+      }
+    }
+  }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+  .fanphoto-index-index .modal-popup .modal-inner-wrap{
+    width: 886px;
+    margin-left: -443px;
+  }
+  .cms-fan-photo-container .cms-fan-photo-desc{
+    font-size: 16px;
+  }
+
+  .fanphoto-index-index .custom-button .fan-photo-action{
+    min-width: 330px;
+    display: inline-block;
+  }
+  .fanphoto-index-index{
+    .bg-gray{
+      padding: 48px 0 60px;
+      margin: 0 0 75px;
+    }
+  }
+  .cms-fan-photo-container .cms-fan-photo-desc {
+    margin: 54px 10px 23px;
+  }
+  .photo-filter {
+    margin: 12px 0 55px;
+  }
+  .cms-fan-photo-container .cms-fan-photo{
+    .float > div{
+      img{
+      }
+      &:hover{
+        img{
+          transform: scale(1);
+        }
+        &:after{
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  .fanphoto-index-index .page-title-wrapper .page-title{
+    font-size: 45px;
+  }
+
+  .photo-gallery li.col-2-2{
+    padding-bottom: 0;
+  }
+
+}
+
+// [>=1200]
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl){
+  .fanphoto-index-index .modal-popup .modal-inner-wrap{
+    width: 1112px;
+    margin-left: -556px;
+  }
+}

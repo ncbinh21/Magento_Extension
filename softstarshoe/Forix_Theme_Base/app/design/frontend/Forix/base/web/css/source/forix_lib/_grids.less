@@ -1,0 +1,46 @@
+// Grid system
+//
+// Generate semantic grid columns with these mixins.
+
+// Centered container element
+.forix-container-fixed(@indent) {
+    margin-right: auto;
+    margin-left: auto;
+    .lib-css(padding-left,@indent);
+    .lib-css(padding-right,@indent);
+    &:extend(.forix-abs-clearfix all);
+}
+
+// Creates a wrapper for a series of columns
+.forix-make-row(@gutter) {
+    & when not (@gutter = false) and not (@gutter = ''){
+        margin-left:  (@gutter / -2);
+        margin-right: (@gutter / -2);
+    }
+
+    &:extend(.forix-abs-clearfix all);
+}
+
+// Generate columns
+.forix-make-column(@gutter){
+    padding-left:  (@gutter / 2);
+    padding-right: (@gutter / 2);
+}
+
+.forix-make-column(@columns,@grid-columns,@gutter){
+    width: percentage((@columns / @grid-columns));
+    padding-left:  (@gutter / 2);
+    padding-right: (@gutter / 2);
+}
+
+.forix-make-column-offset(@columns,@grid-columns) {
+    margin-left: percentage((@columns / @grid-columns));
+}
+
+.forix-make-column-push(@columns,@grid-columns) {
+    left: percentage((@columns / @grid-columns));
+}
+
+.forix-make-column-pull(@columns,@grid-columns) {
+    right: percentage((@columns / @grid-columns));
+}

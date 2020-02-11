@@ -1,0 +1,9 @@
+<?php if ($productSnippets = $this->getProductSnippets()): ?>
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Product",
+        <?= $this->getProductSnippets(); ?>
+    }
+    </script>
+<?php endif; ?>

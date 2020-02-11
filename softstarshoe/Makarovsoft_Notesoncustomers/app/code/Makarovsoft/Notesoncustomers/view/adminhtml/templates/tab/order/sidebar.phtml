@@ -1,0 +1,39 @@
+<?php /* @var $block \Magento\Sales\Block\Adminhtml\Order\Create\Sidebar\AbstractSidebar */ ?>
+<div class="create-order-sidebar-block" id="sidebar_data_<?php /* @escapeNotVerified */ echo $block->getDataId() ?>">
+    <div class="head sidebar-title-block">
+        <?php if (!$this->getWa()):?>
+        <a href="#" class="action-refresh"
+           title="<?php echo $block->escapeHtml(__('Refresh')); ?>"
+           onclick="order.loadArea('sidebar_<?php /* @escapeNotVerified */ echo $block->getDataId() ?>', 'sidebar_data_<?php /* @escapeNotVerified */ echo $block->getDataId() ?>');return false;">
+            <span><?php /* @escapeNotVerified */ echo __('Refresh'); ?></span>
+        </a>
+        <?php endif;?>
+        <h5 class="create-order-sidebar-label">
+            <?php /* @escapeNotVerified */ echo $block->getHeaderText() ?>
+            <span class="normal">(<?php /* @escapeNotVerified */ echo $block->getItemCount() ?>)</span>
+        </h5>
+    </div>
+
+    <div class="content">
+        <div class="auto-scroll">
+            <?php if ($block->getItemCount()): ?>
+                <table class="admin__table-primary">
+
+                    <tbody>
+                    <?php foreach ($block->getItems() as $_item): ?>
+                        <tr>
+                            <td class="col-item">
+                                <i><?php echo $_item->getFirstname()?></i>, <?php echo $block->formatDate($_item->getCreatedAt())?>:<br />
+                                <br />
+                                <?php echo $_item->getNote() ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php else: ?>
+                <span class="no-items"><?php /* @escapeNotVerified */ echo __('No Notes') ?></span>
+            <?php endif ?>
+        </div>
+    </div>
+</div>

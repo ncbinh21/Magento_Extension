@@ -1,0 +1,23 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Forix\Customer\Block\Account\AuthorizationLinkCustom $block */
+
+$dataPostParam = '';
+if ($block->isLoggedIn()) {
+    $dataPostParam = sprintf(" data-post='%s'", $block->getPostParams());
+}
+?>
+<li>09xxxxxx</li>
+<li>Help</li>
+<li>Size Guide</li>
+<li class="authorization-link" data-label="<?= $block->escapeHtmlAttr(__('or')) ?>">
+    <a <?= /* @noEscape */ $block->getLinkAttributes() ?><?= /* @noEscape */ $dataPostParam ?>>
+        <?= $block->escapeHtml($block->getLabel()) ?>
+    </a>
+</li>

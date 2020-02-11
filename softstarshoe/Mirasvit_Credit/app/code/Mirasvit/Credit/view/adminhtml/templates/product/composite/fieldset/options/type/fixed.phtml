@@ -1,0 +1,35 @@
+<?php
+/* @var $block \Mirasvit\Credit\Block\Adminhtml\Catalog\Product\Composite\Fieldset\Options\Type\Fixed */
+$product = $block->getProduct();
+?>
+<?php if ($block->isAllowed()):?>
+    <fieldset id="catalog_product_composite_configure_fields_configurable" class="fieldset admin__fieldset">
+        <div class="field admin__field _required required">
+            <label class="label admin__field-label"><?= __('Credits') ?></label>
+            <div class="control admin__field-control">
+                <select name="creditOption" id="attribute<?= $product->getId(); ?>"
+                        class="admin__control-select required-entry super-attribute-select">
+                    <option><?= __('Choose an Option...') ?></option>
+                </select>
+            </div>
+        </div>
+    </fieldset>
+    <script>
+        require([
+            "Magento_ConfigurableProduct/js/configurable",
+            "Magento_Catalog/catalog/product/composite/configure"
+        ], function(){
+
+            var config = <?= $block->getJsonConfig() ?>;
+            if (window.productConfigure) {
+                config.containerId = window.productConfigure.blockFormFields.id;
+                if (window.productConfigure.restorePhase) {
+                    config.inputsInitialized = true;
+                }
+            }
+
+            ProductConfigure.spConfig = new Product.Config(config);
+
+        });
+    </script>
+<?php endif;?>

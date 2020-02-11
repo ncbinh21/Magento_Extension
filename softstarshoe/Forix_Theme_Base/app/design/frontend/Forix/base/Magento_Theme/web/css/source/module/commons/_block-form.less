@@ -1,0 +1,216 @@
+@use-block-account-form-box-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.forix-abs-account-blocks .block-content{
+    &:extend(.forix-abs-clearfix all);
+}
+.forix-abs-account-blocks .block-title .action{
+    &:extend(.forix-abs-primary-size all);
+}
+.forix-abs-account-blocks .block-title{
+    &:extend(.forix-abs-three-size all);
+}
+.forix-abs-account-blocks .box .box-title{
+    &:extend(.forix-abs-secondary-size all);
+}
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// .forix-abs-account-blocks .block-content .box
+@forix-block-account-form-block-content-box__padding-top: @forix-indent__s;
+@forix-block-account-form-block-content-box__padding-top__m: @forix-indent__xm;
+
+@forix-block-account-form-block-content-box-column1-width__m: percentage(1/2);
+@forix-block-account-form-block-content-box-column2-width__m: percentage(1/2);
+@forix-block-account-form-block-content-box-column1-width__l: percentage(5/9);
+@forix-block-account-form-block-content-box-column2-width__l: percentage(4/9);
+
+// .forix-abs-account-blocks .box-content p
+@forix-block-account-box-content-p__line-height: 22px;
+@forix-block-account-box-content-p__line-height__m: 22px;
+@forix-block-account-box-content-p__line-height__l: 24px;
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .forix-abs-account-blocks{
+        &:last-child{
+            border-bottom: none;
+        }
+
+        .block-title{
+            color: @three-text__color;
+            text-transform: uppercase;
+            font-weight: @forix-font-weight__bold;
+            line-height: 18px;
+
+            strong{
+                margin-right: @forix-indent__base;
+            }
+
+            .action{
+                vertical-align: middle;
+                display: inline-block;
+                margin-top: -4px;
+                line-height: 16px;
+            }
+        }
+
+        .block-content{
+            .box{
+                padding-top: @forix-block-account-form-block-content-box__padding-top;
+            }
+        }
+
+        .box{
+            .box-title{
+                display: inline-block;
+                font-weight: @forix-font-weight__semibold;
+                margin: 0 0 @forix-indent__xs;
+            }
+
+            .box-content p{
+                &:last-child{
+                    margin-bottom: 0;
+                }
+            }
+
+            .box-actions .action{
+                display: inline-block;
+                position: relative;
+                margin-right: @forix-indent__xs;
+
+                &:last-child{
+                    margin-right: 0;
+                }
+            }
+
+            .box-actions .action + .action {
+                margin-left: @forix-indent__xs;
+            }
+
+            .box-actions .action + .action:before{
+                top: 7px;
+                left: -8px;
+                display: inline-block;
+                position: absolute;
+                background: @color-green;
+                width: 1px;
+                content: '';
+            }
+        }
+    }
+}
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .forix-abs-account-blocks{
+        margin-bottom: @forix-indent__m;
+
+        &:last-child{
+            margin-bottom: 0;
+        }
+
+        .block-content .box{
+            &:nth-of-type(2n+2){
+                margin-top: @forix-indent__xm;
+                padding-top: @forix-block-account-form-block-content-box__padding-top__m;
+                border-top: @forix-border__base;
+            }
+        }
+    }
+}
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    .forix-abs-account-blocks {
+        .block-title{
+            margin-bottom: 0px;
+        }
+
+        .box{
+            .box-content address,
+            .box-content p{
+                line-height: @forix-block-account-box-content-p__line-height;
+            }
+
+            .box-actions{
+                padding: @forix-indent__xs 0 0;
+            }
+
+            .box-actions .action + .action:before{
+                height: 13px;
+            }
+        }
+    }
+}
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    .forix-abs-account-blocks{
+        margin-bottom: @forix-indent__l;
+        padding-bottom: @forix-indent__xm;
+        border-bottom: 2px solid @forix-border-color__three;
+
+        .block-content .box{
+            &:nth-of-type(2n+1){
+                float: left;
+                clear: left;
+                width: @forix-block-account-form-block-content-box-column1-width__m;
+                padding-right: @forix-gutter-width__m/2;
+            }
+
+            &:nth-of-type(2n+2){
+                float: right;
+                width: @forix-block-account-form-block-content-box-column2-width__m;
+                padding-left: @forix-indent__base;
+            }
+        }
+    }
+}
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    .forix-abs-account-blocks{
+        margin-bottom: @forix-indent__l;
+        padding-bottom: @forix-indent__l;
+        border-bottom: 2px solid @forix-border-color__three;
+
+        .block-title{
+            margin-bottom: @forix-indent__s;
+        }
+
+        .block-content .box {
+            &:nth-of-type(2n+1) {
+                float: left;
+                clear: left;
+                width: @forix-block-account-form-block-content-box-column1-width__l;
+                padding-right: @forix-gutter-width__l/2;
+            }
+            &:nth-of-type(2n+2) {
+                float: right;
+                width: @forix-block-account-form-block-content-box-column2-width__l;
+                padding-left: @forix-gutter-width__l/2;
+            }
+        }
+
+        .box{
+            .box-content address,
+            .box-content p{
+                line-height: @forix-block-account-box-content-p__line-height__l;
+            }
+
+            .box-actions{
+                padding: @forix-indent__s 0 0;
+            }
+
+            .box-actions .action + .action{
+                &:before{
+                    height: 14px;
+                }
+            }
+        }
+    }
+}
+

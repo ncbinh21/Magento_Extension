@@ -1,0 +1,38 @@
+@use-promotions-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.promotions-inner{
+    &:extend(.forix-abs-container all);
+}
+
+.promotions-inner p{
+    &:extend(.forix-abs-three-size all);
+}
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+@page-promotions__background: @color-green;
+@page-promotions__text__color: @color-white;
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .page-promotions{
+        background: @page-promotions__background;
+        padding: @forix-indent__s 0;
+    }
+
+    .promotions-inner p{
+        text-transform: uppercase;
+        font-weight: @forix-font-weight__semibold;
+        color: @page-promotions__text__color;
+        text-align: center;
+        margin: 0;
+        line-height: 18px;
+    }
+}

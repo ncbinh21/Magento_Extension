@@ -1,0 +1,33 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="Mirasvit\Report\Api\Data\Query\QueryInterface" type="Mirasvit\Report\Model\Query\Select"/>
+    <preference for="Mirasvit\Report\Api\Data\Query\TableInterface" type="Mirasvit\Report\Model\Query\Table"/>
+    <preference for="Mirasvit\Report\Api\Data\Query\EavTableInterface" type="Mirasvit\Report\Model\Query\Eav\Table"/>
+    <preference for="Mirasvit\Report\Api\Data\Query\ColumnInterface" type="Mirasvit\Report\Model\Query\Column"/>
+    <preference for="Mirasvit\Report\Api\Data\Query\RelationInterface" type="Mirasvit\Report\Model\Query\Relation"/>
+    <preference for="Mirasvit\Report\Api\Data\Query\FieldInterface" type="Mirasvit\Report\Model\Query\Field"/>
+    <preference for="Mirasvit\Report\Api\Data\Query\EavFieldInterface" type="Mirasvit\Report\Model\Query\Eav\Field"/>
+    <preference for="Mirasvit\Report\Api\Data\EmailInterface" type="Mirasvit\Report\Model\Email"/>
+
+    <preference for="Mirasvit\Report\Api\Service\MapServiceInterface" type="Mirasvit\Report\Service\MapService"/>
+    <preference for="Mirasvit\Report\Api\Service\DateServiceInterface" type="Mirasvit\Report\Service\DateService"/>
+    <preference for="Mirasvit\Report\Api\Service\ReportServiceInterface" type="Mirasvit\Report\Service\ReportService"/>
+    <preference for="Mirasvit\Report\Api\Service\EmailServiceInterface" type="Mirasvit\Report\Service\EmailService"/>
+    <preference for="Mirasvit\Report\Api\Service\SelectServiceInterface" type="Mirasvit\Report\Service\SelectService"/>
+    <preference for="Mirasvit\Report\Api\Service\TableDescriptorInterface" type="Mirasvit\Report\Service\TableService"/>
+
+    <preference for="Mirasvit\Report\Api\Repository\MapRepositoryInterface" type="Mirasvit\Report\Repository\MapRepository"/>
+    <preference for="Mirasvit\Report\Api\Repository\ReportRepositoryInterface" type="Mirasvit\Report\Repository\ReportRepository"/>
+    <preference for="Mirasvit\Report\Api\Repository\EmailRepositoryInterface" type="Mirasvit\Report\Repository\EmailRepository"/>
+
+    <preference for="Mirasvit\Report\Api\Factory\TableDescriptorFactoryInterface" type="Mirasvit\Report\Factory\TableDescriptorFactory"/>
+
+    <type name="Mirasvit\Report\Api\Repository\EmailRepositoryInterface">
+        <arguments>
+            <argument name="repositoryPool" xsi:type="array">
+                <item name="reports" xsi:type="string">Mirasvit\Report\Repository\Email\BlockRepository</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

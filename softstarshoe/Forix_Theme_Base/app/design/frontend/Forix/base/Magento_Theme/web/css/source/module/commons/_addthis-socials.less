@@ -1,0 +1,74 @@
+@use-socials-addthis-core__enable: true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+
+// ------------------------------------
+// Variables Extends
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .addthis_inline_share_toolbox{
+        vertical-align: middle;
+    }
+
+    .at-style-responsive .at-share-btn,
+    .at-resp-share-element .at-share-btn{
+        padding: @forix-indent__xs!important;
+
+        &.mailto:last-child{
+            margin-bottom: 0!important;
+        }
+    }
+
+    .addthis_inline_share_toolbox{
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+
+    .share-container .at-share-btn-elements{
+        > a,
+        .at-share-btn{
+            float: left;
+            width: 100%;
+            margin-left: 0;
+
+            &:hover{
+                .forix-lib-css(transform, none , 1);
+            }
+
+            .at-icon-wrapper{
+                float: right;
+            }
+
+            .at-label{
+                display: inline-block !important;
+                line-height: 32px !important;
+                font-size: @forix-font-size__xxm !important;
+                .forix-lib-css(transition, padding-left 500ms, 1);
+            }
+
+            &:hover{
+                .at-label{
+                    padding-left: @forix-indent__xs;
+                }
+            }
+        }
+    }
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l) {
+
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+
+}

@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Forix_Custom::css/slider/owl.carousel.css"/>
+    </head>
+    <body>
+        <referenceBlock name="product.info.details">
+            <block name="description.tab" group="detailed_info" template="Forix_Catalog::product/view/description.phtml" class="Forix\Catalog\Block\Product\View\Scroll\Description" before="-">
+                <arguments>
+                    <argument name="title" translate="true" xsi:type="string">Description</argument>
+                </arguments>
+                <block name="description.tab.child" template="Magento_Catalog::product/view/attribute.phtml" class="Magento\Catalog\Block\Product\View\Description" before="-">
+                    <arguments>
+                        <argument name="at_call" xsi:type="string">getDescription</argument>
+                        <argument name="at_code" xsi:type="string">description</argument>
+                        <argument name="css_class" xsi:type="string">description</argument>
+                        <argument name="at_label" xsi:type="string">none</argument>
+                        <argument name="title" translate="true" xsi:type="string">Description</argument>
+                    </arguments>
+                </block>
+                <block name="faq.tab.child" template="Magento_Catalog::product/view/attribute.phtml" class="Magento\Catalog\Block\Product\View\Description" after="description.tab.child">
+                    <arguments>
+                        <argument name="at_call" xsi:type="string">getSssFaq</argument>
+                        <argument name="at_code" xsi:type="string">sss_faq</argument>
+                        <argument name="css_class" xsi:type="string">faq</argument>
+                        <argument name="at_label" xsi:type="string">none</argument>
+                        <argument name="title" translate="true" xsi:type="string">FAQs</argument>
+                    </arguments>
+                </block>
+                <block name="optional.image.tab.child" template="Magento_Catalog::product/view/attribute.phtml" class="Magento\Catalog\Block\Product\View\Description" after="faq.tab.child">
+                    <arguments>
+                        <argument name="at_call" xsi:type="string">getSssOptional</argument>
+                        <argument name="at_code" xsi:type="string">sss_optional</argument>
+                        <argument name="css_class" xsi:type="string">optional</argument>
+                        <argument name="at_label" xsi:type="string">none</argument>
+                        <argument name="title" translate="true" xsi:type="string">Optional Image</argument>
+                    </arguments>
+                </block>
+            </block>
+            <block name="sizing.guide.tab" after="description.tab" group="detailed_info" template="Forix_Catalog::product/view/sizing-guide.phtml" class="Magento\Catalog\Block\Product\View\Description">
+                <arguments>
+                    <argument name="title" xsi:type="string" translate="true">Sizing Guide</argument>
+                </arguments>
+                <block name="sizing.guide.tab.child" template="Magento_Catalog::product/view/attribute.phtml" class="Magento\Catalog\Block\Product\View\Description" before="-">
+                    <arguments>
+                        <argument name="at_call" xsi:type="string">getSssSizeGuide</argument>
+                        <argument name="at_code" xsi:type="string">sss_size_guide</argument>
+                        <argument name="css_class" xsi:type="string">guide</argument>
+                        <argument name="at_label" xsi:type="string">none</argument>
+                        <argument name="title" translate="true" xsi:type="string">Sizing Guide</argument>
+                    </arguments>
+                </block>
+                <block name="sizing.guide.download.tab.child" template="Magento_Catalog::product/view/attribute.phtml" class="Magento\Catalog\Block\Product\View\Description" after="sizing.guide.tab.child">
+                    <arguments>
+                        <argument name="at_call" xsi:type="string">getSssGuideDownload</argument>
+                        <argument name="at_code" xsi:type="string">sss_guide_download</argument>
+                        <argument name="css_class" xsi:type="string">guide</argument>
+                        <argument name="at_label" xsi:type="string">none</argument>
+                        <argument name="title" translate="true" xsi:type="string">Guide Download</argument>
+                    </arguments>
+                </block>
+            </block>
+            <block name="care.tab" after="sizing.guide.tab" group="detailed_info" template="Magento_Catalog::product/view/attribute.phtml" class="Magento\Catalog\Block\Product\View\Description">
+                <arguments>
+                    <argument name="at_call" xsi:type="string">getSssCare</argument>
+                    <argument name="at_code" xsi:type="string">sss_care</argument>
+                    <argument name="css_class" xsi:type="string">care</argument>
+                    <argument name="at_label" xsi:type="string">none</argument>
+                    <argument name="title" translate="true" xsi:type="string">Care</argument>
+                </arguments>
+            </block>
+            <block name="compare.runamocs.tab" after="care.tab" group="detailed_info" template="Magento_Catalog::product/view/attribute.phtml" class="Magento\Catalog\Block\Product\View\Description">
+                <arguments>
+                    <argument name="at_call" xsi:type="string">getSssCompareRunamocs</argument>
+                    <argument name="at_code" xsi:type="string">sss_compare_runamocs</argument>
+                    <argument name="css_class" xsi:type="string">compare</argument>
+                    <argument name="at_label" xsi:type="string">none</argument>
+                    <argument name="title" translate="true" xsi:type="string">Compare Styles</argument>
+                </arguments>
+            </block>
+            <referenceBlock name="reviews.tab">
+                <arguments>
+                    <argument name="title" translate="true" xsi:type="string">Reviews &amp; Questions</argument>
+                    <argument name="priority" xsi:type="string">7</argument>
+                </arguments>
+            </referenceBlock>
+        </referenceBlock>
+        <referenceBlock name="product.info.media">
+            <block name="product-title-scroll" class="Forix\Catalog\Block\Product\View\Scroll\Title" template="Forix_Catalog::product/view/scroll/title.phtml" before="-">
+                <container name="pdp-socials-addthis-scroll" htmlTag="div" htmlClass="pdp-socials-addthis-scroll">
+                    <block class="Magento\Framework\View\Element\Template" name="pdp.socials.addthis.scroll" template="Forix_Catalog::product/view/socials-addthis.phtml">
+                        <block class="Magento\Framework\View\Element\Template" name="pdp.script.scroll" template="Magento_Catalog::product/view/script.phtml"/>
+                        <block class="Magento\Catalog\Block\Product\View" name="product.info.mailto.scroll" template="Magento_Catalog::product/view/mailto.phtml"/>
+                    </block>
+                </container>
+            </block>
+            <block name="product-sort-description-scroll" class="Forix\Catalog\Block\Product\View\Scroll\Description" template="Forix_Catalog::product/view/scroll/description.phtml" after="-">
+                <container name="product-info-review-scroll" htmlTag="div" htmlClass="product-info-review-scroll">
+                    <block class="Magento\Catalog\Block\Product\View" name="product.info.review.scroll" template="Magento_Catalog::product/view/review.phtml"/>
+                </container>
+            </block>
+        </referenceBlock>
+        <referenceBlock name="product.info.main">
+            <block class="Forix\Catalog\Block\Product\View\Price" name="product.info.price.custom" template="Forix_Catalog::product/view/price.phtml"/>
+        </referenceBlock>
+        <referenceBlock name="product.info.description" remove="true"/>
+    </body>
+</page>

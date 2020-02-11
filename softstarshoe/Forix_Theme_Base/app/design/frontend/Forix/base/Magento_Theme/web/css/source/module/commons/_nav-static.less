@@ -1,0 +1,104 @@
+@use-menu-static-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.nav-sections .box-links{
+    &:extend(.menu-static all);
+}
+
+.nav-sections .box-links .submenu{
+    &:extend(.navigation .submenu all);
+}
+
+.nav-sections .box-links .link-account:before{
+    &:extend(.forix-abs-icon-base all);
+}
+
+.menu-static ul{
+    &:extend(.forix-abs-reset all);
+}
+
+.menu-static a{
+    &:extend(.forix-abs-secondary-size all);
+}
+.menu-static .level1 > a{
+    &:extend(.forix-abs-primary-size all);
+}
+// ------------------------------------
+// Variables Extends
+// ------------------------------------
+
+// ------------------------------------
+// Extend Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .menu-static{
+        padding: @forix-indent__base @forix-indent__s @forix-indent__base @forix-indent__xxl;
+
+        .opener{
+            vertical-align: middle;
+            width: 20px;
+            display: table-cell;
+            cursor: pointer;
+            text-align: center;
+            float: right;
+
+            &:before{
+                font-size: 22px;
+                line-height: 22px;
+                color: @color-gray-5;
+                content: @font-awesome-angle-right;
+                vertical-align: middle;
+                display: inline-block;
+                font-weight: normal;
+                margin: -@forix-indent__xs 0 0;
+            }
+        }
+
+        a{
+            color: @primary-text__color;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-weight: @forix-font-weight__semibold;
+            line-height: 18px;
+
+            &:hover{
+                color: @color-green;
+            }
+        }
+
+        .level-top{
+            text-align: left;
+            display: table;
+            width: 100%;
+            margin-bottom: @forix-indent__xm;
+        }
+
+        .level1{
+            margin-bottom: @forix-indent__s;
+
+            > a{
+                text-transform: none;
+            }
+        }
+
+        .box-links .link-account:before {
+            font-weight: normal;
+            display: inline-block;
+            content: @forix-icon-add;
+            color: @color-black-1;
+            margin: 0 @forix-indent__xs 0 -@forix-indent__m;
+            float: left;
+            font-size: 19px;
+            line-height: 19px
+        }
+    }
+}
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .menu-static{
+        display: none;
+    }
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+	<acl>
+		<resources>
+			<resource id="Magento_Backend::admin">
+				<resource id="Forix_FanPhoto::Photo" sortOrder="10" title="Photo">
+					<resource id="Forix_FanPhoto::Photo_save" sortOrder="10" title="Save Photo"/>
+					<resource id="Forix_FanPhoto::Photo_delete" sortOrder="20" title="Delete Photo"/>
+					<resource id="Forix_FanPhoto::Photo_update" sortOrder="30" title="Update Photo"/>
+					<resource id="Forix_FanPhoto::settings" sortOrder="40" title="View Photo"/>
+				</resource>
+			</resource>
+		</resources>
+	</acl>
+</config>

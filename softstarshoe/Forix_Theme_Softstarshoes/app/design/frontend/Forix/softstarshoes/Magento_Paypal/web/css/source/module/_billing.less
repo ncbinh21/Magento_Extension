@@ -1,0 +1,53 @@
+@use-paypal-billing-core__enable: true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.block-billing-agreements-view .block-title{
+    &:extend(.forix-abs-account-blocks .block-title all);
+}
+.block-billing-agreements-view .action.cancel{
+    &:extend(.alink all);
+}
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .block-billing-agreements-view{
+        padding: @forix-indent__s 0;
+    }
+
+    .block-billing-agreements-view .block-title{
+        &:first-child{
+            padding-bottom: @forix-indent__base;
+        }
+    }
+
+    .block-billing-orders-view{
+        .table-wrapper .table:not(.cart):not(.totals):not(.table-comparison) tbody td.actions:before{
+            display: none;
+        }
+    }
+
+    .form-new-agreement{
+        margin: 0 0 @forix-indent__base;
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .table-wrapper .table.table-billing-agreements:not(.cart):not(.totals):not(.table-comparison) tbody td::before,
+    .table-wrapper .table.table-billing-agreements-view:not(.cart):not(.totals):not(.table-comparison) tbody td::before{
+        min-width: 105px;
+    }
+
+    .table-wrapper .table.table-billing-agreements-view:not(.cart):not(.totals):not(.table-comparison) tbody td::before{
+        content: attr(data-th) " ";
+    }
+}

@@ -1,0 +1,18 @@
+<?php
+$parentCategory = $block->getListCategory();
+?>
+<?php foreach ($parentCategory as $itemParent): ?>
+    <?php $infoParentCategory = $block->getInfoCategory($itemParent->getId()); ?>
+    <div>
+        <div>
+            <h3><a href="<?php echo $block->getBaseUrl() . $infoParentCategory->getUrlPath(); ?>.html"><?php echo $infoParentCategory->getName(); ?></a></h3>
+        </div>
+        <?php $childCategory = $block->getListChildCategory($itemParent->getId()) ?>
+        <?php foreach ($childCategory as $itemChild): ?>
+            <?php $infoChildCategory = $block->getInfoCategory($itemChild->getId()); ?>
+            <div>
+                <a href="<?php echo $block->getBaseUrl() . $infoChildCategory->getUrlPath() ?>.html"><?php echo $infoChildCategory->getName() ?></a>
+            </div>
+        <?php endforeach; ?>
+    </div>
+<?php endforeach; ?>

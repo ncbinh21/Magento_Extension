@@ -1,0 +1,227 @@
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.slider-table .controls{
+    &:extend(.forix-abs-clearfix all);
+}
+.slider-table .slider-arrow:before{
+    &:extend(.forix-abs-icon-base all);
+}
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true) {
+    .slider-table{
+        position: relative;
+        overflow: hidden;
+
+        &:before{
+            content: "";
+            position: absolute;
+            background: @color-white;
+            z-index: 1;
+            height: 100%;
+            left: 0;
+            top: 0;
+        }
+    }
+    .slider-table-title{
+        position: absolute;
+        background: @color-white;
+        z-index: 3;
+        height: 100%;
+        left: 0;
+        top: 0;
+    }
+    .slider-table-title .item{
+        border-top: @forix-border__base;
+        display: block;
+        width: 100%;
+        visibility: hidden;
+        &.done{
+            visibility: visible;
+        }
+        &.done:first-child{
+            border-top: 0;
+            visibility: hidden;
+            span{
+                padding: 0;
+                border: 0;
+            }
+        }
+        &.done:nth-child(2){
+            border-top: 0;
+            visibility: hidden;
+        }
+    }
+    .slider-table-title .item-inner{
+        width: 100%;
+        display: table-row;
+        font-weight: @forix-font-weight__semibold;
+        text-transform: uppercase;
+        color: @color-gray-2;
+    }
+    .slider-table-title .item span{
+        display: table-cell;
+        vertical-align: top;
+        padding: 16px 10px 16px 0;
+    }
+    .slider-table table{
+        position: relative;
+        left: 0;
+        .forix-lib-css(transition,left 1s,1);
+    }
+    .slider-loading table{
+        visibility: hidden;
+    }
+    .slider-table-block{
+        display: block;
+        height: 0px;
+        width: 100%;
+    }
+    .slider-table .basic-item{
+        position: relative;
+
+        &:before{
+            content: attr(data-label);
+            position: absolute;
+            left: -100%;
+            width: 100%;
+            top: -1px;
+            border-top: @forix-border__base;
+            height: 100%;
+            z-index: 0;
+
+            font-weight: @forix-font-weight__semibold;
+            text-transform: uppercase;
+            color: @color-gray-2;
+            padding-bottom: 16px;
+            padding-top: 16px;
+            vertical-align: top;
+        }
+    }
+    .slider-table .cell{
+        &:before{
+            visibility: hidden;
+        }
+    }
+    .slider-table .basic-item.show{
+        &:nth-of-type(1):before{
+            visibility: visible;
+        }
+    }
+    .slider-table .basic-item.hide{
+        &:before{
+            visibility: hidden;
+        }
+    }
+    .slider-table .controls{
+        position: relative;
+    }
+    .slider-table .slider-arrow{
+        min-width: 0;
+        height: auto;
+        z-index: 2;
+        background: @color-gray-2;
+        outline: none;
+        border: none;
+        color: transparent;
+        cursor: pointer;
+        padding: 0;
+        position: absolute;
+        line-height: 0;
+        font-size: 0;
+        top: 115px;
+
+        &:before{
+            font-weight: @forix-font-weight__light;
+            color: @color-white;
+            line-height: 67px;
+            font-size: 26px;
+        }
+        &:hover{
+            background: @color-black;
+        }
+        &.disabled{
+            cursor: default;
+            opacity: 0.7;
+        }
+        &.hidden{
+            display: none;
+        }
+    }
+    .slider-table .slider-prev{
+        left: 0;
+
+        &:before{
+            content: @icon-prev;
+        }
+    }
+    .slider-table .slider-next{
+        right: 0;
+
+        &:before{
+            content: @icon-next;
+        }
+    }
+    .slider-table .table-comparison tr{
+        &:first-child{
+            .basic-item:before{
+                border-top: 0;
+            }
+        }
+    }
+    .slider-table .table-comparison .basic-item{
+        &.show:nth-of-type(1):before{
+            visibility: visible;
+        }
+    }
+    .slider-table-title .item.color span{
+        vertical-align: middle;
+    }
+}
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .slider-table{
+        padding-left: 175px;
+
+        &:before{
+            width: 175px;
+        }
+    }
+
+    .slider-table-title{
+        width: 175px;
+    }
+}
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .slider-table{
+        padding-left: 227px;
+        &:before{
+            width: 227px;
+        }
+    }
+
+    .slider-table-title{
+        width: 227px;
+    }
+}
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    .slider-table-title .item-inner{
+        font-size: 15px;
+    }
+}
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    .slider-table-title .item-inner{
+        font-size: 16px;
+    }
+}

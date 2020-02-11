@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:noNamespaceSchemaLocation="../../../../module-reports/src/Reports/etc/map.xsd">
+    <table name="mst_credit_balance">
+        <columns>
+            <column name="amount" label="Balance" fields="amount" type="price" aggregations="simple,sum,avg" />
+            <column name="customer_id" label="Customer" fields="customer_id" type="number" />
+        </columns>
+    </table>
+
+    <table name="mst_credit_transaction">
+        <columns>
+            <column name="hour_of_day" label="Hour of day" fields="created_at"
+                    class="Mirasvit\Report\Model\Query\Column\Date\Hour"/>
+
+            <column name="day" label="Day" fields="created_at"
+                    class="Mirasvit\Report\Model\Query\Column\Date\Day"/>
+
+            <column name="week" label="Week" fields="created_at"
+                    class="Mirasvit\Report\Model\Query\Column\Date\Week"/>
+
+            <column name="month" label="Month" fields="created_at"
+                    class="Mirasvit\Report\Model\Query\Column\Date\Month"/>
+
+            <column name="quarter" label="Quarter" fields="created_at"
+                    class="Mirasvit\Report\Model\Query\Column\Date\Quarter"/>
+
+            <column name="year" label="Year" fields="created_at"
+                    class="Mirasvit\Report\Model\Query\Column\Date\Year"/>
+
+            <column name="quantity" label="Number of transactions" fields="transaction_id" type="number"
+                    expr="DISTINCT(%1)"
+                    class="Mirasvit\Report\Model\Query\Column\Count"/>
+
+            <column name="created_at" label="Placed On" fields="created_at" type="date"
+                    class="Mirasvit\Report\Model\Query\Column\Date\Range"/>
+
+            <column name="balance_delta" label="Delta" fields="balance_delta" type="price"
+                    aggregations="simple,sum,avg"/>
+
+            <column name="sum_positive_balance_delta" label="Received" fields="balance_delta" type="price"
+                    expr="SUM(IF(%1 > 0, %1, 0))"/>
+
+            <column name="sum_negative_balance_delta" label="Spent" fields="balance_delta" type="price"
+                    expr="SUM(IF(%1 >= 0, 0, %1))"/>
+
+            <column name="balance_id" label="Balance" fields="balance_id" type="number" />
+        </columns>
+    </table>
+
+    <relation name="mst_credit_balance2mst_credit_transaction">
+        <leftTable>mst_credit_balance</leftTable>
+        <rightTable>mst_credit_transaction</rightTable>
+        <condition>%1.balance_id=%2.balance_id</condition>
+        <type>n1</type>
+    </relation>
+</config>

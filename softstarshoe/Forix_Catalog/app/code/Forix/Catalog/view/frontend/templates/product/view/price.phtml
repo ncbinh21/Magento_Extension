@@ -1,0 +1,21 @@
+<?php
+$product = $block->getProduct();
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$priceHelper = $objectManager->create('Magento\Framework\Pricing\Helper\Data');
+?>
+
+<?php if($block->isShowPrice() && !$block->isCustomOption($product)): ?>
+    <div class="product-info-price-top">
+        <div class="price-box">
+            <span class="price-label"><?php echo __('From') ?></span>
+            <span class="price-wrapper ">
+    <?php if($product->getPriceInfo()->getPrice('final_price')->getValue() && $product->getPriceInfo()->getPrice('regular_price')->getValue() != $product->getPriceInfo()->getPrice('final_price')->getValue()): ?>
+        <span class="price old-price price-final_price"><?php echo $priceHelper->currency($product->getPriceInfo()->getPrice('regular_price')->getValue(), true, false); ?></span>
+        <span class="price"><?php echo $priceHelper->currency($product->getPriceInfo()->getPrice('final_price')->getValue(), true, false);?></span>
+    <?php else: ?>
+        <span class="price"><?php echo $priceHelper->currency($product->getPriceInfo()->getPrice('regular_price')->getValue(), true, false); ?></span>
+    <?php endif; ?>
+            </span>
+        </div>
+    </div>
+<?php endif; ?>

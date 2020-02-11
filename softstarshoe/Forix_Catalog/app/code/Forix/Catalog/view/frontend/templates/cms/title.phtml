@@ -1,0 +1,10 @@
+<?php
+$pageTitleH1 = '';
+?>
+<?php  if($page = $block->getPage()): ?>
+    <?php  if(!$page->getContentHeading()): ?>
+        <?php $pageTitleH1 = $page->getTitle(); ?>
+        <h1 class="page-title page-title-cms"><?php echo $pageTitleH1 ?></h1>
+    <?php endif; ?>
+<?php endif; ?>
+

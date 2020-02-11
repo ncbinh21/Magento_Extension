@@ -1,0 +1,23 @@
+<?php
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Aheadworks\Giftcard\Block\Product\View */
+$product = $block->getProduct();
+?>
+<div class="product-add-form aw-gc-product-add-form">
+    <form action="<?php /* @noEscape */ echo $block->escapeXssInUrl($block->getSubmitUrl($product)) ?>" method="post"
+          id="product_addtocart_form" enctype="multipart/form-data"
+          data-role="aw-gift-card-product-form">
+        <input type="hidden" name="product" value="<?php /* @noEscape */ echo $product->getId() ?>" />
+        <?php echo $block->getBlockHtml('formkey')?>
+        <?php echo $block->getChildHtml('form_top'); ?>
+        <?php echo $block->getChildHtml('giftcard_description'); ?>
+        <?php echo $block->getChildHtml('giftcard_options'); ?>
+        <?php echo $block->getChildHtml('product_info_form_content'); ?>
+    </form>
+</div>

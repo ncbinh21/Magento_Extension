@@ -1,0 +1,13 @@
+<?php
+/**
+ * @var $block Orange35\ImageConstructor\Block\ConstructorMin
+ */
+$options = $block->getOptionsJson($block::CHECKOUT);
+?>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "imageConstructorCheckout": <?php echo $options;?>
+    }
+}
+</script>

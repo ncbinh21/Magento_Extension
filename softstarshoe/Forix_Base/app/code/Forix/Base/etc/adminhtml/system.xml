@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="forix" translate="label"  sortOrder="110">
+            <label>Forix</label>
+        </tab>
+        <section id="fcatalog" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Catalog Settings</label>
+            <tab>forix</tab>
+            <resource>Magento_Backend::all</resource>
+            <group id="setting" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="mcustom_zoom" type="select" translate="label" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Use Custom Zoom for Product Media</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="search_result_canonical" type="select" translate="label" sortOrder="5" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Use Canonical Link Meta Tag For Search Result</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="custom_robots" translate="label comment" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Use "NOINDEX,FOLLOW" for Pages Below</label>
+                    <comment>Using sample "/contact/" or "*checkout*"</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

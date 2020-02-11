@@ -1,0 +1,254 @@
+@use-account-login-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+// Login Page
+.login-container {
+    .actions-toolbar{
+        .action.create{
+            &:extend(.abutton all);
+        }
+    }
+}
+
+// Create Account,Forgot Pass, Reset Pass ...
+.customer-account-create,
+.customer-account-forgotpassword,
+.customer-account-confirmation,
+.customer-account-createpassword{
+    &:extend(.forix-abs-customer-not-login-page all);
+}
+
+.login-container .field.note,
+.customer-account-login .page-title-wrapper{
+    &:extend(.forix-abs-visually-hidden all);
+}
+
+.login-container .block-title{
+    &:extend(.forix-abs-primary-title-size all);
+}
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+@forix-login-container-block__nth-of-type__op1__padding-right__l-xl: 70px;
+@forix-login-container-block__nth-of-type__op2__padding-left__l-xl: 70px;
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .login-container{
+        position: relative;
+
+        &:before,
+        &:after {
+            content: '';
+            display: table;
+        }
+
+        &:before{
+            height: 100%;
+            content: '';
+            background: @primary-border__color;
+        }
+
+        &:after{
+            clear: both;
+        }
+
+        .block-title{
+            font-weight: @forix-font-weight__semibold;
+            text-transform: uppercase;
+            color: @three-text__color;
+            letter-spacing: 1.2px;
+            line-height: 30px;
+            margin: 0 0 @forix-indent__base;
+
+            strong{
+                font-weight:@forix-font-weight__semibold;
+            }
+        }
+
+        .block-content{
+            p{
+                margin-bottom: @forix-indent__xm;
+            }
+
+            ul{
+                margin-left: @forix-indent__xm;
+            }
+
+            li{
+                margin: 0 0 @forix-indent__s 0;
+                line-height: 17px;
+            }
+        }
+
+        .form{
+            max-width: 100%;
+        }
+
+        .actions-toolbar{
+            padding-top: @forix-indent__s;
+
+            .action.create{
+                text-align: center;
+            }
+        }
+
+        .block-customer-login .actions-toolbar{
+            text-align: right;
+            float: right;
+            .forix-lib-vendor-prefix-display(flex);
+            .forix-lib-vendor-prefix-flex-direction(column);
+            .forix-lib-vendor-prefix-flex-wrap(wrap);
+
+            .primary{
+                margin-right: 0;
+                .forix-lib-vendor-prefix-order(2);
+            }
+
+            .action.login{
+                width: auto;
+                margin-right: 0;
+            }
+        }
+    }
+
+    .control.captcha-image{
+        margin: @forix-indent__xm 0 0;
+
+        .captcha-img{
+            vertical-align: middle;
+            margin: 0 @forix-indent__s @forix-indent__xm 0;
+        }
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .login-container{
+        padding: @forix-indent__l 0 0;
+
+        .block{
+            margin-bottom: @forix-indent__l;
+        }
+
+        .block-customer-login{
+            .actions-toolbar .secondary{
+                margin-bottom: @forix-indent__xm;
+            }
+        }
+    }
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    .login-container{
+        .block-customer-login{
+            .actions-toolbar{
+                margin-top: -@forix-indent__xm;
+            }
+        }
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .login-container {
+        padding: @forix-indent__xs 0;
+
+        &:before{
+            width: 1px;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            display: block!important;
+        }
+
+        .block{
+            &:nth-of-type(2n+1){
+                float: left;
+                clear: left;
+            }
+
+            &:nth-of-type(2n+2){
+                float: right;
+            }
+        }
+
+        .block-customer-login .actions-toolbar{
+            .secondary{
+                margin-bottom: @forix-indent__base;
+            }
+
+            .action.login{
+                min-width: 125px;
+            }
+        }
+    }
+}
+
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    .login-container{
+        margin: 55px 0 @forix-indent__l;
+
+        .block{
+            width: percentage(1/2);
+            margin-bottom: @forix-indent__m;
+
+            &:nth-of-type(2n+1){
+                padding-right: @forix-indent__xl;
+            }
+
+            &:nth-of-type(2n+2){
+                padding-left: @forix-indent__xl;
+            }
+        }
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    .login-container{
+        margin: @forix-indent__xxl 0 @forix-indent__l;
+
+        .block{
+            width: percentage(1/2);
+            margin-bottom: @forix-indent__m;
+
+            &:nth-of-type(2n+1){
+                padding-right: 115px;
+                padding-left: 80px;
+            }
+
+            &:nth-of-type(2n+2){
+                padding-right: 80px;
+                padding-left: 115px;
+            }
+        }
+
+        .block-customer-login{
+            .actions-toolbar{
+                margin-top: -@forix-indent__m;
+            }
+        }
+    }
+}
+
+// [1024 - 1199]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__l) and (@break-max = @screen__xl) {
+    .login-container .block{
+        &:nth-of-type(2n+1){
+            .forix-lib-css(padding-right,@forix-login-container-block__nth-of-type__op1__padding-right__l-xl);
+        }
+
+        &:nth-of-type(2n+2){
+            .forix-lib-css(padding-left,@forix-login-container-block__nth-of-type__op2__padding-left__l-xl);
+        }
+    }
+}

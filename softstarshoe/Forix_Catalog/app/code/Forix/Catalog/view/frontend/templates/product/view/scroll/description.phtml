@@ -1,0 +1,7 @@
+<?php
+$product = $block->getProduct();
+?>
+<?php if($block->isCustomOption($product)): ?>
+    <div class="product-description"><?php echo $product->getShortDescription() ?></div>
+    <?php echo $block->getChildHtml() ?>
+<?php endif; ?>

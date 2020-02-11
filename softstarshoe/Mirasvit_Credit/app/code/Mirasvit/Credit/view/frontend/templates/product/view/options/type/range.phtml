@@ -1,0 +1,15 @@
+<?php
+/** @var $block \Mirasvit\Credit\Block\Product\View\Options\Type\Range */
+?>
+<?php $options = $block->getOptionData(); ?>
+<?php $validation = $options[0]['min'].'-'.$options[0]['max']; ?>
+<input type="number" name="creditOption" class="credit-option input-text digits-range-<?= $validation?>"
+       data-validate="{
+            'required-number':true,
+            'validate-digits-range':'<?= $validation?>'
+        }"
+       data-price="<?= $options[0]['rangeRate']; ?>">
+<div for="creditOption" class="note">
+    <?= __('Amount of credits: min - %1, max - %2', $options[0]['min'], $options[0]['max']) ?>
+</div>
+<input type="hidden" name="creditOptionId" value="<?= $options[0]['id']; ?>">

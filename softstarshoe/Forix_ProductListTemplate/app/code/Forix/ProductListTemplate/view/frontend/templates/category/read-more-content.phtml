@@ -1,0 +1,85 @@
+<?php
+/**
+ * Category view template
+ *
+ * @var $block \Magento\Catalog\Block\Category\View
+ */
+$attributeCode = $block->getAttributeCode();
+$cssClass = $block->getCssClass();
+?>
+<?php if ($attributeCode): ?>
+    <?php if ($content = $block->getCurrentCategory()->getData($attributeCode)): ?>
+        <?php $id = uniqid(); ?>
+        <div class="inner"></div>
+        <div class="inner-col"></div>
+        <div class=" <?php echo $cssClass;?>">
+            <div id="category-description-<?php echo $id; ?>" class="<?php echo $attributeCode;?>">
+                <div class="content">
+                    <?= /* @escapeNotVerified */
+                    $this->helper('Magento\Catalog\Helper\Output')->categoryAttribute($block->getCurrentCategory(), $content, $attributeCode) ?>
+                    <?php if (!$block->getDisableReadMore()): ?>
+                        <a href="javascript:void(0)"
+                           class="read-more-<?php echo $id; ?> ddd-keep"><?php echo __('more'); ?></a>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+        <?php if (!$block->getDisableReadMore()): ?>
+            <script>
+                require(['jquery', 'domReady!', 'forix/plugins/dotdotdot'], function ($) {
+                    var readLess = false,
+                        more<?php echo $id; ?> = $(".read-more-<?php echo $id; ?>").hide(),
+                        description = $('#category-description-<?php echo $id; ?> .content'),
+                        lineHeight = getLineHeight(description[0]);
+
+                    function getLineHeight(element) {
+                        var temp = document.createElement(element.nodeName);
+                        temp.setAttribute("style", "margin:0px;padding:0px;font-family:" + element.style.fontFamily + ";font-size:" + element.style.fontSize);
+                        temp.innerHTML = "test";
+                        temp = element.appendChild(temp);
+                        var ret = temp.clientHeight;
+                        element.removeChild(temp);
+                        return ret;
+                    }
+
+                    function loadMoreLess(e) {
+                        if (readLess) {
+                            $(more<?php echo $id; ?>).html('<?php echo __('more');?>');
+                            callDotDotDot(description);
+                        } else {
+                            $(more<?php echo $id; ?>).html('<?php echo __('less');?>');
+                            description.trigger("destroy");
+                        }
+                        readLess = !readLess;
+                    }
+
+                    $(description).find(".read-more-<?php echo $id; ?>").on('click', loadMoreLess);
+
+                    function callDotDotDot(element) {
+                        element.dotdotdot({
+                            ellipsis: '... ',
+                            wrap: 'word',
+                            fallbackToLetter: true,
+                            height: ((lineHeight + 5) * <?php echo ($num = $block->getData('max_line_num')) ? $num : 1.5; ?>),
+                            watch: true,
+                            keep: true,
+                            tolerance: 0,
+                            after: "a.read-more-<?php echo $id; ?>",
+                            callback: function (isTruncated, orgContent) {
+                                more<?php echo $id; ?>.hide();
+                                if (isTruncated) {
+                                    more<?php echo $id; ?>.show();
+                                }
+                            },
+                            lastCharacter: {
+                                remove: [' ', ',', ';', '.', '!', '?'],
+                                noEllipsis: []
+                            }
+                        });
+                    }
+                    callDotDotDot(description);
+                });
+            </script>
+        <?php endif; ?>
+    <?php endif; ?>
+<?php endif; ?>

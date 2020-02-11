@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="orange35_tab" translate="label" sortOrder="1000">
+            <label>Orange35</label>
+        </tab>
+        <section id="colorpickercustom_section" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Colorpicker for Custom Options</label>
+            <tab>orange35_tab</tab>
+            <resource>Orange35_Colorpickercustom::config</resource>
+            <group id="swatch" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Swatch</label>
+                <field id="swatch_width" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default Swatch Width</label>
+                    <validate>validate-greater-than-zero validate-number integer</validate>
+                </field>
+                <field id="swatch_height" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default Swatch Height</label>
+                    <validate>validate-greater-than-zero validate-number integer</validate>
+                </field>
+            </group>
+            <group id="tooltip" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Tooltip</label>
+                <field id="tooltip_width" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Swatch Tooltip Width</label>
+                    <validate>validate-greater-than-zero validate-number integer</validate>
+                </field>
+                <field id="tooltip_height" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Swatch Tooltip Height</label>
+                    <validate>validate-greater-than-zero validate-number integer</validate>
+                </field>
+                <field id="tooltip_padding" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Swatch Tooltip Padding</label>
+                    <validate>validate-greater-than-zero validate-number integer</validate>
+                </field>
+            </group>
+            <group id="slider" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Slider</label>
+                <field id="slider_type" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Slider Type</label>
+                    <source_model>Orange35\Colorpickercustom\Model\Config\Source\SliderType</source_model>
+                </field>
+                <field id="slider_swatches" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Swatches per Slide</label>
+                    <validate>validate-greater-than-zero validate-number</validate>
+                    <depends>
+                        <field id="colorpickercustom_section/slider/slider_type" separator=",">1,2</field>
+                    </depends>
+                </field>
+                <field id="slider_step" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Carousel Step</label>
+                    <validate>validate-greater-than-zero validate-number</validate>
+                    <depends>
+                        <field id="colorpickercustom_section/slider/slider_type">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

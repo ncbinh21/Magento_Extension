@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2017 Amasty (https://www.amasty.com)
+ * @package Amasty_Shopby
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="amasty_shopby_seo" translate="label" type="text" sortOrder="230" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <label>Improved Layered Navigation: SEO</label>
+            <tab>amasty</tab>
+            <resource>Amasty_ShopbySeo::amasty_shopby_seo</resource>
+            <group id="url" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>SEO URLs</label>
+                <field id="mode" translate="label comment" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>URL will look "category/autumn.html" instead of "category.html?season=114". See per-attribute settings for fine-tuning.</comment>
+                </field>
+                <field id="add_suffix_shopby" translate="label comment" type="select" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Add suffix to the brand pages and filtered all-products pages</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Suffix on the category pages is added regardless of this setting</comment>
+                </field>
+                <field id="option_separator" translate="label" type="select" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Option Separator</label>
+                    <source_model>Amasty\ShopbySeo\Model\Source\OptionSeparator</source_model>
+                </field>
+                <field id="seo_redirect" translate="label comment" type="select" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Redirect to SEO URL if possible</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Standard Magento category pages with applied filters will be redirected to Amasty-style URLs.</comment>
+                </field>
+            </group>
+            <group id="robots" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Robots Tag Control</label>
+                <field id="control_robots" translate="label comment" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Allow the Module to Modify Robots Meta Tag</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Use "No" for compatibility with other SEO extensions.</comment>
+                </field>
+                <field id="rel_nofollow" translate="label comment" type="select" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Automatically add rel="nofollow" to filter links when required</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Please refer per-filter settings to make exclusions.</comment>
+                </field>
+            </group>
+            <group id="canonical" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Canonical URL</label>
+                <field id="category" translate="label comment" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Category pages</label>
+                    <source_model>Amasty\ShopbySeo\Model\Source\Canonical\Category</source_model>
+                </field>
+                <field id="root" translate="label comment" type="select" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>"all-product" page</label>
+                    <source_model>Amasty\ShopbySeo\Model\Source\Canonical\Root</source_model>
+                    <comment>Canonical URL for "Brand" pages: http://your_store.com/brand_name.html</comment>
+                </field>
+            </group>
+            <group id="other" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Previous/Next</label>
+                <field id="prev_next" translate="label comment" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Render Prev/Next tags on improved navigation pages</label>
+                    <comment><![CDATA[When enabled, it helps Google to index paginated content.
+See more details here: <a target="blank" href="https://support.google.com/webmasters/answer/1663744">
+https://support.google.com/webmasters/answer/1663744]]></comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="toolkit" sortOrder="9999" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label><![CDATA[
+                    </a><p>To get more advanced SEO instruments please check out
+                    <a href="https://amasty.com/seo-toolkit-for-magento-2.html" target="_blank" rel="nofollow" title="Follow link">
+                    Amasty SEO Toolkit</a> extension</p>
+                    ]]>
+                </label>
+                <fieldset_css>amseo-top-section</fieldset_css>
+                <frontend_model>\Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+            </group>
+        </section>
+    </system>
+</config>

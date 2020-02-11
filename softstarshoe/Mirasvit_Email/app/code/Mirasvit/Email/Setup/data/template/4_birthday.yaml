@@ -1,0 +1,15 @@
+theme: Base Theme
+title: Happy Birthday
+template_subject: Happy Birthday
+template_areas:
+  header: <h1>Dear <?=$this->getCustomerName() ?></h1>
+  content: |
+    <p>Light four candles on your special day: one for happiness, one for peace, one for prosperity and one for good luck. May you always be happy and healthy!</p>
+  footer: |
+    <?php if ($this->getCoupon()): ?>
+    <div class="offer">
+      <p>Let us offer you a <b>discount</b> to featurer purchases in this day.</p>
+      Your coupon code: <span class="coupon"><?php echo $this->getCoupon()->getCode() ?></span>
+    </div>
+    <?php endif ?>
+    <p>If you have any questions about our products or services, please <a href="<?=$this->getStoreUrl() ?>/contact/">contact with us.</a></p>

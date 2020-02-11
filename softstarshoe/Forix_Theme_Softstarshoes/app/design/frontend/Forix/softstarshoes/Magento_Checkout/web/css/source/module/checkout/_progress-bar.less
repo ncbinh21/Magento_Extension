@@ -1,0 +1,204 @@
+@use-checkout-progress-bar-core__enable: true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+//.opc-progress-bar-item._complete > span:after,
+//.opc-progress-bar-item._active > span:after,
+.opc-progress-bar-item > span:before{
+    &:extend(.forix-abs-icon-base all);
+}
+
+.opc-progress-bar-item > span:after{
+    &:extend(.forix-abs-three-size all);
+}
+// ------------------------------------
+// Variables
+// ------------------------------------
+@opc-progress-bar-item-background__color: @secondary-background__color;
+@opc-progress-bar-item-background__color-active: @sss-color-3;
+@opc-progress-bar-item-text__color: @sss-color-3;
+@opc-progress-bar-item-text__color-active:  @color-white;
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .opc-progress-bar{
+        counter-reset: i;
+        font-size: 0;
+        position: absolute;
+        z-index: 100;
+        margin: 0;
+        list-style: none;
+    }
+
+    .opc-progress-bar-item{
+        float: left;
+        position: relative;
+        text-align: center;
+        vertical-align: top;
+        margin: 0;
+        &:before{
+            width: 100%;
+            position: absolute;
+            left: 0;
+            content: '';
+            top: 26px;
+            height: 4px;
+            background: url(../images/progress-bar.png) no-repeat 0 -18px;
+        }
+        &:last-child{
+            &:before{
+                background-position: right -12px;
+            }
+            &._active{
+                &:before{
+                    background-position: right -6px;
+                }
+            }
+        }
+        &._complete{
+            cursor: pointer;
+
+            > span:after{
+            }
+        }
+
+        &._complete:hover{
+            opacity: 0.7;
+
+            > span:before{
+            }
+        }
+
+        &._complete:hover:before{
+        }
+
+        &._active{
+            > span{
+                color: @opc-progress-bar-item-text__color;
+            }
+            &:before{
+                background-position: left top ;
+            }
+        }
+
+        &._active:before{
+        }
+
+        &:last-child._active{
+            > span:after{
+                content: counter(i);
+                counter-increment: i;
+                font-family: @forix-font-family__base;
+                font-weight: @forix-font-weight__bold;
+            }
+        }
+        > span{
+            display: inline-block;
+            width: 100%;
+            word-wrap: break-word;
+            color: @primary-text__color;
+            font-weight: @forix-font-weight__bold;
+            font-size: 14px;
+            &:before{
+                font-weight: normal;
+                top: 0;
+                left: 50%;
+                position: absolute;
+                content: @sss-icon-progress-bar;
+            }
+
+            &:after{
+                content: counter(i);
+                counter-increment: i;
+                color: inherit;
+                left: 50%;
+                position: absolute;
+                background: url(../images/gray-bg.jpg) repeat;
+                .lib-css(transition,background 0.3s,1);
+                .border-radius(50%);
+                font-weight: normal;
+                font-family: @forix-font-face-name__secondary;
+            }
+        }
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .opc-progress-bar{
+        top: -75px;
+        left: 30px;
+    }
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    .opc-progress-bar-item{
+        width: 130px;
+
+        &:before{
+            height: 4px;
+        }
+
+        > span{
+            padding-top: 50px;
+            &:before{
+                margin-left: -18px;
+                font-size: 35px;
+            }
+
+            &:after{
+                line-height: 30px;
+                top: 11px;
+                margin-left: -14px;
+                width: 30px;
+                height: 28px;
+                font-size: 30px;
+            }
+        }
+    }
+}
+
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    .opc-progress-bar{
+        top: -77px;
+        left: 30%;
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    .opc-progress-bar-item{
+        width: 215px;
+        &:before{
+            height: 5px;
+        }
+        > span{
+            padding-top: 57px;
+            font-size: 18px;
+            &:before{
+                margin-left: -29px;
+                font-size: 57px;
+            }
+
+            &:after{
+                top: 5px;
+                margin-left: -23px;
+                width: 48px;
+                height: 45px;
+                line-height: 47px;
+                font-size: 40px;
+            }
+        }
+    }
+    .opc-progress-bar{
+        top: -115px;
+        left: 30%;
+        line-height: 57px;
+    }
+}

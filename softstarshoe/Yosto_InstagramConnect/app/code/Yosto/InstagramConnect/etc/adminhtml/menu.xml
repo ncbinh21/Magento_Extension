@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Copyright © 2016 x-mage2(Yosto). All rights reserved.
+ * See README.txt for details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Backend/etc/menu.xsd">
+    <menu>
+        <add id="Yosto_InstagramConnect::instagram_connect"
+             title="Instagram Connect"
+             module="Yosto_InstagramConnect"
+             sortOrder="1"
+             resource="Yosto_InstagramConnect::instagram_connect"
+             parent="Yosto_Core::xmagemenu"/>
+        <add id="Yosto_InstagramConnect::yosto_instagram_connect" title="Configuration"
+             module="Yosto_InstagramConnect" sortOrder="10" parent="Yosto_InstagramConnect::instagram_connect"
+             action="adminhtml/system_config/edit/section/yosto_instagram_connect"
+             resource="Yosto_InstagramConnect::yosto_instagram_connect"/>
+        <add id="Yosto_InstagramConnect::template_index" title="Shoping Page Template Management"
+             module="Yosto_InstagramConnect" sortOrder="15" parent="Yosto_InstagramConnect::instagram_connect"
+             resource="Yosto_InstagramConnect::template_index"
+             action="yosto_instagramconnect/template/index"
+             />
+    </menu>
+</config>

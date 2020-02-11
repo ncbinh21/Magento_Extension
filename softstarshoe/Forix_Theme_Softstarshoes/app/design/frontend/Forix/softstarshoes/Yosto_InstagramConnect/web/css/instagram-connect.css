@@ -1,0 +1,62 @@
+.column.main {
+    width: 100%;
+}
+
+.ins_image_info:hover {
+    opacity: 1;
+}
+
+.page-bottom {
+    width: 100% !important;
+}
+/** For slider **/
+.yosto-instagram-connect-wrapper {
+
+}
+.yosto-instagram-connect-wrapper .owl-next,
+.yosto-instagram-connect-wrapper .owl-prev
+{
+    position:absolute;
+    top: 45%;
+}
+
+.yosto-instagram-connect-wrapper .owl-next {
+    right: 0;
+}
+.yosto-instagram-connect-wrapper .owl-prev {
+    left: 0;
+}
+/** For Instagram Item **/
+.insta-item {
+    box-sizing: border-box;
+    padding: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.insta-item img:hover {
+    opacity: 0.8;
+}
+.insta-item-link {
+    position:absolute;
+    z-index: 2;
+    right: 0;
+    top: 0;
+    color: whitesmoke !important;
+    opacity: 0.5;
+    text-decoration: none;
+    padding: 5px;
+}
+.insta-item-link:hover {
+    color: whitesmoke !important;
+    opacity: 0.8;
+}
+
+/** widget title **/
+.instagram-widget-title {
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: normal;
+}
+

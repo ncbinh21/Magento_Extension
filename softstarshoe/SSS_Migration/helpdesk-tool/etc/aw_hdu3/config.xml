@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="../../../config.xsd">
+    <steps mode="data">
+        <step title="Aheadworks Helpdesk Step">
+            <integrity>Migration\Step\AheadworksHelpdesk\Integrity</integrity>
+            <data>Migration\Step\AheadworksHelpdesk\Data</data>
+            <volume>Migration\Step\AheadworksHelpdesk\Volume</volume>
+        </step>
+    </steps>
+    <source>
+        <database host="192.240.166.129" name="softstar_magento" user="softstar_forix" password="RentalVicedNunBigot24"/>
+    </source>
+    <destination>
+        <database host="127.0.0.1" name="softstar_mage2" user="softstar_mage2" password="9ZcxRCTEcMvoq27rHw"/>
+    </destination>
+    <options>
+        <source_prefix />
+        <dest_prefix />
+        <log_file>aw_hdu3_migration.log</log_file>
+        <progress_bar_format>%percent%% [%bar%] Remaining Time: %remaining%</progress_bar_format>
+        <init_statements_source>SET NAMES utf8;</init_statements_source>
+        <init_statements_destination>SET NAMES utf8;</init_statements_destination>
+        <crypt_key />
+        <aw_hdu3_map_file>etc/aw_hdu3/map.xml</aw_hdu3_map_file>
+        <aw_hdu3_groups_file>etc/aw_hdu3/groups.xml</aw_hdu3_groups_file>
+        <aw_hdu3_attachments_path>tmp/aw_hdu3</aw_hdu3_attachments_path>
+    </options>
+</config>

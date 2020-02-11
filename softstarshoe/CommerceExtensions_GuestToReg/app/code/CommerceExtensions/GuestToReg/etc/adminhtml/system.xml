@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="commerceextensions" translate="label" sortOrder="100" class="commerceextensions-tab">
+            <label>Commerce Extensions</label>
+        </tab>
+        <section id="guesttoreg" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Guests To Customers</label>
+            <tab>commerceextensions</tab>
+            <resource>CommerceExtensions_GuestToReg::config</resource>
+            <class>separator-top</class>
+            <group id="guesttoreg" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Guests To Registered Customers</label>
+                <field id="disable_ext" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Automatic Guest to Customer Account At Checkout</label>
+                    <source_model>CommerceExtensions\GuestToReg\Model\Config\Source\Status</source_model>
+                </field>
+                <field id="disable_new_customer_email" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Disable New Customer Email</label>
+                    <source_model>CommerceExtensions\GuestToReg\Model\Config\Source\Status</source_model>
+                </field>
+                <field id="merged_customer_group" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Select Customer Group (only used for automatic merge)</label>
+                    <source_model>CommerceExtensions\GuestToReg\Model\Config\Source\CustomerGroup</source_model>
+                </field>
+                <field id="disable_button_ext" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Guest to Customer Account Button At Success/Checkout</label>
+                    <source_model>CommerceExtensions\GuestToReg\Model\Config\Source\Status</source_model>
+                </field>
+                <field id="sender_email_identity" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Sender</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                </field>
+                <field id="customer_notifyemail_email_template" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Template</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+                <field id="recipients" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Recipients (Bcc)</label>
+					<comment>Comma separated list of email addresses</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

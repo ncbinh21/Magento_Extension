@@ -1,0 +1,14 @@
+<input class="input-text" type="text" required="required"
+       data-bind="afterRender: setSearchElement,
+    event: {change: autoFillCityState, blur: autoFillCityState},
+    value: value,
+    hasFocus: focused,
+    valueUpdate: 'keyup',
+    attr: {
+        name: inputName,
+        placeholder: placeholder,
+        'aria-describedby': noticeId,
+        id: uid,
+        disabled: disabled
+}"/>
+<div id="autocomplete_div"></div>

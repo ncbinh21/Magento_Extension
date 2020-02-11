@@ -1,0 +1,25 @@
+<div class="admin__field aw_gc_template_image" visible="visible" css="$data.additionalClasses">
+    <div class="admin__field-control" css="'_with-tooltip': $data.tooltip">
+        <div class="file-uploader" data-role="drop-zone" css="_loading: isLoading">
+            <each args="data: value, as: '$file'" render="$parent.getPreviewTmpl($file)"/>
+            <div class="image image-placeholder" data-bind="visible: isVisibleImagePlaceholder()">
+                <input type="file" afterRender="onElementRender" attr="id: uid, name: fileInputName" disable="disabled" />
+                <div class="product-image-wrapper">
+                    <p class="image-placeholder-text" translate=imagePlaceholderText/>
+                </div>
+                <div class="file-row file-uploader-spinner">
+                    <div class="progressbar-container">
+                        <div class="progressbar upload-progress" style="width: 100%;"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <render args="tooltipTpl" if="$data.tooltip"/>
+            <div class="admin__field-note" if="$data.notice" attr="id: noticeId">
+                <span html="notice"/>
+            </div>
+            <label class="admin__field-error" if="error" attr="for: uid" text="error"/>
+        </div>
+        <input type="hidden" attr="value: getFilePathValue(), id: uid, name: inputName">
+    </div>
+</div>

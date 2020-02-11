@@ -1,0 +1,29 @@
+"Manage Custom Order Statuses","Manage Custom Order Statuses"
+"Save and Continue Edit","Save and Continue Edit"
+"Order Status Information","Order Status Information"
+"E-mail Notifications","E-mail Notifications"
+"Enable Notifications","Enable Notifications"
+"Always Notify Customer By E-mail","Always Notify Customer By E-mail"
+No,No
+Yes,Yes
+"If set to `Yes`, customer always gets e-mail notification when order status is set to the current one","If set to `Yes`, customer always gets e-mail notification when order status is set to the current one"
+"Store View E-mail Template","Store View E-mail Template"
+"Order Status Change (Default Template From Locale)","Order Status Change (Default Template From Locale)"
+"Store Template","Store Template"
+"Status Information","Status Information"
+"Status Name","Status Name"
+"Order States To Apply Status To","Order States To Apply Status To"
+Enabled,Enabled
+"The status has been deleted.","The status has been deleted."
+"Unable to find status to delete.","Unable to find status to delete."
+"Record does not exist.","Record does not exist."
+"Edit Order Status","Edit Order Status"
+"The status has been saved.","The status has been saved."
+Disabled,Disabled
+"Order Status","Order Status"
+"General Settings","General Settings"
+"Hide order state","Hide order state"
+"If set to `No`, custom order status will be shown as `State: Custom Status`","If set to `No`, custom order status will be shown as `State: Custom Status`"
+"E-mail Notification","E-mail Notification"
+Action,Action
+Edit,Edit

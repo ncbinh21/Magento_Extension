@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <aw_giftcard>
+            <email>
+                <sender>general</sender>
+            </email>
+            <code_pattern>
+                <code_length>12</code_length>
+                <code_format>alphanumeric</code_format>
+            </code_pattern>
+        </aw_giftcard>
+    </default>
+</config>

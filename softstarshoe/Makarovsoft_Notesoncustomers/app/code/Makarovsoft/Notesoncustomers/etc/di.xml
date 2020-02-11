@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="masNotesCustomersImport" xsi:type="object">Makarovsoft\Notesoncustomers\Console\Command\ImportCustomers</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Sales\Block\Adminhtml\Order\Create\Sidebar\Pviewed">
+        <plugin name="sasdasdasdasd"
+                type="Makarovsoft\Notesoncustomers\Block\Plugin"
+                disabled="false" sortOrder="100"/>
+    </type>
+
+</config>

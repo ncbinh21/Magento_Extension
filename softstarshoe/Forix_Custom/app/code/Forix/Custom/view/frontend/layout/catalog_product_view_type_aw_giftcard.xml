@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Aheadworks_Giftcard::css/style.css"/>
+    </head>
+    <body>
+        <attribute name="class" value="page-product-giftcard"/>
+        <referenceContainer name="product.info.type">
+            <block class="Magento\Catalog\Block\Product\View\Type\Simple" name="product.info.simple" as="product_type_data" template="product/view/type/default.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="product.info.main">
+            <block class="Aheadworks\Giftcard\Block\Product\View" name="product.info" template="Aheadworks_Giftcard::product/view/form.phtml" after="alert.urls">
+                <container name="product.info.form.content" as="product_info_form_content">
+                    <block class="Magento\Catalog\Block\Product\View" name="product.info.addtocart" as="addtocart" template="Forix_Custom::product/view/addtocart.phtml" />
+                </container>
+                <block class="Aheadworks\Giftcard\Block\Product\View" name="product.info.giftcard.description" as="giftcard_description" template="Aheadworks_Giftcard::product/view/description.phtml"  />
+                <block class="Aheadworks\Giftcard\Block\Product\View" name="product.info.giftcard.options" as="giftcard_options" template="Aheadworks_Giftcard::product/view/options.phtml" >
+                    <container name="product.price.conteiner" as="giftcard_price" htmlTag="div" htmlClass="product-info-price">
+                        <block class="Magento\Catalog\Pricing\Render" name="product.price.final" >
+                            <arguments>
+                                <argument name="price_render" xsi:type="string">product.price.render.default</argument>
+                                <argument name="price_type_code" xsi:type="string">final_price</argument>
+                                <argument name="zone" xsi:type="string">item_view</argument>
+                            </arguments>
+                        </block>
+                    </container>
+                </block>
+            </block>
+        </referenceContainer>
+        <referenceBlock name="product.info.price.custom" remove="true"/>
+    </body>
+</page>

@@ -1,0 +1,14 @@
+<?php
+/** @var \Magento\Sales\Block\Adminhtml\Order\Totals\Item $block */
+
+$source = $block->getSource();
+$block->setPriceDataObject($source)
+?>
+<tr>
+    <td class="label">
+        <?= __('Store Credit') ?>
+    </td>
+    <td>
+        <?= $block->displayPrices(-$source->getBaseCreditAmount(), -$source->getCreditAmount()) ?>
+    </td>
+</tr>

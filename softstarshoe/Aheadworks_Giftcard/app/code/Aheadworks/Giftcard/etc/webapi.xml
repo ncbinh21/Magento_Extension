@@ -1,0 +1,219 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <!-- Managing Gift Card -->
+    <route url="/V1/awGiftcard/:giftcardCode" method="GET">
+        <service class="Aheadworks\Giftcard\Api\GiftcardRepositoryInterface" method="getByCode"/>
+        <resources>
+            <resource ref="Aheadworks_Giftcard::giftcard_codes"/>
+        </resources>
+    </route>
+    <route url="/V1/awGiftcard/search" method="GET">
+        <service class="Aheadworks\Giftcard\Api\GiftcardRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Aheadworks_Giftcard::giftcard_codes"/>
+        </resources>
+    </route>
+    <route url="/V1/awGiftcard" method="POST">
+        <service class="Aheadworks\Giftcard\Api\GiftcardRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Aheadworks_Giftcard::giftcard_codes"/>
+        </resources>
+    </route>
+    <route url="/V1/awGiftcard/:id" method="PUT">
+        <service class="Aheadworks\Giftcard\Api\GiftcardRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Aheadworks_Giftcard::giftcard_codes"/>
+        </resources>
+    </route>
+    <route url="/V1/awGiftcard/:giftcardId" method="DELETE">
+        <service class="Aheadworks\Giftcard\Api\GiftcardRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="Aheadworks_Giftcard::giftcard_codes"/>
+        </resources>
+    </route>
+    <route url="/V1/awGiftcard/send-giftcard-by-code" method="POST">
+        <service class="Aheadworks\Giftcard\Api\GiftcardManagementInterface" method="sendGiftcardByCode"/>
+        <resources>
+            <resource ref="Aheadworks_Giftcard::giftcard_codes"/>
+        </resources>
+    </route>
+    <route url="/V1/awGiftcard/get-giftcards-by-customer" method="GET">
+        <service class="Aheadworks\Giftcard\Api\GiftcardManagementInterface" method="getCustomerGiftcards"/>
+        <resources>
+            <resource ref="Aheadworks_Giftcard::giftcard_codes"/>
+        </resources>
+    </route>
+    <route url="/V1/awGiftcard/generate-giftcard-codes" method="POST">
+        <service class="Aheadworks\Giftcard\Api\GiftcardManagementInterface" method="generateCodes"/>
+        <resources>
+            <resource ref="Aheadworks_Giftcard::giftcard_codes"/>
+        </resources>
+    </route>
+    <route url="/V1/awGiftcard/import-codes" method="POST">
+        <service class="Aheadworks\Giftcard\Api\GiftcardManagementInterface" method="importCodes"/>
+        <resources>
+            <resource ref="Aheadworks_Giftcard::giftcard_codes"/>
+        </resources>
+    </route>
+
+    <!-- Managing Pool -->
+    <route url="/V1/awGiftcardPool/:poolId" method="GET">
+        <service class="Aheadworks\Giftcard\Api\PoolRepositoryInterface" method="get"/>
+        <resources>
+            <resource ref="Aheadworks_Giftcard::giftcard_pools"/>
+        </resources>
+    </route>
+    <route url="/V1/awGiftcardPool/search" method="GET">
+        <service class="Aheadworks\Giftcard\Api\PoolRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Aheadworks_Giftcard::giftcard_pools"/>
+        </resources>
+    </route>
+    <route url="/V1/awGiftcardPool" method="POST">
+        <service class="Aheadworks\Giftcard\Api\PoolRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Aheadworks_Giftcard::giftcard_pools"/>
+        </resources>
+    </route>
+    <route url="/V1/awGiftcardPool/:id" method="PUT">
+        <service class="Aheadworks\Giftcard\Api\PoolRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Aheadworks_Giftcard::giftcard_pools"/>
+        </resources>
+    </route>
+    <route url="/V1/awGiftcardPool/:poolId" method="DELETE">
+        <service class="Aheadworks\Giftcard\Api\PoolRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="Aheadworks_Giftcard::giftcard_pools"/>
+        </resources>
+    </route>
+    <route url="/V1/awGiftcardPool/generate-codes" method="POST">
+        <service class="Aheadworks\Giftcard\Api\PoolManagementInterface" method="generateCodesForPool"/>
+        <resources>
+            <resource ref="Aheadworks_Giftcard::giftcard_pools"/>
+        </resources>
+    </route>
+    <route url="/V1/awGiftcardPool/import-codes" method="POST">
+        <service class="Aheadworks\Giftcard\Api\PoolManagementInterface" method="importCodesToPool"/>
+        <resources>
+            <resource ref="Aheadworks_Giftcard::giftcard_pools"/>
+        </resources>
+    </route>
+    <route url="/V1/awGiftcardPool/pull-code" method="POST">
+        <service class="Aheadworks\Giftcard\Api\PoolManagementInterface" method="pullCodeFromPool"/>
+        <resources>
+            <resource ref="Aheadworks_Giftcard::giftcard_pools"/>
+        </resources>
+    </route>
+
+    <!-- Managing Pool Codes -->
+    <route url="/V1/awGiftcardPoolCode/:codeId" method="GET">
+        <service class="Aheadworks\Giftcard\Api\PoolCodeRepositoryInterface" method="get"/>
+        <resources>
+            <resource ref="Aheadworks_Giftcard::giftcard_pools"/>
+        </resources>
+    </route>
+    <route url="/V1/awGiftcardPoolCode/search" method="GET">
+        <service class="Aheadworks\Giftcard\Api\PoolCodeRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Aheadworks_Giftcard::giftcard_pools"/>
+        </resources>
+    </route>
+    <route url="/V1/awGiftcardPoolCode/:codeId" method="DELETE">
+        <service class="Aheadworks\Giftcard\Api\PoolCodeRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="Aheadworks_Giftcard::giftcard_pools"/>
+        </resources>
+    </route>
+
+    <!-- Managing Cart Gift Card -->
+    <route url="/V1/carts/:cartId/aw-giftcard/:giftcardCode" method="PUT">
+        <service class="Aheadworks\Giftcard\Api\GiftcardCartManagementInterface" method="set"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/carts/:cartId/aw-giftcard" method="GET">
+        <service class="Aheadworks\Giftcard\Api\GiftcardCartManagementInterface" method="get"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/carts/:cartId/aw-giftcard/:giftcardCode" method="DELETE">
+        <service class="Aheadworks\Giftcard\Api\GiftcardCartManagementInterface" method="remove"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/carts/:cartId/aw-giftcard-get-customer-codes" method="GET">
+        <service class="Aheadworks\Giftcard\Api\GiftcardManagementInterface" method="getCustomerGiftcards"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+
+    <!-- Managing Guest Cart Gift Card -->
+    <route url="/V1/guest-carts/:cartId/aw-giftcard/:giftcardCode" method="PUT">
+        <service class="Aheadworks\Giftcard\Api\GuestGiftcardCartManagementInterface" method="set"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/guest-carts/:cartId/aw-giftcard" method="GET">
+        <service class="Aheadworks\Giftcard\Api\GuestGiftcardCartManagementInterface" method="get"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+    <route url="/V1/guest-carts/:cartId/aw-giftcard/:giftcardCode" method="DELETE">
+        <service class="Aheadworks\Giftcard\Api\GuestGiftcardCartManagementInterface" method="remove"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+
+    <!-- Managing Mine Cart Gift Card -->
+    <route url="/V1/carts/mine/aw-giftcard/:giftcardCode" method="PUT">
+        <service class="Aheadworks\Giftcard\Api\GiftcardCartManagementInterface" method="set"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
+    <route url="/V1/carts/mine/aw-giftcard" method="GET">
+        <service class="Aheadworks\Giftcard\Api\GiftcardCartManagementInterface" method="get"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
+    <route url="/V1/carts/mine/aw-giftcard/:giftcardCode" method="DELETE">
+        <service class="Aheadworks\Giftcard\Api\GiftcardCartManagementInterface" method="remove"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
+    <route url="/V1/carts/mine/aw-giftcard-get-customer-codes" method="GET">
+        <service class="Aheadworks\Giftcard\Api\GiftcardManagementInterface" method="getCustomerGiftcards"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
+</routes>

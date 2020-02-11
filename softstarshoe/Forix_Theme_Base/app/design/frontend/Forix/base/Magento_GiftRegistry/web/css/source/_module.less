@@ -1,0 +1,264 @@
+@use-module-giftregistry-core__enable: true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.form-giftregistry-share,
+.form-giftregistry-edit {
+    &:extend(.forix-abs-form-field-column-2 all);
+}
+
+.giftregisty-dropdown{
+    &:extend(.wishlist-dropdown all);
+}
+
+.block-giftregistry-shared-items .block-title,
+.block-giftregistry-results .block-title{
+    &:extend(.legend);
+}
+
+.form-giftregistry-edit .fieldset.recipients .field:last-child{
+    &:extend(.fieldset > .field);
+}
+
+.table-giftregistry td a.action{
+    &:extend(table td a.view all);
+}
+
+.table-giftregistry td a.action.share,
+.table-giftregistry td a.action.edit,
+.table-giftregistry td a.action.delete{
+    &:extend(table td a.order all);
+}
+
+.magento-giftregistry-index-index .column.main .actions-toolbar .action.primary{
+    &:extend(.abutton all);
+}
+
+.block-giftregistry-shared-items + .actions-toolbar{
+    &:extend(.forix-abs-visually-hidden all);
+}
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .cart-summary {
+        .form.giftregistry{
+            margin: 0 auto;
+        }
+
+        .form.giftregistry .action.add{
+            min-width: 100%;
+        }
+    }
+
+    .table-giftregistry{
+        .col.actions,
+        .col.create{
+            white-space: nowrap;
+        }
+
+        .col.message{
+            background: none;
+            margin: 0;
+            color: inherit;
+            display: table-cell;
+        }
+
+        th.message,
+        td.message{
+            padding: @forix-indent__s;
+        }
+    }
+
+    .form-giftregistry-edit {
+        .fieldset{
+            &:nth-last-of-type(1){
+                margin-bottom: 0;
+            }
+
+            .field.additional{
+                width: 100%;
+                padding-left: 0;
+                padding-right: 0!important;
+            }
+        }
+    }
+
+    .table-giftregistry-items {
+        .col.note .field{
+            margin-top: @forix-indent__s;
+        }
+
+        .col.actions .field.choice{
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .col.actions label{
+            display: block;
+        }
+
+        .col.product:before{
+            display: none!important;
+        }
+    }
+    .form-giftregistry-search{
+        margin: 0 0 @forix-indent__xxl;
+
+        .fieldset{
+            margin: 0 0 @forix-indent__m;
+        }
+    }
+
+    .block-giftregistry-shared{
+        margin-bottom:  @forix-indent__base;
+
+        .item-options .item-title{
+            font-weight: @forix-font-weight__semibold;
+        }
+    }
+
+    .form.giftregistry{
+        max-width: inherit;
+    }
+
+    .table.giftregistry {
+        tbody.item{
+            &:last-child{
+                border-bottom: 0;
+            }
+        }
+
+        .col.registered{
+            clear:both;
+        }
+
+        .col.price .msrp-message{
+            margin-bottom: @forix-indent__s;
+            display: inline-block;
+        }
+
+        .col.product:before{
+            display: none!important;
+        }
+    }
+
+    .magento-giftregistry-index-index .column.main .actions-toolbar .action.primary{
+        text-align: center;
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .table-giftregistry {
+        td a.action{
+            margin-left: -4px;
+        }
+    }
+
+    .form-giftregistry-edit .fieldset.recipients > .actions-toolbar{
+        margin-top: -@forix-indent__s;
+    }
+
+    .table-giftregistry-items {
+        .col.product,
+        .col.note{
+            width:100%;
+            clear: both;
+            margin: @forix-indent__xs 0;
+        }
+
+        .col.qty{
+            margin: @forix-indent__s 0;
+        }
+
+        .col.qty .field{
+            display: inline-block;
+        }
+
+        .col.actions{
+            margin: @forix-indent__xs 0 @forix-indent__s;
+        }
+    }
+
+    .table.giftregistry {
+
+        .col.price > .price-box{
+            display: inline-block;
+        }
+    }
+
+    .account .table-wrapper .table.table-giftregistry:not(.cart):not(.totals):not(.table-comparison) tbody td::before,
+    .account .table-wrapper .table.table-giftregistry-items:not(.cart):not(.totals):not(.table-comparison) tbody td::before,
+    .block-giftregistry-results .table:not(.cart):not(.totals):not(.table-comparison) tbody td::before{
+        min-width: 80px;
+    }
+
+    .account .table-wrapper .table.table-order-items:not(.cart):not(.totals):not(.table-comparison) tbody .col.options:before{
+        display: none;
+    }
+
+    .magento-giftregistry-index-index .column.main .actions-toolbar .action.primary{
+        margin-right: 0;
+        margin-bottom: @forix-indent__base;
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .table-giftregistry {
+        .col.event{
+            width: 25%;
+        }
+
+        .col.message{
+            width: 40%;
+        }
+
+        .col.actions{
+            width: 30%;
+        }
+    }
+
+    .table-giftregistry-items{
+        .col.product,
+        .col.note{
+            width: 30%;
+        }
+    }
+
+    .table.giftregistry{
+        tbody.item{
+            border-bottom: @forix-border__base;
+        }
+    }
+
+    .magento-giftregistry-index-index .column.main .actions-toolbar .action.primary{
+        margin-right: @forix-indent__xm;
+    }
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    .form-giftregistry-edit > .actions-toolbar{
+        margin-top: @forix-indent__s;
+    }
+}
+
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    .cart-summary .form.giftregistry{
+        max-width: 280px;
+    }
+
+    .form-giftregistry-edit .fieldset.recipients > .actions-toolbar{
+        margin-top: @forix-indent__s;
+    }
+}

@@ -1,0 +1,56 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+
+<?php /* @var $block \Magento\Catalog\Block\Product\View\Options\Type\Select */ ?>
+<?php
+$_option = $block->getOption();
+$isCheckbox = '';
+$class = ($_option->getIsRequire()) ? ' required' : '';
+if($_option->getType() == 'checkbox') {
+    $isCheckbox = 'check-box';
+}
+$_product = $block->getProduct();
+?>
+<div class="field<?= /* @escapeNotVerified */ $class . ' ' . $isCheckbox ?>">
+    <label class="label <?php if($_option->getType() == 'checkbox') { echo 'attr-config'; }?>" for="select_<?= /* @escapeNotVerified */ $_option->getId() ?>">
+        <span><?= $block->escapeHtml($_option->getTitle()) ?></span>
+    </label>
+    <div class="control">
+        <?= $block->getValuesHtml() ?>
+        <?php if(strpos($_option->getTitle(), 'Sole') !== false): ?>
+            <?php if($_product->getSssTooltip()): ?>
+            <div class="field-tooltip toggle">
+                    <span class="field-tooltip-action action-cvv"
+                          tabindex="0"
+                          data-toggle="dropdown"
+                          data-bind="mageInit: {'dropdown':{'activeClass': '_active'}}">
+                <span><!-- ko i18n: ''--><!-- /ko --></span></span>
+                <div class="field-tooltip-content"
+                     data-target="dropdown">
+                    <?php echo $_product->getSssTooltip(); ?>
+                </div>
+            </div>
+            <?php endif; ?>
+        <?php elseif (strpos($_option->getTitle(), 'Size') !== false): ?>
+            <?php if($_product->getSssSizeGuide()): ?>
+                <a class="size-guide" href="<?php echo $_product->getProductUrl()?>#sizing.guide.tab"><?php echo __('Size Guide');?></a>
+            <?php endif; ?>
+        <?php endif; ?>
+
+        <?php if ($_option->getIsRequire()): ?>
+            <?php if ($_option->getType() == \Magento\Catalog\Api\Data\ProductCustomOptionInterface::OPTION_TYPE_RADIO || $_option->getType() == \Magento\Catalog\Api\Data\ProductCustomOptionInterface::OPTION_TYPE_CHECKBOX): ?>
+                <span id="options-<?= /* @escapeNotVerified */ $_option->getId() ?>-container"></span>
+            <?php endif; ?>
+        <?php endif;?>
+        <label class="label <?php if($_option->getType() == 'checkbox') { echo 'attr-config'; }?>" for="select_<?= /* @escapeNotVerified */ $_option->getId() ?>">
+            <span><?= $block->escapeHtml($_option->getTitle()) ?></span>
+        </label>
+    </div>
+</div>

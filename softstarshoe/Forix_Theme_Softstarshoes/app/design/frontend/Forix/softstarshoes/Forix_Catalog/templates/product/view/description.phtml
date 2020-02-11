@@ -1,0 +1,43 @@
+<?php
+$product = $block->getProduct();
+$description = $this->getChildHtml('description.tab.child');
+$faq = $this->getChildHtml('faq.tab.child');
+$optinal = $this->getChildHtml('optional.image.tab.child');
+$attributeList = $block->getAttributeClearance($product);
+$isClearance = $block->isClearance($product);
+?>
+<?php if ($description || $faq || $optinal || $isClearance): ?>
+    <div class="tab-description__col-full">
+<?php endif; ?>
+<?php if ($optinal): ?>
+    <div class="tab-description__col-right">
+        <?php echo $optinal; ?>
+    </div>
+<?php endif; ?>
+<?php if ($description || $faq || $isClearance): ?>
+    <div class="tab-description__col-left">
+        <?php if ($isClearance): ?>
+            <ul class="list-background">
+                <?php if ($product->getSssProductid()): ?>
+                    <li>
+                        <span><?php echo __('Product Id') ?> : <?php echo $product->getSssProductid(); ?></span>
+                    </li>
+                <?php endif; ?>
+                <?php if ($attributeList): ?>
+                    <?php foreach ($attributeList as $attribute): ?>
+                        <li class="">
+                            <span><?php echo $attribute['label']; ?> : <?php echo $attribute['value']; ?></span>
+                        </li>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </ul>
+        <?php endif; ?>
+        <?php echo $description; ?>
+
+        <?php echo $faq; ?>
+    </div>
+<?php endif; ?>
+
+<?php if ($description || $faq || $optinal || $isClearance): ?>
+    </div>
+<?php endif; ?>

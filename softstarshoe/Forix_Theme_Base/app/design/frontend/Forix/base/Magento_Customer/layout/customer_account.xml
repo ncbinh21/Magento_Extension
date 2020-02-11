@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" label="Customer My Account (All Pages)" design_abstraction="custom">
+    <body>
+        <move element="page.main.title" destination="content" before="-"/>
+        <referenceBlock name="customer_account_navigation">
+            <arguments>
+                <argument name="block_title" translate="true" xsi:type="string">Account Dashboard</argument>
+                <argument name="block_css" xsi:type="string">block-collapsible-nav</argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

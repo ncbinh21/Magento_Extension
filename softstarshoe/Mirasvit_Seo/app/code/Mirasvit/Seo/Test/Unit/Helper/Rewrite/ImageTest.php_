@@ -1,0 +1,123 @@
+<?php
+
+namespace Mirasvit\Seo\Test\Unit\Helper\Rewrite;
+
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManager;
+use Mirasvit\Seo\Model\Config as Config;
+
+/**
+ * @covers \Mirasvit\Seo\Helper\Rewrite\Image
+ */
+class ImageTest extends \PHPUnit_Framework_TestCase
+{
+    /**
+     * @var ObjectManager
+     */
+    protected $objectManager;
+
+    /**
+     * @var \Mirasvit\Seo\Helper\Rewrite\Image|\PHPUnit_Framework_MockObject_MockObject
+     */
+    protected $imageHelper;
+
+    /**
+     * @var \Mirasvit\Seo\Model\Rewrite\Product\ImageFactory|\PHPUnit_Framework_MockObject_MockObject
+     */
+    protected $rewriteProductImageFactoryMock;
+
+    /**
+     * @var \Mirasvit\Seo\Model\Rewrite\Product\Image|\PHPUnit_Framework_MockObject_MockObject
+     */
+    protected $rewriteProductImageMock;
+
+    /**
+     * @var \Magento\Catalog\Model\Product\ImageFactory|\PHPUnit_Framework_MockObject_MockObject
+     */
+    protected $productImageFactoryMock;
+
+    /**
+     * @var \Magento\Catalog\Model\Product\Image|\PHPUnit_Framework_MockObject_MockObject
+     */
+    protected $productImageMock;
+
+    /**
+     * @var \Mirasvit\Seo\Model\Config|\PHPUnit_Framework_MockObject_MockObject
+     */
+    protected $configMock;
+
+    /**
+     * @var \Magento\Catalog\Model\Product\Url|\PHPUnit_Framework_MockObject_MockObject
+     */
+    protected $productUrlMock;
+
+    /**
+     * @var \Mirasvit\Core\Helper\Parsevariables|\PHPUnit_Framework_MockObject_MockObject
+     */
+    protected $mstcoreParsevariablesMock;
+
+    /**
+     * @var \Magento\Framework\App\Helper\Context|\PHPUnit_Framework_MockObject_MockObject
+     */
+    protected $contextMock;
+
+    /**
+     * setup tests.
+     */
+    public function setUp()
+    {
+        $this->rewriteProductImageFactoryMock = $this->getMock(
+        '\Mirasvit\Seo\Model\Rewrite\Product\ImageFactory', ['create'], [], '', false
+        );
+        $this->rewriteProductImageMock = $this->getMock(
+        '\Mirasvit\Seo\Model\Rewrite\Product\Image', ['load',
+        'save',
+        'delete', ], [], '', false
+        );
+        $this->rewriteProductImageFactoryMock->expects($this->any())->method('create')
+                ->will($this->returnValue($this->rewriteProductImageMock));
+        $this->productImageFactoryMock = $this->getMock(
+        '\Magento\Catalog\Model\Product\ImageFactory', ['create'], [], '', false
+        );
+        $this->productImageMock = $this->getMock(
+        '\Magento\Catalog\Model\Product\Image', ['load',
+        'save',
+        'delete', ], [], '', false
+        );
+        $this->productImageFactoryMock->expects($this->any())->method('create')
+                ->will($this->returnValue($this->productImageMock));
+        $this->configMock = $this->getMock(
+        '\Mirasvit\Seo\Model\Config', [], [], '', false
+        );
+        $this->productUrlMock = $this->getMock(
+        '\Magento\Catalog\Model\Product\Url', [], [], '', false
+        );
+        $this->mstcoreParsevariablesMock = $this->getMock(
+        '\Mirasvit\Core\Helper\Parsevariables', [], [], '', false
+        );
+        $this->objectManager = new ObjectManager($this);
+        $this->contextMock = $this->objectManager->getObject(
+            '\Magento\Framework\App\Helper\Context',
+            [
+            ]
+        );
+        $this->imageHelper = $this->objectManager->getObject(
+            '\Mirasvit\Seo\Helper\Rewrite\Image',
+            [
+                'rewriteProductImageFactory' => $this->rewriteProductImageFactoryMock,
+                'productImageFactory' => $this->productImageFactoryMock,
+                'config' => $this->configMock,
+                'productUrl' => $this->productUrlMock,
+                'mstcoreParsevariables' => $this->mstcoreParsevariablesMock,
+                'context' => $this->contextMock,
+            ]
+        );
+    }
+
+    /**
+     * dummy test.
+     */
+    public function testDummy()
+    {
+        $this->assertEquals($this->imageHelper, $this->imageHelper);
+    }
+}

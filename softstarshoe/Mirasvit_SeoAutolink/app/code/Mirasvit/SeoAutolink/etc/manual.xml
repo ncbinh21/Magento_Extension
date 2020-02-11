@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../module-core/src/Core/etc/manual.xsd">
+    <link action="seoautolink_link_index" title="Learn more about Auto Links Management" url="module-seo/current/autolink/add_link" />
+    <link action="seoautolink_import_index" title="Learn more about Import Auto Links" url="module-seo/current/autolink/import" />
+     <!-- Configuration -->
+    <link action="system_config_seoautolink" title="Learn more about Auto Links Configuration" url="module-seo/current/autolink/auto_links" />
+</config>

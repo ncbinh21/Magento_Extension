@@ -1,0 +1,127 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2017 Amasty (https://www.amasty.com)
+ * @package Amasty_Shopby
+ */
+?>
+<?php
+/** @var \Amasty\ShopbyBase\Model\FilterSetting $filterSetting */
+/** @var \Amasty\Shopby\Block\Navigation\FilterRenderer $block */
+?>
+<?php
+$filterCode = $block->escapeHtml($filterSetting->getFilterCode());
+?>
+<ol class="items am_shopby_filter_items_<?= $filterCode;?>">
+    <li>
+        <form data-amshopby-filter="<?= $filterCode;?>" data-amshopby-filter-request-var="<?= $block->getFilter()->getRequestVar(); ?>">
+        <?php if (count($filterItems) >= 0) :?>
+            <select
+                <?= ($filterSetting->isMultiselect() ? 'multiple="on"' : '')?>
+                class="am_shopby_filter_<?= $filterCode; ?>"
+                name="amshopby[<?= /* @escapeNotVerified */ $block->getFilter()->getRequestVar();?>][]"
+            >
+                <?php if (!$filterSetting->isMultiselect()) :?>
+                    <option value="-1" href="<?= $block->escapeUrl($this->getClearUrl()) ?>">&nbsp;</option>
+                <?php endif;?>
+                <?php /** @var \Amasty\Shopby\Model\Layer\Filter\Item $filterItem */?>
+                <?php foreach ($filterItems as $filterItem) :
+                    $disabled = ($filterItem->getCount() == 0) ? ' disabled' : "";
+                    $selected = ($this->checkedFilter($filterItem)) ? ' selected' : "";
+                    $url = $block->escapeUrl($filterItem->getUrl());
+                    $label = $filterItem->getLabel();
+                    if ($filterSetting->isShowProductQuantities()) {
+                        $label .= ' <span class="count">(' . $filterItem->getCount() . ')</span>';
+                    }
+                    ?>
+                    <option
+                        value="<?= $block->escapeHtml($filterItem->getValueString());?>"
+                        href="<?= $block->escapeUrl($url) ?>" <?= $disabled . $selected ?>>
+                        <?= $label ?>
+                    </option>
+                <?php endforeach ?>
+                <?php if ($filterSetting->isMultiselect()) :?>
+                    <script type="text/x-magento-init">
+                            {
+                                ".am_shopby_filter_<?= $filterCode; ?>": {
+                                    "amShopbyFilterMultiselect": {
+                                        "placeholderText": "<?= $block->escapeHtml(__('Select Options'))?>",
+                                        "collectFilters": <?= /* @escapeNotVerified */ $block->collectFilters();?>
+                                    }
+                                }
+                            }
+                    </script>
+                <?php else : ?>
+                    <script type="text/x-magento-init">
+                    {
+                        ".am_shopby_filter_<?= $filterCode; ?>": {
+                            "amShopbyFilterDropdown": {
+                                "currentValue": <?= 1 ?>,
+                                "collectFilters": <?= /* @escapeNotVerified */ $block->collectFilters();?>
+                            }
+                        }
+                    }
+                    </script>
+                <?php endif;?>
+            </select>
+        </form>
+        <?php endif; ?>
+    </li>
+    <?php if ($filterSetting->getAddFromToWidget() && isset($fromToConfig) && is_array($fromToConfig)) :?>
+        <?php
+        $min = $block->escapeHtml($fromToConfig['min']);
+        $max = $block->escapeHtml($fromToConfig['max'])
+        ?>
+        <li id="am_shopby_filter_widget_<?= $filterCode; ?>">
+            <form data-amshopby-filter="<?= $filterCode;?>" data-amshopby-filter-request-var="<?= $block->getFilter()->getRequestVar(); ?>">
+                <input
+                    type=hidden
+                    amshopby-fromto-id="value"
+                    <?php if ($fromToConfig['from'] && $fromToConfig['to']) :?>
+                        value="<?= sprintf("%.2f", $fromToConfig['from'] * $fromToConfig['curRate']); ?>-
+                        <?= sprintf("%.2f", $fromToConfig['to'] * $fromToConfig['curRate']); ?>"
+                    <?php endif;?>
+                    type=hidden
+                    name="<?= /* @escapeNotVerified */ 'amshopby[' . $block->getFilter()->getRequestVar() . '][]'
+                    ?>"/>
+                <div class="range" rate="<?= $fromToConfig['curRate'];?>">
+                    <input
+                        class="amshopby-filter-price-from"
+                        data-validate="{'validate-number':true}"
+                        amshopby-fromto-id="from"
+                        validate-digits-range='[<?= $min . '-' . $max;?>]'
+                        type="number" class="input-text" placeholder="<?= $block->escapeHtml(__('From'))?>"/>
+
+                    <input
+                        class="amshopby-filter-price-to"
+                        data-validate="{'validate-number':true}"
+                        amshopby-fromto-id="to"
+                        validate-digits-range='[<?= $min . '-' . $max ?>]'
+                        type="number" class="input-text" placeholder="<?= $block->escapeHtml(__('To'))?>"/>
+                    <?php if (!$block->collectFilters()) :?>
+                    <button class="amshopby-filter-price-go"
+                            amshopby-fromto-id="go"
+                        ><?= $block->escapeHtml(__('Go'))?></button>
+                    <?php endif;?>
+                </div>
+            </form>
+        </li>
+        <script type="text/x-magento-init">
+        {
+            "#am_shopby_filter_widget_<?= $filterCode; ?>": {
+                "amShopbyFilterFromTo": {
+                        "enabled": <?= ($filterSetting->getAddFromToWidget() ? '1' : '0')?>,
+                        "collectFilters": <?= /* @escapeNotVerified */ $block->collectFilters();?>,
+                        "from":"<?= /* @escapeNotVerified */ $fromToConfig['from'];?>",
+                        "to":"<?= /* @escapeNotVerified */ $fromToConfig['to'];?>",
+                        "min":"<?= $min;?>",
+                        "max":"<?= $max;?>",
+                        "isSlider":0,
+                        "isDropdown": 1,
+                        "url": "<?= /* @escapeNotVerified */ $block->getSliderUrlTemplate(); ?>"
+                    }
+            }
+        }
+        </script>
+    <?php endif;?>
+</ol>

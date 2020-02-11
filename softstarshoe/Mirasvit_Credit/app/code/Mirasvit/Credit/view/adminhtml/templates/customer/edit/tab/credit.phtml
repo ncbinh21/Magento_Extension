@@ -1,0 +1,38 @@
+<div class="fieldset-wrapper customer-information">
+    <div class="fieldset-wrapper-title">
+        <span class="title"><?= __('Balance Information') ?></span>
+    </div>
+    <table class="admin__table-secondary">
+        <tbody>
+        <tr>
+            <th><?= __('Current Balance:') ?></th>
+            <td><?= $block->getBalance() ?></td>
+        </tr>
+        <tr>
+            <th><?= __('Last Change:') ?></th>
+            <td><?= $block->getLastChanged() ?></td>
+        </tr>
+        <tr>
+            <th><?= __('Subscribed to email notifications:') ?></th>
+            <td><?= $block->getIsSubscribed() ?></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>
+                <?php if ($this->getCustomer()): ?>
+                    <div class="page-actions-buttons">
+                        <button class="action-secondary" type="button" onclick="window.location='<?php
+                        echo $block->getUrl('credit/transaction/add', [
+                            'customer_id' => $this->getCustomer()->getId()
+                        ])
+                        ?>'">
+                            <span><?= __('Add New Transaction') ?></span>
+                        </button>
+                    </div>
+                <?php endif ?>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<?= $block->getChildHtml('grid') ?>

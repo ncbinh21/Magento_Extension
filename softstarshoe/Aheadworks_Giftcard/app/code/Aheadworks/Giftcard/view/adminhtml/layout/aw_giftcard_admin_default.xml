@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Aheadworks_Giftcard::css/page-menu.css"/>
+        <css src="Aheadworks_Giftcard::css/style.css"/>
+    </head>
+    <body>
+        <referenceContainer name="page.main.actions">
+            <block class="Aheadworks\Giftcard\Block\Adminhtml\Page\Menu" name="aw_giftcard_menu">
+                <block class="Aheadworks\Giftcard\Block\Adminhtml\Page\Menu\Item" name="aw_giftcard_menu_item.code_pools">
+                    <arguments>
+                        <argument name="path" xsi:type="string">*/pool/index</argument>
+                        <argument name="label" xsi:type="string">Code Pools</argument>
+                        <argument name="resource" xsi:type="string">Aheadworks_Giftcard::code_pools</argument>
+                        <argument name="controller" xsi:type="string">pool</argument>
+                    </arguments>
+                </block>
+                <block class="Aheadworks\Giftcard\Block\Adminhtml\Page\Menu\Item" name="aw_giftcard_menu_item.giftcard_codes">
+                    <arguments>
+                        <argument name="path" xsi:type="string">*/giftcard/index</argument>
+                        <argument name="label" xsi:type="string">Gift Card Codes</argument>
+                        <argument name="resource" xsi:type="string">Aheadworks_Giftcard::giftcard_codes</argument>
+                        <argument name="controller" xsi:type="string">giftcard</argument>
+                    </arguments>
+                </block>
+                <block class="Aheadworks\Giftcard\Block\Adminhtml\Page\Menu\Item" name="aw_giftcard_menu_item.giftcard_products">
+                    <arguments>
+                        <argument name="path" xsi:type="string">*/product/index</argument>
+                        <argument name="label" xsi:type="string">Gift Card Products</argument>
+                        <argument name="resource" xsi:type="string">Aheadworks_Giftcard::giftcard_products</argument>
+                        <argument name="controller" xsi:type="string">product</argument>
+                    </arguments>
+                </block>
+                <block class="Aheadworks\Giftcard\Block\Adminhtml\Page\Menu\Item" name="aw_giftcard_menu_item.settings">
+                    <arguments>
+                        <argument name="path" xsi:type="string">adminhtml/system_config/edit/section/aw_giftcard</argument>
+                        <argument name="label" xsi:type="string">Settings</argument>
+                        <argument name="resource" xsi:type="string">Aheadworks_Giftcard::settings</argument>
+                    </arguments>
+                </block>
+                <block class="Aheadworks\Giftcard\Block\Adminhtml\Page\Menu\Item" name="aw_giftcard_menu_item.readme">
+                    <arguments>
+                        <argument name="label" xsi:type="string">Readme</argument>
+                        <argument name="link_attributes" xsi:type="array">
+                            <item name="href" xsi:type="string">http://confluence.aheadworks.com/display/EUDOC/Gift+Card+-+Magento+2</item>
+                            <item name="target" xsi:type="string">_blank</item>
+                            <item name="class" xsi:type="string">separator</item>
+                        </argument>
+                    </arguments>
+                </block>
+                <block class="Aheadworks\Giftcard\Block\Adminhtml\Page\Menu\Item" name="aw_giftcard_menu_item.support">
+                    <arguments>
+                        <argument name="label" xsi:type="string">Get Support</argument>
+                        <argument name="link_attributes" xsi:type="array">
+                            <item name="href" xsi:type="string">http://ecommerce.aheadworks.com/contacts/</item>
+                            <item name="target" xsi:type="string">_blank</item>
+                        </argument>
+                    </arguments>
+                </block>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

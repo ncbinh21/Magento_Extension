@@ -1,0 +1,104 @@
+<?php
+//@codingStandardsIgnoreFile
+/** @var \Mirasvit\Seo\Block\Toolbar $block */
+?>
+<div class="seo__toolbar" style="<?=$this->getPosition()?>">
+    <div class="seo__toolbar-header" data-role="header">
+        <i class="fa fa-tachometer"></i> <?= __('SEO Toolbar') ?>
+
+        <div class="close" data-role="close">
+            <div class="icon-close">×</div>
+        </div>
+    </div>
+    <div class="seo__toolbar-content">
+        <?php foreach ($block->getSections() as $section): ?>
+            <?php $data = $section['data']; ?>
+            <div class="seo__toolbar-section status-<?= $data['status'] ?>">
+                <i class="fa fa-fw"></i>
+
+                <div class="seo__toolbar-section-label">
+                    <?= $section['label'] ?>:
+                </div>
+
+                <div class="seo__toolbar-section-value">
+                    <?= $data['value'] ?>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <?php if (isset($data['message'])): ?>
+                    <div class="seo__toolbar-section-message">
+                        <?= $data['message'] ?>
+                    </div>
+                <?php endif ?>
+
+                <?php if (isset($data['keywords'])): ?>
+                    <div class="seo__toolbar-keywords">
+                        <?php foreach ($data['keywords'] as $keyword => $number): ?>
+                            <div>
+                                <span><?= $keyword ?>&nbsp;&nbsp;&nbsp;<?= $number['count'] ?></span>
+                                <i><i style="width:<?= $number['percent'] ?>%"></i></i>
+                            </div>
+                        <?php endforeach ?>
+                    </div>
+                <?php endif ?>
+
+                <?php if (isset($data['images'])): ?>
+                    <div class="seo__toolbar-images">
+                        <?php foreach ($data['images']['stat'] as $label => $number): ?>
+                            <div>
+                                <?= $label ?> <?= $number ?>
+                            </div>
+                        <?php endforeach ?>
+
+                        <?php if (count($data['images']['withoutAlt'])): ?>
+                            <b><?= __('Without empty alt attribute') ?></b>
+                            <?php foreach ($data['images']['withoutAlt'] as $image): ?>
+                                <a href="<?= $image ?>" target="_blank"><?= $image ?></a>
+                            <?php endforeach ?>
+                        <?php endif ?>
+
+                        <?php if (count($data['images']['withEmptyAlt'])): ?>
+                            <b><?= __('With empty alt attribute') ?></b>
+                            <?php foreach ($data['images']['withEmptyAlt'] as $image): ?>
+                                <a href="<?= $image ?>" target="_blank"><?= $image ?></a>
+                            <?php endforeach ?>
+                        <?php endif ?>
+                    </div>
+                <?php endif ?>
+
+            </div>
+        <?php endforeach ?>
+    </div>
+</div>
+
+<script>
+    require([
+        'jquery',
+        'jquery/jquery.cookie'
+    ], function ($) {
+        var $toolbar = $('.seo__toolbar');
+        var cookieName = "seo-toolbar";
+
+        if ($.cookie(cookieName) == 1) {
+            $toolbar.removeClass('toolbar-hidden').addClass('toolbar-hidden');
+        } else {
+            $toolbar.removeClass('toolbar-hidden');
+        }
+
+
+        $('[data-role=close]', $toolbar).on('click', function (e) {
+            e.preventDefault();
+            $toolbar.removeClass('toolbar-hidden').addClass('toolbar-hidden');
+            $.cookie(cookieName, 1, {expires: 1, path: '/'});
+        });
+
+        $('[data-role=header]', $toolbar).on('click', function (e) {
+            if (!$(e.target).hasClass('icon-close')) {
+                e.preventDefault();
+                $toolbar.removeClass('toolbar-hidden');
+                $.cookie(cookieName, 0, {expires: 1, path: '/'});
+            }
+        });
+    });
+</script>

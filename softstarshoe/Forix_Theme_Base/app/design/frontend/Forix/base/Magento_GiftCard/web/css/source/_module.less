@@ -1,0 +1,51 @@
+@use-module-giftcard-core__enable: true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.page-product-giftcard .fieldset.giftcard > .legend,
+.page-product-giftcard .fieldset.giftcard >.legend + br{
+    &:extend(.forix-abs-visually-hidden all);
+}
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .field.open-amount{
+        width: 100%;
+
+        span{
+            display: inline-block;
+            margin: 0 @forix-indent__xm 0 0;
+
+            &:last-child{
+                margin-right: 0;
+            }
+        }
+    }
+
+    .page-product-giftcard {
+        .giftcard.form{
+            clear: both;
+            padding: @forix-indent__xm 0;
+
+            .field:not(.text) {
+                display: inline-block;
+                width: percentage(1/2);
+                vertical-align: top;
+                padding-right: @forix-indent__s;
+
+                &:nth-of-type(2n+2){
+                    padding-right: 0;
+                    padding-left: @forix-indent__s;
+                }
+            }
+        }
+    }
+}

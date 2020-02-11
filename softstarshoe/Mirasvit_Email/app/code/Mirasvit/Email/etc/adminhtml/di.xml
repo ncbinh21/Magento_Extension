@@ -1,0 +1,28 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Mirasvit\EmailDesigner\Api\Service\Variable\OrderVariableInterface"
+                type="Mirasvit\EmailDesigner\Model\Variable\Order"/>
+
+    <type name="Mirasvit\Core\Block\Adminhtml\Menu">
+        <arguments>
+            <argument name="menu" xsi:type="array">
+                <item name="email" xsi:type="object">Mirasvit\Email\Block\Adminhtml\Menu</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Mirasvit\Email\Ui\Modifiers\TriggerDataModifier" type="Magento\Ui\DataProvider\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="modifier_stub" xsi:type="array">
+                    <item name="class" xsi:type="string">Mirasvit\Email\Ui\DataProvider\Modifier</item>
+                    <item name="sortOrder" xsi:type="number">1</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Mirasvit\Email\Ui\Trigger\Listing\DataProvider">
+        <arguments>
+            <argument name="poolInterface" xsi:type="object">Mirasvit\Email\Ui\Modifiers\TriggerDataModifier</argument>
+        </arguments>
+    </type>
+</config>

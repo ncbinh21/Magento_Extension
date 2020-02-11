@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+
+    <event name="controller_action_postdispatch">
+        <observer name="seoautolink_observer"
+                  instance="Mirasvit\SeoAutolink\Observer\AddCustomAttributeOutputObserver"/>
+    </event>
+
+    <!--<event name="catalog_helper_output_construct">-->
+    <!--<observer name="m_seoautolink_observer" instance="\Mirasvit\SeoAutolink\Model\Observer" method="addCustomAttributeOutputHandler"/>-->
+    <!--</event>-->
+    <!--<event name="cms_page_render">-->
+    <!--<observer name="m_seoautolink_observer2" instance="\Mirasvit\SeoAutolink\Model\Observer" method="cmsPageOutputHandler"/>-->
+    <!--</event>-->
+    <!--<event name="core_block_abstract_to_html_after">-->
+    <!--<observer name="m_seoautolink_observer3" instance="\Mirasvit\SeoAutolink\Model\Blog\Observer" method="addAutoLinksToBlog"/>-->
+    <!--</event>-->
+</config>

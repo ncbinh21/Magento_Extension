@@ -1,0 +1,26 @@
+None,None
+"Category Full Description","Category Full Description"
+"Page Meta Description","Page Meta Description"
+"Product Short Description","Product Short Description"
+"Product Full Description","Product Full Description"
+"SEO Rich Data","SEO Rich Data"
+Breadcrumbs,Breadcrumbs
+Enabled,Enabled
+"See https://developers.google.com/structured-data/breadcrumbs","See https://developers.google.com/structured-data/breadcrumbs"
+"Fixed Category Path","Fixed Category Path"
+"At the Product Page use the most specific category path if no category info is available","At the Product Page use the most specific category path if no category info is available"
+"Include Your Site Name in Search Results","Include Your Site Name in Search Results"
+"See https://developers.google.com/structured-data/site-name","See https://developers.google.com/structured-data/site-name"
+"Website Name","Website Name"
+Organization,Organization
+"See https://developers.google.com/structured-data/customize/contact-points","See https://developers.google.com/structured-data/customize/contact-points"
+"Organization Name","Organization Name"
+"Logo Url","Logo Url"
+"Search Box","Search Box"
+"Display search input box for home page in Google search results. See https://developers.google.com/structured-data/slsb-overview","Display search input box for home page in Google search results. See https://developers.google.com/structured-data/slsb-overview"
+"Enabled on Category Pages","Enabled on Category Pages"
+"Add average products rating and minimal price rich data on category page","Add average products rating and minimal price rich data on category page"
+Description,Description
+"Additional Product Rich Data","Additional Product Rich Data"
+"See https://developers.google.com/search/docs/data-types/products","See https://developers.google.com/search/docs/data-types/products"
+"Show Availability","Show Availability"

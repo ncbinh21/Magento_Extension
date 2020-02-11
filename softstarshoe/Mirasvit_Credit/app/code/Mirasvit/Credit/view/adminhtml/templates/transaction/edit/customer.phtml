@@ -1,0 +1,86 @@
+<?php
+/** @var Mirasvit\Credit\Block\Adminhtml\Transaction\Edit\Customer\Grid $grid */
+$grid = $block->getGridBlock();
+?>
+
+<?= $grid->toHtml() ?>
+
+<?php
+$massAction = $grid->getMassactionBlock();
+?>
+
+<script type="text/javascript">
+
+    require([
+        "jquery",
+        'mage/adminhtml/grid'
+    ], function($){
+
+        var selectedCustomers = {};
+
+        <?= $grid->getJsObjectName() ?>.rowClickCallback      = customerRowClick;
+        <?= $grid->getJsObjectName() ?>.checkboxCheckCallback = registerCustomer;
+
+        <?= $massAction->getJsObjectName() ?>._selectAll = <?= $massAction->getJsObjectName() ?>.selectAll;
+        <?= $massAction->getJsObjectName() ?>.selectAll = function () {
+            <?= $massAction->getJsObjectName() ?>._selectAll();
+            $('#customer_id').val(<?= $massAction->getJsObjectName() ?>.getCheckedValues());
+            return false;
+        };
+
+        <?= $massAction->getJsObjectName() ?>._unselectAll = <?= $massAction->getJsObjectName() ?>.unselectAll;
+        <?= $massAction->getJsObjectName() ?>.unselectAll = function () {
+            <?= $massAction->getJsObjectName() ?>._unselectAll();
+            $('#customer_id').val(<?= $massAction->getJsObjectName() ?>.getCheckedValues());
+            return false;
+        };
+
+        <?= $massAction->getJsObjectName() ?>._selectVisible = <?= $massAction->getJsObjectName() ?>.selectVisible;
+        <?= $massAction->getJsObjectName() ?>.selectVisible = function () {
+            <?= $massAction->getJsObjectName() ?>._selectVisible();
+            $('#customer_id').val(<?= $massAction->getJsObjectName() ?>.getCheckedValues());
+            return false;
+        };
+
+        <?= $massAction->getJsObjectName() ?>._unselectVisible = <?= $massAction->getJsObjectName() ?>.unselectVisible;
+        <?= $massAction->getJsObjectName() ?>.unselectVisible = function() {
+            <?= $massAction->getJsObjectName() ?>._unselectVisible();
+            $('#customer_id').val(<?= $massAction->getJsObjectName() ?>.getCheckedValues());
+            return false;
+        }
+
+        function registerCustomer(grid, element, checked)
+        {
+            if(checked){
+                selectedCustomers[$(element).val()] = true;
+                <?= $massAction->getJsObjectName() ?>.setCheckbox(element);
+            } else{
+                selectedCustomers[$(element).val()] = false;
+                delete selectedCustomers[$(element).val()];
+                <?= $massAction->getJsObjectName() ?>.setCheckbox(element);
+            }
+            $('#customer_id').val(<?= $massAction->getJsObjectName() ?>.checkedString);
+
+            var keys = [];
+            $.each(selectedCustomers, function(key, element) {
+                keys.push(key);
+            });
+            grid.reloadParams = {'customer_id[]':keys};
+        }
+
+        function customerRowClick(grid, event)
+        {
+            var trElement = Event.findElement(event, 'tr');
+            var isInput   = Event.element(event).tagName == 'INPUT';
+            if(trElement){
+                var checkbox = Element.getElementsBySelector(trElement, 'input');
+                if(checkbox[0]){
+                    var checked = isInput ? checkbox[0].checked : !checkbox[0].checked;
+                <?= $grid->getJsObjectName() ?>.setCheckboxChecked(checkbox[0], checked);
+                }
+            }
+        }
+
+    });
+
+</script>

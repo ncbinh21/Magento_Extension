@@ -1,0 +1,31 @@
+{
+  "name": "orange35/colorpickercustom",
+  "description": "Colorpicker for custom options",
+  "version": "1.0.2",
+  "require": {
+    "php": "~5.5.0|~5.6.0|7.0.2|7.0.4|~7.0.6",
+    "magento/module-catalog": "101.0.*",
+    "magento/module-ui": "100.1.*",
+    "magento/module-store": "100.1.*",
+    "magento/module-media-storage": "100.1.*",
+    "magento/module-backend": "100.1.*",
+    "magento/framework": "100.1.*",
+    "ext-ctype": "*"
+  },
+  "type": "magento2-module",
+  "license": "OSL",
+  "authors": [
+    {
+      "name": "Orange35",
+      "email": "orange35com@gmail.com"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Orange35\\Colorpickercustom\\": ""
+    }
+  }
+}

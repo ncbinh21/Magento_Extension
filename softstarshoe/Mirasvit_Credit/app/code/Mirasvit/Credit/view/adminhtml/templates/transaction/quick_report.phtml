@@ -1,0 +1,13 @@
+<?php
+//@codingStandardsIgnoreFile
+/** @var Mirasvit\Credit\Block\Adminhtml\Transaction\QuickReport $block */
+
+?>
+<div class="credit__transaction-quick-report">
+    <span>
+        <b><?= __('Total Balance') ?></b>: <?= $block->getCurrency($block->getTotalBalance()) ?>
+    </span>
+    <span>
+        <b><?= __('Total Used Balance') ?></b>: <?= $block->getCurrency($block->getTotalUsedBalance()) ?>
+    </span>
+</div>

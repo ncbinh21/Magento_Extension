@@ -1,0 +1,79 @@
+<?php
+//@codingStandardsIgnoreFile
+
+/** @var \Mirasvit\Credit\Block\Customer\Account $block */
+$formData = $block->getSend2FriendFormData();
+?>
+<div class="block credit__account-send2friend">
+    <div class="block-title">
+        <strong><?= __('Send Credit to Friend') ?></strong>
+    </div>
+    <div class="block-content">
+        <form action="<?= $block->getSend2FriendUrl() ?>" method="post" autocomplete="off" id="form-send2friend">
+            <fieldset class="fieldset general">
+                <?= $block->getBlockHtml('formkey') ?>
+
+                <div class="field email required">
+                    <label class="label" for="email"><span><?= __('Email Address') ?></span></label>
+                    <div class="control">
+                        <input type="email" autocapitalize="off" autocorrect="off" spellcheck="false" name="email"
+                               id="email" value="<?= $block->escapeHtml($formData->getEmail()) ?>"
+                               title="<?= __('Email Address') ?>" class="input-text"
+                               data-validate="{required:true, 'validate-email':true}">
+                    </div>
+                </div>
+
+                <div class="field amount required">
+                    <label class="label" for="amount"><span><?= __('Amount') ?></span></label>
+                    <div class="control">
+                        <input type="number" autocapitalize="off" autocorrect="off" spellcheck="false" name="amount"
+                               id="amount" value="<?= $block->escapeHtml($formData->getAmount()) ?>"
+                               title="<?= __('Amount') ?>" class="input-text" data-validate="{required:true}">
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="fieldset">
+                <div class="field message required">
+                    <label class="label" for="message"><span><?= __('Message') ?></span></label>
+                    <div class="control">
+                        <textarea name="message" id="message" class="input-text"
+                                  data-validate="{required:true}"><?= $formData->getMessage() ?></textarea>
+                    </div>
+                </div>
+
+                <?php if (!$this->isSendBalanceUpdate()): ?>
+                    <div class="field notify">
+                        <input type="checkbox" name="notify" id="notify" value="1" class="checkbox" checked>
+                        <label class="label" for="notify"><span><?= __('Notify friend') ?></span></label>
+                    </div>
+                <?php endif ?>
+            </fieldset>
+
+            <div class="buttons-set">
+                <button type="submit" class="action primary"><?= __('Send') ?></button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    require([
+        "jquery",
+        "mage/mage"
+    ], function ($) {
+        var dataForm = $('#form-send2friend');
+        dataForm.mage('validation', {});
+
+        var subscribeButton = $('#credit_subscription:checked').length;
+
+        $('#credit_subscription').change(function () {
+            if (subscribeButton != $('#credit_subscription:checked').length) {
+                $('#subscribe_button').show();
+            }
+            else {
+                $('#subscribe_button').hide();
+            }
+        })
+    });
+</script>

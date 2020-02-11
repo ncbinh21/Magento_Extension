@@ -1,0 +1,15 @@
+<referenceContainer name="sidebar.main">
+    <referenceBlock name="sidebar.cms">
+        <action method="setActiveLink">
+            <argument name="link" xsi:type="string">contact</argument>
+        </action>
+        <action method="setTitleDefault">
+            <argument name="title" translate="true" xsi:type="string">Help</argument>
+        </action>
+        <block class="Magento\Cms\Block\Block" name="left_cms_help_links_block">
+            <arguments>
+                <argument name="block_id" xsi:type="string">left-cms-help-links-block</argument>
+            </arguments>
+        </block>
+    </referenceBlock>
+</referenceContainer>

@@ -1,0 +1,54 @@
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="payment-option _collapsible opc-payment-additional discount-code">
+    <div class="payment-option-title field choice" data-role="title" data-bind="mageInit: {'forix/toggle':{'baseToggleClass':'_active','toggleContainers': '#payment-discount-option-content', 'selectorsToggleClass': 'active','touchOutSite':false}}">
+        <span class="action action-toggle" id="block-discount-heading" role="heading" aria-level="2">
+            <!-- ko i18n: 'Apply Discount Code'--><!-- /ko -->
+        </span>
+    </div>
+    <div class="payment-option-content" data-role="content" id="payment-discount-option-content">
+        <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+        <form class="form form-discount" id="discount-form">
+            <div class="payment-option-inner">
+                <div class="field">
+                    <label class="label" for="discount-code">
+                        <span data-bind="i18n: 'Enter discount code'"></span>
+                    </label>
+                    <div class="control">
+                        <input class="input-text"
+                               required
+                               type="text"
+                               id="discount-code"
+                               name="discount_code"
+                               data-validate="{'required-entry':true}"
+                               data-bind="value: couponCode " required="required"/>
+                        <label class="label" for="discount-code">
+                            <span data-bind="i18n: 'Enter discount code'"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <!-- ko ifnot: isApplied() -->
+                        <button class="action action-apply" type="submit" data-bind="'value': $t('Apply'), click: apply">
+                            <span><!-- ko i18n: 'Apply'--><!-- /ko --></span>
+                        </button>
+                    <!-- /ko -->
+                    <!-- ko if: isApplied() -->
+                        <button class="action action-cancel" type="submit" data-bind="'value': $t('Cancel'), click: cancel">
+                            <span><!-- ko i18n: 'Cancel coupon'--><!-- /ko --></span>
+                        </button>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

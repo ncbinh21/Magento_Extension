@@ -1,0 +1,157 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2017 Amasty (https://www.amasty.com)
+ * @package Amasty_Shopby
+ */
+?>
+<?php
+/** @var \Amasty\ShopbyBase\Model\FilterSetting $filterSetting */
+/** @var \Amasty\Shopby\Block\Navigation\FilterRenderer $block */
+
+$filterUniqId = $block->escapeId(uniqid());
+$filterCode = $block->escapeHtml($filterSetting->getFilterCode());
+
+if (!\function_exists('renderCategoryFlyOut')) {
+    function renderCategoryFlyOut($filterItems, $startPath, $block, $filterSetting)
+    {
+        $categoryHelper = $block->getCategoryHelper();
+        static $level = 1;
+        $level++;
+        ?>
+        <?php /** @var \Amasty\Shopby\Model\Layer\Filter\Item $filterItem */?>
+        <?php /** @var \Amasty\Shopby\Model\Layer\Filter\CategoryItems $filterItems */?>
+        <?php foreach ($filterItems->getItems($startPath) as $filterItem) : ?>
+        <?php $uniqId = uniqid(); ?>
+        <?php $inputType = !$filterSetting->isMultiselect() ? 'radio' : 'checkbox'?>
+        <li class="item" data-label="<?= $block->escapeHtml($filterItem->getLabel())?>">
+            <div>
+                <?php if ($filterItem->getCount() > 0) : ?>
+                    <?php $checked =  $block->checkedFilter($filterItem) ? ' checked' : ''; ?>
+	                <?php $selectedClass =  $block->checkedFilter($filterItem) ? ' am_shopby_link_selected' : ''; ?>
+                    <a
+                        class="am_shopby_filter_item_<?= $block->escapeId($uniqId)?> <?= $selectedClass ?>"
+                        href="<?= $block->escapeUrl($filterItem->getUrl()) ?>"
+                    >
+                        <input
+                            name="amshopby[<?= /* @escapeNotVerified */ $block->getFilter()->getRequestVar();?>][]"
+                            value="<?= $filterItem->getValueString();?>"
+                            type="<?= $inputType;?>"
+                            <?= $checked ?>
+                        />
+                        <?php if ($block->getFilter()->useLabelsOnly()) : ?>
+                            <span class="label"><?= $filterItem->getLabel() ?></span>
+                        <?php elseif ($block->getFilter()->useLabelsAndImages()): ?>
+                            <span class="category-filter-image">
+                                <img src="<?= $categoryHelper->getCategoryImageUrl($filterItem->getValue()) ?>"
+                                     title="<?= $filterItem->getLabel() ?>"
+                                     height="<?= $categoryHelper->getCategoryFilterImageSize(); ?>"
+                                     width="<?= $categoryHelper->getCategoryFilterImageSize(); ?>" />
+                            </span>
+                            <span class="label"><?= $filterItem->getLabel() ?></span>
+                        <?php else : ?>
+                            <span class="category-filter-image">
+                                <img src="<?= $categoryHelper->getCategoryImageUrl($filterItem->getValue()) ?>"
+                                     title="<?= $filterItem->getLabel() ?>"
+                                     height="<?= $categoryHelper->getCategoryFilterImageSize(); ?>"
+                                     width="<?= $categoryHelper->getCategoryFilterImageSize(); ?>"/>
+                            </span>
+                        <?php endif; ?>
+                        <?php if ($filterSetting->isShowProductQuantities()) : ?>
+                            <span class="count"><?= $filterItem->getCount()?>
+                                <span class="filter-count-label">
+                                    <?php if ($filterItem->getCount() == 1) :?>
+                                        <?= $block->escapeHtml(__('item'))?>
+                                    <?php else :?>
+                                        <?= $block->escapeHtml(__('items')) ?>
+                                    <?php endif;?>
+                                </span>
+                            </span>
+                        <?php endif; ?>
+                    </a>
+                <?php else :?>
+                    <?php if ($block->getFilter()->useLabelsOnly()) : ?>
+                        <span class="label"><?= $filterItem->getLabel() ?></span>
+                    <?php elseif ($block->getFilter()->useLabelsAndImages()) : ?>
+                        <span class="category-filter-image">
+                            <img src="<?= $categoryHelper->getCategoryImageUrl($filterItem->getValue()) ?>"
+                                 title="<?= $filterItem->getLabel() ?>"
+                                 height="<?= $categoryHelper->getCategoryFilterImageSize(); ?>"
+                                 width="<?= $categoryHelper->getCategoryFilterImageSize(); ?>" />
+                        </span>
+                        <span class="label"><?= $filterItem->getLabel() ?></span>
+                    <?php else : ?>
+                        <span class="category-filter-image">
+                            <img src="<?= $categoryHelper->getCategoryImageUrl($filterItem->getValue()) ?>"
+                                 title="<?= $filterItem->getLabel() ?>"
+                                 height="<?= $categoryHelper->getCategoryFilterImageSize(); ?>"
+                                 width="<?= $categoryHelper->getCategoryFilterImageSize(); ?>"/>
+                        </span>
+                    <?php endif; ?>
+                    <?php if ($filterSetting->isShowProductQuantities()) : ?>
+                        <span class="count"><?= $filterItem->getCount()?>
+                            <span class="filter-count-label">
+                                <?php if ($filterItem->getCount() == 1) :?>
+                                    <?= $block->escapeHtml(__('item')) ?>
+                                <?php else :?>
+                                    <?= $block->escapeHtml(__('items')) ?>
+                                <?php endif;?>
+                            </span>
+                        </span>
+                    <?php endif; ?>
+                <?php endif; ?>
+                <script type="text/x-magento-init">
+                    {
+                        ".am_shopby_filter_item_<?= $block->escapeId($uniqId)?>": {
+                            "amShopbyFilterItemDefault": {
+                                "collectFilters": <?= /* @escapeNotVerified */ $block->collectFilters();?>
+                            }
+                        }
+                    }
+                </script>
+            </div>
+            <?php
+            $currentPath = ($startPath ? : $filterItems->getStartPath()) . '/'.  $filterItem->getValueString();
+            if ($filterItems->getItemsCount($currentPath)) {
+                ?>
+                <ul class="items items-children level-<?=$level?>">
+                    <?php
+                    renderCategoryFlyOut($filterItems, $currentPath, $block, $filterSetting);
+                    ?>
+                </ul>
+                <?php
+            }
+            ?>
+        </li>
+    <?php endforeach; ?>
+        <?php
+    }
+}
+?>
+<form data-amshopby-filter="<?= $filterCode; ?>" data-amshopby-filter-request-var="<?= $block->getFilter()->getRequestVar(); ?>"
+    <?php if ($filterSetting->getEnableOverflowScroll() > 0) : ?>
+        style="max-height:<?= $filterSetting->getEnableOverflowScroll() ?>px;
+                overflow-y: auto;
+                overflow-x: -moz-hidden-unscrollable;"
+    <?php endif; ?>>
+    <ul class="items am_shopby_filter_items_<?= $filterCode; ?> amshopby-fly-out-view">
+        <?php renderCategoryFlyOut($filterItems, null, $block, $filterSetting); ?>
+        <?php /** @var \Amasty\Shopby\Model\Layer\Filter\Item $filterItem */ ?>
+        <?php /** @var \Amasty\Shopby\Model\Layer\Filter\CategoryItems $filterItems */ ?>
+    </ul>
+</form>
+
+<script>
+    require(["jquery", "jquery/ui"], function ($) {
+        $(window).load( function(){
+            $(document).trigger('baseCategory', <?= $block->getCurrentCategoryId();?>);
+        });
+        $(document).ajaxComplete( function(){
+            $(document).trigger('baseCategory', <?= $block->getCurrentCategoryId();?>);
+        });
+        $(".am_shopby_filter_items_<?= $filterCode;?>").menu({
+            position: { my: "left top", at: "center top+20" }
+        });
+    });
+</script>
+

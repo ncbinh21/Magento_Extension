@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+<body>
+    <referenceContainer name="content">
+        <referenceBlock name="yosto.instagramconnect.block.instagram.imagesliderlist">
+            <arguments>
+                <argument name="cacheable" xsi:type="boolean">true</argument>
+            </arguments>
+        </referenceBlock>
+    </referenceContainer>
+    <referenceContainer name="alert.urls">
+        <referenceBlock name="yosto.instagramconnect.block.instagram.imageslidertag">
+            <arguments>
+                <argument name="cacheable" xsi:type="boolean">true</argument>
+            </arguments>
+        </referenceBlock>
+    </referenceContainer>
+</body>
+</page>

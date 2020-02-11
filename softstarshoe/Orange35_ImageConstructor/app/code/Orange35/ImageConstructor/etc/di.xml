@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Orange35ImageConstructorImageHelper" type="Orange35\ImageConstructor\Helper\Image">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="const">Orange35\ImageConstructor\Helper\Image::IMAGE_TMP_PATH</argument>
+            <argument name="baseCachePath" xsi:type="const">Orange35\ImageConstructor\Helper\Image::IMAGE_CACHE_PATH</argument>
+            <argument name="basePath" xsi:type="const">Orange35\ImageConstructor\Helper\Image::IMAGE_PATH</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Orange35ImageConstructorLayerUploader" type="Orange35\ImageConstructor\Model\Uploader">
+        <arguments>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+            <argument name="helper" xsi:type="object">Orange35ImageConstructorImageHelper</argument>
+        </arguments>
+    </virtualType>
+    <type name="Orange35\ImageConstructor\Block\Constructor">
+        <arguments>
+            <argument name="helper" xsi:type="object">Orange35ImageConstructorImageHelper</argument>
+        </arguments>
+    </type>
+    <type name="Orange35\ImageConstructor\Block\ConstructorMin">
+        <arguments>
+            <argument name="helper" xsi:type="object">Orange35ImageConstructorImageHelper</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Wishlist\CustomerData\Wishlist">
+        <plugin name="add-item-id-wishlist" type="Orange35\ImageConstructor\Plugin\Wishlist" sortOrder="30"/>
+    </type>
+</config>

@@ -1,0 +1,92 @@
+@use-module-invitation-core__enable: true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.form-add-invitations {
+    &:extend(.forix-abs-add-fields all);
+}
+
+.invitations .action.send{
+    &:extend(.abutton all);
+}
+
+.form-add-invitations .fields .action.remove{
+    &:extend(.fieldset .fields > .actions-toolbar .action.remove all);
+}
+
+.form-add-invitations  > .fieldset .fields .label{
+    &:extend(.forix-abs-visually-hidden all);
+}
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .form-add-invitations {
+        > .fieldset .fields{
+            margin: 0 0 @forix-indent__base;
+
+            .actions-toolbar{
+                position: absolute;
+            }
+        }
+
+        > .fieldset .fields .actions-toolbar{
+            margin-top: 0;
+        }
+    }
+
+    .invitations .action.send{
+        text-align: center;
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .invitations .action.send{
+        margin: 0 0 @forix-indent__base;
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .table-invitations .col{
+        width: 50%;
+    }
+
+    .invitations .action.send{
+        margin: 0 @forix-indent__xm 0 0;
+    }
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    .form-add-invitations {
+        > .fieldset .legend{
+            margin-bottom: @forix-indent__xm;
+        }
+
+        > .fieldset .fields .actions-toolbar{
+            top: 0;
+            right: 0;
+        }
+
+        > .fieldset > .actions-toolbar{
+            margin: -@forix-indent__xs 0 @forix-indent__xs;
+        }
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    .form-add-invitations > .fieldset .fields .actions-toolbar{
+        top: 0;
+        right: 10px;
+    }
+}

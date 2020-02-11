@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Copyright © 2016 x-mage2(Yosto). All rights reserved.
+ * See README.txt for details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Yosto_InstagramConnect::css/remove-class.css"/>
+        <css src="Yosto_InstagramConnect::css/gridstack.css"/>
+        <css src="Yosto_InstagramConnect::css/main.css"/>
+        <css src="Yosto_InstagramConnect::css/gridstack-extra.css"/>
+        <css src="Yosto_InstagramConnect::css/bootstrap.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Yosto\InstagramConnect\Block\Adminhtml\Template\Design" name="yosto.instagramconnect.template.design" template="Yosto_InstagramConnect::design.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Swatches\Helper\Data">
+        <plugin name="altimage-swatches-altimage" type="Forix\AlternateImage\Plugin\Swatches\Helper\Data"/>
+    </type>
+    
+    <type name="Magento\Catalog\Block\Product\AbstractProduct">
+        <plugin name="add_custom_attributes" type="Forix\AlternateImage\Plugin\Block\ProductPlugin"/>
+    </type>
+    <!--
+    <type name="Magento\Catalog\Model\Layer">
+        <plugin name="add_attributes_to_select" type="Forix\AlternateImage\Plugin\Model\LayerPlugin"/>
+    </type>-->
+    <type name="Magento\Catalog\Block\Product\View\Gallery">
+        <plugin name="change_add_gif_image" type="Forix\AlternateImage\Plugin\Block\Product\View\GalleryPlugin"/>
+    </type>
+</config>

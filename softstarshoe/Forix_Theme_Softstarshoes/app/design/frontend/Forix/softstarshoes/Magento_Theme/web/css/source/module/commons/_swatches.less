@@ -1,0 +1,765 @@
+@use-swatch-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.swatch-attribute-options{
+    &:extend(.forix-abs-clearfix all);
+}
+.swatch-option.text{
+    &:extend(.forix-abs-primary-size all);
+}
+.swatch-opt .swatch-attribute.color .owl-nav .owl-next:before,
+.swatch-opt .swatch-attribute.color .owl-nav .owl-prev:before,
+.o35-swatch-opt .o35-swatch-opt-item .o35-swatch-option-label .dot:before{
+    &:extend(.forix-abs-icon-base all);
+}
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    // CDP
+    body .swatch-attribute-options{
+        padding-left: 0!important;
+
+        .swatch-option-tooltip-layered .title{
+            width: 100%;
+            height: 20px;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            text-align: center;
+            margin-bottom: @forix-indent__s;
+        }
+    }
+
+    .swatch-option{
+        float: left;
+        text-align: center;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-right: 10px;
+        &.white{
+            border: @secondary-border__color;
+        }
+
+        &.disabled{
+            cursor: default;
+            opacity: 0.4;
+        }
+
+        &.color{
+            border-radius: 50%;
+
+            &.selected{
+                border: 1px solid @color-black;
+            }
+        }
+
+        &.text{
+            border: 1px solid @color-gray-1;
+            font-weight: @forix-font-weight__bold;
+            text-transform: uppercase;
+            color: @primary-text__color;
+            background: none;
+            line-height: 21px;
+            min-width: 30px;
+            padding: @forix-indent__xs;
+            margin: 0 @forix-indent__s @forix-indent__s 0;
+
+            &.selected,
+            &:hover{
+                background: @color-black;
+                border-color: @color-black;
+                color: @color-white;
+            }
+        }
+    }
+
+    .swatch-option-tooltip{
+        max-width: 137px;
+        max-height: 100%;
+        min-height: 20px;
+        min-width: 60px;
+        position: absolute;
+        padding: @forix-indent__xs;
+        background: @color-white;
+        display: none;
+        z-index: 999;
+        text-align: center;
+        border-radius: 8px;
+        border: 1px solid @sss-color-6;
+
+        .title{
+            max-width: 137px;
+            min-height: 20px;
+            max-height: 100px;
+            text-align: center;
+            display: block;
+            overflow: hidden;
+            font-weight: bold;
+        }
+    }
+
+    .swatch-option-tooltip .corner,
+    .swatch-option-tooltip-layered .corner{
+        left: 40%;
+        position: absolute;
+        height: 8px;
+        &:after{
+            content: '';
+            position: relative;
+            top: -2px;
+            left: -16px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 7px 7.5px 0 7.5px;
+            border-color: @color-white transparent transparent transparent;
+            font-size: 1px;
+        }
+
+        &:before{
+            content: '';
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 8px 8.5px 0 8.5px;
+            border-color: @sss-color-6 transparent transparent transparent;
+            font-size: 1px;
+        }
+    }
+
+    .swatch-option-tooltip .image,
+    .swatch-option-tooltip-layered .image{
+        display: block;
+        height: 68px;
+        width: 68px;
+        margin: 0 auto 10px;
+    }
+    .swatch-option-tooltip-layered{
+        width: 80px;
+        position: absolute;
+        background: @color-white;
+        border: @forix-border__base;
+        display: none;
+        z-index: 999;
+        left: -47px;
+    }
+
+    .swatch-visual-tooltip-layered{
+        height: 160px;
+        top: -170px;
+    }
+
+    .swatch-textual-tooltip-layered{
+        height: 30px;
+        top: -40px;
+    }
+
+    .swatch-option-disabled{
+        outline: none !important;
+        cursor: default;
+        border: 0;
+
+        &:after{
+            content: '';
+            position: absolute;
+            width: 42px;
+            height: 2px;
+            background: red;
+            z-index: 995;
+            left: -4px;
+            top: 10px;
+            .forix-lib-css(transform,rotate(-30deg),1);
+        }
+    }
+
+    .swatch-opt-listing{
+        margin-bottom: @forix-indent__s;
+    }
+
+    .swatch-option-loading{
+        content: url('../images/loader-2.gif');
+        width: auto;
+    }
+
+    .swatch-more{
+        text-decoration: none !important;
+        padding: 5px 10px;
+        width: 116px;
+        border: 2px solid @sss-color-5;
+        display: block;
+        text-align: center;
+        position: absolute;
+        right: 10px;
+        top: 22px;
+        border-radius: 10px;
+        color: @sss-color-5!important;
+    }
+
+    // Sidebar Filter Swatches Product
+    .swatch-option-link-layered{
+        position: relative;
+        color: @primary-text__color;
+        .swatch-option.color{
+            border-radius: 0;
+            margin: 0 @forix-indent__s @forix-indent__s 0;
+            height: @forix-indent__l;
+            max-width: @forix-indent__l;
+            min-width: @forix-indent__l;
+
+
+            &.selected{
+                border: 2px solid @color-black;
+            }
+
+            &:hover {
+                > .swatch-option-tooltip-layered {
+                    display: block;
+                }
+            }
+        }
+    }
+    .swatch-option-link-layered{
+        .swatch-option.color,
+        .swatch-option.image{
+            margin: 0 10px 10px 0;
+            position: relative;
+            &:not(.disabled){
+                &:hover{
+                    margin-left: 0;
+                }
+            }
+            &:before{
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                border: 2px solid @color-black;
+                display: none;
+            }
+            &:hover{
+                &:before{
+                    display: block;
+                }
+            }
+        }
+        .swatch-option.image{
+            width: 30px;
+            height: 30px;
+        }
+    }
+    // PDP
+    .swatch-attribute-label{
+        font-weight: @forix-font-weight__semibold;
+        position: relative;
+
+        &:after{
+            content:':';
+        }
+
+        &.required{
+            padding-right: @forix-indent__xs;
+        }
+
+        &[data-required="1"]:after {
+            content: '*';
+            color: red;
+            position: absolute;
+            right: -11px;
+            top: -2px;
+            font-weight: @forix-font-weight__bold;
+            font-size: @forix-font-size__base;
+        }
+    }
+
+    .swatch-attribute-selected-option{
+        padding-left: @forix-indent__xs;
+    }
+
+    .swatch-opt{
+        margin: @forix-indent__base 0;
+        position: relative;
+        .swatch-attribute{
+            + .swatch-attribute{
+                margin: 20px 0 0;
+            }
+            &:last-child{
+                margin-bottom:0;
+            }
+            &.color{
+                border: 1px solid @sss-color-4;
+                padding: 12px 0 24px;
+                border-radius: 10px;
+                background: #fff;
+                position: relative;
+                overflow: hidden;
+                .swatch-attribute-label{
+                    font-size: 14px;
+                    display: inline-block;
+                    margin: 0 0 14px 10px;
+                }
+                .swatch-attribute-options{
+                    &.owl-carousel{
+                        padding: 0 35px!important;
+                    }
+                    &:not(.owl-carousel){
+                        padding: 0 20px!important;
+                        margin: 0 -5px;
+                        .item{
+                            width: percentage(1/3);
+                            float: left;
+                            padding: 0 5px;
+                        }
+                    }
+                }
+                .owl-nav .owl-next,
+                .owl-nav .owl-prev{
+                    position: absolute;
+                    top: 50%;
+                    margin-top: -31px;
+                    font-size: 0;
+                    &:before{
+                        font-size: 44px;
+                    }
+                    &:hover{
+                        &:before{
+                            color: @sss-color-6;
+                        }
+                    }
+                    &.disabled{
+                        cursor: auto;
+                        &:before{
+                            color: @sss-color-4;
+                        }
+                    }
+                }
+                .owl-nav .owl-next{
+                    right: -8px;
+                    &:before{
+                        content: @sss-icon-prev-2;
+                    }
+                }
+                .owl-nav .owl-prev{
+                    left: -8px;
+                    &:before{
+                        content: @sss-icon-next-2;
+                    }
+                }
+            }
+        }
+
+        .swatch-option.image,
+        .swatch-option.color{
+            border-radius: 0;
+            margin: 0 auto 10px;
+            width: 100%;
+            background-size: cover!important;
+            border: 1px solid  @color-white;
+            float: none;
+            &:hover,
+            &.selected{
+                border: 1px solid  @sss-color-6;
+                border-radius: 10px;
+            }
+        }
+    }
+
+    /* Bugfix for Add To Cart button */
+    .swatch-opt-listing {
+        margin-bottom: 10px;
+    }
+
+    .swatch-option-loading {
+        content: url("../images/loader-2.gif");
+        width: auto;
+    }
+    .swatch-input {
+        left: -1000px;
+        position: absolute;
+        visibility: hidden;
+        &.mage-error{
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            visibility: visible;
+            background: 0;
+            text-indent: -9999px;
+            border: 1px solid @m2-color-red-1 !important;
+            pointer-events: none;
+        }
+    }
+    .o35-swatch-opt{
+        padding: 20px 0 0;
+        margin: 0!important;
+        .o35-swatch-opt-item{
+            margin: 0 0 20px;
+            padding: 0 0 10px;
+            position: relative;
+            border-bottom: 1px solid #e0e0e0;
+            &:last-child{
+                margin-bottom: 39px;
+            }
+            .selected{
+                .o35-swatch-option-selected-value:after{
+                    display: none;
+                }
+                .o35-swatch-option-label{
+                    color: @sss-color-6;
+                }
+                .o35-swatch-option-label{
+                    .dot{
+                        &:before{
+                            content: @sss-icon-checkbox !important;
+                        }
+                    }
+                }
+            }
+            .swatch-option-title-align{
+                display: table;
+                width: 100%;
+                position: relative;
+            }
+
+            .o35-swatch-option-label{
+                font-size: 20px;
+                line-height: 1;
+                font-weight: bold;
+                padding-left: 27px;
+                width: 50%;
+                display: table-cell;
+                vertical-align: middle;
+                position: static;
+                .dot{
+                    font-size: 0;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    bottom: 0;
+                    right: 0;
+                    cursor: pointer;
+                    z-index: 9;
+                    &:before{
+                        content: @sss-icon-angle-down;
+                        font-size: 15px;
+                        position: absolute;
+                        top: 50%;
+                        margin-top: -7px;
+                        left: 0;
+                    }
+                }
+            }
+            .o35-swatch-option-selected-value {
+                color: #888888;
+                padding-right: 53px;
+                font-weight: 600;
+                width: 50%;
+                display: table-cell;
+                vertical-align: middle;
+                text-align: right;
+                line-height: 18px;
+                position: relative;
+                &:after{
+                    position: absolute;
+                    right: 0;
+                    top: 5px;
+                    font-size: 16px;
+                    content: 'Select';
+                    text-transform: capitalize;
+                }
+                img{
+                    width: 40px;
+                    height: 40px;
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                    margin-top: -20px;
+                }
+            }
+            .o35-swatch-option-values{
+                opacity:0;
+                visibility: hidden;
+                overflow: hidden;
+                height: 0;
+                padding-top: 10px;
+                margin: 0;
+                transition: 0.4s;
+            }
+            &.active{
+                .o35-swatch-option-label{
+                    .dot{
+                        &:before{
+                            content: @sss-icon-angle-up;
+                        }
+                    }
+                }
+                .o35-swatch-option-values{
+                    opacity: 1;
+                    visibility: visible;
+                    height: auto;
+                    &.active{
+                        padding-top: 15px;
+                    }
+                }
+            }
+            select.product-custom-option{
+                height: 0;
+                font-size: 0;
+                line-height: 0;
+                position: absolute;
+            }
+        }
+    }
+    .o35-swatch-value{
+        &:hover,
+        &.selected{
+            position: relative;
+            border: 1px solid  @color-black;
+            &:after{
+                content: '';
+                border: 2px solid @color-white;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+}
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .swatch-option.color{
+        width: 8px;
+        height: 8px;
+        margin: 0 8px 8px 0;
+    }
+    .swatch-option.image{
+        width: 55px;
+        height: 47px;
+    }
+}
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    .swatch-option-tooltip .corner,
+    .swatch-option-tooltip-layered .corner{
+        bottom: -5px;
+    }
+
+    // PDP
+    .swatch-opt{
+        .swatch-attribute{
+            margin: 0 0 @forix-indent__xs;
+        }
+
+        .swatch-option{
+            margin: 0 @forix-indent__s @forix-indent__s 0;
+            min-width: 25px;
+
+            &.text{
+                padding: 2px @forix-indent__xs;
+            }
+        }
+    }
+    body .o35-swatch-value{
+        width: 40px!important;
+        height: 40px!important;
+        margin: 0 6px 6px 0;
+    }
+    body .o35-swatch-opt {
+        .o35-swatch-opt-item{
+            margin: 0 0 10px;
+            padding: 0 0 10px;
+            .o35-swatch-option-label{
+                font-size: 18px;
+            }
+            .o35-swatch-option-label{
+                width: 70%;
+            }
+            .o35-swatch-option-selected-value{
+                width: 30%;
+                &:after{
+                    font-size: 14px;
+                    top: 3px;
+                }
+            }
+            .o35-swatch-option.selected{
+                .swatch-option-title-align{
+                    display: block;
+                }
+                .o35-swatch-option-label{
+                    display: block;
+                    width: 100%;
+                    position: relative;
+                }
+                .o35-swatch-option-selected-value{
+                    display: block;
+                    width: 100%;
+                    text-align: left;
+                    margin: 15px 0 0;
+                    padding-right: 0;
+                    padding-left: 39px;
+                    img{
+                        width: 30px;
+                        height: 30px;
+                        left: 0;
+                        margin-top: -15px;
+                    }
+                }
+            }
+        }
+        > .field,
+        > .fields > .field{
+            margin: 0 0 10px;
+        }
+    }
+}
+
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    .swatch-option.color{
+        width: 10px;
+        height: 10px;
+        margin: 0 @forix-indent__s @forix-indent__s 0;
+    }
+    .swatch-option.image{
+        width: 66px;
+        height: 47px;
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    .swatch-option.color{
+        width: 12px;
+        height: 12px;
+        margin: 0 @forix-indent__s @forix-indent__s 0;
+    }
+    .swatch-option.image{
+        width: 116px;
+        height: 80px;
+
+    }
+    .swatch-option-tooltip .corner,
+    .swatch-option-tooltip-layered .corner{
+        bottom: -4px;
+    }
+
+    // PDP
+    .swatch-opt{
+        &.customize-link{
+            .swatch-attribute{
+                &.color{
+                    padding: 20px 0 30px;
+                }
+            }
+        }
+        .swatch-attribute{
+            &.color{
+                padding: 20px 0 12px;
+                .swatch-attribute-label{
+                    font-size: 20px;
+                    margin: 0 0 18px 20px;
+                }
+                .swatch-attribute-options{
+                    &.owl-carousel{
+                        padding: 0 58px!important;
+                    }
+                    &:not(.owl-carousel){
+                        .item{
+                            width: percentage(1/4);
+                        }
+                    }
+                }
+                .owl-nav .owl-next,
+                .owl-nav .owl-prev{
+                    margin-top: -41px;
+                    &:before{
+                        font-size: 58px;
+                    }
+                }
+                .owl-nav .owl-next{
+                    right: -11px;
+                }
+                .owl-nav .owl-prev{
+                    left: -11px;
+                }
+            }
+        }
+
+        .swatch-option{
+            min-width: 30px;
+            margin: 0 @forix-indent__s @forix-indent__s 0;
+        }
+    }
+}
+
+//< 1023
+@media screen and (max-width: 1023px){
+    // PDP
+    .swatch-opt{
+        .swatch-option{
+            &.image,
+            &.color{
+                width: 63px;
+                height: 47px;
+            }
+        }
+    }
+}
+// 480-767
+@media screen and (min-width: 480px) and (max-width: 767px){
+    // PDP
+    .swatch-opt{
+        .swatch-option{
+            &.image,
+            &.color{
+                height: 80px!important;
+                width: 106px!important;
+            }
+        }
+    }
+}
+// >=1023
+@media screen and (min-width: 1023px){
+    // PDP
+    .swatch-opt{
+        .swatch-option{
+            &.image,
+            &.color{
+                height: 65px!important;
+                width: 86px!important;
+            }
+        }
+    }
+}
+//1024
+@media screen and (min-width: 1024px) and (max-width: 1024px){
+    // PDP
+    .swatch-opt{
+        .swatch-option{
+            &.image,
+            &.color{
+                width: 63px!important;
+                height: 47px!important;
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="../../../config.xsd">
+    <steps mode="data">
+        <step title="Forix Giftcard Step">
+            <data>Migration\Step\ForixGiftcard\Data</data>
+        </step>
+    </steps>
+    <source>
+        <database host="192.240.166.129" name="softstar_magento" user="softstar_softsta" password="123forix"/>
+    </source>
+    <destination>
+        <database host="127.0.0.1" name="softstar_mage2" user="softstar_mage2" password="9ZcxRCTEcMvoq27rHw"/>
+    </destination>
+    <options>
+        <source_prefix />
+        <dest_prefix />
+        <log_file>giftcard_migration.log</log_file>
+        <progress_bar_format>%percent%% [%bar%] Remaining Time: %remaining%</progress_bar_format>
+        <init_statements_source>SET NAMES utf8;</init_statements_source>
+        <init_statements_destination>SET NAMES utf8;</init_statements_destination>
+        <crypt_key />
+        <forix_giftcard_map_file>etc/giftcard/map.xml</forix_giftcard_map_file>
+        <forix_giftcard_groups_file>etc/giftcard/groups.xml</forix_giftcard_groups_file>
+    </options>
+</config>

@@ -1,0 +1,25 @@
+<?php
+/**
+ * @category   Fishpig
+ * @package   Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author     Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<div class="block block-blog block-blog-email-update">
+    <div class="block-title">
+        <strong><span>Email Updates</span></strong>
+    </div>
+    <div class="block-content">
+        <form style="border:1px solid #ccc;padding:3px;text-align:left;"
+              action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow"
+              onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=SoftstarBlogtesting', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
+            <p align="left"><?php echo __('Enter your address to receive blog updates by email. Note that this will not subscribe you
+                to the main Softstar newsletter, only blog updates:'); ?></p>
+            <p><input type="text" style="width:140px" name="email"/></p>
+            <input type="hidden" value="LiveBareBlog" name="uri"/>
+            <input type="hidden" name="loc" value="en_US"/>
+            <input type="submit" value="Subscribe"/>
+        </form>
+    </div>
+</div>

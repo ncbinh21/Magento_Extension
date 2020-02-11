@@ -1,0 +1,125 @@
+@use-module-rma-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.form-create-return {
+    &:extend(.forix-abs-form-field-column-2 all);
+}
+
+.block-return-details .box{
+    &:extend(.forix-abs-account-blocks .block-content .box all);
+}
+
+.block-return-details .box .box-title{
+    &:extend(.forix-abs-account-blocks .box .box-title all);
+}
+
+.block-return-details .box .box-content{
+    &:extend(.forix-abs-account-blocks .box .box-content all);
+}
+
+.block-returns-items .block-title,
+.block-returns-comments .block-title{
+    &:extend(.forix-abs-account-blocks .block-title all);
+}
+
+.return-status{
+    &:extend(.forix-abs-order-status all);
+}
+
+.magento-rma-returns-returns .page-main .page-title-wrapper .page-title,
+.magento-rma-returns-view .page-main .page-title-wrapper .page-title,
+.magento-rma-guest-returns .page-main .page-title-wrapper .page-title,
+.magento-rma-guest-returns .page-main .page-title-wrapper .page-title{
+    &:extend(.forix-abs-title-orders all);
+}
+
+.magento-rma-returns-returns .page-main .page-title-wrapper .order-date,
+.magento-rma-returns-view .page-main .page-title-wrapper .order-date,
+.magento-rma-guest-returns .page-main .page-title-wrapper .order-date,
+.magento-rma-guest-returns .page-main .page-title-wrapper .order-date{
+    &:extend(.forix-abs-title-orders .order-date all);
+}
+
+.block-return-details .block-content{
+    &:extend(.block-order-details-view .block-content);
+}
+
+.account .column.main .block:not(.widget).block-return-details .block-content .box{
+    &:extend(.account .column.main .block:not(.widget).block-order-details-view .block-content .box);
+}
+
+.returns-details-items + .actions-toolbar{
+    &:extend(.forix-abs-visually-hidden all);
+}
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .block-returns-items{
+        margin: 0 0 @forix-indent__s;
+    }
+
+    .form-create-return .field.comment{
+        margin-top: @forix-indent__base;
+    }
+
+    .magento-rma-guest-returns .block-order-details-view .block-content {
+        margin: 0 0 @forix-indent__xxl;
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .block-return-details .box .box-content{
+        line-height: @forix-block-account-box-content-p__line-height;
+    }
+
+    .table-wrapper .table.table-returns:not(.cart):not(.totals):not(.table-comparison) tbody td::before {
+        min-width: 90px;
+    }
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l) {
+    .block-return-details{
+        margin: 0 0 @forix-indent__s;
+    }
+
+    .magento-rma-guest-create .block-order-details-view .block-content{
+        margin-bottom: 0;
+    }
+}
+
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    .block-return-details .box .box-content{
+        line-height: @forix-block-account-box-content-p__line-height__m;
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .account .column.main .block:not(.widget).block-return-details .block-content .box.box-returns-requested,
+    .account .column.main .block:not(.widget).block-return-details .block-content .box.box-treturns-shipping{
+        width: percentage(1/2);
+    }
+
+    .block-return-details{
+        margin: @forix-indent__xxl 0;
+
+        .box .box-content{
+            line-height: @forix-block-account-box-content-p__line-height__l;
+        }
+    }
+
+    .magento-rma-guest-create .block-order-details-view .block-content{
+        margin-bottom: @forix-indent__l;
+    }
+}

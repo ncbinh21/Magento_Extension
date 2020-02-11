@@ -1,0 +1,166 @@
+@use-checkout-payment-options-core__enable: true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.checkout-payment-method .payment-option._collapsible .payment-option-title .action-toggle:after{
+    &:extend(.forix-abs-icon-base);
+}
+
+.checkout-payment-method .payment-option-title{
+    &:extend(.forix-abs-small-title-size all);
+}
+// ------------------------------------
+// Variables Extends
+// ------------------------------------
+
+// ------------------------------------
+// Extends
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .checkout-payment-method{
+        .credit-card-types{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            .item{
+                display: inline-block;
+                list-style: none;
+                margin: 0 @forix-indent__xs 0 0;
+                vertical-align: top;
+
+                &._active{
+                    font-weight: @forix-font-weight__bold;
+
+                    img{
+                        -webkit-filter: grayscale(0%);
+                    }
+                }
+
+                &._inactive{
+                    opacity: .4;
+                }
+
+                span{
+                    display: inline-block;
+                    padding-top: @forix-indent__xs;
+                    vertical-align: top;
+                }
+
+                img{
+                    -webkit-filter: grayscale(100%);
+                    -webkit-transition: all .6s ease;
+                }
+            }
+        }
+
+        .payment-option{
+            border-bottom: @forix-border__three;
+            padding: @forix-indent__base 0;
+
+            &:last-child{
+                border-bottom: 0;
+            }
+
+            &._collapsible{
+                .payment-option-title{
+                    cursor: pointer;
+
+                    .action-toggle:after{
+                        content: @font-awesome-angle-down;
+                        font-weight: @forix-font-weight__regular;
+                        font-size: 23px;
+                        line-height: 23px;
+                        vertical-align: top;
+                        display: inline-block;
+                        margin: 0 0 0 @forix-indent__xs;
+                    }
+
+                    &._active .action-toggle:after{
+                        content: @font-awesome-angle-up;
+                    }
+                }
+            }
+
+            &._active{
+                .payment-option-content{
+                    display: block;
+
+                    .action-toggle:after,
+                    &._active .action-toggle:after{
+                        content: @font-awesome-angle-up;
+                    }
+                }
+            }
+
+            &-title{
+                font-weight: @forix-font-weight__semibold;
+                line-height: @forix-line-height__xl;
+                margin: 0;
+
+                &:hover{
+                    color: @color-black;
+                }
+            }
+
+            &-content{
+                display: none;
+
+                &.active{
+                    display: block;
+                }
+            }
+
+            &.customerbalance{
+                .payment-option-content {
+                    display: block;
+                }
+            }
+
+            &.discount-code{
+                padding-top: 0;
+            }
+        }
+
+        .payment-option-inner{
+            margin: 0 0 @forix-indent__base;
+        }
+
+        .fieldset > .field.cvv{
+            width: percentage(1/2);
+            padding-right: @forix-gutter-width/2;
+        }
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .checkout-payment-method{
+        .payment-option{
+            &-content{
+                padding: @forix-indent__s 0 0;
+            }
+        }
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .checkout-payment-method{
+        .payment-option{
+            &-content{
+                padding: @forix-indent__xm 0 @forix-indent__s;
+            }
+
+            &.giftcardaccount{
+                .payment-option-content{
+                    padding-bottom: 0;
+                    margin-bottom: -@forix-indent__s;
+                }
+            }
+        }
+    }
+}
+

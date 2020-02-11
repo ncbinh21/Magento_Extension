@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Catalog:etc/product_types.xsd">
+    <type name="aw_giftcard" label="AW Gift Card Product" modelInstance="Aheadworks\Giftcard\Model\Product\Type\Giftcard" composite="false" isQty="true" indexPriority="100" sortOrder="100">
+        <priceModel instance="Aheadworks\Giftcard\Model\Product\Type\Giftcard\Price" />
+        <customAttributes>
+            <attribute name="refundable" value="false"/>
+            <attribute name="taxable" value="true"/>
+        </customAttributes>
+    </type>
+</config>

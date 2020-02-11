@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Customer\Block\Adminhtml\Edit\Tab\Newsletter" type="Forix\Customer\Rewrite\Block\Adminhtml\Edit\Tab\Newsletter" />
+    <type name="Magento\Customer\Model\ResourceModel\CustomerRepository">
+        <plugin name="auto-subscribe-customer" type="Forix\Customer\Plugin\Model\SubscribePlugin" sortOrder="10"/>
+    </type>
+</config>

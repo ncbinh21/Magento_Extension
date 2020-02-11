@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="header.container">
+            <container name="page_promotions" htmlTag="div" htmlClass="page-promotions" before="-">
+                <container name="page_promotions_inner" htmlTag="div" htmlClass="promotions-inner">
+                    <block class="Magento\Cms\Block\Block" name="header-link">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">header-promotions-block</argument>
+                        </arguments>
+                    </block>
+                </container>
+            </container>
+            <referenceContainer name="header-wrapper">
+                <container name="navigation_newest_container" htmlTag="div" htmlClass="navigation-newest-container" before="-">
+                    <block class="Magento\Cms\Block\Block" name="navigation_newest">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">header-navigation-newest</argument>
+                        </arguments>
+                    </block>
+                </container>
+                <block class="Forix\CustomTheme\Block\Html\Header\Logo" name="logo">
+                    <arguments>
+                        <argument name="logo_img_width" xsi:type="number">189</argument>
+                        <argument name="logo_img_height" xsi:type="number">64</argument>
+                    </arguments>
+                </block>
+            </referenceContainer>
+        </referenceContainer>
+
+        <referenceContainer name="footer">
+            <container name="footer-top-container" htmlTag="div" htmlClass="footer top" before="-">
+                <block class="Magento\Cms\Block\Block" name="footer-top">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">footer-top</argument>
+                    </arguments>
+                </block>
+            </container>
+            <block name="subscribe-message-custom" class="Magento\Framework\View\Element\Template" template="Magento_Theme::subscribe/message.phtml"/>
+            <container name="footer-links-container" htmlTag="div" htmlClass="footer links" after="footer-content-container">
+                <block class="Magento\Cms\Block\Block" name="footer-links">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">footer-links</argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceContainer>
+
+        <referenceContainer name="footer_inner">
+            <container name="footer_inner_content" as="footer_inner_content" label="Footer Inner Content" htmlTag="div" htmlClass="footer-inner-content">
+                <block class="Magento\Cms\Block\Block" name="footer-socials" after="form.subscribe">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">footer-socials</argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceContainer>
+
+        <referenceContainer name="footer_bottom_inner">
+            <container name="footer_inner_content_policy" as="footer_inner_content_policy" label="Footer Inner Content Policy" htmlTag="div" htmlClass="footer-inner-content-policy" after="-">
+                <block class="Magento\Cms\Block\Block" name="footer-bottom-inner-policy">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">footer-bottom-policy</argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceContainer>
+        <move element="copyright" destination="footer_bottom_inner" before="footer_inner_content_policy"/>
+        <move element="form.subscribe" destination="footer_inner_content" before="-"/>
+        <move element="navigation_newest_container" destination="main_nav" before="-"/>
+        <referenceBlock name="top.links" remove="true"/>
+        <referenceBlock name="store.links" remove="true"/>
+        <referenceBlock name="wish-list-link" remove="true"/>
+        <referenceBlock name="header" remove="true"/>
+        <referenceBlock name="authorization-link" remove="true"/>
+        <referenceBlock name="catalog.compare.link" remove="true"/>
+        <referenceBlock name="register-link" remove="true"/>
+        <referenceBlock name="my-account-link" remove="true"/>
+
+        <referenceContainer name="header.panel">
+            <container name="second_nav" htmlTag="div" htmlClass="second-nav" before="-">
+                <block class="Magento\Cms\Block\Block" name="right_second_nav">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">header-right-second-nav</argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Cms\Block\Block" name="left_second_nav">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">header-left-second-nav</argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceContainer>
+        <referenceBlock name="top.search" remove="true"/>
+        <referenceContainer name="header.container">
+            <block name="mega-menu-custom" class="Magento\Framework\View\Element\Template" template="Magento_Theme::menu/custom.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

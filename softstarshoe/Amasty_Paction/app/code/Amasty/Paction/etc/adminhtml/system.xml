@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2017 Amasty (https://www.amasty.com)
+ * @package Amasty_Paction
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+       <section id="amasty_paction" translate="label" type="text" sortOrder="130116" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <label>Mass Product Actions</label>
+            <tab>amasty</tab>
+            <resource>Amasty_Paction::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="0"
+                   showInStore="0">
+                <label>General</label>
+                <field id="commands" translate="label comment" type="multiselect" sortOrder="10" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Enabled Actions</label>
+                    <source_model>Amasty\Paction\Model\Source\Commands</source_model>
+                    <comment><![CDATA[Press CTRL+mouse to select multiple values.]]></comment>
+                </field>
+                <field id="round" translate="label comment" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Price Rounding</label>
+                    <source_model>Amasty\Paction\Model\Source\Rounding</source_model>
+                </field>
+                <field id="fixed" translate="label comment" type="text" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="0">
+                    <label>Specific Value</label>
+                    <comment><![CDATA[Indicate 0.99 to round 9.43 to 9.99, indicate 0.5 to round 9.43 to 9.50.]]></comment>
+                    <depends>
+                        <field id="round">fixed</field>
+                    </depends>
+                </field>
+                <field id="attr" translate="label comment" type="text" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="0">
+                    <label>Copy Attributes</label>
+                    <comment><![CDATA[short_description, keywords, title, etc]]></comment>
+                </field>
+                <field id="replace_in_attr" translate="label comment" type="text" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="0">
+                    <label>Replace in Attributes</label>
+                    <comment><![CDATA[Please specify comma separated attribute codes like description,short_description,name]]></comment>
+                </field>
+                <field id="append_text_position" translate="label comment" type="select" sortOrder="50" showInDefault="1"
+                       showInWebsite="1" showInStore="0">
+                    <label>Append Text Position</label>
+                    <source_model>Amasty\Paction\Model\Source\Append</source_model>
+                </field>
+            </group>
+
+            <group id="links" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+                   showInStore="0">
+                <label>Product Linking Algorithms</label>
+                <field id="relate" translate="label comment" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Related</label>
+                    <source_model>Amasty\Paction\Model\Source\Relate</source_model>
+                </field>
+                <field id="relate_reverse" translate="label comment" type="select" sortOrder="20" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Relate Direction</label>
+                    <source_model>Amasty\Paction\Model\Source\Direction</source_model>
+                    <depends>
+                        <field id="relate">0</field>
+                    </depends>
+                </field>
+                <field id="upsell" translate="label comment" type="select" sortOrder="30" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Up-sell</label>
+                    <source_model>Amasty\Paction\Model\Source\Relate</source_model>
+                </field>
+                <field id="upsell_reverse" translate="label comment" type="select" sortOrder="40" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Up-sell Direction</label>
+                    <source_model>Amasty\Paction\Model\Source\Direction</source_model>
+                    <depends>
+                        <field id="upsell">0</field>
+                    </depends>
+                </field>
+                <field id="crosssell" translate="label comment" type="select" sortOrder="50" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Cross-sell</label>
+                    <source_model>Amasty\Paction\Model\Source\Relate</source_model>
+                </field>
+                <field id="crosssell_reverse" translate="label comment" type="select" sortOrder="60" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Cross-sell Direction</label>
+                    <source_model>Amasty\Paction\Model\Source\Direction</source_model>
+                    <depends>
+                        <field id="crosssell">0</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

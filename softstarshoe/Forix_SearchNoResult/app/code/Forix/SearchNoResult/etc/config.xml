@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<search_no_result>
+			<setting>
+				<is_active>1</is_active>
+				<search_page_title>NO MATCHES FOUND!</search_page_title>
+				<no_result_text>No results were found for '%1'</no_result_text>
+				<note>Check for any typos, try using a broader search phase or choose a product category from the list below:</note>
+				<show_category>1</show_category>
+				<remove_breadcrumbs>1</remove_breadcrumbs>
+			</setting>
+		</search_no_result>
+	</default>
+</config>

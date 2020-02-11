@@ -1,0 +1,82 @@
+@use-checkout-shipping-information-core__enable: true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.opc-block-shipping-information .shipping-information-title .action-edit:before{
+    &:extend(.forix-abs-icon-base all);
+}
+
+.opc-block-shipping-information .shipping-information-title .action-edit > span{
+    &:extend(.forix-abs-visually-hidden all);
+}
+
+.shipping-information .shipping-information-title{
+    &:extend(.forix-abs-three-title-size all);
+}
+
+// ------------------------------------
+// Variables Extends
+// ------------------------------------
+
+// ------------------------------------
+// Extends
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .shipping-information .shipping-information-title{
+        display: block;
+        position: relative;
+        margin: 0 0 @forix-indent__xm;
+        border-bottom: @forix-opc-summary-title__border;
+        color: @forix-opc-summary-title__text__color;
+        padding: @forix-opc-summary-title__padding;
+        font-weight: @forix-font-weight__bold;
+    }
+
+    .opc-block-shipping-information{
+        padding: @forix-indent__s 0 0;
+
+        .shipping-information-title{
+            .action-edit{
+                background: none;
+                color: @primary-link__color;
+                display: inline-block;
+                top: 10px;
+                text-decoration: none;
+                margin: 0;
+                position: absolute;
+                padding: 0;
+                right: -4px;
+                min-width: 0;
+                font: ~'0/0 a';
+                height: 25px;
+
+                &:before{
+                    content: @font-awesome-pencil;
+                    font-size: 20px;
+                }
+
+                &:hover:before{
+                    color: @primary-link__color__hover;
+                }
+            }
+        }
+
+        .shipping-information-content{
+            line-height: 24px;
+
+            .actions-toolbar{
+                margin-left: 0;
+            }
+        }
+
+        .ship-to{
+            margin: 0 0 @forix-indent__l;
+        }
+
+        .ship-via{
+            margin: 0 0 @forix-indent__base;
+        }
+    }
+}

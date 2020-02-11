@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="3columns" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Contact Us - Softstar Shoes</title>
+        <meta name="description" content="Please send us a message or give us a call with any questions, and our friendly team here at Softstar Shoes will get back to you shortly."/>
+        <meta name="keywords" content="Contact Softstar Shoes"/>
+    </head>
+    <body>
+        <!-- Move some element -->
+        <move element="page.main.title" destination="content.top" before="-"/>
+        <move element="breadcrumbs" destination="page.wrapper" before="-"/>
+
+        <referenceBlock name="breadcrumbs">
+            <action method="addCrumb">
+                <argument name="crumbName" xsi:type="string">Home</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string">Home</item>
+                    <item name="label" xsi:type="string">Home</item>
+                    <item name="link" xsi:type="string">{{baseUrl}}</item>
+                </argument>
+            </action>
+            <action method="addCrumb">
+                <argument name="crumbName" xsi:type="string">Contact Us</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string">Contact Us</item>
+                    <item name="label" xsi:type="string">Contact Us</item>
+                </argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="page.wrapper">
+            <container name="contact_us_image_container" label="Contact Us Image" htmlTag="div" htmlClass="contact-us-image" before="main.content">
+                <block class="Magento\Cms\Block\Block" name="contact_us_image">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">contact-us-image</argument>
+                    </arguments>
+                </block>
+            </container>
+
+        </referenceContainer>
+
+        <referenceContainer name="content">
+            <container name="contact_us_description" label="Contact Us Description" htmlTag="div" htmlClass="contact-us-description" before="contactForm">
+            <block class="Magento\Cms\Block\Block" name="contact_description">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">contact-us-description</argument>
+                </arguments>
+            </block>
+        </container>
+        </referenceContainer>
+
+        <!--<referenceBlock name="sidebar.cms">-->
+            <!--<action method="setActiveLink">-->
+                <!--<argument name="link" xsi:type="string">contact</argument>-->
+            <!--</action>-->
+            <!--<action method="setTitleDefault">-->
+                <!--<argument name="title" translate="true" xsi:type="string">Help</argument>-->
+            <!--</action>-->
+            <!--<block class="Magento\Cms\Block\Block" name="left_cms_help_links_block">-->
+                <!--<arguments>-->
+                    <!--<argument name="block_id" xsi:type="string">left-cms-help-links-block</argument>-->
+                <!--</arguments>-->
+            <!--</block>-->
+        <!--</referenceBlock>-->
+
+        <referenceContainer name="sidebar.additional">
+            <container name="sidebar.contact.block" label="Right Contact Block" htmlTag="div" htmlClass="block block-contacts" before="-">
+                <block class="Magento\Cms\Block\Block" name="right_contact_location_block">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">right-contact-location-block</argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceContainer>
+
+        <!-- remove compare product from left sidebar -->
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+        <referenceBlock name="sidebar.cms" remove="true"/>
+    </body>
+</page>

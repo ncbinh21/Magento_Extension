@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<groups xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="../groups.xsd">
+    <group name="source_documents">
+        <document>enterprise_giftcardaccount</document>
+        <document>enterprise_giftcardaccount_history</document>
+        <!--<document>enterprise_giftcardaccount_pool</document>-->
+    </group>
+    <group name="collect_old_new_data">
+        <document key="giftcardaccount_id">enterprise_giftcardaccount</document>
+        <!--<document key="id">aw_giftcard_history</document>-->
+    </group>
+    <group name="save_collected_old_new_data_enterprise_giftcardaccount_history">
+        <document key="giftcardaccount_id">enterprise_giftcardaccount</document>
+    </group>
+    <group name="destination_documents_update_on_duplicate">
+        <document key="code">aw_giftcard</document>
+        <document key="giftcard_id,action">aw_giftcard_history</document>
+    </group>
+    <group name="after_save_aw_giftcard_history">
+        <document key="\Migration\Handler\ForixGiftcard\HistorySave">class</document>
+    </group>
+</groups>

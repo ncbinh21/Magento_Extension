@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="category.view.container">
+            <block class="Magento\Catalog\Block\Category\View" name="forix.title.image" template="Forix_ProductListTemplate::category/banner-image.phtml"/>
+        </referenceContainer>
+        <move element="category.view.container" destination="page.wrapper" after="header.container"/>
+        <referenceBlock name="page.main.title" remove="true"/>
+    </body>
+</page>

@@ -1,0 +1,9 @@
+.required-captcha .checkbox{
+    display: block;
+    visibility: visible;
+    overflow: hidden;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+}

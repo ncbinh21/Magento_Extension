@@ -1,0 +1,146 @@
+@use-checkout-field-tooltip-core__enable: true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.field-tooltip .field-tooltip-action:before{
+    &:extend(.forix-abs-icon-base all);
+}
+.field-tooltip .field-tooltip-action > span{
+    &:extend(.forix-abs-visually-hidden all);
+}
+// ------------------------------------
+// Variables Extends
+// ------------------------------------
+@field-tooltip-background__color: @secondary-background__color;
+@field-tooltip-border__color: @secondary-border__color;
+@field-tooltip-text__color: @three-text__color;
+@field-tooltip-icon__color: @secondary-text__color;
+
+// ------------------------------------
+// Extends
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .field-tooltip{
+        position: absolute;
+        top: 5px;
+
+        &._active{
+            z-index: 100;
+
+            .field-tooltip-content{
+                display: block;
+            }
+            .field-tooltip-action:before{
+
+            }
+        }
+
+        .field-tooltip-action{
+            display: inline-block;
+            text-decoration: none;
+
+            &:before{
+                color: @field-tooltip-icon__color;
+                content: @icon-help;
+                text-align: center;
+                vertical-align: middle;
+                display: inline-block;
+                line-height: inherit;
+                cursor: pointer;
+            }
+        }
+
+        .field-tooltip-content{
+            white-space: normal;
+            color: @field-tooltip-text__color;
+            text-align: left;
+            background: @field-tooltip-background__color;
+            box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.3);
+            position: absolute;
+            z-index: 100;
+            display: none;
+            padding: @forix-indent__base;
+            min-width: 210px;
+            max-width: 360px;
+
+            &:before{
+                .forix-lib-css(transform-origin,0 0,1);
+                border: 7px solid transparent;
+                border-color: transparent transparent @field-tooltip-border__color @field-tooltip-border__color;
+                height: 0;
+                width: 0;
+                position: absolute;
+                content: "";
+            }
+        }
+    }
+
+    ._keyfocus .field-tooltip .field-tooltip-action{
+        &:focus{
+            z-index: 100;
+
+            + .field-tooltip-content{
+                display: block;
+            }
+        }
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .field-tooltip .field-tooltip-content{
+        left: auto;
+        right: -12px;
+        top: 35px;
+        margin-left: 0;
+
+        &:before{
+            .forix-lib-css(transform,rotate(135deg),1);
+            left: auto;
+            top: 2px;
+            right: -3px;
+        }
+    }
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    .field-tooltip{
+        right: 10px;
+    }
+    .field-tooltip .field-tooltip-action{
+        &:before{
+            font-size: @forix-font-size__l;
+        }
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .field-tooltip .field-tooltip-content{
+        left: 100%;
+        top: -2px;
+        margin-left: @forix-indent__s;
+
+        &:before {
+            .forix-lib-css(transform,rotate(47deg),1);
+            left: 2px;
+            top: 7px;
+        }
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    .field-tooltip{
+        right: -@forix-indent__xxl;
+
+        .field-tooltip-action{
+            &:before{
+                font-size: @forix-font-size__xl;
+            }
+        }
+    }
+}

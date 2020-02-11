@@ -1,0 +1,402 @@
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.minilogin-wrapper .action.showlogin:before,
+.minilogin-wrapper .push-close:before{
+    &:extend(.forix-abs-icon-base);
+}
+
+.minilogin-wrapper .block-authentication{
+    &:extend(.forix-abs-dropdown-content all);
+}
+
+.block-customer-login .actions-toolbar .action.action-register{
+    &:extend(.abutton);
+    &:extend(.forix-abs-button-type3 all);
+}
+
+.block-customer-logged  ul{
+    &:extend(.forix-abs-list-reset);
+}
+
+.minilogin-wrapper .action.showlogin span{
+    &:extend(.forix-abs-visually-hidden all);
+}
+
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+@minilogin__link__color: @three-link__color;
+@minilogin__link__hover__color: @three-link__color__hover;
+
+@minilogin__icon__content: @forix-icon-add;
+
+@minilogin-push-close__background: @m2-color-gray-18;
+
+@minilogin__background: @primary-background__color;
+@minilogin__width__m: 275px;
+@minilogin__width__l: 320px;
+
+@minilogin-title__color: @secondary-text__color;
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .minilogin-wrapper{
+        position: absolute;
+        z-index: 3;
+
+        .action.showlogin{
+            color: @minilogin__link__color;
+            text-decoration: none;
+
+            &:hover{
+                color: @minilogin__link__hover__color;
+            }
+
+            &:before{
+                cursor: pointer;
+                color: inherit;
+                content: @minilogin__icon__content;
+                display: inline-block;
+                vertical-align: middle;
+                font-weight: normal;
+                margin: 0;
+            }
+        }
+
+        &:hover{
+            .action.showlogin:before{
+                color: @minilogin__link__hover__color;
+            }
+        }
+
+        .block-authentication{
+            display:none;
+
+            &:after{
+                position: absolute;
+            }
+        }
+
+        .push-close{
+            position: fixed;
+            width: 45px;
+            height: 100%;
+            right: 0;
+            background: @minilogin-push-close__background;
+            z-index: 102;
+            top: 0;
+            cursor: pointer;
+            text-align: center;
+
+            &:before{
+                font-size: 25px;
+                line-height: inherit;
+                color: @minilogin__link__color;
+                content: @minilogin__icon__content;
+                vertical-align: middle;
+                display: inline-block;
+                font-weight: normal;
+                margin-top: @forix-indent__base;
+            }
+        }
+    }
+
+    .block-customer-login{
+        width: 100%;
+
+        .block-title{
+            text-transform: uppercase;
+            color: @minilogin-title__color;
+            margin: 0 0 @forix-indent__s;
+        }
+
+        .actions-toolbar{
+            width: 100%;
+
+            .action{
+                width: 100%;
+            }
+
+            .action.action-login{
+                margin-bottom: @forix-indent__base;
+            }
+
+            .action.action-register {
+                text-align: center;
+            }
+        }
+
+        .forgot-password-form{
+            text-align: right;
+            margin: -@forix-indent__l 0 @forix-indent__l;
+        }
+
+        .form-forgotpwd{
+            padding:  @forix-indent__xxl 0 0;
+            position: relative;
+
+            &:before{
+                content: '';
+                position: absolute;
+                left: 50%;
+                top: 24px;
+                margin-left: -45px;
+                width: 90px;
+                height: 1px;
+                background: @background-before;
+            }
+
+            .fieldset{
+                margin-bottom: @forix-indent__base;
+            }
+
+            .fieldset .field.note{
+                line-height: 18px;
+                margin-bottom: @forix-indent__s;
+            }
+        }
+    }
+
+    .block-customer-logged{
+        text-align: left;
+
+        li{
+            margin: 0;
+        }
+    }
+
+    .toggle-login-close{
+        display: none;
+    }
+
+    .login-before-open{
+        overflow: hidden;
+
+        .page-wrapper{
+            .forix-lib-css(transition,left .7s,1);
+            position: relative;
+            left: 0;
+        }
+
+        .minilogin-wrapper{
+            .block-authentication{
+                background: @minilogin__background;
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                z-index: 100;
+                overflow-x: hidden;
+                display: block;
+                text-align: left;
+                left: -100%;
+                padding-right: 65px;
+                .forix-lib-css(transition,left .7s,1);
+            }
+        }
+
+        .push-close{
+            opacity:0;
+            .forix-lib-css(transition,opacity .7s,1);
+        }
+
+        &.push.right{
+            .page-wrapper{
+                right: 0;
+                left: auto;
+                .forix-lib-css(transition,right 0.7s,1);
+            }
+
+            .minilogin-wrapper .block-authentication{
+                padding-left: 65px;
+                padding-right: 18px;
+                right: -100%;
+                left: auto;
+                .forix-lib-css(transition,right 0.7s,1);
+            }
+
+            .push-close{
+                left: 0;
+                right: auto;
+            }
+        }
+    }
+
+    .login-open{
+        .page-wrapper{
+            left: 100%;
+        }
+
+        .minilogin-wrapper{
+            .block-authentication {
+                left: 0;
+            }
+        }
+
+        .push-close{
+            opacity: 1;
+        }
+
+        &.push.right{
+            .page-wrapper{
+                right: 100%;
+            }
+
+            .minilogin-wrapper .block-authentication{
+                right: 0;
+            }
+        }
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .minilogin-wrapper{
+        right: 60px;
+        top: 25px;
+
+        .block-authentication{
+            padding: @forix-indent__base;
+
+            &:before{
+                top: 4px;
+                right: 78px;
+                display: none;
+            }
+
+            &:after{
+                height: 16px;
+                width: 40px;
+                top: -20px;
+                right: 49px;
+            }
+        }
+    }
+
+    .block-customer-logged{
+        padding: @forix-indent__xs 0 0 @forix-indent__xm;
+    }
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l) {
+    .minilogin-wrapper{
+        .action.showlogin{
+            &:before{
+                font-size: (@forix-font-size__l + 1);
+                line-height: 21px;
+            }
+        }
+    }
+
+    .block-customer-login{
+        .block-title{
+            font-size: @forix-font-size__l;
+        }
+
+        .actions-toolbar .action.action-register {
+            line-height: 32px;
+        }
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m){
+    .minilogin-wrapper {
+        &:hover{
+            .block-authentication{
+                display: block;
+            }
+        }
+
+        &.active {
+            .block-authentication{
+                display: block;
+            }
+
+            .action.showlogin:before{
+                color: @color-green;
+            }
+        }
+
+        .push-close{
+            display: none;
+        }
+    }
+}
+
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    .minilogin-wrapper{
+        right: 67px;
+        top: 31px;
+
+        .block-authentication{
+            width: @minilogin__width__m;
+            padding: @forix-indent__xm @forix-indent__base @forix-indent__m;
+            right: -59px;
+            top: 42px;
+
+            &:before{
+                top: 4px;
+                right: 35px;
+            }
+
+            &:after{
+                height: 20px;
+                width: 100%;
+                top: -20px;
+                right: 0;
+            }
+        }
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .minilogin-wrapper{
+        top: 41px;
+        right: 112px;
+
+        .action.showlogin{
+            &:before{
+                font-size: 25px;
+                line-height: 27px;
+            }
+        }
+
+        .block-authentication{
+            width: @minilogin__width__l;
+            padding: @forix-indent__xm @forix-indent__base @forix-indent__base;
+            right: -101px;
+            top: 53px;
+
+            &:before{
+                top: 4px;
+                right: 78px;
+            }
+
+            &:after{
+                right: 0;
+                top: -30px;
+                width: 100%;
+                height: 30px;
+            }
+        }
+    }
+
+    .block-customer-login{
+        .block-title{
+            font-size: 20px;
+        }
+
+        .actions-toolbar .action.action-register {
+            line-height: 36px;
+        }
+    }
+}

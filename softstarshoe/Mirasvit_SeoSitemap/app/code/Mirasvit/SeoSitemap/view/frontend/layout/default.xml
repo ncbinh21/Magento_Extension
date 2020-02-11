@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="footer_links">
+            <block class="Magento\Framework\View\Element\Html\Link\Current" ifconfig="catalog/seo/search_terms" name="sitemap-link">
+                <arguments>
+                    <argument name="label" xsi:type="helper" helper="Mirasvit\SeoSitemap\Helper\Data::getSitemapTitle"/>
+                    <argument name="path" xsi:type="helper" helper="Mirasvit\SeoSitemap\Helper\Data::getSitemapUrl"/>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

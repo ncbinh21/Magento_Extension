@@ -1,0 +1,167 @@
+/* Gift Card Product description */
+.aw-gc-product-form-description {
+    margin-bottom: 30px;
+}
+
+/* Gift Card Product form options */
+.aw-gc-product-add-form {
+    clear: both !important;
+    margin-top: 20px;
+    padding-top: 0 !important;
+}
+.aw-gc-product-form-options {
+    margin-bottom: 40px;
+}
+.page-product-giftcard .aw-gc-product-add-form .product-info-price {
+    float: none;
+}
+.aw-gc-product-form-options .fieldset .legend {
+    margin-left: 0;
+}
+.aw-gc-product-form-options__field-full-width {
+    display: block !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+}
+@media (min-width: 768px), print{
+    .page-product-giftcard .product-add-form .field:not(.text):nth-child(odd) {
+        padding-right: 25px;
+    }
+
+    .page-product-giftcard .product-add-form .field:not(.text) {
+        margin: 0 0 20px;
+        padding: 0 12px 0 0;
+        box-sizing: border-box;
+        display: inline-block;
+        width: 50%;
+        vertical-align: top;
+    }
+}
+.aw-gc-product-form-options__step-number {
+    display: inline-block;
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #333;
+    border-radius: 11px;
+    text-align: center;
+    font-size: 1.6rem;
+}
+.aw-gc-product-form-options__amount-control {
+    display: inline-block;
+    box-sizing: border-box;
+    margin-bottom: 0 !important;
+    width: 50%;
+    vertical-align: top;
+}
+.aw-gc-product-form-options__amount-control:last-child {
+    padding-left: 25px;
+}
+.aw-gc-product-form-options__template-options {
+    overflow: hidden;
+}
+.aw-gc-product-form-options__template-option {
+    float: left;
+    margin: 2px;
+    width: 150px;
+    height: 112px;
+    border: 3px solid transparent;
+    text-align: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+.aw-gc-product-form-options__template-option.selected,
+.aw-gc-product-form-options__template-option:hover {
+    border-color: #62bcf7;
+    text-decoration: none;
+}
+.aw-gc-product-form-options__template-image {
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+}
+.aw-gc-product-form-options__template-name {
+    display: block;
+    line-height: 112px;
+    background: #f0f0f0;
+}
+.aw-gc-product-form-options__template-name,
+.aw-gc-product-form-options__template-name:hover {
+    color: #8f8f8f;
+}
+.aw-gc-product-form-options__email {
+    margin-top: 15px;
+}
+.aw-gc-product-form-options__fromto, .aw-gc-product-form-options__delivery-date {
+    margin-bottom: 20px !important;
+}
+.aw-gc-product-form-options__delivery-date .control.delivery-date-name button {
+    height: 3.2rem;
+    margin-left: -3.2rem;
+    overflow: hidden;
+    position: absolute;
+    margin-top: -2px;
+}
+.aw-gc-product-form-options__email-content + .aw-gc-product-form-options__preview {
+    margin-top: 20px;
+}
+.aw-gc-product-form-options__email-content textarea {
+    vertical-align: top;
+}
+.page-product-giftcard .ui-timepicker-div dl dt {
+    height: auto;
+    margin-bottom: 0;
+}
+.page-product-giftcard .ui-timepicker-div dl dd {
+    margin: 0;
+}
+
+/* Gift Card Code block */
+.aw-giftcard-codes-block .box {
+    width: 25%;
+}
+.aw-giftcard-codes-block td {
+    padding: .3em;
+}
+.aw-giftcard-codes-block td.balance {
+    font-weight: 600;
+}
+
+/* Gift Card fieldset check on customer account */
+.fieldset.aw_giftcard__check {
+    margin-bottom: 15px;
+}
+
+/* Gift Card block on customer account, cart and checkout page */
+.aw-giftcard-codes-block .block-title span,
+#aw_giftcard__code_info .block-title span {
+    font-size: 2.2rem;
+    font-weight: 300;
+}
+.aw-giftcard-codes-block {
+    margin-bottom: 10px;
+}
+.aw-giftcard-codes-block .block-title {
+    margin-bottom: 5px;
+}
+.page-main .block.aw-giftcard-codes-block {
+    margin-bottom: 15px;
+}
+
+/* Gift Card block on checkout page */
+.aw-giftcard-totals .action-delete {
+    color: #333333;
+    border: none;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    font-weight: 400;
+    line-height: 1.42857143;
+    font-size: 1.4rem;
+    font-style: normal;
+    vertical-align: top;
+}
+.aw-giftcard-totals .action-delete .delete-icon::before {
+    content: '\e604';
+    font-family: 'luma-icons';
+}

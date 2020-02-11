@@ -1,0 +1,6 @@
+pub/errors/softstar/                                             pub/errors/softstar/
+pub/errors/local.xml                                             pub/errors/local.xml
+pub/errors_static/fonts/                                         pub/errors_static/fonts/
+pub/errors_static/images/                                        pub/errors_static/images/
+pub/errors/design.xml                                            pub/errors/design.xml
+pub/errors/404.php                                               pub/errors/404.php

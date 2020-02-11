@@ -1,0 +1,77 @@
+/* Gift Card Product edit page */
+.aw_gc_template_image .image-placeholder input[type="file"] {
+    border: 1px;
+    font-size: 1em;
+}
+.aw_gc_template_image .image {
+    margin: 0px
+}
+
+/* Gift Card Product grid */
+.aw-gc-product-grid-cell.templates ul {
+    list-style: none;
+}
+.aw-gc-product-grid-cell.templates ul li {
+    margin-bottom: 5px;
+}
+
+/* Gift Card code form */
+.aw-giftcard-admin-giftcard-edit .aw-giftcard-admin-bold-label-control .admin__field-control .aw-giftcard-admin-control-label {
+    font-weight: 600;
+}
+.aw-giftcard-admin-giftcard-edit .admin__field-control .aw-giftcard-admin-control-label {
+    line-height: 3.2rem;
+}
+.aw-giftcard-admin-file-uploader .file-uploader-preview {
+    border: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    height: 0;
+    line-height: 0;
+    margin-bottom: 0;
+    overflow: visible;
+    position: relative;
+    width: auto;
+}
+.aw-giftcard-admin-file-uploader .file-uploader-preview .actions {
+    position: absolute;
+    left: 100px;
+    bottom: -5px;
+}
+.aw-giftcard-admin-file-uploader .file-uploader .file-uploader-filename:first-child {
+    margin-bottom: 0;
+}
+
+/** Grid Import */
+.aw-giftcard__data-grid-action-import .admin__action-dropdown:before {
+    content: '\e636';
+    font-size: 1.7rem;
+    margin-right: 0.7rem;
+    vertical-align: top;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Admin Icons';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    speak: none;
+}
+.admin__data-grid-actions-wrap .aw-giftcard__data-grid-action-import .admin__action-dropdown:after {
+    display: none;
+}
+.admin__data-grid-actions-wrap .aw-giftcard__data-grid-action-import .admin__action-dropdown {
+    padding-right: 2rem;
+}
+.sticky-header .admin__data-grid-actions-wrap .aw-giftcard__data-grid-action-import .admin__action-dropdown {
+    padding-right: 0.6rem;
+}
+.aw_gc_template_image .file-uploader-preview .preview-image {
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    max-height: 100%;
+    max-width: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+}

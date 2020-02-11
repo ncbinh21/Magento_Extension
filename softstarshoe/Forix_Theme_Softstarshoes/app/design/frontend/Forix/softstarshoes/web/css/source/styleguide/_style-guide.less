@@ -1,0 +1,342 @@
+//
+//    Common
+//--------------------------------------
+
+& when (@media-common = true) {
+    .box-style-guide{
+        section{
+            margin:20px 0 30px;
+            clear: both;
+        }
+        > h2{
+            margin-top:20px;
+        }
+        > h3{
+            cursor: pointer;
+            padding: 10px;
+            background-color: #F3F3F3;
+            text-transform: uppercase;
+            .lib-font-size(35px);
+            position: relative;
+            z-index: -1;
+            &:after,
+            &:before{
+                content: '';
+                background: #F3F3F3;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                width: 400%;
+            }
+            &:before{
+                left: -400%;
+            }
+            &:after{
+                right: -400%;
+            }
+        }
+        .table-wrapper{
+            margin:0 0 30px;
+        }
+
+        // Icons
+        .icon-wapper.font{}
+        .icon-wapper.image{}
+        .icon-wapper.sprite {}
+        .no-list,
+        .typography-links > ul,
+        .guide-color-swatches{
+            .forix-lib-list-reset();
+            margin:0;
+            padding:0;
+            li{
+                margin:0 0 15px;
+            }
+        }
+        .header{
+            background:@color-gray90;
+        }
+        .footer{
+            background:@color-gray90;
+        }
+        .column.main{
+            background:@color-gray68;
+            min-height:200px;
+        }
+        .sidebar-main{
+            background:@color-gray82;
+            min-height:100px;
+        }
+        .sidebar-additional{
+            background:@color-gray82;
+            min-height:100px;
+        }
+        .page-wrapper{
+            section{
+                margin:0;
+            }
+        }
+        .account .column.main{
+            background: none;
+        }
+    }
+
+    //
+    // Colors Swatch
+    // --------------------------
+
+    .box-style-guide .guide-color-swatches {
+        //.lib-list-reset-styles();
+        li{
+            display:inline-block;
+            span{
+                display: inline-block;
+                width:32px;
+                height:32px;
+                //.lib-css(border-radius,50%);
+                .lib-text-hide();
+            }
+            span.color-theme-green{
+                background: @color-green;
+            }
+            span.color-theme-green-bold {
+                background: @color-green-bold;
+            }
+            span.color-theme-gray-1{
+                background: @color-gray-1;
+            }
+            span.color-theme-gray-2{
+                background: @color-gray-2;
+            }
+            span.color-theme-gray-3{
+                background: @color-gray-3;
+            }
+            span.color-theme-white{
+                background: @color-white;
+            }
+            span.color-theme-black{
+                background: @color-black;
+            }
+            a{
+                color:@color-black;
+                text-decoration: none;
+                position: relative;
+                top: 22px;
+                margin-left: 4px;
+            }
+        }
+    }
+
+    //
+    // Buttons
+    // --------------------------
+
+    .no-list,
+    section.typography-links ul{
+       // .lib-list-reset-styles();
+    }
+
+
+
+    //
+    // Grid Products
+    // --------------------------
+    section.grid{
+        position: relative;
+    }
+}
+
+//
+//    Mobile Options
+//--------------------------------------
+
+// [320,479]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__xxs) and (@break-max = @screen__xs) {
+    .guide-color-swatches{
+        max-width:100%;
+        li{
+            margin-right:30px;
+        }
+    }
+}
+
+// [480,639]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__xs) and (@break-max = @screen__s) {
+    .guide-color-swatches{
+        max-width:90%;
+        li{
+            margin-right:40px;
+        }
+    }
+}
+
+// [640,767]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__s) and (@break-max = @screen__m) {
+    .box-style-guide .guide-color-swatches{
+        max-width:80%;
+        li{
+            margin-right:50px;
+        }
+    }
+}
+
+//
+//    Desktop + Tablet Options
+//--------------------------------------
+// >= 768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .box-style-guide .guide-color-swatches{
+        li{
+            margin-right:50px;
+        }
+    }
+}
+
+// [768,1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    .box-style-guide .guide-color-swatches{
+        max-width:70%;
+    }
+}
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .box-style-guide .guide-color-swatches {
+        max-width: 50%;
+    }
+}
+
+// Extends
+//
+// Typography
+// --------------------------
+.link-type1{
+    &:extend(.forix-abs-link1 all);
+}
+.link-type2{
+    &:extend(.forix-abs-link2 all);
+}
+.link-type3{
+    &:extend(.forix-abs-link3 all);
+}
+.link-type4{
+    &:extend(.forix-abs-link4 all);
+}
+.link-type5{
+    &:extend(.forix-abs-link5 all);
+}
+.link-type6{
+    &:extend(.forix-abs-link6 all);
+}
+.link-type7{
+    &:extend(.forix-abs-link7 all);
+}
+.link-type8{
+    &:extend(.forix-abs-link8 all);
+}
+.link-type9{
+    &:extend(.forix-abs-link9 all);
+}
+.link-type10{
+    &:extend(.forix-abs-link10 all);
+}
+.link-type11{
+    &:extend(.forix-abs-link11 all);
+}
+.link-type12{
+    &:extend(.forix-abs-link12 all);
+}
+.link-type13{
+    &:extend(.forix-abs-link13 all);
+}
+.link-type14{
+    &:extend(.forix-abs-link14 all);
+}
+.link-type15{
+    &:extend(.forix-abs-link15 all);
+}
+.link-type16{
+    &:extend(.forix-abs-link16 all);
+}
+.link-type17{
+    &:extend(.forix-abs-link17 all);
+}
+.link-type18{
+    &:extend(.forix-abs-link18 all);
+}
+.link-type19{
+    &:extend(.forix-abs-link19 all);
+}
+.link-type20{
+    &:extend(.forix-abs-link20 all);
+}
+
+//
+// Buttons
+// --------------------------
+button.type1{
+    &:extend(.forix-abs-button-type1 all);
+}
+button.type2{
+    &:extend(.forix-abs-button-type2 all);
+}
+button.type3{
+    &:extend(.forix-abs-button-type3 all);
+}
+button.type4{
+    &:extend(.forix-abs-button-type4 all);
+}
+button.type5{
+    &:extend(.forix-abs-button-type5 all);
+}
+button.type6{
+    &:extend(.forix-abs-button-type6 all);
+}
+button.type7{
+    &:extend(.forix-abs-button-type7 all);
+}
+button.type8{
+    &:extend(.forix-abs-button-type8 all);
+}
+button.type9{
+    &:extend(.forix-abs-button-type9 all);
+}
+button.type10{
+    &:extend(.forix-abs-button-type10 all);
+}
+button.type11{
+    &:extend(.forix-abs-button-type11 all);
+}
+button.type12{
+    &:extend(.forix-abs-button-type12 all);
+}
+button.type13{
+    &:extend(.forix-abs-button-type13 all);
+}
+button.type14{
+    &:extend(.forix-abs-button-type14 all);
+}
+button.type15{
+    &:extend(.forix-abs-button-type15 all);
+}
+button.type16{
+    &:extend(.forix-abs-button-type16 all);
+}
+button.type17{
+    &:extend(.forix-abs-button-type17 all);
+}
+button.type18{
+    &:extend(.forix-abs-button-type18 all);
+}
+button.type19{
+    &:extend(.forix-abs-button-type19 all);
+}
+button.type20{
+    &:extend(.forix-abs-button-type20 all);
+}
+
+// Reset ul
+.box-style-guide .guide-color-swatches {
+    &:extend(.forix-abs-list-reset all);
+}
+
+// Accordion

@@ -1,0 +1,35 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Category view template
+ *
+ * @var $block \Magento\Catalog\Block\Category\View
+ */
+?>
+<?php
+    $_helper    = $this->helper('Magento\Catalog\Helper\Output');
+    $_category  = $block->getCurrentCategory();
+    $_imgHtml   = '';
+    $_imgTitle = $_category->getName();
+    $_imgAlt = $_category->getName();
+
+    if($_category->getSssImageTitleSeo()) {
+        $_imgTitle = $_category->getSssImageTitleSeo();
+    }
+    if($_category->getSssImageAltSeo()) {
+        $_imgAlt = $_category->getSssImageAltSeo();
+    }
+    if ($_imgUrl = $_category->getImageUrl()) {
+        $_imgHtml = '<div class="category-image"><img src="' . $_imgUrl . '" alt="' . $block->escapeHtml($_imgAlt) . '" title="' . $block->escapeHtml($_imgTitle) . '" class="image" /></div>';
+        $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
+        /* @escapeNotVerified */ echo $_imgHtml;
+    }
+?>

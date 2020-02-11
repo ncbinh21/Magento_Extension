@@ -1,0 +1,255 @@
+@use-checkout-authentication-core__enable: true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.checkout-container .minilogin-wrapper .action.showlogin:after,
+.checkout-container .minilogin-wrapper .action.showlogin span:after{
+    &:extend(.forix-abs-icon-base);
+}
+
+.checkout-container .minilogin-wrapper .action.showlogin span{
+    &:extend(.forix-abs-visually-hidden-reset all);
+}
+
+.popup-authentication .block-new-customer{
+    &:extend(.forix-abs-visually-hidden all);
+}
+
+.popup-authentication .block-new-customer .action-register{
+    &:extend(.abutton all);
+}
+
+.popup-authentication .block .block-title{
+    &:extend(.forix-abs-primary-title-size all);
+}
+
+.checkout-container .minilogin-wrapper .action.showlogin{
+    &:extend(.forix-abs-three-size all);
+}
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .checkout-container{
+        .minilogin-wrapper{
+            right: 10px;
+
+            .action.showlogin{
+                text-transform: uppercase;
+                display: inline-block;
+
+                &:before{
+                    display: none;
+                }
+
+                &:after{
+                    content: @font-awesome-sign-in;
+                    vertical-align: middle;
+                    line-height: 25px;
+                }
+
+                span{
+                    display: inline-block;
+                }
+            }
+
+            .block-authentication{
+                right: 0;
+
+                &:before{
+                    right: 20px;
+                }
+
+                &:after{
+                    right: 0;
+                    top: -30px;
+                    width: 100px;
+                    height: 30px;
+                }
+            }
+        }
+
+        .block-customer-login{
+            .actions-toolbar{
+                text-align: right;
+            }
+
+            .primary,
+            .secondary{
+                display: block;
+            }
+
+            .action.action-login{
+                min-width: 100%;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .popup-authentication{
+        .modal-header{
+            padding: 0;
+            min-height: 1px;
+        }
+
+        .block .block-title{
+            color: @three-text__color;
+            line-height: 25px;
+            text-transform: none;
+            margin-bottom: @forix-indent__base;
+        }
+
+        .block-customer-login{
+            .actions-toolbar{
+                > .primary{
+                    display: block;
+                    text-align: right;
+                    margin-top: -@forix-indent__l;
+                    margin-bottom: @forix-indent__base;
+                }
+
+                > .secondary{
+                    text-align: right;
+                    display: block;
+                }
+
+                .action{
+                    width: auto;
+                    margin: 0;
+                }
+            }
+        }
+
+        .checkout-cart-index & {
+            .block-customer-login {
+                .actions-toolbar {
+                    > .primary {
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+
+        .block-new-customer{
+            ul{
+                margin-bottom: @forix-indent__base;
+            }
+        }
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .checkout-container .minilogin-wrapper{
+        top: -55px;
+    }
+
+    .popup-authentication{
+        .modal-inner-wrap{
+            margin-top: 65px;
+            margin-bottom: 65px;
+        }
+
+        .modal-content{
+            padding: @forix-indent__l @forix-indent__s;
+        }
+
+        .block-customer-login,
+        .block-new-customer{
+            width: 100%;
+        }
+
+        .block-customer-login{
+            margin-bottom: @forix-indent__s;
+            padding-right: 0;
+        }
+
+        .block-new-customer{
+            padding-left: 0;
+            margin: 0 0 @forix-indent__s;
+        }
+    }
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    .checkout-container{
+        .block-customer-login{
+            .fieldset{
+                margin-bottom: @forix-indent__base;
+            }
+
+            .primary{
+                margin-bottom: @forix-indent__xm;
+            }
+        }
+
+        .minilogin-wrapper{
+            .action.showlogin{
+                &:after{
+                    font-size: 22px;
+                    margin-left: @forix-indent__xs;
+                }
+            }
+        }
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .popup-authentication{
+        .modal-inner-wrap{
+            margin-top: 90px;
+            margin-bottom: 90px;
+        }
+
+        .modal-content{
+            padding: @forix-indent__xl @forix-indent__xxl;
+        }
+
+        .block-customer-login,
+        .block-new-customer{
+            width: 100%;
+        }
+    }
+}
+
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    .checkout-container .minilogin-wrapper{
+        top: -70px;
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    .checkout-container{
+        .minilogin-wrapper{
+            top: -80px;
+
+            .action.showlogin{
+                &:after{
+                    font-size: 25px;
+                    margin-left: @forix-indent__xs;
+                }
+            }
+        }
+
+        .block-customer-login{
+            .fieldset{
+                margin-bottom: @forix-indent__s;
+            }
+
+            .primary{
+                margin-bottom: @forix-indent__xm;
+            }
+        }
+    }
+}

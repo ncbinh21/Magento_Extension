@@ -1,0 +1,67 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+?>
+<?php
+/**
+ * Category layered navigation
+ *
+ * @var $block \Magento\LayeredNavigation\Block\Navigation
+ */
+?>
+
+<?php if ($block->canShowBlock()): ?>
+    <?php $filtered = count($block->getLayer()->getState()->getFilters()) ?>
+    <?php echo $block->getChildHtml('state') ?>
+    <div class="block filter" id="layered-filter-block">
+        <div class="block-title filter-title"  data-before-text="<?php echo __('Filters') ?>" data-after-text="<?php echo __('Close') ?>"  data-count="<?php /* @escapeNotVerified */ echo $filtered; ?>">
+            <strong data-role="title"><?php /* @escapeNotVerified */ echo __('Shop By') ?></strong>
+        </div>
+        <div class="block-content filter-content">
+            <?php if ($block->getLayer()->getState()->getFilters()): ?>
+                <div class="block-actions filter-actions">
+                    <a href="<?php /* @escapeNotVerified */ echo $block->getClearUrl() ?>" class="action clear filter-clear" title="<?php /* @escapeNotVerified */ echo __('Clear Filter') ?>"><span><?php /* @escapeNotVerified */ echo __('Clear Filter') ?></span></a>
+                </div>
+            <?php endif; ?>
+            <?php $wrapOptions = false; ?>
+            <?php foreach ($block->getFilters() as $filter): ?>
+                <?php if ($filter->getItemsCount()): ?>
+                    <?php if (!$wrapOptions): ?>
+                        <strong role="heading" aria-level="2" class="block-subtitle filter-subtitle" data-mage-init='{"forix/toggle": {"toggleContainers": "#narrow-by-list", "selectorsToggleClass": "active", "newLabel": "<?php /* @escapeNotVerified */ echo __('Close') ?>", "curLabel":"<?php /* @escapeNotVerified */ echo __('Shopping Options') ?>","touchOutSite": false }}'><?php /* @escapeNotVerified */ echo __('Shopping Options') ?></strong>
+                        <div class="filter-options" id="narrow-by-list" data-role="content">
+                    <?php  $wrapOptions = true; endif; ?>
+                    <div data-role="collapsible" class="filter-options-item filter-<?php echo strtolower(str_replace(' ', '_', $filter->getName())) ?>">
+                        <div class="extra-filter-title no-display"><?php /* @escapeNotVerified */ echo __($filter->getName()) ?></div>
+                        <div data-role="title" class="filter-options-title"><?php /* @escapeNotVerified */ echo __($filter->getName()) ?></div>
+                        <?php if(in_array(get_class($filter), array('Magento\CatalogSearch\Model\Layer\Filter\Price'))): ?>
+                            <div data-role="content" class="filter-options-content"><?php echo $block->getChildBlock('renderer_price')->render($filter); ?></div>
+                        <?php else: ?>
+                            <div data-role="content" class="filter-options-content"><?php echo $block->getChildBlock('renderer')->render($filter); ?></div>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            <?php if ($wrapOptions): ?>
+                </div>
+            <?php else: ?>
+                <script>
+                    require([
+                        'jquery'
+                    ], function ($) {
+                        $('#layered-filter-block').addClass('filter-no-options');
+                    });
+                </script>
+            <?php endif; ?>
+        </div>
+    </div>
+    <script type="text/x-magento-init">
+    {
+        "*": {"Magento_LayeredNavigation/js/filtertop": {}}
+    }
+    </script>
+<?php endif; ?>
+

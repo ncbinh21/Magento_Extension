@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2017 x-mage2(Yosto). All rights reserved.
+ * See README.md for details.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="xmage2" translate="label" sortOrder="20">
+            <label>X-MAGE2</label>
+        </tab>
+    </system>
+</config>

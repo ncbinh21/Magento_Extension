@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2017 Amasty (https://www.amasty.com)
+ * @package Amasty_OrderStatus
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Sales\Model\Order\Config">
+        <plugin name="amasty_order_status_model_order_config"
+                type="Amasty\OrderStatus\Model\Order\Plugin\Config" sortOrder="1"
+                disabled="false"/>
+    </type>
+    <type name="Magento\Sales\Model\Order\Email\Sender\OrderCommentSender">
+        <plugin name="amasty_order_status_model_order_email_sender_plugin_order_comment_sender"
+                type="Amasty\OrderStatus\Model\Order\Email\Sender\Plugin\OrderCommentSender" sortOrder="1"
+                disabled="false"/>
+    </type>
+    <type name="Magento\Sales\Model\Order">
+        <plugin name="amasty_order_status_model_plugin_order"
+                type="Amasty\OrderStatus\Model\Plugin\Order" sortOrder="1"
+                disabled="false"/>
+    </type>
+    <type name="Magento\Sales\Model\Order\Status\History">
+        <plugin name="amasty_order_status_model_order_plugin_status_plugin_history"
+                type="Amasty\OrderStatus\Model\Order\Status\Plugin\History" sortOrder="1"
+                disabled="false"/>
+    </type>
+    <type name="Magento\Sales\Model\ResourceModel\Order\Status\Collection">
+        <plugin name="amasty_order_status_model_order_status_plugin_collection"
+                type="Amasty\OrderStatus\Model\ResourceModel\Order\Status\Plugin\Collection" sortOrder="1"
+                disabled="false"/>
+    </type>
+</config>

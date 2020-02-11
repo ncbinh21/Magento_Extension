@@ -1,0 +1,81 @@
+<?php
+/**
+ * @see \Mirasvit\Seo\Block\Adminhtml\System\Config\RemoveParentCategoryPath
+ */
+?>
+
+<script>
+require(["prototype"], function(){
+//<![CDATA[
+    function mRemoveCategoryPath() {
+        var validationMessage = $('removecategorypath_result');
+
+        new Ajax.Request('<?php /* @escapeNotVerified */ echo $block->getAjaxUrl() ?>', {
+            onSuccess: function(response) {
+                var result = '<?php /* @escapeNotVerified */ echo __('Error during remove category path.') ?>';
+                try {
+                    if (response.responseText.isJSON()) {
+                        response = response.responseText.evalJSON();
+                        result = response.message;
+                    }
+                    if (response.valid == 1) {
+                        validationMessage.removeClassName('hidden').addClassName('success')
+                    } else {
+                        validationMessage.removeClassName('hidden').addClassName('error')
+                    }
+                } catch (e) {
+                    validationMessage.removeClassName('hidden').addClassName('error')
+                }
+                validationMessage.update(result);
+            }
+        });
+    }
+
+    window.mRemoveCategoryPath = mRemoveCategoryPath;
+//]]>
+
+});
+</script>
+
+<script>
+require([
+    "jquery",
+    'Magento_Ui/js/modal/modal',
+    "jquery/ui",
+    "prototype",
+    "mage/translate"
+    ], function(jQuery, modal){
+//<![CDATA[
+        function mRemoveCategoryPathMessage() {
+            jQuery('[data-id="information-dialog-removecategorypath-message"]').modal({
+                    modalClass: 'confirm',
+                    title:  jQuery.mage.__('Attention'),
+                    buttons: [{
+                        text: 'Cancel',
+                        class: 'action-secondary',
+                        click: function () {
+                            this.closeModal();
+                        }
+                    }, {
+                        text: 'Ok',
+                        class: 'action-primary',
+                        click: function () {
+                           this.closeModal();
+                           mRemoveCategoryPath();
+                        }
+                    }]
+
+                }).trigger('openModal');
+        }
+
+        window.mRemoveCategoryPathMessage = mRemoveCategoryPathMessage;
+//]]>
+});
+</script>
+
+<div class="actions actions-remove-category-path">
+    <div id="removecategorypath_result" class="message-removecategorypath hidden"></div>
+    <button onclick="javascript:mRemoveCategoryPathMessage(); return false;" class="action-remove-category-path" type="button" id="<?php echo $block->getHtmlId() ?>">
+        <span><?php echo $block->escapeHtml($block->getButtonLabel()) ?></span>
+    </button>
+</div>

@@ -1,0 +1,34 @@
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.page-print .pager{
+    &:extend(.forix-abs-clearfix all);
+}
+
+.page-print .pager .limiter{
+    &:extend(.forix-abs-visually-hidden all);
+}
+// ------------------------------------
+// Variables Extends
+// ------------------------------------
+
+// ------------------------------------
+// Extend Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .page-print{
+        .logo {
+            display: block;
+            float: none;
+            text-align: left;
+        }
+
+        .nav-toggle,
+        .nav-toggle-close,
+        .copyright,
+        .page-promotions{
+            display: none;
+        }
+    }
+}

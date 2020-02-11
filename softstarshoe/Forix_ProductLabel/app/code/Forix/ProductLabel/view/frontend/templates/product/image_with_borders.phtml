@@ -1,0 +1,67 @@
+<?php
+/*************************************************
+ * *
+ *  *
+ *  * Copyright © 2017 Forix. All rights reserved.
+ *  * See COPYING.txt for license details.
+ *
+ */
+
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php /** @var $block \Magento\Catalog\Block\Product\Image */ ?>
+
+<?php
+$productLabelCollection = $block->getData('product_label');
+
+?>
+<span class="product-image-container"
+      style="width:<?php /* @escapeNotVerified */ echo $block->getWidth()?>px;">
+    <span class="product-image-wrapper"
+          style="padding-bottom: <?php /* @escapeNotVerified */ echo ($block->getRatio() * 100); ?>%;">
+        <img class="product-image-photo"
+            <?php /* @escapeNotVerified */ echo $block->getCustomAttributes(); ?>
+             src="<?php /* @escapeNotVerified */ echo $block->getImageUrl(); ?>"
+             width="<?php /* @escapeNotVerified */ echo $block->getResizedImageWidth(); ?>"
+             height="<?php /* @escapeNotVerified */ echo $block->getResizedImageHeight(); ?>"
+             alt="<?php /* @escapeNotVerified */ echo $block->stripTags($block->getLabel(), null, true); ?>"
+             title="<?php echo $block->getLabel(); ?>"
+        />
+    </span>
+    <?php if ($productLabelCollection->getSize() > 0): ?>
+        <?php
+        $first = true;
+        $lastItemId = $productLabelCollection->getLastItem()->getId();
+        $hasSpan = false;
+        $position = '';
+        /** @var \Forix\ProductLabel\Model\Rule $label */
+        foreach ($productLabelCollection as $label):?>
+            <?php if ($label->getCategoryPosition() != $position): ?>
+                <?php if (!$first) :?>
+                    <?php echo '</span>';?>
+                <?php endif;?>
+                <?php
+                    $first = false;
+                    $position = $label->getCategoryPosition();?>
+                <span class="product-label-info <?php /* @escapeNotVerified */ echo $label->getCategoryPosition()?>">
+            <?php endif;?>
+            <span class="product-label <?php /* @escapeNotVerified */ echo $label->getTypeClass()?>"
+                  style="<?php /* @escapeNotVerified */ echo $label->getCategoryCssBackground() ?>">
+            <?php if ($label->getCategoryImage()):?>
+                <img class="label"
+                     src="<?php /* @escapeNotVerified */ echo $label->getCategoryImageUrl()?>">
+            <?php else:?>
+                <span class="text-label">
+                    <?php /* @escapeNotVerified */echo $label->getCategoryText()?>
+                </span>
+            <?php endif;?>
+            </span>
+            <?php if ($lastItemId == $label->getId()): ?>
+                <?php echo '</span>'; ?>
+            <?php endif;?>
+        <?php endforeach;?>
+    <?php endif;?>
+</span>

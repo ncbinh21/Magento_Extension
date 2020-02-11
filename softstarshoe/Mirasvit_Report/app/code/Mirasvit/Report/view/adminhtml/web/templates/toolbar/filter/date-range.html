@@ -1,0 +1,27 @@
+<div class="reports__toolbar-daterangepicker">
+    <div type="text" class="admin__control-text daterangepicker-input hasDatepicker"
+         data-bind="daterangepicker: {
+                    storageFrom: from,
+                    storageTo: to,
+                    storageCompareFrom: compareFrom,
+                    storageCompareTo: compareTo,
+                    storageComparisonEnabled: comparisonEnabled,
+                    options: {
+                        ranges: intervals,
+                        values: {
+                            dr1from: from(),
+                            dr1to: to(),
+                            dr2from: compareFrom(),
+                            dr2to: compareTo(),
+                            comparisonEnabled: comparisonEnabled(),
+                        },
+                        date: [from(), to()],
+                        locale: {
+                            months: locale.months.wide,
+                            monthsShort: locale.months.abbreviated,
+                            daysMin: locale.days.abbreviated
+                        }
+                    }
+               }"></div>
+    <span class="daterangepicker-trigger"></span>
+</div>

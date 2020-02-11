@@ -1,0 +1,71 @@
+@use-dropdown-extend-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .forix-abs-dropdown-content{
+        box-shadow: 0 0 3px 0 rgba(0,0,0,0.2);
+        background: @color-white;
+        z-index: 100;
+        list-style: none none;
+        position: absolute;
+        padding: 18px;
+        color: @sss-color-1;
+        width: 305px;
+        .border-radius(8px);
+        top: 40px;
+        left: 50%;
+        margin-left: -152px;
+
+        &:after, &:before {
+            bottom: 100%;
+            left: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+        }
+
+        &:after {
+            border-color: rgba(255, 255, 255, 0);
+            border-bottom-color: #ffffff;
+            border-width: 13px;
+            margin-left: -13px;
+        }
+        &:before {
+            border-color: rgba(255, 255, 255, 0);
+            border-bottom-color: @sss-color-4;
+            border-width: 15px;
+            margin-left: -15px;
+        }
+    }
+    .forix-abs-dropdown-title{
+        .lib-font-size(18px);
+        font-family: @forix-font-family__secondary;
+        position: relative;
+        padding: 0 0 20px;
+        overflow: hidden;
+        &:after{
+            content: '';
+            background: url(../images/menu-border.png) no-repeat center;
+            background-size: 100%;
+            height: 4px;
+            position: absolute;
+            bottom: 10px;
+            left: -18px;
+            right: -18px;
+        }
+    }
+}

@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="category_product_listing_default"/>
+    <body>
+        <referenceContainer name="content">
+            <!--<block class="Magento\Catalog\Block\Category\View" name="category.description" as="category_description" template="Forix_ProductListTemplate::category/description.phtml" />-->
+            <block class="Magento\Catalog\Block\Category\View" name="category.products" template="Magento_Catalog::category/products.phtml">
+                <block class="Magento\Catalog\Block\Product\ListProduct" name="category.products.list" as="product_list" template="Forix_ProductListTemplate::list_clearance.phtml">
+                    <container name="category.product.list.additional" as="additional" />
+                    <block class="Magento\Framework\View\Element\RendererList" name="category.product.type.details.renderers" as="details.renderers">
+                        <block class="Magento\Framework\View\Element\Template" name="category.product.type.details.renderers.default" as="default"/>
+                    </block>
+                    <block class="Magento\Catalog\Block\Product\ProductList\Item\Container" name="category.product.addto" as="addto">
+                        <block class="Magento\Catalog\Block\Product\ProductList\Item\AddTo\Compare"
+                               name="category.product.addto.compare" as="compare"
+                               template="Magento_Catalog::product/list/addto/compare.phtml"/>
+                    </block>
+                    <block class="Magento\Catalog\Block\Product\ProductList\Toolbar" name="product_list_toolbar" template="Magento_Catalog::product/list/toolbar.phtml">
+                        <block class="Magento\Theme\Block\Html\Pager" name="product_list_toolbar_pager"/>
+                    </block>
+                    <action method="setToolbarBlockName">
+                        <argument name="name" xsi:type="string">product_list_toolbar</argument>
+                    </action>
+                </block>
+            </block>
+            <referenceContainer name="sidebar.additional" remove="true" />
+        </referenceContainer>
+        <referenceBlock name="category.description">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Forix_ProductListTemplate::category/read-more-content.phtml</argument>
+            </action>
+            <arguments>
+                <argument name="attribute_code" xsi:type="string">description</argument>
+                <argument name="max_line_num" xsi:type="number">3</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceBlock name="page.main.title" remove="true" />
+        <referenceBlock name="breadcrumbs" remove="true" />
+        <!--<move element="catalog.category.child.tab" destination="columns.top" as="clearance.catalog.category.child.tab" before="category.view.container"/>-->
+        <move element="catalog.category.child.tab" destination="columns.top" as="clearance.catalog.category.child.tab" before="-"/>
+        <move element="category.description" destination="columns.top" after="catalog.category.child.tab"/>
+        <move element="category.modal.cms" destination="columns.top" after="category.description"/>
+        <move element="split-content" destination="columns.top" after="category.description"/>
+
+        <referenceBlock name="category.view.tab.container" remove="true" />
+    </body>
+</page>

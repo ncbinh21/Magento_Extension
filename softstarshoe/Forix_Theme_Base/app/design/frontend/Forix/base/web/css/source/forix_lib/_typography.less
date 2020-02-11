@@ -1,0 +1,45 @@
+.forix-lib-font-face-loop(@count) when (@count > 0)
+    and not (@forix-font-face-list = '')
+    and not (@forix-font-face-list = false){
+    .forix-lib-font-face-loop((@count - 1));
+    @font-face-item: extract(@forix-font-face-list, @count);
+    @font-styles: "forix-font-face-style__@{font-face-item}";
+    .forix-lib-font-face-loop-style(@font-face-item; length(@@font-styles));
+}
+
+.forix-lib-font-face-loop-style(@font-name; @count) when (@count > 0) {
+    .forix-lib-font-face-loop-style(@font-name; (@count - 1));
+    @font-styles: "forix-font-face-style__@{font-name}";
+    @font-family: "forix-font-face-name__@{font-name}";
+
+    @font-style: extract(@@font-styles, @count);
+    @font-path: "forix-font-face-path__@{font-name}";
+    @font-path-value: @@font-path;
+
+    @font-weight-value: replace(~"@{font-style}", "(normal|italic)", '');
+    @font-style-value: replace(~"@{font-style}", "(100|200|300|400|500|600|700|800|900)", '');
+    .forix-lib-font-face(@@font-family, "@{font-path-value}@{font-style}", @font-weight-value, @font-style-value);
+}
+
+.forix-lib-font-face(
+    @family-name,
+    @font-path,
+    @font-weight: normal,
+    @font-style: normal
+) {
+    @font-face {
+        font-family: @family-name;
+        src: url('@{font-path}.eot');
+        src: url('@{font-path}.eot?#iefix') format('embedded-opentype'),
+        url('@{font-path}.woff') format('woff'),
+        url('@{font-path}.ttf') format('truetype'),
+        url('@{font-path}.svg#@{family-name}') format('svg');
+        font-weight: @font-weight;
+        font-style: @font-style;
+        font-stretch: normal;
+    }
+}
+
+.forix-lib-list-reset(){
+    list-style: none;
+}

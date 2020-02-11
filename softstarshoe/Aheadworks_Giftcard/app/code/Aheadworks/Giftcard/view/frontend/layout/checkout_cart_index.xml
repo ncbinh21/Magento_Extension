@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Aheadworks_Giftcard::css/style.css"/>
+    </head>
+    <body>
+        <referenceBlock name="checkout.cart.totals">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="block-totals" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="aw-giftcard" xsi:type="array">
+                                    <item name="component" xsi:type="string">Aheadworks_Giftcard/js/view/checkout/summary/giftcard</item>
+                                    <item name="sortOrder" xsi:type="string">25</item>
+                                    <item name="config" xsi:type="array">
+                                        <item name="isAjaxRemoveLink" xsi:type="boolean">false</item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+        <referenceContainer name="cart.summary">
+            <block class="Aheadworks\Giftcard\Block\Checkout\Cart\Giftcard" name="checkout.cart.aw.giftcard"
+                   as="aw_giftcard" template="Aheadworks_Giftcard::checkout/cart/giftcard.phtml" before="checkout.cart.methods.bottom" cacheable="false">
+                <block class="Aheadworks\Giftcard\Block\Customer\Giftcard\Codes" name="aw_giftcard_codes" as="giftcard_codes" />
+            </block>
+        </referenceContainer>
+        <move element="checkout.cart.aw.giftcard" destination="cart.discount" after="-"/>
+    </body>
+</page>

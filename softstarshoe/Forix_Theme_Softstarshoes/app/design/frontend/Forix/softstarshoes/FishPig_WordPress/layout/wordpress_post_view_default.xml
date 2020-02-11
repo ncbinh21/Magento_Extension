@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * This is the default layout for all post type view pages.
+ * All post types inherit this layout and have their own specific layout file
+ * Create any wordpress_posttype_view.xml files (where posttype is the actual post type) to target a specific post type
+ * To target the default posts, create wordpress_post_view.xml
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<body>
+		<referenceBlock name="head.additional">
+			<block class="FishPig\WordPress\Block\Post\View" name="weltpixel.facebook.opengraph.blog" template="FishPig_WordPress::post/view/facebookopengraph_head.phtml" />
+		</referenceBlock>
+		<referenceContainer name="content">
+			<block class="FishPig\WordPress\Block\Post\View" name="post_breadcrumb_top" template="post/view/breadcrumb.phtml" before="wp.post.view"/>
+			<block class="FishPig\WordPress\Block\Post\View" name="post_related" template="post/view/related_post.phtml" after="sidebar.main"/>
+		</referenceContainer>
+		<move element="post_breadcrumb_bottom" destination="content" after="post_related" />
+	</body>
+</page>

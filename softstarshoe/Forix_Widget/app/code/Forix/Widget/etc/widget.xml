@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Copyright ©. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget class="Forix\Widget\Block\Widget\CategoryList" id="category_list_widget">
+        <label translate="true">Category List</label>
+        <description>Show Name of Category</description>
+    </widget>
+</widgets>

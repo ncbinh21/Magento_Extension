@@ -1,0 +1,159 @@
+.instagram-page-modal-content .product-info-stock-sku {
+display: none;
+}
+/*Media queries*/
+@media screen and (max-width: 768px) {
+    .instagram-page-modal-content .quickshop-media {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .instagram-page-modal-content .quickshop-product-detail {
+        width: 100%;
+    }
+
+    .instagram-page-modal-content .product.attribute.overview {
+        width: 100%;
+    }
+
+    .instagram-page-modal-content .product-info-stock-sku {
+
+    }
+
+    .instagram-page-modal-content .price-box.price-final_price {
+    }
+
+    .instagram-page-modal-content .shop-now-wrapper {
+        width: 100%;
+    }
+
+    .instagram-page-modal-content {
+        box-sizing: border-box;
+    }
+
+    .product-info-price {
+        width: 100% !important;
+    }
+    .instagram-shopping-page-aside.modal-popup .action-close{
+        right: 0px;
+        top: -5px;
+    }
+    .instagram-shopping-page-aside.modal-popup .action-close:after{
+        font-size: 18px !important;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .instagram-page-modal-content .quickshop-media {
+        width: 58%;
+    }
+
+    .instagram-page-modal-content .quickshop-product-detail {
+        width: 39%;
+    }
+
+    .instagram-page-modal-content .product-info-stock-sku {
+        display: none;
+    }
+
+    .instagram-page-modal-content .product.attribute.overview {
+        width: 39%;
+    }
+    .instagram-page-modal-content .product.attribute.overview .product-description{
+        font-size: 14px;
+        color: #333;
+    }
+    .instagram-page-modal-content .price-box.price-final_price {
+        float: left;
+    }
+
+    .instagram-page-modal-content .shop-now-wrapper {
+        width: 39%;
+    }
+}
+
+/*End media queries*/
+
+.instagram-page-modal-content {
+    overflow-y: auto;
+}
+
+.instagram-page-modal-content .quickshop-product-detail {
+    float: right;
+}
+
+.instagram-page-modal-content .product.attribute.overview {
+    float: right;
+}
+
+.instagram-page-modal-content .product-sku {
+    float: right;
+}
+
+.instagram-page-modal-content img.lb-image {
+    display: block !important;
+    width: 100% !important;
+}
+
+.instagram-page-modal-content #lightbox {
+    float: left;
+    box-sizing: border-box;
+}
+.instagram-page-modal-content #lightbox:hover {
+    opacity: 0.8;
+}
+.instagram-page-modal-content .page-title {
+    /*! margin-left: 25px; */
+}
+
+.instagram-shopping-page-aside {
+    overflow-y: visible;
+}
+
+.instagram-page-modal-content .shop-now-wrapper {
+    float: right;
+}
+
+.instagram-page-modal-content .shop-now-btn {
+    float: left;
+    width: 231px;
+}
+
+.instagram-shopping-page-aside .modal-inner-wrap {
+
+}
+
+.instagram-shopping-page-aside .shopping-page-close {
+}
+
+.instagram-shopping-page-aside .page-title-wrapper.product.quickshop-title {
+    display: flex;
+    margin: 0 0 7px;
+    /* justify-content: center; */
+}
+
+.instagram-shopping-page-aside .modal-header {
+    padding: 0 !important;
+    min-height: 0;
+}
+.instagram-page-modal-content .block-addFrom #addFrom{
+    color: #888888;
+    font-size: 16px;
+    font-family: "Indie Flower";
+    display: table-cell;
+    vertical-align: middle;
+}
+.instagram-page-modal-content .block-addFrom .product-info-price{
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 8px;
+    padding-top: 0;
+    float: none;
+}
+.instagram-page-modal-content .block-addFrom .product-info-price .price-box .price{
+    color: #3C3B4B;
+    font-size: 20px;
+    font-weight: 600;
+
+
+}

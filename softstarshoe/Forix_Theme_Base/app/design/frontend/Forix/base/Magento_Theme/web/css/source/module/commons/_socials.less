@@ -1,0 +1,134 @@
+@use-box-socials-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.box-socials{
+    &:extend(.items);
+}
+
+// ------------------------------------
+// Variables Extends
+// ------------------------------------
+
+// ------------------------------------
+// Extend Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .box-socials{
+        &:extend(.forix-abs-clearfix all);
+    }
+    .box-socials li{
+        vertical-align: top;
+        display: inline-block;
+        float: left;
+        margin-bottom: 5px;
+        margin-right: 5px;
+        &:last{
+            margin-right:0;
+        }
+    }
+    .box-socials a{
+        background: @color-gray-1;
+        display: block;
+        text-align: center;
+        color:@color-white;
+        font: ~'0/0 a';
+
+        &:hover{
+            opacity:0.8;
+        }
+
+        &:before{
+            content: @font-awesome-twitter;
+            font-family: @icons__font-name;
+            vertical-align: top;
+            display: inline-block;
+            font-weight: normal;
+            overflow: hidden;
+            speak: none;
+            text-align: center;
+        }
+    }
+    .box-socials li.twitter a{
+        background: #79ccf0;
+    }
+    .box-socials li.facebook a{
+        background: #547bbd;
+
+        &:before{
+            content: @font-awesome-facebook;
+        }
+    }
+    .box-socials li.instagram a{
+        background: #696969;
+
+        &:before{
+            content: @font-entypo-instagram;
+        }
+    }
+    .box-socials li.pinit a{
+        background: #eb5755;
+
+        &:before{
+            content: @font-awesome-pinterest;
+        }
+    }
+}
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+
+    .box-socials a{
+        width: 34px;
+        height: 34px;
+
+        &:before{
+            font-size: 16px;
+            line-height: 34px;
+        }
+    }
+}
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+}
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+
+    .box-socials li.facebook a{
+        &:before {
+            font-size: 14px;
+        }
+    }
+}
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+
+    .box-socials a{
+        width: 34px;
+        height: 34px;
+
+        &:before{
+            font-size: 16px;
+            line-height: 34px;
+        }
+    }
+}
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    .box-socials a{
+        width: 44px;
+        height: 44px;
+
+        &:before{
+            font-size: 20px;
+            line-height: 44px;
+        }
+    }
+    .box-socials li.facebook a{
+        &:before {
+            font-size: 18px;
+        }
+    }
+}

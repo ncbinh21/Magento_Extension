@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Mirasvit_Seo::seo" title="Advanced SEO Suite" module="Mirasvit_Seo" sortOrder="100"
+             resource="Mirasvit_Seo::seo" parent="Magento_Backend::marketing"/>
+
+        <add id="Mirasvit_Seo::seo_template" title="Templates" module="Mirasvit_Seo" sortOrder="10"
+             action="seo/template" resource="Mirasvit_Seo::seo" parent="Mirasvit_Seo::seo"/>
+
+        <add id="Mirasvit_Seo::seo_redirect" title="Redirects" module="Mirasvit_Seo" sortOrder="20"
+             action="seo/redirect" resource="Mirasvit_Seo::seo" parent="Mirasvit_Seo::seo"/>
+
+        <add id="Mirasvit_Seo::seo_rewrite" title="SEO Rewrites" module="Mirasvit_Seo" sortOrder="30"
+             action="seo/rewrite" resource="Mirasvit_Seo::seo" parent="Mirasvit_Seo::seo"/>
+
+        <add id="Mirasvit_Seo::seo_canonicalRewrite" title="Canonical Rewrite" module="Mirasvit_Seo" sortOrder="40"
+             action="seo/canonicalRewrite" resource="Mirasvit_Seo::seo" parent="Mirasvit_Seo::seo"/>
+
+        <add id="Mirasvit_Seo::seoautolink_link" title="Autolinks" module="Mirasvit_Seo" sortOrder="50"
+             action="seoautolink/link" resource="Mirasvit_Seo::seo" parent="Mirasvit_Seo::seo"/>
+
+        <remove id="Magento_Sitemap::catalog_sitemap" />
+        <add id="Mirasvit_Seo::catalog_sitemap" title="Site Map" module="Mirasvit_Seo" sortOrder="60" parent="Mirasvit_Seo::seo" action="adminhtml/sitemap/" resource="Magento_Sitemap::sitemap"/>
+
+        <add id="Mirasvit_Seo::seo_settings" title="Settings" module="Mirasvit_Seo" sortOrder="70"
+             action="adminhtml/system_config/edit/section/seo" resource="Mirasvit_Seo::seo" parent="Mirasvit_Seo::seo"/>
+
+    </menu>
+</config>

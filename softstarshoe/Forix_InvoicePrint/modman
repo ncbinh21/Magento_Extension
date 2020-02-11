@@ -1,0 +1,3 @@
+app/code/Forix/InvoicePrint/                                           app/code/Forix/InvoicePrint/
+pub/media/sales/invoice/print/                                         pub/media/sales/invoice/print/
+lib/internal/CatamaranFont/                                            lib/internal/CatamaranFont/

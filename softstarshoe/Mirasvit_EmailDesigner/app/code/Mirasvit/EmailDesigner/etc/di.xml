@@ -1,0 +1,21 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Mirasvit\EmailDesigner\Api\Service\Variable\OrderVariableInterface"
+                type="Mirasvit\EmailDesigner\Model\Variable\Order"/>
+
+    <preference for="Mirasvit\EmailDesigner\Api\Repository\TemplateRepositoryInterface"
+                type="Mirasvit\EmailDesigner\Repository\TemplateRepository"/>
+
+    <type name="Mirasvit\EmailDesigner\Model\Variable\Pool">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="filters" xsi:type="object">Mirasvit\EmailDesigner\Model\Variable\Filters</item>
+                <item name="store" xsi:type="object">Mirasvit\EmailDesigner\Model\Variable\Store</item>
+                <item name="quote" xsi:type="object">Mirasvit\EmailDesigner\Model\Variable\Quote</item>
+                <item name="customer" xsi:type="object">Mirasvit\EmailDesigner\Model\Variable\Customer</item>
+                <item name="order" xsi:type="object">Mirasvit\EmailDesigner\Model\Variable\Order</item>
+                <item name="wishlist" xsi:type="object">Mirasvit\EmailDesigner\Model\Variable\Wishlist</item>
+                <item name="item" xsi:type="object">Mirasvit\EmailDesigner\Model\Variable\Item</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

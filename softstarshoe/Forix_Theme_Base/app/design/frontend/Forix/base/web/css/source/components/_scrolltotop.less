@@ -1,0 +1,93 @@
+@use-back-to-top-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.back-to-top{
+    &:extend(.forix-abs-primary-size all);
+}
+
+.back-to-top span:before{
+    &:extend(.forix-abs-icon-base all);
+}
+
+.back-to-top span:before{
+    &:extend(.forix-abs-three-size all);
+}
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .back-to-top{
+        color: @secondary-text__color;
+        font-weight: @forix-font-weight__bold;
+        cursor: pointer;
+        background: @secondary-background__color;
+        width: auto;
+
+        span {
+            text-decoration: none;
+            display: block;
+
+            &:before {
+                ont-weight: normal;
+                vertical-align: middle;
+                color: inherit;
+                line-height: inherit;
+                display: inline-block;
+                content: @font-awesome-chevron-up;
+            }
+        }
+    }
+}
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .back-to-top{
+        text-align: center;
+        margin: 0 -@forix-indent__s @forix-indent__xm;
+    }
+}
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    .back-to-top{
+        display: block;
+        float: none;
+        padding: 0 @forix-indent__s;
+        line-height: 44px;
+
+        span{
+            &:before{
+                margin: -4px @forix-indent__xs 0 0;
+            }
+        }
+    }
+}
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    .back-to-top{
+        text-align: left;
+        margin: 0 0 @forix-indent__xm;
+    }
+}
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    .back-to-top{
+        display: inline-block;
+        text-align: left;
+        float: left;
+        margin: 0;
+        padding: 0 @forix-indent__m;
+        line-height: 50px;
+
+        span{
+            &:before{
+                margin: -6px @forix-indent__xs 0 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,43 @@
+<?php
+    if ($isEnabled = $this->isEnabled()) {
+        $blogCategory = $this->getBlogCategory();
+        $postList = $blogCategory->getPostList();
+    }
+?>
+<?php if ($isEnabled ): ?>
+    <?php foreach ($postList as $post): ?>
+        <script type="application/ld+json">
+        { "@context": "http://schema.org",
+         "@type": "BlogPosting",
+         "headline": "<?php echo $post->getName() ?>",
+         "description": "<?php echo $blogCategory->getPreparedContent($post) ?>",
+         "articleBody": "<?php echo $blogCategory->getPreparedContent($post) ?>",
+         "url": "<?php echo $post->getUrl() ?>",
+         "datePublished": "<?php echo $blogCategory->getDatePublished($post) ?>",
+         "dateModified": "<?php echo $blogCategory->getDatePublished($post) ?>",
+         "author": {
+            "@type": "Person",
+            "name": "<?php echo $blogCategory->getAuthorName($post) ?>"
+         },
+         "publisher": {
+            "@type": "Organization",
+            "name": "<?php echo $blogCategory->getPublisherName($post) ?>",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "<?php echo $blogCategory->getLogoUrl() ?>"
+            }
+         },
+         "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "<?php echo $post->getUrl() ?>"
+          },
+         "image": {
+            "@type": "ImageObject",
+            "url": "<?php echo $blogCategory->getLogoUrl() ?>",
+            "width": "<?php echo $blogCategory->getImageWith() ?>",
+            "height": "<?php echo $blogCategory->getImageHeight() ?>"
+          }
+         }
+        </script>
+    <?php endforeach; ?>
+<?php endif; ?>

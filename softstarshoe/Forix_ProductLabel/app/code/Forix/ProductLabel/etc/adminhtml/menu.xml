@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+  ~ /**
+  ~  *
+  ~  * Copyright © 2017 Forix. All rights reserved.
+  ~  * See COPYING.txt for license details.
+  ~  */
+  -->
+<config	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Forix_ProductLabel::label" title="Product Badges" module="Forix_ProductLabel" sortOrder="100" parent="Magento_Catalog::catalog" resource="Forix_ProductLabel::label"/>
+        <add id="Forix_ProductLabel::rule_label" title="Manage Badge Rules" module="Forix_ProductLabel" sortOrder="10" parent="Forix_ProductLabel::label" action="productlabel/rule/" resource="Forix_ProductLabel::rule_label"/>
+    </menu>
+</config>

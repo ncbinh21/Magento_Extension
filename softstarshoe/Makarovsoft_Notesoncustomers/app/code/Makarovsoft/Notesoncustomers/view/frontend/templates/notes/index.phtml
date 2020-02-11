@@ -1,0 +1,23 @@
+<?php /** @var $this Makarovsoft\Notesoncustomers\Block\Notes\Index */ ?>
+<?php $notes = $this->getNotes() ?>
+<div>  
+    <?php if ($notes->count()): ?>       
+		<style>
+		.makarovsoft-cnote {
+			padding: 10px;
+			background: #f5f5f5;
+			margin-bottom: 10px;
+		}
+		</style>
+        <?php foreach ($notes as $note): ?>
+			<div class="makarovsoft-cnote">
+				<i><?php echo $note->getFirstname()?></i>, <?php echo $this->formatDate($note->getCreatedAt())?>:
+                                <br />
+                                <?php echo $note->getNote() ?> 
+			</div>
+		<?php endforeach; ?>            
+    <?php else:?>
+
+		<div class="message info empty"><span></span><?php echo __('List is empty');?></span></div>
+    <?php endif; ?>
+</div>

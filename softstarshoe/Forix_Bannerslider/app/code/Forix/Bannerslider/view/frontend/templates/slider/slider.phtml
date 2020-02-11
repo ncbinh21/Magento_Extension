@@ -1,0 +1,111 @@
+<?php
+
+/**
+ * Forix
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Forix.com license that is
+ * available through the world-wide-web at this URL:
+ *
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Forix
+ * @package     Forix_Bannerslider
+ * @copyright   Copyright (c) 2012 Forix (http://www.forixwebdesign.com/)
+ * @license
+ */
+
+?>
+<?php
+/** @var \Forix\Bannerslider\Block\SliderItem $block */
+$htmlId   = $block->getFlexsliderHtmlId();
+$bannerCollection = $block->getBannerCollection();
+$bannerHelper = $this->helper('Forix\Bannerslider\Helper\Data');
+$slider = $block->getSlider();
+$isCurrentHttps = $block->isCurrentHttps();
+?>
+<div class="forix-bannerslider-standard loading">
+    <div id="<?php echo $htmlId ?>" class="flexslider carousel-banner flexslider-content-image <?php echo $htmlId ?>" data-block="carousel-banner">
+        <div class="slides slick-slider" data-fade-effect="<?php echo ('fade' == $slider->getData('animationB')) ? 'true' : 'false' ?>"
+             data-autoplay="<?php echo (\Forix\Bannerslider\Model\Status::STATUS_ENABLED == $slider->getData('slider_auto_play')) ? 'true' : 'false' ?>"
+             data-autoplay-speed="<?php echo ((int)$slider->getData('slider_speed')) ? (int)$slider->getData('slider_speed') : 5000  ?>">
+            <?php foreach ($bannerCollection as $banner):?>
+                <div class="item">
+                    <div class="box-outer">
+                        <div class="box-image">
+                            <?php
+                                $tabletData = '';
+                                if ($tabletImage = $banner->getTablet()) {
+                                    $tabletData = ' data-image-tablet="' . $bannerHelper->getBaseUrlMedia($tabletImage, $isCurrentHttps) . '"';
+                                }
+                                $phoneData = '';
+                                if ($phoneImage = $banner->getPhone()) {
+                                    $phoneData = ' data-image-mobile="' . $bannerHelper->getBaseUrlMedia($phoneImage, $isCurrentHttps) . '"';
+                                }
+                                $bannerImage = $block->getBannerImageUrl($banner);
+                            ?>
+                            <img class="image-responsive" alt="banner" src="<?php echo $bannerImage ?>" data-image-desktop="<?php echo $bannerImage ?>"
+                                <?php echo $tabletData . $phoneData ?> />
+                        </div>
+                        <div class="banner-content">
+                            <div class="banner-inner <?php echo $banner->getAlignText(); ?>">
+                                <?php if($banner->getImageAlt()):?>
+                                    <p class="banner-caption"><?php echo $banner->getImageAlt(); ?></p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach ?>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    require(['jquery','forix/plugins/slick'],function($){
+        $(".slick-slider").each(function(index){
+            dataEffect = $(this).data("fadeEffect") ? $(this).data("fadeEffect") : false;
+            dataAutoPlay = $(this).data("autoplay") ? $(this).data("autoplay") : false;
+            dataSpeed = $(this).data("autoplaySpeed") ? $(this).data("autoplaySpeed") : "5000";
+            //$(".forix-bannerslide-flex-slider").show().fadeIn(25000);
+
+            $(this).slick({
+                arrows: true,
+                dots: false,
+                infinite: true,
+                fade: dataEffect,
+                autoplay: dataAutoPlay,
+                autoplaySpeed: dataSpeed,
+                lazyLoad: 'progressive',
+                responsive:[
+                    {
+                        breakpoint: 1023,
+                        settings:{
+                            arrows: false,
+                            dots: true
+                        }
+                    }
+                ]
+            });
+
+            // On before slide change
+            $(this).on('beforeChange', function(event, slick, currentSlide, nextSlide){
+                $(this).addClass("changing")
+            });
+            $(this).on('afterChange', function(event, slick, currentSlide, nextSlide){
+                setTimeout(function(){
+                    $(".slick-slider").removeClass("changing");
+                }, 1000);
+            });
+
+            $(".forix-bannerslider-standard").removeClass("loading");
+
+        });
+    });
+</script>

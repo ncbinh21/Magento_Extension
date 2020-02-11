@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Shopping Cart - Softstar Shoes</title>
+        <meta name="description" content="Checkout is easy with our 2-step process."/>
+        <meta name="keywords" content="Minimal Shoes, Zero Drop Shoes, Barefoot Running, Soft Leather, Adult and Kids Footwear, Design Your Own, Handmade in USA, Softstar"/>
+    </head>
+    <body>
+        <referenceContainer name="page.wrapper">
+            <container name="page.top.cart" as="page_top_cart" label="After Page Header" after="header.container"/>
+         </referenceContainer>
+        <referenceContainer name="page.top.cart">
+            <block class="Magento\Theme\Block\Html\Breadcrumbs" name="breadcrumbs-cart" as="breadcrumbs-cart">
+                <action method="addCrumb">
+                    <argument name="crumbName" xsi:type="string">Home</argument>
+                    <argument name="crumbInfo" xsi:type="array">
+                        <item name="title" xsi:type="string">Home</item>
+                        <item name="label" xsi:type="string">Home</item>
+                        <item name="link" xsi:type="string">{{baseUrl}}</item>
+                    </argument>
+                </action>
+                <action method="addCrumb">
+                    <argument name="crumbName" xsi:type="string">Cart</argument>
+                    <argument name="crumbInfo" xsi:type="array">
+                        <item name="title" xsi:type="string">Cart</item>
+                        <item name="label" xsi:type="string">Cart</item>
+                    </argument>
+                </action>
+            </block>
+        </referenceContainer>
+
+        <referenceBlock name="checkout.cart.form">
+            <block class="Magento\Cms\Block\Block" name="checkout_cart_shipping" before="-">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">checkout-cart-shipping</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <referenceContainer name="cart.summary">
+            <container name="checkout_cart_info_container" label="Checkout Cart Info" htmlTag="div" htmlClass="checkout-cart-info-wrapper"  after="-">
+                <block class="Magento\Cms\Block\Block" name="checkout_cart_info">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">checkout-cart-info</argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceContainer>
+        <move element="checkout.cart.aw.giftcard" destination="cart.summary.group.top" after="-"/>
+        <move element="checkout_cart_info_container" destination="cart.summary.group.bottom" after="-"/>
+    </body>
+</page>
+

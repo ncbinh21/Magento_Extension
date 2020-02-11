@@ -1,0 +1,160 @@
+<?php
+
+namespace Mirasvit\EmailReport\Service\TableDescriptor;
+
+
+use Magento\Framework\App\ResourceConnection;
+use Mirasvit\EmailReport\Api\Data\CampaignInterface;
+use Mirasvit\EmailReport\Api\Data\ClickInterface;
+use Mirasvit\EmailReport\Api\Data\EmailInterface;
+use Mirasvit\EmailReport\Api\Data\OpenInterface;
+use Mirasvit\EmailReport\Api\Data\OrderInterface;
+use Mirasvit\EmailReport\Api\Data\ReviewInterface;
+use Mirasvit\Report\Api\Data\Query\TableInterface;
+use Mirasvit\Report\Api\Service\TableDescriptorInterface;
+use Magento\Framework\DB\Ddl\Table;
+
+class EmailReportAggregated implements TableDescriptorInterface
+{
+    const TITLE      = 'title';
+    const EMAIL_QTY  = 'email_qty';
+    const OPEN_QTY   = 'open_qty';
+    const CLICK_QTY  = 'click_qty';
+    const ORDER_QTY  = 'order_qty';
+    const REVIEW_QTY = 'review_qty';
+
+    /**
+     * @var ResourceConnection
+     */
+    private $resource;
+
+    /**
+     * @var TableInterface
+     */
+    private $table;
+
+    /**
+     * @var \Magento\Framework\DB\Adapter\AdapterInterface
+     */
+    private $connection;
+
+    /**
+     * SegmentCustomerAggregated constructor.
+     *
+     * @param TableInterface     $table
+     * @param ResourceConnection $resource
+     */
+    public function __construct(
+        TableInterface $table,
+        ResourceConnection $resource
+    ) {
+        $this->table = $table;
+        $this->resource = $resource;
+        $this->connection = $resource->getConnection($table->getConnectionName());
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function describeTable()
+    {
+        $tableName = $this->resource->getTableName($this->table->getName());
+        $table = $this->connection->newTable($tableName);
+        $table->addColumn(
+            CampaignInterface::ID,
+            Table::TYPE_INTEGER,
+            10,
+            ['unsigned' => true, 'nullable' => false, 'identity' => true, 'primary' => true, 'table_name' => $tableName]
+        )->addColumn(
+            CampaignInterface::TITLE,
+            Table::TYPE_TEXT,
+            255,
+            ['nullable' => false]
+        )->addColumn(
+            self::EMAIL_QTY,
+            Table::TYPE_INTEGER,
+            null,
+            ['nullable' => false]
+        )->addColumn(
+            self::OPEN_QTY,
+            Table::TYPE_INTEGER,
+            null,
+            ['nullable' => false]
+        )->addColumn(
+            self::CLICK_QTY,
+            Table::TYPE_INTEGER,
+            null,
+            ['nullable' => false]
+        )->addColumn(
+            self::ORDER_QTY,
+            Table::TYPE_INTEGER,
+            null,
+            ['nullable' => false]
+        )->addColumn(
+            self::REVIEW_QTY,
+            Table::TYPE_INTEGER,
+            null,
+            ['nullable' => false]
+        )->addColumn(
+            CampaignInterface::CREATED_AT,
+            Table::TYPE_DATETIME,
+            null,
+            ['nullable' => false],
+            'Created At'
+        );
+
+        $schema = array_change_key_case($table->getColumns()); // lowercase column names
+
+        return $schema;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function fetchAll($offset, $limit)
+    {
+        $select = $this->connection->select()
+            ->from($this->resource->getTableName(str_replace(self::TMP_TABLE_SUFFIX, '', $this->table->getName())), [])
+            ->columns([
+                CampaignInterface::ID,
+                CampaignInterface::TITLE,
+                self::EMAIL_QTY => 'COUNT('.EmailInterface::ID.')',
+                self::OPEN_QTY => 'COUNT('.OpenInterface::ID.')',
+                self::CLICK_QTY => 'COUNT('.ClickInterface::ID.')',
+                self::ORDER_QTY => 'COUNT('.OrderInterface::ID.')',
+                self::REVIEW_QTY => 'COUNT('.ReviewInterface::ID.')',
+            ])
+            ->joinLeft(['email' => $this->resource->getTableName(EmailInterface::TABLE_NAME)],
+                'main_table.'.CampaignInterface::ID.' = email.'.CampaignInterface::ID,
+                []
+            )
+            ->joinLeft(['open' => $this->resource->getTableName(OpenInterface::TABLE_NAME)],
+                'main_table.'.CampaignInterface::ID.' = open.'.CampaignInterface::ID,
+                []
+            )
+            ->joinLeft(['click' => $this->resource->getTableName(ClickInterface::TABLE_NAME)],
+                'main_table.'.CampaignInterface::ID.' = click.'.CampaignInterface::ID,
+                []
+            )
+            ->joinLeft(['order' => $this->resource->getTableName(OrderInterface::TABLE_NAME)],
+                'main_table.'.CampaignInterface::ID.' = order.'.CampaignInterface::ID,
+                []
+            )
+            ->joinLeft(['review' => $this->resource->getTableName(ReviewInterface::TABLE_NAME)],
+                'main_table.'.CampaignInterface::ID.' = review.'.CampaignInterface::ID,
+                []
+            )
+            ->limitPage($offset, $limit)
+            ->group(new \Zend_Db_Expr('DATE(main_table.created_at)'));
+
+        /*echo '<pre>';
+        print_r($select->__toString());
+        echo '</pre>';
+        echo '<pre>';
+        print_r($this->connection->fetchAll($select));
+        echo '</pre>';
+        die();*/
+
+        return $this->connection->fetchAll($select);
+    }
+}

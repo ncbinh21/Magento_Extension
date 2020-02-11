@@ -1,0 +1,28 @@
+/*Change magento style for fit with extension*/
+.logo, .block.block-search, nav.navigation {
+    z-index: 0;
+}
+
+/*Main css for shopping page*/
+.grid-stack-item-content {
+    color: #2c3e50;
+    text-align: center;
+}
+
+.ui-state-disabled {
+    opacity: 1 !important;
+    cursor: default !important;
+    pointer-events: auto !important;
+}
+
+.grid-stack-item-content img {
+    height: 100%;
+}
+
+.qs-loading-wrap {
+    align-self: center;
+    top: 45%;
+    left: 45%;
+    position: absolute;
+    z-index: 3000;
+}

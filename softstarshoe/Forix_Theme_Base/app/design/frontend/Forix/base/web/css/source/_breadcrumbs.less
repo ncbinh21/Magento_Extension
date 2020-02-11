@@ -1,0 +1,478 @@
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.breadcrumbs .item.home a:before,
+.breadcrumbs .item.adding:before{
+    &:extend(.forix-abs-icon-base all);
+}
+
+// ------------------------------------
+// Core
+// ------------------------------------
+// common
+& when (@media-common = true){
+    & when(@use-breadcrumbs-core__enable= true) {
+        .breadcrumbs{
+            .forix-global-call(
+                @_block-name: @forix-breadcrumbs__name,
+                @_version: false
+            );
+            .items{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-items__name,
+                    @_version: false
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-a__name,
+                    @_version: false
+                );
+            }
+            strong{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-strong__name,
+                    @_version: false
+                );
+            }
+            span{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-span__name,
+                    @_version: false
+                );
+            }
+            .item{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-item__name,
+                    @_version: false
+                );
+            }
+            .item.home{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-item-home__name,
+                    @_version: false
+                );
+                a{
+                    .forix-global-call(
+                        @_block-name: @forix-breadcrumbs-item-home-a__name,
+                        @_version: false
+                    );
+                }
+            }
+            .item.last{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-item-last__name,
+                    @_version: false
+                );
+                strong{
+                    .forix-global-call(
+                        @_block-name: @forix-breadcrumbs-item-last-strong__name,
+                        @_version: false
+                    );
+                }
+            }
+            .item.adding{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-item-adding__name,
+                    @_version: false
+                );
+                span{
+                    .forix-global-call(
+                        @_block-name: @forix-breadcrumbs-item-span__name,
+                        @_version: false
+                    );
+                }
+            }
+        }
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    & when(@use-breadcrumbs-core__enable= true) {
+        .breadcrumbs{
+            .forix-global-call(
+                @_block-name: @forix-breadcrumbs__name,
+                @_version: ''
+            );
+            .items{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-items__name,
+                    @_version: ''
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-a__name,
+                    @_version: ''
+                );
+            }
+            strong{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-strong__name,
+                    @_version: ''
+                );
+            }
+            span{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-span__name,
+                    @_version: ''
+                );
+            }
+            .item{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-item__name,
+                    @_version: ''
+                );
+            }
+            .item.home{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-item-home__name,
+                    @_version: ''
+                );
+                a{
+                    .forix-global-call(
+                        @_block-name: @forix-breadcrumbs-item-home-a__name,
+                        @_version: ''
+                    );
+                }
+            }
+            .item.last{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-item-last__name,
+                    @_version: ''
+                );
+                strong{
+                    .forix-global-call(
+                        @_block-name: @forix-breadcrumbs-item-last-strong__name,
+                        @_version: ''
+                    );
+                }
+            }
+            .item.adding{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-item-adding__name,
+                    @_version: ''
+                );
+                span{
+                    .forix-global-call(
+                        @_block-name: @forix-breadcrumbs-item-span__name,
+                        @_version: ''
+                    );
+                }
+            }
+        }
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    & when(@use-breadcrumbs-core__enable= true) {
+        .breadcrumbs{
+            .forix-global-call(
+                @_block-name: @forix-breadcrumbs__name,
+                @_version: 'ml'
+            );
+            .items{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-items__name,
+                    @_version: 'ml'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-a__name,
+                    @_version: 'ml'
+                );
+            }
+            strong{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-strong__name,
+                    @_version: 'ml'
+                );
+            }
+            span{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-span__name,
+                    @_version: 'ml'
+                );
+            }
+            .item{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-item__name,
+                    @_version: 'ml'
+                );
+            }
+            .item.home{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-item-home__name,
+                    @_version: 'ml'
+                );
+                a{
+                    .forix-global-call(
+                        @_block-name: @forix-breadcrumbs-item-home-a__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+            .item.last{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-item-last__name,
+                    @_version: 'ml'
+                );
+                strong{
+                    .forix-global-call(
+                        @_block-name: @forix-breadcrumbs-item-last-strong__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+            .item.adding{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-item-adding__name,
+                    @_version: 'ml'
+                );
+                span{
+                    .forix-global-call(
+                        @_block-name: @forix-breadcrumbs-item-span__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+        }
+    }
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l) {
+    & when(@use-breadcrumbs-core__enable= true) {
+        .breadcrumbs{
+            .forix-global-call(
+                @_block-name: @forix-breadcrumbs__name,
+                @_version: 'sm'
+            );
+            .items{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-items__name,
+                    @_version: 'sm'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-a__name,
+                    @_version: 'sm'
+                );
+            }
+            strong{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-strong__name,
+                    @_version: 'sm'
+                );
+            }
+            span{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-span__name,
+                    @_version: 'sm'
+                );
+            }
+            .item{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-item__name,
+                    @_version: 'sm'
+                );
+            }
+            .item.home{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-item-home__name,
+                    @_version: 'sm'
+                );
+                a{
+                    .forix-global-call(
+                        @_block-name: @forix-breadcrumbs-item-home-a__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+            .item.last{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-item-last__name,
+                    @_version: 'sm'
+                );
+                strong{
+                    .forix-global-call(
+                        @_block-name: @forix-breadcrumbs-item-last-strong__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+            .item.adding{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-item-adding__name,
+                    @_version: 'sm'
+                );
+                span{
+                    .forix-global-call(
+                        @_block-name: @forix-breadcrumbs-item-span__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+        }
+    }
+}
+
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    & when(@use-breadcrumbs-core__enable= true) {
+        .breadcrumbs{
+            .forix-global-call(
+                @_block-name: @forix-breadcrumbs__name,
+                @_version: 'm'
+            );
+            .items{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-items__name,
+                    @_version: 'm'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-a__name,
+                    @_version: 'm'
+                );
+            }
+            strong{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-strong__name,
+                    @_version: 'm'
+                );
+            }
+            span{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-span__name,
+                    @_version: 'm'
+                );
+            }
+            .item{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-item__name,
+                    @_version: 'm'
+                );
+            }
+            .item.home{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-item-home__name,
+                    @_version: 'm'
+                );
+                a{
+                    .forix-global-call(
+                        @_block-name: @forix-breadcrumbs-item-home-a__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+            .item.last{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-item-last__name,
+                    @_version: 'm'
+                );
+                strong{
+                    .forix-global-call(
+                        @_block-name: @forix-breadcrumbs-item-last-strong__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+            .item.adding{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-item-adding__name,
+                    @_version: 'm'
+                );
+                span{
+                    .forix-global-call(
+                        @_block-name: @forix-breadcrumbs-item-span__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+        }
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    & when(@use-breadcrumbs-core__enable= true) {
+        .breadcrumbs{
+            .forix-global-call(
+                @_block-name: @forix-breadcrumbs__name,
+                @_version: 'l'
+            );
+            .items{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-items__name,
+                    @_version: 'l'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-a__name,
+                    @_version: 'l'
+                );
+            }
+            strong{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-strong__name,
+                    @_version: 'l'
+                );
+            }
+            span{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-span__name,
+                    @_version: 'l'
+                );
+            }
+            .item{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-item__name,
+                    @_version: 'l'
+                );
+            }
+            .item.home{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-item-home__name,
+                    @_version: 'l'
+                );
+                a{
+                    .forix-global-call(
+                        @_block-name: @forix-breadcrumbs-item-home-a__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+            .item.last{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-item-last__name,
+                    @_version: 'l'
+                );
+                strong{
+                    .forix-global-call(
+                        @_block-name: @forix-breadcrumbs-item-last-strong__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+            .item.adding{
+                .forix-global-call(
+                    @_block-name: @forix-breadcrumbs-item-adding__name,
+                    @_version: 'l'
+                );
+                span{
+                    .forix-global-call(
+                        @_block-name: @forix-breadcrumbs-item-span__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+        }
+    }
+}

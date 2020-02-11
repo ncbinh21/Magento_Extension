@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Forix\ProductListTemplate\Block\Category\Tabs" name="catalog.category.child.tab"  as="category_child_tab" template="category/tabs.phtml" before="-" />
+            <container name="category.view.tab.container" as="category_view_tab_container" htmlTag="div" htmlClass="category-more-view" after="category_child_tab">
+                <block class="Magento\Catalog\Block\Category\View" name="category.modal.cms" template="Forix_ProductListTemplate::category/modal-cms.phtml">
+                    <arguments>
+                        <argument name="title" xsi:type="string" translate="true">Compare Styles</argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Framework\View\Element\Template" name="split-content" after="category.modal.cms" template="Forix_ProductListTemplate::category/split-content.phtml">
+                    <block class="Magento\Catalog\Block\Category\View" name="category.left.cms"
+                           template="Forix_ProductListTemplate::category/read-more-content.phtml">
+                        <arguments>
+                            <argument name="attribute_code" xsi:type="string">sss_category_left_cms</argument>
+                            <argument name="max_line_num" xsi:type="number">17</argument>
+                            <argument name="css_class" xsi:type="string"><![CDATA[category-split-left]]></argument>
+                        </arguments>
+
+                    </block>
+                    <block class="Forix\QuoteLetter\Block\Category\SpecificQuote" name="category-specificquote"
+                           template="Forix_ProductListTemplate::category/specificquote.phtml" after="category.left.cms">
+                        <arguments>
+                            <argument name="item_limit" xsi:type="number">7</argument>
+                            <argument name="css_class" xsi:type="string"><![CDATA[category-split-right]]></argument>
+                        </arguments>
+                    </block>
+                </block>
+            </container>
+            <block class="Magento\Catalog\Block\Category\View" name="category.footer.cms" template="Forix_ProductListTemplate::category/read-more-content.phtml" after="category_view_tab_container">
+                <arguments>
+                    <argument name="attribute_code" xsi:type="string">sss_category_footer_cms</argument>
+                    <argument name="disable_read_more" xsi:type="boolean">true</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+        <referenceBlock name="breadcrumbs" remove="true" />
+        <referenceBlock name="page.title" remove="true" />
+        <referenceBlock name="specificquote" remove="true"/>
+    </body>
+</page>

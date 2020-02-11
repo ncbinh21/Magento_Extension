@@ -1,0 +1,98 @@
+<?php
+/**
+ * Copyright © 2016 x-mage2(Yosto). All rights reserved.
+ * See README.md for details.
+ */
+
+//Template for display instagram follower slider.
+/** @var Yosto\InstagramConnect\Block\Instagram\FollowerSlider $block */
+?>
+
+<?php
+$imageNumber = $this->getData('followerNumber');
+$column = $this->getData('columnNumber');
+$row = $this->getData('rowNumber');
+
+$followers = $block->getFollower($imageNumber);
+if ($followers != null && count($followers) > 0) {
+    $divClass = 'widget block block-static-block';
+}
+if ($column == 0 || !is_numeric($column)) {
+    $column = 1;
+}
+if ($row == 0 || !is_numeric($row)) {
+    $row = 1;
+}
+$numberOfFollowers =  count($followers);
+
+$listColumns['320'] = 1;
+$listColumns['480'] = 2;
+$listColumns['640'] = 3;
+$listColumns['768'] = $column;
+$listColumns['1024'] = $column;
+$listColumns['1440'] = $column;
+
+
+?>
+<?php if ($followers != null && $numberOfFollowers > 0) :?>
+    <h2 class="instagram-widget-title"><?php echo $this->getData('title');?></h2>
+    <div class="<?= $divClass ?> ">
+        <div class="yosto-instagram-connect-wrapper">
+            <?php if ($row == 1): ?>
+                <div class="owl-carousel-follower owl-carousel yosto-owl-theme">
+                    <?php foreach ($followers as $follower) : ?>
+                        <div class="insta-item">
+                            <a target="_blank" href="https://www.instagram.com/<?php echo $follower->username ?>">
+                                <img src="<?php echo $follower->profile_picture ?>"
+                                     title="<?php echo $follower->full_name ?>">
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php else: ?>
+                <?php
+                $loopCount = (int) $numberOfFollowers / $row;
+                $surplus = $numberOfFollowers % $row;
+                if ($surplus > 0) {
+                    $loopCount += 1;
+                }
+                ?>
+                <div class="owl-carousel-follower owl-carousel yosto-owl-theme">
+                    <?php for ($i = 0; $i < $loopCount; $i++): ?>
+                        <div class="insta-item-wrapper">
+                            <?php for ($j = $i * $row; $j < ($i + 1) * $row; $j++): ?>
+                                <?php if (key_exists($j, $followers)): ?>
+                                    <div class="insta-item">
+                                        <a target="_blank" href="https://www.instagram.com/<?php echo $followers[$j]->username ?>">
+                                            <img src="<?php echo $followers[$j]->profile_picture ?>"
+                                                 title="<?php echo $followers[$j]->full_name ?>">
+                                        </a>
+                                    </div>
+                                <?php else: ?>
+                                    <?php break; ?>
+                                <?php endif; ?>
+                            <?php endfor; ?>
+                        </div>
+                    <?php endfor; ?>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+<?php endif; ?>
+
+<script type="text/x-magento-init">
+    {
+        ".yosto-instagram-connect-wrapper .owl-carousel-follower": {
+            "Yosto_InstagramConnect/js/view/follower-list": {
+                "config": {
+                    "items360": <?=$listColumns['320']?>,
+                    "items480": <?=$listColumns['480']?>,
+                    "items640": <?=$listColumns['640']?>,
+                    "items768": <?=$listColumns['768']?>,
+                    "items1024": <?=$listColumns['1024']?>,
+                    "items1440": <?=$listColumns['1440']?>
+                }
+            }
+        }
+    }
+</script>

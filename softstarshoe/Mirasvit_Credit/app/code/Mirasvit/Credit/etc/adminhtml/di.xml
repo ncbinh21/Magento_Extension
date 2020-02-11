@@ -1,0 +1,23 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Mirasvit\Core\Block\Adminhtml\Menu">
+        <arguments>
+            <argument name="menu" xsi:type="array">
+                <item name="credit" xsi:type="object">Mirasvit\Credit\Block\Adminhtml\Menu</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="credit-price" xsi:type="array">
+                    <item name="class" xsi:type="string">Mirasvit\Credit\Ui\DataProvider\Product\Form\Modifier\Composite</item>
+                    <item name="sortOrder" xsi:type="number">140</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Sales\Block\Adminhtml\Order\Create\Items\Grid">
+        <plugin name="ProductCreditGridItem" type="Mirasvit\Credit\Plugin\Order\GridItem" sortOrder="10"/>
+    </type>
+</config>

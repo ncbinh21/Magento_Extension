@@ -1,0 +1,18 @@
+<?php
+/** @var \Mirasvit\Credit\Block\Customer\Account $block */
+$balance = $block->getBalance();
+
+/** @var \Magento\Framework\Pricing\Helper\Data $pricingHelper */
+$pricingHelper = $this->helper('Magento\Framework\Pricing\Helper\Data');
+?>
+
+<div class="block credit__account-balance">
+    <div class="block-title">
+        <strong><?= __('Balance') ?></strong>
+    </div>
+    <div class="block-content">
+
+        <?= __('Current credit balance: <b>%1</b>', $pricingHelper->currency($balance->getAmount())) ?>
+        
+    </div>
+</div>

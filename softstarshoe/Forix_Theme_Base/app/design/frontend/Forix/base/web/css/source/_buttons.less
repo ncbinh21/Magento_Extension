@@ -1,0 +1,1288 @@
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+
+
+// ------------------------------------
+// Core
+// ------------------------------------
+// common
+& when (@media-common = true){
+    & when(@use-buttons-core__enable= true) {
+        button,
+        .abutton{
+            .forix-global-call(
+                @_block-name: @forix-button__name,
+                @_version: false
+            );
+            span{
+                .forix-global-call(
+                    @_block-name: @forix-button-span__name,
+                    @_version: false
+                );
+            }
+        }
+        .abutton{
+            .forix-global-call(
+                @_block-name: @forix-abutton__name,
+                @_version: false
+            );
+            span{
+                .forix-global-call(
+                    @_block-name: @forix-abutton-span__name,
+                    @_version: false
+                );
+            }
+        }
+        // button-list__name:type1,type2,type3.... // Maximum 20 types
+        .forix-abs-button-type1{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 1,
+                @_version: false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-button-type2{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 2,
+                @_version: false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-button-type3{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 3,
+                @_version: false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-button-type4{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 4,
+                @_version: false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-button-type5{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 5,
+                @_version: false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-button-type6{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 6,
+                @_version: false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-button-type7{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 7,
+                @_version: false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-button-type8{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 8,
+                @_version: false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-button-type9{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 9,
+                @_version: false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-button-type10{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 10,
+                @_version: false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-button-type11{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 11,
+                @_version: false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-button-type12{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 12,
+                @_version: false,
+                @_type: 'commons'
+            );
+        }
+
+        .forix-abs-button-type13{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 13,
+                @_version: false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-button-type14{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 14,
+                @_version: false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-button-type15{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 15,
+                @_version: false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-button-type16{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 16,
+                @_version: false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-button-type17{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 17,
+                @_version: false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-button-type18{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 18,
+                @_version: false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-button-type19{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 19,
+                @_version: false,
+                @_type: 'commons'
+            );
+        }
+        .forix-abs-button-type20{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 20,
+                @_version: false,
+                @_type: 'commons'
+            );
+        }
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    & when(@use-buttons-core__enable= true) {
+        button,
+        .abutton{
+            .forix-global-call(
+                @_block-name: @forix-button__name,
+                @_version: ''
+            );
+            span{
+                .forix-global-call(
+                    @_block-name: @forix-button-span__name,
+                    @_version: ''
+                );
+            }
+        }
+        .abutton{
+            .forix-global-call(
+                @_block-name: @forix-abutton__name,
+                @_version: ''
+            );
+            span{
+                .forix-global-call(
+                    @_block-name: @forix-abutton-span__name,
+                    @_version: ''
+                );
+            }
+        }
+        // button-list__name:type1,type2,type3.... // Maximum 20 types
+        .forix-abs-button-type1{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 1,
+                @_version: '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type2{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 2,
+                @_version: '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type3{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 3,
+                @_version: '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type4{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 4,
+                @_version: '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type5{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 5,
+                @_version: '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type6{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 6,
+                @_version: '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type7{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 7,
+                @_version: '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type8{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 8,
+                @_version: '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type9{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 9,
+                @_version: '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type10{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 10,
+                @_version: '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type11{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 11,
+                @_version: '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type12{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 12,
+                @_version: '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type13{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 13,
+                @_version: '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type14{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 14,
+                @_version: '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type15{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 15,
+                @_version: '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type16{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 16,
+                @_version: '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type17{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 17,
+                @_version: '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type18{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 18,
+                @_version: '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type19{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 19,
+                @_version: '',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type20{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 20,
+                @_version: '',
+                @_type: 'responsives'
+            );
+        }
+    }
+}
+
+// [480-767]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__xs) and (@break-max = @screen__m) {
+    button,
+    .abutton{
+        min-width: @forix-button__min-width__xs;
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    & when(@use-buttons-core__enable= true) {
+        button,
+        .abutton{
+            .forix-global-call(
+                @_block-name: @forix-button__name,
+                @_version: 'ml'
+            );
+            span{
+                .forix-global-call(
+                    @_block-name: @forix-button-span__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        .abutton{
+            .forix-global-call(
+                @_block-name: @forix-abutton__name,
+                @_version: 'ml'
+            );
+            span{
+                .forix-global-call(
+                    @_block-name: @forix-abutton-span__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        // button-list__name:type1,type2,type3.... // Maximum 20 types
+        .forix-abs-button-type1{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 1,
+                @_version: 'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type2{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 2,
+                @_version: 'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type3{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 3,
+                @_version: 'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type4{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 4,
+                @_version: 'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type5{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 5,
+                @_version: 'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type6{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 6,
+                @_version: 'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type7{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 7,
+                @_version: 'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type8{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 8,
+                @_version: 'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type9{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 9,
+                @_version: 'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type10{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 10,
+                @_version: 'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type11{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 11,
+                @_version: 'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type12{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 12,
+                @_version: 'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type13{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 13,
+                @_version: 'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type14{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 14,
+                @_version: 'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type15{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 15,
+                @_version: 'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type16{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 16,
+                @_version: 'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type17{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 17,
+                @_version: 'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type18{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 18,
+                @_version: 'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type19{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 19,
+                @_version: 'ml',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type20{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 20,
+                @_version: 'ml',
+                @_type: 'responsives'
+            );
+        }
+    }
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l) {
+    & when(@use-buttons-core__enable= true) {
+        button,
+        .abutton{
+            .forix-global-call(
+                @_block-name: @forix-button__name,
+                @_version: 'sm'
+            );
+            span{
+                .forix-global-call(
+                    @_block-name: @forix-button-span__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        .abutton{
+            .forix-global-call(
+                @_block-name: @forix-abutton__name,
+                @_version: 'sm'
+            );
+            span{
+                .forix-global-call(
+                    @_block-name: @forix-abutton-span__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        // button-list__name:type1,type2,type3.... // Maximum 20 types
+        .forix-abs-button-type1{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 1,
+                @_version: 'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type2{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 2,
+                @_version: 'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type3{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 3,
+                @_version: 'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type4{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 4,
+                @_version: 'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type5{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 5,
+                @_version: 'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type6{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 6,
+                @_version: 'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type7{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 7,
+                @_version: 'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type8{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 8,
+                @_version: 'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type9{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 9,
+                @_version: 'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type10{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 10,
+                @_version: 'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type11{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 11,
+                @_version: 'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type12{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 12,
+                @_version: 'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type13{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 13,
+                @_version: 'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type14{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 14,
+                @_version: 'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type15{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 15,
+                @_version: 'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type16{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 16,
+                @_version: 'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type17{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 17,
+                @_version: 'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type18{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 18,
+                @_version: 'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type19{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 19,
+                @_version: 'sm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type20{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 20,
+                @_version: 'sm',
+                @_type: 'responsives'
+            );
+        }
+    }
+}
+
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    & when(@use-buttons-core__enable= true) {
+        button,
+        .abutton{
+            .forix-global-call(
+                @_block-name: @forix-button__name,
+                @_version: 'm'
+            );
+            span{
+                .forix-global-call(
+                    @_block-name: @forix-button-span__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        .abutton{
+            .forix-global-call(
+                @_block-name: @forix-abutton__name,
+                @_version: 'm'
+            );
+            span{
+                .forix-global-call(
+                    @_block-name: @forix-abutton-span__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        // button-list__name:type1,type2,type3.... // Maximum 20 types
+        .forix-abs-button-type1{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 1,
+                @_version: 'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type2{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 2,
+                @_version: 'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type3{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 3,
+                @_version: 'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type4{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 4,
+                @_version: 'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type5{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 5,
+                @_version: 'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type6{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 6,
+                @_version: 'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type7{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 7,
+                @_version: 'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type8{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 8,
+                @_version: 'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type9{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 9,
+                @_version: 'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type10{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 10,
+                @_version: 'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type11{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 11,
+                @_version: 'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type12{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 12,
+                @_version: 'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type13{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 13,
+                @_version: 'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type14{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 14,
+                @_version: 'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type15{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 15,
+                @_version: 'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type16{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 16,
+                @_version: 'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type17{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 17,
+                @_version: 'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type18{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 18,
+                @_version: 'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type19{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 19,
+                @_version: 'm',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type20{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 20,
+                @_version: 'm',
+                @_type: 'responsives'
+            );
+        }
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    & when(@use-buttons-core__enable= true) {
+        button,
+        .abutton{
+            .forix-global-call(
+                @_block-name: @forix-button__name,
+                @_version: 'l'
+            );
+            span{
+                .forix-global-call(
+                    @_block-name: @forix-button-span__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        .abutton{
+            .forix-global-call(
+                @_block-name: @forix-abutton__name,
+                @_version: 'l'
+            );
+            span{
+                .forix-global-call(
+                    @_block-name: @forix-abutton-span__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        // button-list__name:type1,type2,type3.... // Maximum 20 types
+        .forix-abs-button-type1{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 1,
+                @_version: 'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type2{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 2,
+                @_version: 'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type3{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 3,
+                @_version: 'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type4{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 4,
+                @_version: 'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type5{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 5,
+                @_version: 'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type6{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 6,
+                @_version: 'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type7{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 7,
+                @_version: 'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type8{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 8,
+                @_version: 'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type9{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 9,
+                @_version: 'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type10{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 10,
+                @_version: 'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type11{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 11,
+                @_version: 'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type12{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 12,
+                @_version: 'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type13{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 13,
+                @_version: 'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type14{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 14,
+                @_version: 'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type15{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 15,
+                @_version: 'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type16{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 16,
+                @_version: 'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type17{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 17,
+                @_version: 'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type18{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 18,
+                @_version: 'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type19{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 19,
+                @_version: 'l',
+                @_type: 'responsives'
+            );
+        }
+        .forix-abs-button-type20{
+            .forix-call-set-styles(
+                @_name: button,
+                @_list-type: @forix-button-list__name,
+                @_number: 20,
+                @_version: 'l',
+                @_type: 'responsives'
+            );
+        }
+    }
+}

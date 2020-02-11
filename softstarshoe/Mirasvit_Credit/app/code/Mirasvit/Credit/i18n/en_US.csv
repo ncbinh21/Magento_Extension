@@ -1,0 +1,73 @@
+Customers,Customers
+"Customer Name","Customer Name"
+"Customer Email","Customer Email"
+Balance,Balance
+"Updated At","Updated At"
+"Store Credit","Store Credit"
+Yes,Yes
+No,No
+"No Transactions Found","No Transactions Found"
+"Transaction #","Transaction #"
+Date,Date
+"Balance Change","Balance Change"
+Action,Action
+"Additional Message","Additional Message"
+Transactions,Transactions
+"Add New Transaction","Add New Transaction"
+Save,Save
+Delete,Delete
+"Edit Transaction '%1'","Edit Transaction '%1'"
+"Create New Transaction","Create New Transaction"
+ID,ID
+Name,Name
+Email,Email
+Select,Select
+"General Information","General Information"
+"Customer ID","Customer ID"
+Customer,Customer
+"Store Credit Balance Change","Store Credit Balance Change"
+"Is Notified?","Is Notified?"
+"Customer with email %1 does not exist.","Customer with email %1 does not exist."
+"You can not send credits to yourself","You can not send credits to yourself"
+"Send to friend %1","Send to friend %1"
+"Received from %1 %2","Received from %1 %2"
+"Balance successfully sent.","Balance successfully sent."
+"Amount cannot exceed balance amount.","Amount cannot exceed balance amount."
+"Email subscription was successfully updated.","Email subscription was successfully updated."
+"New Transaction","New Transaction"
+"Transaction  Manager","Transaction  Manager"
+"Transaction Manager","Transaction Manager"
+"Add Transaction ","Add Transaction "
+"Add Transaction","Add Transaction"
+"Store Credit Balance should be a valid number","Store Credit Balance should be a valid number"
+"Transaction(s) was successfully saved","Transaction(s) was successfully saved"
+"Unable to find transaction to save","Unable to find transaction to save"
+"Order #%1","Order #%1"
+"Creditmemo #%1","Creditmemo #%1"
+"Store Credit (%1)","Store Credit (%1)"
+"-- Please Select --","-- Please Select --"
+"Store credit amount cannot exceed order amount.","Store credit amount cannot exceed order amount."
+"Balance Information","Balance Information"
+"Current Balance:","Current Balance:"
+"Last Change:","Last Change:"
+"Subscribed to email notifications?:","Subscribed to email notifications?:"
+"Refund to Store Credit","Refund to Store Credit"
+"Use Store Credit (%1 available)","Use Store Credit (%1 available)"
+"Used Store Credit","Used Store Credit"
+"Refunded to Store Credit","Refunded to Store Credit"
+"Total Refunded to Store Credit","Total Refunded to Store Credit"
+"Use Store Credit","Use Store Credit"
+"Your current balance is: <b>%1</b>","Your current balance is: <b>%1</b>"
+"Use Store Credit (%1)","Use Store Credit (%1)"
+Cancel,Cancel
+"Subscribe to email notifications","Subscribe to email notifications"
+"Send Credit to Friend","Send Credit to Friend"
+"Email Address","Email Address"
+Amount,Amount
+Message,Message
+Send,Send
+"Transactions History","Transactions History"
+Comment,Comment
+"Created At","Created At"
+"There are no transactions yet.","There are no transactions yet."
+Dictionary successfully processed.

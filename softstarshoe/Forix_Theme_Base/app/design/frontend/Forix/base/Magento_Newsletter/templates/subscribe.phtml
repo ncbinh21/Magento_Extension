@@ -1,0 +1,34 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<div class="block newsletter">
+    <h3 class="title"><?php echo $block->escapeHtml(__('Join the Softstar Family!')); ?></h3>
+    <div class="content">
+        <form class="form subscribe"
+            novalidate
+            action="<?php echo $block->escapeUrl($block->getFormActionUrl()); ?>"
+            method="post"
+            data-mage-init='{"validation": {"errorClass": "mage-error"}}'
+            id="newsletter-validate-detail">
+            <div class="field newsletter">
+                <label class="label" for="newsletter"><span><?php echo $block->escapeHtml(__('Sign Up for Our Newsletter:')); ?></span></label>
+                <div class="control">
+                    <input name="email" type="email" id="newsletter"
+                                placeholder="<?php echo $block->escapeHtmlAttr(__('Your email address')); ?>"
+                                data-validate="{required:true, 'validate-email':true}"/>
+                </div>
+            </div>
+            <div class="actions">
+                <button class="action subscribe" title="<?php echo $block->escapeHtmlAttr(__('Subscribe')); ?>" type="submit">
+                    <span><?php echo $block->escapeHtml(__('Subscribe')); ?></span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

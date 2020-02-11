@@ -1,0 +1,178 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2017 Amasty (https://www.amasty.com)
+ * @package Amasty_Shopby
+ */
+?>
+<?php
+/** @var \Amasty\ShopbyBase\Model\FilterSetting $filterSetting */
+/** @var \Amasty\Shopby\Block\Navigation\FilterRenderer $block */
+
+$filterUniqId = $block->escapeId(uniqid());
+$filterCode = $block->escapeHtml($filterSetting->getFilterCode());
+$renderCategoryTreeDropdown = function (
+    $filterItems,
+    $startPath,
+    $block,
+    $filterSetting
+) use (&$renderCategoryTreeDropdown) {
+    static $level = 1;
+    $level++;
+    ?>
+    <?php /** @var \Amasty\Shopby\Model\Layer\Filter\Item $filterItem */
+    ?>
+    <?php /** @var \Amasty\Shopby\Model\Layer\Filter\CategoryItems $filterItems */
+    ?>
+    <?php foreach ($filterItems->getItems($startPath) as $filterItem) : ?>
+        <?php
+        $uniqId = uniqid();
+        $currentPath = ($startPath ?: $filterItems->getStartPath()) . '/' . $filterItem->getValueString();
+        $inputType = !$filterSetting->isMultiselect() ? 'radio' : 'checkbox';
+        ?>
+        <li class="item" data-label="<?= $block->escapeHtml($filterItem->getLabel()) ?>">
+            <?php if ($filterItems->getItemsCount($currentPath)) : ?>
+                <span class="amshopby-category-collapse-icon"> </span>
+            <?php endif; ?>
+
+            <?php if ($filterItem->getCount() > 0) : ?>
+                <?php $checked = $block->checkedFilter($filterItem) ? ' checked' : ''; ?>
+	            <?php $selectedClass =  $block->checkedFilter($filterItem) ? ' am_shopby_link_selected' : ''; ?>
+                <a
+                        class="am_shopby_filter_item_<?= $block->escapeId($uniqId) ?> <?= $selectedClass ?>
+                            <?php if ($filterItems->getItemsCount($currentPath)) : ?>
+                                <?= "amshopby-filter-parent"; ?>
+                            <?php endif; ?>"
+                        href="<?= $block->escapeUrl($filterItem->getUrl()) ?>
+                    ">
+                    <input
+                            name="amshopby[<?= /* @escapeNotVerified */
+                            $block->getFilter()->getRequestVar(); ?>][]"
+                            value="<?= $block->escapeHtml($filterItem->getValueString()); ?>"
+                            type="<?= $inputType; ?>"
+                        <?= $checked ?>
+                    />
+                    <span class="label"><?= $filterItem->getLabel() ?></span>
+                    <?php if ($filterSetting->isShowProductQuantities()) : ?>
+                        <span class="count"><?= $filterItem->getCount() ?>
+                            <span class="filter-count-label">
+                                <?php if ($filterItem->getCount() == 1) : ?>
+                                    <?= $block->escapeHtml(__('item')) ?>
+                                <?php else : ?>
+                                    <?= $block->escapeHtml(__('items')) ?>
+                                <?php endif; ?>
+                                </span>
+                            </span>
+                    <?php endif; ?>
+                </a>
+            <?php else : ?>
+                <span class="label"><?= $filterItem->getLabel() ?></span>
+                <?php if ($filterSetting->isShowProductQuantities()) : ?>
+                    <span class="count"><?= $filterItem->getCount() ?>
+                        <span class="filter-count-label">
+                            <?php if ($filterItem->getCount() == 1) : ?>
+                                <?= $block->escapeHtml(__('item')) ?>
+                            <?php else : ?>
+                                <?= $block->escapeHtml(__('items')) ?>
+                            <?php endif; ?>
+                            </span>
+                        </span>
+                <?php endif; ?>
+            <?php endif; ?>
+            <script type="text/x-magento-init">
+                {
+                    ".am_shopby_filter_item_<?= $block->escapeId($uniqId) ?>": {
+                        "amShopbyFilterItemDefault": {
+                            "collectFilters": <?= /* @escapeNotVerified */ $block->collectFilters(); ?>
+                        }
+                    }
+                }
+
+            </script>
+            <?php
+            if ($filterItems->getItemsCount($currentPath)) {
+                ?>
+                <ol class="items items-children level-<?= $level ?>">
+                    <?php
+                    $renderCategoryTreeDropdown($filterItems, $currentPath, $block, $filterSetting);
+                    ?>
+                </ol>
+                <?php
+            }
+            ?>
+        </li>
+    <?php endforeach ?>
+    <?php
+}
+?>
+
+<?php /** @var \Amasty\Shopby\Model\Layer\Filter\Item $filterItem */ ?>
+<?php /** @var \Amasty\Shopby\Model\Layer\Filter\CategoryItems $filterItems */ ?>
+
+<div class="amshopby-category-dropdown-wrapper amshopby-category-dropdown-wrapper-<?= $filterUniqId ?>">
+    <div class="amshopby-category-dropdown">
+        <div class="caret">
+            <?php foreach ($filterItems->getAllItems() as $filterItem) : ?>
+                <?php if (!$block->checkedFilter($filterItem)) : ?>
+                    <?php continue; ?>
+                <?php endif; ?>
+                <span class="amshopby-category-dropdow-multiselect-crumb">
+                <span><?= $filterItem->getLabel() ?></span>
+                <button data-remove-url="<?= $block->escapeUrl($filterItem->getUrl()) ?>"
+                        class="amshopby-category-dropdown-remove action-close"
+                        type="button">
+                    <span class="action-close-text">Close</span>
+                </button>
+            </span>
+            <?php endforeach; ?>
+        </div>
+    </div>
+
+    <script type="text/x-magento-init">
+        {
+            ".amshopby-category-dropdown-remove": {
+                "amShopbyFilterCategoryDropdown": {}
+            }
+        }
+
+    </script>
+
+</div>
+
+<ol class="items am_shopby_filter_items_<?= $filterCode; ?>_<?= $filterUniqId ?> amshopby-category-dropdown-view">
+    <form data-amshopby-filter="<?= $filterCode; ?>" data-amshopby-filter-request-var="<?= $block->getFilter()->getRequestVar(); ?>">
+        <?php $renderCategoryTreeDropdown($filterItems, null, $block, $filterSetting); ?>
+    </form>
+</ol>
+
+<script>
+    require(["jquery", "jquery/ui"], function ($) {
+        $(window).load(function () {
+            $(document).trigger('baseCategory', <?= $block->getCurrentCategoryId();?>);
+        });
+        $(document).ajaxComplete(function () {
+            $(document).trigger('baseCategory', <?= $block->getCurrentCategoryId();?>);
+        });
+        $(".am_shopby_filter_items_<?= $filterCode;?>_<?= $filterUniqId?>").hide();
+        $(".amshopby-category-dropdown-wrapper-<?= $filterUniqId?>").click(function () {
+            $(this).toggleClass('_active');
+            $(".am_shopby_filter_items_<?= $filterCode;?>_<?= $filterUniqId?>").toggle();
+        });
+
+        $(".am_shopby_filter_items_<?= $filterCode;?>_"
+            + "<?= $filterUniqId ?> .amshopby-category-collapse-icon").nextAll('ol').each(function () {
+            if ($(this).find('input[checked]').length == 0) {
+                $(this).hide();
+            } else {
+                $(this).prevAll('.amshopby-category-collapse-icon').toggleClass('_active');
+            }
+        });
+        $(".am_shopby_filter_items_<?= $filterCode;?>_" +
+            "<?= $filterUniqId?> .amshopby-category-collapse-icon").click(function (e) {
+            $(this).nextAll('ol').toggle();
+            $(this).toggleClass('_active');
+            e.preventDefault();
+            e.stopPropagation();
+        });
+    });
+</script>

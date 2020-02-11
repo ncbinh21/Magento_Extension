@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+		<title>Softstar Fan Photo Drawing</title>
+		<meta name="description" content="Win a $25 gift card for Softstar Shoes! Submit a photo to be entered in our free monthly drawing. All photos are eligible to win for 12 months after submission date."/>
+		<meta name="keywords" content="Soft Star Shoes photo contest, fan contest, win gift certificates for shoes"/>
+	</head>
+	<body>
+		<referenceContainer name="content">
+			<block class="Forix\FanPhoto\Block\Index\Index" name="index.index" template="Forix_FanPhoto::index/index.phtml">
+				<container name="fan-photo-winner-container" htmlTag="div" htmlClass="fan-photo-winner" before="-">
+					<block class="Magento\Cms\Block\Block" name="fan_photo_winner">
+						<arguments>
+							<argument name="block_id" xsi:type="string">fan-photo-winner</argument>
+						</arguments>
+					</block>
+				</container>
+			</block>
+		</referenceContainer>
+		<referenceBlock name="page.main.title" remove="true" />
+	</body>
+</page>

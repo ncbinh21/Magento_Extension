@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright © Magento, Inc. All rights reserved.
+* See COPYING.txt for license details.
+*/
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <move element="breadcrumbs" destination="page.wrapper" after="header.container"/>
+        <referenceContainer name="page.wrapper">
+            <!--<block class="Magento\Cms\Block\Page" name="cms_page"/>-->
+            <block class="Forix\QuoteLetter\Block\PageCms\SpecificQuote" name="cms_page_quote" before="footer-container"/>
+        </referenceContainer>
+    </body>
+</page>

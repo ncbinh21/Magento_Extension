@@ -1,0 +1,41 @@
+<?php
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+
+// @codingStandardsIgnoreFile
+
+/* @var \Magento\Framework\View\Element\Template $block */
+?>
+<div class="admin__field field-apply-aw-giftcard">
+    <label class="admin__field-label">
+        <span><?php echo $block->escapeHtml(__('Apply Gift Card Code')); ?></span>
+    </label>
+    <div class="admin__field-control">
+        <input type="text"
+               id="aw_giftcard_code"
+               class="input-text admin__control-text"
+               title="<?php echo $block->escapeHtml(__('Enter Gift Card Code')) ?>" />
+        <button type="button"
+                name="apply_aw_giftcard"
+                class="action-default scalable"
+                title="<?php echo $block->escapeHtml(__('Apply')) ?>">
+            <span><?php echo $block->escapeHtml(__('Apply')) ?></span>
+        </button>
+    </div>
+</div>
+<script>
+    require([
+        'jquery'
+    ], function($) {
+        $(document).ready(function() {
+            $('button[name="apply_aw_giftcard"]').on('click', function() {
+                var data = {};
+
+                data['aw_giftcard_apply'] = $('#aw_giftcard_code').val();
+                order.loadArea(['totals', 'billing_method', 'items'], true, data);
+            });
+        });
+    });
+</script>

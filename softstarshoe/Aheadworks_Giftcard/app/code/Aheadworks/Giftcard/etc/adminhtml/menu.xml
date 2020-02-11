@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Aheadworks_Giftcard::home" title="Gift Card by aheadWorks" module="Aheadworks_Giftcard" sortOrder="100" parent="Magento_Catalog::catalog" resource="Aheadworks_Giftcard::home"/>
+        <add id="Aheadworks_Giftcard::code_pools" title="Code Pools" module="Aheadworks_Giftcard" sortOrder="10" parent="Aheadworks_Giftcard::home" action="aw_giftcard_admin/pool/index" resource="Aheadworks_Giftcard::code_pools"/>
+        <add id="Aheadworks_Giftcard::giftcard_codes" title="Gift Card Codes" module="Aheadworks_Giftcard" sortOrder="20" parent="Aheadworks_Giftcard::home" action="aw_giftcard_admin/giftcard/index" resource="Aheadworks_Giftcard::giftcard_codes"/>
+        <add id="Aheadworks_Giftcard::giftcard_products" title="Gift Card Products" module="Aheadworks_Giftcard" sortOrder="30" parent="Aheadworks_Giftcard::home" action="aw_giftcard_admin/product/index" resource="Aheadworks_Giftcard::giftcard_products"/>
+    </menu>
+</config>

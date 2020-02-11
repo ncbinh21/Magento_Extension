@@ -1,0 +1,233 @@
+// ------------------------------------
+// Variables
+// ------------------------------------
+@label-placement-on-forms__background: @primary-background__color;
+@label-placement-on-forms__label__color: @primary-text__color;
+@label-placement-on-forms__input__color: @primary-text__color;
+@label-placement-on-forms__required-label__color: @message-error__color;
+@label-placement-on-forms__option-label__color: @color-gray-3;
+
+@checkout-label-placement-on-forms__street-text: "Address";
+
+@address-line__color: @primary-link__color;
+@address-line__color__hover: @primary-link__color__hover;
+@address-line__border: 1px solid @primary-link__color;
+@address-line__border__hover: 1px solid @primary-link__color__hover;
+@address-line__font-weight: bold;
+
+@ui-autofill__box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.3);
+@ui-autofill__background: @color-gray-7;
+@ui-autofill__link: @secondary-link__color;
+@ui-autofill__text-decoration: none;
+@ui-autofill__link__hover: @secondary-link__color__hover;
+@label-placement-on-forms__required-label__color-hover: @sss-color-3;
+// ------------------------------------
+// Custom Code
+// ------------------------------------
+// common
+& when (@media-common = true) {
+    .fx-abs-label-placement-on-forms{
+        .fieldset > .field{
+            margin: 0 0 20px;
+        }
+
+        .field:not(.choice):not(.review-field-ratings) {
+            > .label{
+                display: none;
+            }
+        }
+
+        .control:not(.review-control-vote){
+            position: relative;
+
+            .label{
+                pointer-events: none;
+                top: 10px;
+                position: absolute;
+                left: 2px;
+                padding: 0 10px;
+                transition: 0.2s ease all;
+                -moz-transition: 0.2s ease all;
+                -webkit-transition: 0.2s ease all;
+                font-size: @forix-font-size__m;
+                color: @sss-color-1;
+                font-weight: @forix-font-weight__bold;
+            }
+
+            .label span{
+                letter-spacing: normal;
+            }
+
+            select ~ .label,
+            .select ~ .label,
+            input:focus ~ label,
+            textarea:focus ~ label,
+            input:valid ~ label,
+            textarea:valid ~ label,
+            input.filled-in ~ label,
+            textarea.filled-in ~ label,
+            input[readonly="readonly"] ~ label,
+            textarea[readonly="readonly"] ~ label{
+                top: 5px;
+                font-size: @forix-font-size__xxm;
+                color: @sss-color-9;
+                font-weight: @forix-font-weight__regular;
+            }
+        }
+
+
+        .field.choice{
+            margin-bottom: 10px;
+            .control{
+                label{
+                    top: 0 !important;
+                    font-size: 16px !important;
+                    span{
+                        padding-left: 15px;
+                        font-weight: @forix-font-weight__bold;
+                        color: @color-gray20;
+                    }
+                }
+            }
+            &.review-field-rating{
+                margin-top: 20px;
+                .control{
+                    label{
+                        display: block;
+                        margin-bottom: 15px;
+                        span{
+                            padding-left: 0px;
+                        }
+                    }
+                }
+            }
+        }
+        .field._required .control .label:after,
+        .field.required .control .label:after{
+            color: @label-placement-on-forms__required-label__color;
+            content: '*';
+            margin: 0 0 0 2px;
+        }
+
+        .field.optional .control .label:after,
+        .field[name="shippingAddress.company"] .control .label:after{
+            content: '(Optional)';
+            color: @label-placement-on-forms__option-label__color;
+            margin-left: 5px;
+            text-transform: lowercase;
+            font-weight: normal;
+        }
+
+        .field._required .control,
+        .field.required .control{
+            select ~ .label:after,
+            .select ~ .label:after,
+            input:focus ~ label:after,
+            textarea:focus ~ label:after,
+            input:valid ~ label:after,
+            input:-webkit-autofill ~ label:after,
+            textarea:valid ~ label:after,
+            input.filled-in ~ label:after,
+            textarea.filled-in ~ label:after,
+            input[readonly="readonly"] ~ label:after,
+            textarea[readonly="readonly"] ~ label:after{
+               color: @label-placement-on-forms__required-label__color-hover;
+            }
+        }
+
+        select,
+        .select{
+            padding-top: 15px;
+            font-weight: 700;
+        }
+        // Apply label for some fields on the checkout page
+        .field.street._required .control .label:before,
+        .field.street.required .control .label:before {
+            content: @checkout-label-placement-on-forms__street-text;
+        }
+
+        // Reset Label for Street field on some page on my account
+        .field.street._required .control .nested ~ .label:before,
+        .field.street.required .control .nested ~ .label:before{
+            content: "";
+        }
+
+        //Reset autofill on chrome
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus
+        input:-webkit-autofill,
+        textarea:-webkit-autofill,
+        textarea:-webkit-autofill:hover
+        textarea:-webkit-autofill:focus,
+        select:-webkit-autofill,
+        select:-webkit-autofill:hover,
+        select:-webkit-autofill:focus {
+            -webkit-text-fill-color: @label-placement-on-forms__input__color;
+            -webkit-box-shadow: 0 0 0 1000px @label-placement-on-forms__background inset;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+    }
+
+    .fx-abs-label-reset-placement-on-forms{
+        .control:not(.review-control-vote) .label{
+            display: none;
+        }
+    }
+
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    .fx-abs-label-placement-on-forms{
+        .control:not(.review-control-vote){
+
+            select ~ .label,
+            .select ~ .label,
+            input:focus ~ label,
+            textarea:focus ~ label,
+            input:valid ~ label,
+            input:-webkit-autofill ~ label,
+            textarea:valid ~ label,
+            input.filled-in ~ label,
+            textarea.filled-in ~ label,
+            input[readonly="readonly"] ~ label,
+            textarea[readonly="readonly"] ~ label{
+                top: 5px;
+                font-size: 13px;
+                color: @sss-color-9;
+                font-weight: @forix-font-weight__regular;
+            }
+        }
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    .fx-abs-label-placement-on-forms{
+        .control:not(.review-control-vote){
+            .label{
+                top: 16px;
+                font-size: @forix-font-size__medium;
+                padding: 0 15px;
+            }
+
+            select ~ .label,
+            .select ~ .label,
+            input:focus ~ label,
+            textarea:focus ~ label,
+            input:valid ~ label,
+            input:-webkit-autofill ~ label,
+            textarea:valid ~ label,
+            input.filled-in ~ label,
+            textarea.filled-in ~ label,
+            input[readonly="readonly"] ~ label,
+            textarea[readonly="readonly"] ~ label{
+                top: 6px;
+                font-size: @forix-font-size__m;
+                color: @sss-color-9;
+                font-weight: @forix-font-weight__regular;
+            }
+        }
+    }
+}

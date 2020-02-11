@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<map xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="../../map.xsd">
+    <source>
+        <document_rules>
+            <rename>
+                <document>rating</document>
+                <to>rating</to>
+            </rename>
+            <rename>
+                <document>rating_entity</document>
+                <to>rating_entity</to>
+            </rename>
+            <rename>
+                <document>rating_option</document>
+                <to>rating_option</to>
+            </rename>
+            <rename>
+                <document>rating_option_vote</document>
+                <to>rating_option_vote</to>
+            </rename>
+            <rename>
+                <document>rating_option_vote_aggregated</document>
+                <to>rating_option_vote_aggregated</to>
+            </rename>
+            <rename>
+                <document>rating_store</document>
+                <to>rating_store</to>
+            </rename>
+            <rename>
+                <document>rating_title</document>
+                <to>rating_title</to>
+            </rename>
+            <rename>
+                <document>review</document>
+                <to>review</to>
+            </rename>
+            <rename>
+                <document>review_detail</document>
+                <to>review_detail</to>
+            </rename>
+            <rename>
+                <document>review_entity</document>
+                <to>review_entity</to>
+            </rename>
+            <rename>
+                <document>review_entity_summary</document>
+                <to>review_entity_summary</to>
+            </rename>
+            <rename>
+                <document>review_status</document>
+                <to>review_status</to>
+            </rename>
+            <rename>
+                <document>review_store</document>
+                <to>review_store</to>
+            </rename>
+        </document_rules>
+        <field_rules>
+            <transform>
+                <field>review_detail.store_id</field>
+                <handler class="\Migration\Handler\Convert">
+                    <param name="map" value="[0:0;1:1;2:1;3:1;4:1;5:1;6:1;7:1;8:1]" />
+                    <param name="defaultValue" value="1" />
+                </handler>
+            </transform>
+            <transform>
+                <field>review_entity_summary.store_id</field>
+                <handler class="\Migration\Handler\Convert">
+                    <param name="map" value="[0:0;1:1;2:1;3:1;4:1;5:1;6:1;7:1;8:1]" />
+                    <param name="defaultValue" value="1" />
+                </handler>
+            </transform>
+            <transform>
+                <field>review_store.store_id</field>
+                <handler class="\Migration\Handler\Convert">
+                    <param name="map" value="[0:0;1:1;2:1;3:1;4:1;5:1;6:1;7:1;8:1]" />
+                    <param name="defaultValue" value="1" />
+                </handler>
+            </transform>
+            <transform>
+                <field>review.entity_pk_value</field>
+                <handler class="\Migration\Handler\ReviewRating\MapProduct" />
+            </transform>
+            <transform>
+                <field>review_entity_summary.entity_pk_value</field>
+                <handler class="\Migration\Handler\ReviewRating\MapProduct" />
+            </transform>
+            <transform>
+                <field>rating_option_vote.entity_pk_value</field>
+                <handler class="\Migration\Handler\ReviewRating\MapProduct" />
+            </transform>
+            <transform>
+                <field>rating_option_vote_aggregated.entity_pk_value</field>
+                <handler class="\Migration\Handler\ReviewRating\MapProduct" />
+            </transform>
+            <transform>
+                <field>rating_option_vote_aggregated.store_id</field>
+                <handler class="\Migration\Handler\Convert">
+                    <param name="map" value="[0:0;1:1;2:1;3:1;4:1;5:1;6:1;7:1;8:1]" />
+                    <param name="defaultValue" value="1" />
+                </handler>
+            </transform>
+        </field_rules>
+    </source>
+    <destination>
+        <document_rules />
+    </destination>
+</map>

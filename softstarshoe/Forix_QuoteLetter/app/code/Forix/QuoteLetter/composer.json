@@ -1,0 +1,21 @@
+{
+    "name": "forix/module-quoteletter",
+    "description": "Hidro Forix Webdesign. ",
+    "license": "OSL-3.0",
+    "authors": [
+        {
+            "email": "info@mage2gen.com",
+            "name": "Mage2Gen"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Forix\\QuoteLetter\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}

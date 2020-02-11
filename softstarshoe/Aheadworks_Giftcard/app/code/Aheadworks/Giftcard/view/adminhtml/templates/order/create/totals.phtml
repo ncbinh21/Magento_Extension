@@ -1,0 +1,45 @@
+<?php
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+
+// @codingStandardsIgnoreFile
+
+/* @var \Aheadworks\Giftcard\Block\Adminhtml\Order\Create\Totals $block */
+?>
+<?php foreach ($block->getValues() as $value): ?>
+<tr class="<?php echo $block->escapeHtml($block->getTotal()->getCode()) ?>">
+    <td style="<?php /* @noEscape */ echo $block->getTotal()->getStyle() ?>" class="admin__total-mark" colspan="<?php /* @noEscape */ echo $block->getColspan(); ?>">
+        <a href="#" data-code="<?php echo $block->escapeHtml($value['code']) ?>"
+           title="<?php echo $block->escapeHtml(__('Remove')); ?>"
+           class="aw-giftcard-code-remove action-remove">
+            <span><?php echo $block->escapeHtml(__('Remove')); ?></span>
+        </a>
+        <?php if ($block->getRenderingArea() == $block->getTotal()->getArea()): ?><strong><?php endif; ?>
+        <?php echo $block->escapeHtml(__($value['label'], $value['code'])) ?>
+        <?php if ($block->getRenderingArea() == $block->getTotal()->getArea()): ?></strong><?php endif; ?>
+    </td>
+    <td style="<?php /* @noEscape */ echo $block->getTotal()->getStyle() ?>" class="admin__total-amount">
+        <?php if ($block->getRenderingArea() == $block->getTotal()->getArea()): ?><strong><?php endif; ?>
+            <?php /* @noEscape */ echo $block->formatPrice($value['amount']) ?>
+        <?php if ($block->getRenderingArea() == $block->getTotal()->getArea()): ?></strong><?php endif; ?>
+    </td>
+</tr>
+<?php endforeach; ?>
+<script>
+    require([
+        'jquery'
+    ], function($) {
+        $(document).ready(function() {
+            $('.aw-giftcard-code-remove').on('click', function() {
+                var data = {};
+
+                data['aw_giftcard_remove'] = $(this).data('code');
+                order.loadArea(['totals', 'billing_method', 'items'], true, data);
+
+                return false;
+            });
+        });
+    });
+</script>

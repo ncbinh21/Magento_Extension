@@ -1,0 +1,95 @@
+@use-module-customer-balance-core__enable: true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.storecredit .block-balance,
+.storecredit .block-balance-giftcard{
+    &:extend(.forix-abs-blocks-2columns all);
+}
+
+.storecredit .block .block-title{
+    &:extend(.forix-abs-account-blocks .block-title all);
+}
+
+.storecredit .block .block-content{
+    &:extend(.forix-abs-account-blocks .block-content all,.forix-abs-account-blocks .box .box-content all);
+}
+
+.block-balance .balance-price-label{
+    &:extend(.forix-abs-visually-hidden all);
+}
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .block-balance .price{
+        display: inline-block;
+        line-height: @forix-font-size__sl;
+        font-size: @forix-font-size__sl;
+        font-weight: @forix-font-weight__semibold;
+    }
+
+    .storecredit {
+        .block .block-content{
+            padding: @forix-indent__s 0;
+        }
+
+        .block-balance-history{
+            clear: both;
+        }
+    }
+
+    .multishipping.payment.customerbalance{
+        margin: 0 0 @forix-indent__base;
+        font-weight: @forix-font-weight__bold;
+    }
+
+    .account .column.main .storecredit .block:not(.widget) {
+        border-bottom: 0;
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .storecredit{
+        .block{
+            margin-bottom: @forix-indent__base;
+        }
+
+        .block-balance-history .block-content{
+            padding: 0;
+        }
+    }
+
+    .account .table-wrapper .table.table-balance-history:not(.cart):not(.totals):not(.table-comparison) tbody td::before{
+        min-width: 105px;
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .storecredit {
+        .block{
+            margin-bottom: @forix-indent__m;
+        }
+
+        .block-balance-history{
+            width: 100%;
+
+            .block-content{
+                padding: @forix-indent__s 0;
+            }
+        }
+    }
+
+    .table-balance-history  .col{
+        width: 25%;
+    }
+}

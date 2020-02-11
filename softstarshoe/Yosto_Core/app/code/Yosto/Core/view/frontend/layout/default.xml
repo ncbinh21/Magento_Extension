@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2017 x-mage2(Yosto). All rights reserved.
+ * See README.md for details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Yosto_Core::css/owl.carousel.min.css"/>
+        <css src="Yosto_Core::css/owl.theme.custom.css"/>
+        <css src="Yosto_Core::css/animate.css"/>
+        <css src="Yosto_Core::css/font-awesome.min.css"/>
+    </head>
+</page>

@@ -1,0 +1,192 @@
+@use-breadcrumbs-core__enable: true;
+
+//.breadcrumbs
+@forix-breadcrumbs__name: "forix-breadcrumbs";
+@forix-breadcrumbs__commons: margin,width;
+@forix-breadcrumbs__responsives: false;
+@forix-breadcrumbs__check-have: false;
+@forix-breadcrumbs__status: false;
+@forix-breadcrumbs__prefix: false;
+@forix-breadcrumbs__format: false;
+@forix-breadcrumbs__use-flex: false;
+
+@forix-breadcrumbs__margin: 5px 0 @forix-indent__xm;
+@forix-breadcrumbs__width: 100%;
+@forix-breadcrumbs__padding-top: false;
+@forix-breadcrumbs__padding-bottom: false;
+
+
+
+//.breadcrumbs .items
+@forix-breadcrumbs-items__name: "forix-breadcrumbs-items";
+@forix-breadcrumbs-items__commons: color;
+@forix-breadcrumbs-items__responsives: false;
+@forix-breadcrumbs-items__check-have: false;
+@forix-breadcrumbs-items__status: false;
+@forix-breadcrumbs-items__prefix: false;
+@forix-breadcrumbs-items__format: false;
+@forix-breadcrumbs-items__use-flex: false;
+
+@forix-breadcrumbs-items__color: @primary-text__color;
+
+//.breadcrumbs a
+@forix-breadcrumbs-a__name: "forix-breadcrumbs-a";
+@forix-breadcrumbs-a__commons: text-decoration;
+@forix-breadcrumbs-a__responsives: false;
+@forix-breadcrumbs-a__check-have: hover;
+@forix-breadcrumbs-a__status: false;
+@forix-breadcrumbs-a__prefix: false;
+@forix-breadcrumbs-a__format: false;
+@forix-breadcrumbs-a__use-flex: false;
+
+@forix-breadcrumbs-a__hover__commons: false;
+@forix-breadcrumbs-a__hover__responsives: false;
+
+@forix-breadcrumbs-a__color: @secondary-text__color;
+@forix-breadcrumbs-a__text-decoration: none;
+
+//.breadcrumbs strong
+@forix-breadcrumbs-strong__name: "forix-breadcrumbs-strong";
+@forix-breadcrumbs-strong__commons: false;
+@forix-breadcrumbs-strong__responsives: false;
+@forix-breadcrumbs-strong__check-have: false;
+@forix-breadcrumbs-strong__status: false;
+@forix-breadcrumbs-strong__prefix: false;
+@forix-breadcrumbs-strong__format: false;
+@forix-breadcrumbs-strong__use-flex: false;
+//.breadcrumbs span
+@forix-breadcrumbs-span__name: "forix-breadcrumbs-span";
+@forix-breadcrumbs-span__commons: false;
+@forix-breadcrumbs-span__responsives: false;
+@forix-breadcrumbs-span__check-have: false;
+@forix-breadcrumbs-span__status: false;
+@forix-breadcrumbs-span__prefix: false;
+@forix-breadcrumbs-span__format: false;
+@forix-breadcrumbs-span__use-flex: false;
+//.breadcrumbs .item
+@forix-breadcrumbs-item__name: "forix-breadcrumbs-item";
+@forix-breadcrumbs-item__commons: margin,font-weight,display,vertical-align;
+@forix-breadcrumbs-item__responsives: true;
+@forix-breadcrumbs-item__check-have: after;
+@forix-breadcrumbs-item__status: false;
+@forix-breadcrumbs-item__prefix: false;
+@forix-breadcrumbs-item__format: false;
+@forix-breadcrumbs-item__use-flex: false;
+
+@forix-breadcrumbs-item__margin: 0;
+@forix-breadcrumbs-item__font-weight: @forix-font-weight__regular;
+@forix-breadcrumbs-item__display: inline-block;
+@forix-breadcrumbs-item__vertical-align: top;
+
+@forix-breadcrumbs-item__after__commons: content,font-size,vertical-align,display,font-weight,overflow,speak,text-align;
+@forix-breadcrumbs-item__after__responsives: margin;
+
+@forix-breadcrumbs-item__after__content: '/';
+@forix-breadcrumbs-item__after__vertical-align: top;
+@forix-breadcrumbs-item__after__display: inline-block;
+@forix-breadcrumbs-item__after__font-weight: normal;
+@forix-breadcrumbs-item__after__overflow: hidden;
+@forix-breadcrumbs-item__after__speak: none;
+@forix-breadcrumbs-item__after__text-align: center;
+@forix-breadcrumbs-item__after__font-size: 14px;
+@forix-breadcrumbs-item__after__margin: 0 5px;
+
+@forix-breadcrumbs-item__change__m: false;
+
+@forix-breadcrumbs-item__change__l: true;
+@forix-breadcrumbs-item__after__margin__l: 0 @forix-indent__s;
+
+//.breadcrumbs .item.home
+@forix-breadcrumbs-item-home__name: "forix-breadcrumbs-item-home";
+@forix-breadcrumbs-item-home__commons: false;
+@forix-breadcrumbs-item-home__responsives: false;
+@forix-breadcrumbs-item-home__check-have: false;
+@forix-breadcrumbs-item-home__status: false;
+@forix-breadcrumbs-item-home__prefix: false;
+@forix-breadcrumbs-item-home__format: false;
+@forix-breadcrumbs-item-home__use-flex: false;
+//.breadcrumbs .item.home a
+@forix-breadcrumbs-item-home-a__name: "forix-breadcrumbs-item-home-a";
+@forix-breadcrumbs-item-home-a__commons: false;
+@forix-breadcrumbs-item-home-a__responsives: true;
+@forix-breadcrumbs-item-home-a__check-have: false;
+@forix-breadcrumbs-item-home-a__status: false;
+@forix-breadcrumbs-item-home-a__prefix: false;
+@forix-breadcrumbs-item-home-a__format: false;
+@forix-breadcrumbs-item-home-a__use-flex: false;
+
+
+@forix-breadcrumbs-item-home-a__change__m: true;
+
+@forix-breadcrumbs-item-home-a__change__l: true;
+
+//.breadcrumbs .item.last (is item before .item.adding)
+@forix-breadcrumbs-item-last__name: "forix-breadcrumbs-item-last";
+@forix-breadcrumbs-item-last__commons: false;
+@forix-breadcrumbs-item-last__responsives: false;
+@forix-breadcrumbs-item-last__check-have: after;
+@forix-breadcrumbs-item-last__status: false;
+@forix-breadcrumbs-item-last__prefix: false;
+@forix-breadcrumbs-item-last__format: false;
+@forix-breadcrumbs-item-last__use-flex: false;
+
+@forix-breadcrumbs-item-last__after__commons: display;
+@forix-breadcrumbs-item-last__after__responsives: false;
+
+@forix-breadcrumbs-item-last__after__display: none;
+
+//.breadcrumbs .item.last strong
+@forix-breadcrumbs-item-last-strong__name: "forix-breadcrumbs-item-last-strong";
+@forix-breadcrumbs-item-last-strong__commons: font-weight;
+@forix-breadcrumbs-item-last-strong__responsives: false;
+@forix-breadcrumbs-item-last-strong__check-have: false;
+@forix-breadcrumbs-item-last-strong__status: false;
+@forix-breadcrumbs-item-last-strong__prefix: false;
+@forix-breadcrumbs-item-last-strong__format: false;
+@forix-breadcrumbs-item-last-strong__use-flex: false;
+
+@forix-breadcrumbs-item-last-strong__font-weight: @forix-font-weight__regular;
+//.breadcrumbs .item.adding
+@forix-breadcrumbs-item-adding__name: "forix-breadcrumbs-item-adding";
+@forix-breadcrumbs-item-adding__commons: color,font-weight;
+@forix-breadcrumbs-item-adding__responsives: true;
+@forix-breadcrumbs-item-adding__check-have: before,after;
+@forix-breadcrumbs-item-adding__status: false;
+@forix-breadcrumbs-item-adding__prefix: false;
+@forix-breadcrumbs-item-adding__format: false;
+@forix-breadcrumbs-item-adding__use-flex: false;
+
+@forix-breadcrumbs-item-adding__color: @color-gray-3;
+@forix-breadcrumbs-item-adding__font-weight: @forix-font-weight__regular;
+
+@forix-breadcrumbs-item-adding__before__commons: content,font-size,vertical-align,display,font-weight,text-align,line-height;
+@forix-breadcrumbs-item-adding__before__responsives: margin;
+
+@forix-breadcrumbs-item-adding__before__content: @font-awesome-angle-left;
+@forix-breadcrumbs-item-adding__before__margin: 0 @forix-indent__s;
+@forix-breadcrumbs-item-adding__before__vertical-align: top;
+@forix-breadcrumbs-item-adding__before__display: inline-block;
+@forix-breadcrumbs-item-adding__before__font-weight: normal;
+@forix-breadcrumbs-item-adding__before__text-align: center;
+@forix-breadcrumbs-item-adding__before__font-size: 16px;
+@forix-breadcrumbs-item-adding__before__line-height: 18px;
+
+@forix-breadcrumbs-item-adding__after__commons: display;
+@forix-breadcrumbs-item-adding__after__responsives: false;
+@forix-breadcrumbs-item-adding__after__display: none;
+
+@forix-breadcrumbs-item-adding__change__m: true;
+@forix-breadcrumbs-item-adding__before__margin__m: 0 @forix-indent__s 0 @forix-indent__xs;
+
+@forix-breadcrumbs-item-adding__change__l: true;
+@forix-breadcrumbs-item-adding__before__margin__l: 0 @forix-indent__xm 0 @forix-indent__s;
+
+//.breadcrumbs .item.adding span
+@forix-breadcrumbs-item-span__name: "forix-breadcrumbs-item-span";
+@forix-breadcrumbs-item-span__commons: false;
+@forix-breadcrumbs-item-span__responsives: false;
+@forix-breadcrumbs-item-span__check-have: false;
+@forix-breadcrumbs-item-span__status: false;
+@forix-breadcrumbs-item-span__prefix: false;
+@forix-breadcrumbs-item-span__format: false;
+@forix-breadcrumbs-item-span__use-flex: false;

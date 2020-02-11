@@ -1,0 +1,193 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2017 Amasty (https://www.amasty.com)
+ * @package Amasty_Shopby
+ */
+?>
+<?php
+/** @var \Amasty\ShopbyBase\Model\FilterSetting $filterSetting */
+/** @var \Amasty\Shopby\Block\Navigation\FilterRenderer $block */
+
+$filterUniqId = $block->escapeId(uniqid());
+$filterCode = $block->escapeHtml($filterSetting->getFilterCode());
+?>
+<?php if ($filterSetting->isShowSearchBox()) : ?>
+    <div class="amshopby-search-box">
+        <input type="text"
+               class="am_shopby_filter_search_box_<?= /* @escapeNotVerified */ $filterCode;?>"
+               placeholder="<?= $block->escapeUrl($block->escapeHtml(__("Search")))?>">
+    </div>
+<?php endif; ?>
+
+<ol class="items am_shopby_filter_items_<?= $filterCode;?>"
+    <?php if ($filterSetting->getEnableOverflowScroll() > 0) : ?>
+        style="max-height:<?= $block->escapeHtml($filterSetting->getEnableOverflowScroll()) ?>px;
+                overflow-y: auto;
+                overflow-x: -moz-hidden-unscrollable;"
+    <?php endif; ?>>
+
+    <form data-amshopby-filter="<?= $filterCode;?>" data-amshopby-filter-request-var="<?= $block->getFilter()->getRequestVar(); ?>">
+        <?php /** @var \Amasty\Shopby\Model\Layer\Filter\Item $filterItem */?>
+        <?php foreach ($filterItems as $filterItem) : ?>
+        <?php $uniqId = uniqid(); ?>
+        <?php $inputType = !$filterSetting->isMultiselect() ||
+            in_array($filterCode, ['rating', 'stock']) ? 'radio' : 'checkbox'?>
+        <li class="item" data-label="<?= $block->escapeHtml($filterItem->getLabel())?>">
+            <?php if ($filterItem->getCount() >= 0) : ?>
+                <?php $checked =  $this->checkedFilter($filterItem) ? ' checked' : ''; ?>
+	            <?php $selectedClass =  $this->checkedFilter($filterItem) ? ' am_shopby_link_selected' : ''; ?>
+                <a
+                    <?php
+                    if ($block->getFilter() instanceof \Amasty\Shopby\Model\Layer\Filter\Category
+                        && !$filterSetting->isMultiselect()) {
+                        echo 'amshopby-forceload="1"';
+                    }
+                    ?>
+                    class="am_shopby_filter_item_<?= $block->escapeId($uniqId)?> <?= $selectedClass ?>"
+                    href="<?= $block->escapeUrl($filterItem->getUrl2()) ?>"
+                    <?= $filterItem->getRelNofollow() ? ' rel="nofollow"' : '' ?>
+                >
+                    <?php $style = ($inputType == 'radio' && !$block->getRadioAllowed())
+                        || in_array($filterCode, ['rating', 'stock'])  ? 'display: none;' : ''; ?>
+                    <input
+                        name="amshopby[<?= /* @escapeNotVerified */ $block->getFilter()->getRequestVar();?>][]"
+                        value="<?= $block->escapeHtml($filterItem->getValueString());?>"
+                        type="<?= $inputType;?>"
+                        style="<?= $style ?>"
+                        <?= $checked ?>
+                    />
+                    <span class="label"><?= $filterItem->getLabel() ?></span>
+                    <?php if ($filterSetting->isShowProductQuantities()) : ?>
+                        <span class="count"><?= $filterItem->getCount()?>
+                            <span class="filter-count-label">
+                            <?php if ($filterItem->getCount() == 1) :?>
+                                <?= $block->escapeHtml(__('item'))?>
+                            <?php else :?>
+                                <?= $block->escapeHtml(__('items')) ?>
+                            <?php endif;?>
+                            </span>
+                        </span>
+                    <?php endif; ?>
+                </a>
+            <?php else :?>
+                <span class="label"><?= $filterItem->getLabel() ?></span>
+                <?php if ($filterSetting->isShowProductQuantities()) : ?>
+                    <span class="count"><?= $filterItem->getCount()?>
+                        <span class="filter-count-label">
+                        <?php if ($filterItem->getCount() == 1) :?>
+                            <?= $block->escapeHtml(__('item'))?>
+                        <?php else :?>
+                            <?= $block->escapeHtml(__('items')) ?>
+                        <?php endif;?>
+                        </span>
+                    </span>
+                <?php endif; ?>
+            <?php endif; ?>
+            <script type="text/x-magento-init">
+            {
+                ".am_shopby_filter_item_<?= $block->escapeId($uniqId)?>" : {
+                    "amShopbyFilterItemDefault": {
+                        "collectFilters": <?= /* @escapeNotVerified */ $block->collectFilters();?>
+                    }
+                }
+            }
+
+                </script>
+            </li>
+        <?php endforeach ?>
+    </form>
+</ol>
+
+<?php if ($filterSetting->getAddFromToWidget() && isset($fromToConfig) && is_array($fromToConfig)) :?>
+    <?php
+    $min = $block->escapeHtml($fromToConfig['min']);
+    $max = $block->escapeHtml($fromToConfig['max'])
+    ?>
+    <div id="am_shopby_filter_widget_<?= $filterCode; ?>">
+        <form data-amshopby-filter="<?= $filterCode;?>">
+            <input
+                type="hidden"
+                amshopby-fromto-id="value"
+                <?php if ($fromToConfig['from'] && $fromToConfig['to']) :?>
+                    value="<?= sprintf("%.2f", $fromToConfig['from'] * $fromToConfig['curRate']);?>-
+                    <?= sprintf("%.2f", $fromToConfig['to'] * $fromToConfig['curRate']);?>"
+                <?php endif;?>
+                name="<?= /* @escapeNotVerified */ 'amshopby[' . $block->getFilter()->getRequestVar() . '][]'
+                ?>"/>
+            <div class="range" rate="<?= /* @escapeNotVerified */ $fromToConfig['curRate'];?>">
+                <input
+                    class="amshopby-filter-price-from"
+                    data-validate="{'validate-number':true}"
+                    amshopby-fromto-id="from"
+                    validate-digits-range='[<?= $min . '-' . $max;?>]'
+                    type="number" class="input-text" placeholder="<?= $block->escapeHtml(__('From'))?>"/>
+                <input
+                    class="amshopby-filter-price-to"
+                    data-validate="{'validate-number':true}"
+                    amshopby-fromto-id="to"
+                    validate-digits-range='[<?= $min . '-' . $max?>]'
+                    type="number" class="input-text" placeholder="<?= $block->escapeHtml(__('To'))?>"/>
+                <?php if (!$block->collectFilters()) :?>
+                    <button class="amshopby-filter-price-go"
+                            amshopby-fromto-id="go"
+                        ><?= $block->escapeHtml(__('Go'))?></button>
+                <?php endif;?>
+            </div>
+        </form>
+    </div>
+    <script type="text/x-magento-init">
+            {
+                "#am_shopby_filter_widget_<?= /* @escapeNotVerified */ $filterCode; ?>": {
+                    "amShopbyFilterFromTo": {
+                            "enabled": <?= ($filterSetting->getAddFromToWidget() ? '1' : '0')?>,
+                            "collectFilters": <?= /* @escapeNotVerified */ $block->collectFilters();?>,
+                            "from":"<?= /* @escapeNotVerified */ $fromToConfig['from'];?>",
+                            "to":"<?= /* @escapeNotVerified */ $fromToConfig['to'];?>",
+                            "min":"<?= $min;?>",
+                            "max":"<?= $max;?>",
+                            "isSlider":0,
+                            "url": "<?= /* @escapeNotVerified */ $block->getSliderUrlTemplate(); ?>"
+                        }
+                }
+            }
+
+            </script>
+<?php endif;?>
+
+<?php if ($filterSetting->isShowSearchBox()) : ?>
+    <script type="text/x-magento-init">
+            {
+                ".am_shopby_filter_search_box_<?= $filterCode; ?>": {
+                    "amShopbyFilterSearch": {
+                        "highlightTemplate": "<span class='amshopby-hightlighted'>$&</span>",
+                        "itemsSelector": ".am_shopby_filter_items_<?= $filterCode;?>"
+                    }
+                }
+            }
+
+    </script>
+<?php endif; ?>
+
+<?php if ($filterSetting->getNumberUnfoldedOptions()) : ?>
+    <button class="amshopby-more-button">
+        <a class="am_shopby_filter_items_<?= $filterCode ?>_show_more"
+           data-text-more="<?= $block->escapeHtml(__("View All"))?>"
+           data-text-less="<?= $block->escapeHtml(__("View Less"))?>"
+           href="javascript:void(0)" data-is-hide="false">
+            <?= $block->escapeHtml(__("View Less"))?>
+        </a>
+    </button>
+    <script type="text/x-magento-init">
+            {
+                ".am_shopby_filter_items_<?= $filterCode; ?>": {
+                    "amShopbyFilterHideMoreOptions": {
+                        "numberUnfoldedOptions": <?= $block->escapeHtml($filterSetting->getNumberUnfoldedOptions())?>,
+                        "buttonSelector":
+                        ".am_shopby_filter_items_<?= $filterCode; ?>_show_more"
+                    }
+                }
+            }
+
+    </script>
+<?php endif; ?>

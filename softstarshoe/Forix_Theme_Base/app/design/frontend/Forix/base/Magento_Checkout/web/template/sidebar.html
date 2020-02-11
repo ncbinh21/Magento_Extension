@@ -1,0 +1,38 @@
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+
+<div id="opc-sidebar" class="opc-sidebar">
+    <div class="minicart-wrapper">
+        <a class="action showcart"  data-trigger="minicart">
+            <span class="counter qty">
+                <span class="counter-number" data-bind="text: getItemsQty(), attr:{'data-number': getItemsQty()}"></span>
+            </span>
+        </a>
+        <div class="block-minicart sidebar-minicart swipe-minicart" data-bind="mageInit: {
+            'forix/pushdata':{
+                'container': '.minicart-wrapper',
+                'toggleBtn': '[data-trigger=minicart]',
+                'swipeArea': '.swipe-minicart',
+                'pushCloseCls':'push-close',
+                'closeBtnCls':'toggle-cart-close',
+                'noEffect':'#mini-login',
+                'clsPush':'minicart',
+                'responsive': true,
+                'swiped': 'right'
+            }}">
+            <!-- ko foreach: getRegion('summary') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+
+            <div class="opc-block-shipping-information">
+                <!-- ko foreach: getRegion('shipping-information') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+                <!--/ko-->
+            </div>
+        </div>
+    </div>
+</div>

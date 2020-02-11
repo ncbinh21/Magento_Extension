@@ -1,0 +1,22 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="Mirasvit\Credit\Api\CreditManagementInterface" type="Mirasvit\Credit\Model\CreditManagement"/>
+
+    <type name="Magento\Payment\Model\Checks\ZeroTotal">
+        <plugin name="CreditChecksZeroTotal" type="Mirasvit\Credit\Plugin\Checks\ZeroTotal" sortOrder="10"/>
+    </type>
+
+    <type name="Mirasvit\Report\Api\Repository\ReportRepositoryInterface">
+        <arguments>
+            <argument name="reports" xsi:type="array">
+                <item name="credit_overview" xsi:type="string">Mirasvit\Credit\Reports\Overview</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!--CONFIG-->
+    <preference for="Mirasvit\Credit\Api\Config\CalculationConfigInterface"
+                type="Mirasvit\Credit\Service\Config\CalculationConfig" />
+
+</config>

@@ -1,0 +1,48 @@
+@use-widget-advancedcheckout-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.column .block-addbysku .block-content .box{
+    &:extend(.forix-abs-blocks-2columns all);
+}
+
+// ------------------------------------
+// Variables Extends
+// ------------------------------------
+
+// ------------------------------------
+// Extend Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .sidebar .block-addbysku .fields{
+        position: relative;
+    }
+    .sidebar .block-addbysku .fields .field{
+        display: inline-block;
+        margin-bottom: 10px;
+        vertical-align: top;
+    }
+    .sidebar .block-addbysku .fields .field.sku{
+        margin-right: -80px;
+        padding-right: 85px;
+        width: 100%;
+    }
+    .sidebar .block-addbysku .fields .field.qty .qty{
+        width: 54px;
+        text-align: center
+    }
+    .sidebar .block-addbysku .fields .actions-toolbar{
+        position: absolute;
+        top: 10px;
+        right: 0;
+        margin: 0 0 20px;
+    }
+}
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .sidebar .block-addbysku .actions-toolbar .action{
+        min-width: 0;
+    }
+}

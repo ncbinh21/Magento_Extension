@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <invoice_print>
+            <settings>
+                <explanation_message><![CDATA[Save the trees? Yes please! This original order form was
+                    your shoes’ passport across our workshop, from the first
+                    cut to the last stitch. Please don’t mind the marks and
+                    smudges—they are just stamps from the journey!]]></explanation_message>
+                <shipping_agreement><![CDATA[Softstar Shoes hereby certifies that the goods covered by this shipment qualify as an
+                originating good for purposes of preferential tariff treatment under the NAFTA]]></shipping_agreement>
+                <shipping_agreement_country><![CDATA[canada,NAFTA]]></shipping_agreement_country>
+            </settings>
+        </invoice_print>
+    </default>
+</config>

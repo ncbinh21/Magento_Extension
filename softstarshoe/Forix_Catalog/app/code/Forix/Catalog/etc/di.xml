@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Created by Mercurial
+ * Job Title: Magento Developer
+ * Project Name: M2 - SoftStart Shoes
+ * Date: 06/03/2018
+ */
+
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\ConfigurableProduct\Controller\Adminhtml\Product\Initialization\Helper\Plugin\UpdateConfigurations" type="Forix\Catalog\Controller\Adminhtml\Product\Initialization\Helper\UpdateConfigurationsCustom"/>
+    <preference for="Magento\ConfigurableProduct\Controller\Adminhtml\Product\Initialization\Helper\Plugin\Configurable" type="Forix\Catalog\Controller\Adminhtml\Product\Initialization\Helper\ConfigurableCustom"/>
+    <preference for="Magento\Catalog\Block\Product\View\Options\Type\Select" type="Forix\Catalog\Block\Product\View\Options\Type\SelectCustom"/>
+    <preference for="Magento\Catalog\Model\Product\Option\Value" type="Forix\Catalog\Model\Product\Option\ValueCustom"/>
+</config>
+

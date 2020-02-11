@@ -1,0 +1,24 @@
+<?php $relatedPosts = $block->getPost()->getRelatedPost() ?>
+<?php if ( count( $relatedPosts ) > 0 ): ?>
+    <div class="related"><?php echo __( 'Other Interesting Posts' ) ?></div>
+    <ul>
+		<?php foreach ( $relatedPosts as $post ): ?>
+            <li>
+				<?php if ( $image = $post->getFeaturedImage() ): ?>
+                    <div class="post_image">
+                        <a href="<?php echo $post->getUrl() ?>">
+                            <img src="<?php echo $image->getThumbnailImage() ?>"
+                                 src="<?php echo $this->escapeHtml( $post->getPostTitle() ) ?>"/>
+                        </a>
+                    </div>
+				<?php endif; ?>
+                <div class="post_title">
+                    <a href="<?php echo $post->getUrl() ?>"><?php echo $this->escapeHtml( $post->getPostTitle() ) ?></a>
+                </div>
+                <div class="post_readmore">
+                    <a href="<?php echo $post->getUrl() ?>"><?php echo __( 'Read More' ) ?></a>
+                </div>
+            </li>
+		<?php endforeach; ?>
+    </ul>
+<?php endif; ?>

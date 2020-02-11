@@ -1,0 +1,37 @@
+<?php if (count($this->getCollection()) > 0):?>
+	<ul class="notes">
+		<?php foreach ($this->getCollection() as $note):?>
+			<li class="clearfix">
+				<div class="notes-body clearfix">
+					<div class="post-header">
+						<a name="note-<?php echo $note->getId()?>"></a>
+						<strong class="primary-font"><?php echo $note->getFirstname()?></strong>
+
+						<small class="text-muted"><?php echo __('Added: %1', $this->formatDate($note->getCreatedAt()))?></small>
+						&nbsp;
+						<?php if (!$this->getIsOrder()):?>
+							<a href="#" onclick="document.getElementById('mascnotes_note_<?php echo $note->getId();?>').style.display = 'block';return false;"><?php echo __('Edit')?></a>
+						<?php endif;?>
+					</div>
+					<p>
+						<?php echo $note->getNote();?>
+						<textarea name="mascnotes_note[<?php echo $note->getId()?>][note]" id="mascnotes_note_<?php echo $note->getId();?>" class="mascnotes_edit" style="display: none;"><?php echo $note->getNote()?></textarea>
+						<input name="mascnotes_note[<?php echo $note->getId()?>][edited]" value="0" type="hidden" />
+					</p>
+					<?php if (!$this->getIsOrder()):?>
+						<div class="post-footer">
+							<input type="hidden" name="mascnotes_note[<?php echo $note->getId();?>][status]" value="0" />
+							<label for="mastnotes_delete_<?php echo $note->getId();?>"><input id="mastnotes_delete_<?php echo $note->getId();?>" type="checkbox" name="mascnotes_note[<?php echo $note->getId();?>][delete]">&nbsp;<?php echo __('Delete');?></label>
+						</div>
+					<?php endif;?>
+				</div>
+			</li>
+		<?php endforeach;?>
+	</ul>
+<?php else:?>
+	<?php if ($this->getIsOrder()):?>
+		<button type="button" onclick="window.location = '<?php echo $this->getUrl('*/customer/edit', array('tab' => 'customer_notes', 'id' => $this->getCustomerId()))?>';">
+			<span><span><?php echo __('Add New Note On Customer')?></span></span>
+		</button>
+	<?php endif;?>
+<?php endif;?>

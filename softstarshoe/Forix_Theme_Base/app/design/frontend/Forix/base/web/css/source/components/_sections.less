@@ -1,0 +1,169 @@
+@use-sections-core__enable: true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+
+.product.data.items > .item.title > a:after{
+    &:extend(.forix-abs-icon-base all);
+}
+.product.data.items > .item.content{
+    &:extend(.forix-abs-clearfix all);
+}
+.product.data.items > .item.title > a{
+    &:extend(.forix-abs-three-size all);
+}
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .product.data.items{
+        position: relative;
+        z-index: 1;
+        border-bottom: 0;
+        margin-left: 0;
+        margin-right: 0;
+
+        > .item.title{
+            &.active,
+            &:hover{
+                > a{
+                    color: @color-green;
+                }
+            }
+
+            &.active{
+                > a{
+                    cursor: default;
+                }
+
+                a:after{
+                    content: @font-awesome-angle-up;
+                }
+
+                + .item.content{
+                    display: block;
+                }
+            }
+
+            > a{
+                color: @primary-text__color;
+                line-height: inherit;
+                font-weight: @forix-font-weight__semibold;
+                text-transform: uppercase;
+                text-decoration: none;
+                display: block;
+
+                &:hover{
+                    color: @color-green;
+                }
+
+                &:after{
+                    content: @font-awesome-angle-down;
+                    color: inherit;
+                    line-height: 20px;
+                    font-size: 22px;
+                    .forix-lib-css(transform,translate(0, -50%),1);
+                    right: 10px;
+                    top: 50%;
+                    position: absolute;
+                }
+            }
+        }
+
+        > .item.content{
+            display: none;
+            width: 100%;
+            background: none;
+
+            &:nth-of-type(2){
+                display: block;
+            }
+        }
+    }
+}
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .product.data.items {
+        > .item.title{
+            float: none;
+            width: 100%;
+            position: relative;
+
+            > a{
+                font-size: 16px;
+                margin: 0;
+                padding: @forix-indent__s;
+                background: @color-gray-6;
+                border-bottom: 1px solid @m2-color-gray-15;
+
+                &:after {
+                    display: inline-block;
+                }
+            }
+        }
+
+        > .item.content{
+            clear: both;
+            float: none;
+            border: @forix-border__base;
+            border-top: 0;
+            margin: 0;
+            padding: @forix-indent__xm @forix-indent__s;
+        }
+    }
+}
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .product.data.items > .item.title{
+        float: left;
+        width: auto;
+    }
+}
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+
+}
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    .product.data.items {
+        > .item.title > a{
+            margin: 0 @forix-indent__xl 0 0;
+
+            &:after {
+                display: none;
+            }
+        }
+
+        > .item.content{
+            float: right;
+            border-top: 2px solid @forix-border-color__three;
+            margin: @forix-indent__xl 0 0 -100%;
+            padding: @forix-indent__xm 0;
+        }
+    }
+}
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    .product.data.items{
+        > .item.title > a{
+            margin: 0 @forix-indent__xl 0 0;
+
+            &:after {
+                display: none;
+            }
+        }
+
+        > .item.content{
+            float: right;
+            border-top: 2px solid @forix-border-color__three;
+            margin: @forix-indent__xxl 0 0 -100%;
+            padding: @forix-indent__base 0;
+        }
+    }
+}

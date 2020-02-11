@@ -1,0 +1,131 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<!doctype html>
+
+<html lang="en">
+<head>
+    <title>Check Back Soon - Softstar Shoes</title>
+    <base href="<?php echo $this->getViewFileUrl()?>" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="*"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thank you for your patience! This page will be up again soon."/>
+    <meta name="keywords" content="site down, 503 error"/>
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:300,400,500,600,700" rel="stylesheet">
+    <style>
+        html{
+            height:100%;
+        }
+        body{
+            margin:0;
+            font-family: 'Catamaran', sans-serif;
+            height:100%;
+            font-size:13px;
+            font-weight:400;
+            color: #3C3B4B;
+        }
+        .page-main{
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            margin: 0;
+            min-height: 100%;
+            position:relative;
+        }
+        h1,h2,h3{
+            color: #3C3B4B;
+            font-family: 'Catamaran', sans-serif;
+            text-align: center;
+            position:relative;
+        }
+        h1{
+            font-size: 35px;
+            line-height: 46px;
+            font-weight: bold;
+            text-shadow: 0 1px 2px 0 rgba(0,0,0,0.1);
+        }
+        .content{
+            text-align:center;
+            margin:100px auto 0;
+            padding:0 10px;
+
+        }
+        .content a{
+            text-decoration: underline;
+            color: #006699;
+            cursor: pointer;
+        }
+        .logo{
+            padding: 20px;
+        }
+
+        @media (min-width: 1024px){
+            .logo img {
+                width: 300px;
+            }
+            .content{
+                max-width: 540px;
+            }
+            .content h1 + p{
+                margin-top: 10px;
+                margin-bottom: 13px;
+                font-size: 20px;
+                font-weight: bold;
+            }
+            .content h1 + p + p{
+                font-size: 16px;
+                line-height: 20px;
+
+            }
+        }
+        @media only screen and (max-width: 1023px) and (min-width: 768px){
+            .content{
+                max-width: 450px;
+            }
+            .content h1 + p{
+                margin-top: 8px;
+                margin-bottom: 15px;
+            }
+        }
+        @media (min-width: 768px){
+            h1{
+                font-size: 35px;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+        }
+        @media (max-width: 767px){
+            h1{
+                font-size: 30px;
+            }
+            .content{
+                max-width: 260px;
+            }
+            .content h1 + p{
+                margin-top: 12px;
+                margin-bottom: 17px;
+            }
+            .logo img{
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="logo" style="">
+    <img src="../../errors_static/images/logo.svg" alt="SoftStar" style="max-width: 100%;">
+</header>
+
+<?php require_once $contentTemplate; ?>
+
+</body>
+</html>

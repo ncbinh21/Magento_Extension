@@ -1,0 +1,85 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<div class="block newsletter">
+    <h3 class="title"><?php echo $block->escapeHtml(__('Join the Softstar Family!')); ?></h3>
+    <div class="content">
+        <form class="form subscribe"
+            novalidate
+            action="<?php echo $block->escapeUrl($block->getFormActionUrl()); ?>"
+            method="post"
+            data-mage-init='{"validation": {"errorClass": "mage-error"}}'
+            id="newsletter-validate-detail">
+            <div class="field newsletter">
+                <label class="label" for="email"><span><?php echo $block->escapeHtml(__('Your email address')); ?></span></label>
+                <div class="control">
+                    <input name="email" type="text" id="newsletter" data-validate="{required:true, 'validate-email':true}" required="required"/>
+                    <label class="label" for="email"><span><?php echo $block->escapeHtml(__('Your email address')); ?></span></label>
+                </div>
+            </div>
+            <div class="actions">
+                <button class="action subscribe" title="<?php echo $block->escapeHtmlAttr(__('Subscribe')); ?>" type="button">
+                    <span><?php echo $block->escapeHtml(__('Subscribe')); ?></span>
+                </button>
+            </div>
+            <input type="hidden" value="web" name="store_name"/>
+        </form>
+    </div>
+</div>
+<script>
+    require(['jquery'], function($) {
+        $(function () {
+            $("#newsletter").keypress(function(e) {
+                if (e.which == 13) {
+                    return false;
+                }
+            });
+            var subscribe = $('.footer-inner-content .action.subscribe');
+            subscribe.click(function (e) {
+                subscribe.prop('disabled', true);
+                $.ajax({
+                    url: '/newsletter/subscriber/new',
+                    type: 'post',
+                    data: {
+                        email: $('#newsletter').val(),
+                        isajaxsubscribe: 1,
+                        web: 'web'
+                    },
+                    dataType: 'json',
+                    success: function (result) {
+                        if(result.length) {
+                            $('.subscribe-mesage').addClass('message');
+                            $('.subscribe-mesage').addClass(result[0]);
+                            $('.subscribe-mesage').append(result[1]);
+                            setTimeout(function () {
+                                $('.subscribe-mesage').html('');
+                                $('.subscribe-mesage').removeClass('message');
+                                $('.subscribe-mesage').removeClass(result[0]);
+                                if(result[0] == 'success'){
+                                    $('.footer-inner-content #newsletter').val('');
+                                }
+                                subscribe.prop('disabled', false);
+                            }, 7000);
+                        } else {
+                            $('.subscribe-mesage').addClass('message');
+                            $('.subscribe-mesage').addClass('error');
+                            $('.subscribe-mesage').append('Please input your email address');
+                            setTimeout(function () {
+                                $('.subscribe-mesage').html('');
+                                $('.subscribe-mesage').removeClass('message');
+                                $('.subscribe-mesage').removeClass('error');
+                                subscribe.prop('disabled', false);
+                            }, 7000);
+                        }
+                    }
+                });
+            });
+        });
+    });
+</script>

@@ -1,0 +1,18 @@
+<?php
+/**
+ * @var $block Forix\ProductListTemplate\Block\Category\Tabs
+ */
+$categories = $block->getChildCategories();
+$allTab = $block->isHasActiveAllProductTab();
+?>
+<div class="tab-items-container">
+<ul class="tab-items">
+    <li  class="item"><a class=" <?php echo $allTab?'active':'';?>" href="<?php echo $allTab?'#':$block->getMainCategory()->getUrl();?>"><?php echo __('All');?></a></li>
+    <?php if ($categories && count($categories)): ?>
+        <?php foreach ($categories as $category): ?>
+            <li class="item">
+                <a class="<?php echo $block->isCurrentCategory($category) ? 'active' : ''; ?>" href="<?php echo $block->isCurrentCategory($category)?'#':$category->getUrl(); ?>"><?php echo $category->getData('sss_custom_tab_title')?:$category->getName(); ?></a></li>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</ul>
+</div>

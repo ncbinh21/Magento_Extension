@@ -1,0 +1,211 @@
+@use-paypal-review-core__enable: true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.paypal-review .block-order-details-view,
+.table.cart.table-paypal-review-items tbody{
+    &:extend(.forix-abs-clearfix all);
+}
+
+.paypal-review-discount .title{
+    &:extend(.cart-summary .block .title all);
+}
+
+.paypal-review-discount .block.discount form{
+    &:extend(.form);
+}
+
+.paypal-review-discount .block{
+    &:extend(.forix-abs-primary-size all);
+}
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .paypal-review{
+        overflow-x: hidden;
+
+        .block-order-details-view{
+            margin: 0 0 @forix-indent__base;
+            border-bottom: 2px solid @forix-border-color__three;
+
+            .box{
+                float: left;
+            }
+
+            .box img{
+                margin-top: @forix-indent__s;
+            }
+        }
+
+        .box-order-shipping-method{
+            .box-content{
+                padding-top: @forix-indent__s;
+            }
+
+        }
+
+        .paypal-review-items{
+            border-top: 2px solid @forix-border-color__three;
+            padding-top: @forix-indent__base;
+        }
+
+        .paypal-review-title{
+            padding: 0 0 @forix-indent__xm;
+            border-bottom: 2px solid @forix-border-color__three;
+
+            > strong{
+                font-size: @forix-font-size__m;
+                text-transform: uppercase;
+                font-weight: @forix-font-weight__bold;
+                margin-right: @forix-indent__base;
+            }
+
+            .action{
+                display: inline-block;
+                margin: @forix-indent__s 0 0;
+            }
+        }
+    }
+
+    .paypal-review-discount{
+        font-size: 0;
+
+        .block{
+            display: inline-block;
+            vertical-align: top;
+
+            .title.active:after{
+                display: none;
+            }
+        }
+    }
+
+    .table.cart.table-paypal-review-items{
+        tfoot td,
+        thead th{
+            border: 0;
+        }
+
+        tbody{
+            padding: @forix-indent__xs 0 @forix-indent__base;
+        }
+    }
+
+    .paypal-review-items{
+        .actions-toolbar{
+            margin: @forix-indent__m 0 0;
+
+            .action{
+                min-width: 288px;
+            }
+        }
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .paypal-review{
+        .block-order-details-view{
+            padding: @forix-indent__s 0 0;
+
+            .block-content{
+                margin: 0;
+            }
+
+            .box{
+                width: 100%;
+                padding: 0;
+                margin: 0 0 @forix-indent__m;
+
+                &:nth-of-type(2n+2) {
+                    border-top: 0;
+                    padding-top: 0;
+                    margin-top: 0;
+                }
+            }
+
+            .box-order-shipping-method{
+                margin: 0 0 @forix-indent__s;
+            }
+        }
+
+        .box-order-shipping-method{
+            .actions-toolbar{
+                margin: @forix-indent__base 0 0;
+            }
+        }
+
+        .paypal-review-discount{
+            .block{
+                margin: @forix-indent__xm 0;
+            }
+
+            .fieldset > .field,
+            .actions-toolbar .primary button.action{
+                margin-bottom: 0;
+            }
+        }
+
+        .paypal-review-title{
+            margin-bottom: 0;
+        }
+
+        .block{
+            width: 100%;
+            margin: @forix-indent__xs 0;
+        }
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .paypal-review{
+        .block-order-details-view{
+            padding: @forix-indent__s 0 @forix-indent__l;
+
+            .block-content{
+                margin: 0 -@forix-indent__base;
+            }
+
+            .box{
+                width: percentage(1/3);
+                padding: 0 @forix-indent__base;
+
+                &:nth-of-type(2n+1),
+                &:nth-of-type(2n+2){
+                    padding-right: @forix-indent__base;
+                    width: percentage(1/3);
+                    clear: none;
+                    float: left;
+                }
+            }
+        }
+
+        .box-order-shipping-method{
+            .actions-toolbar{
+                margin: @forix-indent__base 0;
+            }
+        }
+
+        .paypal-review-title{
+            margin-bottom: @forix-indent__m;
+        }
+    }
+
+    .paypal-review-discount{
+        margin: 0 -@forix-indent__base;
+
+        .block{
+            width: 50%;
+            padding: 0 @forix-indent__base;
+        }
+    }
+}

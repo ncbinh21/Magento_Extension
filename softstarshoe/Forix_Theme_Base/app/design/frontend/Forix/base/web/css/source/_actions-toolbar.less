@@ -1,0 +1,981 @@
+// common
+& when (@media-common = true){
+    & when(@use-actions-toolbar-core__enable= true) {
+        .actions-toolbar{
+            .forix-global-call(
+                @_block-name: @forix-actions-toolbar__name,
+                @_version: false
+            );
+            a.action{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-a__name,
+                    @_version: false
+                );
+                span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-a-span__name,
+                        @_version: false
+                    );
+                }
+                &:last-child{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-a-last__name,
+                        @_version: false
+                    );
+                }
+                &:first-child{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-a-first__name,
+                        @_version: false
+                    );
+                }
+            }
+            button.action{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-button__name,
+                    @_version: false
+                );
+                span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-button-span__name,
+                        @_version: false
+                    );
+                }
+                &:last-child{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-button-last__name,
+                        @_version: false
+                    );
+                }
+                &:first-child{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-button-first__name,
+                        @_version: false
+                    );
+                }
+            }
+            .secondary{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-secondary__name,
+                    @_version: false
+                );
+                a.action{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-secondary-a__name,
+                        @_version: false
+                    );
+                }
+                a.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-secondary-a-span__name,
+                        @_version: false
+                    );
+                }
+                button.action{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-secondary-button__name,
+                        @_version: false
+                    );
+                }
+                button.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-secondary-button-span__name,
+                        @_version: false
+                    );
+                }
+            }
+            .primary{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-primary__name,
+                    @_version: false
+                );
+                a.action{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-primary-a__name,
+                        @_version: false
+                    );
+                }
+                a.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-primary-a-span__name,
+                        @_version: false
+                    );
+                }
+                button.action{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-primary-button__name,
+                        @_version: false
+                    );
+                }
+                button.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-primary-button-span__name,
+                        @_version: false
+                    );
+                }
+            }
+            a + a{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-a-a__name,
+                    @_version: false
+                );
+            }
+            a + button{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-a-button__name,
+                    @_version: false
+                );
+            }
+            button + button{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-button-button__name,
+                    @_version: false
+                );
+            }
+            button + a{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-button-a__name,
+                    @_version: false
+                );
+            }
+            .action.back{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-action-back__name,
+                    @_version: false
+                );
+                span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-action-back-span__name,
+                        @_version: false
+                    );
+                }
+                small{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-action-back-small__name,
+                        @_version: false
+                    );
+                }
+            }
+        }
+    }
+}
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    & when(@use-actions-toolbar-core__enable= true) {
+        .actions-toolbar{
+            .forix-global-call(
+                @_block-name: @forix-actions-toolbar__name,
+                @_version: ''
+            );
+            a.action{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-a__name,
+                    @_version: ''
+                );
+                span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-a-span__name,
+                        @_version: ''
+                    );
+                }
+                &:last-child{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-a-last__name,
+                        @_version: ''
+                    );
+                }
+                &:first-child{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-a-first__name,
+                        @_version: ''
+                    );
+                }
+            }
+            button.action{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-button__name,
+                    @_version: ''
+                );
+                span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-button-span__name,
+                        @_version: ''
+                    );
+                }
+                &:last-child{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-button-last__name,
+                        @_version: ''
+                    );
+                }
+                &:first-child{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-button-first__name,
+                        @_version: ''
+                    );
+                }
+            }
+            .secondary{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-secondary__name,
+                    @_version: ''
+                );
+                a.action{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-secondary-a__name,
+                        @_version: ''
+                    );
+                }
+                a.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-secondary-a-span__name,
+                        @_version: ''
+                    );
+                }
+                button.action{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-secondary-button__name,
+                        @_version: ''
+                    );
+                }
+                button.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-secondary-button-span__name,
+                        @_version: ''
+                    );
+                }
+            }
+            .primary{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-primary__name,
+                    @_version: ''
+                );
+                a.action{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-primary-a__name,
+                        @_version: ''
+                    );
+                }
+                a.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-primary-a-span__name,
+                        @_version: ''
+                    );
+                }
+                button.action{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-primary-button__name,
+                        @_version: ''
+                    );
+                }
+                button.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-primary-button-span__name,
+                        @_version: ''
+                    );
+                }
+            }
+            a + a{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-a-a__name,
+                    @_version: ''
+                );
+            }
+            a + button{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-a-button__name,
+                    @_version: ''
+                );
+            }
+            button + button{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-button-button__name,
+                    @_version: ''
+                );
+            }
+            button + a{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-button-a__name,
+                    @_version: ''
+                );
+            }
+            .action.back{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-action-back__name,
+                    @_version: ''
+                );
+                span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-action-back-span__name,
+                        @_version: ''
+                    );
+                }
+                small{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-action-back-small__name,
+                        @_version: ''
+                    );
+                }
+            }
+        }
+    }
+}
+// <480
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+    .actions-toolbar .primary button.action{
+        margin: 0 0 @forix-indent__base;
+    }
+    .actions-toolbar a.action + a.action,
+    .actions-toolbar a.action + button.action,
+    .actions-toolbar button.action + button.action,
+    .actions-toolbar button.action + a.action{
+        margin: @forix-indent__base 0 0;
+    }
+    .actions-toolbar .primary button.action + button.action:nth-of-type(2) {
+        margin: 0;
+    }
+}
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    & when(@use-actions-toolbar-core__enable= true) {
+        .actions-toolbar{
+            .forix-global-call(
+                @_block-name: @forix-actions-toolbar__name,
+                @_version: 'ml'
+            );
+            a.action{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-a__name,
+                    @_version: 'ml'
+                );
+                span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-a-span__name,
+                        @_version: 'ml'
+                    );
+                }
+                &:last-child{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-a-last__name,
+                        @_version: 'ml'
+                    );
+                }
+                &:first-child{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-a-first__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+            button.action{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-button__name,
+                    @_version: 'ml'
+                );
+                span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-button-span__name,
+                        @_version: 'ml'
+                    );
+                }
+                &:last-child{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-button-last__name,
+                        @_version: 'ml'
+                    );
+                }
+                &:first-child{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-button-first__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+            .secondary{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-secondary__name,
+                    @_version: 'ml'
+                );
+                a.action{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-secondary-a__name,
+                        @_version: 'ml'
+                    );
+                }
+                a.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-secondary-a-span__name,
+                        @_version: 'ml'
+                    );
+                }
+                button.action{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-secondary-button__name,
+                        @_version: 'ml'
+                    );
+                }
+                button.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-secondary-button-span__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+            .primary{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-primary__name,
+                    @_version: 'ml'
+                );
+                a.action{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-primary-a__name,
+                        @_version: 'ml'
+                    );
+                }
+                a.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-primary-a-span__name,
+                        @_version: 'ml'
+                    );
+                }
+                button.action{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-primary-button__name,
+                        @_version: 'ml'
+                    );
+                }
+                button.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-primary-button-span__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+            a + a{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-a-a__name,
+                    @_version: 'ml'
+                );
+            }
+            a + button{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-a-button__name,
+                    @_version: 'ml'
+                );
+            }
+            button + button{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-button-button__name,
+                    @_version: 'ml'
+                );
+            }
+            button + a{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-button-a__name,
+                    @_version: 'ml'
+                );
+            }
+            .action.back{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-action-back__name,
+                    @_version: 'ml'
+                );
+                span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-action-back-span__name,
+                        @_version: 'ml'
+                    );
+                }
+                small{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-action-back-small__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+        }
+    }
+}
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l) {
+    & when(@use-actions-toolbar-core__enable= true) {
+        .actions-toolbar{
+            .forix-global-call(
+                @_block-name: @forix-actions-toolbar__name,
+                @_version: 'sm'
+            );
+            a.action{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-a__name,
+                    @_version: 'sm'
+                );
+                span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-a-span__name,
+                        @_version: 'sm'
+                    );
+                }
+                &:last-child{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-a-last__name,
+                        @_version: 'sm'
+                    );
+                }
+                &:first-child{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-a-first__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+            button.action{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-button__name,
+                    @_version: 'sm'
+                );
+                span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-button-span__name,
+                        @_version: 'sm'
+                    );
+                }
+                &:last-child{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-button-last__name,
+                        @_version: 'sm'
+                    );
+                }
+                &:first-child{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-button-first__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+            .secondary{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-secondary__name,
+                    @_version: 'sm'
+                );
+                a.action{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-secondary-a__name,
+                        @_version: 'sm'
+                    );
+                }
+                a.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-secondary-a-span__name,
+                        @_version: 'sm'
+                    );
+                }
+                button.action{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-secondary-button__name,
+                        @_version: 'sm'
+                    );
+                }
+                button.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-secondary-button-span__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+            .primary{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-primary__name,
+                    @_version: 'sm'
+                );
+                a.action{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-primary-a__name,
+                        @_version: 'sm'
+                    );
+                }
+                a.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-primary-a-span__name,
+                        @_version: 'sm'
+                    );
+                }
+                button.action{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-primary-button__name,
+                        @_version: 'sm'
+                    );
+                }
+                button.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-primary-button-span__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+            a + a{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-a-a__name,
+                    @_version: 'sm'
+                );
+            }
+            a + button{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-a-button__name,
+                    @_version: 'sm'
+                );
+            }
+            button + button{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-button-button__name,
+                    @_version: 'sm'
+                );
+            }
+            button + a{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-button-a__name,
+                    @_version: 'sm'
+                );
+            }
+            .action.back{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-action-back__name,
+                    @_version: 'sm'
+                );
+                span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-action-back-span__name,
+                        @_version: 'sm'
+                    );
+                }
+                small{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-action-back-small__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+        }
+    }
+}
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    & when(@use-actions-toolbar-core__enable= true) {
+        .actions-toolbar{
+            .forix-global-call(
+                @_block-name: @forix-actions-toolbar__name,
+                @_version: 'm'
+            );
+            a.action{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-a__name,
+                    @_version: 'm'
+                );
+                span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-a-span__name,
+                        @_version: 'm'
+                    );
+                }
+                &:last-child{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-a-last__name,
+                        @_version: 'm'
+                    );
+                }
+                &:first-child{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-a-first__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+            button.action{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-button__name,
+                    @_version: 'm'
+                );
+                span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-button-span__name,
+                        @_version: 'm'
+                    );
+                }
+                &:last-child{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-button-last__name,
+                        @_version: 'm'
+                    );
+                }
+                &:first-child{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-button-first__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+            .secondary{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-secondary__name,
+                    @_version: 'm'
+                );
+                a.action{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-secondary-a__name,
+                        @_version: 'm'
+                    );
+                }
+                a.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-secondary-a-span__name,
+                        @_version: 'm'
+                    );
+                }
+                button.action{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-secondary-button__name,
+                        @_version: 'm'
+                    );
+                }
+                button.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-secondary-button-span__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+            .primary{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-primary__name,
+                    @_version: 'm'
+                );
+                a.action{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-primary-a__name,
+                        @_version: 'm'
+                    );
+                }
+                a.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-primary-a-span__name,
+                        @_version: 'm'
+                    );
+                }
+                button.action{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-primary-button__name,
+                        @_version: 'm'
+                    );
+                }
+                button.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-primary-button-span__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+            a + a{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-a-a__name,
+                    @_version: 'm'
+                );
+            }
+            a + button{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-a-button__name,
+                    @_version: 'm'
+                );
+            }
+            button + button{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-button-button__name,
+                    @_version: 'm'
+                );
+            }
+            button + a{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-button-a__name,
+                    @_version: 'm'
+                );
+            }
+            .action.back{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-action-back__name,
+                    @_version: 'm'
+                );
+                span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-action-back-span__name,
+                        @_version: 'm'
+                    );
+                }
+                small{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-action-back-small__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+        }
+    }
+}
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    & when(@use-actions-toolbar-core__enable= true) {
+        .actions-toolbar{
+            .forix-global-call(
+                @_block-name: @forix-actions-toolbar__name,
+                @_version: 'l'
+            );
+            a.action{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-a__name,
+                    @_version: 'l'
+                );
+                span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-a-span__name,
+                        @_version: 'l'
+                    );
+                }
+                &:last-child{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-a-last__name,
+                        @_version: 'l'
+                    );
+                }
+                &:first-child{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-a-first__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+            button.action{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-button__name,
+                    @_version: 'l'
+                );
+                span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-button-span__name,
+                        @_version: 'l'
+                    );
+                }
+                &:last-child{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-button-last__name,
+                        @_version: 'l'
+                    );
+                }
+                &:first-child{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-button-first__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+            .secondary{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-secondary__name,
+                    @_version: 'l'
+                );
+                a.action{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-secondary-a__name,
+                        @_version: 'l'
+                    );
+                }
+                a.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-secondary-a-span__name,
+                        @_version: 'l'
+                    );
+                }
+                button.action{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-secondary-button__name,
+                        @_version: 'l'
+                    );
+                }
+                button.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-secondary-button-span__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+            .primary{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-primary__name,
+                    @_version: 'l'
+                );
+                a.action{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-primary-a__name,
+                        @_version: 'l'
+                    );
+                }
+                a.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-primary-a-span__name,
+                        @_version: 'l'
+                    );
+                }
+                button.action{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-primary-button__name,
+                        @_version: 'l'
+                    );
+                }
+                button.action span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-primary-button-span__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+            a + a{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-a-a__name,
+                    @_version: 'l'
+                );
+            }
+            a + button{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-a-button__name,
+                    @_version: 'l'
+                );
+            }
+            button + button{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-button-button__name,
+                    @_version: 'l'
+                );
+            }
+            button + a{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-button-a__name,
+                    @_version: 'l'
+                );
+            }
+            .action.back{
+                .forix-global-call(
+                    @_block-name: @forix-actions-toolbar-action-back__name,
+                    @_version: 'l'
+                );
+                span{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-action-back-span__name,
+                        @_version: 'l'
+                    );
+                }
+                small{
+                    .forix-global-call(
+                        @_block-name: @forix-actions-toolbar-action-back-small__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+        }
+    }
+}

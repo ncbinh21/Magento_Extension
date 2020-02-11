@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Forix
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Forix.com license that is
+ * available through the world-wide-web at this URL:
+ *
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Forix
+ * @package     Forix_Bannerslider
+ * @copyright   Copyright (c) 2012 Forix (http://www.forixwebdesign.com/)
+ * @license
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="forix" translate="label" sortOrder="150">
+            <label>forix</label>
+        </tab>
+        <section id="fanphoto" translate="label" type="text" sortOrder="1951" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Fan Photo Setting</label>
+            <tab>forix</tab>
+            <resource>Magento_Backend::all</resource>
+            <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="email_title" translate="label" type="text" sortOrder="0"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Title</label>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="email_content" translate="label" type="text" sortOrder="1"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Content</label>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="email_from" translate="label" type="text" sortOrder="2"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email From</label>
+                    <validate>required-entry validate-email</validate>
+                </field>
+                <field id="email_to" translate="label" type="text" sortOrder="3"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email To</label>
+                    <validate>required-entry validate-email</validate>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,30 @@
+<?php
+/**
+ * @category   Fishpig
+ * @package   Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author     Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<div class="block block-blog block-blog-email-update">
+    <div class="block-title">
+        <strong><span>Email Updates</span></strong>
+    </div>
+    <div class="block-content">
+        <form class="form" action="<?php echo $block->escapeUrl($block->getFormActionUrl()); ?>" method="post">
+            <p><?php echo $block->escapeHtml(__('Enter your email to receive monthly Softstar newsletters which include our latest blog posts:')); ?></p>
+            <div class="field newsletter">
+                <div class="control">
+                    <input type="text" name="email" required="required"/>
+                    <label class="label" for="email"><span><?php echo $block->escapeHtml(__('Your email address...')); ?></span></label>
+                </div>
+                <div class="actions">
+                    <button class="action subscribe" title="<?php echo $block->escapeHtmlAttr(__('Subscribe')); ?>" type="submit" value="Subscribe">
+                        <span><?php echo $block->escapeHtml(__('Subscribe')); ?></span>
+                    </button>
+                </div>
+            </div>
+            <input type="hidden" value="blog" name="store_name"/>
+        </form>
+    </div>
+</div>

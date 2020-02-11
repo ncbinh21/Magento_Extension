@@ -1,0 +1,57 @@
+@use-module-giftcardaccount-core__enable: true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.opc-wrapper .form-giftcard-account{
+    &:extend(.forix-abs-discount-block-form all, .forix-abs-giftcard-block-form all);
+}
+
+.opc-wrapper .form-giftcard-account .field .label{
+    &:extend(.forix-abs-visually-hidden all);
+}
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .giftcard-account .form-giftcard-redeem {
+        .giftcard.info{
+            margin-bottom: @forix-indent__m;
+        }
+
+        .fieldset{
+            margin-bottom: @forix-indent__base;
+        }
+    }
+
+    .opc-wrapper {
+        .form-giftcard-account {
+            .payment-option-inner{
+                margin: 0 0 @forix-indent__base;
+            }
+
+            .field .label{
+                display: none;
+            }
+
+            .actions-toolbar .secondary{
+                left: 0;
+                right: auto;
+            }
+        }
+
+        .giftcard-account-info {
+            padding: @forix-indent__base 0 0;
+
+            .giftcard-account-number {
+                margin: 0 0 @forix-indent__base;
+            }
+        }
+
+    }
+}

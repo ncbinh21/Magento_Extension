@@ -1,0 +1,19 @@
+<!--@subject [#{{var ticket.uid}}] New Ticket created: {{var ticket.subject}}@-->
+
+{{template config_path="design/email/header_template"}}
+
+<strong>Hello, {{var agent.firstname}}.</strong><br/><br/>
+
+You’ve been assigned a new ticket:<br/><br/>
+
+<strong>Department:</strong> {{var department_name}}<br/>
+<strong>Customer name:</strong> {{var ticket.customer_name}}<br/>
+<strong>Subject:</strong> {{var ticket.subject}}<br/>
+<strong>Content:</strong><br/>
+{{var ticket.first_message|escape|nl2br}}<br/><br/>
+
+Click <a href="{{var ticket.backend_url}}">here</a> to view the ticket.
+
+{{template config_path="design/email/footer_template"}}
+
+

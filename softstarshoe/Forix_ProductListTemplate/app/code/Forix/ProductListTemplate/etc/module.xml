@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Forix_ProductListTemplate" setup_version="2.1.8">
+        <sequence>
+            <module name="Forix_QuoteLetter"/>
+            <module name="Magento_Catalog"/>
+            <module name="Magento_Swatches"/>
+            <module name="Forix_Ajaxscroll"/>
+        </sequence>
+    </module>
+</config>

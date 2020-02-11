@@ -1,0 +1,42 @@
+@use-dropdown-extend-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .forix-abs-dropdown-content{
+        box-shadow: 0 3px 7px 1px rgba(0, 0, 0, 0.3);
+        background: @color-gray-7;
+        z-index: 100;
+        list-style: none none;
+        position: absolute;
+
+        &:before{
+            content: "";
+            position: absolute;
+            border: 10px solid transparent;
+            border-color: transparent transparent @color-gray-7 @color-gray-7;
+            .forix-lib-css(transform-origin,0 0,1);
+            .forix-lib-css(transform,rotate(136deg),1);
+            box-shadow: -2px 2px 7px -4px rgba(0, 0, 0, 0.4);
+            width: 0;
+            height: 0;
+        }
+
+        &:after{
+            content: '';
+            border: 0;
+            width: 100%;
+            height: 19px;
+        }
+    }
+}

@@ -1,0 +1,165 @@
+<?php
+
+namespace Mirasvit\EmailReport\Reports;
+
+
+use Mirasvit\EmailReport\Api\Data\CampaignInterface;
+use Mirasvit\Report\Api\Data\Query\ColumnInterface;
+use Mirasvit\Report\Model\AbstractReport;
+
+class Statistic extends AbstractReport
+{
+    const ID = 'email_statistics';
+
+    /**
+     * @inheritDoc
+     */
+    public function getName()
+    {
+        return __('Email Statistics');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getIdentifier()
+    {
+        return self::ID;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function init()
+    {
+        $this->setBaseTable(CampaignInterface::TABLE_NAME);
+        //$this->setBaseTable('mst_emailreport_campaign_aggregated');
+
+        $this->initColumns()
+            ->initFilters()
+            ->setupGrid()
+            ->setupChart()
+            ->setupDimension();
+    }
+
+    /**
+     * Initialize report columns.
+     *
+     * @return $this
+     */
+    private function initColumns()
+    {
+        /*$this->addDefaultColumns([
+            'mst_emailreport_campaign|title',
+            'mst_emailreport_email|email_qty',
+            'mst_emailreport_click|click_qty',
+            'mst_emailreport_open|open_qty',
+            'mst_emailreport_order|order_qty',
+            'mst_emailreport_review|review_qty',
+        ]);
+
+        $this->addAvailableFilters(['mst_emailreport_campaign|campaign_id']);*/
+
+        $this->addDefaultColumns([
+            //'mst_emailreport_campaign|title',
+            'mst_emailreport_campaign_aggregated|title',
+            'mst_emailreport_campaign_aggregated|email_qty',
+            'mst_emailreport_campaign_aggregated|click_qty',
+            'mst_emailreport_campaign_aggregated|open_qty',
+            'mst_emailreport_campaign_aggregated|order_qty',
+            'mst_emailreport_campaign_aggregated|review_qty',
+        ]);
+
+        //$this->addAvailableFilters(['mst_emailreport_campaign|campaign_id']);
+
+        return $this;
+    }
+
+    /**
+     * Initialize report filters.
+     *
+     * @return $this
+     */
+    private function initFilters()
+    {
+        $this->addFastFilters([
+            'mst_emailreport_campaign_aggregated|created_at',
+            //'mst_emailreport_email|created_at',
+        ]);
+
+        return $this;
+    }
+
+    /**
+     * Configure report grid.
+     *
+     * @return $this
+     */
+    private function setupGrid()
+    {
+        $this->setGridConfig([
+            'paging' => true,
+        ]);
+
+        return $this;
+    }
+
+    /**
+     * Configure report chart.
+     *
+     * @return $this
+     */
+    private function setupChart()
+    {
+        $this->setChartConfig([
+            'chartType' => 'line',
+            /*'vAxis'     => [
+                'mst_emailreport_email|email_qty',
+                'mst_emailreport_open|open_qty',
+                'mst_emailreport_click|click_qty',
+                'mst_emailreport_order|order_qty',
+                'mst_emailreport_review|review_qty',
+            ]*/
+        ]);
+
+        return $this;
+    }
+
+    /**
+     * Configure report dimensions.
+     *
+     * @return $this
+     */
+    private function setupDimension()
+    {
+        /*$this->setDefaultDimension('mst_emailreport_email|day')
+            ->addAvailableDimensions([
+                'mst_emailreport_email|day',
+                'mst_emailreport_email|week',
+                'mst_emailreport_email|month',
+                'mst_emailreport_email|quarter',
+                'mst_emailreport_email|year',
+            ]);*/
+        //$this->setDefaultDimension('mst_emailreport_campaign_aggregated|day');
+        //$this->setDefaultDimension('mst_emailreport_campaign|campaign_id');
+        //$this->setDefaultDimension('mst_emailreport_campaign|day');
+        $this->setDefaultDimension('mst_emailreport_campaign_aggregated|day')
+            ->addAvailableDimensions([
+                'mst_emailreport_campaign_aggregated|day',
+                'mst_emailreport_campaign_aggregated|week',
+                'mst_emailreport_campaign_aggregated|month',
+                'mst_emailreport_campaign_aggregated|quarter',
+                'mst_emailreport_campaign_aggregated|year',
+            ]);
+        /*$this->setDefaultDimension('mst_emailreport_campaign|day')
+            ->addAvailableDimensions([
+                'mst_emailreport_campaign|day',
+                'mst_emailreport_campaign|week',
+                'mst_emailreport_campaign|month',
+                'mst_emailreport_campaign|quarter',
+                'mst_emailreport_campaign|year',
+            ]);*/
+
+        return $this;
+    }
+}

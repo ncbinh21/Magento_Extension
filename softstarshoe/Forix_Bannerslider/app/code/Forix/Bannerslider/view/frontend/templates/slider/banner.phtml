@@ -1,0 +1,50 @@
+<?php
+/** @var \Forix\Bannerslider\Block\SliderItem $block */
+$styleSlide = $block->getSlider()->getStyleSlide();
+$slider = $block->getSlider();
+$htmlId   = $block->getFlexsliderHtmlId();
+$bannerCollection = $block->getBannerCollection();
+$bannerHelper = $this->helper('Forix\Bannerslider\Helper\Data');
+$isCurrentHttps = $block->isCurrentHttps();
+?>
+<div class="forix-bannerslider-standard">
+	<div class="forix-bannerslide">
+		<div id="<?php echo $htmlId ?>" class="static-banner flexslider-content-image <?php echo $htmlId ?>">
+            <div class="banner-slider">
+				<?php foreach ($bannerCollection as $banner): ?>
+					<div class="slide">
+						<div class="box-outer">
+                            <?php
+                                $tabletData = '';
+                                if ($tabletImage = $banner->getTablet()) {
+                                    $tabletData = ' data-image-tablet="' . $bannerHelper->getBaseUrlMedia($tabletImage, $isCurrentHttps) . '"';
+                                }
+                                $phoneData = '';
+                                if ($phoneImage = $banner->getPhone()) {
+                                    $phoneData = ' data-image-mobile="' . $bannerHelper->getBaseUrlMedia($phoneImage, $isCurrentHttps) . '"';
+                                }
+                                $bannerImage = $block->getBannerImageUrl($banner);
+                            ?>
+                            <div class="box-image">
+								<span>
+                                    <img class="image-responsive" alt="glossary banner"
+                                         src="<?php echo $bannerImage ?>"
+                                         data-image-desktop="<?php echo $bannerImage ?>" <?php echo $tabletData . $phoneData ?>/>
+                                </span>
+
+                                <?php if($banner->getImageAlt()):?>
+                                    <p class="banner-caption"><?php echo $banner->getImageAlt(); ?></p>
+                                <?php endif; ?>
+                            </div>
+						</div>
+					</div>
+				<?php endforeach ?>
+            </div>
+		</div>
+	</div>
+	<?php if ($block->isShowTitle() == \Forix\Bannerslider\Model\Slider::SHOW_TITLE_YES) : ?>
+		<div class="forix-bannerslider-title">
+			<h1><span><?php echo $slider->getTitle(); ?></span></h1>
+		</div>
+	<?php endif; ?>
+</div>

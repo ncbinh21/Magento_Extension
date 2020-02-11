@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">aw_giftcard_pool_form.aw_giftcard_pool_form_data_source</item>
+            <item name="deps" xsi:type="string">aw_giftcard_pool_form.aw_giftcard_pool_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Gift Card Code</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">aw_giftcard_pool_form</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">Aheadworks\Giftcard\Block\Adminhtml\Pool\Edit\Button\Back</item>
+            <item name="delete" xsi:type="string">Aheadworks\Giftcard\Block\Adminhtml\Pool\Edit\Button\Delete</item>
+            <item name="reset" xsi:type="string">Aheadworks\Giftcard\Block\Adminhtml\Pool\Edit\Button\Reset</item>
+            <item name="save" xsi:type="string">Aheadworks\Giftcard\Block\Adminhtml\Pool\Edit\Button\Save</item>
+            <item name="save_and_continue" xsi:type="string">Aheadworks\Giftcard\Block\Adminhtml\Pool\Edit\Button\SaveAndContinue</item>
+        </item>
+    </argument>
+    <dataSource name="aw_giftcard_pool_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Aheadworks\Giftcard\Ui\DataProvider\Pool\FormDataProvider</argument>
+            <argument name="name" xsi:type="string">aw_giftcard_pool_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="aw_giftcard_admin/pool/save"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="general_information">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">General Information</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">10</item>
+                <item name="opened" xsi:type="boolean">true</item>
+            </item>
+        </argument>
+        <field name="id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">pool</item>
+                    <item name="dataScope" xsi:type="string">id</item>
+                </item>
+            </argument>
+        </field>
+        <field name="name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="label" xsi:type="string" translate="true">Name</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">pool</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="dataScope" xsi:type="string">name</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="code_pattern">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Code Pattern</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">20</item>
+                <item name="opened" xsi:type="boolean">true</item>
+            </item>
+        </argument>
+        <field name="code_length">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="label" xsi:type="string" translate="true">Code Length</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">pool</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="dataScope" xsi:type="string">code_length</item>
+                    <item name="default" xsi:type="string">12</item>
+                    <item name="notice" xsi:type="string" translate="true">Excluding prefix, suffix, and separators</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="validate-digits" xsi:type="boolean">true</item>
+                        <item name="validate-greater-than-zero" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="code_format">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Aheadworks\Giftcard\Model\Source\Giftcard\CodeFormat</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="label" xsi:type="string" translate="true">Code Format</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">pool</item>
+                    <item name="dataScope" xsi:type="string">code_format</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                </item>
+            </argument>
+        </field>
+        <field name="code_prefix">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="label" xsi:type="string" translate="true">Code Prefix</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">pool</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                    <item name="dataScope" xsi:type="string">code_prefix</item>
+                </item>
+            </argument>
+        </field>
+        <field name="code_suffix">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="label" xsi:type="string" translate="true">Code Suffix</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">pool</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                    <item name="dataScope" xsi:type="string">code_suffix</item>
+                </item>
+            </argument>
+        </field>
+        <field name="code_delimiter_at_every">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="label" xsi:type="string" translate="true">Dash Every X Characters</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">pool</item>
+                    <item name="sortOrder" xsi:type="number">50</item>
+                    <item name="dataScope" xsi:type="string">code_delimiter_at_every</item>
+                    <item name="notice" xsi:type="string" translate="true">If empty no separation</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="validate-digits" xsi:type="boolean">true</item>
+                        <item name="validate-not-negative-number" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="generate_qty">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="label" xsi:type="string" translate="true">Number of Codes to Generate</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">pool</item>
+                    <item name="sortOrder" xsi:type="number">60</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="validate-digits" xsi:type="boolean">true</item>
+                        <item name="validate-greater-than-zero" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="import_codes">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Import Codes</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">30</item>
+                <item name="opened" xsi:type="boolean">true</item>
+            </item>
+        </argument>
+        <field name="csv_file">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">From Csv File</item>
+                    <item name="formElement" xsi:type="string">fileUploader</item>
+                    <item name="componentType" xsi:type="string">fileUploader</item>
+                    <item name="additionalClasses" xsi:type="string">aw-giftcard-admin-file-uploader</item>
+                    <item name="previewTmpl" xsi:type="string">Aheadworks_Giftcard/ui/form/element/uploader/file-preview</item>
+                    <item name="maxFileSize" xsi:type="number">2097152</item>
+                    <item name="allowedExtensions" xsi:type="string">csv</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="uploaderConfig" xsi:type="array">
+                        <item name="url" xsi:type="string">aw_giftcard_admin/pool_code/upload</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="manage_pool_codes">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Manage Pool Codes</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">40</item>
+                <item name="opened" xsi:type="boolean">true</item>
+            </item>
+        </argument>
+        <insertListing name="aw_giftcard_pool_code_listing" class="Aheadworks\Giftcard\Ui\Component\Form\InsertListing">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="cssclass" xsi:type="string">aw-giftcard-pool-code-listing</item>
+                    <item name="autoRender" xsi:type="boolean">true</item>
+                    <item name="dataScope" xsi:type="string">aw_giftcard_pool_code_listing</item>
+                    <item name="externalProvider" xsi:type="string">${ $.ns }.aw_giftcard_pool_code_listing_data_source</item>
+                    <item name="ns" xsi:type="string">aw_giftcard_pool_code_listing</item>
+                    <item name="loading" xsi:type="boolean">false</item>
+                    <item name="imports" xsi:type="array">
+                        <item name="id" xsi:type="string">${ $.provider }:data.id</item>
+                    </item>
+                    <item name="exports" xsi:type="array">
+                        <item name="id" xsi:type="string">${ $.externalProvider }:params.pool_id</item>
+                    </item>
+                    <item name="addParamToFilter" xsi:type="string">pool_id</item>
+                </item>
+            </argument>
+        </insertListing>
+    </fieldset>
+</form>

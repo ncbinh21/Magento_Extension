@@ -1,0 +1,270 @@
+@use-buttons-core__enable: true;
+
+//button[.action]
+@forix-button__name: "forix-button";
+@forix-button__commons: border-radius,color,font-weight,line-height,letter-spacing,text-transform,text-decoration,background,border,padding;
+@forix-button__responsives: height,min-width;
+@forix-button__check-have: hover;
+@forix-button__status: false;
+@forix-button__prefix: false;
+@forix-button__format: false;
+@forix-button__use-flex: false;
+
+@forix-button__hover__commons: color,background;
+@forix-button__hover__responsives: false;
+
+@forix-button__hover__background: @primary-button__color__hover;
+@forix-button__hover__color: @color-white;
+
+@forix-button__border-radius: 0;
+@forix-button__color: @color-white;
+@forix-button__font-weight: @forix-font-weight__bold;
+@forix-button__line-height: 25px;
+@forix-button__letter-spacing: 0.75px;
+@forix-button__text-transform: uppercase;
+@forix-button__text-decoration: none;
+@forix-button__background: @primary-button__color;
+@forix-button__border: 0;
+@forix-button__padding: 0 @forix-indent__xm;
+@forix-button__height: 34px;
+@forix-button__min-width: 100%;
+
+@forix-button__change__m: true;
+@forix-button__height__m: 34px;
+@forix-button__min-width__m: 136px;
+
+@forix-button__change__l: true;
+@forix-button__height__l: 38px;
+@forix-button__min-width__l: 136px;
+
+//button[.action] span
+@forix-button-span__name: "forix-button-span";
+@forix-button-span__commons: false;
+@forix-button-span__responsives: false;
+@forix-button-span__check-have: false;
+@forix-button-span__status: false;
+@forix-button-span__prefix: false;
+@forix-button-span__format: false;
+@forix-button-span__use-flex: false;
+
+//.abutton
+@forix-abutton__name: "forix-abutton";
+@forix-abutton__commons: display;
+@forix-abutton__responsives: false;
+@forix-abutton__check-have: hover;
+@forix-abutton__status: false;
+@forix-abutton__prefix: false;
+@forix-abutton__format: false;
+@forix-abutton__use-flex: false;
+
+@forix-abutton__hover__commons: text-decoration;
+@forix-abutton__hover__responsives: false;
+
+@forix-abutton__display: inline-block;
+@forix-abutton__hover__text-decoration: none;
+
+//.abutton span
+@forix-abutton-span__name: "forix-abutton-span";
+@forix-abutton-span__commons: false;
+@forix-abutton-span__responsives: line-height;
+@forix-abutton-span__check-have: false;
+@forix-abutton-span__status: false;
+@forix-abutton-span__prefix: false;
+@forix-abutton-span__format: false;
+@forix-abutton-span__use-flex: false;
+
+@forix-abutton-span__line-height: 34px;
+
+@forix-abutton-span__change__m: true;
+@forix-abutton-span__line-height__m: 34px;
+
+@forix-abutton-span__change__l: true;
+@forix-abutton-span__line-height__l: 38px;
+
+// button-list__name: type1,type2,type3.... // Maximum 20 types
+@forix-button-list__name: btn-large,btn-small,btn2-medium,btn2-small,btn2-large,btn3-medium,btn3-small,btn3-large;
+// [button]-btn-large
+@forix-button-btn-large__name: "forix-button-btn-large";
+@forix-button-btn-large__commons: false;
+@forix-button-btn-large__responsives: height;
+@forix-button-btn-large__check-have: false;
+@forix-button-btn-large__status: false;
+@forix-button-btn-large__prefix: false;
+@forix-button-btn-large__format: false;
+@forix-button-btn-large__use-flex: false;
+
+@forix-button-btn-large__height: 39px;
+
+@forix-button-btn-large__change__m: true;
+@forix-button-btn-large__height__m: 39px;
+
+@forix-button-btn-large__change__l: true;
+@forix-button-btn-large__height__l: 44px;
+
+// [button]-btn-small
+@forix-button-btn-small__name: "forix-button-btn-small";
+@forix-button-btn-small__commons: false;
+@forix-button-btn-small__responsives: height;
+@forix-button-btn-small__check-have: false;
+@forix-button-btn-small__status: false;
+@forix-button-btn-small__prefix: false;
+@forix-button-btn-small__format: false;
+@forix-button-btn-small__use-flex: false;
+
+@forix-button-btn-small__height: 32px;
+
+@forix-button-btn-small__change__m: true;
+@forix-button-btn-small__height__m: 32px;
+
+@forix-button-btn-small__change__l: true;
+@forix-button-btn-small__height__l: 32px;
+
+// [button]-btn2-medium
+@forix-button-btn2-medium__name: "forix-button-btn2-medium";
+@forix-button-btn2-medium__commons: color,border,background;
+@forix-button-btn2-medium__responsives: false;
+@forix-button-btn2-medium__check-have: hover;
+@forix-button-btn2-medium__status: false;
+@forix-button-btn2-medium__prefix: false;
+@forix-button-btn2-medium__format: false;
+@forix-button-btn2-medium__use-flex: false;
+
+@forix-button-btn2-medium__hover__commons: color,background,border-color;
+@forix-button-btn2-medium__hover__responsives: false;
+
+@forix-button-btn2-medium__color: @color-green;
+@forix-button-btn2-medium__border: 1px solid  @color-green;
+@forix-button-btn2-medium__background: @secondary-button__color;
+
+@forix-button-btn2-medium__hover__color: @color-white;
+@forix-button-btn2-medium__hover__border-color: @color-green;
+@forix-button-btn2-medium__hover__background: @secondary-button__color__hover;
+
+// [button]-btn2-small
+@forix-button-btn2-small__name: "forix-button-btn2-small";
+@forix-button-btn2-small__commons: color,border,background;
+@forix-button-btn2-small__responsives: height;
+@forix-button-btn2-small__check-have: hover;
+@forix-button-btn2-small__status: false;
+@forix-button-btn2-small__prefix: false;
+@forix-button-btn2-small__format: false;
+@forix-button-btn2-small__use-flex: false;
+
+@forix-button-btn2-small__hover__commons: color,background,border-color;
+@forix-button-btn2-small__hover__responsives: false;
+
+@forix-button-btn2-small__color: @color-green;
+@forix-button-btn2-small__border: 1px solid  @color-green;
+@forix-button-btn2-small__background: @secondary-button__color;
+
+@forix-button-btn2-small__hover__color: @color-white;
+@forix-button-btn2-small__hover__border-color: @color-green;
+@forix-button-btn2-small__hover__background: @secondary-button__color__hover;
+
+@forix-button-btn2-small__height: 32px;
+
+@forix-button-btn2-small__change__m: true;
+@forix-button-btn2-small__height__m: 32px;
+
+@forix-button-btn2-small__change__l: true;
+@forix-button-btn2-small__height__l: 32px;
+
+// [button]-btn2-large
+@forix-button-btn2-large__name: "forix-button-btn2-large";
+@forix-button-btn2-large__commons: color,border,background;
+@forix-button-btn2-large__responsives: height;
+@forix-button-btn2-large__check-have: hover;
+@forix-button-btn2-large__status: false;
+@forix-button-btn2-large__prefix: false;
+@forix-button-btn2-large__format: false;
+@forix-button-btn2-large__use-flex: false;
+
+@forix-button-btn2-large__hover__commons: color,background,border-color;
+@forix-button-btn2-large__hover__responsives: false;
+
+@forix-button-btn2-large__color: @color-green;
+@forix-button-btn2-large__border: 1px solid  @color-green;
+@forix-button-btn2-large__background: @secondary-button__color;
+
+@forix-button-btn2-large__hover__color: @color-white;
+@forix-button-btn2-large__hover__border-color: @color-green;
+@forix-button-btn2-large__hover__background: @secondary-button__color__hover;
+@forix-button-btn2-large__height: 39px;
+
+@forix-button-btn2-large__change__m: true;
+@forix-button-btn2-large__height__m: 39px;
+
+@forix-button-btn2-large__change__l: true;
+@forix-button-btn2-large__height__l: 44px;
+
+// [button]-btn3-medium
+@forix-button-btn3-medium__name: "forix-button-btn3-medium";
+@forix-button-btn3-medium__commons: color,background;
+@forix-button-btn3-medium__responsives: false;
+@forix-button-btn3-medium__check-have: hover;
+@forix-button-btn3-medium__status: false;
+@forix-button-btn3-medium__prefix: false;
+@forix-button-btn3-medium__format: false;
+@forix-button-btn3-medium__use-flex: false;
+
+@forix-button-btn3-medium__hover__commons: background;
+@forix-button-btn3-medium__hover__responsives: false;
+
+@forix-button-btn3-medium__color: @color-white;
+@forix-button-btn3-medium__background: @three-button__color;
+
+@forix-button-btn3-medium__hover__background: @three-button__color__hover;
+
+// [button]-btn3-small
+@forix-button-btn3-small__name: "forix-button-btn3-small";
+@forix-button-btn3-small__commons: color,background;
+@forix-button-btn3-small__responsives: height;
+@forix-button-btn3-small__check-have: hover;
+@forix-button-btn3-small__status: false;
+@forix-button-btn3-small__prefix: false;
+@forix-button-btn3-small__format: false;
+@forix-button-btn3-small__use-flex: false;
+
+@forix-button-btn3-small__hover__commons: background;
+@forix-button-btn3-small__hover__responsives: false;
+
+@forix-button-btn3-small__color: @color-white;
+@forix-button-btn3-small__background: @three-button__color;
+
+@forix-button-btn3-small__hover__background: @three-button__color__hover;
+@forix-button-btn3-small__height: 32px;
+
+@forix-button-btn3-small__change__m: true;
+@forix-button-btn3-small__height__m: 32px;
+
+@forix-button-btn3-small__change__l: true;
+@forix-button-btn3-small__height__l: 32px;
+
+// [button]-btn3-large
+@forix-button-btn3-large__name: "forix-button-btn3-large";
+@forix-button-btn3-large__commons: color,background;
+@forix-button-btn3-large__responsives: height;
+@forix-button-btn3-large__check-have: hover;
+@forix-button-btn3-large__status: false;
+@forix-button-btn3-large__prefix: false;
+@forix-button-btn3-large__format: false;
+@forix-button-btn3-large__use-flex: false;
+
+@forix-button-btn3-large__hover__commons: background;
+@forix-button-btn3-large__hover__responsives: false;
+
+@forix-button-btn3-large__color: @color-white;
+@forix-button-btn3-large__background: @three-button__color;
+
+@forix-button-btn3-large__hover__background: @three-button__color__hover;
+@forix-button-btn3-large__height: 39px;
+
+@forix-button-btn3-large__change__m: true;
+@forix-button-btn3-large__height__m: 39px;
+
+@forix-button-btn3-large__change__l: true;
+@forix-button-btn3-large__height__l: 44px;
+
+// other variables
+
+@forix-button__min-width__xs: 136px;

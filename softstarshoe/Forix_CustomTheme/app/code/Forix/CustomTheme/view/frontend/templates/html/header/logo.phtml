@@ -1,0 +1,45 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var \Forix\CustomTheme\Block\Html\Header\Logo $block
+ */
+?>
+<?php $storeName = $block->getThemeName() ? $block->getThemeName() : $block->getLogoAlt();?>
+<span data-action="toggle-nav" class="action nav-toggle"><span><?= /* @escapeNotVerified */ __('Toggle Nav') ?></span></span>
+
+<?php if ($block->isHomePage()):?>
+    <h1 class="logo">
+        <span>Soft Star Shoes</span>
+<?php else: ?>
+    <a class="logo" href="<?= $block->getUrl('') ?>" title="<?= /* @escapeNotVerified */ $storeName ?>">
+<?php endif ?>
+    <img src="<?= /* @escapeNotVerified */ $block->getLogoSrc() ?>"
+         alt="<?= /* @escapeNotVerified */ $block->getLogoAlt() ?>"
+         <?= $block->getLogoWidth() ? 'width="' . $block->getLogoWidth() . '"' : '' ?>
+         <?= $block->getLogoHeight() ? 'height="' . $block->getLogoHeight() . '"' : '' ?> />
+<?php if ($block->isHomePage()):?>
+    </h1>
+<?php else:?>
+    </a>
+<?php endif?>
+
+<?php if (!$block->isHomePage()):?>
+    <strong class="logo logo-map" href="<?= $block->getUrl('') ?>" title="<?= /* @escapeNotVerified */ $storeName ?>">
+    <img src="<?= /* @escapeNotVerified */ $block->getLogoSrc() ?>"
+         alt="<?= /* @escapeNotVerified */ $block->getLogoAlt() ?>"
+        <?= $block->getLogoWidth() ? 'width="' . $block->getLogoWidth() . '"' : '' ?>
+        <?= $block->getLogoHeight() ? 'height="' . $block->getLogoHeight() . '"' : '' ?> usemap="#logomap"
+    />
+    <map name="logomap">
+        <area shape="rect" coords="0,0,369,110" alt="Sun" href="<?= $block->getUrl('') ?>">
+    </map>
+    </strong>
+<?php endif?>
+
+

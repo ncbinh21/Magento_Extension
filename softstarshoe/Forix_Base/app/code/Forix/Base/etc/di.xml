@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!--<preference for="Magento\Paypal\Model\Config" type="Forix\Base\Model\Payments\Paypal\Config" />-->
+    <type name="Magento\Paypal\Model\Config">
+        <plugin name="forix_after_getbuildnotationcode" type="Forix\Base\Model\Plugin\Payments\Paypal\Config" />
+    </type>
+</config>

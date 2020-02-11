@@ -1,0 +1,911 @@
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.navigation,
+.breadcrumbs,
+.page-header .header.panel,
+.header.content,
+.footer.content,
+.page-wrapper > .widget,
+.page-wrapper > .page-bottom,
+.block.category.event,
+.top-container,
+.page-main{
+    &:extend(.forix-abs-container all);
+}
+.columns{
+    &:extend(.forix-abs-row all);
+}
+.sidebar-main,
+.sidebar-additional,
+.column.main{
+    &:extend(.forix-abs-column all);
+}
+
+// ------------------------------------
+// Core
+// ------------------------------------
+// common
+& when (@media-common = true){
+    & when(@use-layout-core__enable= true) {
+        .page-main{
+            .forix-global-call(
+                @_block-name: @forix-page-main__name,
+                @_version: false
+            );
+        }
+        .columns{
+            .forix-global-call(
+                @_block-name: @forix-columns__name,
+                @_version: false
+            );
+            .column.main{
+                .forix-global-call(
+                    @_block-name: @forix-column-main__name,
+                    @_version: false
+                );
+            }
+            .sidebar-main{
+                .forix-global-call(
+                    @_block-name: @forix-sidebar-main__name,
+                    @_version: false
+                );
+            }
+            .sidebar-additional{
+                .forix-global-call(
+                    @_block-name: @forix-sidebar-additional__name,
+                    @_version: false
+                );
+            }
+        }
+        .page-layout-1column{
+            .columns{
+                .forix-global-call(
+                    @_block-name: @forix-1column-columns__name,
+                    @_version: false
+                );
+                .column.main{
+                    .forix-global-call(
+                        @_block-name: @forix-1column-column-main__name,
+                        @_version: false
+                    );
+                }
+                .sidebar-main{
+                    .forix-global-call(
+                        @_block-name: @forix-1column-sidebar-main__name,
+                        @_version: false
+                    );
+                }
+                .sidebar-additional{
+                    .forix-global-call(
+                        @_block-name: @forix-1column-sidebar-additional__name,
+                        @_version: false
+                    );
+                }
+            }
+        }
+        .page-layout-3columns{
+            .columns{
+                .forix-global-call(
+                    @_block-name: @forix-3columns-columns__name,
+                    @_version: false
+                );
+                .column.main{
+                    .forix-global-call(
+                        @_block-name: @forix-3columns-column-main__name,
+                        @_version: false
+                    );
+                }
+                .sidebar-main{
+                    .forix-global-call(
+                        @_block-name: @forix-3columns-sidebar-main__name,
+                        @_version: false
+                    );
+                }
+                .sidebar-additional{
+                    .forix-global-call(
+                        @_block-name: @forix-3columns-sidebar-additional__name,
+                        @_version: false
+                    );
+                }
+            }
+        }
+        .page-layout-2columns-left{
+            .columns{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-left-columns__name,
+                    @_version: false
+                );
+                .column.main{
+                    .forix-global-call(
+                        @_block-name: @forix-2columns-left-column-main__name,
+                        @_version: false
+                    );
+                }
+                .sidebar-main{
+                    .forix-global-call(
+                        @_block-name: @forix-2columns-left-sidebar-main__name,
+                        @_version: false
+                    );
+                }
+                .sidebar-additional{
+                    .forix-global-call(
+                        @_block-name: @forix-2columns-left-sidebar-additional__name,
+                        @_version: false
+                    );
+                }
+            }
+        }
+        .page-layout-2columns-right{
+            .columns{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-right-columns__name,
+                    @_version: false
+                );
+            }
+            .column.main{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-right-column-main__name,
+                    @_version: false
+                );
+            }
+            .sidebar-main{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-right-sidebar-main__name,
+                    @_version: false
+                );
+            }
+            .sidebar-additional{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-right-sidebar-additional__name,
+                    @_version: false
+                );
+            }
+        }
+    }
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    & when(@use-layout-core__enable= true) {
+        //.forix-abs-container
+        .forix-abs-container{
+            .forix-lib-container('');
+        }
+        //.forix-abs-column
+        .forix-abs-row{
+            .forix-lib-row('');
+        }
+        //.forix-abs-row
+        .forix-abs-column{
+            .forix-lib-column('');
+        }
+        .page-main{
+            .forix-global-call(
+                @_block-name: @forix-page-main__name,
+                @_version: ''
+            );
+        }
+        .columns{
+            .forix-global-call(
+                @_block-name: @forix-columns__name,
+                @_version: ''
+            );
+            .column.main{
+                .forix-global-call(
+                    @_block-name: @forix-column-main__name,
+                    @_version: ''
+                );
+            }
+            .sidebar-main{
+                .forix-global-call(
+                    @_block-name: @forix-sidebar-main__name,
+                    @_version: ''
+                );
+            }
+            .sidebar-additional{
+                .forix-global-call(
+                    @_block-name: @forix-sidebar-additional__name,
+                    @_version: ''
+                );
+            }
+        }
+        .page-layout-1column{
+            .columns{
+                .forix-global-call(
+                    @_block-name: @forix-1column-columns__name,
+                    @_version: ''
+                );
+                .column.main{
+                    .forix-global-call(
+                        @_block-name: @forix-1column-column-main__name,
+                        @_version: ''
+                    );
+                }
+                .sidebar-main{
+                    .forix-global-call(
+                        @_block-name: @forix-1column-sidebar-main__name,
+                        @_version: ''
+                    );
+                }
+                .sidebar-additional{
+                    .forix-global-call(
+                        @_block-name: @forix-1column-sidebar-additional__name,
+                        @_version: ''
+                    );
+                }
+            }
+        }
+        .page-layout-3columns{
+            .columns{
+                .forix-global-call(
+                    @_block-name: @forix-3columns-columns__name,
+                    @_version: ''
+                );
+                .column.main{
+                    .forix-global-call(
+                        @_block-name: @forix-3columns-column-main__name,
+                        @_version: ''
+                    );
+                }
+                .sidebar-main{
+                    .forix-global-call(
+                        @_block-name: @forix-3columns-sidebar-main__name,
+                        @_version: ''
+                    );
+                }
+                .sidebar-additional{
+                    .forix-global-call(
+                        @_block-name: @forix-3columns-sidebar-additional__name,
+                        @_version: ''
+                    );
+                }
+            }
+        }
+        .page-layout-2columns-left{
+            .columns{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-left-columns__name,
+                    @_version: ''
+                );
+                .column.main{
+                    .forix-global-call(
+                        @_block-name: @forix-2columns-left-column-main__name,
+                        @_version: ''
+                    );
+                }
+                .sidebar-main{
+                    .forix-global-call(
+                        @_block-name: @forix-2columns-left-sidebar-main__name,
+                        @_version: ''
+                    );
+                }
+                .sidebar-additional{
+                    .forix-global-call(
+                        @_block-name: @forix-2columns-left-sidebar-additional__name,
+                        @_version: ''
+                    );
+                }
+            }
+        }
+        .page-layout-2columns-right{
+            .columns{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-right-columns__name,
+                    @_version: ''
+                );
+            }
+            .column.main{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-right-column-main__name,
+                    @_version: ''
+                );
+            }
+            .sidebar-main{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-right-sidebar-main__name,
+                    @_version: ''
+                );
+            }
+            .sidebar-additional{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-right-sidebar-additional__name,
+                    @_version: ''
+                );
+            }
+        }
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    & when(@use-layout-core__enable= true) {
+        .page-main{
+            .forix-global-call(
+                @_block-name: @forix-page-main__name,
+                @_version: 'ml'
+            );
+        }
+        .columns{
+            .forix-global-call(
+                @_block-name: @forix-columns__name,
+                @_version: 'ml'
+            );
+            .column.main{
+                .forix-global-call(
+                    @_block-name: @forix-column-main__name,
+                    @_version: 'ml'
+                );
+            }
+            .sidebar-main{
+                .forix-global-call(
+                    @_block-name: @forix-sidebar-main__name,
+                    @_version: 'ml'
+                );
+            }
+            .sidebar-additional{
+                .forix-global-call(
+                    @_block-name: @forix-sidebar-additional__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        .page-layout-1column{
+            .columns{
+                .forix-global-call(
+                    @_block-name: @forix-1column-columns__name,
+                    @_version: 'ml'
+                );
+                .column.main{
+                    .forix-global-call(
+                        @_block-name: @forix-1column-column-main__name,
+                        @_version: 'ml'
+                    );
+                }
+                .sidebar-main{
+                    .forix-global-call(
+                        @_block-name: @forix-1column-sidebar-main__name,
+                        @_version: 'ml'
+                    );
+                }
+                .sidebar-additional{
+                    .forix-global-call(
+                        @_block-name: @forix-1column-sidebar-additional__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+        }
+        .page-layout-3columns{
+            .columns{
+                .forix-global-call(
+                    @_block-name: @forix-3columns-columns__name,
+                    @_version: 'ml'
+                );
+                .column.main{
+                    .forix-global-call(
+                        @_block-name: @forix-3columns-column-main__name,
+                        @_version: 'ml'
+                    );
+                }
+                .sidebar-main{
+                    .forix-global-call(
+                        @_block-name: @forix-3columns-sidebar-main__name,
+                        @_version: 'ml'
+                    );
+                }
+                .sidebar-additional{
+                    .forix-global-call(
+                        @_block-name: @forix-3columns-sidebar-additional__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+        }
+        .page-layout-2columns-left{
+            .columns{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-left-columns__name,
+                    @_version: 'ml'
+                );
+                .column.main{
+                    .forix-global-call(
+                        @_block-name: @forix-2columns-left-column-main__name,
+                        @_version: 'ml'
+                    );
+                }
+                .sidebar-main{
+                    .forix-global-call(
+                        @_block-name: @forix-2columns-left-sidebar-main__name,
+                        @_version: 'ml'
+                    );
+                }
+                .sidebar-additional{
+                    .forix-global-call(
+                        @_block-name: @forix-2columns-left-sidebar-additional__name,
+                        @_version: 'ml'
+                    );
+                }
+            }
+        }
+        .page-layout-2columns-right{
+            .columns{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-right-columns__name,
+                    @_version: 'ml'
+                );
+            }
+            .column.main{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-right-column-main__name,
+                    @_version: 'ml'
+                );
+            }
+            .sidebar-main{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-right-sidebar-main__name,
+                    @_version: 'ml'
+                );
+            }
+            .sidebar-additional{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-right-sidebar-additional__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+    }
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    & when(@use-layout-core__enable= true) {
+        .page-main{
+            .forix-global-call(
+                @_block-name: @forix-page-main__name,
+                @_version: 'sm'
+            );
+        }
+        .columns{
+            .forix-global-call(
+                @_block-name: @forix-columns__name,
+                @_version: 'sm'
+            );
+            .column.main{
+                .forix-global-call(
+                    @_block-name: @forix-column-main__name,
+                    @_version: 'sm'
+                );
+            }
+            .sidebar-main{
+                .forix-global-call(
+                    @_block-name: @forix-sidebar-main__name,
+                    @_version: 'sm'
+                );
+            }
+            .sidebar-additional{
+                .forix-global-call(
+                    @_block-name: @forix-sidebar-additional__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        .page-layout-1column{
+            .columns{
+                .forix-global-call(
+                    @_block-name: @forix-1column-columns__name,
+                    @_version: 'sm'
+                );
+                .column.main{
+                    .forix-global-call(
+                        @_block-name: @forix-1column-column-main__name,
+                        @_version: 'sm'
+                    );
+                }
+                .sidebar-main{
+                    .forix-global-call(
+                        @_block-name: @forix-1column-sidebar-main__name,
+                        @_version: 'sm'
+                    );
+                }
+                .sidebar-additional{
+                    .forix-global-call(
+                        @_block-name: @forix-1column-sidebar-additional__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+        }
+        .page-layout-3columns{
+            .columns{
+                .forix-global-call(
+                    @_block-name: @forix-3columns-columns__name,
+                    @_version: 'sm'
+                );
+                .column.main{
+                    .forix-global-call(
+                        @_block-name: @forix-3columns-column-main__name,
+                        @_version: 'sm'
+                    );
+                }
+                .sidebar-main{
+                    .forix-global-call(
+                        @_block-name: @forix-3columns-sidebar-main__name,
+                        @_version: 'sm'
+                    );
+                }
+                .sidebar-additional{
+                    .forix-global-call(
+                        @_block-name: @forix-3columns-sidebar-additional__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+        }
+        .page-layout-2columns-left{
+            .columns{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-left-columns__name,
+                    @_version: 'sm'
+                );
+                .column.main{
+                    .forix-global-call(
+                        @_block-name: @forix-2columns-left-column-main__name,
+                        @_version: 'sm'
+                    );
+                }
+                .sidebar-main{
+                    .forix-global-call(
+                        @_block-name: @forix-2columns-left-sidebar-main__name,
+                        @_version: 'sm'
+                    );
+                }
+                .sidebar-additional{
+                    .forix-global-call(
+                        @_block-name: @forix-2columns-left-sidebar-additional__name,
+                        @_version: 'sm'
+                    );
+                }
+            }
+        }
+        .page-layout-2columns-right{
+            .columns{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-right-columns__name,
+                    @_version: 'sm'
+                );
+            }
+            .column.main{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-right-column-main__name,
+                    @_version: 'sm'
+                );
+            }
+            .sidebar-main{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-right-sidebar-main__name,
+                    @_version: 'sm'
+                );
+            }
+            .sidebar-additional{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-right-sidebar-additional__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+    }
+}
+
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    & when(@use-layout-core__enable= true) {
+        .forix-abs-container{
+            .forix-lib-container('__m');
+        }
+        .forix-abs-row{
+            .forix-lib-row('__m');
+        }
+        .forix-abs-column{
+            .forix-lib-column('__m');
+        }
+        .page-main{
+            .forix-global-call(
+                @_block-name: @forix-page-main__name,
+                @_version: 'm'
+            );
+        }
+        .columns{
+            .forix-global-call(
+                @_block-name: @forix-columns__name,
+                @_version: 'm'
+            );
+            .column.main{
+                .forix-global-call(
+                    @_block-name: @forix-column-main__name,
+                    @_version: 'm'
+                );
+            }
+            .sidebar-main{
+                .forix-global-call(
+                    @_block-name: @forix-sidebar-main__name,
+                    @_version: 'm'
+                );
+            }
+            .sidebar-additional{
+                .forix-global-call(
+                    @_block-name: @forix-sidebar-additional__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        .page-layout-1column{
+            .columns{
+                .forix-global-call(
+                    @_block-name: @forix-1column-columns__name,
+                    @_version: 'm'
+                );
+                .column.main{
+                    .forix-global-call(
+                        @_block-name: @forix-1column-column-main__name,
+                        @_version: 'm'
+                    );
+                }
+                .sidebar-main{
+                    .forix-global-call(
+                        @_block-name: @forix-1column-sidebar-main__name,
+                        @_version: 'm'
+                    );
+                }
+                .sidebar-additional{
+                    .forix-global-call(
+                        @_block-name: @forix-1column-sidebar-additional__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+        }
+        .page-layout-3columns{
+            .columns{
+                .forix-global-call(
+                    @_block-name: @forix-3columns-columns__name,
+                    @_version: 'm'
+                );
+                .column.main{
+                    .forix-global-call(
+                        @_block-name: @forix-3columns-column-main__name,
+                        @_version: 'm'
+                    );
+                }
+                .sidebar-main{
+                    .forix-global-call(
+                        @_block-name: @forix-3columns-sidebar-main__name,
+                        @_version: 'm'
+                    );
+                }
+                .sidebar-additional{
+                    .forix-global-call(
+                        @_block-name: @forix-3columns-sidebar-additional__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+        }
+        .page-layout-2columns-left{
+            .columns{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-left-columns__name,
+                    @_version: 'm'
+                );
+                .column.main{
+                    .forix-global-call(
+                        @_block-name: @forix-2columns-left-column-main__name,
+                        @_version: 'm'
+                    );
+                }
+                .sidebar-main{
+                    .forix-global-call(
+                        @_block-name: @forix-2columns-left-sidebar-main__name,
+                        @_version: 'm'
+                    );
+                }
+                .sidebar-additional{
+                    .forix-global-call(
+                        @_block-name: @forix-2columns-left-sidebar-additional__name,
+                        @_version: 'm'
+                    );
+                }
+            }
+        }
+        .page-layout-2columns-right{
+            .columns{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-right-columns__name,
+                    @_version: 'm'
+                );
+            }
+            .column.main{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-right-column-main__name,
+                    @_version: 'm'
+                );
+            }
+            .sidebar-main{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-right-sidebar-main__name,
+                    @_version: 'm'
+                );
+            }
+            .sidebar-additional{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-right-sidebar-additional__name,
+                    @_version: 'm'
+                );
+            }
+        }
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    & when(@use-layout-core__enable= true) {
+        .forix-abs-container{
+            .forix-lib-container('__l');
+        }
+        .forix-abs-row{
+            .forix-lib-row('__l');
+        }
+        .forix-abs-column{
+            .forix-lib-column('__l');
+        }
+        .page-main{
+            .forix-global-call(
+                @_block-name: @forix-page-main__name,
+                @_version: 'l'
+            );
+        }
+        .columns{
+            .forix-global-call(
+                @_block-name: @forix-columns__name,
+                @_version: 'l'
+            );
+            .column.main{
+                .forix-global-call(
+                    @_block-name: @forix-column-main__name,
+                    @_version: 'l'
+                );
+            }
+            .sidebar-main{
+                .forix-global-call(
+                    @_block-name: @forix-sidebar-main__name,
+                    @_version: 'l'
+                );
+            }
+            .sidebar-additional{
+                .forix-global-call(
+                    @_block-name: @forix-sidebar-additional__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        .page-layout-1column{
+            .columns{
+                .forix-global-call(
+                    @_block-name: @forix-1column-columns__name,
+                    @_version: 'l'
+                );
+                .column.main{
+                    .forix-global-call(
+                        @_block-name: @forix-1column-column-main__name,
+                        @_version: 'l'
+                    );
+                }
+                .sidebar-main{
+                    .forix-global-call(
+                        @_block-name: @forix-1column-sidebar-main__name,
+                        @_version: 'l'
+                    );
+                }
+                .sidebar-additional{
+                    .forix-global-call(
+                        @_block-name: @forix-1column-sidebar-additional__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+        }
+        .page-layout-3columns{
+            .columns{
+                .forix-global-call(
+                    @_block-name: @forix-3columns-columns__name,
+                    @_version: 'l'
+                );
+                .column.main{
+                    .forix-global-call(
+                        @_block-name: @forix-3columns-column-main__name,
+                        @_version: 'l'
+                    );
+                }
+                .sidebar-main{
+                    .forix-global-call(
+                        @_block-name: @forix-3columns-sidebar-main__name,
+                        @_version: 'l'
+                    );
+                }
+                .sidebar-additional{
+                    .forix-global-call(
+                        @_block-name: @forix-3columns-sidebar-additional__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+        }
+        .page-layout-2columns-left{
+            .columns{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-left-columns__name,
+                    @_version: 'l'
+                );
+                .column.main{
+                    .forix-global-call(
+                        @_block-name: @forix-2columns-left-column-main__name,
+                        @_version: 'l'
+                    );
+                }
+                .sidebar-main{
+                    .forix-global-call(
+                        @_block-name: @forix-2columns-left-sidebar-main__name,
+                        @_version: 'l'
+                    );
+                }
+                .sidebar-additional{
+                    .forix-global-call(
+                        @_block-name: @forix-2columns-left-sidebar-additional__name,
+                        @_version: 'l'
+                    );
+                }
+            }
+        }
+        .page-layout-2columns-right{
+            .columns{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-right-columns__name,
+                    @_version: 'l'
+                );
+            }
+            .column.main{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-right-column-main__name,
+                    @_version: 'l'
+                );
+            }
+            .sidebar-main{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-right-sidebar-main__name,
+                    @_version: 'l'
+                );
+            }
+            .sidebar-additional{
+                .forix-global-call(
+                    @_block-name: @forix-2columns-right-sidebar-additional__name,
+                    @_version: 'l'
+                );
+            }
+        }
+    }
+}
+
+// [1024-1199]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__l) and (@break-max = @screen__xl) {
+    .columns {
+        .sidebar-main {
+            padding-right: @forix-sidebar-main__padding-right__l-xl;
+        }
+
+        .sidebar-additional {
+            padding-left: @forix-sidebar-additional__padding-left__l-xl;
+        }
+    }
+}
+
+// Start custom CSS

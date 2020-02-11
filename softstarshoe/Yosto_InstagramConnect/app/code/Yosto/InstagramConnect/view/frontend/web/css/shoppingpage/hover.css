@@ -1,0 +1,137 @@
+/*.view {*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /*margin: 10px;*/
+    /*float: left;*/
+    /*overflow: hidden;*/
+    /*position: relative;*/
+    /*text-align: center;*/
+    /*box-shadow: 1px 1px 2px #e6e6e6;*/
+    /*cursor: default;*/
+/*}*/
+.view .mask, .view .content {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+}
+.view img {
+    display: block;
+    position: relative;
+    height: auto;
+    width: 100%;
+}
+.view h2 {
+    text-transform: uppercase;
+    color: #fff !important;
+    text-align: center;
+    position: relative;
+    font-size: 16px;
+    padding: 10px;
+    margin: 20px 0 0 0
+}
+.view p {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 12px;
+    position: relative;
+    color: #fff;
+    padding: 10px 20px 20px;
+    text-align: center
+}
+
+.view .info a {
+    color: white;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    align-items: center;
+}
+
+.view a.info {
+    display: inline-block;
+    text-decoration: none;
+    padding: 7px 14px;
+    background: #000;
+    color: #fff;
+    text-transform: uppercase;
+    box-shadow: 0 0 1px #000
+}
+.view a.info:hover {
+    box-shadow: 0 0 5px #000
+}
+
+.view-first img {
+    transition: all 0.2s linear;
+}
+
+.view-first h2 {
+    transform: translateY(-100px);
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+    font-family: 'Montserrat', sans-serif !important;
+}
+.view-first p {
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.2s linear;
+}
+.view-first a.info{
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+}
+
+.view-first:hover img {
+    transform: scale(1.1);
+}
+.view-first:hover .overlay-effect {
+    opacity: 0.3;
+}
+.view-first:hover h2,
+.view-first:hover p,
+.view-first:hover a.info {
+    opacity: 1;
+    transform: translateY(-20px);
+    top: 10%;
+    transition-delay: 0.2s;
+}
+
+.view-first span.overlay-effect{
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom right,#ffffff, #6f6f6f);
+    display: none;
+}
+
+.view-first:hover .overlay-effect {
+    opacity: 0.3;
+    display: block;
+}
+
+.view-first .instagram-logo {
+    color: white;
+    background-size: cover;
+    bottom: 45%;
+    left: 20%;
+    right: 20%;
+    position: absolute;
+    box-sizing: border-box;
+    margin: auto;
+    display: none;
+}
+
+.view-first:hover .instagram-logo {
+    display: block;
+}
+
+.view-first span.info.hover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+}

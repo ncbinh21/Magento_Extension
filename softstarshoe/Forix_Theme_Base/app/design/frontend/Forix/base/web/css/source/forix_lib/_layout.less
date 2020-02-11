@@ -1,0 +1,20 @@
+// container
+// [@_layout-type=''|__m|__l]
+.forix-lib-container(@_layout-type:''){
+    @layout-indent-data: "forix-layout-indent__width@{_layout-type}";
+    @layout-width: "forix-layout__width@{_layout-type}";
+    @layout-max-width: "forix-layout__max-width@{_layout-type}";
+    .forix-container-fixed(@@layout-indent-data);
+    .lib-css(width,@@layout-width);
+    .lib-css(max-width,@@layout-max-width);
+}
+
+.forix-lib-row(@_layout-type:''){
+    @gutter-width: "forix-gutter-width@{_layout-type}";
+    .forix-make-row(@@gutter-width);
+}
+
+.forix-lib-column(@_layout-type:''){
+    @gutter-width: "forix-gutter-width@{_layout-type}";
+    .forix-make-column(@@gutter-width);
+}

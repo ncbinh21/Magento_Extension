@@ -1,0 +1,273 @@
+<?php
+/**
+ * @var $block \Forix\FanPhoto\Block\Index\Index
+ */
+?>
+<style type="text/css">
+    html, body {
+        margin: 0;
+        padding: 0;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .slider {
+        width: 50%;
+        margin: 100px auto;
+    }
+
+    .slick-slide {
+        margin: 0px 20px;
+    }
+
+    .slick-slide img {
+        width: 100%;
+    }
+
+    .slick-prev:before,
+    .slick-next:before {
+        color: black;
+    }
+
+
+    .slick-slide {
+        transition: all ease-in-out .3s;
+        opacity: .2;
+    }
+
+    .slick-active {
+        opacity: .5;
+    }
+
+    .slick-current {
+        opacity: 1;
+    }
+
+    .slick-initialized .slick-slide{
+        display: block!important;
+    }
+</style>
+<?php
+$pager_url = $this->getUrl('fanphoto');
+$pager_url = rtrim($pager_url, '/');
+$position = $block->getPosition();
+?>
+<h2><?php echo __( 'Happy Feet. Happy Fans.' ) ?></h2>
+<div class="photo-filter"><span><?php echo __( 'Show Me' ) ?>: </span><a href="<?php echo $pager_url. '?filterBy=All' ?>" class="<?php if ($block->isFilterCurrent('') || $block->isFilterCurrent('All')): ?>selected<?php endif;?>"><?php echo __( 'All Shoe Photos' ) ?></a> <a
+            href="<?php echo $pager_url. '?filterBy=Adult' ?>" class="<?php if ($block->isFilterCurrent('Adult')): ?>selected<?php endif;?>"><?php echo __( 'Adult Only' ) ?></a> <a href="<?php echo $pager_url. '?filterBy=Child' ?>" class="<?php if ($block->isFilterCurrent('Child')): ?>selected<?php endif;?>"><?php echo __( 'Kids Only' ) ?></a></div>
+<div class="photos photo-gallery">
+    <?php
+    $photosCollection = $block->getPhotos();
+    $photoImagesCollection = $block->getPhotosLimit();
+    $imgPath = $this->getUrl('pub/media/fanphoto');
+    if ($photosCollection->getSize() > 0) :
+        ?>
+        <?php $photos = $photosCollection->getData();
+        $photoImages = $photoImagesCollection->getData();
+        ?>
+        <ul class="grid" data-masonry='{ "itemSelector": ".grid-item","percentPosition": true }'>
+            <?php if(isset($photos[0]['image_url'])): ?>
+                <li class="grid-item item col-1-1">
+                    <div class="photo-list">
+                        <a class="photo-item" href="#" data-position="<?php echo $position?>"><img class="img" src="<?php echo $block->resize($photos[0]['image_url'], '346', '250', true); ?>"><span class="photo-caption">
+                        <?php echo $photos[0]['caption'] ?>
+                    </span></a>
+                    </div>
+                </li>
+            <?php endif; ?>
+            <?php if(isset($photos[1]['image_url'])): ?>
+                <li class="grid-item item col-1-1">
+                    <div class="photo-list">
+                        <a class="photo-item" href="#" data-position="<?php echo ++$position?>"><img class="img" src="<?php echo $block->resize($photos[1]['image_url'], '346', '250', true); ?>"><span class="photo-caption">
+				        <?php echo $photos[1]['caption'] ?>
+                    </span></a>
+
+                    </div>
+                </li>
+            <?php endif; ?>
+            <?php if(isset($photos[2]['image_url'])): ?>
+                <li class="grid-item item col-1-1">
+                    <div class="photo-list">
+                        <a class="photo-item" href="#" data-position="<?php echo ++$position?>"><img class="img" src="<?php echo $block->resize($photos[2]['image_url'], '346', '250', true); ?>"> <span class="photo-caption">
+				        <?php echo $photos[2]['caption'] ?>
+                    </span></a>
+
+                    </div>
+                </li>
+            <?php endif; ?>
+            <?php if(isset($photos[3]['image_url'])): ?>
+                <li class="grid-item item col-1-1">
+                    <div class="photo-list">
+                        <a class="photo-item" href="#" data-position="<?php echo ++$position?>"><img class="img" src="<?php echo $block->resize($photos[3]['image_url'], '346', '250', true); ?>"> <span class="photo-caption">
+				        <?php echo $photos[3]['caption'] ?>
+                    </span></a>
+
+                    </div>
+                </li>
+            <?php endif; ?>
+            <?php if(isset($photos[4]['image_url'])): ?>
+                <li class="grid-item item col-2-2">
+                    <div class="photo-list">
+                        <a class="photo-item" href="#" data-position="<?php echo ++$position?>"><img class="img" src="<?php echo $block->resize($photos[4]['image_url'], '711', '518', true); ?>"> <span class="photo-caption">
+				        <?php echo $photos[4]['caption'] ?>
+                    </span></a>
+
+                    </div>
+                </li>
+            <?php endif; ?>
+            <?php if(isset($photos[5]['image_url'])): ?>
+                <li class="grid-item item col-1-1">
+                    <div class="photo-list">
+                        <a class="photo-item" href="#" data-position="<?php echo ++$position?>"><img class="img" src="<?php echo $block->resize($photos[5]['image_url'], '346', '250', true); ?>"><span class="photo-caption">
+				        <?php echo $photos[5]['caption'] ?>
+                    </span></a>
+
+                    </div>
+                </li>
+            <?php endif; ?>
+            <?php if(isset($photos[6]['image_url'])): ?>
+                <li class="grid-item item col-1-1">
+                    <div class="photo-list">
+                        <a class="photo-item" href="#" data-position="<?php echo ++$position?>"><img class="img" src="<?php echo $block->resize($photos[6]['image_url'], '346', '250', true); ?>"><span class="photo-caption">
+				        <?php echo $photos[6]['caption'] ?>
+                    </span></a>
+
+                    </div>
+                </li>
+            <?php endif; ?>
+            <?php if(isset($photos[7]['image_url'])): ?>
+                <li class="grid-item item col-1-1">
+                    <div class="photo-list">
+                        <a class="photo-item" href="#" data-position="<?php echo ++$position?>"><img class="img" src="<?php echo $block->resize($photos[7]['image_url'], '346', '250', true); ?>"> <span class="photo-caption">
+				        <?php echo $photos[7]['caption'] ?>
+                    </span></a>
+
+                    </div>
+                </li>
+            <?php endif; ?>
+            <?php if(isset($photos[8]['image_url'])): ?>
+                <li class="grid-item item col-1-1">
+                    <div class="photo-list">
+                        <a class="photo-item" href="#" data-position="<?php echo ++$position?>"><img class="img" src="<?php echo $block->resize($photos[8]['image_url'], '346', '250', true); ?>"><span class="photo-caption">
+				        <?php echo $photos[8]['caption'] ?>
+                    </span></a>
+
+                    </div>
+                </li>
+            <?php endif; ?>
+            <?php if(isset($photos[9]['image_url'])): ?>
+                <li class="grid-item item col-1-1">
+                    <div class="photo-list">
+                        <a class="photo-item" href="#" data-position="<?php echo ++$position?>"><img class="img" src="<?php echo $block->resize($photos[9]['image_url'], '346', '250', true); ?>"><span class="photo-caption">
+				        <?php echo $photos[9]['caption'] ?>
+                    </span></a>
+
+                    </div>
+                </li>
+            <?php endif; ?>
+            <?php if(isset($photos[10]['image_url'])): ?>
+                <li class="grid-item item col-1-1">
+                    <div class="photo-list">
+                        <a class="photo-item" href="#" data-position="<?php echo ++$position?>"><img class="img" src="<?php echo $block->resize($photos[10]['image_url'], '346', '250', true); ?>"><span class="photo-caption">
+				        <?php echo $photos[10]['caption'] ?>
+                    </span></a>
+
+                    </div>
+                </li>
+            <?php endif; ?>
+            <?php if(isset($photos[11]['image_url'])): ?>
+                <li class="grid-item item col-1-1">
+                    <div class="photo-list">
+                        <a class="photo-item" href="#" data-position="<?php echo ++$position?>"><img class="img" src="<?php echo $block->resize($photos[11]['image_url'], '346', '250', true); ?>"> <span class="photo-caption">
+				        <?php echo $photos[11]['caption'] ?>
+                    </span></a>
+
+                    </div>
+                </li>
+            <?php endif; ?>
+            <?php if(isset($photos[12]['image_url'])): ?>
+                <li class="grid-item item col-1-1">
+                    <div class="photo-list">
+                        <a class="photo-item" href="#" data-position="<?php echo ++$position?>"><img class="img" src="<?php echo $block->resize($photos[12]['image_url'], '346', '250', true); ?>"> <span class="photo-caption">
+				        <?php echo $photos[12]['caption'] ?>
+                    </span></a>
+
+                    </div>
+                </li>
+            <?php endif; ?>
+            <?php if(isset($photos[13]['image_url'])): ?>
+                <li class="grid-item item col-2-2">
+                    <div class="photo-list">
+                        <a class="photo-item" href="#" data-position="<?php echo ++$position?>"><img class="img" src="<?php echo $block->resize($photos[13]['image_url'], '711', '518', true); ?>"><span class="photo-caption">
+				        <?php echo $photos[13]['caption'] ?>
+                    </span></a>
+
+                    </div>
+                </li>
+            <?php endif; ?>
+            <?php if(isset($photos[14]['image_url'])): ?>
+                <li class="grid-item item col-2-2">
+                    <div class="photo-list">
+                        <a class="photo-item" href="#" data-position="<?php echo ++$position?>"><img class="img" src="<?php echo $block->resize($photos[14]['image_url'], '711', '518', true); ?>"> <span class="photo-caption">
+				        <?php echo $photos[14]['caption'] ?>
+                    </span></a>
+
+                    </div>
+                </li>
+            <?php endif; ?>
+        </ul>
+        <div style="clear: both"></div>
+        <div class="toolbar-bottom">
+            <div class="toolbar bottom">
+                <?php echo $block->getPagerHtml(); ?>
+            </div>
+        </div>
+        <div class="view-photo">
+            <div class="slider-photos slider-for">
+                <?php foreach($photoImages as $photo): ?>
+                    <div><img src="<?php echo $block->resize($photo['image_url'], '711', '515', true); ?>" /><div class="photo_caption"><?php echo $photo['caption'] ?></div></div>
+                <?php endforeach; ?>
+            </div>
+            <div class="slider-nav">
+                <?php foreach($photoImages as $photo): ?>
+                    <div><img src="<?php echo $block->resize($photo['image_url'], '100', '72', true); ?>" /></div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    <?php else : ?>
+        <p><?php echo __('Have no photo!') ?></p>
+    <?php endif; ?>
+</div>
+<script>
+    require(['jquery', 'Forix_FanPhoto/js/masonry/masonry.pkgd', 'slick'], function($){
+        $(function(){
+            $('.slider-for').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: true,
+                fade: true,
+                asNavFor: '.slider-nav'
+            });
+
+            $('.slider-nav').slick({
+                slidesToShow: 11,
+                slidesToScroll: 1,
+                asNavFor: '.slider-for',
+                dots: false,
+                centerMode: true,
+                focusOnSelect: true,
+                arrows: false,
+                variableWidth: true
+            });
+        });
+        <?php if ($block->isFilterCurrent('Adult') || $block->isFilterCurrent('Child') || $block->isFilterCurrent('All')): ?>
+        $( document ).ready(function($) {
+            var theHash = ".photo-filter";
+            $("html, body").animate({scrollTop:$(theHash).offset().top}, 800);
+        });
+        <?php endif; ?>
+    });
+</script>
+

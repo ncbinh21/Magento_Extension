@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2016 aheadWorks. All rights reserved.
+* See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="product.composite.fieldset">
+            <block class="Aheadworks\Giftcard\Block\Adminhtml\Product\Composite\Fieldset\Giftcard" name="product.composite.fieldset.aw_giftcard"
+                   before="product.composite.fieldset.options" template="Aheadworks_Giftcard::product/composite/fieldset/giftcard.phtml" />
+        </referenceBlock>
+        <referenceBlock name="product.composite.fieldset.qty" remove="true" />
+    </body>
+</page>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="checkout.cart.totals.container">
+            <block class="Mirasvit\Credit\Block\Checkout\Cart\Credit" name="credit.cart" template="checkout/cart/credit.phtml" />
+        </referenceContainer>
+
+        <referenceBlock name="checkout.cart.totals">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="block-totals" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="before_grandtotal" xsi:type="array">
+                                    <item name="children" xsi:type="array">
+                                        <item name="credit-total" xsi:type="array">
+                                            <item name="component" xsi:type="string">Mirasvit_Credit/js/view/summary/credit</item>
+                                            <item name="config" xsi:type="array">
+                                                <item name="template" xsi:type="string">Mirasvit_Credit/summary/credit</item>
+                                                <item name="title" xsi:type="string" translate="true">Store Credit</item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

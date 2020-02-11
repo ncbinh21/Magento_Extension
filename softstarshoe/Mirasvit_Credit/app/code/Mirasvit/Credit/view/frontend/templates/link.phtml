@@ -1,0 +1,25 @@
+<?php
+// @codingStandardsIgnoreFile
+
+/* @var $block \Mirasvit\Credit\Block\Link */
+?>
+<li class="link credit wishlist" data-bind="scope: 'credit'">
+    <a <?= $block->getLinkAttributes() ?>><?= $block->escapeHtml($block->getLabel()) ?>
+        <!-- ko if: credit().amount -->
+        <span data-bind="text: credit().amount" class="counter amount"></span>
+        <!-- /ko -->
+    </a>
+</li>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "credit": {
+                        "component": "Mirasvit_Credit/js/view/credit"
+                    }
+                }
+            }
+        }
+    }
+</script>

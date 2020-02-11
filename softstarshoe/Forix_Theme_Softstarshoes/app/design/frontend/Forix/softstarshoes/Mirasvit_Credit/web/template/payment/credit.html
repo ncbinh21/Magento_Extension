@@ -1,0 +1,44 @@
+<!-- ko if: isAllowed -->
+<!-- ko if: (isCustomerLoggedIn) -->
+<div class="payment-option _collapsible opc-payment-additional credit"
+     data-bind="mageInit: {'collapsible':{'openedState': '_active'}}">
+    <div class="payment-option-title field choice" data-role="title">
+        <span class="action action-toggle" id="block-discount-heading" role="heading" aria-level="2">
+            <!-- ko i18n: 'Apply Store Credit'--><!-- /ko -->
+        </span>
+    </div>
+    <div class="payment-option-content" data-role="content" data-bind="blockLoader: isLoading">
+        <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+
+        <div class="payment-option-inner">
+            <span>
+                <!-- ko i18n: 'Your current balance is:' --><!-- /ko --> <strong
+                    data-bind="text: formatBalanceAmount()"></strong>
+            </span>
+        </div>
+
+        <div class="actions-toolbar">
+            <div class="primary" data-bind="visible: !isLoading()">
+                <!-- ko ifnot: isApplied() -->
+                <button id="apply-credit"
+                        class="action"
+                        data-bind="click: applyCredit">
+                    <span><!-- ko i18n: 'Use Store Credit' --><!-- /ko --></span>
+                </button>
+                <!-- /ko -->
+
+                <!-- ko if: isApplied() -->
+                <button id="cancel-credit"
+                        class="action"
+                        data-bind="click: cancelCredit">
+                    <span><!-- ko i18n: 'Cancel' --><!-- /ko --></span>
+                </button>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /ko -->
+<!-- /ko -->

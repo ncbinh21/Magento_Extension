@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../module-reports/src/Reports/etc/map.xsd">
+    <table name="mst_emailreport_campaign">
+        <columns>
+            <column name="campaign_id"
+                    fields="campaign_id"
+                    label="Campaign ID"
+                    type="select"
+                    expr="%1"
+                    options="Mirasvit\EmailReport\Model\Config\Source\Campaign"/>
+
+            <!--<column name="title" label="Campaign" fields="title" type="text"/>-->
+
+            <!--<column name="day" label="Day" fields="created_at"
+                    class="Mirasvit\Report\Model\Query\Column\Date\Day"/>
+
+            <column name="week" label="Week" fields="created_at"
+                    class="Mirasvit\Report\Model\Query\Column\Date\Week"/>
+
+            <column name="month" label="Month" fields="created_at"
+                    class="Mirasvit\Report\Model\Query\Column\Date\Month"/>
+
+            <column name="quarter" label="Quarter" fields="created_at"
+                    class="Mirasvit\Report\Model\Query\Column\Date\Quarter"/>
+
+            <column name="year" label="Year" fields="created_at"
+                    class="Mirasvit\Report\Model\Query\Column\Date\Year"/>-->
+        </columns>
+    </table>
+
+    <!--<table name="mst_emailreport_email">
+        <columns>
+            <column name="email_qty"
+                    fields="email_id"
+                    label="Emails"
+                    type="number"
+                    expr="DISTINCT(%1)"
+                    class="Mirasvit\Report\Model\Query\Column\Count"/>
+        </columns>
+    </table>
+
+    <table name="mst_emailreport_click">
+        <columns>
+            <column name="click_qty"
+                    fields="click_id"
+                    label="Clicks"
+                    type="number"
+                    expr="DISTINCT(%1)"
+                    class="Mirasvit\Report\Model\Query\Column\Count"/>
+        </columns>
+    </table>
+
+    <table name="mst_emailreport_open">
+        <columns>
+            <column name="open_qty"
+                    fields="open_id"
+                    label="Opens"
+                    type="number"
+                    expr="DISTINCT(%1)"
+                    class="Mirasvit\Report\Model\Query\Column\Count"/>
+        </columns>
+    </table>
+
+    <table name="mst_emailreport_order">
+        <columns>
+            <column name="order_qty"
+                    fields="order_id"
+                    label="Orders"
+                    type="number"
+                    expr="DISTINCT(%1)"
+                    class="Mirasvit\Report\Model\Query\Column\Count"/>
+        </columns>
+    </table>
+
+    <table name="mst_emailreport_review">
+        <columns>
+            <column name="review_qty"
+                    fields="review_id"
+                    label="Reviews"
+                    type="number"
+                    expr="DISTINCT(%1)"
+                    class="Mirasvit\Report\Model\Query\Column\Count"/>
+        </columns>
+    </table>-->
+
+    <table name="mst_emailreport_campaign_aggregated"
+           connection="Mirasvit\EmailReport\Service\TableDescriptor\EmailReportAggregated">
+        <columns>
+            <column name="title" label="Campaign" fields="title" type="text"
+                    tables="mst_emailreport_campaign_aggregated"/>
+
+            <column name="email_qty"
+                    fields="email_qty"
+                    label="Emails"
+                    type="number"
+                    expr="%1"
+                    tables="mst_emailreport_campaign_aggregated"
+                    class="Mirasvit\Report\Model\Query\Column\Count"/>
+
+            <column name="open_qty"
+                    fields="open_qty"
+                    label="Opens"
+                    type="number"
+                    expr="%1"
+                    tables="mst_emailreport_campaign_aggregated"
+                    class="Mirasvit\Report\Model\Query\Column\Count"/>
+
+            <column name="click_qty"
+                    fields="click_qty"
+                    label="Clicks"
+                    type="number"
+                    expr="%1"
+                    tables="mst_emailreport_campaign_aggregated"
+                    class="Mirasvit\Report\Model\Query\Column\Count"/>
+
+            <column name="order_qty"
+                    fields="order_qty"
+                    label="Orders"
+                    type="number"
+                    expr="%1"
+                    tables="mst_emailreport_campaign_aggregated"
+                    class="Mirasvit\Report\Model\Query\Column\Count"/>
+
+            <column name="review_qty"
+                    fields="review_qty"
+                    label="Reviews"
+                    type="number"
+                    expr="%1"
+                    tables="mst_emailreport_campaign_aggregated"
+                    class="Mirasvit\Report\Model\Query\Column\Count"/>
+
+            <column name="created_at" label="Created At" fields="created_at" type="date"
+                    tables="mst_emailreport_campaign_aggregated"
+                    class="Mirasvit\Report\Model\Query\Column\Date\Range"/>
+
+            <column name="day" label="Day" fields="created_at"
+                    tables="mst_emailreport_campaign_aggregated"
+                    class="Mirasvit\Report\Model\Query\Column\Date\Day"/>
+
+            <column name="week" label="Week" fields="created_at"
+                    tables="mst_emailreport_campaign_aggregated"
+                    class="Mirasvit\Report\Model\Query\Column\Date\Week"/>
+
+            <column name="month" label="Month" fields="created_at"
+                    tables="mst_emailreport_campaign_aggregated"
+                    class="Mirasvit\Report\Model\Query\Column\Date\Month"/>
+
+            <column name="quarter" label="Quarter" fields="created_at"
+                    tables="mst_emailreport_campaign_aggregated"
+                    class="Mirasvit\Report\Model\Query\Column\Date\Quarter"/>
+
+            <column name="year" label="Year" fields="created_at"
+                    tables="mst_emailreport_campaign_aggregated"
+                    class="Mirasvit\Report\Model\Query\Column\Date\Year"/>
+        </columns>
+    </table>
+
+    <!-- suffix "_aggregated" used for temporary tables, it's removed by module-report -->
+    <relation name="mst_emailreport_campaign_aggregated2mst_emailreport_campaign">
+        <leftTable>mst_emailreport_campaign_aggregated</leftTable>
+        <rightTable>mst_emailreport_campaign</rightTable>
+        <condition>%1.campaign_id=%2.campaign_id</condition>
+        <type>11</type>
+    </relation>
+    <!--<relation name="mst_emailreport_campaign2mst_emailreport_campaign_aggregated">
+        <leftTable>mst_emailreport_campaign</leftTable>
+        <rightTable>mst_emailreport_campaign_aggregated</rightTable>
+        <condition>%1.campaign_id=%2.campaign_id</condition>
+        <type>11</type>
+    </relation>-->
+
+    <!--<relation name="mst_emailreport_campaign2mst_emailreport_open">
+        <leftTable>mst_emailreport_campaign</leftTable>
+        <rightTable>mst_emailreport_open</rightTable>
+        <condition>%1.campaign_id=%2.campaign_id</condition>
+        <type>1n</type>
+    </relation>
+
+    <relation name="mst_emailreport_campaign2mst_emailreport_click">
+        <leftTable>mst_emailreport_campaign</leftTable>
+        <rightTable>mst_emailreport_click</rightTable>
+        <condition>%1.campaign_id=%2.campaign_id</condition>
+        <type>1n</type>
+    </relation>
+
+    <relation name="mst_emailreport_campaign2mst_emailreport_email">
+        <leftTable>mst_emailreport_campaign</leftTable>
+        <rightTable>mst_emailreport_email</rightTable>
+        <condition>%1.campaign_id=%2.campaign_id</condition>
+        <type>1n</type>
+    </relation>
+
+    <relation name="mst_emailreport_campaign2mst_emailreport_order">
+        <leftTable>mst_emailreport_campaign</leftTable>
+        <rightTable>mst_emailreport_order</rightTable>
+        <condition>%1.campaign_id=%2.campaign_id</condition>
+        <type>1n</type>
+    </relation>
+
+    <relation name="mst_emailreport_campaign2mst_emailreport_review">
+        <leftTable>mst_emailreport_campaign</leftTable>
+        <rightTable>mst_emailreport_review</rightTable>
+        <condition>%1.campaign_id=%2.campaign_id</condition>
+        <type>1n</type>
+    </relation>-->
+</config>

@@ -1,0 +1,48 @@
+@use-promotions-core__enable:true;
+
+// ------------------------------------
+// Extends Class
+// ------------------------------------
+.promotions-inner{
+    &:extend(.forix-abs-container all);
+}
+
+// ------------------------------------
+// Variables
+// ------------------------------------
+//@page-promotions__background: @color-green;
+@page-promotions__text__color: @color-white;
+
+// ------------------------------------
+// Css
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .page-promotions{
+        display: none;
+    }
+}
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .page-promotions{
+        background: url(../images/img-sprite.png) repeat-x center top;
+        padding: 8px 0 10px;
+        height: 40px;
+        display: block;
+    }
+
+    .promotions-inner p{
+        text-transform: none;
+        color: @page-promotions__text__color;
+        text-align: center;
+        margin: 0;
+        .lib-font-size(16px);
+        a{
+            font-weight: @forix-font-weight__bold;
+            color: @page-promotions__text__color;
+            &:hover{
+                color: @sss-color-7;
+            }
+        }
+    }
+}

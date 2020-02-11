@@ -1,0 +1,73 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2017 Amasty (https://www.amasty.com)
+ * @package Amasty_Shopby
+ */
+?>
+<?php
+/**
+ * @var \Amasty\Shopby\Block\Product\ProductList\ChildrenCategoryList $block
+ * @var \Magento\Catalog\Model\Category[] $categories
+ */
+$categories = $block->getChildrenCategories();
+$categoryImagesHelper = $this->helper(\Amasty\Shopby\Helper\Category::class);
+$height = $block->getImageSize();
+$swiperPrefix = $block->isSliderEnabled() ? 'swiper-' : '';
+?>
+
+<?php if (count($categories)): ?>
+<div class="slider-container
+<?php if ($block->isSliderEnabled()) : ?>
+<?= 'amslider-container' ?>
+<?php endif; ?>">
+    <div class="amslider" id="category-carousel" >
+        <?php if ((count($categories) > $block->getItemsCountPerSlide()) && $block->isSliderEnabled()) : ?>
+            <div class="swiper-button-prev"></div>
+            <div  class="swiper-button-next"></div>
+        <?php endif; ?>
+        <div class="children-category-container <?= $swiperPrefix; ?>container">
+            <div class="<?= $swiperPrefix; ?>wrapper">
+                <?php foreach ($categories as $category) : ?>
+                    <?php
+                    $imgUrl = $categoryImagesHelper->getImageUrl($category->getThumbnail(), true, $height, $height);
+                    ?>
+                    <?php if ($imgUrl) : ?>
+                    <a title="<?= $block->escapeHtml($category->getName())?>"
+                       href="<?= $block->escapeUrl($category->getUrl()) ?>"
+                       class="<?= $swiperPrefix; ?>slide">
+                        <div class="<?= $swiperPrefix ?>category-item
+                        <?php if ($block->showLabels()) : ?>
+                            <?= ' category-item-label' ?>
+                        <?php endif; ?>">
+                            <img height="<?= $height?>" width="<?= $height ?>" src="<?= $imgUrl; ?>" />
+                            <?php if ($block->showLabels()) : ?>
+                                <div class="category-item-title"><?= $block->escapeHtml($category->getName())?></div>
+                            <?php endif; ?>
+                        </div>
+                    </a>
+                    <?php endif; ?>
+                <?php endforeach;?>
+            </div>
+        </div>
+    </div>
+</div>
+    <?php if ($block->isSliderEnabled()) : ?>
+        <script type="text/javascript">
+            require([
+                'jquery',
+                'Amasty_ShopbyBrand/js/swiper.min',
+                'domReady!'
+            ], function ($) {
+                new Swiper('#category-carousel .swiper-container', {
+                    "slidesPerView" : "<?= $block->getItemsCountPerSlide()?>",
+                    "loop": "true",
+                    "simulateTouch": "true",
+                    nextButton: '#category-carousel .swiper-button-next',
+                        prevButton: '#category-carousel .swiper-button-prev',
+                        spaceBetween: 30
+                });
+            });
+        </script>
+    <?php endif; ?>
+<?php endif; ?>

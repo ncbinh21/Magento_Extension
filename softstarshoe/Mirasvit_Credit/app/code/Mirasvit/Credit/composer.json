@@ -1,0 +1,22 @@
+{
+  "name": "mirasvit/module-credit",
+  "description": "Store Credit & Refund",
+  "require": {
+    "magento/framework": "100.0.*|100.1.*|100.2.*|101.0.*",
+    "mirasvit/module-core": "^1.2",
+    "mirasvit/module-report": "1.2.*"
+  },
+  "type": "magento2-module",
+  "version": "1.0.41",
+  "license": [
+    "proprietary"
+  ],
+  "autoload": {
+    "files": [
+      "src/Credit/registration.php"
+    ],
+    "psr-4": {
+      "Mirasvit\\Credit\\": "src/Credit"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+    "name": "forix/module-fanphoto",
+    "description": "",
+    "license": "proprietary",
+    "authors": [
+        {
+            "email": "info@mage2gen.com",
+            "name": "Mage2Gen"
+        },
+        {
+            "email": "dotung80@gmail.com",
+            "name": "dotung80 ."
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Forix\\FanPhoto\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}

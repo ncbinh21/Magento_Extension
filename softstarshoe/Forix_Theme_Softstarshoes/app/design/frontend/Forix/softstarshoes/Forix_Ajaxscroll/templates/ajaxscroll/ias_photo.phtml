@@ -1,0 +1,15 @@
+<?php
+$loadingImg = $block->getViewFileUrl('images/loader-1.gif');
+?>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "ias-forix-photo": {
+            "mode":       1,
+            "next":       ".pager .next",
+            "srcLoading": "<?= $loadingImg ?>"
+
+        }
+    }
+}
+</script>

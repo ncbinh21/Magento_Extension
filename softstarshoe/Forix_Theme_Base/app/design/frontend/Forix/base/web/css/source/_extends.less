@@ -1,0 +1,4518 @@
+// ------------------------------------
+// Core
+// ------------------------------------
+// common
+& when (@media-common = true){
+    .forix-abs-clearfix{
+        .lib-clearfix();
+    }
+
+    .forix-abs-clearer{
+        .lib-clearer();
+    }
+
+    .forix-abs-no-display{
+        display: none;
+    }
+    .forix-abs-blocks-2columns{
+        .forix-global-call(
+            @_block-name: @forix-blocks-2columns__name,
+            @_version: false
+        );
+    }
+
+    .forix-abs-customer-not-login-page{
+        .page-main{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-page-main__name,
+                @_version: false
+            );
+        }
+        .page-title-wrapper{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-page-title-wrapper__name,
+                @_version: false
+            );
+        }
+        .page-title{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-page-title__name,
+                @_version: false
+            );
+            span{
+                .forix-global-call(
+                    @_block-name: @forix-customer-not-login-page-page-title-span__name,
+                    @_version: false
+                );
+            }
+        }
+        .page.messages{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-page-messages__name,
+                @_version: false
+            );
+            > div{
+                .forix-global-call(
+                    @_block-name: @forix-customer-not-login-page-page-messages-div__name,
+                    @_version: false
+                );
+            }
+        }
+        .messages{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-messages__name,
+                @_version: false
+            );
+        }
+        .message{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-message__name,
+                @_version: false
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-customer-not-login-page-message-p__name,
+                    @_version: false
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-customer-not-login-page-message-a__name,
+                    @_version: false
+                );
+            }
+        }
+        .columns{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-columns__name,
+                @_version: false
+            );
+        }
+        .columns .column.main{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-column-main__name,
+                @_version: false
+            );
+        }
+    }
+
+    .forix-abs-toggling-title{
+        .forix-global-call(
+            @_block-name: @forix-toggling-title__name,
+            @_version: false
+        );
+        &.active:after{
+            content: @font-awesome-angle-up;
+        }
+    }
+
+    .forix-abs-form-field-column-2{
+        .fieldset{
+            .field{
+                .forix-global-call(
+                    @_block-name: @forix-form-field-column-2__name,
+                    @_version: false
+                );
+            }
+            .field + .fieldset{
+                .forix-global-call(
+                    @_block-name: @forix-form-field-column-2-fieldset__name,
+                    @_version: false
+                );
+            }
+            .field .field{
+                .forix-global-call(
+                    @_block-name: @forix-form-field-column-2-field__name,
+                    @_version: false
+                );
+            }
+        }
+    }
+
+    .forix-abs-fieldset-column-2{
+        .forix-global-call(
+            @_block-name: @forix-fieldset-column-2__name,
+            @_version: false
+        );
+    }
+
+    .forix-abs-discount-block-form {
+        .forix-global-call(
+            @_block-name: @forix-abs-discount-block-form__name,
+            @_version: false
+        );
+        .legend{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fieldset-legend__name,
+                @_version: false
+            );
+        }
+        .field{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-field__name,
+                @_version: false
+            );
+        }
+        .field > .label{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-field-label__name,
+                @_version: false
+            );
+        }
+        .field > .control{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-field-control__name,
+                @_version: false
+            );
+        }
+        .field .input-text{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-field-input-text__name,
+                @_version: false
+            );
+        }
+        .payment-option-inner{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-payment-option-inner__name,
+                @_version: false
+            );
+            .field{
+                .forix-global-call(
+                    @_block-name: @forix-abs-discount-block-payment-option-inner-field__name,
+                    @_version: false
+                );
+            }
+        }
+        .actions-toolbar{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-actions-toolbar__name,
+                @_version: false
+            );
+        }
+        .actions-toolbar .primary{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-actions-toolbar-primary__name,
+                @_version: false
+            );
+        }
+        .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-action__name,
+                @_version: false
+            );
+        }
+        .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-action-span__name,
+                @_version: false
+            );
+        }
+        .primary .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-primary-action__name,
+                @_version: false
+            );
+        }
+        .primary .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-primary-action-span__name,
+                @_version: false
+            );
+        }
+    }
+
+    .forix-abs-giftcard-block-form{
+        .forix-global-call(
+            @_block-name: @forix-abs-giftcard-block-form__name,
+            @_version: false
+        );
+        .field{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-field__name,
+                @_version: false
+            );
+        }
+        .field > .label{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-field-label__name,
+                @_version: false
+            );
+        }
+        .field > .control{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-field-control__name,
+                @_version: false
+            );
+        }
+        .field .input-text{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-field-input-text__name,
+                @_version: false
+            );
+        }
+        .payment-option-inner{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-payment-option-inner__name,
+                @_version: false
+            );
+            .field{
+                .forix-global-call(
+                    @_block-name: @forix-abs-giftcard-block-form-payment-option-inner-field__name,
+                    @_version: false
+                );
+            }
+        }
+        .actions-toolbar{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-actions-toolbar__name,
+                @_version: false
+            );
+        }
+        .actions-toolbar .primary{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-actions-toolbar-primary__name,
+                @_version: false
+            );
+        }
+        .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-action__name,
+                @_version: false
+            );
+        }
+        .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-action-span__name,
+                @_version: false
+            );
+        }
+        .primary .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-primary-action__name,
+                @_version: false
+            );
+        }
+        .primary .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-primary-action-span__name,
+                @_version: false
+            );
+        }
+        .actions-toolbar .secondary{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-actions-toolbar-secondary__name,
+                @_version: false
+            );
+        }
+        .secondary .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-secondary-action__name,
+                @_version: false
+            );
+        }
+        .secondary .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-secondary-action-span__name,
+                @_version: false
+            );
+        }
+    }
+
+    .forix-abs-add-fields{
+        > .fieldset{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fields-fieldset__name,
+                @_version: false
+            );
+            .legend{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fieldset-legend__name,
+                    @_version: false
+                );
+            }
+            .field{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-field__name,
+                    @_version: false
+                );
+            }
+            .field .label{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-field-label__name,
+                    @_version: false
+                );
+            }
+            .field .control{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-field-control__name,
+                    @_version: false
+                );
+            }
+            > .actions-toolbar{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-actions-toolbar__name,
+                    @_version: false
+                );
+            }
+            > .actions-toolbar .secondary{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-actions-toolbar-secondary__name,
+                    @_version: false
+                );
+            }
+            .action.add{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-actions-action-add__name,
+                    @_version: false
+                );
+            }
+            .action.add span{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-actions-action-add-span__name,
+                    @_version: false
+                );
+            }
+            .fields{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-fields__name,
+                    @_version: false
+                );
+            }
+            .fields .actions-toolbar{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-fields-actions-toolbar__name,
+                    @_version: false
+                );
+            }
+            .fieldset{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-double__name,
+                    @_version: false
+                );
+            }
+        }
+        .additional{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fields-additional__name,
+                @_version: false
+            );
+            .actions-toolbar{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-additional-actions-toolbar__name,
+                    @_version: false
+                );
+            }
+            .action.remove{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-additional-action-remove__name,
+                    @_version: false
+                );
+            }
+            .action.remove span{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-additional-action-remove-span__name,
+                    @_version: false
+                );
+            }
+        }
+        .message.notice{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fields-message-notice__name,
+                @_version: false
+            );
+        }
+        > .actions-toolbar{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fields-actions-toolbar__name,
+                @_version: false
+            );
+            .action{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-actions-toolbar-action__name,
+                    @_version: false
+                );
+            }
+            .action span{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-actions-toolbar-action-span__name,
+                    @_version: false
+                );
+            }
+        }
+    }
+
+    .forix-abs-shopping-cart-items{
+        .forix-global-call(
+            @_block-name: @forix-abs-shopping-cart-items__name,
+            @_version: false
+        );
+        .actions.main{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-main__name,
+                @_version: false
+            );
+        }
+        .actions.main .clear{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-clear__name,
+                @_version: false
+            );
+        }
+        .actions.main .clear span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-clear-span__name,
+                @_version: false
+            );
+        }
+        .actions.main .continue{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-continue__name,
+                @_version: false
+            );
+        }
+        .actions.main .continue span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-continue-span__name,
+                @_version: false
+            );
+        }
+        .actions.main .update{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-update__name,
+                @_version: false
+            );
+        }
+        .actions.main .update span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-update-span__name,
+                @_version: false
+            );
+        }
+        .action-delete{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-action-delete__name,
+                @_version: false
+            );
+        }
+        .action-delete span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-action-delete-span__name,
+                @_version: false
+            );
+        }
+        .action-edit{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-action-edit__name,
+                @_version: false
+            );
+        }
+        .action-edit span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-action-edit-span__name,
+                @_version: false
+            );
+        }
+    }
+
+    .forix-abs-reset{
+        .forix-global-call(
+            @_block-name: @forix-abs-reset__name,
+            @_version: false
+        );
+    }
+
+    .forix-abs-visually-hidden{
+        .forix-global-call(
+            @_block-name: @forix-abs-visually-hidden__name,
+            @_version: false
+        );
+    }
+
+    .forix-abs-visually-hidden-reset{
+        .forix-global-call(
+            @_block-name: @forix-abs-visually-hidden-reset__name,
+            @_version: false
+        );
+    }
+    .forix-abs-icon-base{
+        .forix-global-call(
+            @_block-name: @forix-abs-icon-base__name,
+            @_version: false
+        );
+    }
+    .forix-abs-primary-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-primary-size__name,
+            @_version: false
+        );
+    }
+
+    .forix-abs-secondary-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-secondary-size__name,
+            @_version: false
+        );
+    }
+
+    .forix-abs-three-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-three-size__name,
+            @_version: false
+        );
+    }
+
+    .forix-abs-medium-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-medium-size__name,
+            @_version: false
+        );
+    }
+
+    .forix-abs-small-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-small-size__name,
+            @_version: false
+        );
+    }
+
+    .forix-abs-primary-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-primary-title-size__name,
+            @_version: false
+        );
+    }
+
+    .forix-abs-secondary-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-secondary-title-size__name,
+            @_version: false
+        );
+    }
+
+    .forix-abs-three-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-three-title-size__name,
+            @_version: false
+        );
+    }
+
+    .forix-abs-medium-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-medium-title-size__name,
+            @_version: false
+        );
+    }
+
+    .forix-abs-small-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-small-title-size__name,
+            @_version: false
+        );
+    }
+
+    .forix-abs-order-status{
+        .forix-global-call(
+            @_block-name: @forix-abs-order-status__name,
+            @_version: false
+        );
+    }
+
+    .forix-abs-title-orders{
+        .forix-global-call(
+            @_block-name: @forix-abs-title-orders__name,
+            @_version: false
+        );
+    }
+
+    .forix-abs-title-orders .order-date{
+        .forix-global-call(
+            @_block-name: @forix-abs-title-orders-order-date__name,
+            @_version: false
+        );
+    }
+
+    .forix-abs-overlay{
+        .forix-global-call(
+            @_block-name: @forix-abs-overlay__name,
+            @_version: false
+        );
+    }
+
+    .forix-abs-popup{
+        .forix-global-call(
+            @_block-name: @forix-abs-popup__name,
+            @_version: false
+        );
+        .popup-header{
+            .forix-global-call(
+                @_block-name: @forix-abs-popup-header__name,
+                @_version: false
+            );
+        }
+        .title{
+            .forix-global-call(
+                @_block-name: @forix-abs-popup-title__name,
+                @_version: false
+            );
+        }
+    }
+
+    .forix-abs-popup.overlay{
+        .forix-global-call(
+            @_block-name: @forix-abs-popup-overlay__name,
+            @_version: false
+        );
+    }
+
+    .forix-abs-popup-close{
+        .forix-global-call(
+            @_block-name: @forix-abs-popup-close__name,
+            @_version: false
+        );
+    }
+
+    .forix-abs-popup-close-disabled{
+        .forix-global-call(
+            @_block-name: @forix-abs-popup-close-disabled__name,
+            @_version: false
+        );
+    }
+
+    .forix-abs-action-delete{
+        .forix-global-call(
+            @_block-name: @forix-abs-action-delete__name,
+            @_version: false
+        );
+    }
+
+    .forix-abs-table-items-gift-wrapping{
+        .forix-global-call(
+            @_block-name: @forix-abs-table-items-gift-wrapping__name,
+            @_version: false
+        );
+
+        .title{
+            .forix-global-call(
+                @_block-name: @forix-abs-table-items-gift-wrapping-title__name,
+                @_version: false
+            );
+        }
+
+        .content{
+            .forix-global-call(
+                @_block-name: @forix-abs-table-items-gift-wrapping-content__name,
+                @_version: false
+            );
+        }
+
+        .content > img{
+            .forix-global-call(
+                @_block-name: @forix-abs-table-items-gift-wrapping-content-img__name,
+                @_version: false
+            );
+        }
+
+    }
+
+    .forix-abs-block-product-title{
+        .forix-global-call(
+            @_block-name: @forix-abs-block-product-title__name,
+            @_version: false
+        );
+    }
+
+    .forix-abs-block-product-title strong{
+        .forix-global-call(
+            @_block-name: @forix-abs-block-product-title-strong__name,
+            @_version: false
+        );
+    }
+
+    .forix-abs-adjustment-incl-excl-tax .price-including-tax{
+        .forix-global-call(
+            @_block-name: @forix-forix-abs-adjustment-incl-excl-tax-price-including-tax__name,
+            @_version: false
+        );
+    }
+    .forix-abs-adjustment-incl-excl-tax .price-excluding-tax{
+        .forix-global-call(
+            @_block-name: @forix-forix-abs-adjustment-incl-excl-tax-price-excluding-tax__name,
+            @_version: false
+        );
+    }
+    .forix-abs-adjustment-incl-excl-tax .price-including-tax + .price-excluding-tax{
+        .forix-global-call(
+            @_block-name: @forix-forix-abs-adjustment-incl-excl-tax-price-including-tax-excluding-tax__name,
+            @_version: false
+        );
+    }
+
+    .forix-abs-dropdown-content-right{
+        .forix-global-call(
+            @_block-name: @forix-abs-dropdown-content-right__name,
+            @_version: false
+        );
+    }
+    .forix-abs-dropdown-content-left{
+        .forix-global-call(
+            @_block-name: @forix-abs-dropdown-content-left__name,
+            @_version: false
+        );
+    }
+
+}
+
+// <768
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m){
+    .forix-abs-blocks-2columns{
+        .forix-global-call(
+            @_block-name: @forix-blocks-2columns__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-customer-not-login-page{
+        .page-main{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-page-main__name,
+                @_version: ''
+            );
+        }
+        .page-title-wrapper{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-page-title-wrapper__name,
+                @_version: ''
+            );
+        }
+        .page-title{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-page-title__name,
+                @_version: ''
+            );
+            span{
+                .forix-global-call(
+                    @_block-name: @forix-customer-not-login-page-page-title-span__name,
+                    @_version: ''
+                );
+            }
+        }
+        .page.messages{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-page-messages__name,
+                @_version: ''
+            );
+            > div{
+                .forix-global-call(
+                    @_block-name: @forix-customer-not-login-page-page-messages-div__name,
+                    @_version: ''
+                );
+            }
+        }
+        .messages{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-messages__name,
+                @_version: ''
+            );
+        }
+        .message{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-message__name,
+                @_version: ''
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-customer-not-login-page-message-p__name,
+                    @_version: ''
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-customer-not-login-page-message-a__name,
+                    @_version: ''
+                );
+            }
+        }
+        .columns{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-columns__name,
+                @_version: ''
+            );
+        }
+        .columns .column.main{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-column-main__name,
+                @_version: ''
+            );
+        }
+    }
+
+    .forix-abs-toggling-title{
+        .forix-global-call(
+            @_block-name: @forix-toggling-title__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-form-field-column-2{
+        .fieldset{
+            .field{
+                .forix-global-call(
+                    @_block-name: @forix-form-field-column-2__name,
+                    @_version: ''
+                );
+            }
+            .field + .fieldset{
+                .forix-global-call(
+                    @_block-name: @forix-form-field-column-2-fieldset__name,
+                    @_version: ''
+                );
+            }
+            .field .field{
+                .forix-global-call(
+                    @_block-name: @forix-form-field-column-2-field__name,
+                    @_version: ''
+                );
+            }
+        }
+    }
+
+    .forix-abs-fieldset-column-2{
+        .forix-global-call(
+            @_block-name: @forix-fieldset-column-2__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-discount-block-form {
+        .forix-global-call(
+            @_block-name: @forix-abs-discount-block-form__name,
+            @_version: ''
+        );
+        .legend{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fieldset-legend__name,
+                @_version: ''
+            );
+        }
+        .field{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-field__name,
+                @_version: ''
+            );
+        }
+        .field > .label{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-field-label__name,
+                @_version: ''
+            );
+        }
+        .field > .control{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-field-control__name,
+                @_version: ''
+            );
+        }
+        .field .input-text{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-field-input-text__name,
+                @_version: ''
+            );
+        }
+        .payment-option-inner{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-payment-option-inner__name,
+                @_version: ''
+            );
+            .field{
+                .forix-global-call(
+                    @_block-name: @forix-abs-discount-block-payment-option-inner-field__name,
+                    @_version: ''
+                );
+            }
+        }
+        .actions-toolbar{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-actions-toolbar__name,
+                @_version: ''
+            );
+        }
+        .actions-toolbar .primary{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-actions-toolbar-primary__name,
+                @_version: ''
+            );
+        }
+        .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-action__name,
+                @_version: ''
+            );
+        }
+        .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-action-span__name,
+                @_version: ''
+            );
+        }
+        .primary .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-primary-action__name,
+                @_version: ''
+            );
+        }
+        .primary .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-primary-action-span__name,
+                @_version: ''
+            );
+        }
+    }
+
+    .forix-abs-giftcard-block-form{
+        .forix-global-call(
+            @_block-name: @forix-abs-giftcard-block-form__name,
+            @_version: ''
+        );
+        .field{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-field__name,
+                @_version: ''
+            );
+        }
+        .field > .label{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-field-label__name,
+                @_version: ''
+            );
+        }
+        .field > .control{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-field-control__name,
+                @_version: ''
+            );
+        }
+        .field .input-text{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-field-input-text__name,
+                @_version: ''
+            );
+        }
+        .payment-option-inner{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-payment-option-inner__name,
+                @_version: ''
+            );
+            .field{
+                .forix-global-call(
+                    @_block-name: @forix-abs-giftcard-block-form-payment-option-inner-field__name,
+                    @_version: ''
+                );
+            }
+        }
+        .actions-toolbar{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-actions-toolbar__name,
+                @_version: ''
+            );
+        }
+        .actions-toolbar .primary{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-actions-toolbar-primary__name,
+                @_version: ''
+            );
+        }
+        .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-action__name,
+                @_version: ''
+            );
+        }
+        .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-action-span__name,
+                @_version: ''
+            );
+        }
+        .primary .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-primary-action__name,
+                @_version: ''
+            );
+        }
+        .primary .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-primary-action-span__name,
+                @_version: ''
+            );
+        }
+        .actions-toolbar .secondary{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-actions-toolbar-secondary__name,
+                @_version: ''
+            );
+        }
+        .secondary .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-secondary-action__name,
+                @_version: ''
+            );
+        }
+        .secondary .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-secondary-action-span__name,
+                @_version: ''
+            );
+        }
+    }
+
+    .forix-abs-add-fields{
+        > .fieldset{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fields-fieldset__name,
+                @_version: ''
+            );
+            .legend{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fieldset-legend__name,
+                    @_version: ''
+                );
+            }
+            .field{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-field__name,
+                    @_version: ''
+                );
+            }
+            .field .label{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-field-label__name,
+                    @_version: ''
+                );
+            }
+            .field .control{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-field-control__name,
+                    @_version: ''
+                );
+            }
+            > .actions-toolbar{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-actions-toolbar__name,
+                    @_version: ''
+                );
+            }
+            > .actions-toolbar .secondary{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-actions-toolbar-secondary__name,
+                    @_version: ''
+                );
+            }
+            .action.add{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-actions-action-add__name,
+                    @_version: ''
+                );
+            }
+            .action.add span{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-actions-action-add-span__name,
+                    @_version: ''
+                );
+            }
+            .fields{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-fields__name,
+                    @_version: ''
+                );
+            }
+            .fields .actions-toolbar{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-fields-actions-toolbar__name,
+                    @_version: ''
+                );
+            }
+            .fieldset{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-double__name,
+                    @_version: ''
+                );
+            }
+        }
+        .additional{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fields-additional__name,
+                @_version: ''
+            );
+            .actions-toolbar{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-additional-actions-toolbar__name,
+                    @_version: ''
+                );
+            }
+            .action.remove{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-additional-action-remove__name,
+                    @_version: ''
+                );
+            }
+            .action.remove span{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-additional-action-remove-span__name,
+                    @_version: ''
+                );
+            }
+        }
+        .message.notice{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fields-message-notice__name,
+                @_version: ''
+            );
+        }
+        > .actions-toolbar{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fields-actions-toolbar__name,
+                @_version: ''
+            );
+            .action{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-actions-toolbar-action__name,
+                    @_version: ''
+                );
+            }
+            .action span{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-actions-toolbar-action-span__name,
+                    @_version: ''
+                );
+            }
+        }
+    }
+
+    .forix-abs-shopping-cart-items{
+        .forix-global-call(
+            @_block-name: @forix-abs-shopping-cart-items__name,
+            @_version: ''
+        );
+        .actions.main{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-main__name,
+                @_version: ''
+            );
+        }
+        .actions.main .clear{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-clear__name,
+                @_version: ''
+            );
+        }
+        .actions.main .clear span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-clear-span__name,
+                @_version: ''
+            );
+        }
+        .actions.main .continue{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-continue__name,
+                @_version: ''
+            );
+        }
+        .actions.main .continue span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-continue-span__name,
+                @_version: ''
+            );
+        }
+        .actions.main .update{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-update__name,
+                @_version: ''
+            );
+        }
+        .actions.main .update span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-update-span__name,
+                @_version: ''
+            );
+        }
+        .action-delete{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-action-delete__name,
+                @_version: ''
+            );
+        }
+        .action-delete span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-action-delete-span__name,
+                @_version: ''
+            );
+        }
+        .action-edit{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-action-edit__name,
+                @_version: ''
+            );
+        }
+        .action-edit span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-action-edit-span__name,
+                @_version: ''
+            );
+        }
+    }
+
+    .forix-abs-reset{
+        .forix-global-call(
+            @_block-name: @forix-abs-reset__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-visually-hidden{
+        .forix-global-call(
+            @_block-name: @forix-abs-visually-hidden__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-visually-hidden-reset{
+        .forix-global-call(
+            @_block-name: @forix-abs-visually-hidden-reset__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-icon-base{
+        .forix-global-call(
+            @_block-name: @forix-abs-icon-base__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-primary-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-primary-size__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-secondary-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-secondary-size__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-three-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-three-size__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-medium-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-medium-size__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-small-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-small-size__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-primary-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-primary-title-size__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-secondary-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-secondary-title-size__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-three-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-three-title-size__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-medium-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-medium-title-size__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-small-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-small-title-size__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-order-status{
+        .forix-global-call(
+            @_block-name: @forix-abs-order-status__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-title-orders{
+        .forix-global-call(
+            @_block-name: @forix-abs-title-orders__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-title-orders .order-date{
+        .forix-global-call(
+            @_block-name: @forix-abs-title-orders-order-date__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-overlay{
+        .forix-global-call(
+            @_block-name: @forix-abs-overlay__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-popup{
+        .forix-global-call(
+            @_block-name: @forix-abs-popup__name,
+            @_version: ''
+        );
+        .popup-header{
+            .forix-global-call(
+                @_block-name: @forix-abs-popup-header__name,
+                @_version: ''
+            );
+        }
+        .title{
+            .forix-global-call(
+                @_block-name: @forix-abs-popup-title__name,
+                @_version: ''
+            );
+        }
+    }
+
+    .forix-abs-popup.overlay{
+        .forix-global-call(
+            @_block-name: @forix-abs-popup-overlay__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-popup-close{
+        .forix-global-call(
+            @_block-name: @forix-abs-popup-close__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-popup-close-disabled{
+        .forix-global-call(
+            @_block-name: @forix-abs-popup-close-disabled__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-action-delete{
+        .forix-global-call(
+            @_block-name: @forix-abs-action-delete__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-table-items-gift-wrapping{
+        .forix-global-call(
+            @_block-name: @forix-abs-table-items-gift-wrapping__name,
+            @_version: ''
+        );
+
+        .title{
+            .forix-global-call(
+                @_block-name: @forix-abs-table-items-gift-wrapping-title__name,
+                @_version: ''
+            );
+        }
+
+        .content{
+            .forix-global-call(
+                @_block-name: @forix-abs-table-items-gift-wrapping-content__name,
+                @_version: ''
+            );
+        }
+
+        .content > img{
+            .forix-global-call(
+                @_block-name: @forix-abs-table-items-gift-wrapping-content-img__name,
+                @_version: ''
+            );
+        }
+
+    }
+
+    .forix-abs-block-product-title{
+        .forix-global-call(
+            @_block-name: @forix-abs-block-product-title__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-block-product-title strong{
+        .forix-global-call(
+            @_block-name: @forix-abs-block-product-title-strong__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-adjustment-incl-excl-tax .price-including-tax{
+        .forix-global-call(
+            @_block-name: @forix-forix-abs-adjustment-incl-excl-tax-price-including-tax__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-adjustment-incl-excl-tax .price-excluding-tax{
+        .forix-global-call(
+            @_block-name: @forix-forix-abs-adjustment-incl-excl-tax-price-excluding-tax__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-adjustment-incl-excl-tax .price-including-tax + .price-excluding-tax{
+        .forix-global-call(
+            @_block-name: @forix-forix-abs-adjustment-incl-excl-tax-price-including-tax-excluding-tax__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-dropdown-content-right{
+        .forix-global-call(
+            @_block-name: @forix-abs-dropdown-content-right__name,
+            @_version: ''
+        );
+    }
+
+    .forix-abs-dropdown-content-left{
+        .forix-global-call(
+            @_block-name: @forix-abs-dropdown-content-left__name,
+            @_version: ''
+        );
+    }
+}
+
+// >=768
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .forix-abs-blocks-2columns{
+        .forix-global-call(
+            @_block-name: @forix-blocks-2columns__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-customer-not-login-page{
+        .page-main{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-page-main__name,
+                @_version: 'ml'
+            );
+        }
+        .page-title-wrapper{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-page-title-wrapper__name,
+                @_version: 'ml'
+            );
+        }
+        .page-title{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-page-title__name,
+                @_version: 'ml'
+            );
+            span{
+                .forix-global-call(
+                    @_block-name: @forix-customer-not-login-page-page-title-span__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        .page.messages{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-page-messages__name,
+                @_version: 'ml'
+            );
+            > div{
+                .forix-global-call(
+                    @_block-name: @forix-customer-not-login-page-page-messages-div__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        .messages{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-messages__name,
+                @_version: 'ml'
+            );
+        }
+        .message{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-message__name,
+                @_version: 'ml'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-customer-not-login-page-message-p__name,
+                    @_version: 'ml'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-customer-not-login-page-message-a__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        .columns{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-columns__name,
+                @_version: 'ml'
+            );
+        }
+        .columns .column.main{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-column-main__name,
+                @_version: 'ml'
+            );
+        }
+    }
+
+    .forix-abs-toggling-title{
+        .forix-global-call(
+            @_block-name: @forix-toggling-title__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-form-field-column-2{
+        .fieldset{
+            .field{
+                .forix-global-call(
+                    @_block-name: @forix-form-field-column-2__name,
+                    @_version: 'ml'
+                );
+            }
+            .field + .fieldset{
+                .forix-global-call(
+                    @_block-name: @forix-form-field-column-2-fieldset__name,
+                    @_version: 'ml'
+                );
+            }
+            .field .field{
+                .forix-global-call(
+                    @_block-name: @forix-form-field-column-2-field__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+    }
+
+    .forix-abs-fieldset-column-2{
+        .forix-global-call(
+            @_block-name: @forix-fieldset-column-2__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-discount-block-form {
+        .forix-global-call(
+            @_block-name: @forix-abs-discount-block-form__name,
+            @_version: 'ml'
+        );
+        .legend{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fieldset-legend__name,
+                @_version: 'ml'
+            );
+        }
+        .field{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-field__name,
+                @_version: 'ml'
+            );
+        }
+        .field > .label{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-field-label__name,
+                @_version: 'ml'
+            );
+        }
+        .field > .control{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-field-control__name,
+                @_version: 'ml'
+            );
+        }
+        .field .input-text{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-field-input-text__name,
+                @_version: 'ml'
+            );
+        }
+        .payment-option-inner{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-payment-option-inner__name,
+                @_version: 'ml'
+            );
+            .field{
+                .forix-global-call(
+                    @_block-name: @forix-abs-discount-block-payment-option-inner-field__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        .actions-toolbar{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-actions-toolbar__name,
+                @_version: 'ml'
+            );
+        }
+        .actions-toolbar .primary{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-actions-toolbar-primary__name,
+                @_version: 'ml'
+            );
+        }
+        .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-action__name,
+                @_version: 'ml'
+            );
+        }
+        .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-action-span__name,
+                @_version: 'ml'
+            );
+        }
+        .primary .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-primary-action__name,
+                @_version: 'ml'
+            );
+        }
+        .primary .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-primary-action-span__name,
+                @_version: 'ml'
+            );
+        }
+    }
+
+    .forix-abs-giftcard-block-form{
+        .forix-global-call(
+            @_block-name: @forix-abs-giftcard-block-form__name,
+            @_version: 'ml'
+        );
+        .field{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-field__name,
+                @_version: 'ml'
+            );
+        }
+        .field > .label{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-field-label__name,
+                @_version: 'ml'
+            );
+        }
+        .field > .control{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-field-control__name,
+                @_version: 'ml'
+            );
+        }
+        .field .input-text{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-field-input-text__name,
+                @_version: 'ml'
+            );
+        }
+        .payment-option-inner{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-payment-option-inner__name,
+                @_version: 'ml'
+            );
+            .field{
+                .forix-global-call(
+                    @_block-name: @forix-abs-giftcard-block-form-payment-option-inner-field__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        .actions-toolbar{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-actions-toolbar__name,
+                @_version: 'ml'
+            );
+        }
+        .actions-toolbar .primary{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-actions-toolbar-primary__name,
+                @_version: 'ml'
+            );
+        }
+        .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-action__name,
+                @_version: 'ml'
+            );
+        }
+        .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-action-span__name,
+                @_version: 'ml'
+            );
+        }
+        .primary .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-primary-action__name,
+                @_version: 'ml'
+            );
+        }
+        .primary .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-primary-action-span__name,
+                @_version: 'ml'
+            );
+        }
+        .actions-toolbar .secondary{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-actions-toolbar-secondary__name,
+                @_version: 'ml'
+            );
+        }
+        .secondary .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-secondary-action__name,
+                @_version: 'ml'
+            );
+        }
+        .secondary .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-secondary-action-span__name,
+                @_version: 'ml'
+            );
+        }
+    }
+
+    .forix-abs-add-fields{
+        > .fieldset{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fields-fieldset__name,
+                @_version: 'ml'
+            );
+            .legend{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fieldset-legend__name,
+                    @_version: 'ml'
+                );
+            }
+            .field{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-field__name,
+                    @_version: 'ml'
+                );
+            }
+            .field .label{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-field-label__name,
+                    @_version: 'ml'
+                );
+            }
+            .field .control{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-field-control__name,
+                    @_version: 'ml'
+                );
+            }
+            > .actions-toolbar{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-actions-toolbar__name,
+                    @_version: 'ml'
+                );
+            }
+            > .actions-toolbar .secondary{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-actions-toolbar-secondary__name,
+                    @_version: 'ml'
+                );
+            }
+            .action.add{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-actions-action-add__name,
+                    @_version: 'ml'
+                );
+            }
+            .action.add span{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-actions-action-add-span__name,
+                    @_version: 'ml'
+                );
+            }
+            .fields{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-fields__name,
+                    @_version: 'ml'
+                );
+            }
+            .fields .actions-toolbar{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-fields-actions-toolbar__name,
+                    @_version: 'ml'
+                );
+            }
+            .fieldset{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-double__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        .additional{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fields-additional__name,
+                @_version: 'ml'
+            );
+            .actions-toolbar{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-additional-actions-toolbar__name,
+                    @_version: 'ml'
+                );
+            }
+            .action.remove{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-additional-action-remove__name,
+                    @_version: 'ml'
+                );
+            }
+            .action.remove span{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-additional-action-remove-span__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+        .message.notice{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fields-message-notice__name,
+                @_version: 'ml'
+            );
+        }
+        > .actions-toolbar{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fields-actions-toolbar__name,
+                @_version: 'ml'
+            );
+            .action{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-actions-toolbar-action__name,
+                    @_version: 'ml'
+                );
+            }
+            .action span{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-actions-toolbar-action-span__name,
+                    @_version: 'ml'
+                );
+            }
+        }
+    }
+
+    .forix-abs-shopping-cart-items{
+        .forix-global-call(
+            @_block-name: @forix-abs-shopping-cart-items__name,
+            @_version: 'ml'
+        );
+        .actions.main{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-main__name,
+                @_version: 'ml'
+            );
+        }
+        .actions.main .clear{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-clear__name,
+                @_version: 'ml'
+            );
+        }
+        .actions.main .clear span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-clear-span__name,
+                @_version: 'ml'
+            );
+        }
+        .actions.main .continue{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-continue__name,
+                @_version: 'ml'
+            );
+        }
+        .actions.main .continue span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-continue-span__name,
+                @_version: 'ml'
+            );
+        }
+        .actions.main .update{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-update__name,
+                @_version: 'ml'
+            );
+        }
+        .actions.main .update span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-update-span__name,
+                @_version: 'ml'
+            );
+        }
+        .action-delete{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-action-delete__name,
+                @_version: 'ml'
+            );
+        }
+        .action-delete span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-action-delete-span__name,
+                @_version: 'ml'
+            );
+        }
+        .action-edit{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-action-edit__name,
+                @_version: 'ml'
+            );
+        }
+        .action-edit span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-action-edit-span__name,
+                @_version: 'ml'
+            );
+        }
+    }
+
+    .forix-abs-reset{
+        .forix-global-call(
+            @_block-name: @forix-abs-reset__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-visually-hidden{
+        .forix-global-call(
+            @_block-name: @forix-abs-visually-hidden__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-visually-hidden-reset{
+        .forix-global-call(
+            @_block-name: @forix-abs-visually-hidden-reset__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-icon-base{
+        .forix-global-call(
+            @_block-name: @forix-abs-icon-base__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-primary-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-primary-size__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-secondary-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-secondary-size__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-three-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-three-size__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-medium-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-medium-size__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-small-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-small-size__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-primary-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-primary-title-size__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-secondary-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-secondary-title-size__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-three-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-three-title-size__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-medium-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-medium-title-size__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-small-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-small-title-size__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-order-status{
+        .forix-global-call(
+            @_block-name: @forix-abs-order-status__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-title-orders{
+        .forix-global-call(
+            @_block-name: @forix-abs-title-orders__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-title-orders .order-date{
+        .forix-global-call(
+            @_block-name: @forix-abs-title-orders-order-date__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-overlay{
+        .forix-global-call(
+            @_block-name: @forix-abs-overlay__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-popup{
+        .forix-global-call(
+            @_block-name: @forix-abs-popup__name,
+            @_version: 'ml'
+        );
+        .popup-header{
+            .forix-global-call(
+                @_block-name: @forix-abs-popup-header__name,
+                @_version: 'ml'
+            );
+        }
+        .title{
+            .forix-global-call(
+                @_block-name: @forix-abs-popup-title__name,
+                @_version: 'ml'
+            );
+        }
+    }
+
+    .forix-abs-popup.overlay{
+        .forix-global-call(
+            @_block-name: @forix-abs-popup-overlay__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-popup-close{
+        .forix-global-call(
+            @_block-name: @forix-abs-popup-close__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-popup-close-disabled{
+        .forix-global-call(
+            @_block-name: @forix-abs-popup-close-disabled__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-action-delete{
+        .forix-global-call(
+            @_block-name: @forix-abs-action-delete__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-table-items-gift-wrapping{
+        .forix-global-call(
+            @_block-name: @forix-abs-table-items-gift-wrapping__name,
+            @_version: 'ml'
+        );
+
+        .title{
+            .forix-global-call(
+                @_block-name: @forix-abs-table-items-gift-wrapping-title__name,
+                @_version: 'ml'
+            );
+        }
+
+        .content{
+            .forix-global-call(
+                @_block-name: @forix-abs-table-items-gift-wrapping-content__name,
+                @_version: 'ml'
+            );
+        }
+
+        .content > img{
+            .forix-global-call(
+                @_block-name: @forix-abs-table-items-gift-wrapping-content-img__name,
+                @_version: 'ml'
+            );
+        }
+
+    }
+
+    .forix-abs-block-product-title{
+        .forix-global-call(
+            @_block-name: @forix-abs-block-product-title__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-block-product-title strong{
+        .forix-global-call(
+            @_block-name: @forix-abs-block-product-title-strong__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-adjustment-incl-excl-tax .price-including-tax{
+        .forix-global-call(
+            @_block-name: @forix-forix-abs-adjustment-incl-excl-tax-price-including-tax__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-adjustment-incl-excl-tax .price-excluding-tax{
+        .forix-global-call(
+            @_block-name: @forix-forix-abs-adjustment-incl-excl-tax-price-excluding-tax__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-adjustment-incl-excl-tax .price-including-tax + .price-excluding-tax{
+        .forix-global-call(
+            @_block-name: @forix-forix-abs-adjustment-incl-excl-tax-price-including-tax-excluding-tax__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-dropdown-content-right{
+        .forix-global-call(
+            @_block-name: @forix-abs-dropdown-content-right__name,
+            @_version: 'ml'
+        );
+    }
+
+    .forix-abs-dropdown-content-left{
+        .forix-global-call(
+            @_block-name: @forix-abs-dropdown-content-left__name,
+            @_version: 'ml'
+        );
+    }
+}
+
+// <1024
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__l){
+    .forix-abs-blocks-2columns{
+        .forix-global-call(
+            @_block-name: @forix-blocks-2columns__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-customer-not-login-page{
+        .page-main{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-page-main__name,
+                @_version: 'sm'
+            );
+        }
+        .page-title-wrapper{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-page-title-wrapper__name,
+                @_version: 'sm'
+            );
+        }
+        .page-title{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-page-title__name,
+                @_version: 'sm'
+            );
+            span{
+                .forix-global-call(
+                    @_block-name: @forix-customer-not-login-page-page-title-span__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        .page.messages{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-page-messages__name,
+                @_version: 'sm'
+            );
+            > div{
+                .forix-global-call(
+                    @_block-name: @forix-customer-not-login-page-page-messages-div__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        .messages{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-messages__name,
+                @_version: 'sm'
+            );
+        }
+        .message{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-message__name,
+                @_version: 'sm'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-customer-not-login-page-message-p__name,
+                    @_version: 'sm'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-customer-not-login-page-message-a__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        .columns{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-columns__name,
+                @_version: 'sm'
+            );
+        }
+        .columns .column.main{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-column-main__name,
+                @_version: 'sm'
+            );
+        }
+    }
+
+    .forix-abs-toggling-title{
+        .forix-global-call(
+            @_block-name: @forix-toggling-title__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-form-field-column-2{
+        .fieldset{
+            .field{
+                .forix-global-call(
+                    @_block-name: @forix-form-field-column-2__name,
+                    @_version: 'sm'
+                );
+            }
+            .field + .fieldset{
+                .forix-global-call(
+                    @_block-name: @forix-form-field-column-2-fieldset__name,
+                    @_version: 'sm'
+                );
+            }
+            .field .field{
+                .forix-global-call(
+                    @_block-name: @forix-form-field-column-2-field__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+    }
+
+    .forix-abs-fieldset-column-2{
+        .forix-global-call(
+            @_block-name: @forix-fieldset-column-2__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-discount-block-form {
+        .forix-global-call(
+            @_block-name: @forix-abs-discount-block-form__name,
+            @_version: 'sm'
+        );
+        .legend{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fieldset-legend__name,
+                @_version: 'sm'
+            );
+        }
+        .field{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-field__name,
+                @_version: 'sm'
+            );
+        }
+        .field > .label{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-field-label__name,
+                @_version: 'sm'
+            );
+        }
+        .field > .control{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-field-control__name,
+                @_version: 'sm'
+            );
+        }
+        .field .input-text{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-field-input-text__name,
+                @_version: 'sm'
+            );
+        }
+        .payment-option-inner{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-payment-option-inner__name,
+                @_version: 'sm'
+            );
+            .field{
+                .forix-global-call(
+                    @_block-name: @forix-abs-discount-block-payment-option-inner-field__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        .actions-toolbar{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-actions-toolbar__name,
+                @_version: 'sm'
+            );
+        }
+        .actions-toolbar .primary{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-actions-toolbar-primary__name,
+                @_version: 'sm'
+            );
+        }
+        .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-action__name,
+                @_version: 'sm'
+            );
+        }
+        .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-action-span__name,
+                @_version: 'sm'
+            );
+        }
+        .primary .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-primary-action__name,
+                @_version: 'sm'
+            );
+        }
+        .primary .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-primary-action-span__name,
+                @_version: 'sm'
+            );
+        }
+    }
+
+    .forix-abs-giftcard-block-form{
+        .forix-global-call(
+            @_block-name: @forix-abs-giftcard-block-form__name,
+            @_version: 'sm'
+        );
+        .field{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-field__name,
+                @_version: 'sm'
+            );
+        }
+        .field > .label{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-field-label__name,
+                @_version: 'sm'
+            );
+        }
+        .field > .control{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-field-control__name,
+                @_version: 'sm'
+            );
+        }
+        .field .input-text{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-field-input-text__name,
+                @_version: 'sm'
+            );
+        }
+        .payment-option-inner{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-payment-option-inner__name,
+                @_version: 'sm'
+            );
+            .field{
+                .forix-global-call(
+                    @_block-name: @forix-abs-giftcard-block-form-payment-option-inner-field__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        .actions-toolbar{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-actions-toolbar__name,
+                @_version: 'sm'
+            );
+        }
+        .actions-toolbar .primary{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-actions-toolbar-primary__name,
+                @_version: 'sm'
+            );
+        }
+        .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-action__name,
+                @_version: 'sm'
+            );
+        }
+        .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-action-span__name,
+                @_version: 'sm'
+            );
+        }
+        .primary .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-primary-action__name,
+                @_version: 'sm'
+            );
+        }
+        .primary .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-primary-action-span__name,
+                @_version: 'sm'
+            );
+        }
+        .actions-toolbar .secondary{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-actions-toolbar-secondary__name,
+                @_version: 'sm'
+            );
+        }
+        .secondary .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-secondary-action__name,
+                @_version: 'sm'
+            );
+        }
+        .secondary .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-secondary-action-span__name,
+                @_version: 'sm'
+            );
+        }
+    }
+
+    .forix-abs-add-fields{
+        > .fieldset{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fields-fieldset__name,
+                @_version: 'sm'
+            );
+            .legend{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fieldset-legend__name,
+                    @_version: 'sm'
+                );
+            }
+            .field{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-field__name,
+                    @_version: 'sm'
+                );
+            }
+            .field .label{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-field-label__name,
+                    @_version: 'sm'
+                );
+            }
+            .field .control{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-field-control__name,
+                    @_version: 'sm'
+                );
+            }
+            > .actions-toolbar{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-actions-toolbar__name,
+                    @_version: 'sm'
+                );
+            }
+            > .actions-toolbar .secondary{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-actions-toolbar-secondary__name,
+                    @_version: 'sm'
+                );
+            }
+            .action.add{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-actions-action-add__name,
+                    @_version: 'sm'
+                );
+            }
+            .action.add span{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-actions-action-add-span__name,
+                    @_version: 'sm'
+                );
+            }
+            .fields{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-fields__name,
+                    @_version: 'sm'
+                );
+            }
+            .fields .actions-toolbar{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-fields-actions-toolbar__name,
+                    @_version: 'sm'
+                );
+            }
+            .fieldset{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-double__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        .additional{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fields-additional__name,
+                @_version: 'sm'
+            );
+            .actions-toolbar{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-additional-actions-toolbar__name,
+                    @_version: 'sm'
+                );
+            }
+            .action.remove{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-additional-action-remove__name,
+                    @_version: 'sm'
+                );
+            }
+            .action.remove span{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-additional-action-remove-span__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+        .message.notice{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fields-message-notice__name,
+                @_version: 'sm'
+            );
+        }
+        > .actions-toolbar{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fields-actions-toolbar__name,
+                @_version: 'sm'
+            );
+            .action{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-actions-toolbar-action__name,
+                    @_version: 'sm'
+                );
+            }
+            .action span{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-actions-toolbar-action-span__name,
+                    @_version: 'sm'
+                );
+            }
+        }
+    }
+
+    .forix-abs-shopping-cart-items{
+        .forix-global-call(
+            @_block-name: @forix-abs-shopping-cart-items__name,
+            @_version: 'sm'
+        );
+        .actions.main{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-main__name,
+                @_version: 'sm'
+            );
+        }
+        .actions.main .clear{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-clear__name,
+                @_version: 'sm'
+            );
+        }
+        .actions.main .clear span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-clear-span__name,
+                @_version: 'sm'
+            );
+        }
+        .actions.main .continue{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-continue__name,
+                @_version: 'sm'
+            );
+        }
+        .actions.main .continue span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-continue-span__name,
+                @_version: 'sm'
+            );
+        }
+        .actions.main .update{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-update__name,
+                @_version: 'sm'
+            );
+        }
+        .actions.main .update span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-update-span__name,
+                @_version: 'sm'
+            );
+        }
+        .action-delete{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-action-delete__name,
+                @_version: 'sm'
+            );
+        }
+        .action-delete span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-action-delete-span__name,
+                @_version: 'sm'
+            );
+        }
+        .action-edit{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-action-edit__name,
+                @_version: 'sm'
+            );
+        }
+        .action-edit span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-action-edit-span__name,
+                @_version: 'sm'
+            );
+        }
+    }
+
+    .forix-abs-reset{
+        .forix-global-call(
+            @_block-name: @forix-abs-reset__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-visually-hidden{
+        .forix-global-call(
+            @_block-name: @forix-abs-visually-hidden__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-visually-hidden-reset{
+        .forix-global-call(
+            @_block-name: @forix-abs-visually-hidden-reset__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-icon-base{
+        .forix-global-call(
+            @_block-name: @forix-abs-icon-base__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-primary-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-primary-size__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-secondary-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-secondary-size__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-three-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-three-size__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-medium-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-medium-size__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-small-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-small-size__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-primary-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-primary-title-size__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-secondary-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-secondary-title-size__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-three-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-three-title-size__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-medium-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-medium-title-size__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-small-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-small-title-size__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-order-status{
+        .forix-global-call(
+            @_block-name: @forix-abs-order-status__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-title-orders{
+        .forix-global-call(
+            @_block-name: @forix-abs-title-orders__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-title-orders .order-date{
+        .forix-global-call(
+            @_block-name: @forix-abs-title-orders-order-date__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-overlay{
+        .forix-global-call(
+            @_block-name: @forix-abs-overlay__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-popup{
+        .forix-global-call(
+            @_block-name: @forix-abs-popup__name,
+            @_version: 'sm'
+        );
+        .popup-header{
+            .forix-global-call(
+                @_block-name: @forix-abs-popup-header__name,
+                @_version: 'sm'
+            );
+        }
+        .title{
+            .forix-global-call(
+                @_block-name: @forix-abs-popup-title__name,
+                @_version: 'sm'
+            );
+        }
+    }
+
+    .forix-abs-popup.overlay{
+        .forix-global-call(
+            @_block-name: @forix-abs-popup-overlay__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-popup-close{
+        .forix-global-call(
+            @_block-name: @forix-abs-popup-close__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-popup-close-disabled{
+        .forix-global-call(
+            @_block-name: @forix-abs-popup-close-disabled__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-action-delete{
+        .forix-global-call(
+            @_block-name: @forix-abs-action-delete__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-table-items-gift-wrapping{
+        .forix-global-call(
+            @_block-name: @forix-abs-table-items-gift-wrapping__name,
+            @_version: 'sm'
+        );
+
+        .title{
+            .forix-global-call(
+                @_block-name: @forix-abs-table-items-gift-wrapping-title__name,
+                @_version: 'sm'
+            );
+        }
+
+        .content{
+            .forix-global-call(
+                @_block-name: @forix-abs-table-items-gift-wrapping-content__name,
+                @_version: 'sm'
+            );
+        }
+
+        .content > img{
+            .forix-global-call(
+                @_block-name: @forix-abs-table-items-gift-wrapping-content-img__name,
+                @_version: 'sm'
+            );
+        }
+
+    }
+
+    .forix-abs-block-product-title{
+        .forix-global-call(
+            @_block-name: @forix-abs-block-product-title__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-block-product-title strong{
+        .forix-global-call(
+            @_block-name: @forix-abs-block-product-title-strong__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-adjustment-incl-excl-tax .price-including-tax{
+        .forix-global-call(
+            @_block-name: @forix-forix-abs-adjustment-incl-excl-tax-price-including-tax__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-adjustment-incl-excl-tax .price-excluding-tax{
+        .forix-global-call(
+            @_block-name: @forix-forix-abs-adjustment-incl-excl-tax-price-excluding-tax__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-adjustment-incl-excl-tax .price-including-tax + .price-excluding-tax{
+        .forix-global-call(
+            @_block-name: @forix-forix-abs-adjustment-incl-excl-tax-price-including-tax-excluding-tax__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-dropdown-content-right{
+        .forix-global-call(
+            @_block-name: @forix-abs-dropdown-content-right__name,
+            @_version: 'sm'
+        );
+    }
+
+    .forix-abs-dropdown-content-left{
+        .forix-global-call(
+            @_block-name: @forix-abs-dropdown-content-left__name,
+            @_version: 'sm'
+        );
+    }
+}
+
+// [768-1023]
+.media-minmax-width(@break-min, @break-max) when (@break-min = @screen__m) and (@break-max = @screen__l) {
+    .forix-abs-blocks-2columns{
+        .forix-global-call(
+            @_block-name: @forix-blocks-2columns__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-customer-not-login-page{
+        .page-main{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-page-main__name,
+                @_version: 'm'
+            );
+        }
+        .page-title-wrapper{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-page-title-wrapper__name,
+                @_version: 'm'
+            );
+        }
+        .page-title{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-page-title__name,
+                @_version: 'm'
+            );
+            span{
+                .forix-global-call(
+                    @_block-name: @forix-customer-not-login-page-page-title-span__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        .page.messages{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-page-messages__name,
+                @_version: 'm'
+            );
+            > div{
+                .forix-global-call(
+                    @_block-name: @forix-customer-not-login-page-page-messages-div__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        .messages{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-messages__name,
+                @_version: 'm'
+            );
+        }
+        .message{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-message__name,
+                @_version: 'm'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-customer-not-login-page-message-p__name,
+                    @_version: 'm'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-customer-not-login-page-message-a__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        .columns{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-columns__name,
+                @_version: 'm'
+            );
+        }
+        .columns .column.main{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-column-main__name,
+                @_version: 'm'
+            );
+        }
+    }
+
+    .forix-abs-toggling-title{
+        .forix-global-call(
+            @_block-name: @forix-toggling-title__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-form-field-column-2{
+        .fieldset{
+            .field{
+                .forix-global-call(
+                    @_block-name: @forix-form-field-column-2__name,
+                    @_version: 'm'
+                );
+            }
+            .field + .fieldset{
+                .forix-global-call(
+                    @_block-name: @forix-form-field-column-2-fieldset__name,
+                    @_version: 'm'
+                );
+            }
+            .field .field{
+                .forix-global-call(
+                    @_block-name: @forix-form-field-column-2-field__name,
+                    @_version: 'm'
+                );
+            }
+        }
+    }
+
+    .forix-abs-fieldset-column-2{
+        .forix-global-call(
+            @_block-name: @forix-fieldset-column-2__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-discount-block-form {
+        .forix-global-call(
+            @_block-name: @forix-abs-discount-block-form__name,
+            @_version: 'm'
+        );
+        .legend{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fieldset-legend__name,
+                @_version: 'm'
+            );
+        }
+        .field{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-field__name,
+                @_version: 'm'
+            );
+        }
+        .field > .label{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-field-label__name,
+                @_version: 'm'
+            );
+        }
+        .field > .control{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-field-control__name,
+                @_version: 'm'
+            );
+        }
+        .field .input-text{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-field-input-text__name,
+                @_version: 'm'
+            );
+        }
+        .payment-option-inner{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-payment-option-inner__name,
+                @_version: 'm'
+            );
+            .field{
+                .forix-global-call(
+                    @_block-name: @forix-abs-discount-block-payment-option-inner-field__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        .actions-toolbar{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-actions-toolbar__name,
+                @_version: 'm'
+            );
+        }
+        .actions-toolbar .primary{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-actions-toolbar-primary__name,
+                @_version: 'm'
+            );
+        }
+        .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-action__name,
+                @_version: 'm'
+            );
+        }
+        .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-action-span__name,
+                @_version: 'm'
+            );
+        }
+        .primary .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-primary-action__name,
+                @_version: 'm'
+            );
+        }
+        .primary .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-primary-action-span__name,
+                @_version: 'm'
+            );
+        }
+    }
+
+    .forix-abs-giftcard-block-form{
+        .forix-global-call(
+            @_block-name: @forix-abs-giftcard-block-form__name,
+            @_version: 'm'
+        );
+        .field{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-field__name,
+                @_version: 'm'
+            );
+        }
+        .field > .label{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-field-label__name,
+                @_version: 'm'
+            );
+        }
+        .field > .control{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-field-control__name,
+                @_version: 'm'
+            );
+        }
+        .field .input-text{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-field-input-text__name,
+                @_version: 'm'
+            );
+        }
+        .payment-option-inner{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-payment-option-inner__name,
+                @_version: 'm'
+            );
+            .field{
+                .forix-global-call(
+                    @_block-name: @forix-abs-giftcard-block-form-payment-option-inner-field__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        .actions-toolbar{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-actions-toolbar__name,
+                @_version: 'm'
+            );
+        }
+        .actions-toolbar .primary{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-actions-toolbar-primary__name,
+                @_version: 'm'
+            );
+        }
+        .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-action__name,
+                @_version: 'm'
+            );
+        }
+        .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-action-span__name,
+                @_version: 'm'
+            );
+        }
+        .primary .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-primary-action__name,
+                @_version: 'm'
+            );
+        }
+        .primary .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-primary-action-span__name,
+                @_version: 'm'
+            );
+        }
+        .actions-toolbar .secondary{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-actions-toolbar-secondary__name,
+                @_version: 'm'
+            );
+        }
+        .secondary .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-secondary-action__name,
+                @_version: 'm'
+            );
+        }
+        .secondary .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-secondary-action-span__name,
+                @_version: 'm'
+            );
+        }
+    }
+
+    .forix-abs-add-fields{
+        > .fieldset{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fields-fieldset__name,
+                @_version: 'm'
+            );
+            .legend{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fieldset-legend__name,
+                    @_version: 'm'
+                );
+            }
+            .field{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-field__name,
+                    @_version: 'm'
+                );
+            }
+            .field .label{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-field-label__name,
+                    @_version: 'm'
+                );
+            }
+            .field .control{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-field-control__name,
+                    @_version: 'm'
+                );
+            }
+            > .actions-toolbar{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-actions-toolbar__name,
+                    @_version: 'm'
+                );
+            }
+            > .actions-toolbar .secondary{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-actions-toolbar-secondary__name,
+                    @_version: 'm'
+                );
+            }
+            .action.add{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-actions-action-add__name,
+                    @_version: 'm'
+                );
+            }
+            .action.add span{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-actions-action-add-span__name,
+                    @_version: 'm'
+                );
+            }
+            .fields{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-fields__name,
+                    @_version: 'm'
+                );
+            }
+            .fields .actions-toolbar{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-fields-actions-toolbar__name,
+                    @_version: 'm'
+                );
+            }
+            .fieldset{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-double__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        .additional{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fields-additional__name,
+                @_version: 'm'
+            );
+            .actions-toolbar{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-additional-actions-toolbar__name,
+                    @_version: 'm'
+                );
+            }
+            .action.remove{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-additional-action-remove__name,
+                    @_version: 'm'
+                );
+            }
+            .action.remove span{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-additional-action-remove-span__name,
+                    @_version: 'm'
+                );
+            }
+        }
+        .message.notice{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fields-message-notice__name,
+                @_version: 'm'
+            );
+        }
+        > .actions-toolbar{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fields-actions-toolbar__name,
+                @_version: 'm'
+            );
+            .action{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-actions-toolbar-action__name,
+                    @_version: 'm'
+                );
+            }
+            .action span{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-actions-toolbar-action-span__name,
+                    @_version: 'm'
+                );
+            }
+        }
+    }
+
+    .forix-abs-shopping-cart-items{
+        .forix-global-call(
+            @_block-name: @forix-abs-shopping-cart-items__name,
+            @_version: 'm'
+        );
+        .actions.main{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-main__name,
+                @_version: 'm'
+            );
+        }
+        .actions.main .clear{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-clear__name,
+                @_version: 'm'
+            );
+        }
+        .actions.main .clear span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-clear-span__name,
+                @_version: 'm'
+            );
+        }
+        .actions.main .continue{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-continue__name,
+                @_version: 'm'
+            );
+        }
+        .actions.main .continue span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-continue-span__name,
+                @_version: 'm'
+            );
+        }
+        .actions.main .update{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-update__name,
+                @_version: 'm'
+            );
+        }
+        .actions.main .update span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-update-span__name,
+                @_version: 'm'
+            );
+        }
+        .action-delete{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-action-delete__name,
+                @_version: 'm'
+            );
+        }
+        .action-delete span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-action-delete-span__name,
+                @_version: 'm'
+            );
+        }
+        .action-edit{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-action-edit__name,
+                @_version: 'm'
+            );
+        }
+        .action-edit span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-action-edit-span__name,
+                @_version: 'm'
+            );
+        }
+    }
+
+    .forix-abs-reset{
+        .forix-global-call(
+            @_block-name: @forix-abs-reset__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-visually-hidden{
+        .forix-global-call(
+            @_block-name: @forix-abs-visually-hidden__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-visually-hidden-reset{
+        .forix-global-call(
+            @_block-name: @forix-abs-visually-hidden-reset__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-icon-base{
+        .forix-global-call(
+            @_block-name: @forix-abs-icon-base__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-primary-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-primary-size__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-secondary-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-secondary-size__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-three-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-three-size__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-medium-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-medium-size__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-small-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-small-size__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-primary-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-primary-title-size__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-secondary-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-secondary-title-size__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-three-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-three-title-size__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-medium-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-medium-title-size__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-small-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-small-title-size__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-order-status{
+        .forix-global-call(
+            @_block-name: @forix-abs-order-status__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-title-orders{
+        .forix-global-call(
+            @_block-name: @forix-abs-title-orders__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-title-orders .order-date{
+        .forix-global-call(
+            @_block-name: @forix-abs-title-orders-order-date__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-overlay{
+        .forix-global-call(
+            @_block-name: @forix-abs-overlay__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-popup{
+        .forix-global-call(
+            @_block-name: @forix-abs-popup__name,
+            @_version: 'm'
+        );
+        .popup-header{
+            .forix-global-call(
+                @_block-name: @forix-abs-popup-header__name,
+                @_version: 'm'
+            );
+        }
+        .title{
+            .forix-global-call(
+                @_block-name: @forix-abs-popup-title__name,
+                @_version: 'm'
+            );
+        }
+    }
+
+    .forix-abs-popup.overlay{
+        .forix-global-call(
+            @_block-name: @forix-abs-popup-overlay__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-popup-close{
+        .forix-global-call(
+            @_block-name: @forix-abs-popup-close__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-popup-close-disabled{
+        .forix-global-call(
+            @_block-name: @forix-abs-popup-close-disabled__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-action-delete{
+        .forix-global-call(
+            @_block-name: @forix-abs-action-delete__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-table-items-gift-wrapping{
+        .forix-global-call(
+            @_block-name: @forix-abs-table-items-gift-wrapping__name,
+            @_version: 'm'
+        );
+
+        .title{
+            .forix-global-call(
+                @_block-name: @forix-abs-table-items-gift-wrapping-title__name,
+                @_version: 'm'
+            );
+        }
+
+        .content{
+            .forix-global-call(
+                @_block-name: @forix-abs-table-items-gift-wrapping-content__name,
+                @_version: 'm'
+            );
+        }
+
+        .content > img{
+            .forix-global-call(
+                @_block-name: @forix-abs-table-items-gift-wrapping-content-img__name,
+                @_version: 'm'
+            );
+        }
+
+    }
+
+    .forix-abs-block-product-title{
+        .forix-global-call(
+            @_block-name: @forix-abs-block-product-title__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-block-product-title strong{
+        .forix-global-call(
+            @_block-name: @forix-abs-block-product-title-strong__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-adjustment-incl-excl-tax .price-including-tax{
+        .forix-global-call(
+            @_block-name: @forix-forix-abs-adjustment-incl-excl-tax-price-including-tax__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-adjustment-incl-excl-tax .price-excluding-tax{
+        .forix-global-call(
+            @_block-name: @forix-forix-abs-adjustment-incl-excl-tax-price-excluding-tax__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-adjustment-incl-excl-tax .price-including-tax + .price-excluding-tax{
+        .forix-global-call(
+            @_block-name: @forix-forix-abs-adjustment-incl-excl-tax-price-including-tax-excluding-tax__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-dropdown-content-right{
+        .forix-global-call(
+            @_block-name: @forix-abs-dropdown-content-right__name,
+            @_version: 'm'
+        );
+    }
+
+    .forix-abs-dropdown-content-left{
+        .forix-global-call(
+            @_block-name: @forix-abs-dropdown-content-left__name,
+            @_version: 'm'
+        );
+    }
+}
+
+// >=1024
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l){
+    .forix-abs-blocks-2columns{
+        .forix-global-call(
+            @_block-name: @forix-blocks-2columns__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-customer-not-login-page{
+        .page-main{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-page-main__name,
+                @_version: 'l'
+            );
+        }
+        .page-title-wrapper{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-page-title-wrapper__name,
+                @_version: 'l'
+            );
+        }
+        .page-title{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-page-title__name,
+                @_version: 'l'
+            );
+            span{
+                .forix-global-call(
+                    @_block-name: @forix-customer-not-login-page-page-title-span__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        .page.messages{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-page-messages__name,
+                @_version: 'l'
+            );
+            > div{
+                .forix-global-call(
+                    @_block-name: @forix-customer-not-login-page-page-messages-div__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        .messages{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-messages__name,
+                @_version: 'l'
+            );
+        }
+        .message{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-message__name,
+                @_version: 'l'
+            );
+            p{
+                .forix-global-call(
+                    @_block-name: @forix-customer-not-login-page-message-p__name,
+                    @_version: 'l'
+                );
+            }
+            a{
+                .forix-global-call(
+                    @_block-name: @forix-customer-not-login-page-message-a__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        .columns{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-columns__name,
+                @_version: 'l'
+            );
+        }
+        .columns .column.main{
+            .forix-global-call(
+                @_block-name: @forix-customer-not-login-page-column-main__name,
+                @_version: 'l'
+            );
+        }
+    }
+
+    .forix-abs-toggling-title{
+        .forix-global-call(
+            @_block-name: @forix-toggling-title__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-form-field-column-2{
+        .fieldset{
+            .field{
+                .forix-global-call(
+                    @_block-name: @forix-form-field-column-2__name,
+                    @_version: 'l'
+                );
+            }
+            .field + .fieldset{
+                .forix-global-call(
+                    @_block-name: @forix-form-field-column-2-fieldset__name,
+                    @_version: 'l'
+                );
+            }
+            .field .field{
+                .forix-global-call(
+                    @_block-name: @forix-form-field-column-2-field__name,
+                    @_version: 'l'
+                );
+            }
+        }
+    }
+
+    .forix-abs-fieldset-column-2{
+        .forix-global-call(
+            @_block-name: @forix-fieldset-column-2__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-discount-block-form {
+        .forix-global-call(
+            @_block-name: @forix-abs-discount-block-form__name,
+            @_version: 'l'
+        );
+        .legend{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fieldset-legend__name,
+                @_version: 'l'
+            );
+        }
+        .field{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-field__name,
+                @_version: 'l'
+            );
+        }
+        .field > .label{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-field-label__name,
+                @_version: 'l'
+            );
+        }
+        .field > .control{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-field-control__name,
+                @_version: 'l'
+            );
+        }
+        .field .input-text{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-field-input-text__name,
+                @_version: 'l'
+            );
+        }
+        .payment-option-inner{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-payment-option-inner__name,
+                @_version: 'l'
+            );
+            .field{
+                .forix-global-call(
+                    @_block-name: @forix-abs-discount-block-payment-option-inner-field__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        .actions-toolbar{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-actions-toolbar__name,
+                @_version: 'l'
+            );
+        }
+        .actions-toolbar .primary{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-actions-toolbar-primary__name,
+                @_version: 'l'
+            );
+        }
+        .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-action__name,
+                @_version: 'l'
+            );
+        }
+        .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-action-span__name,
+                @_version: 'l'
+            );
+        }
+        .primary .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-primary-action__name,
+                @_version: 'l'
+            );
+        }
+        .primary .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-discount-block-form-primary-action-span__name,
+                @_version: 'l'
+            );
+        }
+    }
+
+    .forix-abs-giftcard-block-form{
+        .forix-global-call(
+            @_block-name: @forix-abs-giftcard-block-form__name,
+            @_version: 'l'
+        );
+        .field{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-field__name,
+                @_version: 'l'
+            );
+        }
+        .field > .label{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-field-label__name,
+                @_version: 'l'
+            );
+        }
+        .field > .control{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-field-control__name,
+                @_version: 'l'
+            );
+        }
+        .field .input-text{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-field-input-text__name,
+                @_version: 'l'
+            );
+        }
+        .payment-option-inner{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-payment-option-inner__name,
+                @_version: 'l'
+            );
+            .field{
+                .forix-global-call(
+                    @_block-name: @forix-abs-giftcard-block-form-payment-option-inner-field__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        .actions-toolbar{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-actions-toolbar__name,
+                @_version: 'l'
+            );
+        }
+        .actions-toolbar .primary{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-actions-toolbar-primary__name,
+                @_version: 'l'
+            );
+        }
+        .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-action__name,
+                @_version: 'l'
+            );
+        }
+        .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-action-span__name,
+                @_version: 'l'
+            );
+        }
+        .primary .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-primary-action__name,
+                @_version: 'l'
+            );
+        }
+        .primary .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-primary-action-span__name,
+                @_version: 'l'
+            );
+        }
+        .actions-toolbar .secondary{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-actions-toolbar-secondary__name,
+                @_version: 'l'
+            );
+        }
+        .secondary .action{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-secondary-action__name,
+                @_version: 'l'
+            );
+        }
+        .secondary .action span{
+            .forix-global-call(
+                @_block-name: @forix-abs-giftcard-block-form-secondary-action-span__name,
+                @_version: 'l'
+            );
+        }
+    }
+
+    .forix-abs-add-fields{
+        > .fieldset{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fields-fieldset__name,
+                @_version: 'l'
+            );
+            .legend{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fieldset-legend__name,
+                    @_version: 'l'
+                );
+            }
+            .field{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-field__name,
+                    @_version: 'l'
+                );
+            }
+            .field .label{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-field-label__name,
+                    @_version: 'l'
+                );
+            }
+            .field .control{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-field-control__name,
+                    @_version: 'l'
+                );
+            }
+            > .actions-toolbar{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-actions-toolbar__name,
+                    @_version: 'l'
+                );
+            }
+            > .actions-toolbar .secondary{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-actions-toolbar-secondary__name,
+                    @_version: 'l'
+                );
+            }
+            .action.add{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-actions-action-add__name,
+                    @_version: 'l'
+                );
+            }
+            .action.add span{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-actions-action-add-span__name,
+                    @_version: 'l'
+                );
+            }
+            .fields{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-fields__name,
+                    @_version: 'l'
+                );
+            }
+            .fields .actions-toolbar{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-fields-actions-toolbar__name,
+                    @_version: 'l'
+                );
+            }
+            .fieldset{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-fieldset-double__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        .additional{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fields-additional__name,
+                @_version: 'l'
+            );
+            .actions-toolbar{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-additional-actions-toolbar__name,
+                    @_version: 'l'
+                );
+            }
+            .action.remove{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-additional-action-remove__name,
+                    @_version: 'l'
+                );
+            }
+            .action.remove span{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-additional-action-remove-span__name,
+                    @_version: 'l'
+                );
+            }
+        }
+        .message.notice{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fields-message-notice__name,
+                @_version: 'l'
+            );
+        }
+        > .actions-toolbar{
+            .forix-global-call(
+                @_block-name: @forix-abs-add-fields-actions-toolbar__name,
+                @_version: 'l'
+            );
+            .action{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-actions-toolbar-action__name,
+                    @_version: 'l'
+                );
+            }
+            .action span{
+                .forix-global-call(
+                    @_block-name: @forix-abs-add-fields-actions-toolbar-action-span__name,
+                    @_version: 'l'
+                );
+            }
+        }
+    }
+
+    .forix-abs-shopping-cart-items{
+        .forix-global-call(
+            @_block-name: @forix-abs-shopping-cart-items__name,
+            @_version: 'l'
+        );
+        .actions.main{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-main__name,
+                @_version: 'l'
+            );
+        }
+        .actions.main .clear{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-clear__name,
+                @_version: 'l'
+            );
+        }
+        .actions.main .clear span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-clear-span__name,
+                @_version: 'l'
+            );
+        }
+        .actions.main .continue{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-continue__name,
+                @_version: 'l'
+            );
+        }
+        .actions.main .continue span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-continue-span__name,
+                @_version: 'l'
+            );
+        }
+        .actions.main .update{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-update__name,
+                @_version: 'l'
+            );
+        }
+        .actions.main .update span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-actions-update-span__name,
+                @_version: 'l'
+            );
+        }
+        .action-delete{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-action-delete__name,
+                @_version: 'l'
+            );
+        }
+        .action-delete span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-action-delete-span__name,
+                @_version: 'l'
+            );
+        }
+        .action-edit{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-action-edit__name,
+                @_version: 'l'
+            );
+        }
+        .action-edit span{
+            .forix-global-call(
+                @_block-name: @forix-abs-shopping-cart-items-action-edit-span__name,
+                @_version: 'l'
+            );
+        }
+    }
+
+    .forix-abs-reset{
+        .forix-global-call(
+            @_block-name: @forix-abs-reset__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-visually-hidden{
+        .forix-global-call(
+            @_block-name: @forix-abs-visually-hidden__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-visually-hidden-reset{
+        .forix-global-call(
+            @_block-name: @forix-abs-visually-hidden-reset__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-icon-base{
+        .forix-global-call(
+            @_block-name: @forix-abs-icon-base__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-primary-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-primary-size__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-secondary-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-secondary-size__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-three-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-three-size__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-medium-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-medium-size__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-small-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-small-size__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-primary-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-primary-title-size__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-secondary-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-secondary-title-size__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-three-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-three-title-size__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-medium-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-medium-title-size__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-small-title-size{
+        .forix-global-call(
+            @_block-name: @forix-abs-small-title-size__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-order-status{
+        .forix-global-call(
+            @_block-name: @forix-abs-order-status__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-title-orders{
+        .forix-global-call(
+            @_block-name: @forix-abs-title-orders__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-title-orders .order-date{
+        .forix-global-call(
+            @_block-name: @forix-abs-title-orders-order-date__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-overlay{
+        .forix-global-call(
+            @_block-name: @forix-abs-overlay__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-popup{
+        .forix-global-call(
+            @_block-name: @forix-abs-popup__name,
+            @_version: 'l'
+        );
+        .popup-header{
+            .forix-global-call(
+                @_block-name: @forix-abs-popup-header__name,
+                @_version: 'l'
+            );
+        }
+        .title{
+            .forix-global-call(
+                @_block-name: @forix-abs-popup-title__name,
+                @_version: 'l'
+            );
+        }
+    }
+
+    .forix-abs-popup.overlay{
+        .forix-global-call(
+            @_block-name: @forix-abs-popup-overlay__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-popup-close{
+        .forix-global-call(
+            @_block-name: @forix-abs-popup-close__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-popup-close-disabled{
+        .forix-global-call(
+            @_block-name: @forix-abs-popup-close-disabled__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-action-delete{
+        .forix-global-call(
+            @_block-name: @forix-abs-action-delete__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-table-items-gift-wrapping{
+        .forix-global-call(
+            @_block-name: @forix-abs-table-items-gift-wrapping__name,
+            @_version: 'l'
+        );
+
+        .title{
+            .forix-global-call(
+                @_block-name: @forix-abs-table-items-gift-wrapping-title__name,
+                @_version: 'l'
+            );
+        }
+
+        .content{
+            .forix-global-call(
+                @_block-name: @forix-abs-table-items-gift-wrapping-content__name,
+                @_version: 'l'
+            );
+        }
+
+        .content > img{
+            .forix-global-call(
+                @_block-name: @forix-abs-table-items-gift-wrapping-content-img__name,
+                @_version: 'l'
+            );
+        }
+
+    }
+
+    .forix-abs-block-product-title{
+        .forix-global-call(
+            @_block-name: @forix-abs-block-product-title__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-block-product-title strong{
+        .forix-global-call(
+            @_block-name: @forix-abs-block-product-title-strong__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-adjustment-incl-excl-tax .price-including-tax{
+        .forix-global-call(
+            @_block-name: @forix-forix-abs-adjustment-incl-excl-tax-price-including-tax__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-adjustment-incl-excl-tax .price-excluding-tax{
+        .forix-global-call(
+            @_block-name: @forix-forix-abs-adjustment-incl-excl-tax-price-excluding-tax__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-adjustment-incl-excl-tax .price-including-tax + .price-excluding-tax{
+        .forix-global-call(
+            @_block-name: @forix-forix-abs-adjustment-incl-excl-tax-price-including-tax-excluding-tax__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-dropdown-content-right{
+        .forix-global-call(
+            @_block-name: @forix-abs-dropdown-content-right__name,
+            @_version: 'l'
+        );
+    }
+
+    .forix-abs-dropdown-content-left{
+        .forix-global-call(
+            @_block-name: @forix-abs-dropdown-content-left__name,
+            @_version: 'l'
+        );
+    }
+}

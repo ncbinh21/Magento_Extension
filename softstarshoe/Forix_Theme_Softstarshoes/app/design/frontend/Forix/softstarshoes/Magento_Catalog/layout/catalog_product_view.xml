@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <move element="breadcrumbs" destination="page.wrapper" after="header.container"/>
+        <referenceContainer name="page.wrapper">
+            <block class="Magento\Theme\Block\Html\Breadcrumbs" name="breadcrumbs" as="breadcrumbs"/>
+        </referenceContainer>
+        <!-- Move Elements -->
+        <!-- Edit Container -->
+        <referenceContainer name="content">
+            <container name="product.container" label="Product container" htmlTag="div" htmlClass="product-container" before="-">
+                <container name="product.info.main.container" label="Product Info Left" htmlTag="div" htmlClass="product-main-container"/>
+            </container>
+        </referenceContainer>
+        <move element="product.info.media" destination="product.container" before="product.info.main.container"/>
+
+        <move element="page.main.title" destination="product.info.main" before="-" />
+        <move element="product.info" destination="product.info.main" before="product-notes-container" />
+        <move element="product.info.social" destination="product.info.main" after="page.main.title" />
+        <!--<move element="product.info.options" destination="product.info.options.wrapper" before="-" />-->
+        <!--<move element="product.info.options.configurable" destination="product.info.options.wrapper" after="product.info.options" />-->
+
+        <move element="product.info.options" destination="product.info.options.wrapper" after="product.info.options.configurable" />
+        <move element="product.info.options.configurable" destination="product.info.options.wrapper" before="-" />
+
+
+        <move element="product.info.overview" destination="product.info.main" before="product.info" />
+        <move element="product.info.price.custom" destination="product.info.main" before="product.info.overview" />
+        <move element="product.info.review" destination="product.info.main" after="page.main.title"/>
+        <move element="product.info.price" destination="product.info.form.options" after="product.info.options.wrapper.bottom"/>
+        <!--<referenceBlock name="product.info.options.wrapper">-->
+            <!--<block class="Forix\Catalog\Block\Product\View\OptionsCustom" name="product.info.options.text" as="product_options_text" template="Magento_Catalog::product/view/options.phtml" after="-">-->
+                <!--<block class="Magento\Catalog\Block\Product\View\Options\Type\Text" as="text" template="Magento_Catalog::product/view/options/type/text.phtml"/>-->
+            <!--</block>-->
+        <!--</referenceBlock>-->
+        <!-- Remove Elements -->
+        <referenceBlock name="product.info.sku" remove="true"/>
+        <referenceBlock name="product.info.stock.sku" remove="true"/>
+        <referenceBlock name="yosto.instagramconnect.block.instagram.imageslidertag" remove="true"/>
+        <referenceBlock name="yosto.instagramconnect.block.instagram.imagesliderlist" remove="true"/>
+
+        <referenceContainer name="product.info.main">
+            <container name="product-notes-container" htmlTag="div" htmlClass="product-notes" after="product.info">
+                <block class="Magento\Cms\Block\Block" name="checkout_cart_shipping" before="-">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">checkout-cart-shipping</argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceContainer>
+    </body>
+</page>
+
+

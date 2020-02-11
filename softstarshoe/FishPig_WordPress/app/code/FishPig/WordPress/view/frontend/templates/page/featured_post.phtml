@@ -1,0 +1,27 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     FishPig_WordPress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <ben@fishpig.co.uk>
+ */
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager
+$resizeHelper = $objectManager->create('FishPig\WordPress\Helper\ResizeImage');
+?>
+
+<div class="page_title"><?php echo __('Softstar Blog') ?></div>
+<div class="featured_post">
+	<?php $posts = $this->getFeaturedPosts();?>
+	<?php foreach($posts as $post): ?>
+        <div class="post-view">
+            <div class="post-entry">
+				<?php if ($image = $post->getImage()): ?>
+                    <div class="post-image">
+                        <a href="<?php echo $post->getUrl() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>">aaa<img src="<?php $imageUrl = $image->getMediumImage() ? $image->getMediumImage() : $image->getAvailableImage(); echo $resizeHelper->getThumbnailImage($imageUrl, '434', '315', true) ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/>aaa</a>
+                        <div class="title"><?php echo $this->escapeHtml($post->getPostTitle()) ?></div>
+                    </div>
+				<?php endif; ?>
+            </div>
+        </div>
+	<?php endforeach; ?>
+</div>

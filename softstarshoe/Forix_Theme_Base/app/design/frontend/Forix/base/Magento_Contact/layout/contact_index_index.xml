@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="3columns" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Contact Us</title>
+    </head>
+    <body>
+        <!-- Move some element -->
+        <move element="page.main.title" destination="content.top" before="-"/>
+        <!--<move element="content.top" destination="main" before="-"/>-->
+        <!--<move element="content" destination="main" />-->
+        <!--<referenceContainer name="content">
+            <block class="Magento\Contact\Block\ContactForm" name="contactForm" template="Magento_Contact::form.phtml">
+                &lt;!&ndash;<container name="form.additional.info.aa" label="Form Additional Info"/>&ndash;&gt;
+            </block>
+        </referenceContainer>-->
+        <referenceBlock name="sidebar.cms">
+            <action method="setActiveLink">
+                <argument name="link" xsi:type="string">contact</argument>
+            </action>
+            <action method="setTitleDefault">
+                <argument name="title" translate="true" xsi:type="string">Help</argument>
+            </action>
+            <block class="Magento\Cms\Block\Block" name="left_cms_help_links_block">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">left-cms-help-links-block</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+
+        <referenceContainer name="sidebar.additional">
+            <container name="sidebar.contact.block" label="Right Contact Block" htmlTag="div" htmlClass="block block-contacts" before="-">
+                <block class="Magento\Cms\Block\Block" name="right_contact_location_block">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">right-contact-location-block</argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceContainer>
+
+        <!-- remove compare product from left sidebar -->
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+    </body>
+</page>

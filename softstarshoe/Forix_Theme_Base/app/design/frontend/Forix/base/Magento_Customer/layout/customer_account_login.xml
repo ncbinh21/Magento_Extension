@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="customer.new">
+            <block class="Magento\Cms\Block\Block" name="content_login_create_block">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">content-login-create-block</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

@@ -1,0 +1,15 @@
+<?php
+/**
+ * Copyright © 2016 x-mage2(Yosto). All rights reserved.
+ * See README.md for details.
+ */
+
+//Template for display product hash tag.
+?>
+
+<?php if ($block->getCurrentHashTag()) : ?>
+    <div class="stock available">
+        <span>Instagram Tag : #<?= $block->getCurrentHashTag() ?></span>
+    </div>
+<?php endif; ?>
+

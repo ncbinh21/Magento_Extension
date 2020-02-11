@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Forix::quote_letter_top_level" module="Forix_QuoteLetter"  parent="Magento_Backend::content" resource="Magento_Backend::content" sortOrder="9999" title="Forix Quote Letter"/>
+		<add action="forix_quoteletter/quoteletter/index" id="Forix::forix_quoteletter_quoteletter" module="Forix_QuoteLetter" parent="Forix::quote_letter_top_level" resource="Magento_Backend::content" sortOrder="9999" title="Quote Letter Management"/>
+	</menu>
+</config>

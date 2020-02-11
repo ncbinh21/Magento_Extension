@@ -1,0 +1,3 @@
+.amseo-top-section > .admin__collapsible-block > a::before {content: "" !important;}
+.amseo-top-section > .entry-edit-head.admin__collapsible-block {border-bottom: 0;}
+.amseo-top-section p {font-size: 1.6rem;}

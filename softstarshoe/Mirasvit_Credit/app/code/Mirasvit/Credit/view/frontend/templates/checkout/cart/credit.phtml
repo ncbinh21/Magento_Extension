@@ -1,0 +1,70 @@
+<?php
+//@codingStandardsIgnoreFile
+/** @var \Mirasvit\Credit\Block\Checkout\Cart\Credit $block */
+
+$balance = $block->getBalance();
+
+/** @var \Magento\Framework\Pricing\Helper\Data $pricingHelper */
+$pricingHelper = $this->helper('Magento\Framework\Pricing\Helper\Data');
+?>
+
+<?php if ($block->isAllowed()): ?>
+
+    <?php if ($block->isPaypal()): ?>
+    <div id="block-credit-form" class="block shipping" data-mage-init='{"collapsible":{"openedState": "active", "saveState": true}}'>
+        <div class="title" data-role="title">
+            <strong id="block-credit-form-heading" role="heading" aria-level="2">
+                <?php echo __('Use Store Credits') ?>
+            </strong>
+        </div>
+        <div id="block-credit-form" class="content" data-role="content" aria-labelledby="block-credit-form-heading">
+    <?php endif; ?>
+
+    <form id="credit-form" action="<?= $block->getUrl('credit/checkout/applyPost') ?>" method="post">
+        <div class="discount cart-totals">
+            <h2><?= __('Use Store Credit') ?></h2>
+            <div class="discount-form">
+                <p><?= __('Your current balance is: <b>%1</b>', $pricingHelper->currency($balance->getAmount(), true, false)) ?></p>
+
+                <input type="hidden" name="remove-credit" id="remove-credit" value="0">
+                <input type="hidden" name="is_paypal" id="is_paypal" value="<?= $block->isPaypal(); ?>">
+
+                <div class="buttons-set">
+                    <?php if ($block->getUsedAmount() == 0 && $block->getAmountToUse() > 0): ?>
+                        <button type="button" class="button" onclick="creditFormSubmit(false)">
+                    <span><span>
+                        <?= __('Use Store Credit (%1)',
+                            strip_tags($pricingHelper->currency($block->getAmountToUse(), true, false))) ?>
+                    </span></span>
+                        </button>
+                    <?php elseif ($block->getUsedAmount() > 0): ?>
+                        <button type="button" class="button" onclick="creditFormSubmit(true)">
+                            <span><span><?= __('Cancel') ?></span></span>
+                        </button>
+                    <?php endif ?>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript">
+        //<![CDATA[
+        require([
+            "jquery"
+        ], function ($) {
+
+        });
+        function creditFormSubmit(isRemove) {
+            if (isRemove) {
+                jQuery('#remove-credit').val(1);
+            } else {
+                jQuery('#remove-credit').val(0);
+            }
+            jQuery('#credit-form').submit();
+        }
+        //]]>
+    </script>
+    <?php if ($block->isPaypal()): ?>
+        </div>
+    </div>
+    <?php endif; ?>
+<?php endif; ?>
