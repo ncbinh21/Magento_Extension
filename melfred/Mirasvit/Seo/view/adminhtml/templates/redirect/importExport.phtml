@@ -1,0 +1,57 @@
+<?php
+// @codingStandardsIgnoreFile
+?>
+<div class="import-export-redirect">
+    <?php if (!$block->getIsReadonly()): ?>
+    <div class="import-redirect">
+        <?php if ($block->getUseContainer()): ?>
+            <form id="import-form" class="admin__fieldset" action="<?php /* @escapeNotVerified */ echo $block->getUrl('seo/redirectImportExport/import/') ?>" method="post" enctype="multipart/form-data">
+            <?php endif; ?>
+                <?php echo $block->getBlockHtml('formkey')?>
+                <div class="fieldset admin__field required">
+                    <label for="import_redirect_file" class="admin__field-label"><span><?php /* @escapeNotVerified */ echo __('Import Redirects(.csv)') ?></span></label>
+                    <div class="admin__field-control">
+                        <input type="file" id="import_redirect_file" name="import_redirect_file" class="input-file required-entry" />
+                        <?php echo $block->getButtonHtml(__('Import Redirects'), '', 'import-submit') ?>
+                         <div class="note" id="file-note"><a href="<?php echo $block->getDownloadUrl() ?>">Example of CSV file</a></div>
+                    </div>
+                </div>
+            <?php if ($block->getUseContainer()): ?>
+            </form>
+        <?php endif; ?>
+    <script>
+        require(['jquery', "mage/mage", "loadingPopup"], function(jQuery){
+            jQuery('#import-form').mage('form').mage('validation');
+            (function ($) {
+                $('.import-submit').click(function(){
+                    if($(':input[name="import_redirect_file"]').val()) {
+                        $('body').loadingPopup({
+                            timeout: false
+                        });
+
+                        $(this.form).submit();
+                    } else {
+                        $('<label for="file" generated="true" class="mage-error" id="file-error">This is a required field.</label>').insertAfter($('.import-submit'));
+                    }
+                });
+            })(jQuery);
+        });
+    </script>
+    </div>
+    <?php endif; ?>
+    <div class="export-redirect <?php if ($block->getIsReadonly()): ?>box-left<?php else: ?>box-right<?php endif; ?>">
+        <?php if ($block->getUseContainer()): ?>
+            <form id="export_form" class="admin__fieldset" action="<?php /* @escapeNotVerified */ echo $block->getUrl('seo/redirectImportExport/export/') ?>" method="post" enctype="multipart/form-data">
+            <?php endif; ?>
+                <?php echo $block->getBlockHtml('formkey')?>
+                <div class="fieldset admin__field">
+                    <span class="admin__field-label"><span><?php /* @escapeNotVerified */ echo __('Export Redirects(.csv)') ?></span></span>
+                    <div class="admin__field-control">
+                        <?php echo $block->getButtonHtml(__('Export Redirects'), "this.form.submit()") ?>
+                    </div>
+                </div>
+            <?php if ($block->getUseContainer()): ?>
+            </form>
+        <?php endif; ?>
+    </div>
+</div>

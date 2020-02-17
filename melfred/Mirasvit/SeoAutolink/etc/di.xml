@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!--UI-->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="seoautolink_link_listing_data_source" xsi:type="string">Mirasvit\SeoAutolink\Model\ResourceModel\Link\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="SeoautolinkGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="SeoautolinkGridDataProvider" type="Mirasvit\SeoAutolink\Ui\SeoAutolink\Listing\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Mirasvit\SeoAutolink\Model\ResourceModel\Link\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">SeoautolinkGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+
+    <!--CONFIG-->
+    <preference for="Mirasvit\SeoAutolink\Api\Config\AutolinkInterface" type="Mirasvit\SeoAutolink\Service\Config\Autolink" />
+
+    <type name="Magento\Cms\Block\Page">
+        <plugin name="seoautolink"
+                type="Mirasvit\SeoAutolink\Model\Plugin\CmsPageOutput"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+    <type name="Mirasvit\Blog\Block\Post\View">
+        <plugin name="seoautolink"
+                type="Mirasvit\SeoAutolink\Model\Plugin\BlogPostOutput"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+</config>

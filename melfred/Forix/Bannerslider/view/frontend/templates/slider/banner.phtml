@@ -1,0 +1,57 @@
+<?php
+/**
+ * Forix
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Forix.com license that is
+ * available through the world-wide-web at this URL:
+ *
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Forix
+ * @package     Forix_Bannerslider
+ * @copyright   Copyright (c) 2012 Forix (http://www.forixwebdesign.com/)
+ * @license
+ */
+?>
+<?php
+/** @var \Forix\Bannerslider\Block\SliderItem $block */
+$styleSlide = $block->getSlider()->getStyleSlide();
+$slider = $block->getSlider();
+$htmlId   = $block->getFlexsliderHtmlId();
+$bannerCollection = $block->getBannerCollection();
+?>
+<div class="forix-bannerslider-standard">
+	<?php if ($block->isShowTitle() == \Forix\Bannerslider\Model\Slider::SHOW_TITLE_YES) : ?>
+		<div class="forix-bannerslider-title">
+			<strong><span><?php echo $slider->getTitle(); ?></span></strong>
+		</div>
+	<?php endif; ?>
+	<div class="forix-bannerslide">
+		<div id="<?php echo $htmlId ?>" class="carousel-banner flexslider-content-image <?php echo $htmlId ?>">
+			<ul class="slides">
+				<?php foreach ($bannerCollection as $banner): ?>
+					<?php
+					//get image by type use $block->getBannerImageByType($banner, 'tablet/phone/desktop')
+					?>
+					<li class="item">
+						<div class="box-outer">
+							<div class="box-image">
+								<img  alt="<?php echo $banner->getImageAlt() ?>" src="<?php echo $block->getBannerImageUrl($banner) ?>" />
+							</div>
+						</div>
+					</li>
+					<?php
+					//if you want to show more banner, comment this code
+					break;
+					?>
+				<?php endforeach ?>
+			</ul>
+		</div>
+	</div>
+</div>

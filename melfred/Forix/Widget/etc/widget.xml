@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <!-- widget for blog -->
+    <widget class="Forix\Widget\Block\Widget\Blog\GetBlog" id="widget_last_blog">
+        <label>Widget Last Blog</label>
+        <description>Posts</description>
+        <parameters>
+            <parameter name="num_record" sort_order="0" visible="true" xsi:type="text">
+                <label>Number Of Record</label>
+            </parameter>
+            <parameter name="order_by" xsi:type="select" visible="true" source_model="Forix\Widget\Model\Block\Arrange">
+                <label translate="true">Arrange</label>
+            </parameter>
+
+            <parameter name="text_title" sort_order="0" visible="true" xsi:type="text">
+                <label>Title</label>
+            </parameter>
+
+            <parameter name="short_desc" sort_order="0" visible="true" xsi:type="text">
+                <label>Short Description</label>
+            </parameter>
+        </parameters>
+    </widget>
+
+    <!-- widget for blog category -->
+    <widget class="Forix\Widget\Block\Widget\Category\GetCategory" id="widget_category_blog">
+        <label>Widget Category</label>
+        <description>Widget For Category</description>
+    </widget>
+
+    <!-- widget input box rig model-->
+    <widget class="Forix\Widget\Block\Widget\RigModel\InputBox" id="widget_input_rig_model">
+        <label>Widget Input Rig Model</label>
+        <description>Widget For Input Rig Model</description>
+    </widget>
+
+</widgets>

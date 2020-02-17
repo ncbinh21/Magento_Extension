@@ -1,0 +1,69 @@
+<?php
+/**
+ * @var $block \Magento\Framework\View\Element\Template
+ */
+?>
+<?php if ($detailedInfoGroup = $block->getGroupChildNames('wizard_steps', 'getChildHtml')): ?>
+<div class="product-wizard product info detailed" id="configurator-step-functions"
+     data-bind="scope: 'fast_back_system_configurator'">
+    <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    <!--/ko-->
+    <?php $layout = $block->getLayout(); ?>
+    <div class="product data items"
+         data-bind="afterRender: callSelectsJS()">
+        <div class="inner-items">
+            <?php foreach ($detailedInfoGroup as $name): ?>
+                <?php
+                $html[$name] = $layout->renderElement($name);
+                if (!trim($html[$name])) {
+                    continue;
+                }
+                $alias = $layout->getElementAlias($name);
+                $stepIndex = ['bits', 'default'];
+                $tabIndexBits = $block->getChildData($alias, 'index_bits');
+                $tabIndexResults = $block->getChildData($alias, 'index_default');
+                ?>
+                <div class="data item title tab-label-wizard"
+                     aria-labeledby="tab-label-<?= /* @escapeNotVerified */$alias ?>-title"
+                     data-role="collapsible"
+                     data-index="<?php /* @escapeNotVerified */ echo $block->getChildData($alias, 'index') - 1 ?>"
+                     id="tab-label-<?= /* @escapeNotVerified */ $alias ?>">
+                    <a class="data switch"
+                       tabindex="-1"
+                       data-toggle="switch"
+                       href="#<?= /* @escapeNotVerified */ $alias ?>"
+                       id="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title">
+                        <?php foreach ($stepIndex as $index): ?>
+                            <span class="step-<?php echo $index; ?>"
+                                  style="display: none;"><?= /* @escapeNotVerified */
+                                $block->getChildData($alias, 'index_' . $index) ?></span>
+                        <?php endforeach; ?>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <?php foreach ($detailedInfoGroup as $name): ?>
+            <?php
+            if (!trim($html[$name])) {
+                continue;
+            }
+            $alias = $layout->getElementAlias($name);
+            ?>
+            <div class="data item content" id="<?= /* @escapeNotVerified */ $alias ?>" data-role="content" data-bind="blockLoader: isLoading">
+                <?= /* @escapeNotVerified */ $html[$name] ?>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+<script type="text/x-magento-init">
+    {
+        "#configurator-step-functions": {
+            "Magento_Ui/js/core/app": <?php /* @escapeNotVerified */ echo $block->getJsLayout(); ?>
+        },
+        "*": {
+            "Magento_Ui/js/block-loader": "<?php /* @escapeNotVerified */echo $block->getViewFileUrl('images/loader-1.gif'); ?>"
+        }
+    }
+</script>
+<?php endif; ?>

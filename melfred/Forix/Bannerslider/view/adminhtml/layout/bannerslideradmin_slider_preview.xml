@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/**
+ * User: Forix
+ * Date: 6/24/2016
+ * Time: 1:24 PM
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+    	<title>Preview Slider Template</title>
+    </head>
+    <body>
+        <referenceContainer name="content">
+        	<block class="Forix\Bannerslider\Block\Adminhtml\Preview" name="admin.block.slider.preview">
+        	</block>
+        </referenceContainer>
+    </body>
+</page>

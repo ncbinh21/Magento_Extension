@@ -1,0 +1,63 @@
+.amasty-fpc-crawler-status {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  min-width: 400px;
+  border: 2px solid #008080;
+  z-index: 9999;
+  background: white;
+
+  .status-header {
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    background: #008080;
+    font-size: 20px;
+    padding: 5px 0;
+  }
+
+  &.status-ignored .status {
+    color: #bebebe;
+  }
+
+  &.status-hit .status {
+    color: #67b96a;
+  }
+
+  &.status-miss .status {
+    color: #d10c12;
+  }
+
+  .status {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 5px 0;
+  }
+
+  .not-cacheable {
+    .not-cacheable-header {
+      background: #e4e4e4;
+      text-align: center;
+      font-weight: bold;
+      padding: 3px 0;
+    }
+
+    .blocks {
+        & {
+            max-height: 100px;
+            overflow-y: auto;
+        }
+      .not-cacheable-block {
+        padding: 7px;
+        border-bottom: 1px solid #e4e4e4;
+        font-size: 12px;
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}

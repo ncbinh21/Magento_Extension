@@ -1,0 +1,34 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var \Forix\ProductWizard\Block\Adminhtml\Group\Item\Option\Edit\WizardOptionGridDependOn $block */
+
+/** @var \Forix\ProductWizard\Block\Adminhtml\Group\Item\Option\Edit\WizardOptionDependOn $blockGrid */
+$blockGrid = $block->getBlockGrid();
+$gridJsObjectName = $blockGrid->getJsObjectName();
+?>
+<?= $block->getGridHtml() ?>
+<input type="hidden" name="depend_on" id="in_wizard_options_depend_on"
+       data-form-part="forix_productwizard_group_item_option_form" value=""/>
+<script type="text/x-magento-init">
+        {
+            "*": {
+                "Forix_ProductWizard/js/assign-options": {
+                    "target_element_id": "in_wizard_options_depend_on",
+                    "target_element_name": "depend_on[]",
+                    "selectedProducts": <?= /* @escapeNotVerified */
+    $block->getProductsJson() ?>,
+                    "gridJsObjectName": <?= /* @escapeNotVerified */
+    '"' . $gridJsObjectName . '"' ?: '{}' ?>
+                }
+            }
+        }
+
+</script>
+<!-- @todo remove when "UI components" will support such initialization -->
+<script>
+    require('mage/apply/main').apply();
+</script>

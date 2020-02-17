@@ -1,0 +1,117 @@
+<?php
+/**
+ * Created by Nick Howard.
+ * Job Title: Magento Developer
+ * Project: html
+ */
+/**
+ * @var $helper \Forix\Megamenu\Helper\Data
+ * @var $block \Forix\Megamenu\Rewrite\Ves\Megamenu\Block\Menu
+ */
+?>
+<?php if($menu = $this->getMenu()): ?>
+    <?php
+    $data   = $this->helper(\Ves\Megamenu\Helper\Data::class);
+    $helper = $this->helper(\Forix\Megamenu\Helper\Data::class); //Edited by Hidro Le
+    $shopbyData = $this->helper(\Forix\Shopby\Helper\Data::class);
+    $html = $data->renderMenu($menu);
+    $rigModelAttribute = $helper->getRigModelAttribute();
+    $rigModels = $rigModelAttribute->getOptions();
+    ?>
+    <nav id="navigation" class="navigation" data-action="navigation">
+        <ul data-mage-init='{"forix/menu":{}}'>
+            <?php /* @escapeNotVerified */ echo $html; ?>
+            <li class="shop-by drill-rig top-link-megamenu level0 level-top nav-2 first last parent">
+
+                <a href="javascript:void(0);">
+                    <span class="text_small"><?php echo __('Shop by') ?></span>
+                    <span><?php echo __('DRILL RIG'); ?></span>
+                </a>
+                <ul class="submenu level0 js-select2">
+                    <div class="rig-model-input-filter-wrapper-menu">
+                        <select class="rig-model-input-filter-menu js-select2" placeholder="<?php echo __('Type in model number'); ?>" multiple="multiple">
+                            <?php foreach ($rigModels as $rigModel): ?>
+                                <?php
+                                $manufacture = $helper->getAmastyOptionSetting($rigModel->getValue());
+                                if (!$manufacture) continue;
+                                $manufacture = strtolower($manufacture);
+                                $rigUrl = $block->getUrl('shopby/rig/index') . ($block->translitUrl($manufacture)) . "/" . $block->translitUrl($rigModel->getLabel().'-'.$rigModel->getValue());
+                                ?>
+                                <option value="<?php echo $rigUrl ?>"
+                                        href="<?php echo $rigUrl ?>">
+                                    <?php echo $block->escapeHtml($rigModel->getLabel()) ?>
+                                </option>
+                            <?php endforeach; ?>
+                            <script type="text/javascript">
+                                require(['jquery', 'forix/plugins/select2'], function ($) {
+                                    var inputFilterModelMenu = $('.navigation .rig-model-input-filter-menu.js-select2').select2({
+                                        placeholder: {
+                                            text: '<?php echo __("Type in model number");?>'
+                                        },
+                                        dropdownParent: $('.rig-model-input-filter-wrapper-menu'),
+                                        minimumInputLength: 1,
+                                        //dropdownPosition: 'below',
+                                        escapeMarkup: function (m) {
+                                            return m;
+                                        },
+                                        matcher: function (params, data) {
+                                            if ($.trim(params.term) === '') {
+                                                return data;
+                                            }
+                                            if (typeof data.text === 'undefined') {
+                                                return null;
+                                            }
+
+                                            var textF = data.text.substring(0, data.text.indexOf(' (')),
+                                                textL = data.text.substring(data.text.indexOf(' ('), data.text.length);
+                                            if (textF === '') {
+                                                textF = textL;
+                                                textL = '';
+                                            }
+                                            let termUpper = params.term.toUpperCase(), modifiedData = null,
+                                                index = textF.toUpperCase().indexOf(termUpper);
+                                            if (index > -1) {
+                                                modifiedData = $.extend({}, data, true);
+                                                modifiedData.text = textF;
+
+                                                let text = modifiedData.text, sub = text.substring(index, index + termUpper.length);
+                                                text = text.replaceBetween(index, index + termUpper.length, '<span class="bold">' + sub + '</span>');
+                                                modifiedData.text = text;
+                                            }
+                                            return modifiedData
+                                        }
+                                    });
+                                    inputFilterModelMenu.on("select2:open", function(event) {
+                                        $('input.select2-search__field').attr('placeholder', 'Type in model number');
+
+                                    });
+                                    $('.rig-model-input-filter-wrapper-menu .select2-search__field').attr('placeholder','Type in model number');
+
+                                    inputFilterModelMenu.on("select2:select", function (e) {
+                                        document.location.href = this.value;
+                                    });
+                                });
+                            </script>
+                        </select>
+                    </div>
+                </ul>
+            </li>
+            <li class="shop-by ground-condition top-link-megamenu level0 level-top nav-2 first last parent">
+
+                <a href="javascript:void(0);">
+                    <span class="text_small"><?php echo __('Shop by') ?></span>
+                    <span class="text"><?php echo __('Ground Condition'); ?></span>
+                </a>
+                <ul class="submenu level0">
+                    <div class="ground-condition text-hide">
+                        <?php echo $block->getChildHtml('top_ground_condition'); ?>
+                    </div>
+                </ul>
+            </li>
+        </ul>
+        <div class="warp-nav-right">
+            <?php echo $block->getChildHtml('top_nav_right'); ?>
+        </div>
+    </nav>
+<?php endif;?>
+

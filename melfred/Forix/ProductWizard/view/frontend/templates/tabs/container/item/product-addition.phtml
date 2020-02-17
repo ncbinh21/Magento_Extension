@@ -1,0 +1,169 @@
+<?php
+/**
+ * @var $block \Forix\ProductWizard\Block\Wizard\GroupItem
+ * @var $groupItem \Forix\ProductWizard\Model\GroupItem
+ * @var $options \Magento\Catalog\Model\ProductRender[]
+ * @var $option \Forix\ProductWizard\Model\GroupItemOption
+ * @var $_product \Magento\Catalog\Model\Product
+ */
+$groupItem = $block->getSource();
+$attributeCode = $groupItem->getAttributeCode();
+$itemName = $attributeCode . "_" . $groupItem->getGroupItemId();
+$options = $block->getGroupItemOptions();
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+$dataKey = 'group-item-' . $groupItem->getId();
+$shortKey = "gp_" . $groupItem->getId();
+$attr = $block->getRequest()->getParam('pr');
+?>
+<div class="products wrapper grid products-grid">
+    <label class="label"
+           for="<?php echo $block->getNameInLayout(); ?>">
+        <span data-bind='afterRender: translateText'
+              data-text="<?php echo $block->escapeHtml(__($groupItem->getTitle())); ?>"></span>
+    </label>
+    <ul class="products list items product-items group-item <?php echo $dataKey; ?>"
+        data-bind="afterRender: setGroupItemValue('<?php echo $dataKey; ?>', 0)"
+        data-group="<?php echo $groupItem->getId(); ?>">
+        <?php foreach ($options as $_productRenderer): ?>
+            <?php $option = $_productRenderer->getWizardOption();
+            $_product = $_productRenderer->getProduct();
+            $configurable = $_productRenderer->getParent()?:$_product; /* if product doesn't parent will use current product. */
+            $dependKey = "depend_{$groupItem->getId()}_{$option->getId()}";
+            $bestOnKey = "best_{$groupItem->getId()}_{$option->getId()}";
+            $selected = false;
+            if (isset($attr[$shortKey]) && $attr[$shortKey] == $_product->getSku()) { /* Check if url has zipped.*/
+                $selected = true;
+            }
+            ?>
+            <li class="item product product-item group-item-option <?php echo $bestOnKey; ?> <?php echo $dependKey; ?> "
+                data-option="<?php echo $groupItem->getId() . "_" . $option->getId() ?>"
+                data-depend="<?php echo implode(",", $option->getDependOn()); ?>"
+                data-best="<?php echo implode(",", $option->getBestOn()); ?>">
+                <div class="product-outer">
+                    <div class="product-item-info product-label">
+                        <div class="option-head">
+                            <?php echo $block->getProductPrice($_product); ?>
+                            <div class="product-info-top">
+                            <span class="product photo product-item-photo">
+                                <?php $productImage = $block->getImage($configurable); ?>
+                                <?php echo $productImage->toHtml(); ?>
+                            </span>
+                            </div>
+                        </div>
+                        <div class="option-body">
+                            <div class="product details product-item-details">
+                                <strong class="product name product-item-name">
+                                    <a class="product-item-link"
+                                       href="<?= /* @escapeNotVerified */ $configurable->getProductUrl() ?>">
+                                        <span data-mage-init='{"forix/formattext":{}}'><?php echo $option->getTitle(); ?></span>
+                                    </a>
+                                </strong>
+                                <div class="item-option">
+                                    <table class="data table additional-attributes" id="product-attribute-specs-table">
+                                        <tbody>
+                                        <?php foreach ($_productRenderer->getExtensionAttributes()->getAttributeOptionData() as $attrOption): ?>
+                                            <tr class="item-options">
+                                                <th class="col label"
+                                                    scope="row"><?php echo $attrOption->getAttributeLabel(); ?></th>
+                                                <td class="col data"
+                                                    data-th="<?php echo $attrOption->getAttributeLabel(); ?>"><?php echo $option->getAttributeValues(); ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="option-footer">
+                            <input class="btn-continue un-select group-input-item-<?php echo $groupItem->getId(); ?> <?php echo $option->getId() . '-' . $groupItem->getId() ?>"
+                                   data-switchTo="<?php echo $groupItem->getNextTo(); ?>"
+                                   data-option="<?php echo $groupItem->getId() . "_" . $option->getId() ?>"
+                                   id="<?php echo $option->getId() . '-' . $groupItem->getId() ?>"
+                                   data-step="<?php echo($block->getStepIndex()); ?>"
+                                   data-current="<?php echo($block->getStepIndex() - 1); ?>"
+                                   data-next="<?php echo($block->getStepNext() ?: $block->getStepIndex()); ?>"
+                                   type="radio"
+                                   data-itemset="<?php echo $option->getItemSetId()?>"
+                                   data-key="<?php echo $dataKey; ?>"
+                                   name="pr[<?php echo $shortKey; ?>]"
+                                <?php if ($selected): /* Trigger Click if this selected */?>
+                                    checked="checked"
+                                    data-bind='
+                                        afterRender: triggerClick
+                                    '
+                                <?php endif; ?>
+                                   data-product="<?php echo $block->escapeHtmlAttr($_product->getSku()); ?>"
+                                   value="<?php echo $block->escapeHtmlAttr($_product->getSku()); ?>"/>
+                            <label for="<?php echo $option->getId() . '-' . $groupItem->getId() ?>"><span><?php echo __('Select'); ?></span></label>
+                        </div>
+                        <script type="text/javascript">
+                            require(["jquery", "Forix_ProductWizard/js/model/wizard-data"], function (jquery, wizardData) {
+                                <?php
+                                /**
+                                 * Render Depend Solution Hide and show.
+                                 */
+
+                                $groupItemIds = [];
+                                $contentCase = [];
+                                $dependData = json_encode($option->getDependOn());
+                                $bestOn = json_encode($option->getBestOn());
+
+                                if ($option->getDependOn()) {
+                                    foreach ($option->getDependOn() as $depend) {
+
+                                        $re = '/\d+_/m';
+                                        preg_match($re, $depend, $matches);
+                                        $tmp = str_replace('_', '', $matches[0]);
+                                        if (!isset($groupItemIds[$tmp])) {
+                                            $groupItemIds[$tmp] = true;
+                                            echo <<<HTML
+wizardData.get('group-item-{$tmp}').subscribe(function (data) {
+                return wizardData.checkDepend('{$dependKey}', data.value);
+            });
+HTML;
+                                        }
+                                    }
+                                } else if ($option->getBestOn()) {
+                                    foreach ($option->getBestOn() as $depend) {
+                                        $re = '/\d+_/m';
+                                        preg_match($re, $depend, $matches);
+                                        $tmp = str_replace('_', '', $matches[0]);
+                                        if (!isset($groupItemIds[$tmp])) {
+                                            $groupItemIds[$tmp] = true;
+                                            echo <<<HTML
+wizardData.get('group-item-{$tmp}').subscribe(function (data) {
+                return wizardData.checkBestOn('{$bestOnKey}', data.value);
+            });
+HTML;
+                                        }
+                                    }
+                                }
+                                ?>
+                                wizardData.buildDependData('<?php echo $dependKey;?>', <?php echo $dependData;?>);
+                                wizardData.buildBestOnData('<?php echo $bestOnKey;?>', <?php echo $bestOn;?>);
+                            });
+                        </script>
+                    </div>
+                </div>
+            </li>
+        <?php endforeach; ?>
+        <?php if ($groupItem->getIsShowViewAll()): /** didn't have attribute show view all yet. */ ?>
+            <li class="item product product-item group-item-option show-all">
+                <div class="product-outer">
+                    <div class="product-item-info product-label">
+                        <div class="product-item-info-wrapper">
+                            <div class="product-item-info-inner">
+                                <span><?php echo __($groupItem->getShowAllMessage()); ?></span>
+                                <a href="javascript:void(0)"
+                                   data-bind="click: showAll"
+                                   data-items=".<?php echo $dataKey; ?> li">
+                                    <span><?php echo __($groupItem->getButtonText()); ?></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        <?php endif; ?>
+    </ul>
+</div>

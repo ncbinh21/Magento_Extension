@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="forix_catalog" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <resource>Forix_Catalog::config</resource>
+            <class>separator-top</class>
+            <label>Catalog</label>
+            <tab>forix</tab>
+            <group id="general" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1"
+                   showInStore="0">
+                <label>General</label>
+                <field id="heavy_badge_label" translate="label comment" type="text" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="0">
+                    <label>Heavy Badge Label</label>
+                    <comment>The label to show in cart/checkout page when heavy badge flag is enabled.</comment>
+                </field>
+                <field id="ground_condition_map" translate="label" sortOrder="20" showInDefault="1" showInWebsite="0"
+                       showInStore="0">
+                    <label>Ground Condition Map</label>
+                    <frontend_model>\Forix\Product\Block\Adminhtml\System\GroundCondition</frontend_model>
+                    <backend_model>Forix\Product\Model\Config\Backend\ArraySerialized</backend_model>
+                </field>
+            </group>
+            <group id="stock" translate="label" type="select" sortOrder="1000" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Stock Message Configuration</label>
+                <field id="back_order" translate="label comment" type="text" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="0">
+                    <label>Back order Message</label>
+                    <comment>Message will show when product Back Order.</comment>
+                </field>
+                <field id="in_stock" translate="label comment" type="text" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="0">
+                    <label>In Stock Message</label>
+                    <comment>Message will show when product In-Stock.</comment>
+                </field>
+            </group>
+
+            <group id="heavy" translate="label" type="select" sortOrder="1000" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Heavy Badge Weight</label>
+                <field id="weight" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Weight</label>
+                    <comment>It's number weight to show Badge</comment>
+                </field>
+            </group>
+
+        </section>
+    </system>
+</config>

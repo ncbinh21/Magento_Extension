@@ -1,0 +1,46 @@
+<?php
+	/** @var Magento\Catalog\Model\Category $cate */
+	$category = $this->getCategory();
+	$helper = $this->helper('Forix\CategoryCustom\Helper\Data');
+?>
+<div class="homepage-category">
+    <?php $i=0; $lastItem=""; ?>
+	<?php foreach ($category as $cate) : ?>
+		<?php if (!in_array($cate->getId(),[1,2])) : ?>
+			<?php $i++;?>
+            <?php if ($i <= 9) : ?>
+                <div class="item-category">
+                    <div class="inner">
+                        <a href="<?php echo $cate->getUrl(); ?>"><img src="<?php echo $helper->getCategoryThumbUrl($cate); ?>" alt="<?php echo $cate->getData('icon_image'); ?>" /></a>
+                       
+                    </div>
+                    <a title="<?php echo $cate->getName(); ?>" href="<?php echo $cate->getUrl(); ?>" class="title"><span class="text"><?php echo $cate->getName(); ?> </span><span class="dots"></span></a>
+                    <div class="overflow">
+                        <a href="<?php echo $cate->getUrl(); ?>" title="<?php echo $cate->getName(); ?>">
+                            <?php
+                                $short = $cate->getData('short_desc');
+                                $short = str_ireplace('<p>','',$short);
+                                $short = str_ireplace('</p>','',$short);
+                            ?>
+                            <p data-mage-init='{"forix/formattext":{}}'><?php echo $short; ?></p>
+                        </a>
+                    </div>
+                </div>
+            <?php else : ?>
+                <?php $lastItem.= '<a title="last-item-category" href="' . $cate->getUrl() . '">' . $cate->getName().'</a><br />';  ?>
+            <?php endif; ?>
+        <?php endif; ?>
+    <?php endforeach; ?>
+
+    <?php
+    if ($lastItem!="") { ?>
+        <div class="item-category bg-last-category">
+            <div class="text-all">
+                <div class="inner-tex">
+                    <?= $lastItem; ?>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
+</div>
+

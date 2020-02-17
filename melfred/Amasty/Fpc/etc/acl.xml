@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2019 Amasty (https://www.amasty.com)
+ * @package Amasty_Fpc
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Amasty_Fpc::config" title="Amasty Full Page Cache Warmer" sortOrder="62116" />
+                        </resource>
+                    </resource>
+                </resource>
+                <resource id="Magento_Backend::system">
+                    <resource id="Amasty_Fpc::fpc" title="Amasty FPC Warmer">
+                        <resource id="Amasty_Fpc::log" title="Warmer Log">
+                            <resource id="Amasty_Fpc::log_clear" title="Clear Log"/>
+                        </resource>
+                        <resource id="Amasty_Fpc::queue" title="Warmer Queue"/>
+                        <resource id="Amasty_Fpc::reports" title="Performance Reports"/>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

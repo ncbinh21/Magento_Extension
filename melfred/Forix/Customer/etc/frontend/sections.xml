@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Created by Mercurial
+ * Job Title: Magento Developer
+ * Project Name: M2.2.3-EE - Melfredborzall
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Customer:etc/sections.xsd">
+    <action name="loginascustomer/login/proceed">
+        <section name="customer-info"/>
+        <section name="customer"/>
+        <section name="checkout-data"/>
+        <section name="cart"/>
+        <section name="compare-products"/>
+        <section name="wishlist"/>
+        <section name="customer-info-frm"/>
+        <section name="is_distributor"/>
+    </action>
+</config>

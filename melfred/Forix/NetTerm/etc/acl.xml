@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+	<acl>
+		<resources>
+			<resource id="Magento_Backend::admin">
+				<resource id="Forix_NetTerm::netterm" sortOrder="10" title="Net Terms">
+					<resource id="Forix_NetTerm::netterm_save" sortOrder="10" title="Save Net Terms"/>
+					<resource id="Forix_NetTerm::netterm_delete" sortOrder="20" title="Delete Net Terms"/>
+					<resource id="Forix_NetTerm::netterm_update" sortOrder="30" title="Update Net Terms"/>
+					<resource id="Forix_NetTerm::netterm_view" sortOrder="40" title="View Net Terms"/>
+				</resource>
+			</resource>
+		</resources>
+	</acl>
+</config>

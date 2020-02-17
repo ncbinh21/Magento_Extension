@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\CatalogImportExport\Model\Import\Product\Validator"
+                type="Forix\CatalogImport\Rewrite\Magento\CatalogImportExport\Model\Import\Product\Validator"/>
+    <preference for="Magento\CatalogImportExport\Model\Import\Uploader" type="\Forix\CatalogImport\Model\Import\Uploader"/>
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="forixImportCommand" xsi:type="object">Forix\CatalogImport\Console\Command\Import</item>
+                <item name="enable_all_product" xsi:type="object">Forix\CatalogImport\Console\Command\EnableAllProduct</item>
+                <item name="remove_empty_image" xsi:type="object">Forix\CatalogImport\Console\Command\RemoveEmptyImage</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Forix\CatalogImport\Model\Import\Product\OptionFactory"
+                 type="Magento\CatalogImportExport\Model\Import\Product\OptionFactory">
+        <arguments>
+            <argument name="instanceName" xsi:type="string">Forix\CatalogImport\Model\Import\Product\Option</argument>
+        </arguments>
+    </virtualType>
+    <type name="Forix\CatalogImport\Model\Import\Product">
+        <arguments>
+            <argument name="categoryProcessor" xsi:type="object">Forix\CatalogImport\Model\Import\Product\CategoryProcessor</argument>
+            <argument name="optionFactory" xsi:type="object">Forix\CatalogImport\Model\Import\Product\OptionFactory</argument>
+        </arguments>
+    </type>
+    <type name="Magento\CatalogImportExport\Model\Import\Product\Validator">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="media" xsi:type="object">Forix\CatalogImport\Model\Import\Product\Validator\Media</item>
+                <item name="quantity" xsi:type="object">Forix\CatalogImport\Model\Import\Product\Validator\Quantity</item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Magento\ConfigurableImportExport\Model\Import\Product\Type\Configurable" type="\Forix\CatalogImport\Model\Rewrite\Import\Product\Type\Configurable"/>
+    <preference for="Magento\GroupedImportExport\Model\Import\Product\Type\Grouped" type="\Forix\CatalogImport\Model\Rewrite\Import\Product\Type\Grouped"/>
+    <type name="Magento\ImportExport\Model\Import">
+        <plugin name="forix_reindex_after_upload" type="Forix\CatalogImport\Plugin\ImportPlugin" sortOrder="999"/>
+    </type>
+    <type name="Magento\ScheduledImportExport\Model\Import">
+        <plugin name="forix_add_column_upload_csv" type="Forix\CatalogImport\Plugin\Model\ImportPlugin" sortOrder="999"/>
+    </type>
+    <type name="Forix\CatalogImport\Logger\Images\Handler">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <type name="Forix\CatalogImport\Logger\Images\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">myLoggerName</argument>
+            <argument name="handlers"  xsi:type="array">
+                <item name="system" xsi:type="object">Forix\CatalogImport\Logger\Images\Handler</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

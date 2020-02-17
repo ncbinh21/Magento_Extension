@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Magento/Store/etc/config.xsd">
+    <default>
+        <mirasvit>
+            <seositemap>
+                <enabled>1</enabled>
+            </seositemap>
+        </mirasvit>
+        <seositemap>
+            <frontend>
+                <sitemap_base_url>map</sitemap_base_url>
+                <sitemap_meta_title>Site Map</sitemap_meta_title>
+                <sitemap_meta_keywords/>
+                <sitemap_meta_description/>
+                <sitemap_h1>Site Map</sitemap_h1>
+                <is_show_products>1</is_show_products>
+                <is_show_cms_pages>1</is_show_cms_pages>
+                <is_show_stores>1</is_show_stores>
+            </frontend>
+            <google>
+                <is_add_product_images>1</is_add_product_images>
+                <is_enable_image_friendly_urls>1</is_enable_image_friendly_urls>
+                <image_url_template>[product_name]</image_url_template>
+                <is_add_product_tags>1</is_add_product_tags>
+                <product_tags_priority>0.5</product_tags_priority>
+                <link_priority>0.5</link_priority>
+            </google>
+        </seositemap>
+    </default>
+</config>

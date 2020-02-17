@@ -1,0 +1,46 @@
+.mst-core__feedback {
+     float: left;
+     position: relative;
+     z-index: 480;
+
+     button {
+          background: none;
+          border: none;
+          height: 3.3rem;
+          font-weight: normal;
+          font-size: 1.3rem;
+          color: #413630;
+
+          span {
+               border-bottom: 1px dashed #413630;
+          }
+
+          .fa {
+               font-size: 2rem;
+               opacity: 1;
+          }
+
+          &:hover {
+               background: #eb5202;
+               color: #fff;
+
+               span {
+                    border-bottom: none;
+               }
+          }
+
+          ._loading {
+               display: none;
+          }
+
+          &._loading {
+               ._normal {
+                    display: none;
+               }
+               ._loading {
+                    display: inline-block;
+               }
+          }
+     }
+}
+

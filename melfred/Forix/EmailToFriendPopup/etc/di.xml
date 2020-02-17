@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\SendFriend\Controller\Product\Sendmail" type="Forix\EmailToFriendPopup\Controller\Product\Sendmail" />
+    <type name="Magento\SendFriend\Controller\Product\Send">
+        <plugin name="forix_after_sendExecute" type="Forix\EmailToFriendPopup\Plugin\AfterExecute" />
+    </type>
+    <type name="Magento\SendFriend\Block\Send">
+        <plugin name="forix_after_getUserName" type="Forix\EmailToFriendPopup\Plugin\AfterGetUserName" />
+    </type>
+</config>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_ShopbyRoot
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\App\RouterList">
+        <arguments>
+            <argument name="routerList" xsi:type="array">
+                <item name="amasty_shopby_root" xsi:type="array">
+                    <item name="class" xsi:type="string">Amasty\ShopbyRoot\Controller\Router</item>
+                    <item name="disable" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="string">43</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\UrlRewrite\Model\Storage\DbStorage">
+        <plugin name="Amasty_ShopbyRoot::skipLoadUrlRewrite"
+                type="Amasty\ShopbyRoot\Plugin\UrlRewrite\Model\Storage\DbStorage" />
+    </type>
+    <type name="Magento\Theme\Block\Html\Header\Logo">
+        <plugin name="Amasty_ShopbyRoot::HeaderLogo" type="Amasty\ShopbyRoot\Plugin\Theme\Block\Html\Header\Logo" />
+    </type>
+</config>

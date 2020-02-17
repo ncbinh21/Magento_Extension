@@ -1,0 +1,164 @@
+<?php
+
+namespace Mirasvit\Seo\Helper\Rewrite;
+
+class Image extends Mage_Catalog_Helper_Image
+{
+    /**
+     * @var \Mirasvit\Seo\Model\Rewrite\Product\ImageFactory
+     */
+    protected $rewriteProductImageFactory;
+
+    /**
+     * @var \Magento\Catalog\Model\Product\ImageFactory
+     */
+    protected $productImageFactory;
+
+    /**
+     * @var \Mirasvit\Seo\Model\Config
+     */
+    protected $config;
+
+    /**
+     * @var \Magento\Catalog\Model\Product\Url
+     */
+    protected $productUrl;
+
+    /**
+     * @var \Mirasvit\Core\Helper\Parsevariables
+     */
+    protected $mstcoreParsevariables;
+
+    /**
+     * @var \Magento\Framework\App\Helper\Context
+     */
+    protected $context;
+
+    /**
+     * @param \Mirasvit\Seo\Model\Rewrite\Product\ImageFactory $rewriteProductImageFactory
+     * @param \Magento\Catalog\Model\Product\ImageFactory      $productImageFactory
+     * @param \Mirasvit\Seo\Model\Config                       $config
+     * @param \Magento\Catalog\Model\Product\Url               $productUrl
+     * @param \Mirasvit\Core\Helper\Parsevariables          $mstcoreParsevariables
+     * @param \Magento\Framework\App\Helper\Context            $context
+     */
+    public function __construct(
+        \Mirasvit\Seo\Model\Rewrite\Product\ImageFactory $rewriteProductImageFactory,
+        \Magento\Catalog\Model\Product\ImageFactory $productImageFactory,
+        \Mirasvit\Seo\Model\Config $config,
+        \Magento\Catalog\Model\Product\Url $productUrl,
+        \Mirasvit\Core\Helper\Parsevariables $mstcoreParsevariables,
+        \Magento\Framework\App\Helper\Context $context
+    ) {
+        $this->rewriteProductImageFactory = $rewriteProductImageFactory;
+        $this->productImageFactory = $productImageFactory;
+        $this->config = $config;
+        $this->productUrl = $productUrl;
+        $this->mstcoreParsevariables = $mstcoreParsevariables;
+        $this->context = $context;
+        parent::__construct($context);
+    }
+
+    public function getConfig()
+    {
+        return $this->config;
+    }
+
+    public function init(\Magento\Catalog\Model\Product $product, $attributeName, $imageFile = null, $useImageFriendlyUrls = true)
+    {
+        if (!$product) {
+            return parent::init($product, $attributeName, $imageFile);
+        }
+        $config = $this->getConfig();
+        if ($config->getIsEnableImageFriendlyUrls() && $useImageFriendlyUrls) {
+            if ($template = $config->getImageUrlTemplate()) {
+                $urlKey = $this->mstcoreParsevariables->parse(
+                    $template,
+                    ['product' => $product]
+                );
+            } else {
+                $urlKey = $product->getName();
+            }
+            $urlKey = $this->productUrl->formatUrlKey($urlKey);
+
+            $this->_reset();
+            $this->_setModel($this->rewriteProductImageFactory->create());
+            $this->_getModel()->setDestinationSubdir($attributeName);
+            $this->_getModel()->setUrlKey($urlKey);
+            $this->setProduct($product);
+
+            $this->setWatermark($this->context->getScopeConfig()->getValue("design/watermark/{$this->_getModel()->getDestinationSubdir()}_image"));
+            $this->setWatermarkImageOpacity($this->context->getScopeConfig()->getValue("design/watermark/{$this->_getModel()->getDestinationSubdir()}_imageOpacity"));
+            $this->setWatermarkPosition($this->context->getScopeConfig()->getValue("design/watermark/{$this->_getModel()->getDestinationSubdir()}_position"));
+            $this->setWatermarkSize($this->context->getScopeConfig()->getValue("design/watermark/{$this->_getModel()->getDestinationSubdir()}_size"));
+        } elseif ($config->getIsEnableImageAlt()) {
+            $this->_reset();
+            $this->_setModel($this->productImageFactory->create());
+            $this->_getModel()->setDestinationSubdir($attributeName);
+            $this->setProduct($product);
+
+            $this->setWatermark(
+                $this->context->getScopeConfig()->getValue("design/watermark/{$this->_getModel()->getDestinationSubdir()}_image")
+            );
+            $this->setWatermarkImageOpacity(
+                $this->context->getScopeConfig()->getValue("design/watermark/{$this->_getModel()->getDestinationSubdir()}_imageOpacity")
+            );
+            $this->setWatermarkPosition(
+                $this->context->getScopeConfig()->getValue("design/watermark/{$this->_getModel()->getDestinationSubdir()}_position")
+            );
+            $this->setWatermarkSize(
+                $this->context->getScopeConfig()->getValue("design/watermark/{$this->_getModel()->getDestinationSubdir()}_size")
+            );
+        } else {
+            return parent::init($product, $attributeName, $imageFile);
+        }
+
+        if ($imageFile) {
+            $this->setImageFile($imageFile);
+        } else {
+            // add for work original size
+            $this->_getModel()->setBaseFile($this->getProduct()->getData($this->_getModel()->getDestinationSubdir()));
+        }
+
+        $this->setImageAlt($attributeName);
+
+        return $this;
+    }
+
+    public function generateAlt()
+    {
+        if ($template = $this->getConfig()->getImageAltTemplate()) {
+            $alt = $this->mstcoreParsevariables->parse(
+                $template,
+                ['product' => $this->getProduct()]
+            );
+        } else {
+            $product = $this->getProduct();
+            $alt = $product->getName();
+        }
+        $alt = trim($alt);
+
+        return $alt;
+    }
+
+    protected function setImageAlt($attributeName)
+    {
+        if (!$this->getConfig()->getIsEnableImageAlt()) {
+            return;
+        }
+        $alt = $this->generateAlt();
+        $product = $this->getProduct();
+        $key = $attributeName.'_label';
+        if (!$product->getData($key)) {
+            $product->setData($attributeName.'_label', $alt);
+            if ($gallery = $product->getMediaGalleryImages()) {
+                $alt = $this->generateAlt();
+                foreach ($gallery as $image) {
+                    if (!$image->getLabel()) {
+                        $image->setLabel($alt);
+                    }
+                }
+            }
+        }
+    }
+}

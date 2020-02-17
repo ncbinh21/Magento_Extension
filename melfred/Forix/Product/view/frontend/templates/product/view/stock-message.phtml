@@ -1,0 +1,83 @@
+<?php
+/**
+ * Created by Hidro Le.
+ * Job Title: Magento Developer
+ * Date: 31/07/2018
+ * Time: 18:11
+ */
+?>
+<?php
+/**
+ * @var $block \Magento\Catalog\Block\Product\View\AbstractView
+ * @var $helper \Forix\Product\Helper\Data
+ */?>
+<?php $_product = $block->getProduct() ?>
+<?php $helper = $this->helper(\Forix\Product\Helper\Data::class); ?>
+<?php $helperConfig = $this->helper(\Forix\Config\Helper\Data::class); ?>
+<?php $heavyWeight = $helperConfig->getConfigValue("forix_catalog/heavy/weight"); ?>
+<div class="mess-stock">
+    <span id="heavy-item" class="txt-message no-display"><?php echo $helperConfig->getConfigValue("shipping_msg/general/heavy"); ?></span>
+</div>
+<?php if($helper->checkInStock($_product)): ?>
+<?php endif; ?>
+
+
+<?php if ($_product->getWeight() > $heavyWeight) : ?>
+    <?php $mess = $helperConfig->getConfigValue("shipping_msg/general/heavy"); ?>
+    <div class="mess-stock">
+        <span class="txt-message show-message"><?php echo $mess; ?></span>
+    </div>
+<?php endif; ?>
+<?php if ($_product->isAvailable()): ?>
+    <div class="mess-stock">
+        <span class="txt-message show-message"><?php echo $helper->getStockMessage($_product); ?></span>
+        <?php if($helper->checkInStock($_product)): ?>
+        <span class="link-more-info">
+            <a class="action-popup" data-target="#popup-shipping-info" href="javascript:void(0);"><?php echo __('More Shipping Info'); ?></a>
+        </span>
+        <?php else: ?>
+        <span class="link-more-info">
+            or <a target="_blank" href="#">contact your local distributor</a>
+        </span>
+        <?php endif; ?>
+    </div>
+<?php else: ?>
+    <?php $mess = $helperConfig->getConfigValue("forix_catalog/stock/back_order"); ?>
+    <?php $urlDistributor = $helperConfig->getConfigValue("amlocator/general/url"); ?>
+    <div class="mess-stock">
+        <span class="txt-message show-message"><?php echo $mess; ?></span>
+        <span class="link-more-info">
+            or <a target="_blank" href="<?php echo $this->getBaseUrl() . $urlDistributor ?>">contact your local distributor</a>
+        </span>
+    </div>
+<?php endif; ?>
+<div id="popup-shipping-info" style="display: none;">
+    <?php echo $helperConfig->getConfigValue("shipping_msg/shipping_info/editor_textarea"); ?>
+</div>
+<script>
+    require(
+        ['jquery', 'Magento_Ui/js/modal/modal'], function ($, modal) {
+            var popup = "";
+            $('a.action-popup').on('click', function () {
+                var options = {
+                    type: 'popup',
+                    responsive: true,
+                    innerScroll: true,
+                    title: 'Shipping info',
+                    buttons: false
+                };
+                var container =  $(this.dataset.target);
+                popup = modal(options,  container);
+                container.modal('openModal');
+            });
+
+            $("body").click(function (e) {
+                var checkclass = e.target.className;
+                if (checkclass.indexOf("_show") >= 0) {
+                    $(".action-close").trigger("click");
+                }
+            });
+
+        }
+    );
+</script>

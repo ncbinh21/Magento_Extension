@@ -1,0 +1,51 @@
+<?php
+/**
+ * @see \Mirasvit\Seo\Block\Adminhtml\System\Config\Cookie
+ */
+?>
+
+<script>
+require(["prototype"], function(){
+//<![CDATA[
+    function mAddCookie() {
+        var validationMessage = $('m_cookie_result');
+        var buttonMessage = $('m_cookie_button');
+
+        new Ajax.Request('<?php /* @escapeNotVerified */ echo $block->getAjaxUrl() ?>', {
+            onSuccess: function(response) {
+                var result = '<?php /* @escapeNotVerified */ echo __('Error during request.') ?>';
+                try {
+                    if (response.responseText.isJSON()) {
+                        response = response.responseText.evalJSON();
+                        result = response.message;
+                    }
+                    if (response.valid == 1) {
+                        validationMessage.removeClassName('hidden').addClassName('success')
+                    } else {
+                        validationMessage.removeClassName('hidden').addClassName('error')
+                    }
+                } catch (e) {
+                    validationMessage.removeClassName('hidden').addClassName('error')
+                }
+                if (result !== true && result !== false) {
+                    validationMessage.update(result);
+                }
+                if (response.btn_message) {
+                    buttonMessage.update(response.btn_message);
+                }
+            }
+        });
+    }
+
+    window.mAddCookie = mAddCookie;
+//]]>
+
+});
+</script>
+
+<div class="actions actions-m-cookie">
+    <div id="m_cookie_result" class="message-m-cookie hidden"></div>
+    <button onclick="javascript:mAddCookie(); return false;" class="action-m-cookie" type="button" id="<?php echo $block->getHtmlId() ?>">
+        <span id="m_cookie_button"><?php echo $block->escapeHtml($block->getButtonLabel()) ?></span>
+    </button>
+</div>

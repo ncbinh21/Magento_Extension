@@ -1,0 +1,125 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">forix_media_video_form.video_form_data_source</item>
+			<item name="deps" xsi:type="string">forix_media_video_form.video_form_data_source</item>
+		</item>
+		<item name="label" translate="true" xsi:type="string">General Information</item>
+		<item name="config" xsi:type="array">
+			<item name="dataScope" xsi:type="string">data</item>
+			<item name="namespace" xsi:type="string">forix_media_video_form</item>
+		</item>
+		<item name="template" xsi:type="string">templates/form/collapsible</item>
+		<item name="buttons" xsi:type="array">
+			<item name="back" xsi:type="string">Forix\Media\Block\Adminhtml\Video\Edit\BackButton</item>
+			<item name="delete" xsi:type="string">Forix\Media\Block\Adminhtml\Video\Edit\DeleteButton</item>
+			<item name="save" xsi:type="string">Forix\Media\Block\Adminhtml\Video\Edit\SaveButton</item>
+			<item name="save_and_continue" xsi:type="string">Forix\Media\Block\Adminhtml\Video\Edit\SaveAndContinueButton</item>
+		</item>
+	</argument>
+	<dataSource name="video_form_data_source">
+		<argument name="dataProvider" xsi:type="configurableObject">
+			<argument name="class" xsi:type="string">Forix\Media\Model\Video\DataProvider</argument>
+			<argument name="name" xsi:type="string">video_form_data_source</argument>
+			<argument name="primaryFieldName" xsi:type="string">video_id</argument>
+			<argument name="requestFieldName" xsi:type="string">video_id</argument>
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="submit_url" path="*/*/save" xsi:type="url"/>
+				</item>
+			</argument>
+		</argument>
+		<argument name="data" xsi:type="array">
+			<item name="js_config" xsi:type="array">
+				<item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+			</item>
+		</argument>
+	</dataSource>
+	<fieldset name="General">
+		<argument name="data" xsi:type="array">
+			<item name="config" xsi:type="array">
+				<item name="label" xsi:type="string"/>
+			</item>
+		</argument>
+		<field name="title">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Title</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">Video</item>
+					<item name="sortOrder" xsi:type="number">10</item>
+					<item name="dataScope" xsi:type="string">title</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">true</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="description">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Description</item>
+					<item name="formElement" xsi:type="string">textarea</item>
+					<item name="source" xsi:type="string">Video</item>
+					<item name="sortOrder" xsi:type="number">20</item>
+					<item name="dataScope" xsi:type="string">description</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="media_url">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Video Url</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">Video</item>
+					<item name="sortOrder" xsi:type="number">30</item>
+					<item name="dataScope" xsi:type="string">media_url</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">true</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<!--<field name="product_url">-->
+		<!--<argument name="data" xsi:type="array">-->
+		<!--<item name="config" xsi:type="array">-->
+		<!--<item name="dataType" xsi:type="string">text</item>-->
+		<!--<item name="label" translate="true" xsi:type="string">Product Url</item>-->
+		<!--<item name="formElement" xsi:type="string">input</item>-->
+		<!--<item name="source" xsi:type="string">Video</item>-->
+		<!--<item name="sortOrder" xsi:type="number">40</item>-->
+		<!--<item name="dataScope" xsi:type="string">product_url</item>-->
+		<!--<item name="validation" xsi:type="array">-->
+		<!--<item name="required-entry" xsi:type="boolean">false</item>-->
+		<!--</item>-->
+		<!--</item>-->
+		<!--</argument>-->
+		<!--</field>-->
+	</fieldset>
+	<fieldset name="assign_products">
+		<argument name="data" xsi:type="array">
+			<item name="config" xsi:type="array">
+				<item name="label" xsi:type="string" translate="true">Assign Products</item>
+				<item name="collapsible" xsi:type="boolean">true</item>
+				<item name="sortOrder" xsi:type="number">40</item>
+			</item>
+		</argument>
+		<container name="assign_products_container" >
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="sortOrder" xsi:type="number">60</item>
+				</item>
+			</argument>
+			<htmlContent name="html_content">
+				<argument name="block" xsi:type="object">Forix\Media\Block\Adminhtml\Video\Edit\AssignProducts</argument>
+			</htmlContent>
+		</container>
+	</fieldset>
+</form>

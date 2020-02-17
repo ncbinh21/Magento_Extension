@@ -1,0 +1,59 @@
+<?php
+    if ($block->getAllowedActions()) {
+        $categoryMinPrice  = $this->getCategoryMinPrice();
+        $categorySnippetsRating = $this->getCategorySnippetsRating();
+        $currentCategoryName = $this->getCurrentCategoryName();
+        $offers = '';
+        $aggregateRating = '';
+
+        if ($categoryMinPrice) {
+            $currencyCode           = $this->getCurrentCurrencyCode();
+            $formattedMinPrice         = number_format($categoryMinPrice, 2, '.', '');
+        }
+        if ($categorySnippetsRating) {
+            $ratingValue            = number_format($categorySnippetsRating/100*5, 1);
+            $ratingCount            = $this->getCategorySnippetsRatingCount();
+        }
+    }
+?>
+<?php if ($this->isCategoryRichSnippetsEnabled()
+        && $this->getCurrentPageProductCount()
+        && (isset($currentCategoryName))) :?>
+    <?php if ($categoryMinPrice) :?>
+        <?php $offers = '
+        "offers": {
+            "@type": "Offer",
+            "priceSpecification": {
+                "price": "' . $formattedMinPrice . '",
+                "minPrice": "' . $formattedMinPrice . '",
+                "priceCurrency": "' . $currencyCode . '"
+            }
+        }';?>
+    <?php endif ?>
+    <?php if($categorySnippetsRating) :?>
+        <?php $aggregateRating = '
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "' . $ratingValue . '",
+            "ratingCount": "' . $ratingCount . '",
+            "reviewCount": "' . $ratingCount . '",
+            "bestRating": "5"
+        }
+        ';?>
+    <?php endif ?>
+    <?php if ($currentCategoryName) :?>
+        <?php $name = '"name": "'. $currentCategoryName .'"';?>
+        <?php $name = ($offers || $aggregateRating) ? $name . ',' : $name ;?>
+    <?php endif ?>
+        <?php $separator = ($aggregateRating && $offers) ? ',' : '';?>
+
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Product",
+        <?= $name ?>
+        <?= $offers . $separator ?>
+        <?= $aggregateRating ?>
+    }
+    </script>
+<?php endif ?>

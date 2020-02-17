@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Forix\Distributor\Api\ZipcodeRepositoryInterface" type="Forix\Distributor\Model\ZipcodeRepository"/>
+	<preference for="Forix\Distributor\Api\Data\ZipcodeInterface" type="Forix\Distributor\Model\Zipcode"/>
+	<preference for="Forix\Distributor\Api\Data\ZipcodeSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Forix\Distributor\Model\ResourceModel\Zipcode\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">forix_distributor_zipcode</argument>
+			<argument name="resourceModel" xsi:type="string">Forix\Distributor\Model\ResourceModel\Zipcode\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="forix_distributor_zipcode_grid_data_source" xsi:type="string">Forix\Distributor\Model\ResourceModel\Zipcode\Grid\Collection</item>
+				<!-- customer distributor -->
+				<item name="forix_distributor_customer_grid_data_source" xsi:type="string">Forix\Distributor\Model\ResourceModel\Customer\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<type name="Magento\Company\Model\Company\DataProvider">
+		<plugin name="forixAfterGetCompanyResultData" type="Forix\Distributor\Model\Plugin\Company\DataProvider" />
+	</type>
+
+
+</config>

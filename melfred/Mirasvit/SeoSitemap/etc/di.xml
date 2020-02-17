@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!--SITEMAP-->
+    <preference for="Magento\Sitemap\Model\Sitemap" type="Mirasvit\SeoSitemap\Model\Sitemap" />
+    <preference for="Magento\Sitemap\Model\ResourceModel\Catalog\Product" type="Mirasvit\SeoSitemap\Preference\ResourceModel\Product" />
+
+    <!--CONFIG-->
+    <preference for="Mirasvit\SeoSitemap\Api\Config\CmsSitemapConfigInterface" type="Mirasvit\SeoSitemap\Service\Config\CmsSitemapConfig" />
+    <preference for="Mirasvit\SeoSitemap\Api\Config\LinkSitemapConfigInterface" type="Mirasvit\SeoSitemap\Service\Config\LinkSitemapConfig" />
+
+    <!--DATA-->
+    <preference for="Mirasvit\SeoSitemap\Api\Data\BlogMx\SitemapInterface" type="Mirasvit\SeoSitemap\Service\Data\BlogMx\Sitemap" />
+
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="SitemapGenerateCommand" xsi:type="object">Mirasvit\SeoSitemap\Console\Command\SitemapGenerateCommand</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- correct sitemap url if use pub folder -->
+    <type name="Magento\Sitemap\Block\Adminhtml\Grid\Renderer\Link">
+        <plugin name="m-seositemap-linl" type="Mirasvit\SeoSitemap\Plugin\SitemapLinkPlugin" sortOrder="1000"/>
+    </type>
+
+</config>

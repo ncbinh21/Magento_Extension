@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <fseo>
+            <settings>
+                <quicksearch_result_canonical>1</quicksearch_result_canonical>
+                <advancedsearch_result_canonical>1</advancedsearch_result_canonical>
+            </settings>
+        </fseo>
+        <catalog>
+            <seo>
+                <category_canonical_tag>1</category_canonical_tag>
+                <product_canonical_tag>1</product_canonical_tag>
+            </seo>
+        </catalog>
+    </default>
+</config>

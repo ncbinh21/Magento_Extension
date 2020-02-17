@@ -1,0 +1,113 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<!-- Disable Insert Product URL Rewrite -->
+	<!--<preference for="\Magento\UrlRewrite\Model\Storage\DbStorage" type="Forix\ImportHelper\Model\Storage\DbStorage"/>-->
+
+	<type name="Magento\Framework\Console\CommandList">
+		<arguments>
+			<argument name="commands" xsi:type="array">
+				<item name="forix_process" xsi:type="object">Forix\ImportHelper\Console\Command\ForixProcess</item>
+			</argument>
+		</arguments>
+	</type>
+	<!-- Sử dụng riêng cho từng project -->
+	<type name="Forix\ImportHelper\Model\Import\RawData">
+		<arguments>
+			<argument name="entityCode" xsi:type="string">melfred_catalog_product</argument>
+			<argument name="customColumns" xsi:type="array">
+				<item name="redesigned_date" xsi:type="string"><![CDATA[]]></item>
+				<item name="configurable_variations" xsi:type="string"><![CDATA[]]></item>
+				<item name="configurable_variation_labels" xsi:type="string"><![CDATA[]]></item>
+				<item name="custom_options" xsi:type="string"><![CDATA[]]></item>
+				<item name="relation_attributes" xsi:type="string"><![CDATA[]]></item>
+				<item name="bundle_values" xsi:type="string"><![CDATA[]]></item>
+				<item name="associated_skus" xsi:type="string"><![CDATA[]]></item>
+				<item name="url_key" xsi:type="string"><![CDATA[]]></item>
+				<item name="store_view_code" xsi:type="string"><![CDATA[default]]></item>
+				<item name="_product_websites" xsi:type="string"><![CDATA[base]]></item>
+			</argument>
+		</arguments>
+	</type>
+	<type name="Forix\ImportHelper\Model\Import\RawData\RowValidator">
+		<arguments>
+			<argument name="validators" xsi:type="array">
+				<item name="melfred_catalog_product"  xsi:type="array">
+					<item name="product_type" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\ProductType</item>
+					<item name="categories" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\CategoryValidator</item>
+					<item name="sku" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\EmptyValidator</item>
+					<item name="qty" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\QtyValidator</item>
+					<item name="price" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\PriceValidator</item>
+					<item name="visibility" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\EmptyValidator</item>
+					<item name="downloads" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\DownloadValidator</item>
+					<item name="related_articles" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\ArticleValidator</item>
+					<item name="image" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\Media</item>
+					<item name="gallery" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\Gallery</item>
+					<item name="redesigned_date" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\Redesigned</item>
+					<item name="custom_options" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\CustomOptions</item>
+					<item name="bundle_values" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\BundleValues</item>
+					<item name="url_key" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\UrlKey</item>
+					<item name="features" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\Features</item>
+					<item name="rig_models" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\Multiple</item>
+					<item name="fit_pilot_hole_cutting_diameter" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\Multiple</item>
+					<item name="fit_transmitter_housing_diameter" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\Multiple</item>
+					<item name="reamer_rear_flange_size_flange_swivel_to_fit" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\Multiple</item>
+					<item name="fit_reamer_rear_connection_option" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\Multiple</item>
+					<item name="fit_stabillizer_barrel_feature" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\Multiple</item>
+					<item name="transmitter_type" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\Multiple</item>
+					<item name="oem" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\Multiple</item>
+					<item name="ground_condition" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\Multiple</item>
+					<item name="product_badge" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\Multiple</item>
+					<item name="soil_type_best" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\Multiple</item>
+					<item name="soil_type_better" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\Multiple</item>
+					<item name="soil_type_good" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\Multiple</item>
+					<item name="relation_attributes" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\RelationAttributes</item>
+					<item name="configurable_variations" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\ConfigurableVariations</item>
+					<item name="configurable_variation_labels" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\ConfigurableVariationLabels</item>
+					<item name="meta_description" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\MetaDescription</item>
+					<item name="meta_title" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\MetaDescription</item>
+					<item name="associated_skus" xsi:type="object">\Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\AssociatedSkus</item>
+				</item>
+			</argument>
+		</arguments>
+	</type>
+
+	<!-- This Section use for configuration media validate -->
+	<type name="Forix\ImportHelper\Model\Images\Files\Images">
+		<arguments>
+			<argument name="folderPath" xsi:type="string"><![CDATA[/pub/media/import/image_upload/]]></argument>
+		</arguments>
+	</type>
+	<type name="Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\Media">
+		<arguments>
+			<argument name="driverClass" xsi:type="object">Forix\ImportHelper\Model\Images\Files\Images</argument>
+			<argument name="linkedWith" xsi:type="string">attribute_set</argument>
+		</arguments>
+	</type>
+	<type name="Forix\ImportHelper\Model\Import\RawData\ColumnValidator\Product\Gallery">
+		<arguments>
+			<argument name="driverClass" xsi:type="object">Forix\ImportHelper\Model\Images\Files\Images</argument>
+			<argument name="linkedWith" xsi:type="string">attribute_set</argument>
+		</arguments>
+	</type>
+	<!-- This Section use for configuration madia validate -->
+
+	<!-- This section use for Export Data to File -->
+	<type name="Forix\ImportHelper\Model\Export\Export">
+		<arguments>
+			<argument name="entities" xsi:type="array">
+				<item name="catalog_product_FastBack" xsi:type="object">Forix\ImportHelper\Model\Export\Product\FastBack</item>
+				<item name="catalog_product_Reamers" xsi:type="object">Forix\ImportHelper\Model\Export\Product\Reamers</item>
+				<item name="catalog_product_Adapters" xsi:type="object">Forix\ImportHelper\Model\Export\Product\Adapters</item>
+				<item name="catalog_product_BitBlade" xsi:type="object">Forix\ImportHelper\Model\Export\Product\BitBlade</item>
+				<item name="catalog_product_DriveChucks" xsi:type="object">Forix\ImportHelper\Model\Export\Product\DriveChucks</item>
+				<item name="catalog_product_TransmitterHousings" xsi:type="object">Forix\ImportHelper\Model\Export\Product\TransmitterHousings</item>
+				<item name="catalog_product_Jaws" xsi:type="object">Forix\ImportHelper\Model\Export\Product\Jaws</item>
+				<item name="catalog_product_Locators" xsi:type="object">Forix\ImportHelper\Model\Export\Product\Locators</item>
+				<item name="catalog_product_Pullers" xsi:type="object">Forix\ImportHelper\Model\Export\Product\Pullers</item>
+				<item name="catalog_product_QuickDisconnect" xsi:type="object">Forix\ImportHelper\Model\Export\Product\QuickDisconnect</item>
+				<item name="catalog_product_Replacement" xsi:type="object">Forix\ImportHelper\Model\Export\Product\Replacement</item>
+				<item name="catalog_product_Swivels" xsi:type="object">Forix\ImportHelper\Model\Export\Product\Swivels</item>
+			</argument>
+		</arguments>
+	</type>
+</config>

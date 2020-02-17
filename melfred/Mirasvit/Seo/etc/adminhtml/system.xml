@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Config/etc/system_file.xsd">
+    <system>
+        <section id="seo" showInDefault="1" showInWebsite="1" showInStore="1" type="text" translate="label" sortOrder="400">
+            <label>SEO</label>
+            <tab>mirasvit</tab>
+            <resource>Mirasvit_Seo::config_seo</resource>
+            <group id="general" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="500">
+                <label>General Settings</label>
+                <field id="is_add_canonical_url" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add Canonical URL Meta Header</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <backend_model>\Mirasvit\Seo\Model\Config\Backend\Canonical</backend_model>
+                </field>
+                <field id="is_longest_canonical_url" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Use longest product URL as canonical</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="is_add_canonical_url">1</field>
+                    </depends>
+                </field>
+                <field id="associated_canonical_configurable_product" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Associated Products Canonical Tag for Configurable Products</label>
+                    <source_model>\Mirasvit\Seo\Model\Config\Source\AssociatedCanonical\Product</source_model>
+                    <depends>
+                        <field id="is_add_canonical_url">1</field>
+                    </depends>
+                </field>
+                <field id="associated_canonical_grouped_product" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Associated Products Canonical Tag for Grouped Products</label>
+                    <source_model>\Mirasvit\Seo\Model\Config\Source\AssociatedCanonical\Product</source_model>
+                    <depends>
+                        <field id="is_add_canonical_url">1</field>
+                    </depends>
+                </field>
+                <field id="associated_canonical_bundle_product" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Associated Products Canonical Tag for Bundle Products</label>
+                    <source_model>\Mirasvit\Seo\Model\Config\Source\AssociatedCanonical\Product</source_model>
+                    <depends>
+                        <field id="is_add_canonical_url">1</field>
+                    </depends>
+                </field>
+                <field id="canonical_store_without_store_code" translate="label" type="select" sortOrder="45" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Canonical to store without store code</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Use only if "Configuration->GENERAL->Web->Add Store Code to Urls" is enabled</comment>
+                    <depends>
+                        <field id="is_add_canonical_url">1</field>
+                    </depends>
+                </field>
+                <field id="crossdomain" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cross Domain Canonical URL</label>
+                    <source_model>\Mirasvit\Seo\Model\Config\Source\CrossDomain</source_model>
+                    <depends>
+                        <field id="is_add_canonical_url">1</field>
+                        <field id="canonical_store_without_store_code">0</field>
+                    </depends>
+                </field>
+                <field id="crossdomain_prefer_https" translate="label" type="select" sortOrder="53" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Prefer https for Cross Domain Canonical URL</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="is_add_canonical_url">1</field>
+                        <field id="canonical_store_without_store_code">0</field>
+                    </depends>
+                </field>
+                <field id="paginated_canonical" translate="label" type="select" sortOrder="55" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Add '?p=' to paginated content</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="is_add_canonical_url">1</field>
+                    </depends>
+                </field>
+                <field id="canonical_url_ignore_pages" translate="label" type="textarea" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Don't use canonical URLs on pages</label>
+                    <depends>
+                        <field id="is_add_canonical_url">1</field>
+                    </depends>
+                </field>
+                <field id="noindex_pages2" translate="label" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Robots Meta Header</label>
+                    <frontend_model>\Mirasvit\Seo\Block\Adminhtml\System\NoindexPages</frontend_model>
+                    <backend_model>Mirasvit\Seo\Model\Config\Backend\ArraySerialized</backend_model>
+                </field>
+                <field id="https_noindex_pages" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Robots Meta Header for HTTPS</label>
+                    <source_model>\Mirasvit\Seo\Model\Config\Source\HttpsNoindexPages</source_model>
+                </field>
+                <field id="is_paging_prevnext" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Link Rel=&quot;next/prev&quot;</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="templates_block_title" translate="label" type="label" sortOrder="95" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[<strong><u>Templates configuration:</u></strong>]]></label>
+                </field>
+                <field id="is_category_meta_tags_used" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Use meta tags from categories if they are not empty</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="is_product_meta_tags_used" translate="label" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Use meta tags from products if they are not empty</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="is_use_html_symbols_in_meta_tags" translate="label" type="select" sortOrder="115" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Allow use HTML symbols in meta tags</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <tooltip><![CDATA[Allow use HTML symbols like &, < etc. in meta tags.
+                        ]]></tooltip>
+                </field>
+                <field id="is_use_short_description_for_categories" translate="label" type="select" sortOrder="117" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Allow change product short description for categories</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <tooltip><![CDATA[If <b>your theme have short description for category</b> and "Templates" configured to change products short description you need enable this configuration
+                        ]]></tooltip>
+                </field>
+
+                <field id="alternate_block_title" translate="label" type="label" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[<strong><u>Alternate configuration:</u></strong>]]></label>
+                </field>
+                <field id="is_alternate_hreflang" translate="label" type="select" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Link Rel=&quot;alternate&quot; and hreflang</label>
+                    <source_model>\Mirasvit\Seo\Model\Config\Source\Alternate\Alternate</source_model>
+                    <tooltip><![CDATA["Add for every website" - create alternate for stores inside website.
+                    "Configure manually" - ability configure alternate for any store group.
+                        ]]></tooltip>
+                </field>
+                <field id="alternate_configurable" translate="label" sortOrder="140" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Configurate alternate manually</label>
+                    <frontend_model>\Mirasvit\Seo\Block\Adminhtml\System\Alternate\Alternate</frontend_model>
+                    <backend_model>Mirasvit\Seo\Model\Config\Backend\ArraySerialized</backend_model>
+                    <depends>
+                        <field id="is_alternate_hreflang">2</field>
+                    </depends>
+                </field>
+                <field id="configurable_hreflang_x_default" translate="label" sortOrder="150" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Add hreflang hreflang x-default (not necessary)</label>
+                    <frontend_model>\Mirasvit\Seo\Block\Adminhtml\System\Alternate\AlternateXDefault</frontend_model>
+                    <backend_model>Mirasvit\Seo\Model\Config\Backend\ArraySerialized</backend_model>
+                    <depends>
+                        <field id="is_alternate_hreflang">2</field>
+                    </depends>
+                </field>
+                <field id="is_hreflang_locale_code_automatical" translate="label" type="select" sortOrder="160" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Add hreflang locale code automatically (not necessary)</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="is_alternate_hreflang" separator="|">1|2</field>
+                    </depends>
+                </field>
+                <field id="is_hreflang_cut_category_additional_data" translate="label" type="select" sortOrder="170" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Cut category additional data for alternate URL</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="is_alternate_hreflang" separator="|">1|2</field>
+                    </depends>
+                </field>
+                <field id="hreflang_locale_code" translate="label" type="text" sortOrder="180" showInDefault="0" showInWebsite="0" showInStore="1">
+                    <label>Hreflang locale code (not necessary)</label>
+                    <depends>
+                        <field id="is_alternate_hreflang">1</field>
+                    </depends>
+                </field>
+                <field id="is_hreflang_x_default" translate="label" type="select" sortOrder="190" showInDefault="0" showInWebsite="1" showInStore="0">
+                    <label>Add hreflang hreflang x-default (not necessary)</label>
+                    <source_model>\Mirasvit\Seo\Model\Config\Source\Alternate\XDefault</source_model>
+                    <depends>
+                        <field id="is_alternate_hreflang">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="extended" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="600">
+                <label>Extended Settings</label>
+                <field id="meta_title_page_number" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Page Number for Meta Title</label>
+                    <source_model>\Mirasvit\Seo\Model\Config\Source\MetaTitlePageNumber</source_model>
+                </field>
+                <field id="meta_description_page_number" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Page Number for Meta Description</label>
+                    <source_model>\Mirasvit\Seo\Model\Config\Source\MetaDescriptionPageNumber</source_model>
+                </field>
+                <field id="meta_title_max_length" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Max Length for Meta Title</label>
+                    <tooltip><![CDATA[Crop Meta Title using max length value. Recommended length up to 55 characters. If you set value less than 25, will be used recommended value 55.
+                        ]]></tooltip>
+                </field>
+                <field id="meta_description_max_length" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Max Length for Meta Description</label>
+                    <tooltip><![CDATA[Crop Meta Description using max length value. Recommended length up to 150 characters. If you set value less than 25, will be used recommended value 150.
+                         ]]></tooltip>
+                </field>
+                <field id="product_name_max_length" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Max Length for Product Name</label>
+                    <tooltip><![CDATA[Crop Product Name. If you set value less than 10, will be used value 25.
+                        ]]></tooltip>
+                </field>
+                <field id="product_short_description_max_length" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Max Length for Product Short Description</label>
+                    <tooltip><![CDATA[Crop Product Short Description. If you set value less than 25, will be used value 90.
+                        ]]></tooltip>
+                </field>
+                <field id="redirect_to_lowercase" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Redirect urls to lowercase</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <tooltip><![CDATA[If enabled redirect uppercase urls to lowercase
+                        ]]></tooltip>
+                </field>
+            </group>
+            <group id="url" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="800">
+                <label>SEO-friendly URLs Settings</label>
+                <field id="use_category_short_url" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Remove Parent Category Path for Category URLs</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="apply_category_short_url_button" translate="button_label comment" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <button_label>Remove Parent Category Path</button_label>
+                    <frontend_model>\Mirasvit\Seo\Block\Adminhtml\System\Config\RemoveParentCategoryPath</frontend_model>
+                    <comment>Save configuration before push the button</comment>
+                    <depends>
+                        <field id="use_category_short_url">1</field>
+                    </depends>
+                </field>
+                <field id="product_url_key" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product URL Key Template</label>
+                    <tooltip><![CDATA[Functiond disabled if current field is empty. To activate a new Product URL Key Template, click the button Save config to save SEO general settings. Only after this action run in ssh
+                            <br/><b>php bin/magento mirasvit:seo --apply-product-url-key-template</b> to activate URL template.
+                        ]]></tooltip>
+                    <comment><![CDATA[<b>Example:</b> product_name] [product_sku] [by {product_manufacturer}] [color {product_color}]
+                            <br/>To apply for all products run in ssh
+                            <br/><b>php bin/magento mirasvit:seo --apply-product-url-key-template</b>
+                            <br/>Additional info <b>php bin/magento mirasvit:seo --info</b>]]></comment>
+                </field>
+
+                <!--<field id="layered_navigation_friendly_urls" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">-->
+                <!--<label>Enable Layered Navigation SEO-friendly URLs</label>-->
+                <!--<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>-->
+                <!--<frontend_model>\Mirasvit\Seo\Block\Adminhtml\System\Config\Warning</frontend_model>-->
+                <!--</field>-->
+                <field id="trailing_slash" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Trailing Slash</label>
+                    <source_model>\Mirasvit\Seo\Model\Config\Source\TrailingSlash</source_model>
+                </field>
+                <!--&lt;!&ndash;<field id="product_url_format" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">&ndash;&gt;-->
+                <!--&lt;!&ndash;<label>Product URL</label>&ndash;&gt;-->
+                <!--&lt;!&ndash;<source_model>\Mirasvit\Seo\Model\Config\Source\ProductUrlFormat</source_model>&ndash;&gt;-->
+                <!--&lt;!&ndash;</field>&ndash;&gt;-->
+                <!--&lt;!&ndash;<field id="product_url_key" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">&ndash;&gt;-->
+                <!--&lt;!&ndash;<label>Product URL Key Template</label>&ndash;&gt;-->
+                <!--&lt;!&ndash;</field>&ndash;&gt;-->
+                <!--&lt;!&ndash;<field id="apply_template" translate="label" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">&ndash;&gt;-->
+                <!--&lt;!&ndash;<frontend_model>\Mirasvit\Seo\Block\Adminhtml\System\BtnAction</frontend_model>&ndash;&gt;-->
+                <!--&lt;!&ndash;</field>&ndash;&gt;-->
+            </group>
+            <group id="image" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="900">
+                <label>Images Settings</label>
+                <field id="is_enable_image_friendly_url" translate="label" type="select" sortOrder="140" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable SEO-friendly URLs for Product Images</label>
+                    <source_model>\Mirasvit\Seo\Model\Config\Source\ImageFriendlyUrl</source_model>
+                    <comment><![CDATA[<b>Flush all cache to apply SEO-friendly URLs for Product Images</b>]]></comment>
+                    <tooltip><![CDATA[We recomemded don't use an old version. Old version create more images.
+                        But if you switch from old version to new you will get different urls for images.
+                        If urls changed Google will delete old urls and create new one but it can get some time.
+                        If it is critical for your store please use an old version.
+                        ]]></tooltip>
+                </field>
+                <field id="image_url_template" translate="label" type="text" sortOrder="150" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Template for URL key of Product Images</label>
+                    <comment><![CDATA[If empty will be used [product_name]]]></comment>
+                    <depends>
+                        <field id="is_enable_image_friendly_url" separator="|">1|2</field>
+                    </depends>
+                </field>
+                <field id="is_enable_image_alt" translate="label" type="select" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable generation of Product Images Alt and Title</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="image_alt_template" translate="label" type="text" sortOrder="170" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Template for Product Images Alt and Title</label>
+                    <depends>
+                        <field id="is_enable_image_alt" separator="|">1|2</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="info" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="1100">
+                <label>Info (visible in frontend, will not work if FPC or Varnish enabled)</label>
+                <field id="info" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Info</label>
+                    <source_model>\Mirasvit\Seo\Model\Config\Source\Info</source_model>
+                </field>
+                <field id="info_position" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>SEO Toolbar position</label>
+                    <source_model>\Mirasvit\Seo\Model\Config\Source\InfoPosition</source_model>
+                    <depends>
+                        <field id="info" separator="|">1|2</field>
+                    </depends>
+                </field>
+                <field id="allowed_ip" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show info only for</label>
+                    <depends>
+                        <field id="info">1</field>
+                    </depends>
+                </field>
+                <field id="bypass_cookie_button" translate="button_label comment" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <button_label>Set cookie</button_label>
+                    <frontend_model>\Mirasvit\Seo\Block\Adminhtml\System\Config\Cookie</frontend_model>
+                    <depends>
+                        <field id="info">2</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+
+        <section id="seo_snippets" showInDefault="1" showInWebsite="1" showInStore="1" type="text" translate="label" sortOrder="400">
+            <label>Rich Snippets and Opengraph</label>
+            <tab>mirasvit</tab>
+            <resource>Mirasvit_Seo::config_seo</resource>
+            <group id="product_snippets" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="100">
+                <label>Product</label>
+                <field id="rich_snippets_delete_wrong" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Delete wrong snippets automatically</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <tooltip><![CDATA[Current configuration will automatically cut incorrect snippets added in template]]></tooltip>
+                </field>
+
+                <field id="rich_snippets_item_description" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Item Description</label>
+                    <source_model>\Mirasvit\Seo\Model\Config\Source\DescriptionRichSnippets</source_model>
+                </field>
+                <field id="rich_snippets_item_image" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Item Image</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="rich_snippets_item_availability" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Item Availability</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="rich_snippets_payment_method" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Payment Methods</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="rich_snippets_delivery_method" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Delivery Methods</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="rich_snippets_product_category" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Category</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="rich_snippets_manufacturer_part_number" translate="label" type="select" sortOrder="65" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Manufacture part number</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="rich_snippets_brand_config" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Brand Attribute</label>
+                </field>
+                <field id="rich_snippets_model_config" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Model Attribute</label>
+                </field>
+                <field id="rich_snippets_color_config" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Color Attribute</label>
+                </field>
+                <field id="rich_snippets_weight_config" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Weight</label>
+                    <source_model>\Mirasvit\Seo\Model\Config\Source\WeightRichSnippets</source_model>
+                </field>
+                <field id="rich_snippets_dimensions_config" translate="label" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Dimensions</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="rich_snippets_dimensional_unit" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Unit</label>
+                    <depends>
+                        <field id="rich_snippets_dimensions_config">1</field>
+                    </depends>
+                </field>
+                <field id="rich_snippets_height_config" translate="label" type="text" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Height Attribute</label>
+                    <depends>
+                        <field id="rich_snippets_dimensions_config">1</field>
+                    </depends>
+                </field>
+                <field id="rich_snippets_width_config" translate="label" type="text" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Width Attribute</label>
+                    <depends>
+                        <field id="rich_snippets_dimensions_config">1</field>
+                    </depends>
+                </field>
+                <field id="rich_snippets_depth_config" translate="label" type="text" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Depth Attribute</label>
+                    <depends>
+                        <field id="rich_snippets_dimensions_config">1</field>
+                    </depends>
+                </field>
+                <field id="rich_snippets_product_condition_config" translate="label" type="select" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Condition</label>
+                    <source_model>\Mirasvit\Seo\Model\Config\Source\ProductConditionSnippets</source_model>
+                </field>
+                <field id="rich_snippets_product_condition_attribute" translate="label" type="text" sortOrder="170" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Condition Attribute</label>
+                    <depends>
+                        <field id="rich_snippets_product_condition_config">1</field>
+                    </depends>
+                </field>
+                <field id="rich_snippets_product_condition_new" translate="label" type="text" sortOrder="180" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>New Attribute Value</label>
+                    <depends>
+                        <field id="rich_snippets_product_condition_config">1</field>
+                    </depends>
+                </field>
+                <field id="rich_snippets_product_condition_used" translate="label" type="text" sortOrder="190" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Used Attribute Value</label>
+                    <depends>
+                        <field id="rich_snippets_product_condition_config">1</field>
+                    </depends>
+                </field>
+                <field id="rich_snippets_product_condition_refurbished" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Refurbished Attribute Value</label>
+                    <depends>
+                        <field id="rich_snippets_product_condition_config">1</field>
+                    </depends>
+                </field>
+                <field id="rich_snippets_product_condition_damaged" translate="label" type="text" sortOrder="210" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Damaged Attribute Value</label>
+                    <depends>
+                        <field id="rich_snippets_product_condition_config">1</field>
+                    </depends>
+                </field>
+                <field id="rich_snippets_individual_reviews_enabled" translate="label" type="select" sortOrder="220" showInDefault="1">
+                    <label>Add Rich Snippets for Individual Reviews</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="category_snippets" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="200">
+                <label>Category</label>
+                <field id="category_rich_snippets" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Category Rich Snippets</label>
+                    <source_model>Mirasvit\Seo\Model\Config\Source\CategoryRichSnippets</source_model>
+                </field>
+                <field id="category_rich_snippets_review_count" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Category Rich Snippets Review Count will show</label>
+                    <source_model>Mirasvit\Seo\Model\Config\Source\ReviewCount</source_model>
+                    <depends>
+                        <field id="category_rich_snippets" separator="|">1|2</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="home_page_snippets" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="250">
+                <label>Home page</label>
+                <field id="rich_snippets_delete_wrong_for_home_page" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Delete wrong snippets automatically</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <tooltip><![CDATA[Current configuration will automatically cut incorrect snippets from template]]></tooltip>
+                </field>
+            </group>
+            <group id="organization_snippets" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="300">
+                <label>Organization</label>
+                <field id="is_organization_snippets" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Organization snippets</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="name_organization_snippets" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Name for Organization</label>
+                    <source_model>Mirasvit\Seo\Model\Config\Source\OrganizationSnippets\Name</source_model>
+                    <depends>
+                        <field id="is_organization_snippets">1</field>
+                    </depends>
+                </field>
+                <field id="manual_name_organization_snippets" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Name Text for Organization Rich Snippet </label>
+                    <depends>
+                        <field id="is_organization_snippets">1</field>
+                        <field id="name_organization_snippets">1</field>
+                    </depends>
+                </field>
+                <field id="country_address_organization_snippets" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Country Address</label>
+                    <source_model>Mirasvit\Seo\Model\Config\Source\OrganizationSnippets\CountryAddress</source_model>
+                    <depends>
+                        <field id="is_organization_snippets">1</field>
+                    </depends>
+                </field>
+                <field id="manual_country_address_organization_snippets" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Country</label>
+                    <depends>
+                        <field id="is_organization_snippets">1</field>
+                        <field id="country_address_organization_snippets">1</field>
+                    </depends>
+                </field>
+                <field id="locality_address_organization_snippets" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Locality Address</label>
+                    <source_model>Mirasvit\Seo\Model\Config\Source\OrganizationSnippets\CountryAddress</source_model>
+                    <depends>
+                        <field id="is_organization_snippets">1</field>
+                    </depends>
+                </field>
+                <field id="manual_locality_address_organization_snippets" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Locality</label>
+                    <depends>
+                        <field id="is_organization_snippets">1</field>
+                        <field id="locality_address_organization_snippets">1</field>
+                    </depends>
+                </field>
+                <field id="postal_code_organization_snippets" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Postal Code</label>
+                    <source_model>Mirasvit\Seo\Model\Config\Source\OrganizationSnippets\PostalCode</source_model>
+                    <depends>
+                        <field id="is_organization_snippets">1</field>
+                    </depends>
+                </field>
+                <field id="manual_postal_code_organization_snippets" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Postal Code</label>
+                    <depends>
+                        <field id="is_organization_snippets">1</field>
+                        <field id="postal_code_organization_snippets">1</field>
+                    </depends>
+                </field>
+                <field id="street_address_organization_snippets" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Street Address</label>
+                    <source_model>Mirasvit\Seo\Model\Config\Source\OrganizationSnippets\StreetAddress</source_model>
+                    <depends>
+                        <field id="is_organization_snippets">1</field>
+                    </depends>
+                </field>
+                <field id="manual_street_address_organization_snippets" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Street Address</label>
+                    <depends>
+                        <field id="is_organization_snippets">1</field>
+                        <field id="street_address_organization_snippets">1</field>
+                    </depends>
+                </field>
+                <field id="telephone_organization_snippets" translate="label" type="select" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Telephone Number</label>
+                    <source_model>Mirasvit\Seo\Model\Config\Source\OrganizationSnippets\Telephone</source_model>
+                    <depends>
+                        <field id="is_organization_snippets">1</field>
+                    </depends>
+                </field>
+                <field id="manual_telephone_organization_snippets" translate="label" type="text" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Telephone Number</label>
+                    <depends>
+                        <field id="is_organization_snippets">1</field>
+                        <field id="telephone_organization_snippets">1</field>
+                    </depends>
+                </field>
+                <field id="manual_faxnumber_organization_snippets" translate="label" type="text" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Fax Number</label>
+                    <depends>
+                        <field id="is_organization_snippets">1</field>
+                    </depends>
+                </field>
+                <field id="email_organization_snippets" translate="label" type="select" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email</label>
+                    <source_model>\Mirasvit\Seo\Model\Config\Source\OrganizationSnippets\Email</source_model>
+                    <depends>
+                        <field id="is_organization_snippets">1</field>
+                    </depends>
+                </field>
+                <field id="manual_email_organization_snippets" translate="label" type="text" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email</label>
+                    <depends>
+                        <field id="is_organization_snippets">1</field>
+                        <field id="email_organization_snippets">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="blogmx_snippets" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="400">
+                <label>Blog MX snippets</label>
+                <field id="is_blog_mx_snippets" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Rich Snippets</label>
+                    <frontend_model>\Mirasvit\Seo\Block\Adminhtml\System\HiddenField\BlogMx\Snippets</frontend_model>
+                    <options>
+                        <option label="Yes">1</option>
+                        <option label="No">0</option>
+                    </options>
+                </field>
+                <field id="logo_file_upload" translate="label" type="Magento\Config\Block\System\Config\Form\Field\File" sortOrder="20" showInDefault="1" showInWebsite="1" >
+                    <label>Logo file</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\File</backend_model>
+                    <upload_dir config="system" scope_info="1">logo</upload_dir>
+                    <comment><![CDATA[<b>If your store logo use svg format you need convert it to png or jpg and upload. It is need for "publisher logo" snippets.</b>]]></comment>
+                </field>
+            </group>
+            <group id="breadcrumbs_snippets" translate="label" type="text" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="500">
+                <label>Breadcrumbs</label>
+                <field id="is_breadcrumbs" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Rich Snippets Breadcrumbs</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="opengraph" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="600">
+                <label>Open Graph</label>
+                <field id="is_category_opengraph" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Category Opengraph</label>
+                    <source_model>\Mirasvit\Seo\Model\Config\Source\Opengraph\Category</source_model>
+                </field>
+                <field id="is_cms_opengraph" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Cms Opengraph</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="is_blogmx_opengraph" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Blog MX Opengraph</label>
+                    <frontend_model>\Mirasvit\Seo\Block\Adminhtml\System\HiddenField\BlogMx\Og</frontend_model>
+                    <options>
+                        <option label="Yes">1</option>
+                        <option label="No">0</option>
+                    </options>
+                </field>
+            </group>
+            <group id="twitter" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="700">
+                <label>Twitter</label>
+                <field id="get_twitter_card" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add Twitter Summary Card</label>
+                    <source_model>\Mirasvit\Seo\Model\Config\Source\Twitter\TwitterCard</source_model>
+                </field>
+                <field id="twitter_user" translate="label" type="text" sortOrder="20" showInDefault="1">
+                    <label>Twitter username</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

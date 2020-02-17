@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <forix_catalog>
+            <category>
+                <attribute_2show_cpd>mb_soil_type_best,mb_soil_type_better,mb_soil_type_good</attribute_2show_cpd>
+            </category>
+        </forix_catalog>
+    </default>
+</config>

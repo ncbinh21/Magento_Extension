@@ -1,0 +1,51 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="shipping_msg" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Shipping Message</label>
+            <tab>forix</tab>
+            <resource>Forix_Config::config_shipping_msg</resource>
+            <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Message</label>
+                <!--<field id="in_stock"  translate="label" type="text" sortOrder="0"  showInDefault="1" showInWebsite="1" showInStore="1">-->
+                    <!--<label>In Stock</label>-->
+                <!--</field>-->
+                <!--<field id="out_stock"  translate="label" type="text" sortOrder="0"  showInDefault="1" showInWebsite="1" showInStore="1">-->
+                    <!--<label>Out Stock</label>-->
+                <!--</field>-->
+                <field id="heavy"  translate="label" type="text" sortOrder="0"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Heavy</label>
+                </field>
+            </group>
+
+            <group id="shipping_info" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Shipping Info</label>
+                <!-- WYSIWYG editor field code start-->
+                <field id="editor_textarea" translate="label comment" sortOrder="1" type="editor" showInStore="1" showInDefault="1" >
+                    <label>Content</label>
+                    <frontend_model>Forix\Config\Block\Adminhtml\System\Config\Editor</frontend_model>
+                </field>
+                <!-- WYSIWYG editor field code end-->
+            </group>
+        </section>
+
+
+        <section id="forix_catalog" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+            <resource>Forix_Catalog::config</resource>
+            <class>separator-top</class>
+            <label>Catalog</label>
+            <tab>forix</tab>
+            <group id="feature_category" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+                   showInStore="0">
+                <label>Category Feature</label>
+                <field id="ids" translate="label comment" type="text" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="0">
+                    <label>Ids For category feature</label>
+                    <comment>[ex:] 1,2,3</comment>
+                </field>
+
+            </group>
+
+        </section>
+
+    </system>
+</config>

@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="adminhtml.block.banners.attribute.container">
+            <block class="Magento\Backend\Block\Widget\Grid" name="adminhtml.block.banners.attribute.grid" as="grid">
+                <arguments>
+                    <argument name="id" xsi:type="string">listAttributeGrid</argument>
+                    <argument name="dataSource" xsi:type="object">Forix\AdvancedAttribute\Model\AttributesCollection</argument>
+                    <argument name="default_sort" xsi:type="string">list_attribute_id</argument>
+                    <argument name="default_dir" xsi:type="string">DESC</argument>
+                    <argument name="save_parameters_in_session" xsi:type="string">1</argument>
+                </arguments>
+                <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" name="adminhtml.block.banners.attribute.columnSet" as="grid.columnSet">
+                    <arguments>
+                        <argument name="rowUrl" xsi:type="array">
+                            <item name="path" xsi:type="string">*/*/manage</item>
+                            <item name="extraParamsTemplate" xsi:type="array">
+                                <item name="attrid" xsi:type="string">getAttrid</item>
+                                <item name="attrcode" xsi:type="string">getAttrcode</item>
+                            </item>
+                        </argument>
+                    </arguments>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="attribute_code">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Attribute Code</argument>
+                            <argument name="index" xsi:type="string">attribute_code</argument>
+                            <argument name="type" xsi:type="string">longtext</argument>
+                            <argument name="filter_index" xsi:type="string">attribute_code</argument>
+                            <argument name="column_css_class" xsi:type="string">col-name</argument>
+                            <argument name="header_css_class" xsi:type="string">col-name</argument>
+                        </arguments>
+                    </block>
+
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="attribute_name">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Attribute Name</argument>
+                            <argument name="index" xsi:type="string">attribute_name</argument>
+                            <argument name="filter_index" xsi:type="string">frontend_label</argument>
+                            <argument name="type" xsi:type="string">text</argument>
+                        </arguments>
+                    </block>
+
+                </block>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="catalog_product_load_after">
+        <observer name="set_additional_options" instance="Forix\Checkout\Observer\SetAdditionalOptions"/>
+    </event>
+<!--    <event name="checkout_submit_all_after">-->
+<!--        <observer name="forix_sendmail_checkout_submit_all_after" instance="Forix\Checkout\Observer\SendMailDistributor" />-->
+<!--    </event>-->
+    <event name="email_order_set_template_vars_before">
+        <observer name="forix_sendmail_checkout_submit_all_after" instance="Forix\Checkout\Observer\ShowInfoDistributor" />
+    </event>
+<!--    <event name="sales_order_save_before">-->
+<!--        <observer name="forix_sales_order_save_distributor" instance="Forix\Checkout\Observer\AssignInforDistributor"/>-->
+<!--    </event>-->
+</config>

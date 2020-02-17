@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="main.content">
+            <block class="Forix\CategoryCustom\Block\Category" name="category.ads.block"
+                   template="Forix_CategoryCustom::category_ads.phtml" after="-"/>
+        </referenceContainer>
+
+        <referenceContainer name="category.view.container">
+            <block class="Forix\CategoryCustom\Block\Category" name="category.videourl"
+                   template="Forix_CategoryCustom::video.phtml" after="-"/>
+        </referenceContainer>
+
+        <referenceBlock name="catalog.leftnav">
+            <block class="Forix\CategoryCustom\Block\GroundCategory" name="category.compare.bitsandreamers"
+                   template="Forix_CategoryCustom::compare_bitsandreamer.phtml" after="-"/>
+        </referenceBlock>
+
+        <referenceContainer name="content">
+            <block class="Forix\CategoryCustom\Block\Category\View" name="category.custom.register.ground.filter"
+                   template="Forix_CategoryCustom::category/filter-ground.phtml">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="register_ground_filter" xsi:type="array">
+                                <item name="component" xsi:type="string">Forix_CategoryCustom/js/view/back-category</item>
+                                <item name="config" xsi:type="array">
+                                    <item name="in_category" xsi:type="boolean">true</item>
+                                </item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

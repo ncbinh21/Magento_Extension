@@ -1,0 +1,43 @@
+<?php
+    if ($isEnabled = $this->isEnabled()) {
+        $blogCategory = $this->getBlogCategory();
+        $postList = $blogCategory->getPostList();
+    }
+?>
+<?php if ($isEnabled ): ?>
+    <?php foreach ($postList as $post): ?>
+        <script type="application/ld+json">
+        { "@context": "http://schema.org",
+         "@type": "BlogPosting",
+         "headline": "<?php echo $block->prepareSnippet($post->getName()) ?>",
+         "description": "<?php echo $block->prepareSnippet($blogCategory->getPreparedContent($post)) ?>",
+         "articleBody": "<?php echo $block->prepareSnippet($blogCategory->getPreparedContent($post)) ?>",
+         "url": "<?php echo $block->prepareSnippet($post->getUrl()) ?>",
+         "datePublished": "<?php echo $block->prepareSnippet($blogCategory->getDatePublished($post)) ?>",
+         "dateModified": "<?php echo $block->prepareSnippet($blogCategory->getDatePublished($post)) ?>",
+         "author": {
+            "@type": "Person",
+            "name": "<?php echo $block->prepareSnippet($blogCategory->getAuthorName($post)) ?>"
+         },
+         "publisher": {
+            "@type": "Organization",
+            "name": "<?php echo $block->prepareSnippet($blogCategory->getPublisherName($post)) ?>",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "<?php echo $block->prepareSnippet($blogCategory->getLogoUrl()) ?>"
+            }
+         },
+         "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "<?php echo $block->prepareSnippet($post->getUrl()) ?>"
+          },
+         "image": {
+            "@type": "ImageObject",
+            "url": "<?php echo $block->prepareSnippet($blogCategory->getLogoUrl()) ?>",
+            "width": "<?php echo $block->prepareSnippet($blogCategory->getImageWith()) ?>",
+            "height": "<?php echo $block->prepareSnippet($blogCategory->getImageHeight()) ?>"
+          }
+         }
+        </script>
+    <?php endforeach; ?>
+<?php endif; ?>

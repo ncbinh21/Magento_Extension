@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="catalog_category_menu" class="Forix\SearchNoResult\Block\Widget\CategoryList" is_email_compatible="true" ttl="86400">
+        <label translate="true">Category List Widget</label>
+        <description translate="true">List the sub-categories for a specified category</description>
+        <parameters>
+            <parameter name="id_path" xsi:type="block" visible="true" required="true" sort_order="10">
+                <label translate="true">Category</label>
+                <block class="Magento\Catalog\Block\Adminhtml\Category\Widget\Chooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string" translate="true">Select a category</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="level" xsi:type="text" visible="true" required="true" sort_order="20">
+                <label translate="true">Category Level Depth</label>
+                <value>1</value>
+            </parameter>
+            <parameter name="template" xsi:type="select" required="true" visible="true">
+                <label translate="true">Widget Template</label>
+                <options>
+                    <option name="default" value="Forix_SearchNoResult::widget/categorylist.phtml" selected="true">
+                        <label translate="true">Category List Template</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

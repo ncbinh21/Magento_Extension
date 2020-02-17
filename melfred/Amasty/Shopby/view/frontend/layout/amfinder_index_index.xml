@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_Shopby
+ */
+-->
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Amasty\Shopby\Block\Product\ProductList\Ajax" name="category.amshopby.ajax" template="Amasty_Shopby::product/productlist/ajax.phtml" after="-"/>
+            <block class="Amasty\Shopby\Block\Product\ProductList\ChildrenCategoryList" name="category.amshopby.children.list" template="Amasty_Shopby::product/productlist/children_category_list.phtml" before="-" />
+            <block class="Amasty\Shopby\Block\Navigation\Sync" name="Amasty.shopby.navigation.sync"/>
+            <block class="Amasty\Shopby\Block\Navigation\UrlModifier" name="Amasty.shopby.navigation.urlmodifier"/>
+        </referenceContainer>
+
+        <referenceContainer name="sidebar.main">
+            <block class="Amasty\Shopby\Block\Navigation\ApplyButton" name="amasty.shopby.applybutton.sidebar" after="catalog.leftnav">
+                <action method="setNavigationSelector">
+                    <argument name="selector" xsi:type="string">.sidebar</argument>
+                </action>
+                <action method="setButtonPosition">
+                    <argument name="position" xsi:type="string">sidebar</argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

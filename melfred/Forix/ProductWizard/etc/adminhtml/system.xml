@@ -1,0 +1,18 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="wizard" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Product Configurator Config</label>
+            <tab>forix</tab>
+            <resource>Forix_ProductWizard::product_wizard</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label><![CDATA[General Setting]]></label>
+                <field id="attributes" translate="label" type="multiselect" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Detail Attribute(s)</label>
+                    <comment>Attribute info that show in Final Step</comment>
+                    <source_model>Forix\CategoryCustom\Model\Product\Source\Attribute</source_model>
+                </field>
+            </group>
+            <include path="Forix_ProductWizard::wizards.xml"/>
+        </section>
+    </system>
+</config>

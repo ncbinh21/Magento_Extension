@@ -1,0 +1,143 @@
+<?php
+$listVideo = $block->getListVideo();
+?>
+<div class="media-video">
+<div class="title-media"><?= __('Media') ?></div>
+<div class="content-media">
+<?php foreach ($listVideo as $video): ?>
+    <?php
+//    $partern = "/.+?(?=embed)embed\//";
+    $partern = "/.+?(?=watch)watch\?v=/";
+    $videoUrl = $video->getMediaUrl();
+    $output = preg_replace($partern, '', $videoUrl);
+    $partern = "/&/";
+    preg_match($partern, $output, $matches);
+    $imgVideo = 'https://img.youtube.com/vi/' . $output . '/0.jpg';
+    $idCopyLink = 'video_' . $video->getId();
+    ?>
+    <?php if(empty($matches)):  ?>
+        
+        <div class="media-item">
+            <div class="media-item-inner">
+                <div class="media-thumbnail">
+                    <div class="thumbnail">
+                        <img title="<?= $video->getTitle() ?>" src="<?= $imgVideo ?>" alt="watch-softstar-videos"
+                        />
+                    </div>
+                    <a data-load="video-<?= $video->getId() ?>" class="btn-play-video fancybox-video" href="<?= $video->getMediaUrl() ?>?autoplay=1"
+                    data-fancybox=""> <span class="icon-play-video"></span>
+                    </a>
+                    <ul class="media-share media-share-main">
+                        <li class="first">
+                            <a href="javascript:void(0)" class="menu-share"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+                            <ul>
+                                 <li>
+                                    <a onclick="copyToClipboard('#<?= $idCopyLink ?>')"><span class="icon-mb-icon-link"></span></a>
+                                    <p id="<?= $idCopyLink ?>" class="no-display"><?= $videoUrl ?></p>
+                                </li>
+                                <li>
+                                    <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?= urlencode($videoUrl) ?>" target="_blank" class="share-popup" data-network="linkedin"><span class="icon-linkedin2"></span></a>
+                                </li>
+                                <li>
+                                    <a href="http://www.twitter.com/intent/tweet?url=<?= urlencode($videoUrl) ?>" target="_blank" class="share-popup"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                </li>
+                                <li>
+                                    <a href="http://www.facebook.com/sharer/sharer.php?u=<?= urlencode($videoUrl) ?>" target="_blank" class="share-popup"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="media-bottom">
+                    <h3 data-mage-init='{"forix/formattext":{}}'><?= $video->getTitle() ?></h3>
+                    
+                </div>
+            </div>
+        </div>
+      
+        <div style="display: none;">
+            <div class="show-popup" data-load="video-<?= $video->getId() ?>">
+                <div class="media-popup-text">
+                    <div class="text-inner">
+                        <div class="text-inner-left">
+                            <div data-mage-init='{"forix/formattext":{}}'><?= $video->getTitle() ?></div>
+                            <p><?= $video->getDescription() ?></p>
+                            <?php if($urlPro = $block->getUrlProduct($video->getProductId())): ?>
+                                <button><a href="<?= $urlPro ?>"><?= __('Shop for orge reamer') ?></a></button>
+                            <?php endif; ?>
+                        </div>
+                        <ul class="media-share">
+                            <li>
+                                <ul>
+                                    <li>
+                                        <a href="http://www.facebook.com/sharer/sharer.php?u=<?= urlencode($videoUrl) ?>" target="_blank" class="share-popup"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="http://www.twitter.com/intent/tweet?url=<?= urlencode($videoUrl) ?>" target="_blank" class="share-popup"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?= urlencode($videoUrl) ?>" target="_blank" class="share-popup" data-network="linkedin"><span class="icon-linkedin2"></span></a>
+                                    </li>
+                                    <li>
+                                        <a onclick="copyToClipboard('#<?= $idCopyLink ?>')"><span class="icon-mb-icon-link"></span></a>
+                                        <p id="<?= $idCopyLink ?>" class="no-display"><?= $videoUrl ?></p>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+<?php endforeach; ?>
+</div>
+</div>
+<script>
+    function copyToClipboard(element) {
+        var temp = jQuery("<input>");
+        jQuery("body").append(temp);
+        temp.val(jQuery(element).text()).select();
+        document.execCommand("copy");
+        temp.remove();
+        alert('Copy link success');
+    }
+</script>
+
+<script>
+    require([
+        "jquery"
+    ], function ($) {
+        
+        $('.btn-play-video.fancybox-video').on("click", function () {
+            var videoId = $(this).data("load");
+            $(".show-popup[data-load=" + videoId + "]").show();
+            setTimeout(function(){
+                $('.fancybox-wrap').append($(".show-popup[data-load=" + videoId + "]").html());
+                share();
+            }, 1000);
+        });
+        share();
+        function share() {
+            $(".share-popup").on("click", function () {
+                var window_size = "width=585,height=511";
+                var url = this.href;
+                var domain = url.split("/")[2];
+                switch(domain) {
+                    case "www.facebook.com":
+                        window_size = "width=585,height=368";
+                        break;
+                    case "www.twitter.com":
+                        window_size = "width=585,height=261";
+                        break;
+                    case "www.linkedin.com":
+                        window_size = "width=585,height=300";
+                        break;
+                }
+                window.open(url, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,' + window_size);
+                return false;
+            });
+        }
+    });
+</script>

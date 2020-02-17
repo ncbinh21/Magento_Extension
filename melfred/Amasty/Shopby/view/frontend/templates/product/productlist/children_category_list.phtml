@@ -1,0 +1,75 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_Shopby
+ */
+?>
+<?php
+/**
+ * @var \Amasty\Shopby\Block\Product\ProductList\ChildrenCategoryList $block
+ * @var \Magento\Catalog\Model\Category[] $categories
+ */
+$categories = $block->getChildrenCategories();
+$categoryImagesHelper = $this->helper(\Amasty\Shopby\Helper\Category::class);
+$size = $block->getImageSize();
+$swiperPrefix = $block->isSliderEnabled() ? 'swiper-' : '';
+?>
+
+<?php if (count($categories)): ?>
+        <div class="amslider" id="category-carousel" >
+            <?php if ((count($categories) > $block->getItemsCountPerSlide()) && $block->isSliderEnabled()) : ?>
+                <div class="swiper-button-prev"></div>
+                <div  class="swiper-button-next"></div>
+            <?php endif; ?>
+            <div class="children-category-container <?= $swiperPrefix; ?>container">
+                <div class="<?= $swiperPrefix; ?>wrapper">
+                    <?php foreach ($categories as $category) : ?>
+                        <?php
+                        $imgUrl = $categoryImagesHelper->getImageUrl($category->getImage() ?: $category->getThumbnail(), true, $size, $size);
+                        ?>
+                        <?php if ($imgUrl) : ?>
+                        <a title="<?= $block->escapeHtml($category->getName())?>"
+                           href="<?= $block->escapeUrl($category->getUrl()) ?>"
+                           class="<?= $swiperPrefix; ?>slide">
+                            <div class="<?= $swiperPrefix ?>category-item <?= ($block->showLabels()) ? ' category-item-label' : ''; ?>">
+                                <img height="<?= $size?>" width="<?= $size ?>" src="<?= $imgUrl; ?>" />
+                                <?php if ($block->showLabels()) : ?>
+                                    <div class="category-item-title"><?= $block->escapeHtml($category->getName())?></div>
+                                <?php endif; ?>
+                            </div>
+                        </a>
+                        <?php endif; ?>
+                    <?php endforeach;?>
+                </div>
+            </div>
+        </div>
+        <?php if ($block->isSliderEnabled()) : ?>
+            <script type="text/javascript">
+                require([
+                    'jquery',
+                    'Amasty_ShopbyBase/js/swiper.min',
+                    'domReady!'
+                ], function ($) {
+                    new Swiper('#category-carousel .swiper-container', {
+                        "slidesPerView" : "<?= $block->getItemsCountPerSlide()?>",
+                        "loop": true,
+                        "simulateTouch": true,
+                        breakpoints: {
+                            320: {
+                                slidesPerView: 1,
+                                spaceBetween: 10
+                            },
+                            480: {
+                                slidesPerView: 2,
+                                spaceBetween: 20
+                            }
+                        },
+                        nextButton: '#category-carousel .swiper-button-next',
+                            prevButton: '#category-carousel .swiper-button-prev',
+                            spaceBetween: 30
+                    });
+                });
+            </script>
+        <?php endif; ?>
+<?php endif; ?>

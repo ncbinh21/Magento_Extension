@@ -1,0 +1,29 @@
+{
+    "name": "mirasvit/module-seo",
+    "description": "Advanced Seo Suite",
+    "require": {
+        "php": "~5.5.0|~5.6.0|~7.0.0|~7.1.0|~7.2.0",
+        "magento/module-store": "100.1.*|100.2.*|101.0.*",
+        "magento/module-backend": "100.1.*|100.2.*|101.0.*",
+        "magento/framework": "100.1.*|100.2.*|101.0.*",
+        "mirasvit/module-core": "^1.2",
+        "mirasvit/module-seo-filter": "1.0.*"
+    },
+    "type": "magento2-module",
+    "version": "2.0.64",
+    "license": [
+      "proprietary"
+    ],
+    "autoload": {
+        "files": [
+            "src/Seo/registration.php",
+            "src/SeoAutolink/registration.php",
+            "src/SeoSitemap/registration.php"
+        ],
+        "psr-4": {
+            "Mirasvit\\Seo\\": "src/Seo",
+            "Mirasvit\\SeoAutolink\\": "src/SeoAutolink",
+            "Mirasvit\\SeoSitemap\\": "src/SeoSitemap"
+        }
+    }
+}

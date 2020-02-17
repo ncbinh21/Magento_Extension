@@ -1,0 +1,3 @@
+<referenceContainer name="content">
+    <block class="Magento\Framework\View\Element\Template" name="NotFound_404_category" template="Forix_SearchNoResult::notfound404.phtml" after="-"/>
+</referenceContainer>

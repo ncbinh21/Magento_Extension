@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/Mview/etc/mview.xsd">
+    <view id="forix_ground_index" class="Forix\Product\Model\Indexer\GroundCondition" group="indexer">
+        <subscriptions>
+            <table name="catalog_product_entity_varchar" entity_column="entity_id"/>
+        </subscriptions>
+    </view>
+</config>

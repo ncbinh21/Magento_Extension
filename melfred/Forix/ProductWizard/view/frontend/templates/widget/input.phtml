@@ -1,0 +1,23 @@
+<?php
+/**
+ * @var $block \Forix\ProductWizard\Block\Wizard\Widget\Configurator
+ */
+?>
+<div class="configurator <?php echo $block->getAttributeCode() ?>">
+    <form action="<?php echo $block->getTargetUrl(); ?>" method="GET">
+        <div class="configurator-title">
+            <?php echo __($block->getTitle()); ?>
+        </div>
+        <div class="configurator-description">
+            <?php echo __($block->getDescription()); ?>
+        </div>
+        <div class="configurator-form">
+            <div class="field rig-model-wraper rig-model-input">
+                <input name="<?php echo $block->getAttributeCode(); ?>" id="<?php echo $block->getAttributeCode(); ?>" class="search-input"
+                       placeholder="<?php echo __("Input") . " " . $block->getAttributeLabel(); ?>">
+                <button type="submit" id="configurator-submit"><label><?php echo __('Start Configuring'); ?></label>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

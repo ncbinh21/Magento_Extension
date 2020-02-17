@@ -1,0 +1,469 @@
+<?php
+/** @var \Forix\CustomerOrder\Block\Orders\Manage $block */
+//todo: check if user is distributor
+
+/**
+ * @var Magento\Catalog\Helper\Image $imageHelper
+ */
+$imageHelper = $this->helper('\Magento\Catalog\Helper\Image');
+$sortby = $block->getSortByOptions();
+$status = $block->getFilterStatusOptions();
+$carriers = $block->getCarrier();
+$orderIdActive = $block->getActiveOrder();
+?>
+<?php
+/**
+ * @var $dataHelper Forix\CustomerOrder\Helper\Data
+ */
+$dataHelper = $this->helper('Forix\CustomerOrder\Helper\Data');
+?>
+<?php $isDistributor = $dataHelper->isDistributorManager(); ?>
+<?php $_orders = $block->getOrders(); ?>
+<?= $block->getChildHtml('info') ?>
+<div class="form-customer-orders">
+    <form action="<?= /* @escapeNotVerified */ $block->getUrl('sales/orders/manage') ?>" id="manage">
+        <div class="field no-label">
+            <label class="label">Sort by</label>
+            <div class="control">
+                <select class="required-entry" form="manage" name="sortby" onchange="this.form.submit()">
+                    <?php foreach ($sortby as $item => $value) : ?>
+                        <option value="<?= $item ?>" <?= $value["selected"] ?> ><?= $value["label"] ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+        <div class="field no-label">
+            <label class="label">Show me</label>
+            <div class="control">
+                <select class="required-entry" form="manage" name="status" onchange="this.form.submit()">
+                    <?php foreach ($status as $item => $value) : ?>
+                        <option value="<?= $item ?>" <?= $value["selected"] ?> ><?= $value["label"] ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+        <input name="limit" id="limit_page" value="" class="no-display"/>
+    </form>
+</div>
+
+<?php if ($_orders && count($_orders)): ?>
+    <div class="table-wrapper orders-history">
+        <table class="data table table-order-items history" id="my-orders-table">
+            <caption class="table-caption"><?= __('Orders') ?></caption>
+            <thead>
+            <tr>
+                <th scope="col" class="col id"><?= __('Order #') ?></th>
+                <th scope="col" class="col date"><?= __('Date') ?></th>
+                <?= /* @noEscape */
+                $block->getChildHtml('extra.column.header') ?>
+                <th scope="col" class="col shipping"><?= __('Ship To') ?></th>
+                <th scope="col" class="col total"><?= __('Order Total') ?></th>
+                <th scope="col" class="col status"><?= __('Status') ?></th>
+                <th scope="col" class="col status ordered"><?= __('Total Ordered Qty') ?></th>
+                <th scope="col" class="col status shipped"><?= __('Total Shipped Qty') ?></th>
+                <th scope="col" class="col actions"><?= __('Action') ?></th>
+            </tr>
+            </thead>
+            <tbody class="order-container">
+            <?php /* @var Magento\Sales\Model\Order $_order */ ?>
+            <?php foreach ($_orders as $_order): ?>
+            <tr class="row-item">
+                <td data-th="<?= $block->escapeHtml(__('Order #')) ?>"
+                    class="col id"><?= $_order->getRealOrderId() ?></td>
+                <td data-th="<?= $block->escapeHtml(__('Date')) ?>"
+                    class="col date"><?= $block->formatDate($_order->getCreatedAt(), 1) ?></td>
+                <?php $extra = $block->getChildBlock('extra.container'); ?>
+                <?php if ($extra): ?>
+                    <?php $extra->setOrder($_order); ?>
+                    <?= /* @noEscape */
+                    $extra->getChildHtml() ?>
+                <?php endif; ?>
+                <td data-th="<?= $block->escapeHtml(__('Ship To')) ?>"
+                    class="col shipping">
+                    <?= $_order->getShippingAddress() ? $block->escapeHtml($_order->getShippingAddress()->getName()) : '&nbsp;' ?>
+                </td>
+                <td data-th="<?= $block->escapeHtml(__('Order Total')) ?>"
+                    class="col total"><?= $_order->formatPrice($_order->getGrandTotal()) ?></td>
+
+                <?php $arrayStatus = $block->getStatusOrderEnable($_order->getState(), $_order->getId()) ?>
+                <td data-th="<?= $block->escapeHtml(__('Status')) ?>" class="col status <?= strtolower($_order->getStatus()) ?> <?php echo ($arrayStatus) ? 'order-status-edit' : '' ?>">
+                    <div class="order-status-wrapper">
+                        <div class="order-status-top">
+                            <span><?= $_order->getStatus() ?></span>
+                            <?php if($arrayStatus): ?>
+                            <a class="order-status" href="javascript:void(0);" data-order-status="order-status-<?php echo $_order->getId() ?>">
+                                Edit
+                            </a>
+                        </div>
+                        <div class="no-display" id="order-status-<?php echo $_order->getId() ?>"">
+                        <?php foreach ($arrayStatus as $status): ?>
+                            <div class="change-status">
+                                <div class="order-status-exe"><?= $status ?></div>
+                                <input class="order-id-exe no-display" value="<?= $_order->getId() ?>"/>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <?php endif; ?>
+    </div>
+    </td>
+    <td data-th="<?= $block->escapeHtml(__('Total Qty Ordered')) ?>" class="col actions ordered">
+        <?= (int)$_order->getTotalQtyOrdered() ?>
+    </td>
+    <?php $qtyShipped = 0 ?>
+    <td data-th="<?= $block->escapeHtml(__('Total Qty Shipped')) ?>" class="col actions shipped">
+        <?php $orderItems = $_order->getAllItems(); ?>
+        <?php foreach ($orderItems as $_detail): ?>
+            <?php if (!$_detail->getParentItemId()): ?>
+                <?php $qtyShipped = $qtyShipped +  $_detail->getQtyShipped() ?>
+            <?php endif;?>
+        <?php endforeach; ?>
+       <?= (int)$qtyShipped ?>
+    </td>
+    <td data-th="<?= $block->escapeHtml(__('Actions')) ?>" class="col actions">
+        <a href="javascript:void(0);" class="action view <?php echo $_order->getId() == $orderIdActive ? 'show' : '' ?>"
+           data-order-id="<?php echo $_order->getId() ?>">
+            <span><?= __('View Details') ?></span>
+        </a>
+    </td>
+
+    </tr>
+    <tr class="row-item row-details <?php echo $_order->getId() == $orderIdActive ? 'show' : '' ?>" data-order-id="<?php echo $_order->getId() ?>" style="display: none;">
+        <td colspan="8">
+            <?php
+
+            /**
+             * @var $shipmenItem \Magento\Sales\Model\Order\Shipment\Item
+             * @var $shipment \Magento\Sales\Model\Order\Shipment
+             * @var $track \Magento\Sales\Model\Order\Shipment\Track
+             *
+             */
+            $trackTable = array();
+            $trackIdList = array();
+            $shipmentCollection = $_order->getShipmentsCollection();
+            foreach ($shipmentCollection as $shipment) {
+                $trackId = $trackNumber = $itemId = $qtyId = null;
+                $trackItems = $shipment->getItems();
+                foreach ($trackItems as $trItem) {
+                    $qty = $trItem->getQty();
+                    $itemId =  $trItem->getOrderItemId();
+                }
+                foreach ($shipment->getTracks() as $track) {
+                    $trackId = $track->getId();
+                    $trackNumber = $track->getNumber();
+//                    $trackItems = $track->getShipment()->getItems();
+//                    foreach ($trackItems as $trItem) {
+//                        $qty = $shipment->getQty();
+//                        $itemId =  $shipment->getOrderItemId();
+//                    }
+                }
+                $trackTable[$shipment->getId()] = [
+                    'track_id' => $trackId,
+                    'track_number' => $trackNumber,
+                    'item_id' => $itemId,
+                    'qty' => $qty
+                ];
+            }
+            ?>
+
+            <table>
+                <thead>
+                <tr>
+                    <td colspan="6">
+                        <div class="block-info-tracking">
+                            <div class="block block-billing-address">
+                                <div class="block-title">
+                                    <?= __('Billing Address') ?>
+                                </div>
+                                <div class="block-content">
+                                    <p><?php echo $_order->getBillingAddress()->getCompany() ?></p>
+                                    <p><?php echo implode($_order->getBillingAddress()->getStreet(), ',') ?>
+                                        <?php echo $_order->getBillingAddress()->getCity() ?></p>
+                                    <p><?php echo $_order->getBillingAddress()->getRegion() ?>
+                                        <?php echo $_order->getBillingAddress()->getPostcode() ?></p>
+                                    <p> <?php echo $block->getCountryNameFromCode($_order->getBillingAddress()->getCountryId()) ?></p>
+                                    <?php //echo $block->getAddressRenderer()->format($_order->getBillingAddress(), 'html') ?>
+                                </div>
+
+                            </div>
+                            <div class="block block-shipping-address">
+                                <div class="block-title">
+                                    <?= __('Shipping Address') ?>
+                                </div>
+                                <div class="block-content">
+                                    <?php if ($_order->getShippingAddress()): ?>
+                                        <p><?php echo $_order->getShippingAddress()->getCompany() ?></p>
+                                        <p><?php echo implode($_order->getShippingAddress()->getStreet(), ',') ?>
+                                            <?php echo $_order->getShippingAddress()->getCity() ?></p>
+                                        <p><?php echo $_order->getShippingAddress()->getRegion() ?>
+                                        <?php echo $_order->getShippingAddress()->getPostcode() ?><p>
+                                        <p> <?php echo $block->getCountryNameFromCode($_order->getShippingAddress()->getCountryId()); ?></p>
+                                    <?php endif ?>
+                                </div>
+
+                            </div>
+                            <div class="block block-shipping-option">
+                                <div class="block-title">
+                                    <?= __('Shipping & Tax') ?>
+                                </div>
+                                <div class="block-content">
+                                    <p><?= '[' . $_order->getShippingDescription() .']: ' . $_order->formatPrice($_order->getShippingAmount()) ?></p>
+                                    <p><?= __('Tax: ') . $_order->formatPrice($_order->getTaxAmount()) ?></p>
+                                </div>
+                            </div>
+                            <div class="block block-button-tracking">
+                                <?php
+                                //show button if not have any shipment
+                                if ($hideButton = ($_order->getShippingMethod() == 'distributor_distributor')) : ?>
+                                    <div class="inner-tracking-number">
+                                        <div class="block-title">
+                                            <?= __('Tracking Number') ?>
+                                        </div>
+                                        <span><?php echo __('N/A') ?></span>
+                                    </div>
+                                <?php else: ?>
+                                    <?php if ($_order->canShip() && !$shipmentCollection->count()) : ?>
+                                        <button class="action primary tracking-button" type="button"
+                                                data-trackingdata="add,<?= $_order->getRealOrderId() ?>">
+                                            <span><?= __('ADD TRACKING#') ?></span>
+                                        </button>
+                                    <?php elseif (!$_order->canShip() && $shipmentCollection->count() && isset($track)) : ?>
+                                        <?php
+                                        foreach ($trackTable as $shipmentId => $dataTrack) break;
+                                        ?>
+                                        <?php if ($shipmentCollection->count() == 1 && $track->getNumber() == 'N/A') : ?>
+                                            <?php $hideButton = true; ?>
+                                            <button class="action primary tracking-button" type="button"
+                                                    data-trackingdata="edit,<?= $_order->getRealOrderId() ?>,<?= $dataTrack['item_id'] ?>,<?= $dataTrack['track_number'] ?>, <?= $dataTrack['track_id'] ?>,<?= $shipmentId ?>">
+                                                <span><?= __('ADD TRACKING#')?></span>
+                                            </button>
+                                        <?php elseif ($shipmentCollection->count() > 1): ?>
+                                            <div class="inner-tracking-number">
+                                                <div class="block-title">
+                                                    <?= __('Tracking Number') ?>
+                                                </div>
+                                                <span><?php echo __('Multiple') ?></span>
+                                            </div>
+                                        <?php else : ?>
+                                            <?php $hideButton = true; ?>
+                                            <div class="inner-tracking-number">
+                                                <div class="block-title">
+                                                    <?= __('Tracking Number') ?>
+                                                </div>
+                                                <span>
+                                                            <a href="javascript:void(0)"
+                                                               class="btn-tracking tracking-button tracking-button-edit"
+                                                               data-trackingdata="edit,<?= $_order->getRealOrderId() ?>,<?= $dataTrack['item_id'] ?>,<?= $dataTrack['track_number'] ?>, <?= $dataTrack['track_id'] ?>,<?= $shipmentId ?>">
+                                                            <?= $dataTrack['track_number'] ?>
+                                                        </a></span>
+                                            </div>
+                                        <?php endif; ?>
+                                    <?php else : ?>
+                                        <div class="inner-tracking-number">
+                                            <div class="block-title">
+                                                <?= __('Tracking Number') ?>
+                                            </div>
+                                            <span><?php echo __('Multiple') ?></span>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                $orderItems = $_order->getAllItems();
+                foreach ($orderItems as $_detail): ?>
+                    <?php if (!$_detail->getParentItemId()): ?>
+                        <tr>
+                            <td>
+                                <img src="<?= $block->getUrlImageProduct($_detail->getProduct()) ?>"
+                                     alt="<?= $block->escapeHtml($_detail->getName()) ?>">
+                            </td>
+                            <td>
+                                <div class="product-detail">
+                                                <span class="product-sku">
+                                                    Part #: <?= $_detail->getSku() ?>
+                                                </span>
+                                    <strong class="product-item-name">
+                                        <?php echo $block->escapeHtml($_detail->getName()) ?>
+                                    </strong>
+                                    <?php
+                                    if ($_options = $block->getItemOptions($_detail)): ?>
+                                        <div class="item-options-inner" data-mage-init='{"forix/options":{"counterLine":0,"toggleTitle":"Hide Product Details","toogleTitleCur":"show Product Details"}}'>
+                                            <div data-role="content" class="content">
+                                                <dl class="item-options">
+                                                    <?php foreach ($_options as $_option) : ?>
+                                                        <dt class="label"><?php echo $block->escapeHtml($_option['label']) ?></dt>
+                                                        <dd class="values"><?php echo $_option['value'] ?></dd>
+                                                    <?php endforeach; ?>
+                                                </dl>
+                                            </div>
+                                            <span data-role="title" class="toggle">show Product Details</span>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            </td>
+                            <td class="col-price">
+                                <div class="price"><?= $_order->formatPrice($_detail->getPrice()) ?></div>
+                            </td>
+                            <td>
+                                <div class="qty-ordered"><?= 'Ordered: ' . (int)$_detail->getQtyOrdered() ?></div>
+                            </td>
+                            <td class="col-tracking">
+                             <?php if (!$hideButton) : ?>
+                            <?php foreach ($trackTable as $shipmentId => $dataTrack): ?>
+                                <?php if($dataTrack['item_id'] == $_detail->getItemId()): ?>
+                                <div class="item">
+                                        <div class="qty-shipped"><?= 'Shipped: ' . (int)$dataTrack['qty'] ?></div>
+                                        <div class="tracking-right">
+
+                                                <?php
+                                                $class = 'edit';
+                                                if($dataTrack['track_number'] === null) {
+                                                    $class = 'add';
+                                                }
+                                                if (isset($dataTrack['track_number'])) {
+                                                    if ($dataTrack['track_number'] == 'N/A') {
+                                                        $class = 'add';
+                                                    }
+                                                }
+                                                ?>
+                                                <a href="javascript:void(0)"
+                                                   class="btn-tracking tracking-button tracking-button-<?= $class ?>"
+                                                   data-trackingdata="edit,<?= $_order->getRealOrderId() ?>,<?= $_detail->getItemId() ?>,<?= $class == 'edit' ? $dataTrack['track_number'] : "" ?>,<?= $dataTrack['track_id'] ?>,<?= $shipmentId ?>">
+                                                    <?= $class == 'edit' ? $dataTrack['track_number'] : "Tracking#" ?>
+                                                </a>
+                                        </div>
+                                </div>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                    <?php if ($_detail->getQtyToShip()): ?>
+                                <div class="item">
+                                    <div class="tracking-right">
+                                            <a href="javascript:void(0)"
+                                               class="btn-tracking tracking-button tracking-button-add"
+                                               data-trackingdata="add,<?= $_order->getRealOrderId() ?>,<?= $_detail->getItemId() ?>">
+                                                <?= __('Tracking#') ?></a>
+                                    </div>
+                                        <?php endif; ?>
+                                    <?php else: ?>
+                                        <?php $allShipment = $_order->getShipmentsCollection()->getItems() ?>
+                                        <?php foreach ($allShipment as $shipment): ?>
+                                            <?php $trackItems = $shipment->getItems(); ?>
+                                                   <?php   foreach ($trackItems as $trItem): ?>
+                                                     <?php   if ($trItem->getOrderItemId() == $_detail->getItemId()) :?>
+                                                        <div class="item">
+                                                            <div class="qty-shipped"><?= 'Shipped: ' . (int)$trItem->getQty()?></div>
+                                                        </div>
+                                                     <?php endif; ?>
+                                                   <?php endforeach; ?>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+                </tbody>
+
+            </table>
+        </td>
+    </tr>
+<?php endforeach; ?>
+    </tbody>
+    </table>
+    </div>
+
+    <div class="trackingBox" id="" style="display: none;">
+        <div class="fancybox-inner-wrap">
+            <header class="fancybox-header">
+                <div id="tracking-title" class="fancybox-title">Add an Order Tracking #</div>
+            </header>
+            <div class="fancybox-content">
+                <?= $block->getChildHtml('customerorder-content') ?>
+                <form action="<?= $block->getUrl('sales/orders/tracking')?>" id="tracking" data-mage-init='{"validation": {}}' name="tracking" method="post" class="form form-tracking" autocomplete="off">
+                    <div class="field no-label">
+                        <div class="control">
+                            <select class="required-entry" form="tracking" name="carrierCode">
+                                <?php foreach ($carriers as $cValue => $cName) : ?>
+                                    <option value="<?= $cValue ?>"><?= $cName ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <label class="label">
+                                <span>Carrier</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field required">
+                        <label class="label">
+                            <span>Default Label</span>
+                        </label>
+                        <div class="control">
+                            <input class="input-text required-entry" required="required" type="text" name="trackNumber"
+                                   id="fx_trackNumber">
+                            <label class="label">
+                                <span>Tracking Number</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field required check-qty">
+                        <label class="label">
+                            <span>Default Label</span>
+                        </label>
+                        <div class="control">
+                            <input class="input-text required-entry" required="required" type="text" name="qtyNumber"
+                                   id="fx_qtyNumber">
+                            <label class="label">
+                                <span>Qty Number</span>
+                            </label>
+                        </div>
+                    </div>
+                    <input name="action" value="shipment" type="hidden"/>
+                    <input id="fx_orderId" name="orderId" value="" type="hidden"/>
+                    <input id="fx_trackId" name="trackId" value="" type="hidden"/>
+                    <input id="fx_shipmentId" name="shipmentId" value="" type="hidden"/>
+                    <input id="fx_itemId" name="itemId" value="" type="hidden"/>
+                    <input id="fx_action" name="act" value="" type="hidden"/>
+
+                    <button class="action primary" type="button" onclick="this.form.submit()">
+                        <span>Save</span>
+                    </button>
+                    <button class="action delete-tracking" type="button">
+                        <span>Delete Tracking #</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/x-magento-init">
+    {
+        "*": {
+            "Forix_CustomerOrder/js/fxCustomerOrder":{}
+        }
+    }
+    </script>
+
+    <?php if ($block->getPagerHtml()): ?>
+        <div class="order-products-toolbar toolbar bottom"><?= $block->getPagerHtml() ?></div>
+    <?php endif ?>
+<?php else: ?>
+    <div class="message info empty"><span><?= __('You have no customer order to manage.') ?></span></div>
+<?php endif ?>
+<?php
+$block->removeCookieOrderId();
+?>
+<script type="text/javascript">
+    require([
+        'jquery',
+        'mage/mage'
+    ], function($){
+        var dataForm = $('#tracking');
+        dataForm.mage('validation', {});
+
+    });
+</script>

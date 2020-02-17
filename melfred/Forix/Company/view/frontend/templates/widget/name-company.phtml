@@ -1,0 +1,80 @@
+<?php
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Customer\Block\Widget\Name $block */
+
+/*
+<?= $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Name')
+   ->setObject($block->getAddress())
+   ->toHtml() ?>
+
+For checkout/onepage/shipping.phtml:
+
+<?= $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Name')
+   ->setObject($block->getAddress())
+   ->setFieldIdFormat('shipping:%s')
+   ->setFieldNameFormat('shipping[%s]')
+   ->toHtml() ?>
+*/
+
+$prefix = $block->showPrefix();
+$middle = $block->showMiddlename();
+$suffix = $block->showSuffix();
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$customerSession = $objectManager->get('Magento\Customer\Model\Session')->getCustomer();
+$isLogged = $objectManager->get('Magento\Customer\Model\Session')->isLoggedIn();
+$cuFirstName = $customerSession->getData('firstname');
+$cuMidName = $customerSession->getData('middlename');
+$cuLastName = $customerSession->getData('lastname');
+$mergeFullName = true;
+if ($cuMidName != '') {
+    $cuFullName = $cuFirstName. ' ' .$cuMidName. ' '. $cuLastName ;
+} else {
+    $cuFullName = $cuFirstName. ' '. $cuLastName ;
+}
+?>
+<!-- @Tony edited-->
+<?php if($mergeFullName):?>
+    <div class="field required fullname <?= $block->escapeHtmlAttr($block->getContainerClassName()) ?>">
+        <label class="label" for="<?= $block->escapeHtmlAttr($block->getFieldId('fullname')) ?>">
+            <span><?= $block->escapeHtml(__('Full Name')) ?></span>
+        </label>
+
+        <div class="control">
+            <input type="text" id="<?= $block->escapeHtmlAttr('fullname-company') ?>"
+                   name="<?= $block->escapeHtmlAttr('fullname') ?>"
+                   value="<?= ($isLogged)? $cuFullName: ''; ?>"
+                   title="<?= $block->escapeHtmlAttr('fullname') ?>"
+                   class="input-text required-entry" <?php echo ' data-validate="{required:true}"' ?> required="required">
+            <div for="fullname" id="custom-mess-company" class="field-error field-error-fullname"><?php echo __('Please enter both your first and last name.')?></div>
+            <label class="label" for="<?= $block->escapeHtmlAttr($block->getFieldId('fullname')) ?>">
+                <span><?= $block->escapeHtml(__('Full Name')) ?></span>
+            </label>
+        </div>
+    </div>
+    <?php //return; ?>
+<?php endif;?>
+<script>
+    require(['jquery'], function ($) {
+        $('#custom-mess-company').hide();
+
+        if ($('#form-validate-company').length > 0) {
+            $('#form-validate-company').on("submit", function () {
+                var fullName = $('#fullname-company').val();
+                var arrFullName = fullName.split(' ');
+                arrFullName  = arrFullName .filter(function(x) {
+                    return (x !== (undefined || null || ''));
+                });
+                if (arrFullName.length <= 1) {
+                    $('#custom-mess-company').show();
+                    return false;
+                } else {
+                    $('#custom-mess-company').hide();
+                }
+            });
+        }
+    });
+</script>
+<!-- @Tony end edited-->
+

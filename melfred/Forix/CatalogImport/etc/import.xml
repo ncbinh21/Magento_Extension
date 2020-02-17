@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_ImportExport:etc/import.xsd">
+    <entity name="melfred_catalog_product" label="Melfred Products" model="Forix\CatalogImport\Model\Import\Melfredborzall" behaviorModel="Magento\ImportExport\Model\Source\Import\Behavior\Basic"/>
+
+    <entity name="melfred_product_relations" label="Product Relations" model="Forix\CatalogImport\Model\Product\Relations\Adapter" behaviorModel="Magento\ImportExport\Model\Source\Import\Behavior\Basic"/>
+
+    <entity name="ftp_sage_100_update_product_info" label="Update Product From FTP" model="Forix\CatalogImport\Model\FtpUpdateProduct" behaviorModel="Magento\ImportExport\Model\Source\Import\Behavior\Basic"/>
+
+    <entity name="melfred_product_attributes" label="Product Attributes" model="Forix\CatalogImport\Model\Product\Attributes\Adapter" behaviorModel="Magento\ImportExport\Model\Source\Import\Behavior\Basic"/>
+
+    <entityType entity="melfred_catalog_product" name="bundle" model="Forix\CatalogImport\Model\Import\Product\Type\Bundle"/>
+
+    <!--<entityType entity="melfred_catalog_product" name="grouped" model="Forix\CatalogImport\Model\Import\Product\Type\Grouped" />-->
+
+    <entityType entity="melfred_catalog_product" name="virtual" model="Forix\CatalogImport\Model\Import\Product\Type\Virtual"/>
+
+    <entityType entity="melfred_catalog_product" name="configurable" model="\Forix\CatalogImport\Model\Import\Product\Type\Configurable" />
+
+    <entityType entity="melfred_catalog_product" name="simple" model="Forix\CatalogImport\Model\Import\Product\Type\Simple"/>
+
+    <entity name="melfred_categories" label="Categories" model="Forix\CatalogImport\Model\Import\Categories\Adapter"
+            behaviorModel="Magento\ImportExport\Model\Source\Import\Behavior\Basic"/>
+    <entity name="update_product" label="Update Product Data" model="Forix\CatalogImport\Model\Product\Attributes\UpdateAttribute" behaviorModel="Magento\ImportExport\Model\Source\Import\Behavior\Basic" />
+
+    <entity name="melfred_update_product_images" label="Update Product Images" model="Forix\CatalogImport\Model\Product\Images\Adapter" behaviorModel="Magento\ImportExport\Model\Source\Import\Behavior\Basic"/>
+
+    <entity name="melfred_create_tracking_number" label="Create Tracking Number" model="Forix\CatalogImport\Model\Order\CreateTrackingNumber" behaviorModel="Magento\ImportExport\Model\Source\Import\Behavior\Basic"/>
+</config>

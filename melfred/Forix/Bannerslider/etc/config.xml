@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+	    <bannerslider>
+	        <general>
+	            <enable_frontend>1</enable_frontend>
+				<dots>1</dots>
+				<arrows>1</arrows>
+				<auto_play>1</auto_play>
+				<speed>500</speed>
+	        </general>
+	    </bannerslider>
+	</default>
+</config>

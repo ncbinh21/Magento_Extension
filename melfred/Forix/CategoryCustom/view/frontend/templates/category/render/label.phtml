@@ -1,0 +1,94 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_Shopby
+ */
+?>
+<?php
+/** @var \Amasty\Shopby\Model\Layer\Filter\Item $filterItem */
+/** @var \Amasty\Shopby\Block\Navigation\FilterRenderer\Category $block */
+/** @var \Amasty\Shopby\Model\Layer\Filter\CategoryItems $filterItems */
+/** @var \Forix\CategoryCustom\Helper\Data $cateHelper */
+$filterItems = $block->getFilter()->getItems();
+$filterSubcategoriesView = $block->isFolding();
+$filterSubcategoriesType = $filterSubcategoriesView ? "amShopbyFilterCategoryLabelsFolding" : '';
+$filterFoldingClass = $filterSubcategoriesView ? '-folding' : '';
+$cateHelper = $this->helper('Forix\CategoryCustom\Helper\Data');
+$isSearchPage = $block->getRequest()->getFullActionName() == 'catalogsearch_result_index' ? true : false;
+?>
+<?php
+$all_item = $filterItems->getAllItems();
+
+if (!function_exists('cmp')) {
+    function cmp($a, $b)
+    {
+        return $a->getCount() < $b->getCount();
+    }
+}
+usort($all_item, "cmp");
+?>
+<?php if (!$isSearchPage) : ?>
+    <?php foreach ($all_item as $filterItem) : ?>
+        <?php $check = $cateHelper->getCategory($filterItem['value'])->getData('is_bit_reamer'); ?>
+        <?php if ($check && $check != 'Bits/Reamers'): ?>
+            <?php $uniqId = uniqid(); ?>
+            <li class="item" data-label="<?= $block->escapeHtml($filterItem->getLabel()) ?>">
+                <a class="am-filter-item-<?= $block->escapeId($uniqId) ?>"
+                   href="<?= $block->escapeUrl('?cat=' . $filterItem->getValueString()) ?>"
+                    <?= $filterItem->getRelNofollow() ? ' rel="nofollow"' : '' ?>>
+                    <input
+                            name="amshopby[<?= $block->getFilter()->getRequestVar(); ?>][]"
+                            value="<?= $block->escapeHtml($filterItem->getValueString()); ?>"
+                            type="<?= $block->getInputType(); ?>"
+                        <?= $block->checkedFilter($filterItem) ? ' checked' : ''; ?>
+                    />
+                    <span class="label"><?= $filterItem->getLabel() ?></span>
+                    <span class="count">
+                        <small class="count-number"><?= $filterItem->getCount() ?></small>
+                    </span>
+                </a>
+                <script type="text/x-magento-init">
+                    {
+                        ".am-filter-item-<?= $block->escapeId($uniqId) ?>": {
+                            "<?= $filterSubcategoriesType ?>" : {
+                                "collectFilters": <?= $block->collectFilters(); ?>
+                            }
+                        }
+                    }
+                </script>
+            </li>
+        <?php endif; ?>
+    <?php endforeach; ?>
+<?php else : ?>
+    <?php foreach ($all_item as $filterItem) : ?>
+        <?php $uniqId = uniqid(); ?>
+        <?php if ($cateHelper->getCategory($filterItem['value'])->getData('is_bit_reamer') != 'Bits/Reamers'): ?>
+            <li class="item" data-label="<?= $block->escapeHtml($filterItem->getLabel()) ?>">
+                <a class="am-filter-item-<?= $block->escapeId($uniqId) ?>"
+                   href="<?= $block->escapeUrl($filterItem->getUrl()) ?>"
+                    <?= $filterItem->getRelNofollow() ? ' rel="nofollow"' : '' ?>>
+                    <input
+                            name="amshopby[<?= $block->getFilter()->getRequestVar(); ?>][]"
+                            value="<?= $block->escapeHtml($filterItem->getValueString()); ?>"
+                            type="<?= $block->getInputType(); ?>"
+                        <?= $block->checkedFilter($filterItem) ? ' checked' : ''; ?>
+                    />
+                    <span class="label"><?= $filterItem->getLabel() ?></span>
+                    <span class="count">
+                        <small class="count-number"><?= $filterItem->getCount() ?></small>
+                    </span>
+                </a>
+                <script type="text/x-magento-init">
+                    {
+                        ".am-filter-item-<?= $block->escapeId($uniqId) ?>": {
+                            "<?= $filterSubcategoriesType ?>" : {
+                                "collectFilters": <?= $block->collectFilters(); ?>
+                            }
+                        }
+                    }
+                </script>
+            </li>
+        <?php endif; ?>
+    <?php endforeach; ?>
+<?php endif; ?>

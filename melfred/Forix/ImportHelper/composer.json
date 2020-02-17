@@ -1,0 +1,21 @@
+{
+    "name": "forix/module-importhelper",
+    "description": "Hidro Forix -- Helper for import product data",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Mage2Gen",
+            "email": "info@mage2gen.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Forix\\ImportHelper\\": ""
+        }
+    }
+}

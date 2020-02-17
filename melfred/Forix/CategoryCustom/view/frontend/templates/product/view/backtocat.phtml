@@ -1,0 +1,20 @@
+<?php
+// @codingStandardsIgnoreFile
+/**
+ * Product back to category
+ *
+ * @var $block \Forix\CategoryCustom\Block\Product\View
+ */
+$backData = $block->getBackData();
+?>
+<span class="back-to-category" id="back-to-category" data-block="back_to_category"
+      data-bind="scope: 'back_to_category'">
+    <a data-bind="attr:{ href : getUrl()}, i18n: 'Back to ' + getName()"></a>
+</span>
+<script type="text/x-magento-init">
+    {
+        "#back-to-category": {
+            "Magento_Ui/js/core/app": <?php /* @escapeNotVerified */ echo $block->getJsLayout(); ?>
+        }
+    }
+</script>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2019 Amasty (https://www.amasty.com)
+ * @package Amasty_Fpc
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Magento\Backend\Block\Template" name="crawler_reports" template="Amasty_Fpc::report.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Magento\Backend\Block\Widget\Tabs" name="crawler_report_tabs">
+                <action method="setDestElementId">
+                    <argument name="text" xsi:type="string">report</argument>
+                </action>
+                <block class="Amasty\Fpc\Block\Adminhtml\Report\Tab\Status" name="report.status"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">status</argument>
+                    <argument name="block" xsi:type="string">report.status</argument>
+                </action>
+                <block class="Amasty\Fpc\Block\Adminhtml\Report\Tab\Crawled" name="report.crawled"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">crawled</argument>
+                    <argument name="block" xsi:type="string">report.crawled</argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

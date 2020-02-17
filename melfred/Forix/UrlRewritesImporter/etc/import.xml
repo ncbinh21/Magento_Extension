@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_ImportExport:etc/import.xsd">
+    <entity name="url_rewrite" label="Url Rewrite" model="Forix\UrlRewritesImporter\Model\Adapter" behaviorModel="Magento\ImportExport\Model\Source\Import\Behavior\Basic" />
+</config>

@@ -1,0 +1,62 @@
+<?php echo $block->getAdditionalHtml() ?>
+<?php if ($messages = $block->getNoteMessages()): ?>
+    <?php foreach ($messages as $message): ?>
+        <br/><?php echo $message ?>
+    <?php endforeach; ?>
+<?php endif; ?>
+<?php $isShowCategory = $this->helper('Forix\SearchNoResult\Helper\Data')->getConfigValue('enable_category'); ?>
+<?php $helper = $this->helper(\Magento\Search\Helper\Data::class); ?>
+
+<div class="block block-empty search-noresult block-meta-not-found">
+    <p class="title"><?php echo ($block->getNoResultText()) ? $block->getNoResultText() : __('Your search returned no results.') ?></p>
+    <div class="block-content">
+        <?php echo $block->getNote(); ?>
+
+        <div class="block block-search">
+            <div class="block block-content">
+                <form class="form minisearch" id="search_noresult_form" action="<?=  $helper->getResultUrl() ?>" method="get">
+                    <div class="field search">
+                        <label class="label" for="search" data-role="minisearch-label">
+                            <span><?=  __('Search') ?></span>
+                        </label>
+                        <div class="control">
+                            <input id="search"
+                                   data-mage-init='{"quickSearch":{
+                                "formSelector":"#search_noresult_form",
+                                "url":"<?=  $helper->getSuggestUrl()?>",
+                                "destinationSelector":"#searchnoresult_autocomplete"}
+                           }'
+                                   type="text"
+                                   name="<?=  $helper->getQueryParamName() ?>"
+                                   value=""
+                                   placeholder="<?=  __('Find HDD tool by name, rig model, or SKU...') ?>"
+                                   class="input-text"
+                                   maxlength="<?=  $helper->getMaxQueryLength() ?>"
+                                   role="combobox"
+                                   aria-haspopup="false"
+                                   aria-autocomplete="both"
+                                   autocomplete="off"/>
+                            <div id="searchnoresult_autocomplete" class="search-autocomplete"></div>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <button type="submit"
+                                title="<?= $block->escapeHtml(__('Search')) ?>"
+                                class="action search">
+                            <span><?=  __('Search') ?></span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('noresult_navigation_link')->toHtml(); ?>
+
+        <?php if ($isShowCategory) : ?>
+            <div class="nav-links-extend">
+                <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($block->getBlockId())->toHtml(); ?>
+            </div>
+        <?php endif; ?>
+    </div>
+</div>

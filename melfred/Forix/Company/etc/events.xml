@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <!-- frontend -->
+    <event name="company_save_before">
+        <observer name="set-company-name" instance="Forix\Company\Observer\Company\SaveCustomer" />
+    </event>
+</config>

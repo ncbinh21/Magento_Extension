@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+	<acl>
+		<resources>
+			<resource id="Magento_Backend::admin">
+				<resource id="Forix_Media::Video" sortOrder="10" title="Video">
+					<resource id="Forix_Media::Video_save" sortOrder="10" title="Save Video"/>
+					<resource id="Forix_Media::Video_delete" sortOrder="20" title="Delete Video"/>
+					<resource id="Forix_Media::Video_update" sortOrder="30" title="Update Video"/>
+					<resource id="Forix_Media::Video_view" sortOrder="40" title="View Video"/>
+				</resource>
+			</resource>
+		</resources>
+	</acl>
+</config>

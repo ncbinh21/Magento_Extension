@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="configurator_default"/>
+    <update handle="formkey"/>
+    <head>
+        <meta name="robots" content="NOINDEX,NOFOLLOW"/>
+    </head>
+    <body>
+        <referenceContainer name="product-wizard-container">
+            <block class="Magento\Framework\View\Element\Template" name="wizard-step-builder" template="Forix_ProductWizard::tabs.phtml">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="fast_back_system_configurator" xsi:type="array">
+                                <item name="component" xsi:type="string">configuratorComponent</item>
+                                <item name="children" xsi:type="array">
+                                    <item name="product_wizard_selections" xsi:type="array">
+                                        <item name="component" xsi:type="string">Forix_ProductWizard/js/model/selection-items</item>
+                                        <item name="displayArea" xsi:type="string">product_wizard_selections</item>
+                                        <item name="config" xsi:type="array">
+                                            <item name="template" xsi:type="string">Forix_ProductWizard/summary/details</item>
+                                        </item>
+                                    </item>
+                                    <item name="messages" xsi:type="array">
+                                        <item name="component" xsi:type="string">Magento_Ui/js/view/messages</item>
+                                        <item name="displayArea" xsi:type="string">messages</item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+                <block class="Forix\ProductWizard\Block\Step" name="wizard.step.one"
+                       template="Forix_ProductWizard::tabs/default.phtml" group="wizard_steps">
+                    <arguments>
+                        <argument name="css_class" xsi:type="string">product-wizard-step-1</argument>
+                        <argument name="index" xsi:type="number">1</argument>
+                        <argument name="index_default" xsi:type="number">1</argument>
+                        <!-- To change this please see config.xml, system.xml -->
+                        <argument name="step_index_key" xsi:type="string">1</argument>
+                    </arguments>
+                    <block class="Forix\ProductWizard\Block\Wizard\Steps" name="wizard.step.one.container"
+                           template="Forix_ProductWizard::tabs/container/select_options.phtml">
+                        <!--<arguments>
+                            <argument name="step_next" xsi:type="number">1</argument> this feature for 4 step and skip if empty
+                        </arguments>-->
+                    </block>
+                </block>
+                <block class="Forix\ProductWizard\Block\Step" name="wizard.step.two"
+                       after="wizard.step.one"
+                       template="Forix_ProductWizard::tabs/default.phtml" group="wizard_steps">
+                    <arguments>
+                        <argument name="css_class" xsi:type="string">product-wizard-step-2</argument>
+                        <argument name="index" xsi:type="number">2</argument>
+                        <argument name="index_default" xsi:type="number">2</argument>
+                        <!-- To change this please see config.xml, system.xml -->
+                        <argument name="step_index_key" xsi:type="string">2</argument>
+                    </arguments>
+                    <block class="Forix\ProductWizard\Block\Wizard\Steps" name="wizard.step.two.container"
+                           template="Forix_ProductWizard::tabs/container/select_products.phtml">
+                        <!--<arguments>
+                            <argument name="step_next" xsi:type="number">2</argument>
+                        </arguments>-->
+                    </block>
+                </block>
+                <block class="Forix\ProductWizard\Block\Step" name="wizard.step.three"
+                       after="wizard.step.two"
+                       template="Forix_ProductWizard::tabs/default.phtml" group="wizard_steps">
+                    <arguments>
+                        <argument name="css_class" xsi:type="string">product-wizard-step-3</argument>
+                        <argument name="index" xsi:type="number">3</argument>
+                        <argument name="index_default" xsi:type="number">3</argument>
+                        <!-- To change this please see config.xml, system.xml -->
+                        <argument name="step_index_key" xsi:type="string">3</argument>
+                    </arguments>
+                    <block class="Forix\ProductWizard\Block\Wizard\Steps" name="wizard.step.three.container"
+                           template="Forix_ProductWizard::tabs/container/final_review.phtml"/>
+                </block>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

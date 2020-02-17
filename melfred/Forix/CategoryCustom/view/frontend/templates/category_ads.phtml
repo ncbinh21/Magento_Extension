@@ -1,0 +1,9 @@
+<?php
+/**
+ * @var $block \Forix\CategoryCustom\Block\Category
+ */
+
+?>
+<?php if ($adsblock = $block->getCurrentCategory()->getData('category_ads_block')) : ?>
+    <?php echo $block->filterOutputHtml($adsblock); ?>
+<?php endif; ?>

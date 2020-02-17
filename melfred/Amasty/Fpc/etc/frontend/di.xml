@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2019 Amasty (https://www.amasty.com)
+ * @package Amasty_Fpc
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!--<type name="Magento\Customer\Model\Session">
+        <plugin name="amasty-page-cache-crawler" type="Amasty\Fpc\Plugin\SessionManager"/>
+    </type>-->
+    <type name="Magento\Framework\App\ActionInterface">
+        <plugin name="amasty-page-cache-crawler" type="Amasty\Fpc\Plugin\ActionInterface"/>
+    </type>
+</config>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_Storelocator
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_ImportExport:etc/import.xsd">
+    <entity name="distributor_zipcodes" label="Import Distributor Zipcodes" model="Forix\Distributor\Model\Import\Zipcode" behaviorModel="Magento\ImportExport\Model\Source\Import\Behavior\Basic" />
+</config>

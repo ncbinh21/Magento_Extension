@@ -1,0 +1,40 @@
+<?php
+/**
+ * Created by Nick Howard.
+ * Job Title: Magento Developer
+ * Project: melfredborzall.local
+ */
+?>
+<?php /* @var $helper Forix\IntelliSuggest\Helper\Data */ ?>
+<?php /* @var $block Forix\IntelliSuggest\Block\Checkout\Onepage\Success */ ?>
+<?php $helper = $this->helper('Forix\IntelliSuggest\Helper\Data'); ?>
+<?php if ($helper->getJsSrc() && $helper->getSiteId()): ?>
+    <?php
+    $intellisuggestCart = array();
+    $intellisuggestOrder = $block->getCurrentOrder();
+    foreach($intellisuggestOrder->getItemsCollection() as $intellisuggestItem) {
+        if($intellisuggestItem->getPrice() > 0) {
+            $intellisuggestCart[] = array(
+                'sku' => $intellisuggestItem->getProduct()->getSku(),
+                'qty' => $intellisuggestItem->getQtyOrdered(),
+                'price' => $intellisuggestItem->getPrice()
+            );
+        }
+    }
+    ?>
+
+    <script type="text/javascript" src="<?php echo $helper->getJsSrc(); ?>"></script>
+    <script type="text/javascript">
+try{
+    IntelliSuggest.init({siteId:'<?php echo $helper->getSiteId(); ?>'});
+    <?php foreach($intellisuggestCart as $intellisuggestItem): ?>
+        IntelliSuggest.haveItem({
+            sku:"<?php echo $intellisuggestItem['sku'] ?>",
+            qty:"<?php echo $intellisuggestItem['qty'] ?>",
+            price:"<?php echo $intellisuggestItem['price'] ?>"
+        });
+    <?php endforeach ?>
+    IntelliSuggest.inSale();
+} catch(err) {}
+</script>
+<?php endif; ?>

@@ -1,0 +1,56 @@
+<?php
+
+namespace Mirasvit\Seo\Model\SeoObject;
+
+class Filter extends \Mirasvit\Seo\Model\SeoObject\Category
+{
+    public function _construct()
+    {
+        parent::_construct();
+    }
+
+    protected function processCurrentCategory()
+    {
+        // устанавливаем для текущей категории. наивысший приоритет.
+        if ($this->_category->getFilterMetaTitleTpl()) {
+            $this->setMetaTitle($this->parse($this->_category->getFilterMetaTitleTpl()));
+        }
+
+        if ($this->_category->getFilterMetaKeywordsTpl()) {
+            $this->setMetaKeywords($this->parse($this->_category->getFilterMetaKeywordsTpl()));
+        }
+        if ($this->_category->getFilterMetaDescriptionTpl()) {
+            $this->setMetaDescription($this->parse($this->_category->getFilterMetaDescriptionTpl()));
+        }
+
+        if ($this->_category->getFilterTitleTpl()) {
+            $this->setTitle($this->parse($this->_category->getFilterTitleTpl()));
+        }
+
+        if ($this->_category->getFilterDescriptionTpl()) {
+            $this->setDescription($this->parse($this->_category->getFilterDescriptionTpl()));
+        }
+    }
+
+    protected function process($category)
+    {
+        parent::process($category);
+        if ($category->getFilterTitleTpl()) {
+            $this->setTitle($this->parse($category->getFilterTitleTpl()));
+        }
+
+        if ($category->getFilterMetaTitleTpl()) {
+            $this->setMetaTitle($this->parse($category->getFilterMetaTitleTpl()));
+        }
+        if ($category->getFilterMetaKeywordsTpl()) {
+            $this->setMetaKeywords($this->parse($category->getFilterMetaKeywordsTpl()));
+        }
+        if ($category->getFilterMetaDescriptionTpl()) {
+            $this->setMetaDescription($this->parse($category->getFilterMetaDescriptionTpl()));
+        }
+
+        if ($category->getFilterDescriptionTpl()) {
+            $this->setDescription($this->parse($category->getFilterDescriptionTpl()));
+        }
+    }
+}

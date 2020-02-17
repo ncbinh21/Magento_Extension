@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="formkey"/>
+    <head>
+        <meta name="robots" content="NOINDEX,NOFOLLOW"/>
+    </head>
+    <body>
+        <referenceContainer name="columns.top">
+            <container name="wizard.view.container" htmlTag="div" htmlClass="wizard-view-image" before="-">
+                <block class="Forix\ProductWizard\Block\Image" name="wizard-configuration-image"
+                       template="Forix_ProductWizard::image.phtml" before="-"/>
+            </container>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Forix\ProductWizard\Block\Preview" name="wizard-configuration"
+                   template="Forix_ProductWizard::wizard.phtml" before="-"/>
+            <container name="wizard.view.container.header" htmlTag="div" htmlClass="wizard-view-header"
+                       before="product-wizard-container">
+                <block class="Forix\ProductWizard\Block\BackTo" name="back-to-fastback"
+                       template="Forix_ProductWizard::backto.phtml"/>
+            </container>
+            <container name="product-wizard-container" after="wizard-configuration" htmlTag="div">
+            </container>
+        </referenceContainer>
+        <move element="page.main.title" destination="wizard.view.container.header" before="-"/>
+    </body>
+</page>

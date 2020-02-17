@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../module-core/src/Core/etc/manual.xsd">
+    <!-- Templates -->
+    <link action="seo_template_index" title="Learn more about SEO Templates Management" url="http://docs.mirasvit.com/module-seo/current/seo/templates" />
+    <link action="seo_template_add" title="Learn more about SEO Templates Management" url="module-seo/current/seo/templates"/>
+    <link action="seo_template_editProduct" title="Learn more about SEO Templates Management" url="module-seo/current/seo/templates" />
+    <link action="seo_template_editCategory" title="Learn more about SEO Templates Management" url="module-seo/current/seo/templates"/>
+    <link action="seo_template_editLayeredNavigation" title="Learn more about SEO Templates Management" url="module-seo/current/seo/templates" />
+    <!-- Redirect -->
+    <link action="seo_redirect_index" title="Learn more about Redirects management" url="module-seo/current/seo/redirects" />
+    <link action="seo_redirect_add" title="Learn more about Redirects management" url="module-seo/current/seo/redirects" />
+    <link action="seo_redirect_edit" title="Learn more about Redirects management" url="module-seo/current/seo/redirects" />
+    <link action="seo_redirectImportExport_index" title="Learn more about Import/Export Redirects" url="module-seo/current/seo/redirects_import" />
+    <!-- SEO Rewrites -->
+    <link action="seo_rewrite_index" title="Learn more about Rewrites Management" url="module-seo/current/seo/rewrite" />
+    <link action="seo_rewrite_add" title="Learn more about Rewrites Management" url="module-seo/current/seo/rewrite" />
+    <link action="seo_rewrite_edit" title="Learn more about Rewrites Management" url="module-seo/current/seo/rewrite" />
+     <!-- Configuration -->
+    <link action="system_config_seo" title="Learn more about SEO" url="module-seo/current/seo/settings" />
+    <link action="system_config_seo_snippets" title="Learn more about Rich Snippets and Opengraph" url="module-seo/current/snippets_opengraph" />
+</config>

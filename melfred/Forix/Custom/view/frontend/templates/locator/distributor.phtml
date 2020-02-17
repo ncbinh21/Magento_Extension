@@ -1,0 +1,229 @@
+<?php
+$usDistributors = $block->getUSDistributor();
+$internationlDistributors = $block->getInternationalDistributor();
+$checkInterDistributor = null;
+?>
+<?php if($usDistributors->count() > 0): ?>
+    <div class="block-distributors block-us-distributors">
+        <h3 class="block-title"><?= __('U.S. Distributors') ?></h3>
+        <div class="wrapper-items">
+            <?php foreach ($usDistributors as $usDistributor): ?>
+                <div class="item level1">
+                    <div class="item-outer">
+                        <?php if($usDistributor->getContactArea()): ?>
+                            <span class="label-country"><?= $usDistributor->getContactArea() ?></span>
+                        <?php endif; ?>
+                        <h5 class="title"><?= $usDistributor->getName() ?>
+                            <?php if($usDistributor->getWebsite()): ?>
+                                <a target="_blank" title="<?= $usDistributor->getName() ?>" href="<?= $usDistributor->getWebsite() ?>">Website</a>
+                            <?php endif; ?>
+                        </h5>
+                        <div class="desc-country"><?= $usDistributor->getAddress() . ', ' . $usDistributor->getCity() . ', ' . $block->getCodeRegion($usDistributor) . ' ' . $usDistributor->getZip() ?></div>
+
+                        <?php if($usDistributor->getContact() || $usDistributor->getContactDistrict() || $usDistributor->getPhone() || $usDistributor->getEmail() || $usDistributor->getContactDistrictTwo() || $usDistributor->getEmailTwo() || $usDistributor->getTollFreePhone() || $usDistributor->getOfficePhone() || $usDistributor->getFax()): ?>
+                        <div class="show-contact-info" data-mage-init='{"forix/options":{"counterLine":0,"toggleTitle":"Hide","toogleTitleCur":"Show Contact Info"}}'>
+                            <div data-role="content" class="content">
+                                <dl>
+                                    <?php if($usDistributor->getContactDistrict() || $usDistributor->getContact()): ?>
+                                        <dt class="label">
+                                            <?= $usDistributor->getContact() ?>
+                                        </dt>
+                                        <dd class="values">
+                                            <?= $usDistributor->getContactDistrict() ?>
+                                        </dd>
+                                    <?php endif; ?>
+
+                                    <?php if($usDistributor->getPhone()): ?>
+                                        <dt class="label">
+                                            <a href="tel:<?= $usDistributor->getPhone() ?>"><?= $usDistributor->getPhone() ?></a>
+                                        </dt>
+                                        <dd class="values">
+                                            <?= __('OFFICE') ?>
+                                        </dd>
+                                    <?php endif; ?>
+
+                                    <?php if($usDistributor->getEmail()): ?>
+                                        <dt class="label">
+                                            <a href="mailto:<?= $usDistributor->getEmail() ?>" target="_top"><?= $usDistributor->getEmail() ?></a>
+                                        </dt>
+                                        <dd class="values">
+                                            <?= __('EMAIL') ?>
+                                        </dd>
+                                    <?php endif; ?>
+
+                                    <?php if($usDistributor->getContactDistrictTwo() || $usDistributor->getContactTwo()): ?>
+                                        <dt class="label">
+                                            <?= $usDistributor->getContactTwo() ?>
+                                        </dt>
+                                        <dd class="values">
+											<?= $usDistributor->getContactDistrictTwo() ?>
+                                        </dd>
+                                    <?php endif; ?>
+
+                                    <?php if($usDistributor->getPhoneTwo()): ?>
+                                        <dt class="label">
+                                            <?= $usDistributor->getPhoneTwo() ?>
+                                        </dt>
+                                        <dd class="values">
+                                            <?= __('OFFICE') ?>
+                                        </dd>
+                                    <?php endif; ?>
+
+                                    <?php if($usDistributor->getEmailTwo()): ?>
+                                        <dt class="label">
+                                            <a href="mailto:<?= $usDistributor->getEmailTwo() ?>" target="_top"><?= $usDistributor->getEmailTwo() ?></a>
+                                        </dt>
+                                        <dd class="values">
+                                            <?= __('EMAIL') ?>
+                                        </dd>
+                                    <?php endif; ?>
+
+                                    <?php if($usDistributor->getTollFreePhone()): ?>
+                                        <dt class="label">
+                                            <a href="tel:<?= $usDistributor->getTollFreePhone() ?>"><?= $usDistributor->getTollFreePhone() ?></a>
+                                        </dt>
+                                        <dd class="values">
+                                            <?= __('TOLL-FREE') ?>
+                                        </dd>
+                                    <?php endif; ?>
+
+                                    <?php if($usDistributor->getOfficePhone()): ?>
+                                        <dt class="label">
+                                            <a href="tel:<?= $usDistributor->getOfficePhone() ?>"><?= $usDistributor->getOfficePhone() ?></a>
+                                        </dt>
+                                        <dd class="values">
+                                            <?= __('OFFICE') ?>
+                                        </dd>
+                                    <?php endif; ?>
+
+                                    <?php if($usDistributor->getFax()): ?>
+                                        <dt class="label">
+                                            <?= $usDistributor->getFax() ?>
+                                        </dt>
+                                        <dd class="values">
+                                            <?= __('FAX') ?>
+                                        </dd>
+                                    <?php endif; ?>
+
+                                </dl>
+                            </div>
+                            <span data-role="title" class="toggle">Show Contact Info</span>
+                        </div>
+                        <?php endif; ?>
+
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+<?php endif; ?>
+
+<?php if($internationlDistributors->count() > 0): ?>
+    <div class="block-distributors block-international-distributors">
+        <h3 class="block-title"><?= __('International Distributors') ?></h3>
+        <div class="wrapper-items">
+            <div class="item">
+                <?php foreach ($internationlDistributors as $internationlDistributor): ?>
+                            <?php if($checkInterDistributor == null): ?>
+                                <span class="label-country"><?= $block->getCountryName($internationlDistributor->getCountry()) ?></span>
+                            <?php endif; ?>
+                            <?php if($checkInterDistributor != null && $checkInterDistributor != $internationlDistributor->getCountry()): ?>
+                                </div>
+                                <div class="item">
+                                <span class="label-country"><?= $block->getCountryName($internationlDistributor->getCountry()) ?></span>
+                            <?php endif; ?>
+                            <div class="item-outer">
+                            <h5 class="title"><?= $internationlDistributor->getName() ?>
+                                <?php if($internationlDistributor->getWebsite()): ?>
+                                    <a target="_blank" title="<?= $internationlDistributor->getName() ?>" href="<?= $internationlDistributor->getWebsite() ?>">Website</a>
+                                <?php endif; ?>
+                            </h5>
+                            <div class="desc-country"><?= $internationlDistributor->getAddress() . ', ' . $internationlDistributor->getCity() . ', ' . $block->getCodeRegion($internationlDistributor) . ' ' . $internationlDistributor->getZip() ?></div>
+                            <?php if($internationlDistributor->getContact() || $internationlDistributor->getContactDistrict() || $internationlDistributor->getPhone() || $internationlDistributor->getEmail() || $internationlDistributor->getContactDistrictTwo() || $internationlDistributor->getEmailTwo() || $internationlDistributor->getTollFreePhone() || $internationlDistributor->getOfficePhone() || $internationlDistributor->getFax()): ?>
+                            <div class="show-contact-info"  data-mage-init='{"forix/options":{"counterLine":0,"toggleTitle":"Hide","toogleTitleCur":"Show Contact Info"}}'>
+                                <div data-role="content" class="content">
+                                    <dl>
+                                        <?php if($internationlDistributor->getContactDistrict() || $internationlDistributor->getContact()): ?>
+                                            <dt class="label">
+                                                <?= $internationlDistributor->getContact() ?>
+                                            </dt>
+                                            <dd class="values">
+												<?= $internationlDistributor->getContactDistrict() ?>
+                                            </dd>
+                                        <?php endif; ?>
+
+                                        <?php if($internationlDistributor->getPhone()): ?>
+                                            <dt class="label">
+                                                <a href="tel:<?= $internationlDistributor->getPhone() ?>"><?= $internationlDistributor->getPhone() ?></a>
+                                            </dt>
+                                            <dd class="values">
+                                                <?= __('OFFICE') ?>
+                                            </dd>
+                                        <?php endif; ?>
+
+                                        <?php if($internationlDistributor->getEmail()): ?>
+                                            <dt class="label">
+                                                <a href="mailto:<?= $internationlDistributor->getEmail() ?>" target="_top"><?= $internationlDistributor->getEmail() ?></a>
+                                            </dt>
+                                            <dd class="values">
+                                                <?= __('EMAIL') ?>
+                                            </dd>
+                                        <?php endif; ?>
+
+                                        <?php if($internationlDistributor->getContactTwo() || $internationlDistributor->getContactDistrictTwo()): ?>
+                                            <dt class="label">
+                                                <?= $internationlDistributor->getContactTwo() ?>
+                                            </dt>
+                                            <dd class="values">
+												<?= $internationlDistributor->getContactDistrictTwo() ?>
+                                            </dd>
+                                        <?php endif; ?>
+
+                                        <?php if($internationlDistributor->getEmailTwo()): ?>
+                                            <dt class="label">
+                                                <a href="mailto:<?= $internationlDistributor->getEmailTwo() ?>" target="_top"><?= $internationlDistributor->getEmailTwo() ?></a>
+                                            </dt>
+                                            <dd class="values">
+                                                <?= __('EMAIL') ?>
+                                            </dd>
+                                        <?php endif; ?>
+
+                                        <?php if($internationlDistributor->getTollFreePhone()): ?>
+                                            <dt class="label">
+                                                <a href="tel:<?= $internationlDistributor->getTollFreePhone() ?>"><?= $internationlDistributor->getTollFreePhone() ?></a>
+                                            </dt>
+                                            <dd class="values">
+                                                <?= __('TOLL-FREE') ?>
+                                            </dd>
+                                        <?php endif; ?>
+
+                                        <?php if($internationlDistributor->getOfficePhone()): ?>
+                                            <dt class="label">
+                                                <a href="tel:<?= $internationlDistributor->getOfficePhone() ?>"><?= $internationlDistributor->getOfficePhone() ?></a>
+                                            </dt>
+                                            <dd class="values">
+                                                <?= __('OFFICE') ?>
+                                            </dd>
+                                        <?php endif; ?>
+
+                                        <?php if($internationlDistributor->getFax()): ?>
+                                            <dt class="label">
+                                                <?= $internationlDistributor->getFax() ?>
+                                            </dt>
+                                            <dd class="values">
+                                                <?= __('FAX') ?>
+                                            </dd>
+                                        <?php endif; ?>
+
+                                    </dl>
+                                </div>
+                                <span data-role="title" class="toggle">Show Contact Info</span>
+                            </div>
+                            <?php endif; ?>
+                        </div>
+                        <?php $checkInterDistributor = $internationlDistributor->getCountry(); ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

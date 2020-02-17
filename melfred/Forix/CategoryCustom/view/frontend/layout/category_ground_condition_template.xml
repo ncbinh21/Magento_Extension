@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="category.view.container" htmlClass="category-view ground-filter">
+            <referenceContainer name="category.view.generalinfo" htmlClass="category-info ground-cat"/>
+            <block class="Forix\CategoryCustom\Block\GroundCategory" name="category.custom.groundheader"
+                   template="Forix_CategoryCustom::category/groundheader.phtml"/>
+            <block class="Forix\CategoryCustom\Block\GroundCategory" name="category.custom.bannerimage"
+                   template="Forix_CategoryCustom::category/bannerimage.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="columns.top">
+            <block class="Magento\LayeredNavigation\Block\Navigation\Search" name="ground.categoryfilter"
+                   after="category.view.container"
+                   template="Magento_LayeredNavigation::layer_category/search_view.phtml">
+                <block class="Magento\LayeredNavigation\Block\Navigation\State"
+                       name="catalogsearch.categoryfilter.navigation.state" as="state"
+                       template="Forix_CategoryCustom::category/category_filter.phtml"/>
+                <block class="Magento\LayeredNavigation\Block\Navigation\FilterRenderer"
+                       name="catalogsearch.categoryfilter.navigation.renderer" as="renderer"/>
+            </block>
+        </referenceContainer>
+        <move element="category.view.ground" destination="category.view.generalinfo" before="-"/>
+        <referenceBlock name="category.image" remove="true"/>
+        <referenceBlock name="page.main.title" remove="true"/>
+        <referenceBlock name="category.description" remove="true"/>
+    </body>
+</page>

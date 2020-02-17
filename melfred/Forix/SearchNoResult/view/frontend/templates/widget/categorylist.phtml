@@ -1,0 +1,7 @@
+<?php
+$categories = $this->getMenu();
+if($categories) {
+    $level = 1;
+    echo $this->renderSubMenu($categories, $level);
+}
+

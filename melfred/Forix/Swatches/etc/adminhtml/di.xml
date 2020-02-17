@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Swatches\Block\Adminhtml\Attribute\Edit\Options\Visual"
+                type="Forix\Swatches\Block\Adminhtml\Attribute\Edit\Options\Visual" />
+
+    <type name="Magento\Catalog\Controller\Adminhtml\Product\Attribute\Save">
+        <plugin name="Forix_after_save_attribute" type="Forix\Swatches\Block\Adminhtml\Attribute\Save" sortOrder="10" />
+    </type>
+
+</config>

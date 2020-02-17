@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <columns name="company_columns">
+        <column name="customer_no" sortOrder="224">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Customer No</label>
+                <visible>true</visible>
+            </settings>
+        </column>
+        <column name="contact_code" sortOrder="225">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Contact Code</label>
+                <visible>true</visible>
+            </settings>
+        </column>
+        <column name="terms_code" sortOrder="226">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Terms Code</label>
+                <visible>true</visible>
+            </settings>
+        </column>
+        <column name="region" sortOrder="120" class="Forix\Company\Ui\Component\Listing\Column\Region">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">State/Province</label>
+                <visible>true</visible>
+            </settings>
+        </column>
+    </columns>
+</listing>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Config/etc/system_file.xsd">
+    <system>
+        <section id="seositemap" showInDefault="1" showInWebsite="1" showInStore="1" type="text" translate="label" sortOrder="410">
+            <label>Extended Site Map</label>
+            <tab>mirasvit</tab>
+            <resource>Mirasvit_SeoSitemap::config_seositemap</resource>
+            <group id="frontend" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10">
+                <label>Frontend Sitemap Settings</label>
+                <field id="sitemap_base_url" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Base URL Path To Frontend Sitemap</label>
+                </field>
+                <field id="sitemap_meta_title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Meta Title</label>
+                </field>
+                <field id="sitemap_meta_keywords" translate="label" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Meta Keywords</label>
+                </field>
+                <field id="sitemap_meta_description" translate="label" type="textarea" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Meta Description</label>
+                </field>
+                <field id="sitemap_h1" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>H1 Header</label>
+                </field>
+                <field id="is_show_products" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Products</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="is_show_cms_pages" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show CMS Pages</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="ignore_cms_pages" translate="label" type="multiselect" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Ignore CMS Pages</label>
+                    <source_model>\Mirasvit\SeoSitemap\Model\Config\Source\Ignore\Cms\Pages</source_model>
+                </field>
+                <field id="is_show_stores" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Stores</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="additional_links" translate="label" type="textarea" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Additional links</label>
+                    <comment><![CDATA[Example:<br/>
+                            /promotions/, Our Promotions<br/>
+                            /customer/account/, Customer Account<br/>]]>
+                    </comment>
+                </field>
+                <field id="exclude_links" translate="label" type="textarea" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Exclude by pattern</label>
+                </field>
+                <field id="links_limit" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Limit the number of links on one page</label>
+                </field>
+            </group>
+            <!--<group id="google" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="20">-->
+                <!--<label>Google Sitemap Extended Settings</label>-->
+                <!--<field id="is_add_product_images" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">-->
+                    <!--<label>Include Product Images</label>-->
+                    <!--<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>-->
+                <!--</field>-->
+                <!--<field id="is_enable_image_friendly_urls" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">-->
+                    <!--<label>Enable SEO-friendly URLs and custom sizes for Product Images</label>-->
+                    <!--<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>-->
+                <!--</field>-->
+                <!--<field id="image_url_template" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">-->
+                    <!--<label>Template for URL key of Product Images</label>-->
+                <!--</field>-->
+                <!--<field id="image_size_width" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">-->
+                    <!--<label>Image Width</label>-->
+                <!--</field>-->
+                <!--<field id="image_size_height" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">-->
+                    <!--<label>Image Height</label>-->
+                <!--</field>-->
+                <!--<field id="is_add_product_tags" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="0">-->
+                    <!--<label>Include Product Tags</label>-->
+                    <!--<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>-->
+                <!--</field>-->
+                <!--<field id="product_tags_changefreq" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="0" showInStore="0">-->
+                    <!--<label>Product Tags Frequency</label>-->
+                    <!--&lt;!&ndash;source_model>adminhtml/system_config_source_frequency</source_model&ndash;&gt;-->
+                    <!--&lt;!&ndash;source_model>Mage\Adminhtml\Model\System\Config\Source\Frequency</source_model&ndash;&gt;-->
+                <!--</field>-->
+                <!--<field id="product_tags_priority" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="0" showInStore="0">-->
+                    <!--<label>Product Tags Priority</label>-->
+                <!--</field>-->
+                <!--<field id="link_changefreq" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="0" showInStore="0">-->
+                    <!--<label>Additional Links Frequency</label>-->
+                    <!--&lt;!&ndash;source_model>adminhtml/system_config_source_frequency</source_model&ndash;&gt;-->
+                    <!--&lt;!&ndash;source_model>Mage\Adminhtml\Model\System\Config\Source\Frequency</source_model&ndash;&gt;-->
+                <!--</field>-->
+                <!--<field id="link_priority" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="0" showInStore="0">-->
+                    <!--<label>Additional Links Priority</label>-->
+                <!--</field>-->
+                <!--<field id="split_size" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="0" showInStore="0">-->
+                    <!--<label>Sitemap Split Size, KB</label>-->
+                <!--</field>-->
+                <!--<field id="max_links" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="0" showInStore="0">-->
+                    <!--<label>Max URLs quantity per file</label>-->
+                <!--</field>-->
+            <!--</group>-->
+        </section>
+    </system>
+</config>

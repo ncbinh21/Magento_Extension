@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Company\Controller\Account\CreatePost">
+        <plugin name="company_customer_create_plugin" type="Forix\Company\Plugin\Controller\Account\CreatePost"/>
+    </type>
+    <preference for="Magento\Company\Controller\Account\CreatePost" type="Forix\Company\Rewrite\Controller\Account\CreatePost" />
+</config>

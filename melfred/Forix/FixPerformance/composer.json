@@ -1,0 +1,22 @@
+{
+    "name": "forix/fix-performance",
+    "description": "",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "email": "hidro@forixwebdesign.com",
+            "name": "Hidro Le"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Forix\\FixPerformance\\": ""
+        }
+    }
+}

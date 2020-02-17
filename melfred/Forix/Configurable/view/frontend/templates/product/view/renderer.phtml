@@ -1,0 +1,36 @@
+﻿<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?><?php /** @var $block \Forix\Configurable\Block\Product\Renderer\Configurable */ ?>
+<div class="swatch-opt" data-role="swatch-options"></div>
+<script type="text/x-magento-init">
+    {
+        "[data-role=swatch-options]": {
+            "Forix_Configurable/js/radio-swatch-renderer": {
+                "jsonConfig": <?= /* @escapeNotVerified */ $swatchOptions = $block->getJsonConfig() ?>,
+                "jsonSwatchConfig": <?php /* @noEscape */ echo $block->getJsonSwatchConfig(); ?>,
+                "mediaCallback": "<?= /* @escapeNotVerified */ $block->getMediaCallback() ?>",
+                "gallerySwitchStrategy": "<?php /* @escapeNotVerified */ echo $block->getVar('gallery_switch_strategy',
+                    'Magento_ConfigurableProduct') ?: 'replace'; ?>"
+            },
+            "Magento_Swatches/js/configurable-customer-data": {
+                    "swatchOptions": <?php /* @noEscape */ echo $swatchOptions ?>
+            }
+        }
+    }
+</script>
+
+<script type="text/javascript">
+    require(["jquery","rjsResolver"], function($, rjsResolver) {
+        rjsResolver(function() {
+            $("div.radio-swatch-image-inner > img").each(function( i ) {
+                var img = $(this).attr('src');
+                if (img.match(/\.(jpeg|jpg|gif|png)$/) == null) {
+                    $(this).attr('src','/media/blog/image-not-found.jpg');
+                }
+            });
+        });
+    });
+</script>

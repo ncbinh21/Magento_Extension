@@ -1,0 +1,60 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2019 Amasty (https://www.amasty.com)
+ * @package Amasty_Fpc
+ */
+?>
+<?php /** @var \Amasty\Fpc\Block\Adminhtml\Form\Field\PageType\Element $block */ ?>
+
+<?php $types = $block->getTypes() ?>
+
+<table class="admin__control-table">
+    <thead>
+    <tr>
+        <th class="col-draggable"></th>
+        <th class="col-default control-table-actions-th">
+            <span><?= __('Enabled') ?></span></th>
+        <th>
+            <span><?= __('Page Type') ?></span>
+        </th>
+    </tr>
+    </thead>
+    <tbody data-role="options-container" class="ignore-validate ui-sortable">
+    <?php foreach ($types as $key => $type): ?>
+    <tr>
+        <td class="col-draggable">
+            <div data-role="draggable-handle" class="draggable-handle" title="<?= __('Sort Option')?>"></div>
+            <input data-role="order" type="hidden" name="<?= $block->getName() ?>[<?= $key ?>][priority]" value="<?= $type['priority'] ?>">
+        </td>
+        <td class="col-default control-table-actions-cell">
+            <input
+                    class="input-radio"
+                    type="checkbox"
+                    name="<?= $block->getName() ?>[<?= $key ?>][enabled]"
+                    value="1"
+                    <?= isset($type['enabled']) && $type['enabled'] ? 'checked="checked"' : '' ?>>
+        </td>
+        <td>
+            <?= $type['label'] ?>
+        </td>
+    </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+
+<script>
+    require(['jquery', 'jquery/ui'], function ($) {
+        $('[data-role=options-container]').sortable({
+            distance: 8,
+            tolerance: 'pointer',
+            cancel: 'input, button',
+            axis: 'y',
+            update: function () {
+                $('[data-role=options-container] [data-role=order]').each(function (index, element) {
+                    $(element).val(index + 1);
+                });
+            }
+        });
+    });
+</script>

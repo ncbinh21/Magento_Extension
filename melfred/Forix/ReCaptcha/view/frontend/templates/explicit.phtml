@@ -1,0 +1,32 @@
+<?php
+/* @var $block \Forix\ReCaptcha\Block\Explicit */
+
+$formId = str_replace("-","_",$block->getFormId());
+?>
+<script src="<?php echo $block->getRecaptchaScript($formId) ?>" async defer></script>
+<div class="recaptcha" style="overflow:hidden;position:relative;">
+	<div id="recaptcha-<?php echo $formId ?>"></div>
+	<script type="text/javascript">
+        var onloadCallback = function() {
+            require(['jquery', 'recaptcha'], function ($) {
+                if (typeof wid == "undefined")
+                    var wid = [];
+                var onloadCallback<?php echo $formId ?> = function () {
+                    wid["<?php echo $formId ?>"] = grecaptcha.render('recaptcha-<?php echo $formId ?>', {
+                        'sitekey': "<?php echo $block->getSiteKey(); ?>",
+                        'theme': "<?php echo $block->getTheme(); ?>",
+                    });
+                };
+                attachEventFormSubmit("<?php echo $formId ?>");
+                function attachEventFormSubmit(formId) {
+                    jQuery('#' + formId).bind("submit", function (event) {
+                        event.preventDefault();
+                        var widgetId = wid[formId];
+                        var resp = grecaptcha.getResponse(widgetId);
+                    })
+                }
+            });
+        }
+	</script>
+	
+</div>

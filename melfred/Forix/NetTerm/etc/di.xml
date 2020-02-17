@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Forix\NetTerm\Api\NettermRepositoryInterface" type="Forix\NetTerm\Model\NettermRepository"/>
+	<preference for="Forix\NetTerm\Api\Data\NettermInterface" type="Forix\NetTerm\Model\Netterm"/>
+	<preference for="Forix\NetTerm\Api\Data\NettermSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Forix\NetTerm\Model\ResourceModel\Netterm\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">forix_netterm_netterm</argument>
+			<argument name="resourceModel" xsi:type="string">Forix\NetTerm\Model\ResourceModel\Netterm\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="forix_netterm_netterm_grid_data_source" xsi:type="string">Forix\NetTerm\Model\ResourceModel\Netterm\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<type name="Magento\Company\Model\Company\DataProvider">
+		<plugin name="get_allow_netterms" type="Forix\NetTerm\Plugin\Model\Company\DataProvider" />
+	</type>
+</config>

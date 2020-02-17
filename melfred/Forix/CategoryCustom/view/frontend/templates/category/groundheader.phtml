@@ -1,0 +1,16 @@
+<?php /** @var $block \Forix\CategoryCustom\Block\GroundCategory */ ?>
+<?php $data = $block->getCurrentGroundInfo() ?>
+<div class="page-title-wrapper">
+    <div class="table-soil">
+        <h1 class="page-title">
+            <?= $data['name'] ?>
+        </h1>
+        <?php echo $block->readImageContent($data['icon_normal']); ?>
+
+    </div>
+    <?php if ($data) : ?>
+        <div class="category-description" data-mage-init='{"forix/formattext":{}}'>
+            <?= $data['content'] ?>
+        </div>
+    <?php endif; ?>
+</div>

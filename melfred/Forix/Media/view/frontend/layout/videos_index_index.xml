@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <meta name="description" content="Check out breaking press releases and watch informative videos to learn more about our relentless pursuit of innovation to help HDD drillers become more productive and profitable."/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <container name="media-information-container" htmlTag="div" htmlClass="media-information-content" before="-">
+                <block class="Magento\Cms\Block\Block" name="media-information" before="-">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">media-information</argument>
+                    </arguments>
+                </block>
+               
+            </container>
+            <block class="Forix\Media\Block\Media" name="forix.media.video" template="Forix_Media::media.phtml"/>
+             <block class="Magento\Cms\Block\Block" name="media-press" after="-">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">media-press</argument>
+                    </arguments>
+                </block>
+        </referenceContainer>
+        <referenceContainer name="main.content">
+            <container name="media-explore-container" htmlTag="div" htmlClass="media-explore-content" after="-">
+                <block class="Magento\Cms\Block\Block" name="media-explore">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">media-explore</argument>
+                    </arguments>
+                </block>
+                
+            </container>
+        </referenceContainer>
+        <!-- <referenceContainer name="sidebar.cms">
+                <block class="Magento\Cms\Block\Block" name="media-press" >
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">media-press</argument>
+                    </arguments>
+                </block>
+           
+        </referenceContainer> -->
+    </body>
+</page>

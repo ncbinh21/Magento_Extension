@@ -1,0 +1,82 @@
+<?php
+$isDownLoaded = $block->isDownLoaded();
+$customerId = $block->customerId();
+?>
+<?php if (!$isDownLoaded): ?>
+    <script type="text/javascript" xml="space">
+        require(["jquery", "forix/plugins/fancybox"], function ($) {
+            $(function () {
+                $(document).ready(function(){
+//                    $('.icon-download').attr("href", 'javascript:void(0);');
+                });
+                $(document).on('click', '.upload-file', function () {
+                    var item = $(this).closest('.item');
+                    if(item.find('.upload-file a').length > 0 && item.find('.backup-file').length > 0) {
+                        var href = item.find('.upload-file a').attr('href');
+                        item.find('.upload-file a').removeAttr('target');
+                        if(href.indexOf('javascript') == -1){
+                            item.find('.upload-file a').attr('href', 'javascript:void(0);');
+                            item.find('.backup-file').attr('href', href);
+                        }
+                        var hrefBackup = item.find('.backup-file').attr('href');
+                        $('.button-download').attr('href', hrefBackup);
+
+                    }
+                    if(item.find('.thumbnail img').length > 0) {
+                        var src = item.find('.thumbnail img').attr('src');
+                        $("#open-download .thumbnail img").attr("src",src);
+                    }
+                    if(item.find('.text .download-content').length > 0) {
+                        var content = item.find('.text .download-content')[0].innerHTML;
+                        $("#open-download .form-download .popup-guide").html(content);
+                    }
+                    if(item.find('.text .title').length > 0) {
+                        var title = item.find('.text .title')[0].textContent;
+                        $("#open-download .form-download .title").text(title);
+                    }
+                    $.fancybox.open($('#open-download'), {
+                        padding: 0,
+                        //autoSize: false,
+                        width: '1112px',
+                        fitToView: true,
+                        //autoResize: false,
+
+                        //height: 707,
+                        scrolling: 'yes',
+                        maxWidth: '94%',
+                        maxHeight: '96%',
+                        beforeShow: function(){
+                            $("body").css({'overflow-y':'hidden'});
+                        },
+                        afterClose: function(){
+                            $("body").css({'overflow-y':'visible'});
+                        },
+                        helpers: {
+                            overlay: {
+                            locked: false
+                            }
+                        }
+
+                    });
+                });
+                $(".button-download").click(function () {
+                    $.ajax({
+                        url: '<?php echo $block->getUrl('guide/ajax/save'); ?>',
+                        type: 'GET',
+                        data: {
+                            customer_id: <?php echo $customerId ? $customerId : 0 ?>,
+                            name: $("#name").val(),
+                            company: $("#company").val(),
+                            email: $("#email-download").val()
+                        },
+                        showLoader: true,
+                        success: function (res) {
+                            window.location.reload();
+                        }
+                    });
+                });
+            });
+        })
+    </script>
+<?php endif; ?>
+

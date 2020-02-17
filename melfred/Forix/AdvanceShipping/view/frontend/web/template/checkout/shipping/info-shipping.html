@@ -1,0 +1,12 @@
+<div class="shipping-additional-info">
+    <!-- ko if: hasHeavyItem -->
+        <div class="shipping-heavy">
+            <span data-bind="html: shippingNote.heavy"></span>
+        </div>
+    <!-- /ko -->
+    <!-- ko if: shippingNote.note -->
+    <div class="shipping-note">
+        <span data-bind="html: shippingNote.note"></span>
+    </div>
+    <!-- /ko -->
+</div>

@@ -1,0 +1,108 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_ShopbyBrand
+ */
+?>
+<?php
+/** @var Amasty\ShopbyBrand\Block\Widget\BrandSlider $this */
+    $items          = $this->getItems();
+    $isSliderEnable = $this->isSliderEnabled();
+    $swiperPrefix   = $isSliderEnable ? 'swiper-' : '';
+    $sliderClass   = $isSliderEnable ? '-enable' : '';
+    $itemsPerView   = $this->getData('items_number');
+    $sliderOptions  = $this->getSliderOptions();
+    $showLabel      = $this->getData('show_label');
+    $showPagination = $this->getData('pagination_show');
+    $showButtons    = $this->getData('buttons_show');
+    $imgWidth       = $this->getData('image_width') ?
+        $this->getData('image_width') :
+        Amasty\ShopbyBrand\Block\Widget\BrandSlider::DEFAULT_IMG_WIDTH;
+    $imgHeight      = $this->getData('image_height');
+    $sliderWidth    = $this->getData('slider_width') ?
+        $this->getData('slider_width') :
+        ($imgWidth + 10) * $itemsPerView;
+    $buttonWidth    = 40;
+    $sliderId       = $this->getSliderId();
+?>
+<style>
+    #<?= /* @escapeNotVerified */ $sliderId ?> {
+        max-width: <?= /* @escapeNotVerified */ $buttonWidth * 2 + $sliderWidth; ?>px;
+        padding: 0 <?= /* @escapeNotVerified */ $buttonWidth?>px;
+    }
+    #<?= /* @escapeNotVerified */ $sliderId ?> .swiper-brand img {
+    <?php if ($imgWidth) : ?>
+        max-width: <?= /* @escapeNotVerified */ $imgWidth;?>px;
+    <?php endif;?>
+    <?php if ($imgHeight) : ?>
+        max-height: <?= /* @escapeNotVerified */ $imgHeight;?>px;
+    <?php endif;?>
+    }
+    .swiper-brand .no-img {
+        width: <?= /* @escapeNotVerified */ $imgWidth;?>px;
+        line-height: <?= /* @escapeNotVerified */ $imgWidth;?>px;
+        font-size: <?= /* @escapeNotVerified */ $imgWidth*0.65;?>px;
+    }
+</style>
+<div class="am-slider-container">
+  <div class="amslider-header-container"
+       style="background-color:<?= /* @escapeNotVerified */ $this->getHeaderColor() ?>;
+              color: <?= $block->escapeHtml($this->getTitleColor()) ?>;">
+      <?= $block->escapeHtml($this->getTitle()) ?>
+  </div>
+    <div class="amslider <?= $sliderClass?>" id="<?= /* @escapeNotVerified */$sliderId ?>" <?php if (!$showLabel) : ?>
+        <?= ' show-label' ?>
+    <?php endif; ?>>
+    <?php if ($showPagination) : ?>
+        <div class="swiper-pagination"></div>
+    <?php endif; ?>
+    <?php if ($showButtons && $isSliderEnable) : ?>
+        <div class="swiper-button-prev"></div>
+        <div  class="swiper-button-next"></div>
+    <?php endif; ?>
+        <div class="swiper-container">
+            <div class="<?= $swiperPrefix?>wrapper">
+                <?php foreach ($items as $brand) : ?>
+                    <a href="<?= /* @escapeNotVerified */ $brand['url']?>" class="<?= $swiperPrefix?>slide">
+                        <div class="swiper-brand <?php if ($showLabel) : ?><?= ' brand-label' ?><?php endif; ?>">
+                            <?php if ($brand['img']) : ?>
+                                <img src="<?= /* @escapeNotVerified */ $brand['img']; ?>" />
+                            <?php else : ?>
+                                <p class="no-img"><?= /* @escapeNotVerified */  $brand['label'][0]?></p>
+                            <?php endif ?>
+                            <?php if ($showLabel) : ?>
+                                <div class="brand-title"><?= $block->escapeHtml($brand['label'])?></div>
+                            <?php endif; ?>
+                        </div>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+</div>
+<?php if ($isSliderEnable) : ?>
+<script>
+    require([
+        'jquery',
+        'Amasty_ShopbyBase/js/swiper.min',
+        'domReady!'
+    ], function ($) {
+        new Swiper('#<?= /* @escapeNotVerified */ $sliderId ?> .swiper-container', {
+            <?php foreach ($sliderOptions as $option => $value) : ?>
+                <?= /* @escapeNotVerified */ $option . ':' . $value . "," ?>
+            <?php endforeach; ?>
+              breakpoints: {
+                <?php for ($i = 1; $i < $itemsPerView; $i++) :?>
+                <?= /* @escapeNotVerified */ ($i + 1) * ($imgWidth + 20 + 10) + $buttonWidth * 2; ?> : {
+                  slidesPerView: <?= /* @escapeNotVerified */ $i ?>
+                },
+                <?php endfor; ?>
+              },
+              nextButton: '#<?= /* @escapeNotVerified */ $sliderId ?> .swiper-button-next',
+              prevButton: '#<?= /* @escapeNotVerified */ $sliderId ?> .swiper-button-prev',
+              spaceBetween: 10
+           })
+    });
+</script>
+<?php endif; ?>

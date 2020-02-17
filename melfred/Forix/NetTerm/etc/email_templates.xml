@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Created by Mercurial
+ * Job Title: Magento Developer
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="netterm_configuration_send_email_netterm" label="Customer Active Email" file="register_netterm_account.html" type="html" module="Forix_NetTerm" area="frontend"/>
+</config>

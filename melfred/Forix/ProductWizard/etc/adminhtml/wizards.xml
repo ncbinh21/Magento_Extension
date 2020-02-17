@@ -1,0 +1,4 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <wizards id="product_wizard"  translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1"/>
+</config>

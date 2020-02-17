@@ -1,0 +1,26 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_Shopby
+ */
+?>
+<?php
+/**
+ * @var $block \Amasty\Shopby\Block\Product\ProductList\Ajax
+ */
+if (!$block->canShowBlock()) {
+    return;
+}
+?>
+<script type="text/x-magento-init">
+{
+    "body.cms-index-index": {
+        "amShopbyAjax": {
+                "submitByClick": <?= /* @escapeNotVerified */ (int) $block->submitByClick();?>,
+                "clearUrl": "<?= /* @escapeNotVerified */ $block->getClearUrl();?>",
+                "isCategorySingleSelect": "<?= /* @escapeNotVerified */ $block->isCategorySingleSelect();?>"
+            }
+        }
+}
+</script>

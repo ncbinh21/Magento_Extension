@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Created by Mercurial
+ * Job Title: Magento Developer
+ * Project Name: M2.2.3-EE - Melfredborzall
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="standard">
+        <route id="guide" frontName="guide">
+            <module name="Forix_Guide" />
+        </route>
+    </router>
+</config>

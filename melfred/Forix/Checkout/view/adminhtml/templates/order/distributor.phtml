@@ -1,0 +1,64 @@
+<?php $checkPush = $this->checkPushSageError(); ?>
+<?php if ($checkPush): ?>
+    <section class="admin__page-section order-view-account-information">
+        <div class="admin__page-section-title">
+            <span class="title"><?= $block->escapeHtml(__('Push Order To Sage')) ?></span>
+        </div>
+        <div class="admin__page-section-content">
+            <button class="submit_form_push"><?php echo __('Push') ?></button>
+        </div>
+    </section>
+<?php endif; ?>
+<?php $distributor = $this->getDistributor(); ?>
+<?php if ($distributor): ?>
+    <section class="admin__page-section order-view-account-information">
+        <div class="admin__page-section-title">
+            <span class="title"><?= $block->escapeHtml(__('Distributor')) ?></span>
+        </div>
+        <div class="admin__page-section-content">
+            <div class="distributor-customer-name"><?php echo $distributor->getName(); ?></div>
+            <div>
+                <?php echo $distributor->getAddress(); ?>
+            </div>
+            <div>
+                <?php echo $distributor->getCity(); ?>
+                <?php echo $distributor->getCodeRegion(); ?>
+                <?php echo $distributor->getZip(); ?>
+            </div>
+            <?php if ($distributor->getPhone()): ?>
+                <div>
+                    <a href="tel:<?php echo $distributor->getPhone(); ?>"><?php echo __("Cell: %1", $distributor->getPhone()); ?></a>
+                </div>
+            <?php endif; ?>
+            <?php if ($distributor->getOfficePhone()): ?>
+                <div>
+                    <a href="tel:<?php echo $distributor->getOfficePhone(); ?>"><?php echo __("Office: %1", $distributor->getOfficePhone()); ?></a>
+                </div>
+            <?php endif; ?>
+            <div><a href="mailto:<?php echo $distributor->getEmail(); ?>"><?php echo $distributor->getEmail(); ?></a>
+            </div>
+            <div><a href="<?php echo $distributor->getWebsite() ?>"><?php echo $distributor->getWebsite() ?></a></div>
+            <?php if ($distributor->getContact()): ?>
+                <div><?php echo __("Contact: %1", $distributor->getContact()); ?></div>
+            <?php endif; ?>
+        </div>
+    </section>
+<?php endif; ?>
+<script>
+    require(['jquery'], function($){
+        'use strict';
+        $('.submit_form_push').click(function () {
+            $.ajax({
+                url: '<?php echo $block->getUrl('sage/order/pushordertosage'); ?>',
+                type: 'POST',
+                data: {
+                    order_id: <?php echo $this->getOrder()->getId() ?>,
+                },
+                showLoader: true,
+                success: function (res) {
+                    window.location.reload();
+                }
+            });
+        });
+    });
+</script>

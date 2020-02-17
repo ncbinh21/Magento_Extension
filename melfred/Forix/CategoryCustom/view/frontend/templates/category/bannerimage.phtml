@@ -1,0 +1,6 @@
+<?php /** @var $block \Forix\CategoryCustom\Block\GroundCategory */ ?>
+<?php if ($data = $block->getCurrentGroundInfo()) : ?>
+    <img class="photo image cat_banner_image"
+         src="<?= $block->getRootUrl().$data['icon_hover'] ?>"
+         alt="<?= "Ground Condition:". $data['name'] ?>"/>
+<?php endif; ?>

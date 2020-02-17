@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Customer\Block\Widget\Name" type="Forix\Customer\Block\Widget\Name" />
+    <type name="Magento\Customer\Controller\Account\EditPost">
+        <plugin name="customer_edit_plugin" type="Forix\Customer\Plugin\Controller\Account\EditPost" sortOrder="50" />
+    </type>
+    <type name="Magento\Customer\Controller\Account\CreatePost">
+        <plugin name="customer_create_plugin" type="Forix\Customer\Plugin\Controller\Account\CreatePost" sortOrder="50" />
+    </type>
+    <type name="Magento\Customer\Controller\Address\FormPost">
+        <plugin name="customer_book_address_plugin" type="Forix\Customer\Plugin\Controller\Address\FormPost" sortOrder="50" />
+    </type>
+</config>

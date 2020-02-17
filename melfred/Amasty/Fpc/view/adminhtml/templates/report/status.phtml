@@ -1,0 +1,45 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2019 Amasty (https://www.amasty.com)
+ * @package Amasty_Fpc
+ */
+?>
+<?php /** @var \Amasty\Fpc\Block\Adminhtml\Report\Tab\Status $block */ ?>
+
+<script>
+    require(['Amasty_Fpc/amcharts/amcharts'], function () {
+        require(['Amasty_Fpc/amcharts/pie'], function () {
+            var prepareChart = function () {
+                var chart = new AmCharts.AmPieChart();
+                chart.dataProvider = <?= json_encode($block->getGraphData()) ?>;
+                chart.titleField = "status";
+                chart.valueField = "count";
+                chart.outlineColor = "#FFFFFF";
+                chart.outlineAlpha = 0.8;
+                chart.outlineThickness = 2;
+                chart.labelText = "[[title]]: [[value]][[suffix]]";
+                chart.colorField = "color";
+
+                chart.listeners = [{
+                    event: "clickSlice",
+                    method: function(event) {
+                        var httpCode = event.dataItem.dataContext.code;
+                        var url = '<?= $block->getUrl('amasty_fpc/log/index') ?>#' + httpCode;
+                        window.open(url, '_blank');
+                    }
+                }];
+
+                chart.write("chart-status");
+            };
+
+            if (AmCharts.isReady) {
+                prepareChart();
+            } else {
+                AmCharts.ready(prepareChart);
+            }
+        });
+    });
+</script>
+<strong><?= __('Click on the sector to see the detailed pages list') ?></strong>
+<div id="chart-status" style="width: 100%; height: 400px;"></div>

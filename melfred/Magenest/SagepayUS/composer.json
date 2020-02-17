@@ -1,0 +1,21 @@
+{
+    "name": "magenest/module-sagepayus",
+    "description": "N/A",
+    "require": {
+        "magenest/core": "dev-master"
+    },
+    "type": "magento2-module",
+    "version": "1.1.5",
+    "license": [
+        "OSL-3.0",
+        "proprietary"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Magenest\\SagepayUS\\": ""
+        }
+    }
+}

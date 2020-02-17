@@ -1,0 +1,140 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+$order = $block->getOrder();
+?>
+<section class="admin__page-section edit-order-comments">
+    <ul class="note-list">
+        <?php foreach ($block->getFullHistory() as $_item): ?>
+            <li class="note-list-item">
+                <span class="note-list-date"><?= /* @escapeNotVerified */ $block->getItemCreatedAt($_item) ?></span>
+                <span class="note-list-time"><?= /* @escapeNotVerified */ $block->getItemCreatedAt($_item, 'time') ?></span>
+                <span class="note-list-status"><?= /* @escapeNotVerified */ $block->getItemTitle($_item) ?></span>
+                <?php if ($block->isItemNotified($_item, false)): ?>
+                    <span class="note-list-customer">
+                    <?= /* @escapeNotVerified */ __('Customer') ?>
+                        <?php if ($block->isCustomerNotificationNotApplicable($_item)): ?>
+                            <span class="note-list-customer-notapplicable"><?= /* @escapeNotVerified */ __('Notification Not Applicable') ?></span>
+                        <?php elseif ($block->isItemNotified($_item)): ?>
+                            <span class="note-list-customer-notified"><?= /* @escapeNotVerified */ __('Notified') ?></span>
+                        <?php else: ?>
+                            <span class="note-list-customer-not-notified"><?= /* @escapeNotVerified */ __('Not Notified') ?></span>
+                        <?php endif; ?>
+                </span>
+                <?php endif; ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+    <div class="edit-order-comments-block">
+        <div class="edit-order-comments-block-title">
+            <?= /* @escapeNotVerified */ __('Notes for this Order') ?>
+        </div>
+        <?php foreach ($block->getFullHistory() as $_item): ?>
+            <?php if ($_comment = $block->getItemComment($_item)): ?>
+                <div class="comments-block-item">
+                    <div class="comments-block-item-comment">
+                        <?= /* @escapeNotVerified */ $_comment ?>
+                        <?php if ($block->isOrderNote($_item) || $block->isPoNumber($_item)): ?>
+                            <?php if (!$this->getIsOrder()):?>
+                                <?php if($block->isOrderNote($_item)): ?>
+                                    <a href="javascript:void(0);" class="edit_customer_note"><?php echo __('Edit Order Note')?></a>
+                                    <input class="check-type hidden" name="check-type" value="is_order_note"/>
+                                <?php else: ?>
+                                    <a href="javascript:void(0);" class="edit_customer_note"><?php echo __('Edit PO Number')?></a>
+                                    <input class="check-type hidden" name="check-type" value="is_po_number"/>
+                                <?php endif; ?>
+                            <?php endif;?>
+                            <div class="customer_note_form hidden">
+                                <div>
+                                    <textarea name="customer_note" maxlength="300" class="customer_note"><?= /* @escapeNotVerified */ $_comment ?></textarea>
+                                </div>
+                                <div>
+                                    <button class="submit_form"><?php echo __('Submit') ?></button>
+                                    <button class="cancel_form"><?php echo __('Cancel') ?></button>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                    <span class="comments-block-item-date-time">
+                        <?= /* @escapeNotVerified */ __('Comment added') ?>
+                        <?= /* @escapeNotVerified */ $block->getItemCreatedAt($_item) ?>
+                        <?= /* @escapeNotVerified */ $block->getItemCreatedAt($_item, 'time') ?>
+                    </span>
+                </div>
+            <?php else: ?>
+                <?php if ($block->isOrderNote($_item) || $block->isPoNumber($_item)): ?>
+                    <?php if (!$this->getIsOrder()):?>
+                        <div class="comments-block-item">
+                            <div class="comments-block-item-comment">
+                                <?= /* @escapeNotVerified */ $_comment ?>
+                                <?php if($block->isOrderNote($_item)): ?>
+                                    <a href="javascript:void(0);" class="edit_customer_note"><?php echo __('Edit Order Note')?></a>
+                                    <input class="check-type hidden" name="check-type" value="is_order_note"/>
+                                <?php else: ?>
+                                    <a href="javascript:void(0);" class="edit_customer_note"><?php echo __('Edit PO Number')?></a>
+                                    <input class="check-type hidden" name="check-type" value="is_po_number"/>
+                                <?php endif; ?>
+
+                                <div class="customer_note_form">
+                                    <div>
+                                        <textarea name="customer_note" maxlength="300" class="customer_note"><?= /* @escapeNotVerified */ $_comment ?></textarea>
+                                    </div>
+                                    <div>
+                                        <button class="submit_form"><?php echo __('Submit') ?></button>
+                                        <button class="cancel_form"><?php echo __('Cancel') ?></button>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <span class="comments-block-item-date-time">
+                            <?= /* @escapeNotVerified */ __('Comment added') ?>
+                            <?= /* @escapeNotVerified */ $block->getItemCreatedAt($_item) ?>
+                            <?= /* @escapeNotVerified */ $block->getItemCreatedAt($_item, 'time') ?>
+                        </span>
+                        </div>
+                    <?php endif;?>
+                <?php endif; ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+</section>
+<script>
+    require(['jquery'], function($){
+        'use strict';
+        $('.edit_customer_note').click(function () {
+            $(this).closest('.comments-block-item-comment').find('.customer_note_form').removeClass("hidden");
+        });
+
+        $('.cancel_form').click(function () {
+            $(this).closest('.customer_note_form').addClass("hidden");
+        });
+
+        $('.submit_form').click(function () {
+            $.ajax({
+                url: '<?php echo $block->getUrl('forix/order/updatenoteajax'); ?>',
+                type: 'POST',
+                data: {
+                    customer_note: $(this).closest('.customer_note_form').find('.customer_note').val(),
+                    order_id: <?php echo $order->getId() ?>,
+                    check_type: $(this).closest('.comments-block-item-comment').find('.check-type').val()
+                },
+                showLoader: true,
+                success: function (res) {
+                    if (res.messages) {
+                        $('[data-placeholder="messages"]').html(res.messages);
+                    }
+
+                    if (res.minicart) {
+                        $('[data-block="minicart"]').replaceWith(res.minicart);
+                        $('[data-block="minicart"]').trigger('contentUpdated');
+                    }
+                    window.location.reload();
+                }
+            });
+        });
+    });
+</script>

@@ -1,0 +1,103 @@
+<?php
+/**
+ * @var $block \Forix\ProductWizard\Block\Wizard\Steps
+ */
+$groupCollection = $block->getGroups();
+?>
+<!-- ko foreach: getRegion('product_wizard_selections') -->
+<div class="product-wizard-selections">
+    <div class="cart table-wrapper">
+        <table id="shopping-cart-table" class="cart items data table">
+            <thead>
+            <tr>
+                <th class="col item" scope="col">
+                    <span><?php echo __("Parts"); ?></span>
+                    <span class="num-count" data-bind="text: getProductCount()"></span>
+                </th>
+                <th class="col price no-display" scope="col"><span><?php echo __("Price"); ?></span></th>
+                <th class="col include" scope="col"><span><?php echo __("Include"); ?></span></th>
+            </tr>
+            </thead>
+            <tbody class="product-wizard card item step-two-selected-item">
+            <!-- ko foreach: {data: selectedPrevProductList, as: 'product'} -->
+                <tr class="item-info">
+                    <td data-th="Item" class="col item">
+                        <a data-bind='attr: {"href": product.url, "title": product.name }'
+                           tabindex="-1"
+                           class="product-item-photo">
+                                <span class="product-image-container" style="width:100px;">
+                                    <span class="product-image-wrapper" style="padding-bottom: 100%;">
+                                        <img class="product-image-photo"
+                                             data-bind='attr:{
+                                             "src": product.images[0].url,
+                                             "width": product.images[0].resized_width,
+                                             "height": product.images[0].resized_height,
+                                             "alt": product.images[0].label}'>
+                                    </span>
+                                </span>
+                        </a>
+                        <div class="product-item-details">
+                            <strong class="product-item-name">
+                                <a data-bind='attr: { "href": product.url, "title": product.name }'>
+                                    <!-- ko i18n: product.name --><!-- /ko -->
+                                </a>
+                            </strong>
+                            <dl class="item-options">
+                                <!-- ko foreach: {data: $parent.getSelectedOptions(), as: 'option'} -->
+                                    <!-- ko if: option.attribute_code == 'mb_rig_model' -->
+                                    <dt><!-- ko i18n: option.title --><!-- /ko --></dt>
+                                    <dd><!-- ko i18n: option.label --><!-- /ko --></dd>
+                                    <!-- /ko -->
+                                <!-- /ko -->
+                                <!-- ko foreach: {data: product.extension_attributes.attribute_option_data, as: 'option'} -->
+                                <dt><!-- ko i18n: option.attribute_label --><!-- /ko --></dt>
+                                <dd><!-- ko i18n: option.attribute_values --><!-- /ko --></dd>
+                                <!-- /ko -->
+                            </dl>
+                        </div>
+                    </td>
+                    <td class="col price no-display"
+                        data-bind='attr: {"data-th": "Price"}, html: 0 != product.extension_attributes.canShowPrice?product.price_info.formatted_prices.final_price:""'></td>
+                    <td class="col include" data-bind='attr: {"data-th": "Include"}'>
+                        <div class="field include">
+                            <div class="option-footer">
+                                <input type="checkbox"
+                                       data-bind="
+                                       afterRender: $parent.selectDefault(product),
+                                       attr: {
+                                        'id': 'product-checkbox-' + product.id,
+                                       },
+                                       checkedValue: product,
+                                       checked: $parent.selectedProduct"/>
+                                <label data-bind='attr: { "for": "product-checkbox-" + product.id}'><!-- ko i18n: 'Select' --><!-- /ko --></label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            <!-- /ko -->
+            </tbody>
+            <?php if ($groupCollection): ?>
+                <?php foreach ($groupCollection as $group): ?>
+                    <?php $groupItems = $group->getGroupItemCollection(); ?>
+                    <?php foreach ($groupItems as $groupItem): ?>
+                        <?php echo $block->getGroupItemRenderer($groupItem)->toHtml(); ?>
+                    <?php endforeach; ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </table>
+    </div>
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<!-- /ko -->
+<script>
+    require([
+        'jquery',
+        'jquery/jquery.cookie'
+    ], function($){
+        var check_cookie = $.cookie('domestic-cookie');
+        $('.col.price').addClass('no-display');
+        if(check_cookie == 1){
+            $('.col.price').removeClass('no-display');
+        }
+    });
+</script>

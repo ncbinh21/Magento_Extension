@@ -1,0 +1,48 @@
+<?php
+/**
+ * Created by Nick Howard.
+ * Job Title: Magento Developer
+ * Project: melfredborzall.local
+ */
+?>
+<?php /* @var $helper Forix\IntelliSuggest\Helper\Data */ ?>
+<?php /* @var $block Magento\Checkout\Block\Cart */ ?>
+<?php /* @var $intellisuggestItem Forix\Quote\Custom\Item */ ?>
+<?php $helper = $this->helper('Forix\IntelliSuggest\Helper\Data'); ?>
+<?php if ($helper->getJsSrc() && $helper->getSiteId()): ?>
+    <?php
+    $intellisuggestCart = array();
+    foreach ($block->getQuote()->getAllItems() as $intellisuggestItem) {
+        if ($intellisuggestItem->getPrice() > 0) {
+            $intellisuggestCart[] = array(
+                'sku' => $intellisuggestItem->getProduct()->getSku(),
+                'qty' => $intellisuggestItem->getQty(),
+                'price' => $intellisuggestItem->getPrice()
+            );
+        }
+    }
+    ?>
+
+    <script type="text/javascript" src="<?php echo $helper->getJsSrc(); ?>"></script>
+    <script type="text/javascript">
+    try{
+        var ss_seeds = [];
+        <?php foreach ($intellisuggestCart as $intellisuggestItem): ?>
+            ss_seeds.push("<?php echo $intellisuggestItem['sku'] ?>");
+        <?php endforeach; ?>
+
+        IntelliSuggest.init({siteId:'<?php echo $helper->getSiteId(); ?>', context:'Basket/', seed:ss_seeds});
+
+        <?php foreach ($intellisuggestCart as $intellisuggestItem): ?>
+            IntelliSuggest.haveItem({
+                sku: "<?php echo $intellisuggestItem['sku'] ?>",
+                qty: <?php echo $intellisuggestItem['qty'] ?>,
+                price: <?php echo $intellisuggestItem['price'] ?>
+            });
+        <?php endforeach; ?>
+
+        IntelliSuggest.inBasket();
+    } catch(err) {}
+
+    </script>
+<?php endif; ?>

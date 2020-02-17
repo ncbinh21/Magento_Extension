@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Ves\Megamenu\Block\Adminhtml\Renderer\Fieldset\Editor"  type="Forix\Megamenu\Rewrite\Ves\Megamenu\Block\Adminhtml\Renderer\Fieldset\Editor" />
+    <preference for="Ves\Megamenu\Helper\Editor"  type="Forix\Megamenu\Rewrite\Ves\Megamenu\Helper\Editor" />
+    <type name="Ves\Megamenu\Model\Config\Source\LinkType">
+        <plugin name="add_more_link_type" type="Forix\Megamenu\Plugin\Ves\Megamenu\Model\Config\Source\LinkType" sortOrder="1" />
+    </type>
+    <preference for="Ves\Megamenu\Block\Adminhtml\Menu\Edit\Form" type="Forix\Megamenu\Rewrite\Ves\Megamenu\Block\Adminhtml\Menu\Edit\Form" />
+
+    <type name="Ves\Megamenu\Model\Menu">
+        <plugin name="after_save_menu" type="Forix\Megamenu\Plugin\Ves\Megamenu\Model\Menu" sortOrder="1" />
+    </type>
+
+</config>

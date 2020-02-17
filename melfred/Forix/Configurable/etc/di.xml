@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\ConfigurableProduct\Block\Product\View\Type\Configurable">
+        <plugin name="add_fitment_attr" type="Forix\Configurable\Plugin\Configurable" sortOrder="100"/>
+    </type>
+    <type name="Magento\ConfigurableProduct\Model\Product\Type\Configurable">
+        <plugin name="add_fitment_attributes_to_configurable" type="Forix\Configurable\Model\Plugin\Configurable"/>
+    </type>
+
+    <preference for="\Magento\Swatches\Block\Product\Renderer\Configurable" type="Forix\Configurable\Block\Rewrite\Product\Renderer\Configurable" />
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="exclude_option_image_attribute" type="Forix\Configurable\Model\Plugin\Product" />
+    </type>
+
+    <type name="Forix\Configurable\Model\RadioSwatchAttributeCodes">
+        <arguments>
+            <argument name="cacheKey" xsi:type="string">radio-swatch-attribute-list</argument>
+            <argument name="cacheTags" xsi:type="array">
+                <item name="0" xsi:type="const">Magento\Eav\Model\Entity\Attribute::CACHE_TAG</item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="\Magento\ConfigurableProduct\Model\Product\Type\Configurable" type="Forix\Configurable\Rewrite\Magento\ConfigurableProduct\Model\Product\Type\Configurable" />
+    <preference for="Magento\ConfigurableProductSales\Model\Order\Reorder\OrderedProductAvailabilityChecker" type="Forix\Configurable\Rewrite\Magento\ConfigurableProduct\Model\Order\Reorder\OrderedProductAvailabilityChecker" />
+</config>

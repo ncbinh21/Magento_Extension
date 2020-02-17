@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Company\Model\CompanySuperUserGet" type="Forix\Company\Rewrite\Model\CompanySuperUserGet" />
+    <preference for="Magento\Company\Controller\Adminhtml\Customer\CompanyList" type="Forix\Company\Rewrite\Controller\Adminhtml\Customer\CompanyList" />
+    <preference for="Magento\Company\Model\Email\Sender" type="Forix\Company\Rewrite\Model\Email\Sender" />
+</config>

@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add action="forix_distributor/zipcode/index"
+             id="Forix_Distributor::forix_distributor_zipcode"
+             module="Forix_Distributor"
+             parent="Amasty_Storelocator::storelocator"
+             resource="Magento_Backend::content" sortOrder="9999"
+             title="Distributor Zip Code"/>
+
+        <add id="Forix_Distributor::customer_distributor" title="Distributor Customer" module="Forix_Distributor" resource="Forix_Distributor::customer" action="forix_distributor/customer/index" sortOrder="999" />
+        <!--<add id="Forix_Distributor::list_distributor" title="List Distributor" module="Forix_Distributor" action="forix_distributor/customer/index" resource="Forix_Distributor::customer" parent="Forix_Distributor::customer_distributor" />-->
+        <!--<add id="Forix_Distributor::new_distributor" title="New Distributor" module="Forix_Distributor" action="forix_distributor/customer/new" resource="Forix_Distributor::customer" parent="Forix_Distributor::customer_distributor" />-->
+
+    </menu>
+</config>

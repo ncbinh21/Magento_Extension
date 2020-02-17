@@ -1,0 +1,170 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Forix\ProductWizard\Api\GetItemsManagementInterface" type="Forix\ProductWizard\Model\GetItemsManagement"/>
+	<preference for="Forix\ProductWizard\Api\GroupRepositoryInterface" type="Forix\ProductWizard\Model\GroupRepository"/>
+	<preference for="Forix\ProductWizard\Api\Data\GroupInterface" type="Forix\ProductWizard\Model\Group"/>
+	<preference for="Forix\ProductWizard\Api\Data\GroupSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<preference for="Magento\Catalog\Model\Product" type="Forix\ProductWizard\Model\Product"/>
+	<preference for="Magento\Catalog\Api\ProductLinkRepositoryInterface" type="Forix\ProductWizard\Model\ProductLink\Repository"/>
+	<preference for="Forix\ProductWizard\Api\RelationCollectionProviderInterface" type="Forix\ProductWizard\Model\RelationCollectionProvider"/>
+	<preference for="Forix\ProductWizard\Api\Data\ProductRelationInterface" type="Forix\ProductWizard\Model\ProductRelation"/>
+	<preference for="Forix\ProductWizard\Api\WizardRepositoryInterface" type="Forix\ProductWizard\Model\WizardRepository"/>
+	<preference for="Forix\ProductWizard\Api\Data\WizardInterface" type="Forix\ProductWizard\Model\Wizard"/>
+	<preference for="Forix\ProductWizard\Api\Data\WizardSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<preference for="Forix\ProductWizard\Api\Data\ProductRender\AttributeOptionDataInterface" type="Forix\ProductWizard\Model\ProductRender\AttributeOptionData"/>
+	<virtualType name="Forix\ProductWizard\Model\ResourceModel\Group\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">forix_productwizard_group</argument>
+			<argument name="resourceModel" xsi:type="string">Forix\ProductWizard\Model\ResourceModel\Group\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="forix_productwizard_group_grid_data_source" xsi:type="string">Forix\ProductWizard\Model\ResourceModel\Group\Grid\Collection</item>
+				<item name="forix_productwizard_group_item_grid_data_source" xsi:type="string">Forix\ProductWizard\Model\ResourceModel\GroupItem\Grid\Collection</item>
+				<item name="forix_productwizard_group_item_option_grid_data_source" xsi:type="string">Forix\ProductWizard\Model\ResourceModel\GroupItemOption\Grid\Collection</item>
+				<item name="forix_productwizard_wizard_grid_data_source" xsi:type="string">Forix\ProductWizard\Model\ResourceModel\Wizard\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<type name="Forix\ProductWizard\Model\RelationCollectionProvider">
+		<arguments>
+			<argument name="collectionProcessor" xsi:type="object">Magento\Catalog\Model\Api\SearchCriteria\ProductCollectionProcessor</argument>
+		</arguments>
+	</type>
+	<virtualType name="Forix\ProductWizard\Model\ResourceModel\GroupItem\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">forix_productwizard_group_item</argument>
+			<argument name="resourceModel" xsi:type="string">Forix\ProductWizard\Model\ResourceModel\GroupItem\Collection</argument>
+		</arguments>
+	</virtualType>
+	<virtualType name="Forix\ProductWizard\Model\ResourceModel\GroupItemOption\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">forix_productwizard_group_item_option</argument>
+			<argument name="resourceModel" xsi:type="string">Forix\ProductWizard\Model\ResourceModel\GroupItemOption\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Forix\ProductWizard\Ui\DataProvider\Product\ProductRenderCollectorComposite">
+		<arguments>
+			<argument name="productProviders" xsi:type="array">
+				<item name="image" xsi:type="object">Forix\ProductWizard\Ui\DataProvider\Product\Listing\Collector\Image</item>
+				<item name="price" xsi:type="object">\Magento\Catalog\Ui\DataProvider\Product\Listing\Collector\Price</item>
+				<item name="url" xsi:type="object">\Magento\Catalog\Ui\DataProvider\Product\Listing\Collector\Url</item>
+				<item name="additional_info" xsi:type="object">\Magento\Catalog\Ui\DataProvider\Product\Listing\Collector\AdditionalInfo</item>
+				<item name="attribute_options" xsi:type="object">Forix\ProductWizard\Ui\DataProvider\Product\Listing\Collector\Attributes</item>
+				<item name="can_show_price" xsi:type="object">Forix\ProductWizard\Ui\DataProvider\Product\Listing\Collector\CanShowPrice</item>
+			</argument>
+		</arguments>
+	</type>
+	<type name="Magento\Catalog\Model\ProductLink\Converter\ConverterPool">
+		<arguments>
+			<argument name="converters" xsi:type="array">
+				<item name="relation" xsi:type="object">Forix\ProductWizard\Model\ProductLink\Converter\DefaultConverter</item>
+			</argument>
+		</arguments>
+	</type>
+	<type name="Magento\Framework\EntityManager\MetadataPool">
+		<arguments>
+			<argument name="metadata" xsi:type="array">
+				<item name="Forix\ProductWizard\Api\Data\WizardInterface" xsi:type="array">
+					<item name="entityTableName" xsi:type="string">forix_productwizard_wizard</item>
+					<item name="identifierField" xsi:type="string">wizard_id</item>
+				</item>
+			</argument>
+		</arguments>
+	</type>
+	<type name="Magento\Framework\EntityManager\Operation\ExtensionPool">
+		<arguments>
+			<argument name="extensionActions" xsi:type="array">
+				<item name="Forix\ProductWizard\Api\Data\WizardInterface" xsi:type="array">
+					<item name="read" xsi:type="array">
+						<item name="storeReader" xsi:type="string">Forix\ProductWizard\Model\ResourceModel\Wizard\Relation\Store\ReadHandler</item>
+					</item>
+					<item name="create" xsi:type="array">
+						<item name="storeCreator" xsi:type="string">Forix\ProductWizard\Model\ResourceModel\Wizard\Relation\Store\SaveHandler</item>
+					</item>
+					<item name="update" xsi:type="array">
+						<item name="storeUpdater" xsi:type="string">Forix\ProductWizard\Model\ResourceModel\Wizard\Relation\Store\SaveHandler</item>
+					</item>
+				</item>
+			</argument>
+		</arguments>
+	</type>
+	<type name="\Forix\ProductWizard\Model\ResourceModel\Wizard\Grid\Collection">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">forix_productwizard_wizard</argument>
+			<argument name="eventPrefix" xsi:type="string">productwizard_wizard_grid_collection</argument>
+			<argument name="eventObject" xsi:type="string">wizard_grid_collection</argument>
+			<argument name="resourceModel" xsi:type="string">Forix\ProductWizard\Model\ResourceModel\Wizard</argument>
+		</arguments>
+	</type>
+	<type name="Forix\ProductWizard\Ui\DataProvider\Product\Listing\Collector\Image">
+		<arguments>
+			<argument name="imageCodes" xsi:type="array">
+				<item name="cart_page_product_thumbnail" xsi:type="string">cart_page_product_thumbnail</item>
+				<item name="widget_recently_viewed_grid" xsi:type="boolean">false</item>
+				<item name="widget_recently_viewed_list" xsi:type="boolean">false</item>
+				<item name="widget_recently_viewed_sidebar" xsi:type="boolean">false</item>
+				<item name="widget_recently_compared_grid" xsi:type="boolean">false</item>
+				<item name="widget_recently_compared_list" xsi:type="boolean">false</item>
+				<item name="widget_recently_compared_sidebar" xsi:type="boolean">false</item>
+			</argument>
+		</arguments>
+	</type>
+	<type name="\Forix\ProductWizard\Model\ProductCollectionProvider">
+		<arguments>
+			<argument name="productRenderCollectorComposite"  xsi:type="object">Forix\ProductWizard\Ui\DataProvider\Product\ProductRenderCollectorComposite</argument>
+		</arguments>
+	</type>
+	<!-- UI Component Select Product -->
+	<type name="Magento\Catalog\Model\Product\LinkTypeProvider">
+		<arguments>
+			<argument name="linkTypes" xsi:type="array">
+				<item name="relation" xsi:type="const">Forix\ProductWizard\Model\ResourceModel\Product\Link::LINK_TYPE_RELATION</item>
+			</argument>
+		</arguments>
+	</type>
+
+    <type name="Magento\Catalog\Model\Product\CopyConstructor\Composite">
+        <arguments>
+            <argument name="constructors" xsi:type="array">
+                <item name="relation" xsi:type="string">Forix\ProductWizard\Model\Product\CopyConstructor\Relation</item>
+            </argument>
+        </arguments>
+    </type>
+	<type name="Magento\Catalog\Model\ProductLink\CollectionProvider">
+		<arguments>
+			<argument name="providers" xsi:type="array">
+				<item name="relation" xsi:type="object">Forix\ProductWizard\Model\Product\Link\CollectionProvider\Relation</item>
+			</argument>
+		</arguments>
+	</type>
+	<!-- UI Component Select Product -->
+	<!-- Cache Product Collection -->
+	<virtualType name="Forix\ProductWizard\Product\Collection\FetchStrategy"
+				 type="Magento\Framework\Data\Collection\Db\FetchStrategy\Cache">
+		<arguments>
+			<argument name="cacheTags" xsi:type="array">
+				<item name="forix_wizard_product_collection" xsi:type="const">\Forix\ProductWizard\Model\ResourceModel\Product\Collection::CACHE_TAG</item>
+			</argument>
+		</arguments>
+	</virtualType>
+	<type name="Forix\ProductWizard\Model\ResourceModel\Product\Collection">
+		<arguments>
+			<argument name="fetchStrategy" xsi:type="object">Forix\ProductWizard\Product\Collection\FetchStrategy</argument>
+		</arguments>
+	</type>
+	<!-- Cache Product Collection -->
+	<virtualType name="Magento\Framework\View\TemplateEngine\Xhtml\ConfigCompiler" type="Magento\Framework\View\TemplateEngine\Xhtml\Compiler" shared="false">
+		<arguments>
+			<argument name="elementCompilers" xsi:type="array">
+				<item name="wizards" xsi:type="object">Forix\ProductWizard\Model\Config\Compiler\WizardsElement</item>
+			</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Config\Model\Config">
+		<plugin name="forix_config_save_wizard" type="Forix\ProductWizard\Plugin\Model\ConfigPlugin" sortOrder="50" />
+	</type>
+
+</config>

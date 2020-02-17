@@ -1,0 +1,93 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_Storelocator
+ */
+?>
+<?php /** @var \Amasty\Storelocator\Block\Location $block */ ?>
+<?php
+$locations = $block->getLocations();
+
+$currentDate = $block->timezoneInterface->date();
+$currentDay = strtolower($block->timezoneInterface->convertConfigTimeToUtc($currentDate, 'l'));
+$dayNames = $block->dataHelper->getDaysNames();
+$i = 1;
+?>
+<div id="amlocator_left">
+    <?php foreach ($locations as $location) : ?>
+        <span name="leftLocation" data-amid="<?= $i ?>">
+                <div class="location_header"><?= $this->escapeHtml($location->getName()); ?></div>
+            <?= __('Address') ?>: <?= $this->escapeHtml($location->getAddress()); ?>
+            <br/>
+            <?php if ($this->escapeHtml($location->getState())) : ?>
+                <?= __('State') ?>: <?= $this->escapeHtml($location->getState()); ?>
+                <br/>
+            <?php endif; ?>
+            <?= $this->escapeHtml($location->getCity()); ?>
+            , <?= $this->escapeHtml($location->getZip()); ?>
+
+            <?php if ($this->getShowAttributes()) : ?>
+                <?php if (trim($location->getPhone())) : ?>
+                    <br/>
+                    <?= __('Phone') ?>: <?= $this->escapeHtml($location->getPhone()); ?>
+                <?php endif; ?>
+                <?php if (trim($location->getEmail())) : ?>
+                    <br/>
+                    <?= __('E-mail') ?>: <?= $this->escapeHtml($location->getEmail()); ?>
+                <?php endif; ?>
+                <?php if (trim($location->getWebsite())) : ?>
+                    <br/>
+                    <?= __('URL') ?>: <?= $this->escapeHtml($location->getWebsite()); ?>
+                <?php endif; ?>
+            <?php endif; ?>
+
+            <?php if ($location->getScheduleArray() != false && $location->getShowSchedule()) :
+                $schedule = $location->getScheduleArray();
+                if (array_key_exists($currentDay, $schedule)) {
+                    $scheduleKey = strtolower($dayNames[$currentDay]->getText());
+                } else {
+                    // getting day of the week for compatibility with old module versions
+                    $scheduleKey = date("N", strtotime($currentDay));
+                }
+                $from = $schedule[$scheduleKey]['from'][0] . ':' . $schedule[$scheduleKey]['from'][1];
+                $to = $schedule[$scheduleKey]['to'][0] . ':' . $schedule[$scheduleKey]['to'][1];
+                $workToday = $block->getWorkingTime($from, $to);
+                ?>
+
+                <div class="today_schedule">
+                        <?= __('Work Time Today:')?>
+                    <span>
+                        <?= $workToday ?>
+                        <div class="locator_arrow"></div>
+                    </span>
+                </div>
+
+                <div class="all_schedule" id="schedule<?= $i ?>">
+                    <?php
+                    foreach ($schedule as $key => $item) {
+                        $from = $item['from'][0] . ':' . $item['from'][1];
+                        $to = $item['to'][0] . ':' . $item['to'][1];
+                        $workingTime = $block->getWorkingTime($from, $to);
+                        if (array_key_exists($key, $dayNames)) {
+                            $dayName = $dayNames[$key]->getText();
+                        } else {
+                            $dayName = date('l', strtotime("Sunday + $key days"));
+                        }
+
+                        ?>
+                        <div>
+                            <?= __($dayName); ?>:
+                            <span>
+                                <?= $workingTime ?>
+                            </span>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </div>
+            <?php endif; ?>
+            </span>
+        <?php $i++ ?>
+    <?php endforeach; ?>
+</div>

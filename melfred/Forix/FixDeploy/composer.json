@@ -1,0 +1,22 @@
+{
+    "name": "forix/fix-deploy",
+    "description": "",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "email": "wallace@forixwebdesign.com",
+            "name": "wallace"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Forix\\FixDeploy\\": ""
+        }
+    }
+}

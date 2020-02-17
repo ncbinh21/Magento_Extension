@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="seoautolink" showInDefault="1" showInWebsite="1" showInStore="1" type="text" translate="label"
+                 sortOrder="410">
+            <label>Auto Links</label>
+            <tab>mirasvit</tab>
+            <resource>Mirasvit_SeoAutolink::config_seoautolink</resource>
+
+            <group id="autolink" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="1000">
+                <label>Auto Link</label>
+                <field id="target" translate="label" type="multiselect" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Add links on:</label>
+                    <source_model>Mirasvit\SeoAutolink\Model\Config\Source\Target</source_model>
+                </field>
+
+                <field id="excluded_tags" translate="label" type="textarea" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Don't add links inside tags</label>
+                </field>
+
+                <field id="skip_links_for_page" translate="label" type="textarea" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Skip auto links for a page</label>
+                </field>
+
+                <field id="add_links_inside_templates" translate="label" type="textarea" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Paths of templates to add links inside</label>
+                    <comment>Will not work for big templates (with html tags more that 1000)</comment>
+                </field>
+
+                <field id="links_limit_per_page" translate="label" type="text" sortOrder="50" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Links limit per page</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

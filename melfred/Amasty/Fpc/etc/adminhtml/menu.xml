@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2019 Amasty (https://www.amasty.com)
+ * @package Amasty_Fpc
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Amasty_Fpc::fpc" title="Amasty FPC Warmer" module="Amasty_Fpc" sortOrder="100" parent="Magento_Backend::system" resource="Amasty_Fpc::fpc"/>
+        <add id="Amasty_Fpc::queue" title="Warmer Queue" module="Amasty_Fpc" sortOrder="10" parent="Amasty_Fpc::fpc" action="amasty_fpc/queue" resource="Amasty_Fpc::queue"/>
+        <add id="Amasty_Fpc::log" title="Warmer Log" module="Amasty_Fpc" sortOrder="20" parent="Amasty_Fpc::fpc" action="amasty_fpc/log" resource="Amasty_Fpc::log"/>
+        <add id="Amasty_Fpc::reports" title="Performance Reports" module="Amasty_Fpc" sortOrder="30" parent="Amasty_Fpc::fpc" action="amasty_fpc/report" resource="Amasty_Fpc::reports"/>
+    </menu>
+</config>

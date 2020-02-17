@@ -1,0 +1,90 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2019 Amasty (https://www.amasty.com)
+ * @package Amasty_Fpc
+ */
+?>
+<?php /** @var \Amasty\Fpc\Block\Adminhtml\Report\Tab\Crawled $block */ ?>
+<script>
+    require(['Amasty_Fpc/amcharts/amcharts'], function () {
+        require(['jquery', 'mage/translate', 'Amasty_Fpc/amcharts/serial'], function ($, $t) {
+            var prepareChart = function () {
+                var chart = new AmCharts.AmSerialChart();
+                $.extend(chart, {
+                    type: "serial",
+                    addClassNames: true,
+                    autoMargins: false,
+                    marginLeft: 100,
+                    marginRight: 50,
+                    marginTop: 10,
+                    marginBottom: 26,
+                    mouseWheelZoomEnabled: true,
+                    balloon: {
+                        adjustBorderColor: false,
+                        horizontalPadding: 10,
+                        verticalPadding: 8,
+                        color: "#ffffff",
+                        fillAlpha: 1
+                    },
+                    dataProvider: <?= json_encode($block->getGraphData())?>,
+                    valueAxes: [{
+                        id: "count",
+                        axisColor: "#0175c2",
+                        axisAlpha: 1,
+                        axisThickness: 2,
+                        position: "left",
+                        minimum: 0,
+                        title: $t("Warmed Pages Qty")
+                    }],
+                    startDuration: 1,
+                    chartScrollbar: {
+                        graph: "count",
+                        oppositeAxis: false,
+                        offset: 30,
+                        scrollbarHeight: 80,
+                        backgroundAlpha: 0,
+                        selectedBackgroundAlpha: 0.1,
+                        selectedBackgroundColor: "#888888",
+                        graphFillAlpha: 0,
+                        graphLineAlpha: 0.5,
+                        selectedGraphFillAlpha: 0,
+                        selectedGraphLineAlpha: 1,
+                        autoGridCount: false,
+                        color: "#AAAAAA"
+                    },
+                    graphs: [{
+                        lineColor: "#0175c2",
+                        fillAlphas: 1,
+                        title: "Pages",
+                        type: "column",
+                        valueField: "count",
+                        dashLengthField: "dashLengthColumn",
+                        valueAxis: "count"
+                    }],
+                    categoryField: "period",
+                    categoryAxis: {
+                        gridPosition: "start",
+                        axisAlpha: 0,
+                        tickLength: 0
+                    }
+                });
+
+                chart.write("chart-crawled");
+
+                // By default set chart zoom to last 7 days
+                var columnsInViewport = Math.min(7, chart.dataProvider.length);
+                var firstColumn = chart.dataProvider.length - columnsInViewport;
+
+                chart.zoomToIndexes(firstColumn, chart.dataProvider.length - 1);
+            };
+
+            if (AmCharts.isReady) {
+                prepareChart();
+            } else {
+                AmCharts.ready(prepareChart);
+            }
+        });
+    });
+</script>
+<div id="chart-crawled" style="width: 100%; height: 400px;"></div>

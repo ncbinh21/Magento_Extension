@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*************************************************
+ * *
+ *  *
+ *  * @copyright Copyright © 2017 Forix. All rights reserved.
+ *  * See COPYING.txt for license details.
+ *  * @author    thao@forixwebdesign.com
+ *
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <ajax_scroll>
+            <general>
+                <active>1</active>
+                <mode>1</mode>
+            </general>
+        </ajax_scroll>
+    </default>
+</config>

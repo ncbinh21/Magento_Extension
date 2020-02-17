@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route method="GET" url="/V1/forix-productwizard/getitems">
+        <service class="Forix\ProductWizard\Api\GetItemsManagementInterface" method="getGetItems"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/relation/products/:sku/:storeId" method="GET">
+        <service class="Forix\ProductWizard\Api\RelationCollectionProviderInterface" method="getLinkedProducts"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+
+    <route method="GET" url="/V1/relation/products/:storeId">
+        <service class="Forix\ProductWizard\Api\RelationCollectionProviderInterface" method="getList"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+</routes>

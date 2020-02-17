@@ -1,0 +1,23 @@
+<?php
+/**
+ * Created by Magenest.
+ * Author: Pham Quang Hau
+ * Date: 07/08/2016
+ * Time: 14:39
+ */
+/** @var \Magenest\SagepayUS\Block\Adminhtml\Order\View\Info\Transaction $block */
+$dataView = $block->getDataView();
+?>
+<?php if($block->getMethod() == 'magenest_sagepayus'){ ?>
+<table class="data-table admin__table-secondary">
+    <tbody>
+    <?php foreach ($dataView as $row) { ?>
+        <tr>
+            <td><?=@$row['label']?></td>
+            <td><?=@$row['value']?></td>
+        </tr>
+    <?php } ?>
+    </tbody>
+</table>
+<?php } ?>
+

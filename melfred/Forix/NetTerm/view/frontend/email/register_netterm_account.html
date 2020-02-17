@@ -1,0 +1,82 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!--@subject {{trans "New Net Terms Submission"}} @-->
+{{template config_path="design/email/header_template"}}
+<p>
+{{trans "NET TERMS INFORMATION"}}
+</p>
+
+{{if netterms.getCompanyName()}}
+<div>{{trans "Company Name: %companyname" companyname=$netterms.getCompanyName() }}</div>
+{{/if}}
+{{if netterms.getBusiness()}}
+<div>{{trans "Business of: %business" business=$netterms.getBusiness() }}</div>
+{{/if}}
+{{if netterms.getTypeBusiness()}}
+<div>{{trans "We are a: %type_business" type_business=$netterms.getTypeBusiness() }}</div>
+{{/if}}
+{{if netterms.getLocationSince()}}
+<div>{{trans "At present location since: %location_since" location_since=$netterms.getLocationSince() }}</div>
+{{/if}}
+{{if netterms.getYearEstablished()}}
+<div>{{trans "Year company established: %year_established" year_established=$netterms.getYearEstablished() }}</div>
+{{/if}}
+
+{{if name_title_1}}
+<div>{{trans "Name/Title 1: %name_title_1" name_title_1=$name_title_1 }}</div>
+{{/if}}
+{{if name_title_2}}
+<div>{{trans "Name/Title 2: %name_title_2" name_title_2=$name_title_2 }}</div>
+{{/if}}
+{{if name_title_3}}
+<div>{{trans "Name/Title 3: %name_title_3" name_title_3=$name_title_3 }}</div>
+{{/if}}
+
+{{if company_1}}
+<div>{{trans "Company 1: %company_1" company_1=$company_1 }}</div>
+{{/if}}
+{{if fax_number_1}}
+<div>{{trans "Fax number 1: %fax_number_1" fax_number_1=$fax_number_1 }}</div>
+{{/if}}
+{{if email_1}}
+<div>{{trans "Email 1: %email_1" email_1=$email_1 }}</div>
+{{/if}}
+{{if company_2}}
+<div>{{trans "Company 2: %company_2" company_2=$company_2 }}</div>
+{{/if}}
+{{if fax_number_2}}
+<div>{{trans "Fax number 2: %fax_number_2" fax_number_2=$fax_number_2 }}</div>
+{{/if}}
+{{if email_2}}
+<div>{{trans "Email 2: %email_2" email_2=$email_2 }}</div>
+{{/if}}
+{{if company_3}}
+<div>{{trans "Company 3: %company_3" company_3=$company_3 }}</div>
+{{/if}}
+{{if fax_number_3}}
+<div>{{trans "Fax number 3: %fax_number_3" fax_number_3=$fax_number_3 }}</div>
+{{/if}}
+{{if email_3}}
+<div>{{trans "Email 3: %email_3" email_3=$email_3 }}</div>
+{{/if}}
+
+{{if netterms.getFullName()}}
+<div>{{trans "Full name: %full_name" full_name=$netterms.getFullName() }}</div>
+{{/if}}
+{{if netterms.getTitle()}}
+<div>{{trans "Title: %title" title=$netterms.getTitle() }}</div>
+{{/if}}
+{{if netterms.getDate()}}
+<div>{{trans "Date: %date" date=$netterms.getDate() }}</div>
+{{/if}}
+
+{{template config_path="design/email/footer_template"}}
+
+
+
+
+

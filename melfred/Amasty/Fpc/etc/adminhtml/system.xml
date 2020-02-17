@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2019 Amasty (https://www.amasty.com)
+ * @package Amasty_Fpc
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="amasty_fpc" translate="label" type="text" sortOrder="62116" showInDefault="1" showInWebsite="1" showInStore="1">
+            <resource>Amasty_Fpc::config</resource>
+            <class>separator-top</class>
+            <label>Full Page Cache Warmer</label>
+            <tab>amasty</tab>
+            <group id="amasty_information" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Information</label>
+                <frontend_model>Amasty\Fpc\Block\Adminhtml\System\Config\Information</frontend_model>
+            </group>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General</label>
+                <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Extension</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="auto_update" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Auto-update cache upon the product changes</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Adds product pages urls to the Warmer Queue upon the product edit</comment>
+                </field>
+            </group>
+            <group id="crawler" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Warmer</label>
+                <field id="source" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Query Generation Source</label>
+                    <source_model>Amasty\Fpc\Model\Config\Source\QuerySource</source_model>
+                    <comment>Links for query will be extracted from given sources</comment>
+                </field>
+                <field id="page_types" translate="label comment" type="Amasty\Fpc\Block\Adminhtml\Form\Field\PageType" sortOrder="15" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Pages Types</label>
+                    <backend_model>Amasty\Fpc\Model\System\Config\Backend\PageType</backend_model>
+                    <depends>
+                        <field id="source">0</field>
+                    </depends>
+                </field>
+                <field id="file_path" translate="label comment" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Queue links file path</label>
+                    <depends>
+                        <field id="source" separator=",">2,3</field>
+                    </depends>
+                    <comment><![CDATA[Please, set the relative path to the file on your server. <br/>Example: var/tmp/queue_links.txt]]></comment>
+                </field>
+                <field id="sitemap_path" translate="label comment" type="text" sortOrder="17" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sitemap XML file path</label>
+                    <depends>
+                        <field id="source" separator=",">1,3</field>
+                    </depends>
+                    <comment><![CDATA[Please, set the relative path to the Sitemap XML file on your server. <br/>Example: sitemaps/sitemap.xml]]></comment>
+                </field>
+                <field id="generate_cron" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Queue Generation Schedule</label>
+                    <comment>Use the cron expression to schedule queue generation jobs, e.g. 0 */12 * * * to run cron every twelve hours</comment>
+                </field>
+                <field id="max_queue_size" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Queue Max Size</label>
+                    <comment>Set the maximum number of pages in the Warmer Queue</comment>
+                </field>
+                <field id="batch_size" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Single Batch Size</label>
+                    <comment>The number of page URLs that will be processed at a single cron run. Default value is: 50</comment>
+                </field>
+                <field id="process_cron" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Warmer Schedule</label>
+                    <comment>Use the cron expression to schedule warmer jobs, e.g. */5 * * * * to run cron every five minutes</comment>
+                </field>
+                <field id="delay" translate="label comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Delay between requests</label>
+                    <comment>Please make sure there is enough delay to keep the server load safe. Default value is: 300 (milliseconds)</comment>
+                </field>
+                <field id="log_size" translate="label comment" type="text" sortOrder="70" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Log Size</label>
+                    <comment>Set the maximum number of lines in the log table</comment>
+                </field>
+                <field id="ignore_list" translate="label comment" type="textarea" sortOrder="80" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Exclude Pages</label>
+                    <comment><![CDATA[Add the regular expressions to exclude pages from warm up<br/>\? - pages with GET param]]></comment>
+                </field>
+            </group>
+            <group id="combinations" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Page combinations</label>
+                <field id="switch_customer_groups" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Switch Customer Groups</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="customer_groups" translate="label comment" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Customer Groups</label>
+                    <source_model>Amasty\Fpc\Model\Config\Source\CustomerGroup</source_model>
+                    <can_be_empty>1</can_be_empty>
+                    <depends>
+                        <field id="switch_customer_groups">1</field>
+                    </depends>
+                    <comment>"General" customer group is used by default even if nothing is selected</comment>
+                </field>
+
+                <field id="switch_currencies" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Switch Currencies</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="currencies" translate="label comment" type="multiselect" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Currencies</label>
+                    <source_model>Amasty\Fpc\Model\Config\Source\Currency</source_model>
+                    <can_be_empty>1</can_be_empty>
+                    <depends>
+                        <field id="switch_currencies">1</field>
+                    </depends>
+                    <comment>Default currency is used by default even if nothing is selected</comment>
+                </field>
+                <field id="switch_stores" translate="label comment" type="select" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Switch Stores</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="stores" translate="label comment" type="multiselect" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Stores</label>
+                    <source_model>Magento\Config\Model\Config\Source\Store</source_model>
+                    <can_be_empty>1</can_be_empty>
+                    <depends>
+                        <field id="switch_stores">1</field>
+                    </depends>
+                    <comment>Default store view is used by default even if nothing is selected</comment>
+                </field>
+            </group>
+            <group id="connection" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Connection Settings</label>
+                <field id="http_auth" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Use HTTP Authentication</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Use when website is protected with .htaccess</comment>
+                </field>
+                <field id="login" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Login</label>
+                    <depends>
+                        <field id="http_auth">1</field>
+                    </depends>
+                </field>
+                <field id="password" translate="label comment" type="password" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Password</label>
+                    <depends>
+                        <field id="http_auth">1</field>
+                    </depends>
+                </field>
+                <field id="skip_verification" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Disable certificate verification</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable this only if FPC warmer doesn't work for https</comment>
+                </field>
+            </group>
+            <group id="debug" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Debug</label>
+                <field id="show_status" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Show Cache Status</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="ips" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Show Cache Status Only For</label>
+                    <depends>
+                        <field id="show_status">1</field>
+                    </depends>
+                    <comment>Enter IP addresses comma separated</comment>
+                </field>
+            </group>
+            <group id="osc" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                <attribute type="expanded">1</attribute>
+                <label><![CDATA[XML Google&reg; Sitemap]]></label>
+                <field id="label" translate="label comment" type="label" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Status</label>
+                    <frontend_model>Amasty\Fpc\Block\Adminhtml\System\Config\XmlSitemap</frontend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

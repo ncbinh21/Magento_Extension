@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!--HELP-->
+    <preference for="Mirasvit\Core\Api\Service\ManualServiceInterface" type="Mirasvit\Core\Service\ManualService"/>
+    <preference for="Mirasvit\Core\Api\Service\XmlInterface" type="Mirasvit\Core\Service\Xml"/>
+
+    <type name="Magento\Framework\View\TemplateEngineFactory">
+        <plugin name="manualLinkPlugin" type="Mirasvit\Core\Plugin\ManualLinkPlugin" sortOrder="1000"/>
+    </type>
+</config>

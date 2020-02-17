@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="bannerslider" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Banner Slider</label>
+            <tab>forix</tab>
+            <resource>Forix_Bannerslider::config_bannerslider</resource>
+            <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enable_frontend" translate="label comment" type="select" sortOrder="0"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <comment>Enable frontend</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="dots" translate="label comment" type="select" sortOrder="1"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show dots navigation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable_frontend">1</field>
+                    </depends>
+                </field>
+                <field id="arrows" translate="label comment" type="select" sortOrder="2"  showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Show arrows navigation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable_frontend">1</field>
+                    </depends>
+                </field>
+                <field id="auto_play" translate="label comment" type="select" sortOrder="3"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Auto play</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable_frontend">1</field>
+                    </depends>
+                </field>
+                <field id="speed" translate="label comment" type="text" sortOrder="4"  showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Speed (Animation effect)</label>
+                    <comment>Default speed is 500 (0.5 seconds)</comment>
+                    <depends>
+                        <field id="enable_frontend">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="implement" translate="label" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Implement Code</label>
+                <frontend_model>Forix\Bannerslider\Block\Adminhtml\System\Config\Implementcode</frontend_model>
+            </group>
+        </section>
+    </system>
+</config>

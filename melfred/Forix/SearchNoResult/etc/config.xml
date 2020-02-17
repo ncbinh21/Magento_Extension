@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <search_no_results>
+            <settings>
+                <is_active>1</is_active>
+                <page_title>OOPS...</page_title>
+                <enable_page_title_headline>1</enable_page_title_headline>
+                <enable_warning_message>0</enable_warning_message>
+                <no_result_text>We couldn't find any search results for '%1'</no_result_text>
+                <note><![CDATA[
+<p class="empty note">Be sure to check for any typos or try using a broader search phrase</p>
+                ]]></note>
+                <enable_breadcrumbs>0</enable_breadcrumbs>
+                <breadcrumbs_title>Search results for: '%1'</breadcrumbs_title>
+                <enable_category>0</enable_category>
+            </settings>
+        </search_no_results>
+    </default>
+</config>

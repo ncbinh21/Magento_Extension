@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Quote\Model\Quote\Item">
+        <plugin name="add_buy_request_rig" type="Forix\Quote\Plugin\Item" />
+    </type>
+
+    <preference for="Magento\Quote\Model\Quote\Item"
+                type="Forix\Quote\Custom\Item" />
+
+    <type name="Magento\Quote\Model\Quote\Item\ToOrderItem">
+        <plugin name="add_rig_model" type="Forix\Quote\Plugin\ToOrderItem" sortOrder="1" />
+    </type>
+    <preference for="Magento\NegotiableQuote\Ui\Component\Listing\Column\Price"
+                type="Forix\Quote\Rewrite\Ui\Component\Listing\Column\Price" />
+
+    <preference for="Magento\NegotiableQuote\Block\Quote\Items"
+                type="Forix\Quote\Rewrite\Block\Quote\Items" />
+
+    <preference for="Magento\NegotiableQuote\Plugin\Sales\Controller\Order\ReorderPlugin"
+                type="Forix\Quote\Rewrite\Block\Quote\ReorderPlugin" />
+
+</config>

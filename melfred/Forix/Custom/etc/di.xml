@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Amasty\Storelocator\Block\Adminhtml\Location\Edit\Tab\General" type="Forix\Custom\Block\Adminhtml\Storelocator\Edit\Tab\General" />
+    <preference for="Amasty\Storelocator\Block\Location" type="Forix\Custom\Block\Storelocator\LocationCustom"/>
+    <preference for="Amasty\Storelocator\Controller\Index\Ajax" type="Forix\Custom\Controller\Storelocator\Index\AjaxCustom"/>
+    <preference for="Magento\Contact\Controller\Index\Post" type="Forix\Custom\Rewrite\Contact\Controller\Index\Post"/>
+    <preference for="Magento\Newsletter\Controller\Subscriber\NewAction" type="Forix\Custom\Rewrite\Subscriber\NewAction"/>
+    <preference for="Magento\ConfigurableProduct\Model\ConfigurableAttributeData" type="Forix\Custom\Model\Override\ConfigurableAttributeData"/>
+    <preference for="Magento\Framework\Serialize\Serializer\Json" type="Forix\Custom\Serialize\Serializer\Json"/>
+    <preference for="Magento\Framework\Indexer\Handler\AttributeHandler" type="Forix\Custom\Rewrite\Indexer\Handler\AttributeHandler"/>
+    <preference for="Magento\Framework\View\TemplateEngine\Php" type="Forix\Custom\View\TemplateEngine\Php"/>
+    <preference for="Magento\NegotiableQuote\Model\Plugin\Quote\Model\Quote\AddressPlugin" type="Forix\Custom\Rewrite\Model\Plugin\Quote\Model\Quote\AddressPlugin"/>
+    <preference for="Magento\Framework\View\Asset\Minification" type="Forix\Custom\Rewrite\Magento\Framework\View\Asset\Minification" />
+    <preference for="Magento\AdminGws\Observer\ValidateModelSaveBefore" type="Forix\Custom\Rewrite\Magento\AdminGws\Observer\ValidateModelSaveBefore" />
+    <preference for="Mirasvit\SeoSitemap\Model\Sitemap" type="Forix\Custom\Rewrite\Mirasvit\SeoSitemap\Model\Sitemap" />
+    <preference for="Amasty\Shopby\Helper\Content" type="Forix\Custom\Rewrite\Amasty\Shopby\Helper\Content" />
+    <preference for="Amasty\Storelocator\Controller\Adminhtml\Location\Delete" type="Forix\Custom\Rewrite\Amasty\Storelocator\Adminhtml\Location\Delete" />
+    <preference for="Amasty\Storelocator\Controller\Adminhtml\Location\MassAction" type="Forix\Custom\Rewrite\Amasty\Storelocator\Adminhtml\Location\MassAction" />
+    <type name="Magento\Framework\View\Page\Config">
+        <plugin name="add-canonical" type="Forix\Custom\Plugin\Framework\View\Page\Config"/>
+    </type>
+    <preference for="Magento\Catalog\Model\ProductRepository" type="Forix\Custom\Rewrite\Magento\Catalog\Model\ProductRepository" />
+    <preference for="Magento\QuickOrder\Controller\Ajax\Search" type="Forix\Custom\Rewrite\Magento\QuickOrder\Controller\Ajax\Search" />
+    <preference for="Magento\Sales\Model\ResourceModel\Order\Customer\Collection" type="Forix\Custom\Rewrite\Magento\Sales\Model\ResourceModel\Order\Customer\Collection" />
+    <preference for="Magento\Company\Plugin\Customer\Model\ResourceModel\Grid\CollectionPlugin" type="Forix\Custom\Rewrite\Magento\Company\Plugin\Customer\Model\ResourceModel\Grid\CollectionPlugin" />
+    <preference for="Magento\Company\Plugin\Sales\Model\ResourceModel\Order\Grid\CollectionPlugin" type="Forix\Custom\Rewrite\Magento\Company\Plugin\Sales\Model\ResourceModel\Grid\CollectionPlugin" />
+    <type name="Magento\Checkout\Api\ShippingInformationManagementInterface">
+        <plugin name="cutom_customer_address_plugin" type="Forix\Custom\Plugin\Checkout\Model\ShippingInformationManagement" />
+    </type>
+    <preference for="Magento\Catalog\Block\Category\View" type="Forix\Custom\Rewrite\Magento\Catalog\Block\Category\View" />
+    <preference for="Magento\Sitemap\Model\ResourceModel\Catalog\Category" type="Forix\Custom\Rewrite\Magento\Sitemap\Model\ResourceModel\Catalog\Category" />
+    <preference for="Magento\Cms\Controller\Page\View" type="Forix\Custom\Rewrite\Magento\Cms\Controller\Page\View" />
+</config>

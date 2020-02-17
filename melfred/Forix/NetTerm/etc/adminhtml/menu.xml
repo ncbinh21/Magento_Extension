@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Forix_NetTerm::top_level" module="Forix_NetTerm" resource="Forix_NetTerm::top_level" sortOrder="9999" title="Net Terms" parent="Magento_Sales::sales"/>
+		<add action="forix_netterm/netterm/index" id="Forix_NetTerm::forix_netterm_netterm" module="Forix_NetTerm" parent="Forix_NetTerm::top_level" resource="Forix_NetTerm::forix_netterm_netterm" sortOrder="9999" title="Manage Net Terms"/>
+	</menu>
+</config>

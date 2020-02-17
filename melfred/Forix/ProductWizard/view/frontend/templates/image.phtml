@@ -1,0 +1,19 @@
+<?php
+/**
+ * @var $block \Forix\ProductWizard\Block\Image
+ */
+?>
+<?php $imageBaseUrl = $block->getBaseImageUrl()?>
+<?php $imageBannerUrl = $block->getBannerImageUrl()?>
+<div class="configurator-image-header category-view">
+    <div class="category-image">
+        <img src="<?php echo $imageBannerUrl; ?>" alt="<?php echo $block->getCurrentWizard()->getTitle(); ?>">
+    </div>
+    <div class="category-thumbnail">
+        <div class="category-thumbnail-inner">
+            <div class="images-inner">
+                <img src="<?php echo $imageBaseUrl; ?>" alt="<?php echo $block->getCurrentWizard()->getTitle(); ?>">
+            </div>
+        </div>
+    </div>
+</div>

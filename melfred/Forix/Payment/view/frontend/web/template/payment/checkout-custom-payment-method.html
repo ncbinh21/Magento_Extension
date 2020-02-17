@@ -1,0 +1,147 @@
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+
+<div class="payment-method" data-bind="css: {'_active': (getCode() == isChecked())}">
+    <div class="payment-method-title field choice">
+        <input type="radio"
+               name="payment[method]"
+               class="radio"
+               data-bind="attr: {'id': getCode()}, value: getCode(), checked: isChecked, click: selectPaymentMethod, visible: isRadioButtonVisible()"/>
+        <label data-bind="attr: {'for': getCode()}" class="label"><span data-bind="text: getTitle()"></span></label>
+    </div>
+
+    <div class="payment-method-content">
+        <!-- ko foreach: getRegion('messages') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+        <!-- ko if: isUsePayAPayment -->
+            <!-- ko if: (savedCards().length > 0) -->
+            <div id="sagepayus-savecard-div" style="width: 300px;padding-bottom: 20px">
+                <select name="payment[credit_card_name]" class="select"
+                        data-bind="attr: {id: getCode() + '-card-id', 'data-container': getCode() + '-card-id'},
+                                    enable: true,
+                                    options: savedCards,
+                                    optionsText: function(item) {
+                                       return item.masked_number + ' (' + item.card_type + ') ' + ' - ' + item.expiration_date
+                                   },
+                                    optionsValue: function(item) {return item.id},
+                                    optionsCaption: 'Select card',
+                                    value: selectedCard
+                                    ">
+                </select>
+
+                <div class="field cvv required" data-bind="attr: {id: getCode() + '_cc_type_cvv_div'}, fadeVisible: isSelectingCard()">
+                    <label data-bind="attr: {for: getCode() + '_cc_cid'}" class="label">
+                        <span><!-- ko i18n: 'CVV'--><!-- /ko --></span>
+                    </label>
+                    <div class="control _with-tooltip">
+                        <input type="number"
+                               autocomplete="off"
+                               class="input-text cvv"
+                               name="payment[cc_cid]"
+                               value=""
+                               data-bind="attr: {id: getCode() + '_cc_cid',
+                            title: $t('CVV'),
+                            'data-container': getCode() + '-cc-cvv',
+                            'data-validate': JSON.stringify({'required-number':true})},
+                            enable: isActive($parents),
+                            value: creditCardVerificationNumber" />
+                        <div class="field-tooltip toggle">
+                    <span class="field-tooltip-action action-cvv"
+                          tabindex="0"
+                          data-toggle="dropdown"
+                          data-bind="attr: {title: $t('What is this?')}, mageInit: {'dropdown':{'activeClass': '_active'}}">
+                        <span><!-- ko i18n: 'What is this?'--><!-- /ko --></span>
+                    </span>
+                            <div class="field-tooltip-content"
+                                 data-target="dropdown"
+                                 data-bind="html: getCvvImageHtml()"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /ko -->
+
+            <div id="paymentDiv" style="width: 500px;"></div>
+            <!-- ko if: (getPayMode() == 'custom') -->
+                <form class="form" data-bind="attr: {'id': getCode() + '-form'}, fadeVisible: !isSelectingCard()">
+                    <!-- ko template: 'Forix_Payment/payment/cc-form' --><!-- /ko -->
+                </form>
+            <!-- /ko -->
+
+            <div data-bind="visible: displaySaveCard()">
+                <input type="checkbox"
+                       name="payment[save]"
+                       value="1"
+                       class="checkbox"
+                       id="sage-savecard"
+                       data-bind="checked: saveCardCheckbox"/>
+                <label class="label" for="sage-savecard">
+                    <span><!-- ko text: $t('Save card ?')--><!-- /ko --></span>
+                </label>
+            </div>
+            <div class="payment-method-billing-address">
+                <!-- ko foreach: $parent.getRegion(getBillingAddressFormName()) -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+                <!--/ko-->
+            </div>
+            <div class="checkout-agreements-block">
+                <!-- ko foreach: $parent.getRegion('before-place-order') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+                <!--/ko-->
+            </div>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button class="action primary checkout"
+                            type="submit"
+                            data-bind="
+                            click: placeOrder,
+                            attr: {title: $t('Place Order')},
+                            enable: (getCode() == isChecked()),
+                            css: {disabled: !isPlaceOrderActionAllowed()}
+                            "
+                            disabled>
+                        <span data-bind="i18n: placeOrderLabel"></span>
+                    </button>
+                </div>
+            </div>
+        <!-- /ko -->
+        <!-- ko ifnot: isUsePayAPayment -->
+            <span>Sage 100</span>
+            <form class="form" data-bind="attr: {'id': getCode() + '-form'}">
+                <!-- ko template: 'Forix_Payment/payment/cc-form' --><!-- /ko -->
+            </form>
+            <div class="payment-method-billing-address">
+                <!-- ko foreach: $parent.getRegion(getBillingAddressFormName()) -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+                <!--/ko-->
+            </div>
+            <div class="checkout-agreements-block">
+                <!-- ko foreach: $parent.getRegion('before-place-order') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+                <!--/ko-->
+            </div>
+
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button class="action primary checkout"
+                            type="submit"
+                            data-bind="
+                            click: placeOrder,
+                            attr: {title: $t('Place Order'), id: getCode() + '-submit'},
+                            enable: (getCode() == isChecked()),
+                            css: {disabled: !isPlaceOrderActionAllowed()}
+                            "
+                            disabled>
+                        <span data-bind="text: $t('Place Order')"></span>
+                    </button>
+                </div>
+            </div>
+        <!-- /ko -->
+        <a id="paymentButton" style="display: none" data-bind=""></a>
+    </div>
+</div>

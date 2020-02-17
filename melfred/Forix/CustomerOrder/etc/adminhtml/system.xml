@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="forix_customer" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <class>separator-top</class>
+            <label>Customer</label>
+            <tab>forix</tab>
+            <resource>Forix_CustomerOrder::customergroup</resource>
+            <group id="customergroup" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="100">
+                <label>Customer Group Options</label>
+                <field id="distributor_group" translate="label" type="multiselect" sortOrder="30" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Distributor Group</label>
+                    <source_model>Forix\CustomerOrder\Model\Config\Source\CustomerGroupOptions</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

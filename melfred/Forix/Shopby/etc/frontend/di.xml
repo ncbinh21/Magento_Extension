@@ -1,0 +1,16 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Forix\Shopby\Block\Rig">
+        <arguments>
+            <argument name="filterList" xsi:type="object">rigFilterList</argument>
+        </arguments>
+    </type>
+    <virtualType name="rigFilterList" type="Magento\Catalog\Model\Layer\FilterList">
+        <arguments>
+            <argument name="filters" xsi:type="array">
+                <item name="attribute" xsi:type="string">Magento\Catalog\Model\Layer\Filter\Attribute</item>
+                <item name="category" xsi:type="string">Forix\Shopby\Model\Layer\Filter\Category</item>
+            </argument>
+        </arguments>
+    </virtualType>
+</config>

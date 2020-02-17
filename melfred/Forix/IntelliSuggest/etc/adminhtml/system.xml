@@ -1,0 +1,18 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="intellisuggest_tracking" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>IntelliSuggest Tracking</label>
+            <tab>forix</tab>
+            <resource>Forix_IntelliSuggest::config_intellisuggest_tracking</resource>
+            <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="js_src"  translate="label" type="text" sortOrder="0"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Js Source</label>
+                </field>
+                <field id="site_id"  translate="label" type="text" sortOrder="0"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Site ID</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

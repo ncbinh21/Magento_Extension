@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="Amasty\Shopby\Block\Navigation\FilterRenderer"
+                type="Forix\AmastyShopby\Block\Navigation\FilterRenderer" />
+
+    <preference for="Amasty\Shopby\Block\Adminhtml\Product\Attribute\Edit\Tab\Shopby"
+                type="Forix\AmastyShopby\Block\Adminhtml\Product\Attribute\Edit\Tab\Shopby" />
+
+</config>

@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+	<acl>
+		<resources>
+			<resource id="Magento_Backend::admin">
+				<resource id="Magento_Backend::content">
+					<resource id="Forix_ProductWizard::product_wizard"  title="Product Wizard">
+						<resource id="Forix_ProductWizard::Group" sortOrder="10" title="Group">
+							<resource id="Forix_ProductWizard::Group_save" sortOrder="10" title="Save Group"/>
+							<resource id="Forix_ProductWizard::Group_delete" sortOrder="20" title="Delete Group"/>
+							<resource id="Forix_ProductWizard::Group_update" sortOrder="30" title="Update Group"/>
+							<resource id="Forix_ProductWizard::Group_view" sortOrder="40" title="View Group"/>
+						</resource>
+						<resource id="Forix_ProductWizard::Group_Item" sortOrder="10" title="Group_Item">
+							<resource id="Forix_ProductWizard::Group_Item_save" sortOrder="10" title="Save Group_Item"/>
+							<resource id="Forix_ProductWizard::Group_Item_delete" sortOrder="20" title="Delete Group_Item"/>
+							<resource id="Forix_ProductWizard::Group_Item_update" sortOrder="30" title="Update Group_Item"/>
+							<resource id="Forix_ProductWizard::Group_Item_view" sortOrder="40" title="View Group_Item"/>
+						</resource>
+						<resource id="Forix_ProductWizard::Group_Item_Option" sortOrder="10" title="Group_Item_Option">
+							<resource id="Forix_ProductWizard::Group_Item_Option_save" sortOrder="10" title="Save Group_Item_Option"/>
+							<resource id="Forix_ProductWizard::Group_Item_Option_delete" sortOrder="20" title="Delete Group_Item_Option"/>
+							<resource id="Forix_ProductWizard::Group_Item_Option_update" sortOrder="30" title="Update Group_Item_Option"/>
+							<resource id="Forix_ProductWizard::Group_Item_Option_view" sortOrder="40" title="View Group_Item_Option"/>
+						</resource>
+					</resource>
+				</resource>
+			</resource>
+		</resources>
+	</acl>
+</config>

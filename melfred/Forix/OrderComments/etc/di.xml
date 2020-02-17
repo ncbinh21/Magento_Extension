@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Paypal\Model\Express" >
+        <plugin name="paypal_express_save_comments_to_quote" type="Forix\OrderComments\Plugin\Magento\Paypal\Model\Express" />
+    </type>
+    <type name="Magento\Paypal\Model\PayflowExpress" >
+        <plugin name="payflow_express_save_comments_to_quote" type="Forix\OrderComments\Plugin\Magento\Paypal\Model\Express" />
+    </type>
+    <type name="Magento\Quote\Model\QuoteManagement" >
+        <plugin name="paypal_express_save_comments_to_order" type="Forix\OrderComments\Plugin\Magento\Quote\Model\QuoteManagement" />
+    </type>
+    <type name="Magento\Quote\Model\Quote\Payment" >
+        <plugin name="checkmo_save_comments_to_order" type="Forix\OrderComments\Plugin\Magento\Quote\Model\PaymentMethodManagement" />
+    </type>
+
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid" type="Magento\Sales\Model\ResourceModel\Grid">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="order_note" xsi:type="string">sales_order.order_note</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid" type="Magento\Sales\Model\ResourceModel\Grid">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="po_number" xsi:type="string">sales_order.po_number</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid" type="Magento\Sales\Model\ResourceModel\Grid">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="distributor_name" xsi:type="string">sales_order.distributor_name</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid" type="Magento\Sales\Model\ResourceModel\Grid">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="distributor_fulfilled" xsi:type="string">sales_order.distributor_fulfilled</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid" type="Magento\Sales\Model\ResourceModel\Grid">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="sales_order_no" xsi:type="string">sales_order.sales_order_no</item>
+            </argument>
+        </arguments>
+    </virtualType>
+</config>

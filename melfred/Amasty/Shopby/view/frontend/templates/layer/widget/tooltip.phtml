@@ -1,0 +1,30 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_Shopby
+ */
+?>
+<?php
+/** @var \Amasty\Shopby\Block\Navigation\Widget\Tooltip $block */
+$content = $block->getContent($block->getStoreId());
+?>
+<?php if ($content) : ?>
+    <?php
+    $filterSetting = $block->getFilterSetting();
+    $tooltipUrl = $block->getTooltipUrl();
+
+    $tooltipTemplate = '<span class="tooltip amshopby-filter-tooltip" '
+        . 'title="{content}"><img src="' . $tooltipUrl . '"></span>';
+    ?>
+    <script type="text/x-magento-init">
+        {
+            ".am-filter-items-<?= $block->escapeHtml($filterSetting->getFilterCode()) ?>": {
+                "amShopbyFilterAddTooltip": {
+                    "content": <?= $block->jsonEncode($content); ?>,
+                    "tooltipTemplate": <?= $block->jsonEncode($tooltipTemplate); ?>
+                }
+            }
+        }
+    </script>
+<?php endif; ?>

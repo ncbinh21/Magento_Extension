@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Created by Mercurial
+ * Job Title: Magento Developer
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="forix_custom_checkout_distributor_email" label="Send Email Distributor" file="send_email_distributor.html" type="html" module="Forix_Checkout" area="frontend"/>
+    <template id="forix_custom_checkout_distributor_email_customer" label="Send Email Customer" file="send_email_customer.html" type="html" module="Forix_Checkout" area="frontend"/>
+    <template id="forix_custom_checkout_distributor_email_guest" label="Send Email Guest" file="send_email_guest.html" type="html" module="Forix_Checkout" area="frontend"/>
+    <template id="forix_custom_checkout_distributor_email_error_sage" label="Send Email Error" file="send_email_error_sage.html" type="html" module="Forix_Checkout" area="frontend"/>
+</config>

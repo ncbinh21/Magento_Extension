@@ -1,0 +1,62 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_Shopby
+ */
+?>
+<?php
+/** @var \Amasty\ShopbyBase\Model\FilterSetting $filterSetting */
+/** @var \Amasty\Shopby\Block\Navigation\FilterRenderer $block */
+?>
+<?php
+$filterCode = $block->escapeHtml($filterSetting->getFilterCode());
+?>
+<div class="items am-filter-items-<?= $filterCode;?> am-dropdown">
+    <form data-amshopby-filter="<?= $filterCode;?>" data-amshopby-filter-request-var="<?= $block->getFilter()->getRequestVar(); ?>">
+    <?php if (count($filterItems) >= 0) :?>
+        <select
+            <?= $filterSetting->isMultiselect() ? 'multiple="on"' : '' ?>
+            class="am-shopby-filter-<?= $filterCode; ?>"
+            name="amshopby[<?= /* @escapeNotVerified */ $block->getFilter()->getRequestVar();?>][]"
+        >
+            <?php if (!$filterSetting->isMultiselect()) :?>
+                <option value="" href="<?= $this->getClearUrl() ? $block->escapeUrl($this->getClearUrl()) : '#' ?>"
+                    <?= $filterSetting->getRelNofollow() ? ' rel="nofollow"' : '' ?>>
+                    <?php echo __("Select Option ...");?>
+                </option>
+            <?php endif;?>
+            <?php /** @var \Amasty\Shopby\Model\Layer\Filter\Item $filterItem */?>
+            <?php foreach ($filterItems as $filterItem) :
+                $disabled = ($filterItem->getCount() == 0) ? ' disabled' : "";
+                $selected = ($this->checkedFilter($filterItem)) ? ' selected' : "";
+                $url = $block->escapeUrl($filterItem->getUrl());
+                $label = $filterItem->getLabel();
+                if ($filterSetting->isShowProductQuantities()) {
+                    $label .= ' <span class="count">(' . $filterItem->getCount() . ')</span>';
+                }
+                ?>
+                <option value="<?= $block->escapeHtml($filterItem->getValueString());?>"
+                        href="<?= $url ?>"
+                        <?= $disabled . $selected ?>
+                >
+                    <?= $label ?>
+                </option>
+            <?php endforeach ?>
+            <script type="text/x-magento-init">
+                {
+                    ".am-shopby-filter-<?= $filterCode; ?>": {
+                        "amShopbyFilterDropdown": {
+                            "collectFilters": <?= /* @escapeNotVerified */ $block->collectFilters();?>,
+                            "isMultiselect": <?= ($filterSetting->isMultiselect()) ? 1 : 0; ?>
+                        }
+                    }
+                }
+            </script>
+        </select>
+    </form>
+    <?php endif; ?>
+</div>
+<?php if ($filterSetting->getAddFromToWidget() && isset($fromToConfig) && is_array($fromToConfig)) :?>
+    <?= $block->getFromToWidget('dropdown') ?>
+<?php endif;?>

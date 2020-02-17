@@ -1,0 +1,58 @@
+<?php
+/**
+ * Category layered navigation state
+ *
+ * @var $block \Magento\LayeredNavigation\Block\Navigation\State
+ * @var $cateHelper \Forix\CategoryCustom\Helper\Data
+ */
+?>
+<?php $cateHelper = $this->helper(Forix\CategoryCustom\Helper\Data::class); ?>
+<?php $_filters = $block->getActiveFilters() ?>
+<?php $total = $block->getLayer()->getProductCollection()->getSize(); ?>
+<?php $indexUrl = $this->getUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]);
+    $inGround = in_array('category_ground_condition_template', $block->getLayout()->getUpdate()->getHandles());
+    if (!empty($_filters)) {
+        foreach ($_filters as $_filter) {
+            $filter = $_filter->getFilter();
+            if ($filter instanceof \Amasty\Shopby\Model\Layer\Filter\Category) {
+                $allItems = $filter->getItems()->getAllItems();
+                $_newTotal = 0;
+                foreach ($allItems as $filterItem) {
+                    if ($cateHelper->getCategory($filterItem->getValue())) {
+                        $check = $cateHelper->getCategory($filterItem->getValue())->getData('is_bit_reamer');
+                        if ($check && $check != 'Bits/Reamers' || !$inGround) {
+                            $total = $_newTotal += $filterItem->getCount();
+                        }
+                    }
+                }
+                break;
+            }
+        }
+    }
+    if (in_array('category_ground_condition_template', $block->getLayout()->getUpdate()->getHandles())) {
+        /**
+         * @var $filter \Magento\Catalog\Model\Layer\Filter\Item
+         */
+        foreach ($_filters as $filter) {
+            $_filter = $filter->getFilter();
+            if ($_filter->getRequestVar() == 'mb_ground_condition') {
+                $indexUrl = $cateHelper->getBuildUrl($_filter, $filter->getValueString());
+                break;
+            }
+        }
+    }
+    $indexUrl = str_replace("amp%3B","&",$indexUrl);
+    if (!$_GET) {
+        $indexUrl = preg_replace('/\?.*/', '', $indexUrl);
+    }
+?>
+
+<ul class="item-all">
+    <li class="item">
+        <a class="action remove <?php echo $this->getRequest()->isXmlHttpRequest() ? 'am_shopby_link_selected' : '' ?>"
+           href="<?php echo $indexUrl ?>"
+           title="">
+            <span class="count"><?php echo __('ALL') . "<small class='count-number'>$total</small>" ?></span>
+        </a>
+    </li>
+</ul>

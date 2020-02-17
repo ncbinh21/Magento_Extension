@@ -1,0 +1,43 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php $_order = $block->getOrder() ?>
+<?php if ($_order): ?>
+    <?php $_items = $_order->getAllItems(); ?>
+    <div class="order-details-items ordered">
+        <table class="email-items data table table-order-items">
+            <thead>
+                <tr>
+                    <th class="item-info col item">
+                        <?= /* @escapeNotVerified */  __('Items') ?>
+                    </th>
+                    <th class="item-qty col qty">
+                        <?= /* @escapeNotVerified */  __('Qty') ?>
+                    </th>
+                    <th class="item-price col price">
+                        <?= /* @escapeNotVerified */  __('Price') ?>
+                    </th>
+                </tr>
+            </thead>
+            <?php foreach ($_items as $_item): ?>
+                <?php
+                if ($_item->getParentItem()) {
+                    continue;
+                }
+                ?>
+                <tbody>
+                <?= $block->getItemHtml($_item) ?>
+                </tbody>
+            <?php endforeach; ?>
+            <tfoot class="order-totals">
+            <?= $block->getChildHtml('order_totals') ?>
+            </tfoot>
+        </table>
+    </div>
+<?php endif; ?>

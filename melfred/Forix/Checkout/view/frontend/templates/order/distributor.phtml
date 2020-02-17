@@ -1,0 +1,32 @@
+<?php $distributor = $this->getDistributor(); ?>
+<?php if ($distributor): ?>
+    <div class="block block-order-details-distributor-info distributor-info">
+        <div class="block-title">
+            <strong><?php echo __("Distributor"); ?></strong>
+        </div>
+        <div class="block-content">
+            <hr/>
+            <div class="distributor-customer-name"><?php echo $distributor->getName(); ?></div>
+            <div>
+                <?php echo $distributor->getAddress(); ?>
+            </div>
+            <div>
+                <?php echo $distributor->getCity(); ?>
+                <?php echo $distributor->getCodeRegion(); ?>
+                <?php echo $distributor->getZip(); ?>
+            </div>
+            <?php if ($distributor->getPhone()): ?>
+                <div><a href="tel:<?php echo $distributor->getPhone();?>"><?php echo __("Cell: %1", $distributor->getPhone()); ?></a></div>
+            <?php endif; ?>
+            <?php if ($distributor->getOfficePhone()): ?>
+                <div><a href="tel:<?php echo $distributor->getOfficePhone();?>"><?php echo __("Office: %1", $distributor->getOfficePhone()); ?></a></div>
+            <?php endif; ?>
+            <div><a href="mailto:<?php echo $distributor->getEmail(); ?>"><?php echo $distributor->getEmail(); ?></a></div>
+            <div><a href="<?php echo $distributor->getWebsite() ?>"><?php echo $distributor->getWebsite() ?></a></div>
+            <?php if ($distributor->getContact()): ?>
+                <div><?php echo __("Contact: %1", $distributor->getContact()); ?></div>
+            <?php endif; ?>
+            <hr/>
+        </div>
+    </div>
+<?php endif; ?>

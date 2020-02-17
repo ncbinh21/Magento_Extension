@@ -1,0 +1,27 @@
+<?php
+/*************************************************
+ * *
+ *  *
+ *  * @copyright Copyright © 2017 Forix. All rights reserved.
+ *  * See COPYING.txt for license details.
+ *  * @author    thao@forixwebdesign.com
+ *
+ */
+/**
+ * @var \Forix\Ajaxscroll\Block\Main $block
+ */
+?>
+<?php
+  $loadingImg = $block->getViewFileUrl('images/loader-1.gif');
+?>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "ias-forix": {
+            "mode":       <?= $block->getMode()?>,
+            "htmlCustom": <?= $block->getOptionsToJson()?>,
+            "srcLoading": "<?= $loadingImg ?>"
+        }
+    }
+}
+</script>

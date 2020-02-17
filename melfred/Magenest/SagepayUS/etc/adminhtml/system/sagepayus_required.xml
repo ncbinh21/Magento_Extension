@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="sagepayus_required_config" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+        <label><![CDATA[Required Settings]]></label>
+
+        <field id="merchant_id" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>Merchant id</label>
+            <config_path>payment/magenest_sagepayus/merchant_id</config_path>
+        </field>
+
+        <field id="merchant_key" translate="label" type="obscure" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>Merchant key</label>
+            <config_path>payment/magenest_sagepayus/merchant_key</config_path>
+            <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+        </field>
+    </group>
+</include>

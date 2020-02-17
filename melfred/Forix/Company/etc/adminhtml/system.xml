@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*************************************************
+ * *
+ *  *
+ *  * @copyright Copyright © 2017 Forix. All rights reserved.
+ *  * See COPYING.txt for license details.
+ *  * @author    thao@forixwebdesign.com
+ *
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="company">
+            <group id="general">
+                <field id="mode" translate="label comment" sortOrder="10" type="select" showInStore="0" showInDefault="1">
+                    <label>Company Default</label>
+                    <source_model>Forix\Company\Model\Config\Source\CompanyList</source_model>
+                </field>
+                <!--<field id="role" translate="label comment" sortOrder="10" type="select" showInStore="0" showInDefault="1">-->
+                    <!--<label>Role Default</label>-->
+                    <!--<source_model>Forix\Company\Model\Config\Source\RoleList</source_model>-->
+                <!--</field>-->
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Forix\AdvancedAttribute\Block\Adminhtml\Options\Edit" name="attribute.banners.option.form.grid.container"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Forix\AdvancedAttribute\Block\Adminhtml\Options\Edit\Tabs" name="attribute.banners.option.edit.tabs">
+                <block class="Forix\AdvancedAttribute\Block\Adminhtml\Options\Edit\Tab\Main" name="attribute.banners.option.edit.tab.main"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">attribute.banners.option.edit.tab.main</argument>
+                </action>
+                <!-- This code is added for products grid -->
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">attachment_products</argument>
+                    <argument name="block" xsi:type="array">
+                        <item name="label" xsi:type="string">Selected Products</item>
+                        <item name="title" xsi:type="string">Selected Products</item>
+                        <item name="url" xsi:type="helper" helper="Forix\AdvancedAttribute\Helper\Option::getProductsGridUrl"></item>
+                        <item name="class" xsi:type="string">ajax</item>
+                    </argument>
+                </action>
+                <!-- This code is added for products grid -->
+            </block>
+        </referenceContainer>
+    </body>
+</page>

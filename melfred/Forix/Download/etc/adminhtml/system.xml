@@ -1,0 +1,31 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="footer_download_pdf" translate="label" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Footer File Download</label>
+            <tab>forix</tab>
+            <resource>Forix_Download::config_download_footer</resource>
+            <group id="setting" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="enabled_download_footer" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="image_download_footer" translate="label" type="image" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Image</label>
+                    <backend_model>Forix\Download\Model\Config\Backend\Image</backend_model>
+                    <base_url type="media" scope_info="1">footer_images</base_url>
+                    <depends>
+                        <field id="enabled_download_footer">1</field>
+                    </depends>
+                </field>
+                <field id="file_pdf_footer" translate="label" type="Magento\Config\Block\System\Config\Form\Field\File" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>File pdf</label>
+                    <backend_model>Forix\Download\Model\Config\Backend\File</backend_model>
+                    <upload_dir config="system" scope_info="1">footer_pdf</upload_dir>
+                    <depends>
+                        <field id="enabled_download_footer">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

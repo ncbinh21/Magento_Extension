@@ -1,0 +1,118 @@
+<?php
+/**
+ * Forix
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Forix.com license that is
+ * available through the world-wide-web at this URL:
+ *
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Forix
+ * @package     Forix_Bannerslider
+ * @copyright   Copyright (c) 2012 Forix (http://www.forixwebdesign.com/)
+ * @license
+ */
+?>
+<?php
+/** @var \Forix\Bannerslider\Block\SliderItem $block */
+$styleSlide = $block->getSlider()->getStyleSlide();
+$slider = $block->getSlider();
+$htmlId   = $block->getFlexsliderHtmlId();
+$bannerCollection = $block->getBannerCollection();
+?>
+<div class="forix-bannerslider-standard" data-mage-init='{"forix/impress": {"url": "<?php echo $this->getUrl("bannerslider/index/impress") ?>", "slider_id": "<?php echo $block->getSlider()->getId() ?>"}}'>
+	<?php if ($block->isShowTitle() == \Forix\Bannerslider\Model\Slider::SHOW_TITLE_YES) : ?>
+		<div class="forix-bannerslider-title" style="font: bold 12px/16px Arial, Helvetica, sans-serif;text-transform: uppercase;color: #e26703;">
+			<strong><span><?php echo $slider->getTitle(); ?></span></strong>
+		</div>
+	<?php endif; ?>
+	<div class="forix-bannerslide-flex-slider">
+		<div id="<?php echo $htmlId ?>" class="flexslider carousel-banner flexslider-content-image <?php echo $htmlId ?>" data-block="carousel-banner">
+			<ul class="slides">
+				<?php foreach ($bannerCollection as $banner): ?>
+					<?php
+					//get image by type use $block->getBannerImageByType($banner, 'tablet/phone/desktop')
+					?>
+					<?php if ($styleSlide == \Forix\Bannerslider\Model\Slider::STYLESLIDE_FLEXSLIDER_TWO) : ?>
+						<li data-thumb="<?php echo $block->getBannerImageUrl($banner) ?>">
+							<a href="<?php echo $banner->getClickUrl() ?>" target="<?php echo $banner->getTargetValue() ?>" style="display:block;" data-mage-init='{"forix/clickbanner": {"url": "<?php echo $this->getUrl("bannerslider/index/click") ?>", "slider_id": "<?php echo $banner->getSliderId() ?>", "banner_id": "<?php echo $banner->getId() ?>" }}' >
+								<img alt="<?php echo $banner->getImageAlt() ?>" src="<?php echo $block->getBannerImageUrl($banner) ?>"/>
+							</a>
+						</li>
+					<?php else : ?>
+						<li class="item">
+							<div class="box-outer">
+								<div class="box-image">
+									<img  alt="<?php echo $banner->getImageAlt() ?>" src="<?php echo $block->getBannerImageUrl($banner) ?>" />
+								</div>
+								<div class="banner-content">
+									<div class="banner-inner <?php echo $banner->getAlignText(); ?>">
+										<h4 class="banner-name"><?php echo $banner->getName(); ?></h4>
+										<?php if($banner->getImageAlt()):?>
+											<p class="banner-text"><?php echo $banner->getImageAlt(); ?></p>
+										<?php endif; ?>
+										<?php if($banner->getClickUrl()): ?>
+											<?php if($btext = $banner->getButtonText()): ?>
+												<a href="<?php echo $banner->getClickUrl() ?>" class="banner-link"><?php echo __($btext); ?></a>
+											<?php else: ?>
+												<a href="<?php echo $banner->getClickUrl() ?>" class="banner-link"><?php echo __('Shop Now'); ?></a>
+											<?php endif;?>
+										<?php endif;?>
+									</div>
+								</div>
+							</div>
+						</li>
+					<?php endif; ?>
+				<?php endforeach ?>
+			</ul>
+		</div>
+
+		<?php if ($styleSlide ==  \Forix\Bannerslider\Model\Slider::STYLESLIDE_FLEXSLIDER_THREE) : ?>
+			<!-- for flex slide carousel-->
+			<div id="<?php echo $htmlId ?>-carousel" class="flexslider flexslider-carousel"  data-block="carousel-banner">
+				<ul class="slides">
+					<?php foreach ($bannerCollection as $banner) : ?>
+						<li>
+							<div class="box-outer">
+								<div class="box-image">
+									<img  alt="<?php echo $banner->getImageAlt() ?>" src="<?php echo $block->getBannerImageUrl($banner) ?>" />
+								</div>
+								<div class="box-description">
+									<h4><?php echo $slider->getTitle(); ?>
+										<?php if($banner->getImageAlt()):?>
+											<p><?php echo $banner->getImageAlt(); ?></p>
+										<?php endif; ?>
+										<?php if($banner->getClickUrl()): ?>
+											<a href="<?php echo $banner->getClickUrl() ?>" class="shop-link"><?php echo __('Shop Now'); ?></a>
+										<?php endif;?>
+								</div>
+							</div>
+						</li>
+					<?php endforeach ?>
+				</ul>
+			</div>
+		<?php endif; ?>
+	</div>
+</div>
+<script type="text/x-magento-init">
+    {
+        "[data-block='carousel-banner']": {
+                "forix/flexslider": {
+                    "minItemsDesktop":1,
+                    "maxItemsDesktop":1,
+                    "minItemsTablet":1,
+                    "maxItemsTablet":1,
+                    "minItemsMobile":1,
+                    "maxItemsMobile":1,
+                    "controlNav": true,
+                    "directionNav": true
+                }
+        }
+    }
+</script>

@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="sagepayus_payment" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1"
+           showInStore="1">
+        <label><![CDATA[Sage PaymentsJS Integration]]></label>
+        <comment>JavaScript library for web and mobile optimized payments</comment>
+        <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>Enabled</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <config_path>payment/magenest_sagepayus/active</config_path>
+        </field>
+        <field id="payment_mode" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>Payment Mode</label>
+            <source_model>Magenest\SagepayUS\Model\Source\PaymentMode</source_model>
+            <config_path>payment/magenest_sagepayus/payment_mode</config_path>
+        </field>
+        <field id="title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Title</label>
+            <config_path>payment/magenest_sagepayus/title</config_path>
+            <comment>Payment method title displayed on Checkout page</comment>
+        </field>
+        <field id="sage_environment" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1"
+               showInStore="0">
+            <label>Sage Environment</label>
+            <config_path>payment/magenest_sagepayus/sage_environment</config_path>
+            <source_model>Magenest\SagepayUS\Model\Source\Environment</source_model>
+        </field>
+        <field id="test" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1"
+               showInStore="0">
+            <label>Add test data</label>
+            <config_path>payment/magenest_sagepayus/test</config_path>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <comment>
+                <![CDATA[
+                    Add test data only working in test mode only
+                ]]>
+            </comment>
+            <depends>
+                <field id="sage_environment">cert</field>
+            </depends>
+        </field>
+        <field id="payment_action" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>Payment Action</label>
+            <source_model>Magenest\SagepayUS\Model\Source\PaymentAction</source_model>
+            <config_path>payment/magenest_sagepayus/payment_action</config_path>
+        </field>
+        <field id="can_save_card" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1"
+               showInStore="0">
+            <label>Save Customer Cards Token</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <comment>Saving customer card on Sage's Server so that they don't need to enter card details again</comment>
+            <config_path>payment/magenest_sagepayus/can_save_card</config_path>
+        </field>
+        <field id="sage_debug" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1"
+               showInStore="0">
+            <label>Sage Browser Debug Logger</label>
+            <config_path>payment/magenest_sagepayus/sage_debug</config_path>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <depends>
+                <field id="sage_environment">cert</field>
+            </depends>
+        </field>
+        <field id="cctypes" translate="label" type="multiselect" sortOrder="70" showInDefault="1"
+               showInWebsite="1" showInStore="1">
+            <label>Credit Card Types</label>
+            <source_model>Magenest\SagepayUS\Model\Source\Cctype</source_model>
+            <config_path>payment/magenest_sagepayus/cctypes</config_path>
+        </field>
+        <field id="allowspecific" translate="label" type="allowspecific" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>Payment from Applicable Countries</label>
+            <source_model>Magento\Payment\Model\Config\Source\Allspecificcountries</source_model>
+            <config_path>payment/magenest_sagepayus/allowspecific</config_path>
+        </field>
+        <field id="specificcountry" translate="label" type="multiselect" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>Payment from Specific Countries</label>
+            <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+            <config_path>payment/magenest_sagepayus/specificcountry</config_path>
+        </field>
+
+        <field id="order_status" translate="label" type="select" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>New Order Status</label>
+            <source_model>Magento\Sales\Model\Config\Source\Order\Status\Processing</source_model>
+            <config_path>payment/magenest_sagepayus/order_status</config_path>
+        </field>
+
+        <field id="sort_order" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Sort Order</label>
+            <validate>validate-number</validate>
+            <config_path>payment/magenest_sagepayus/sort_order</config_path>
+        </field>
+
+        <field id="min_order_total" translate="label" type="text" sortOrder="220" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Minimum Order Total</label>
+            <config_path>payment/magenest_sagepayus/min_order_total</config_path>
+            <validate>validate-number</validate>
+        </field>
+        <field id="max_order_total" translate="label" type="text" sortOrder="230" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Maximum Order Total</label>
+            <config_path>payment/magenest_sagepayus/max_order_total</config_path>
+            <validate>validate-number</validate>
+        </field>
+    </group>
+</include>

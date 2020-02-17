@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
+        <plugin name="add_custom_field_checkout_form" type="Forix\Checkout\Plugin\Checkout\LayoutProcessor" sortOrder="1" />
+    </type>
+    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+        <arguments>
+            <argument name="configProviders" xsi:type="array">
+                <item name="forix_custom_checkout_config_provider" xsi:type="object">Forix\Checkout\Model\ConfigProvider</item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Magento\Checkout\Block\Cart\LayoutProcessor" type="Forix\Checkout\Block\Cart\LayoutProcessor" />
+    <preference for="Magento\Checkout\Block\Onepage\Success" type="Forix\Checkout\Block\Onepage\Success" />
+    <preference for="Magento\Multishipping\Block\Checkout\Success" type="Forix\Checkout\Block\Multishipping\Success" />
+    <type name="Magento\Checkout\Model\DefaultConfigProvider">
+        <plugin name="get_sku_checkout_plugin" type="Forix\Checkout\Plugin\Model\DefaultConfigProviderPlugin" sortOrder="10" />
+    </type>
+
+    <preference for="Magento\Checkout\CustomerData\Cart" type="Forix\Checkout\CustomerData\Cart" />
+</config>

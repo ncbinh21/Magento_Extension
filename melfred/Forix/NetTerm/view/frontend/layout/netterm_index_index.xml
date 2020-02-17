@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <container name="netterms-note-container" htmlTag="div" htmlClass="netterms-note" before="-">
+                <block class="Magento\Cms\Block\Block" name="netterms-note">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">netterms-note</argument>
+                    </arguments>
+                </block>
+            </container>
+            <block class="Forix\NetTerm\Block\Checkout\Payment\NetTerm" name="apply_for_net_terms" cacheable="false" template="Forix_NetTerm::netterm.phtml">
+                <container name="netterms-conditions-container" htmlTag="div" htmlClass="netterms-conditions" before="-">
+                    <block class="Magento\Cms\Block\Block" name="netterms-conditions">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">netterms-conditions</argument>
+                        </arguments>
+                    </block>
+                </container>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="alternate">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="label" xsi:type="string" translate="true">Alternate Settings</item>
+                <item name="sortOrder" xsi:type="number">260</item>
+            </item>
+        </argument>
+        <field name="alternate_group">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Alternate group</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">page</item>
+                    <item name="dataScope" xsi:type="string">alternate_group</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="open_graph_image_url_field">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="label" xsi:type="string" translate="true">Open Graph Image Url</item>
+                <item name="sortOrder" xsi:type="number">260</item>
+            </item>
+        </argument>
+        <field name="open_graph_image_url">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Open Graph Image Url</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">page</item>
+                    <item name="dataScope" xsi:type="string">open_graph_image_url</item>
+                    <item name="additionalInfo" xsi:type="string"><![CDATA[
+                       If empty Open Graph will use logo image url
+                        ]]>
+                </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

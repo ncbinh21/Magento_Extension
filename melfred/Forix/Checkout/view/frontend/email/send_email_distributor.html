@@ -1,0 +1,173 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!--@subject {{trans "New Customer Order"}} @-->
+{{template config_path="design/email/header_template"}}
+<table class="distributor-intro">
+    <tbody>
+        <tr>
+            <td>
+                <h3 class="distributor-name">Hi {{trans "%name" name=$distributor_name}}</h3>
+                <p>Your 24/7 HDD Melfred Borzall tooling salesperson just sold some more products to your customer <strong>{{trans "%name" name=$customer_name}}</strong></p>
+                <p>Here’s the details of the order:</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="order-number">
+    <a target="_blank" href="{{config path="web/unsecure/base_url"}}/sales/orders/manage"><span class="text-order"><img src="{{view url='Magento_Email/order-number.png'}}"/></span><span class="number">{{trans "%name" name=$order_increment_id}}</span></a></div>
+{{if order.getPoNumber()}}
+<div><strong>{{trans "PO Number: %po_number" po_number=$order.getPoNumber() }}</strong></div>
+{{/if}}
+<div class="order-date">Placed on {{trans "%name" name=$pdt_date}}</div>
+<div class="box-order">
+    <table>
+        <tbody>
+        <tr>
+            <td>
+                <div class="box box-order-billing-info">
+                    <strong class="box-title">
+                        <span>Billing Info</span>
+                    </strong>
+                    <div class="box-content">
+                        <p>{{trans "%name" name=$billing_customer_name}}</p>
+                        <p>{{trans "%billing_company" billing_company=$order.getBillingAddress().getCompany()}}</p>
+                        <p>{{trans "%billing_street" billing_street=$billing_street}}</p>
+                        <p>{{trans "%name" name=$order.getBillingAddress().getCity()}},
+                        {{trans "%name" name=$order.getBillingAddress().getRegion()}},
+                        {{trans "%name" name=$order.getBillingAddress().getPostCode()}}</p>
+                        <p>{{trans "%billing_country" billing_country=$billing_country}}</p>
+                        <p>T: {{trans "%name" name=$order.getBillingAddress().getTelephone()}}</p>
+                        <p>Email: {{trans "%name" name=$order.getBillingAddress().getEmail()}}</p>
+                    </div>
+                </div>
+
+            </td>
+            <td>
+                <div class="box box-order-shipping-info">
+                    <strong class="box-title">
+                        <span>Shipping Info</span>
+                    </strong>
+                    <div class="box-content">
+                        <div>
+                            <p>{{trans "%name" name=$shipping_customer_name}}</p>
+                            <p>{{trans "%shipping_company" shipping_company=$order.getShippingAddress().getCompany()}}</p>
+                            <p>{{trans "%shipping_street" shipping_street=$shipping_street}}</p>
+                            <p>{{trans "%name" name=$order.getShippingAddress().getCity()}},
+                            {{trans "%name" name=$order.getShippingAddress().getRegion()}},
+                            {{trans "%name" name=$order.getShippingAddress().getPostCode()}}</p>
+                            <p>{{trans "%shipping_country" shipping_country=$shipping_country}}</p>
+                            <p>T: {{trans "%name" name=$order.getShippingAddress().getTelephone()}}</p>
+                            <p>Email: {{trans "%name" name=$order.getShippingAddress().getEmail()}}</p>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="box box-order-billing-method">
+                    <strong class="box-title">
+                        <span>Payment Method</span>
+                    </strong>
+                    <div class="box-content">
+                        <div>
+                            {{trans "%name" name=$payment_method_title}}
+                        </div>
+                    </div>
+                </div>
+
+            </td>
+            <td>
+                <div class="box box-order-shipping-method">
+                    <strong class="box-title">
+                        <span>Shipping Method</span>
+                    </strong>
+                    <div class="box-content">
+                        <div>
+                            {{trans "%name" name=$shipping_method_title}}
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    {{layout handle="sales_email_order_items" order=$order}}
+</div>
+<div class="distributo-not-done">
+    <div class="icon-pin">
+        <img src="{{view url='Magento_Email/pin-email.png'}}"/>
+    </div>
+    <div class="title"><img src="{{view url='Magento_Email/not-done.png'}}"/></div>
+    <p>Below are must-do tasks that need follow up:</p>
+</div>
+<div class="distributor-content">
+    <ul>
+        <li>
+            <h3 class="title"><img src="{{view url='Magento_Email/1.png'}}"/></h3>
+            <ul class="content">
+                <li>(i.e. Did they order 2 adapters to go with a reamer? Does the blade bolt pattern match the housing?)</li>
+            </ul>
+        </li>
+        <li>
+            <h3 class="title"><img src="{{view url='Magento_Email/2.png'}}"/></h3>
+            <ul class="content">
+                <li>
+                    <strong>What</strong> products will ship and what is backordered
+                </li>
+                <li>
+                    <strong>Where</strong> will products ship from
+                </li>
+                <li>
+                    <strong>When</strong> will they ship
+                </li>
+                <li>
+                    <strong>How</strong> will they ship
+                </li>
+            </ul>
+        <li>
+            <h3 class="title"><img src="{{view url='Magento_Email/3.png'}}"/></h3>
+        </li>
+        <li>
+            <h3 class="title"><img src="{{view url='Magento_Email/4.png'}}"/></h3>
+            <ul class="content">
+                <li>
+                    Tracking # (if available)
+                </li>
+                <li>
+                    Confirmation of what products shipped and/or backordered
+                </li>
+                <li>
+                    Confirmation of order being fulfilled
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <table class="button-view-order" align="center">
+        <tbody>
+            <tr>
+                <td>
+                    <a href="{{config path="web/unsecure/base_url"}}/sales/orders/manage" title="view order">
+                        <img src="{{view url='Magento_Email/view-order-email.png'}}"/>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<table class="distributor-bottom">
+    <tbody>
+        <tr>
+            <td>
+                If you have any questions or problems, please contact us on your distributor hotline –
+                <a href="tel:805.361.2222" title="805.361.2222">805.361.2222</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+{{template config_path="design/email/footer_template"}}

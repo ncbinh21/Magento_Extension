@@ -1,0 +1,325 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">forix_productwizard_group_item_form.group_item_form_data_source</item>
+			<item name="deps" xsi:type="string">forix_productwizard_group_item_form.group_item_form_data_source</item>
+		</item>
+		<item name="label" translate="true" xsi:type="string">General Information</item>
+		<item name="config" xsi:type="array">
+			<item name="dataScope" xsi:type="string">data</item>
+			<item name="namespace" xsi:type="string">forix_productwizard_group_item_form</item>
+		</item>
+		<item name="template" xsi:type="string">templates/form/collapsible</item>
+		<item name="buttons" xsi:type="array">
+			<item name="back" xsi:type="string">Forix\ProductWizard\Block\Adminhtml\Group\Item\Edit\BackButton</item>
+			<item name="delete" xsi:type="string">Forix\ProductWizard\Block\Adminhtml\Group\Item\Edit\DeleteButton</item>
+			<item name="save" xsi:type="string">Forix\ProductWizard\Block\Adminhtml\Group\Item\Edit\SaveButton</item>
+			<item name="save_and_continue" xsi:type="string">Forix\ProductWizard\Block\Adminhtml\Group\Item\Edit\SaveAndContinueButton</item>
+		</item>
+	</argument>
+	<dataSource name="group_item_form_data_source">
+		<argument name="dataProvider" xsi:type="configurableObject">
+			<argument name="class" xsi:type="string">Forix\ProductWizard\Model\GroupItem\DataProvider</argument>
+			<argument name="name" xsi:type="string">group_item_form_data_source</argument>
+			<argument name="primaryFieldName" xsi:type="string">group_item_id</argument>
+			<argument name="requestFieldName" xsi:type="string">group_item_id</argument>
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="submit_url" path="*/*/save" xsi:type="url"/>
+				</item>
+			</argument>
+		</argument>
+		<argument name="data" xsi:type="array">
+			<item name="js_config" xsi:type="array">
+				<item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+			</item>
+		</argument>
+	</dataSource>
+	<fieldset name="General">
+		<argument name="data" xsi:type="array">
+			<item name="config" xsi:type="array">
+				<item name="label" xsi:type="string"/>
+			</item>
+		</argument>
+		<field name="title">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Title</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">Group_Item</item>
+					<item name="sortOrder" xsi:type="number">10</item>
+					<item name="dataScope" xsi:type="string">title</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">true</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="group_id">
+			<argument name="data" xsi:type="array">
+				<item name="options" xsi:type="object">\Forix\ProductWizard\Model\Source\Group</item>
+				<item name="config" xsi:type="array">
+					<item name="component" xsi:type="string">Forix_ProductWizard/js/form/element/group_id</item>
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Group</item>
+					<item name="formElement" xsi:type="string">select</item>
+					<item name="source" xsi:type="string">Group_Item</item>
+					<item name="sortOrder" xsi:type="number">20</item>
+					<item name="dataScope" xsi:type="string">group_id</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">true</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="template">
+			<argument name="data" xsi:type="array">
+				<item name="options" xsi:type="object">\Forix\ProductWizard\Model\Source\Templates</item>
+				<item name="config" xsi:type="array">
+					<item name="component" xsi:type="string">Forix_ProductWizard/js/form/element/template</item>
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Template</item>
+					<item name="formElement" xsi:type="string">select</item>
+					<item name="source" xsi:type="string">Group_Item</item>
+					<item name="sortOrder" xsi:type="number">25</item>
+					<item name="dataScope" xsi:type="string">template</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">true</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="item_set_id">
+			<argument name="data" xsi:type="array">
+				<item name="options" xsi:type="object">\Forix\ProductWizard\Model\Source\ItemSetGroup</item>
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Item Set</item>
+					<item name="formElement" xsi:type="string">select</item>
+					<item name="source" xsi:type="string">Group_Item</item>
+					<item name="sortOrder" xsi:type="number">27</item>
+					<item name="dataScope" xsi:type="string">item_set_id</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+					<!--<item name="notice" xsi:type="string" translate="true"><![CDATA[Assign Item set to this option]]></item>-->
+				</item>
+			</argument>
+		</field>
+		<field name="attribute_code">
+			<argument name="data" xsi:type="array">
+				<item name="options" xsi:type="object">\Forix\ProductWizard\Model\Source\Attribute</item>
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Attribute Code</item>
+					<item name="formElement" xsi:type="string">select</item>
+					<item name="source" xsi:type="string">Group_Item</item>
+					<item name="sortOrder" xsi:type="number">30</item>
+					<item name="dataScope" xsi:type="string">attribute_code</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="auto_add_item_option">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">boolean</item>
+					<item name="label" translate="true" xsi:type="string">Auto Add Item Options</item>
+					<item name="formElement" xsi:type="string">checkbox</item>
+					<item name="source" xsi:type="string">Group_Item</item>
+					<item name="sortOrder" xsi:type="number">40</item>
+					<item name="dataScope" xsi:type="string">auto_add_item_option</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+				</item>
+			</argument>
+		</field>
+		<field name="note">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Note</item>
+					<item name="formElement" xsi:type="string">textarea</item>
+					<item name="source" xsi:type="string">Group_Item</item>
+					<item name="sortOrder" xsi:type="number">50</item>
+					<item name="dataScope" xsi:type="string">note</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="is_required">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">boolean</item>
+					<item name="label" translate="true" xsi:type="string">Required</item>
+					<item name="formElement" xsi:type="string">checkbox</item>
+					<item name="source" xsi:type="string">Group_Item</item>
+					<item name="sortOrder" xsi:type="number">60</item>
+					<item name="dataScope" xsi:type="string">is_required</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+					<item name="valueMap" xsi:type="array">
+						<item name="true" xsi:type="number">1</item>
+						<item name="false" xsi:type="number">0</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="select_type">
+			<argument name="data" xsi:type="array">
+				<item name="options" xsi:type="object">\Forix\ProductWizard\Model\Source\SelectType</item>
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Select Type</item>
+					<item name="formElement" xsi:type="string">select</item>
+					<item name="source" xsi:type="string">Group_Item</item>
+					<item name="sortOrder" xsi:type="number">70</item>
+					<item name="dataScope" xsi:type="string">select_type</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+					<item name="notice" xsi:type="string" translate="true">Depend on Template.</item>
+				</item>
+			</argument>
+		</field>
+		<field name="enable_find_option" sortOrder="10" formElement="checkbox">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Group_Item</item>
+					<item name="default" xsi:type="number">1</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>boolean</dataType>
+				<label translate="true">Enable Find Option Feature</label>
+				<dataScope>enable_find_option</dataScope>
+			</settings>
+			<formElements>
+				<checkbox>
+					<settings>
+						<valueMap>
+							<map name="false" xsi:type="number">0</map>
+							<map name="true" xsi:type="number">1</map>
+						</valueMap>
+						<prefer>toggle</prefer>
+					</settings>
+				</checkbox>
+			</formElements>
+		</field>
+		<field name="next_to">
+			<argument name="data" xsi:type="array">
+				<item name="options" xsi:type="object">\Forix\ProductWizard\Model\Source\NextTo</item>
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Next To</item>
+					<item name="formElement" xsi:type="string">select</item>
+					<item name="source" xsi:type="string">Group_Item</item>
+					<item name="sortOrder" xsi:type="number">75</item>
+					<item name="dataScope" xsi:type="string">next_to</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+					<item name="notice" xsi:type="string" translate="true">Depend on Template.</item>
+				</item>
+			</argument>
+		</field>
+		<field name="is_show_view_all">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">boolean</item>
+					<item name="label" translate="true" xsi:type="string">Show View All Button</item>
+					<item name="formElement" xsi:type="string">checkbox</item>
+					<item name="source" xsi:type="string">Group_Item</item>
+					<item name="sortOrder" xsi:type="number">80</item>
+					<item name="dataScope" xsi:type="string">is_show_view_all</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+					<item name="valueMap" xsi:type="array">
+						<item name="true" xsi:type="number">1</item>
+						<item name="false" xsi:type="number">0</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="show_all_message">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Show All Message</item>
+					<item name="formElement" xsi:type="string">textarea</item>
+					<item name="source" xsi:type="string">Group_Item</item>
+					<item name="sortOrder" xsi:type="number">85</item>
+					<item name="dataScope" xsi:type="string">show_all_message</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="button_text">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Button Text</item>
+					<item name="formElement" xsi:type="string">textarea</item>
+					<item name="source" xsi:type="string">Group_Item</item>
+					<item name="sortOrder" xsi:type="number">90</item>
+					<item name="dataScope" xsi:type="string">button_text</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="sort_order">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Sort Order</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">Group_Item</item>
+					<item name="sortOrder" xsi:type="number">100</item>
+					<item name="dataScope" xsi:type="string">sort_order</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">true</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+	</fieldset>
+	<fieldset name="assign_products" sortOrder="110">
+		<settings>
+			<collapsible>true</collapsible>
+			<label translate="true">Products in Group Item</label>
+		</settings>
+		<container name="assign_products_container" sortOrder="160">
+			<htmlContent name="html_content">
+				<block name="assign_products" class="Forix\ProductWizard\Block\Adminhtml\Group\Item\AssignProducts"/>
+			</htmlContent>
+		</container>
+	</fieldset>
+	<fieldset name="assign_options" sortOrder="120">
+		<settings>
+			<collapsible>true</collapsible>
+			<label translate="true">Group Item Options</label>
+		</settings>
+		<container name="options_container" sortOrder="160">
+			<htmlContent name="html_content">
+				<block name="group_item_options" class="Forix\ProductWizard\Block\Adminhtml\Group\Item\Option\Edit\OptionGrid"/>
+			</htmlContent>
+		</container>
+	</fieldset>
+</form>

@@ -1,0 +1,21 @@
+{
+    "name": "forix/module-scripts",
+    "description": "Forix create static block and page.",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Mage2Gen",
+            "email": "info@mage2gen.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Forix\\Scripts\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}

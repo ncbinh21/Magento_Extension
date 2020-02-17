@@ -1,0 +1,436 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">forix_netterm_netterm_form.netterm_form_data_source</item>
+			<item name="deps" xsi:type="string">forix_netterm_netterm_form.netterm_form_data_source</item>
+		</item>
+		<item name="label" translate="true" xsi:type="string">General Information</item>
+		<item name="config" xsi:type="array">
+			<item name="dataScope" xsi:type="string">data</item>
+			<item name="namespace" xsi:type="string">forix_netterm_netterm_form</item>
+		</item>
+		<item name="template" xsi:type="string">templates/form/collapsible</item>
+		<item name="buttons" xsi:type="array">
+			<item name="back" xsi:type="string">Forix\NetTerm\Block\Adminhtml\Netterm\Edit\BackButton</item>
+			<item name="delete" xsi:type="string">Forix\NetTerm\Block\Adminhtml\Netterm\Edit\DeleteButton</item>
+			<item name="save" xsi:type="string">Forix\NetTerm\Block\Adminhtml\Netterm\Edit\SaveButton</item>
+			<item name="save_and_continue" xsi:type="string">Forix\NetTerm\Block\Adminhtml\Netterm\Edit\SaveAndContinueButton</item>
+		</item>
+	</argument>
+	<dataSource name="netterm_form_data_source">
+		<argument name="dataProvider" xsi:type="configurableObject">
+			<argument name="class" xsi:type="string">Forix\NetTerm\Model\Netterm\DataProvider</argument>
+			<argument name="name" xsi:type="string">netterm_form_data_source</argument>
+			<argument name="primaryFieldName" xsi:type="string">netterm_id</argument>
+			<argument name="requestFieldName" xsi:type="string">netterm_id</argument>
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="submit_url" path="*/*/save" xsi:type="url"/>
+				</item>
+			</argument>
+		</argument>
+		<argument name="data" xsi:type="array">
+			<item name="js_config" xsi:type="array">
+				<item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+			</item>
+		</argument>
+	</dataSource>
+	<fieldset name="General">
+		<argument name="data" xsi:type="array">
+			<item name="config" xsi:type="array">
+				<item name="label" xsi:type="string"/>
+			</item>
+		</argument>
+		<field name="full_name">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Full Name</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">netterm</item>
+					<item name="sortOrder" xsi:type="number">10</item>
+					<item name="dataScope" xsi:type="string">full_name</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">true</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="company_name">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">CompanyName</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">netterm</item>
+					<item name="sortOrder" xsi:type="number">20</item>
+					<item name="dataScope" xsi:type="string">company_name</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="title">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Title</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">netterm</item>
+					<item name="sortOrder" xsi:type="number">30</item>
+					<item name="dataScope" xsi:type="string">title</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="date">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">string</item>
+					<item name="label" translate="true" xsi:type="string">Date</item>
+					<item name="formElement" xsi:type="string">date</item>
+					<item name="source" xsi:type="string">netterm</item>
+					<item name="sortOrder" xsi:type="number">40</item>
+					<item name="dateFormat" xsi:type="string">MM/dd/Y</item>
+				</item>
+			</argument>
+		</field>
+		<field name="is_active">
+			<argument name="data" xsi:type="array">
+				<item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Is Active</item>
+					<item name="formElement" xsi:type="string">select</item>
+					<item name="source" xsi:type="string">netterm</item>
+					<item name="sortOrder" xsi:type="number">50</item>
+					<item name="dataScope" xsi:type="string">is_active</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="business">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Business</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">netterm</item>
+					<item name="sortOrder" xsi:type="number">60</item>
+					<item name="dataScope" xsi:type="string">business</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">true</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="type_business">
+			<argument name="data" xsi:type="array">
+				<item name="options" xsi:type="object">Forix\NetTerm\Ui\TypeBusiness\Options</item>
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Type Business</item>
+					<item name="formElement" xsi:type="string">select</item>
+					<item name="source" xsi:type="string">netterm</item>
+					<item name="sortOrder" xsi:type="number">70</item>
+					<item name="dataScope" xsi:type="string">type_business</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="location_since">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Present Location Since</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">netterm</item>
+					<item name="sortOrder" xsi:type="number">80</item>
+					<item name="dataScope" xsi:type="string">location_since</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">true</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="year_established">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Year Established</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">netterm</item>
+					<item name="sortOrder" xsi:type="number">90</item>
+					<item name="dataScope" xsi:type="string">year_established</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">true</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<!--<field name="owners_officers">-->
+		<!--<argument name="data" xsi:type="array">-->
+		<!--<item name="config" xsi:type="array">-->
+		<!--<item name="dataType" xsi:type="string">text</item>-->
+		<!--<item name="label" translate="true" xsi:type="string">Owners and Officers</item>-->
+		<!--<item name="formElement" xsi:type="string">input</item>-->
+		<!--<item name="source" xsi:type="string">netterm</item>-->
+		<!--<item name="sortOrder" xsi:type="number">40</item>-->
+		<!--<item name="dataScope" xsi:type="string">owners_officers</item>-->
+		<!--<item name="validation" xsi:type="array">-->
+		<!--<item name="required-entry" xsi:type="boolean">false</item>-->
+		<!--</item>-->
+		<!--</item>-->
+		<!--</argument>-->
+		<!--</field>-->
+		<field name="name_title_1">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Name Title 1</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">netterm</item>
+					<item name="sortOrder" xsi:type="number">100</item>
+					<item name="dataScope" xsi:type="string">name_title_1</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">true</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="name_title_2">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Name Title 2</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">netterm</item>
+					<item name="sortOrder" xsi:type="number">110</item>
+					<item name="dataScope" xsi:type="string">name_title_2</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="name_title_3">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Name Title 3</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">netterm</item>
+					<item name="sortOrder" xsi:type="number">120</item>
+					<item name="dataScope" xsi:type="string">name_title_3</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+
+		<!--<field name="company_references">-->
+		<!--<argument name="data" xsi:type="array">-->
+		<!--<item name="config" xsi:type="array">-->
+		<!--<item name="dataType" xsi:type="string">text</item>-->
+		<!--<item name="label" translate="true" xsi:type="string">Company References</item>-->
+		<!--<item name="formElement" xsi:type="string">input</item>-->
+		<!--<item name="source" xsi:type="string">netterm</item>-->
+		<!--<item name="sortOrder" xsi:type="number">60</item>-->
+		<!--<item name="dataScope" xsi:type="string">company_references</item>-->
+		<!--<item name="validation" xsi:type="array">-->
+		<!--<item name="required-entry" xsi:type="boolean">false</item>-->
+		<!--</item>-->
+		<!--</item>-->
+		<!--</argument>-->
+		<!--</field>-->
+		<field name="company_1">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Company 1</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">netterm</item>
+					<item name="sortOrder" xsi:type="number">130</item>
+					<item name="dataScope" xsi:type="string">company_1</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="fax_number_1">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Fax Number 1</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">netterm</item>
+					<item name="sortOrder" xsi:type="number">140</item>
+					<item name="dataScope" xsi:type="string">fax_number_1</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="email_1">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Email 1</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">netterm</item>
+					<item name="sortOrder" xsi:type="number">150</item>
+					<item name="dataScope" xsi:type="string">email_1</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="company_2">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Company 2</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">netterm</item>
+					<item name="sortOrder" xsi:type="number">160</item>
+					<item name="dataScope" xsi:type="string">company_2</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="fax_number_2">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Fax Number 2</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">netterm</item>
+					<item name="sortOrder" xsi:type="number">170</item>
+					<item name="dataScope" xsi:type="string">fax_number_2</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="email_2">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Email 2</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">netterm</item>
+					<item name="sortOrder" xsi:type="number">180</item>
+					<item name="dataScope" xsi:type="string">email_2</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="company_3">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Company 3</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">netterm</item>
+					<item name="sortOrder" xsi:type="number">190</item>
+					<item name="dataScope" xsi:type="string">company_3</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="fax_number_3">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Fax Number 3</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">netterm</item>
+					<item name="sortOrder" xsi:type="number">200</item>
+					<item name="dataScope" xsi:type="string">fax_number_3</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="email_3">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Email 3</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">netterm</item>
+					<item name="sortOrder" xsi:type="number">210</item>
+					<item name="dataScope" xsi:type="string">email_3</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="company_4">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Company 4</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">netterm</item>
+					<item name="sortOrder" xsi:type="number">220</item>
+					<item name="dataScope" xsi:type="string">company_4</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="fax_number_4">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Fax Number 4</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">netterm</item>
+					<item name="sortOrder" xsi:type="number">230</item>
+					<item name="dataScope" xsi:type="string">fax_number_4</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="email_4">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Email 4</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">netterm</item>
+					<item name="sortOrder" xsi:type="number">240</item>
+					<item name="dataScope" xsi:type="string">email_4</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+	</fieldset>
+</form>

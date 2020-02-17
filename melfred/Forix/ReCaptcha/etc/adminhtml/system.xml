@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<tab id="forix" translate="label">
+			<label>Forix</label>
+		</tab>
+		<section id="recaptcha" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+			<class>separator-top</class>
+			<label>Google reCAPTCHA</label>
+			<tab>forix</tab>
+			<resource>Magento_Backend::all</resource>
+			<group id="setting" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>General</label>
+				<field id="is_active" type="select" translate="label" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+					<label>Enable CAPTCHA on Store</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id="site_key" type="text" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+					<label>Site Key</label>
+					<depends>
+						<field id="is_active">1</field>
+					</depends>
+					<frontend_class>required-entry</frontend_class>
+				</field>
+				<field id="secret_key" type="text" translate="label" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+					<label>Secret Key</label>
+					<frontend_class>required-entry</frontend_class>
+					<depends>
+						<field id="is_active">1</field>
+					</depends>
+				</field>
+				<field id="forms" type="multiselect" translate="label" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+					<label>Forms</label>
+					<source_model>Forix\ReCaptcha\Model\System\Source\Forms</source_model>
+					<depends>
+						<field id="is_active">1</field>
+					</depends>
+				</field>
+			</group>
+		</section>
+	</system>
+</config>

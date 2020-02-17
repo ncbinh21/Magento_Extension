@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="customer_save_before">
+        <observer name="save_customer_contact_sage" instance="Forix\Api\Observer\Customer\SaveCustomer" />
+    </event>
+
+    <event name="company_save_before">
+        <observer name="save_customer_sage" instance="Forix\Api\Observer\Company\SaveCompany" />
+    </event>
+
+</config>

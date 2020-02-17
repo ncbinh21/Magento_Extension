@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="payment">
+            <group id="sage100_service" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Sage 100 Gateway</label>
+                <group id="sage100_service_config" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label><![CDATA[Service API Settings]]></label>
+                    <field id="service_url" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Sage 100 Service URL</label>
+                        <config_path>payment/sage100_service/service_url</config_path>
+                    </field>
+                    <field id="username" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Sage 100 Service Username</label>
+                        <config_path>payment/sage100_service/username</config_path>
+                    </field>
+                    <field id="password" translate="label" type="obscure" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Sage 100 Service Password</label>
+                        <config_path>payment/sage100_service/password</config_path>
+                        <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    </field>
+                    <field id="company_code" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Company Code</label>
+                        <config_path>payment/sage100_service/company_code</config_path>
+                    </field>
+
+                    <field id="division_no" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>ArDivision No</label>
+                        <config_path>payment/sage100_service/division_no</config_path>
+                    </field>
+
+                    <field id="salesperson_no" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Salesperson No</label>
+                        <config_path>payment/sage100_service/salesperson_no</config_path>
+                    </field>
+
+                </group>
+                <group id="sage100_payment_config" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label><![CDATA[General Settings]]></label>
+                    <field id="title" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                           showInStore="1">
+                        <label>Title</label>
+                        <config_path>payment/sage100_service/title</config_path>
+                    </field>
+                    <field id="allowspecific" translate="label" type="allowspecific" sortOrder="20" showInDefault="9"
+                           showInWebsite="1" showInStore="0">
+                        <label>Payment From Applicable Countries</label>
+                        <config_path>payment/sage100_service/allowspecific</config_path>
+                        <source_model>Magento\Payment\Model\Config\Source\Allspecificcountries</source_model>
+                    </field>
+                    <field id="specificcountry" translate="label" type="multiselect" sortOrder="30" showInDefault="1"
+                           showInWebsite="1" showInStore="0">
+                        <label>Payment From Specific Countries</label>
+                        <config_path>payment/sage100_service/specificcountry</config_path>
+                        <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                    </field>
+                    <field id="sort_order" translate="label" type="text" sortOrder="40" showInDefault="1"
+                           showInWebsite="1" showInStore="0">
+                        <label>Sort Order</label>
+                        <config_path>payment/sage100_service/sort_order</config_path>
+                        <frontend_class>validate-number</frontend_class>
+                    </field>
+
+                    <field id="sync_customer" translate="label" type="select" sortOrder="40" showInDefault="1"
+                           showInWebsite="1" showInStore="0">
+                        <label>Sync Customer</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+
+                    <field id="cctypes" translate="label comment" type="multiselect" sortOrder="100" showInDefault="0" showInWebsite="0" showInStore="0">
+                        <label>Allowed Credit Card Types</label>
+                        <source_model>Forix\Payment\Model\Source\Cctype</source_model>
+                        <config_path>payment/sage100_service/cctypes</config_path>
+                        <attribute type="shared">1</attribute>
+                    </field>
+                    <field id="useccv" translate="label comment" type="select" sortOrder="110" showInDefault="0" showInWebsite="0" showInStore="0">
+                        <label>Credit Card Verification</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>payment/sage100_service/useccv</config_path>
+                        <comment>'Yes' to require the CCV code when using new cards (recommended).</comment>
+                    </field>
+
+                    <field id="debug" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1"
+                           showInStore="0">
+                        <label>use Debug Logger</label>
+                        <config_path>payment/sage100_service/debug</config_path>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                </group>
+            </group>
+        </section>
+    </system>
+</config>

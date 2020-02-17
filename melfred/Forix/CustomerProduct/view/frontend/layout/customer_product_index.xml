@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<update handle="customer_account"/>
+	<update handle="requisition_list"/>
+	<body>
+		<referenceContainer name="content">
+			<block class="Magento\Cms\Block\Block" name="my-product-info">
+				<arguments>
+					<argument name="block_id" xsi:type="string">my-product-info</argument>
+				</arguments>
+			</block>
+			<block class="Forix\CustomerProduct\Block\Product\Index" name="product.index" template="Forix_CustomerProduct::product/index.phtml" cacheable="false"/>
+		</referenceContainer>
+	</body>
+</page>

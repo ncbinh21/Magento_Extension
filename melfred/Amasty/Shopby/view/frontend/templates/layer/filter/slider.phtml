@@ -1,0 +1,64 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_Shopby
+ */
+?>
+<?php
+/** @var \Amasty\ShopbyBase\Model\FilterSetting $filterSetting */
+/** @var \Amasty\Shopby\Block\Navigation\FilterRenderer $block */
+?>
+
+<?php $_postfix = uniqid();?>
+<?php $filterCode = $block->escapeHtml($filterSetting->getFilterCode()); ?>
+<?php $_widgetFromName = 'amshopby[' . $filterCode . '_from][]'?>
+<?php $_widgetToName = 'amshopby[' . $filterCode . '_to][]'?>
+<?php $_widgetFrom = 'am_shopby_filter_widget_' . $filterCode . '_from_' . $_postfix?>
+<?php $_widgetTo = 'am_shopby_filter_widget_' . $filterCode . '_to_' . $_postfix?>
+<?php $max = $block->escapeHtml(ceil($fromToConfig['max']))?>
+<?php $min = $block->escapeHtml(floor($fromToConfig['min']))?>
+
+<div class="items am-filter-items-<?= $filterCode; ?>">
+    <form data-amshopby-filter="<?= $filterCode; ?>"
+          data-amshopby-filter-request-var="<?= $block->getFilter()->getRequestVar(); ?>">
+        <div id="am-shopby-filter-<?= $filterCode . '_' . $_postfix; ?>"
+             class="amshopby-slider-container"
+             data-am-js="slider-container"
+             data-min="<?= $min; ?>"
+             data-max="<?= $max; ?>"
+             rate="<?= $fromToConfig['curRate']; ?>">
+            <input amshopby-slider-id="value"
+                   type=hidden
+                   name="<?= /* @escapeNotVerified */ 'amshopby[' . $block->getFilter()->getRequestVar() . '][]'
+                   ?>"/>
+            <div amshopby-slider-id="slider" class="am-slider"></div>
+            <div amshopby-slider-id="display"
+                 class="amshopby-slider-display"
+                 data-am-js="slider-display"></div>
+        </div>
+    </form>
+</div>
+
+<?php if ($filterSetting->getAddFromToWidget()) : ?>
+    <?= $block->getFromToWidget('slider') ?>
+<?php endif; ?>
+
+<script type="text/x-magento-init">
+    {
+        "#am-shopby-filter-<?= $filterCode . '_' . $_postfix; ?>": {
+            "amShopbyFilterSlider": {
+                    "collectFilters": <?= /* @escapeNotVerified */ $block->collectFilters(); ?>,
+                    "template":"<?= $block->escapeHtml($fromToConfig['template']) ?>",
+                    "step":<?= /* @escapeNotVerified */ $block->escapeHtml(floatval($fromToConfig['step'])) ?>,
+                    "from": "<?= /* @escapeNotVerified */ $fromToConfig['from']; ?>",
+                    "to": "<?= /* @escapeNotVerified */ $fromToConfig['to']; ?>",
+                    "min":<?= $min; ?>,
+                    "max":<?= $max; ?>,
+                    "url": "<?= /* @escapeNotVerified */ $block->getSliderUrlTemplate(); ?>",
+                    "code":"<?= $block->escapeHtml($filterSetting->getAttributeModel()->getAttributeCode()); ?>",
+                    "hideDisplay": <?= $filterSetting->getAddFromToWidget() ? "1" : '0'; ?>
+                }
+        }
+    }
+</script>

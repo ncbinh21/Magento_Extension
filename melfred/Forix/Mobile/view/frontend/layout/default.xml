@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="main_nav_content">
+            <container name="mobile-nav" htmlTag="div" before="main_nav_top" htmlClass="nav-top-mobile">
+                <block class="Magento\Framework\View\Element\Template" name="nav-top-mobile" template="Forix_Mobile::nav/nav_mobile.phtml" />
+            </container>
+        </referenceContainer>
+    </body>
+</page>

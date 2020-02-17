@@ -1,0 +1,181 @@
+<?php
+/**
+ * @var $block \Forix\ProductWizard\Block\Wizard\GroupItem
+ * @var $groupItem \Forix\ProductWizard\Model\GroupItem
+ * @var $options \Magento\Catalog\Model\ResourceModel\Product\Collection
+ * @var $option \Forix\ProductWizard\Model\GroupItemOption
+ * @var $_product \Magento\Catalog\Model\Product
+ */
+$groupItem = $block->getSource();
+$attributeCode = $groupItem->getAttributeCode();
+$itemName = $attributeCode . "_" . $groupItem->getGroupItemId();
+$options = $block->getGroupItemOptions();
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+$productDatas = [];
+$attr = $block->getRequest()->getParam('se_pr');
+$dataKey = 'group-item-' . $groupItem->getId();
+?>
+<?php foreach ($options as $_productRenderer): ?>
+    <?php
+    $option = $_productRenderer->getWizardOption();
+    $shortKey = "gp_" . $option->getId();
+    $_product = $_productRenderer->getProduct();
+    $dependKey = "depend_{$groupItem->getId()}_{$option->getId()}";
+    $bestOnKey = "best_{$groupItem->getId()}_{$option->getId()}";
+    $selected = false;
+    $hasObserver = false;
+
+    $productDatas[] = [
+        'id' => $_product->getId(),
+        'attribute_set' => $_product->getAttributeSetId(),
+        'item_set' => strtolower($option->getItemSetId()),
+        'data_key' => $dataKey,
+        'short_key' => $shortKey,
+        'price_info' => [
+            'final_price' => $_productRenderer->getPriceInfo()->getData('final_price'),
+            'minimal_price' => $_productRenderer->getPriceInfo()->getData('minimal_price'),
+            'regular_price' => $_productRenderer->getPriceInfo()->getData('regular_price'),
+            'max_price' => $_productRenderer->getPriceInfo()->getData('max_price')
+        ]
+    ];
+    if (isset($attr[$shortKey]) && $attr[$shortKey] == $_product->getEntityId()) { /* Check if url has zipped.*/
+        $selected = true;
+    }
+    ?>
+    <tbody class="product-wizard card item group-item-option un-checked <?php echo $bestOnKey; ?> <?php echo $dependKey; ?> "
+           data-product="<?php echo $_product->getEntityId(); ?>"
+           data-option="<?php echo $groupItem->getId() . "_" . $option->getId() ?>"
+           data-depend="<?php echo implode(",", $option->getDependOn()); ?>"
+           data-best="<?php echo implode(",", $option->getBestOn()); ?>">
+    <tr class="item-info">
+        <td data-th="Item'" class="col item">
+            <a href="<?= /* @escapeNotVerified */
+            $_product->getProductUrl() ?>"
+               tabindex="-1"
+               class="product-item-photo">
+                <span class="product-image-container" style="width:100px;">
+                    <span class="product-image-wrapper" style="padding-bottom: 100%;">
+                        <?php $productImage = $block->getImage($_product); ?>
+                        <?php echo $productImage->toHtml(); ?>
+                    </span>
+                </span>
+            </a>
+            <div class="product-item-details">
+                <strong class="product-item-name">
+                    <a href="<?= /* @escapeNotVerified */
+                    $_product->getProductUrl() ?>">
+                        <?php echo $option->getTitle(); ?>
+                    </a>
+                </strong>
+                <dl class="item-options">
+                    <!-- ko foreach: {data: getSelectedOptions(), as: 'option'} -->
+                    <!-- ko if: option.attribute_code == 'mb_rig_model' -->
+                    <dt><!-- ko i18n: option.title --><!-- /ko --></dt>
+                    <dd><!-- ko i18n: option.label --><!-- /ko --></dd>
+                    <!-- /ko -->
+                    <!-- /ko -->
+                    <?php foreach ($_productRenderer->getExtensionAttributes()->getAttributeOptionData() as $attrOption): ?>
+                        <dt><?php echo $attrOption->getAttributeLabel(); ?></dt>
+                        <dd><?php echo $attrOption->getAttributeValues(); ?></dd>
+                    <?php endforeach; ?>
+                </dl>
+            </div>
+        </td>
+        <td class="col price no-display" data-th="Price">
+            <?php if ($_productRenderer->getExtensionAttributes()->getCanShowPrice()): ?>
+                <?php echo $_productRenderer->getPriceInfo()->getFormattedPrices()->getFinalPrice(); ?>
+            <?php endif; ?>
+        </td>
+        <td class="col include" data-bind='attr: {"data-th": "Include"}'>
+            <div class="field include">
+                <div class="option-footer">
+                    <input class="btn-continue un-select group-input-item-<?php echo $groupItem->getId(); ?> <?php echo $option->getId() . '-' . $groupItem->getId() ?>"
+                           data-option="<?php echo $groupItem->getId() . "_" . $option->getId() ?>"
+                           data-switchTo="<?php echo $groupItem->getNextTo(); ?>"
+                           data-type="selected" id="<?php echo $option->getId() . '-' . $groupItem->getId() ?>"
+                           data-current="<?php echo($block->getStepIndex() - 1); ?>"
+                           data-value="<?php echo $_product->getEntityId(); ?>"
+                           type="checkbox"
+                           data-key="<?php echo $dataKey; ?>"
+                           name='se_pr[<?php echo $shortKey; ?>]'
+                        <?php if ($selected): ?>
+                            data-checked="checked"
+                        <?php endif; ?>
+                           data-bind='
+                                <?php if ($selected): ?>
+                                    afterRender: triggerClick,
+                                <?php endif;?>
+                               checkedValue: "<?php echo $_product->getEntityId(); ?>",
+                               checked: selectedProduct'/>
+                    <label for="<?php echo $option->getId() . '-' . $groupItem->getId() ?>"><span><?php echo __('Select'); ?></span></label>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr class="no-display attr-item-warning attr-item-warning-<?php echo $_product->getEntityId(); ?> attr-warning-<?php echo $option->getItemSetId(); ?>">
+        <td colspan="3">
+            <div>
+                <?php echo __(str_replace("{product_name}", $_product->getName(), $block->getCurrentWizard()->getAttrSetWarningMessage())); ?>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+    <script type="text/javascript">
+        require(["jquery", "Forix_ProductWizard/js/model/wizard-data"], function (jquery, wizardData) {
+            <?php
+            /**
+             * Render Depend Solution Hide and show.
+             */
+            $groupItemIds = [];
+            $contentCase = [];
+            $dependData = json_encode($option->getDependOn());
+            $bestOn = json_encode($option->getBestOn());
+            if ($option->getDependOn()) {
+                $hasObserver = true;
+                foreach ($option->getDependOn() as $depend) {
+                    $re = '/\d+_/m';
+                    preg_match($re, $depend, $matches);
+                    $tmp = str_replace('_', '', $matches[0]);
+                    if (!isset($groupItemIds[$tmp])) {
+                        $groupItemIds[$tmp] = true;
+                        /* This handle depend on option changed*/
+                        echo <<<HTML
+wizardData.get('group-item-{$tmp}').subscribe(function (data) {
+            return wizardData.checkDepend('{$dependKey}', data.value);
+        });
+HTML;
+                    }
+                }
+            } else if ($option->getBestOn()) {
+                $hasObserver = true;
+                foreach ($option->getBestOn() as $beston) {
+                    $re = '/\d+_/m';
+                    preg_match($re, $beston, $matches);
+                    $tmp = str_replace('_', '', $matches[0]);
+                    if (!isset($groupItemIds[$tmp])) {
+                        $groupItemIds[$tmp] = true;
+                        /* This handle best on option changed*/
+                        echo <<<HTML
+wizardData.get('group-item-{$tmp}').subscribe(function (data) {
+            return wizardData.checkBestOn('{$bestOnKey}', data.value);
+        });
+HTML;
+                    }
+                }
+            }
+            ?>
+            wizardData.buildDependData('<?php echo $dependKey;?>', <?php echo $dependData;?>);
+            wizardData.buildBestOnData('<?php echo $bestOnKey;?>', <?php echo $bestOn;?>);
+        });
+    </script>
+<?php endforeach; ?>
+<input type="hidden"
+       data-bind='afterRender: function(){
+                setGroupItemValue("<?php echo $dataKey; ?>", 0);
+           }'>
+<script>
+    if (!window.productWizard.productCheck) {
+        window.productWizard.productCheck = [];
+    }
+    window.productWizard.productCheck[<?php echo $groupItem->getId();?>] = <?php echo json_encode($productDatas);?>;
+</script>

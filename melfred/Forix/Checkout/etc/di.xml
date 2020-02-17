@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Quote\Model\Cart\CartTotalRepository" type="Forix\Checkout\Model\Cart\CartTotalRepository" />
+
+    <type name="Magento\Checkout\Controller\Cart\Add">
+        <plugin name="before_add_cart" type="Forix\Checkout\Plugin\Cart\Add" sortOrder="1" />
+    </type>
+
+    <type name="Magento\Checkout\CustomerData\AbstractItem">
+        <plugin name="order_by_attr" type="Forix\Checkout\CustomerData\DefaultItem" disabled="false" sortOrder="10"/>
+    </type>
+
+    <type name="Magento\Checkout\Controller\Cart\UpdateItemOptions">
+        <plugin name="before_upload_cart_option" type="Forix\Checkout\Plugin\Cart\UpdateItemOptions" disabled="false" sortOrder="10"/>
+    </type>
+    <preference for="Magento\Checkout\Controller\Index\Index" type="Forix\Checkout\Rewrite\Controller\Index" />
+    <preference for="Magento\Sales\Model\Order\Email\Container\OrderIdentity" type="Forix\Checkout\Rewrite\Model\Order\Email\Container\OrderIdentity" />
+</config>

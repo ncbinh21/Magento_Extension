@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magenest. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Magenest_SagepayUS::paya" title="Paya"
+             module="Magenest_SagepayUS" sortOrder="30"
+             dependsOnModule="Magenest_SagepayUS"
+             resource="Magenest_SagepayUS::paya" />
+        <add id="Magenest_SagepayUS::settings"
+             title="Settings" module="Magenest_SagepayUS"
+             sortOrder="20" parent="Magenest_SagepayUS::paya"
+             action="adminhtml/system_config/edit/section/payment/magenest_sagepayus"
+             resource="Magenest_SagepayUS::settings" />
+    </menu>
+</config>

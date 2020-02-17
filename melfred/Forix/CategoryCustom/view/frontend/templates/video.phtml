@@ -1,0 +1,3 @@
+<?php if ($videoUrl = $block->getCurrentCategory()->getData('category_video')) : ?>
+    <button value="PLAY VIDEO" data-url="<?php echo $this->escapeHtml($videoUrl) ?>">PLAY VIDEO</button>
+<?php endif; ?>

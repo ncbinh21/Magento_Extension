@@ -1,0 +1,24 @@
+<?php  /** @var Forix\Widget\Block\Widget\Blog\GetBlog $this*/ ?>
+<?php $blogHelper = $this->helper("Forix\FishPig\Helper\View"); ?>
+<?php $blog = $this->getLastBlog(); ?>
+<?php if(!empty($blog)) : ?>
+    <div class="box-feature-product homepage-blog">
+        <div class="title-main">
+            <h2 class="title"><?php echo $this->getTitle(); ?></h2>
+            <p><?php echo $this->getShortDescription(); ?></p>
+        </div>
+        <div class="content">
+            <?php foreach ($blog as $_item) : ?>
+                <?php
+                    $position = strpos($_item['description'],'</p>');
+                    $description = substr($_item['description'],0, $position);
+                ?>
+                <div class="item">
+                    <h3><?php echo $_item['title']; ?></h3>
+                    <p><?php echo strip_tags($description); ?></p>
+                    <a title="<?php echo $_item['title']; ?>" href="<?php echo $blogHelper->getUrlInternalBlogDetail($_item['link']); ?>" class="action abutton"><span><?php echo __('READ MORE'); ?></span> </a>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+<?php endif; ?>

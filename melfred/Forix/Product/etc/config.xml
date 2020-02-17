@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <forix_catalog>
+            <general>
+                <heavy_badge_label>Heavy: Must Ship Via Freight</heavy_badge_label>
+            </general>
+            <stock>
+                <in_stock><![CDATA[In Stock Message]]></in_stock>
+                <back_order><![CDATA[Back Order Messages]]></back_order>
+            </stock>
+        </forix_catalog>
+    </default>
+</config>

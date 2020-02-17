@@ -1,0 +1,135 @@
+<?php
+
+use \Forix\ProductWizard\Model\Source\NextTo;
+
+/**
+ * @var $block \Forix\ProductWizard\Block\Wizard\GroupItem
+ * @var $groupItem Forix\ProductWizard\Model\GroupItem
+ * data-switchTo: Được sử dụng để kiểm tra nếu input này có giá trị thì tab titles sẽ thay đổi như thế nào
+ *                  - bits (Có 4 tabs), default (có 3 tabs)
+ *                  - bits chỉ có khi tabs ground condition được chọn
+ * data-nextIndex: Nhận biết input này select thì sẽ được chuyển đến tab nào. nếu rỗng thì next là default
+ *                  và không ảnh hưởng đến luồng mặc đinh
+ */
+$groupItem = $block->getSource();
+$shortKey = "gp_" . $groupItem->getId();
+$itemName = "attr[{$shortKey}]";
+$attributeCode = $groupItem->getAttributeCode();
+$dataKey = 'group-item-' . $groupItem->getId();
+$attr = $block->getRequest()->getParam('attr');
+$selected = false;
+$selectedLabel = ''; /* Capture current selected option */
+?>
+<div class="wizard-dropdown group-item-<?php echo $groupItem->getId(); ?>"
+     data-group="<?php echo $groupItem->getId(); ?>">
+    <div class="field <?php echo ($groupItem->getIsRequired()) ? 'required' : '' ?>">
+        <div class="control">
+            <label class="label"
+                   for="<?php echo $block->getNameInLayout(); ?>"><span><?php echo __($groupItem->getTitle()); ?></span>
+            </label>
+            <select class="wizard-control-select <?php echo  $groupItem->isEnableFindOption() ? 'enabled-select':'';?> group-item group-input-item-<?php echo $groupItem->getId(); ?>"
+                    data-switchto="<?php echo $groupItem->getNextTo(); ?>"
+                    data-nextindex="<?php echo $groupItem->getNextTo() == NextTo::NEXT_SELECT_BIT ? '1' : ''; ?>"
+                    data-placeholder="<?php echo $groupItem->getTitle(); ?>"
+                    data-bind='event: {
+                        change: function(obj, e){
+                            return optionsAdditionSelected(e, "<?php echo $dataKey; ?>", <?php echo json_encode(['title' => $groupItem->getTitle()]); ?>)
+                        }
+                    }'
+                    data-attribute="<?php echo $attributeCode; ?>"
+                    id="<?php echo $block->getNameInLayout(); ?>" name="<?php echo $itemName; ?>"
+                <?php echo $groupItem->getIsRequired() ? ' required="required" data-validate="{required:true}" ' : ' data-allow-clear="true" '; ?>
+                    autocomplete="off">
+                <option value="" selected><?php echo $groupItem->getTitle(); ?></option>
+                <?php $options = $block->getGroupItemOptions(); ?>
+                <?php foreach ($options as $option): ?>
+                    <?php
+                    $dependKey = "depend_{$groupItem->getId()}_{$option->getId()}";
+                    $bestOnKey = "best_{$groupItem->getId()}_{$option->getId()}";
+                    $optionSelected = false;
+                    if (!($selected)) { /* Check if hadn't selected then check select. */
+                        if (isset($attr[$shortKey]) && $attr[$shortKey] == $option->getOptionValue()) { /* Check if url has zipped.*/
+                            $selected = true;
+                            $selectedLabel = $option->getTitle();
+                            $optionSelected = true;
+                        } else if (isset($attr[$attributeCode]) && $attr[$attributeCode] == $option->getOptionValue()) { /*Check if URL using attribute code.*/
+                            $selected = true;
+                            $optionSelected = true;
+                            $selectedLabel = $option->getTitle();
+                        }
+                    }
+                    ?>
+                    <option class="wizard-item-option-<?php echo $groupItem->getId() . "_" . $option->getId() ?> group-item-option <?php echo $bestOnKey; ?> <?php echo $dependKey; ?> "
+                            data-option="<?php echo $groupItem->getId() . "_" . $option->getId() ?>"
+                            data-depend="<?php implode(',', $option->getDependOn()); ?>"
+                        <?php echo $optionSelected ? 'selected="selected"' : ''; ?>
+                            data-best="<?php implode(',', $option->getBestOn()); ?>"
+                            value="<?php echo $attributeCode ? $option->getOptionValue() : $option->getId() ?>"><?php echo $option->getTitle(); ?></option>
+                            <script type="text/javascript">
+                                require(["jquery", "Forix_ProductWizard/js/model/wizard-data"], function (jquery, wizardData) {
+                                    <?php
+                                    /**
+                                     * Render Depend Solution Hide and show.
+                                     */
+
+                                    $groupItemIds = [];
+                                    $contentCase = [];
+                                    $dependData = json_encode($option->getDependOn());
+                                    $bestOn = json_encode($option->getBestOn());
+
+                                    if ($option->getDependOn()) {
+                                        foreach ($option->getDependOn() as $depend) {
+
+                                            $re = '/\d+_/m';
+                                            preg_match($re, $depend, $matches);
+                                            $tmp = str_replace('_', '', $matches[0]);
+                                            if (!isset($groupItemIds[$tmp])) {
+                                                $groupItemIds[$tmp] = $tmp;
+                                                echo <<<HTML
+        wizardData.get('group-item-{$tmp}').subscribe(function (data) {
+                        return wizardData.checkDepend('{$dependKey}', data.value);
+                    });
+HTML;
+                                            }
+                                        }
+                                    } else if ($option->getBestOn()) {
+                                        foreach ($option->getBestOn() as $depend) {
+                                            $re = '/\d+_/m';
+                                            preg_match($re, $depend, $matches);
+                                            $tmp = str_replace('_', '', $matches[0]);
+                                            if (!isset($groupItemIds[$tmp])) {
+                                                $groupItemIds[$tmp] = $tmp;
+                                                echo <<<HTML
+        wizardData.get('group-item-{$tmp}').subscribe(function (data) {
+                        return wizardData.checkBestOn('{$bestOnKey}', data.value);
+                    });
+HTML;
+                                            }
+                                        }
+                                    }
+                                    ?>
+                                    wizardData.buildDependData('<?php echo $dependKey;?>', <?php echo $dependData;?>);
+                                    wizardData.buildBestOnData('<?php echo $bestOnKey;?>', <?php echo $bestOn;?>);
+                                });
+                            </script>
+                <?php endforeach; ?>
+            </select>
+            <input type="hidden"
+                   data-bind='afterRender: function(){
+                            setGroupItemValue("<?php echo $dataKey; ?>", 0);
+                            <?php if ($selected): ?>
+                            addSummaryTotalOption("<?php echo $dataKey; ?>",
+                            <?php echo json_encode([
+                               "title" => $groupItem->getTitle(),
+                               "attribute_code" => $attributeCode,
+                               "value" => $groupItem->getId() . "_" . $option->getId(),
+                               "label" => $selectedLabel]); ?>);
+                           <?php endif; ?>
+                       }'>
+            <?php if($groupItem->getNote()):?>
+                <div class="wizard-item-note"><span><?php echo __($groupItem->getNote()); ?></span></div>
+            <?php endif;?>
+        </div>
+
+    </div>
+</div>

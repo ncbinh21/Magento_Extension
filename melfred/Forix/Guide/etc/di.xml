@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Forix\Guide\Api\DownloadRepositoryInterface" type="Forix\Guide\Model\DownloadRepository"/>
+	<preference for="Forix\Guide\Api\Data\DownloadInterface" type="Forix\Guide\Model\Download"/>
+	<preference for="Forix\Guide\Api\Data\DownloadSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Forix\Guide\Model\ResourceModel\Download\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">forix_guide_download</argument>
+			<argument name="resourceModel" xsi:type="string">Forix\Guide\Model\ResourceModel\Download\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="forix_guide_download_grid_data_source" xsi:type="string">Forix\Guide\Model\ResourceModel\Download\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+</config>

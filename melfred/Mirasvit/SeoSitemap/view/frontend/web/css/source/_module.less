@@ -1,0 +1,46 @@
+@import "_mixin.less";
+
+.seositemap-map {
+    ul {
+        .clearfix();
+        margin-left: 15px;
+        margin-bottom: 15px;
+
+        &.stores {
+            li {
+                font-weight: bold;
+                font-size: 110%;
+            }
+        }
+
+        li {
+          color: red;
+            &.level-2 {
+                font-weight: bold;
+            }
+            &.level-3 {
+                margin-left: 15px;
+            }
+            &.level-4 {
+                margin-left: 30px;
+                font-size: 90%;
+            }
+            &.level-5 {
+                margin-left: 45px;
+                font-size: 90%;
+            }
+            &.level-6 {
+                margin-left: 60px;
+                font-size: 90%;
+            }
+            &.level-7 {
+                margin-left: 75px;
+                font-size: 90%;
+            }
+        }
+    }
+}
+
+.seositemap-index-index div.seositemap-map table {
+    width:100%;
+}

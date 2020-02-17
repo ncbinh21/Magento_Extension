@@ -1,0 +1,37 @@
+<?php
+/** @var Mirasvit\Core\Block\Adminhtml\Validator $block */
+?>
+<div class="section-config active" style="padding-top: 2rem;">
+    <div class="admin__data-grid-wrap-static">
+        <table class="data-grid">
+            <tr>
+                <th class="data-grid-th"><?= __('Test') ?></th>
+                <th class="data-grid-th" nowrap><?= __('Status') ?></th>
+                <th class="data-grid-th" nowrap><?= __('How to fix') ?></th>
+            </tr>
+            <?php foreach ($block->getResult() as $result): ?>
+                <tr>
+                    <td width="30%"><?= $result[1] ?></td>
+                    <td width="100px">
+                        <?php if ($result[0] == \Mirasvit\Core\Api\Service\ValidatorInterface::SUCCESS): ?>
+                            <div class="grid-severity-notice"><span>Success</span></div>
+                        <?php elseif ($result[0] == \Mirasvit\Core\Api\Service\ValidatorInterface::WARNING): ?>
+                            <div class="grid-severity-major"><span>Warning</span></div>
+                        <?php elseif ($result[0] == \Mirasvit\Core\Api\Service\ValidatorInterface::INFO): ?>
+                            <div class="grid-severity-major"><span>Info</span></div>
+                        <?php else: ?>
+                            <div class="grid-severity-critical"><span>Failed</span></div>
+                        <?php endif ?>
+                    </td>
+                    <td>
+                        <?php if (is_array($result[2])): ?>
+                            <?php echo implode($result[2], '<br>') ?>
+                        <?php else: ?>
+                            <?php echo $result[2] ?>
+                        <?php endif ?>
+                    </td>
+                </tr>
+            <?php endforeach ?>
+        </table>
+    </div>
+</div>

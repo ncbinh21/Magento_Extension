@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_ShopbyRoot
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="amshopby_category_manager_init_after">
+        <observer name="amshopbyroot_category_manager_init_after" instance="Amasty\ShopbyRoot\Observer\CategoryManagerInitAfter"/>
+    </event>
+</config>

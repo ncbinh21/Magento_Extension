@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+
+    <virtualType name="Forix\CategoryCustom\Model\ResourceModel\Product\Collection\FetchStrategy" type="Magento\Framework\Data\Collection\Db\FetchStrategy\Cache">
+        <arguments>
+            <argument name="cacheTags" xsi:type="array">
+                <item name="groundProductCollection" xsi:type="const">Forix\CategoryCustom\Model\ResourceModel\Product\Collection::CACHE_TAG</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Forix\CategoryCustom\Model\ResourceModel\Product\Collection">
+        <arguments>
+            <argument name="fetchStrategy" xsi:type="object">Forix\CategoryCustom\Model\ResourceModel\Product\Collection\FetchStrategy</argument>
+        </arguments>
+    </type>
+
+    <type name="Forix\CategoryCustom\Controller\Adminhtml\Category\Image\Upload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Magento\Catalog\CategoryImageUpload</argument>
+        </arguments>
+    </type>
+
+</config>

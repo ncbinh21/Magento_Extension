@@ -1,0 +1,15 @@
+<?php
+/** @var \Mirasvit\Core\Block\FeedbackButton $block */
+if (!$block->isVisible()) {
+    return;
+}
+?>
+<div class="mst-core__feedback" data-mage-init='{"Mirasvit_Core/js/feedbackButton": {"feedbackButton": {}}}'>
+    <form method="POST" id="feedback-form" target="_blank" action="<?= $block->getActionUrl() ?>">
+        <button type="submit" id="feedback-button">
+            <i class="fa fa-fw fa-commenting-o _normal"></i>
+            <i class="fa fa-fw fa-spinner fa-spin _loading"></i>
+            <span>Submit feedback</span>
+        </button>
+    </form>
+</div>

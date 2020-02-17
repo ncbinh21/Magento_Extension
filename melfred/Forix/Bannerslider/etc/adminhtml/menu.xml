@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+    	<add id="Forix_Bannerslider::bannerslider" title="Forix Slider" parent="Magento_Backend::content" module="Forix_Bannerslider" sortOrder="150" resource="Forix_Bannerslider::bannerslider"/>
+
+        <!-- Forix_Bannerslider::bannerslider_bannerslider -->
+        <!--<add id="Forix_Bannerslider::bannerslider_bannerslider" title="Banner Slider" module="Forix_Bannerslider" sortOrder="10" parent="Forix_Bannerslider::bannerslider" resource="Forix_Bannerslider::bannerslider_bannerslider"/>-->
+
+		<add id="Forix_Bannerslider::bannerslider_sliders" title="Manage Sliders" module="Forix_Bannerslider" sortOrder="10" parent="Forix_Bannerslider::bannerslider" action="bannerslideradmin/slider" resource="Forix_Bannerslider::bannerslider_sliders"/>
+
+        <add id="Forix_Bannerslider::bannerslider_banners" title="Manage Images" module="Forix_Bannerslider" sortOrder="10" parent="Forix_Bannerslider::bannerslider" action="bannerslideradmin/banner" resource="Forix_Bannerslider::bannerslider_banners"/>
+
+        <!--<add id="Forix_Bannerslider::bannerslider_coreslider" title="Preview Slider Styles" module="Forix_Bannerslider" sortOrder="10" parent="Forix_Bannerslider::bannerslider" action="bannerslideradmin/coreslider" resource="Forix_Bannerslider::bannerslider_coreslider"/>-->
+
+        <add id="Forix_Bannerslider::settings" title="Settings" module="Forix_Bannerslider" sortOrder="20" parent="Forix_Bannerslider::bannerslider" action="adminhtml/system_config/edit/section/bannerslider" resource="Forix_Bannerslider::settings"/>
+
+        <!-- Forix_Bannerslider::bannerslider_reports -->
+
+        <!--<add id="Forix_Bannerslider::bannerslider_reports" title="Banner Slider Reports" module="Forix_Bannerslider" sortOrder="10" parent="Forix_Bannerslider::bannerslider" resource="Forix_Bannerslider::bannerslider_reports"/>
+
+        <add id="Forix_Bannerslider::bannerslider_reports_perslider" title="Reports Per Slider" module="Forix_Bannerslider" sortOrder="10" parent="Forix_Bannerslider::bannerslider_reports" action="bannerslideradmin/report" resource="Forix_Bannerslider::bannerslider_reports_perslider"/>
+        <add id="Forix_Bannerslider::bannerslider_reports_allslider" title="Reports All Sliders" module="Forix_Bannerslider" sortOrder="10" parent="Forix_Bannerslider::bannerslider_reports" action="bannerslideradmin/report/banner" resource="Forix_Bannerslider::bannerslider_reports_allslider"/>-->
+
+        <!-- End Forix_Bannerslider::bannerslider_reports -->
+
+
+
+        <!-- End Forix_Bannerslider::bannerslider_bannerslider -->
+    </menu>
+</config>

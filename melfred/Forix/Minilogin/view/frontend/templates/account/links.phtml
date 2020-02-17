@@ -1,0 +1,22 @@
+<div class="block block-customer-logged">
+    <div class="block-content">
+        <ul>
+            <li><a href="<?php echo $block->getUrlCustomer()->getAccountUrl() ?>"><?php echo __('My Account'); ?></a>
+            </li>
+            <li><a href="<?php echo $block->getUrl('sales/order/history/') ?>"><?php echo __('My Orders') ?></a></li>
+            <?php if ($block->isDistributorCompany()): ?>
+                <li>
+                    <a href="<?php echo $block->getUrl('sales/orders/manage/') ?>"><?php echo __('Customer Orders') ?></a>
+                </li>
+            <?php endif; ?>
+            <?php if ($block->isB2BEnabled()): ?>
+                <li>
+                    <a href="<?php echo $block->getUrl('requisition_list/requisition/index/'); ?>"><?php echo __('My Favorites'); ?></a>
+                </li>
+            <?php endif; ?>
+            <li><a href="<?php echo $block->getUrl('/customer/product/'); ?>"><?php echo __('My Products'); ?></a></li>
+            <li><a href="<?php echo $block->getUrl('/quickorder/'); ?>"><?php echo __('Quick Order'); ?></a></li>
+            <li><a href="<?php echo $block->getUrlCustomer()->getLogoutUrl() ?>"><?php echo __('Logout'); ?></a></li>
+        </ul>
+    </div>
+</div>

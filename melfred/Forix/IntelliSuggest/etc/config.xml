@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <intellisuggest_tracking>
+            <general>
+                <js_src><![CDATA[//cdn.searchspring.net/intellisuggest/is.min.js]]></js_src>
+                <site_id><![CDATA[3tkike]]></site_id>
+            </general>
+        </intellisuggest_tracking>
+    </default>
+</config>

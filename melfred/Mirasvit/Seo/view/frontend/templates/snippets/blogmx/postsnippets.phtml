@@ -1,0 +1,41 @@
+<?php
+    if ($isEnabled = $this->isEnabled()) {
+        $post = $this->getPost();
+    }
+?>
+<?php if ($isEnabled ): ?>
+    <script type="application/ld+json">
+    { "@context": "http://schema.org",
+     "@type": "BlogPosting",
+     "headline": "<?php echo $block->prepareSnippet($post->getHeadline()) ?>",
+     "description": "<?php echo $block->prepareSnippet($post->getPreparedContent()) ?>",
+     "articleBody": "<?php echo $block->prepareSnippet($post->getPreparedContent()) ?>",
+     "url": "<?php echo $block->prepareSnippet($post->getUrl()) ?>",
+     "keywords": "<?php echo $block->prepareSnippet($post->getKeywords()) ?>",
+     "datePublished": "<?php echo $block->prepareSnippet($post->getDatePublished()) ?>",
+     "dateModified": "<?php echo $block->prepareSnippet($post->getDatePublished()) ?>",
+     "author": {
+        "@type": "Person",
+        "name": "<?php echo $block->prepareSnippet($post->getAuthorName()) ?>"
+     },
+     "publisher": {
+        "@type": "Organization",
+        "name": "<?php echo $block->prepareSnippet($post->getPublisherName()) ?>",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "<?php echo $block->prepareSnippet($post->getLogoUrl()) ?>"
+        }
+     },
+     "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "<?php echo $block->prepareSnippet($post->getUrl()) ?>"
+      },
+     "image": {
+        "@type": "ImageObject",
+        "url": "<?php echo $block->prepareSnippet($post->getImageUrl()) ?>",
+        "width": "<?php echo $block->prepareSnippet($post->getImageWith()) ?>",
+        "height": "<?php echo $block->prepareSnippet($post->getImageHeight()) ?>"
+      }
+     }
+    </script>
+<?php endif; ?>

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <shipping>
+            <advance_shipping>
+                <shipping_heavy_item_note>all_checkout_shipping_heavy_item_note</shipping_heavy_item_note>
+                <checkout_cms_shipping_note>all_checkout_shipping_note</checkout_cms_shipping_note>
+                <checkout_cms_more_info>all_checkout_shipping_note_popup</checkout_cms_more_info>
+            </advance_shipping>
+            <additional_fee>
+                <shipping_surcharges><![CDATA[[{"shipping_method":"fedex_FEDEX_1_DAY_FREIGHT","shipping_surcharge":"25"},{"shipping_method":"fedex_FEDEX_2_DAY_FREIGHT","shipping_surcharge":"25"},{"shipping_method":"fedex_FEDEX_3_DAY_FREIGHT","shipping_surcharge":"25"},{"shipping_method":"fedex_INTERNATIONAL_ECONOMY_FREIGHT","shipping_surcharge":"25"},{"shipping_method":"fedex_INTERNATIONAL_PRIORITY_FREIGHT","shipping_surcharge":"25"},{"shipping_method":"fedex_FEDEX_FREIGHT","shipping_surcharge":"25"},{"shipping_method":"fedex_FEDEX_NATIONAL_FREIGHT","shipping_surcharge":"25"},
+{"shipping_method":"ups_03","shipping_surcharge":"25"},
+{"shipping_method":"ups_01","shipping_surcharge":"35"},
+{"shipping_method":"ups_02","shipping_surcharge":"35"},
+{"shipping_method":"ups_12","shipping_surcharge":"35"},
+{"shipping_method":"ups_14","shipping_surcharge":"5"},
+{"shipping_method":"ups_59","shipping_surcharge":"5"}]]]></shipping_surcharges>
+            </additional_fee>
+        </shipping>
+        <carriers>
+            <ups>
+                <insured_value>1.05</insured_value>
+            </ups>
+            <distributor>
+                <active>1</active>
+                <!--<attribute_heavy>mb_badge_heavy</attribute_heavy>-->
+                <model>Forix\AdvanceShipping\Model\Carrier\Distributor</model>
+                <name>Pick Up From Local Distributor</name>
+                <title>Local Distributor</title>
+            </distributor>
+        </carriers>
+    </default>
+</config>

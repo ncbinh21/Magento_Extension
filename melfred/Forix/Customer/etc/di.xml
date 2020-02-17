@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Customer\Model\AccountManagement">
+        <plugin name="get_name_customer_checkout_plugin" type="Forix\Customer\Plugin\Model\AccountManagementPlugin" sortOrder="11" />
+    </type>
+    <preference for="Magento\Customer\Controller\Account\LoginPost" type="Forix\Customer\Rewrite\Controller\Account\LoginPost" />
+    <preference for="Magento\Customer\Controller\Account\CreatePost" type="Forix\Customer\Rewrite\Controller\Account\CreatePost" />
+    <preference for="Amasty\Fpc\Model\SessionManager" type="Forix\Customer\Rewrite\Amasty\Fpc\Model\SessionManager" />
+    <preference for="Magento\Customer\Controller\Account\Create" type="Forix\Customer\Rewrite\Controller\Account\Create" />
+</config>
+

@@ -1,0 +1,43 @@
+<div class="magenest-version-section">
+    <h1>
+        <a target="_blank" href="https://store.magenest.com/">Paya - Sage Payment Solution Integration</a>
+    </h1>
+    <div>
+        Support:
+        <a target="_blank" href="http://servicedesk.izysync.com/servicedesk/customer/portal/146"><?= __('Submit a ticket') ?></a>
+        <br>
+        Contact us:
+        <a target="_blank" href="mailto:support@magenest.com"><?= __('support@magenest.com') ?></a>
+    </div>
+    <div class="user-guide">
+        To configure this extension, please read our <a target="_blank" href="http://www.confluence.izysync.com/display/DOC/Paya+%28Sage+Pay+US%29+Payment+Gateway+User+Guide">User Guide</a>
+    </div>
+    <div class="logger">
+        For our team to investigate better should you require support, please download and send us this file: <a href="<?=$block->getDownloadDebugUrl()?>">Download</a>
+    </div>
+    <div class="version">
+        ver. <?= $block->getVersion() ?>
+    </div>
+</div>
+
+<style>
+    .magenest-version-section{
+        background: #f8f8f8;
+        border: 1px solid #e3e3e3;
+        padding: 1.5rem;
+    }
+    .magenest-version-section h1{
+        font-weight: bold;
+    }
+    .magenest-version-section .version{
+        text-align: right;
+    }
+    .magenest-version-section a{
+        color: #eb5202;
+        text-decoration: none;
+    }
+    .magenest-version-section a:hover{
+        color: #eb5202;
+        text-decoration: none;
+    }
+</style>

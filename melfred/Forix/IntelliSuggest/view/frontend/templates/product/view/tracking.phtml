@@ -1,0 +1,21 @@
+<?php
+/**
+ * Created by Nick Howard.
+ * Job Title: Magento Developer
+ * Project: melfredborzall.local
+ */
+?>
+<?php /* @var $block Magento\Catalog\Block\Product\View */?>
+<?php /* @var $helper Forix\IntelliSuggest\Helper\Data */?>
+<?php $helper = $this->helper('Forix\IntelliSuggest\Helper\Data');?>
+<?php if($helper->getJsSrc() && $helper->getSiteId()):?>
+    <?php $_product = $block->getProduct();?>
+    <script type="text/javascript" src="<?php echo $helper->getJsSrc();?>"></script>
+    <script type="text/javascript">
+    try{
+        var product_code = "<?php echo $_product->getSku() ?>";
+        IntelliSuggest.init({siteId:'<?php echo $helper->getSiteId();?>', context:'Product/' + product_code, seed:product_code});
+        IntelliSuggest.viewItem({sku:product_code});
+    } catch(err) {}
+    </script>
+<?php endif;?>

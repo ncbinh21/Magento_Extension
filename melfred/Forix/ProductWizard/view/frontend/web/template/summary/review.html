@@ -1,0 +1,63 @@
+<div class="wizard-summary">
+    <strong class="summary title"><!-- ko i18n:'Summary' --><!-- /ko --></strong>
+    <div class="block-wizard-attribute">
+        <dl class="item-options">
+            <!-- ko foreach: {data: getSelectedOptions(), as: 'option'} -->
+            <dt><!-- ko i18n: option.title --><!-- /ko --></dt>
+            <dd><!-- ko i18n: option.label --><!-- /ko --></dd>
+            <!-- /ko -->
+        </dl>
+        <dl class="seleted-detail">
+            <dt><!-- ko i18n: 'Total Parts: ' --><!-- /ko --></dt>
+            <dd data-bind="text: selectedProductLength()"></dd>
+        </dl>
+    </div>
+    <!-- ko if: isDomestic() -->
+    <div class="block-group">
+        <div class="price-box price-final_price" data-role="priceBox">
+            <span class="special-price">
+                <span class="price-container price-final_price tax weee" itemprop="offers" itemscope="">
+                    <div class="price-warp">
+                        <div class="normal-price">
+                            <span class="your-price" data-bind="i18n: 'Your Price'"></span>
+                            <span data-price-type="finalPrice" class="price-wrapper " itemprop="price">
+                                <span class="price"
+                                      data-bind="text: getFormattedPrice(getFinalPrice())"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <meta itemprop="priceCurrency" content="USD">
+                </span>
+            </span>
+            <!-- ko if : isShowListPrice() -->
+                <span class="price-container price-final_price tax weee">
+                    <div class="price-warp">
+                        <div class="normal-price">
+                            <span class="your-price" data-bind="i18n: 'List Price'"></span>
+                            <span data-price-type="oldPrice" class="price-wrapper">
+                                <span class="price" data-bind="text: getFormattedPrice(getSummaryPrice())"></span>
+                            </span>
+                        </div>
+                    </div>
+                </span>
+            <!-- /ko -->
+        </div>
+    </div>
+    <!-- /ko -->
+    <div class="block-group">
+        <ul class="checkout methods items checkout-methods-items">
+            <li class="item">
+                <button type="button"
+                        data-bind="
+                        enable: selectedProductLength() > 0,
+                        click: addSelectedToCart,
+                        attr: {
+                            'title': addToCartTitle
+                        }"
+                        class="action primary checkout configurator-tocart">
+                    <span data-bind='i18n: addToCartTitle '></span>
+                </button>
+            </li>
+        </ul>
+    </div>
+</div>

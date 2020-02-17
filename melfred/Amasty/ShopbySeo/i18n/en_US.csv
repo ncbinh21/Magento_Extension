@@ -1,0 +1,48 @@
+"Do Not Change","Do Not Change"
+"Just Url Key","Just Url Key"
+"Current URL without GET Parameters","Current URL without GET Parameters"
+"First Attribute Value","First Attribute Value"
+"Keep current URL","Keep current URL"
+"URL Without Filters","URL Without Filters"
+"Brand Filter Only","Brand Filter Only"
+"Current URL without Get parameters","Current URL without Get parameters"
+"URL Key Only","URL Key Only"
+Never,Never
+"Single Selection Only","Single Selection Only"
+Always,Always
+No,No
+Auto,Auto
+SEO,SEO
+"SEO URL is always generated for the brand.","SEO URL is always generated for the brand."
+"Generate SEO URL","Generate SEO URL"
+"Allow Google to INDEX the Category Page with the Filter Applied","Allow Google to INDEX the Category Page with the Filter Applied"
+"Allow Google to FOLLOW Links on the Category Page with the Filter Applied","Allow Google to FOLLOW Links on the Category Page with the Filter Applied"
+"Add rel=""nofollow"" to filter links","Add rel=""nofollow"" to filter links"
+"Enable SEO URL for the attribute in order to use URL Aliases","Enable SEO URL for the attribute in order to use URL Aliases"
+"Improved Layered Navigation: SEO","Improved Layered Navigation: SEO"
+"SEO URLs","SEO URLs"
+Enable,Enable
+"URL will look 'category/autumn.html' instead of 'category.html?season=114'. See per-attribute settings for fine-tuning.","URL will look 'category/autumn.html' instead of 'category.html?season=114'. See per-attribute settings for fine-tuning."
+"Add Suffix to the Brand Pages and Filtered All-products Pages","Add Suffix to the Brand Pages and Filtered All-products Pages"
+"To configure the 'Category URL Suffix' setting please go to Configuration - Catalog - Catalog - Search Engine Optimization - Category URL Suffix. FYI on the category pages the suffix is added regardless of this setting.","To configure the 'Category URL Suffix' setting please go to Configuration - Catalog - Catalog - Search Engine Optimization - Category URL Suffix. FYI on the category pages the suffix is added regardless of this setting."
+"Option Separator","Option Separator"
+"Robots Tag Control","Robots Tag Control"
+"Allow the Module to Modify Robots Meta Tag","Allow the Module to Modify Robots Meta Tag"
+"Use ""No"" for compatibility with other SEO extensions.","Use ""No"" for compatibility with other SEO extensions."
+"Noindex when Multiple Attribute Filters Applied","Noindex when Multiple Attribute Filters Applied"
+"Automatically Add rel=""nofollow"" to Filter Links when Required","Automatically Add rel=""nofollow"" to Filter Links when Required"
+"Please refer per-filter settings to make exclusions.","Please refer per-filter settings to make exclusions."
+"Canonical URL","Canonical URL"
+"Category Pages","Category Pages"
+"""all-product"" Page","""all-product"" Page"
+"To get these settings working properly please make sure you have enabled the Canonical Meta Tag here Stores > Configuration > Catalog > Search Engine Optimizations","To get these settings working properly please make sure you have enabled the Canonical Meta Tag here Stores > Configuration > Catalog > Search Engine Optimizations"
+Previous/Next,Previous/Next
+"Render Prev/Next Tags on Improved Navigation Pages","Render Prev/Next Tags on Improved Navigation Pages"
+"Be careful,this setting could affect perfomance. When enabled, it helps Google to index paginated content.
+See more details here: <a target=""blank"" href=""https://support.google.com/webmasters/answer/1663744"">
+https://support.google.com/webmasters/answer/1663744","Be careful,this setting could affect perfomance. When enabled, it helps Google to index paginated content.
+See more details here: <a target=""blank"" href=""https://support.google.com/webmasters/answer/1663744"">
+https://support.google.com/webmasters/answer/1663744"
+"SEO Toolkit","SEO Toolkit"
+Status,Status
+"It helps Google to rank your store higher. See details <a href=""https://amasty.com/seo-toolkit-for-magento-2.html?utm_source=extension&utm_medium=backend&utm_campaign=site_seotoolkit_m2"">here</a>","It helps Google to rank your store higher. See details <a href=""https://amasty.com/seo-toolkit-for-magento-2.html?utm_source=extension&utm_medium=backend&utm_campaign=site_seotoolkit_m2"">here</a>"

@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Forix_Guide::top_level" module="Forix_Guide" parent="Magento_Backend::content" sortOrder="9999" title="Guides and Case Studies" resource="Forix_Guide::top_level"/>
+		<add action="forix_guide/download/index" id="Forix_Guide::forix_guide_download" module="Forix_Guide" parent="Forix_Guide::top_level" resource="Forix_Guide::forix_guide_download" sortOrder="9999" title="Guides"/>
+	</menu>
+</config>

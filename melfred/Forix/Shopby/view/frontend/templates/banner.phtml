@@ -1,0 +1,31 @@
+<?php
+	$_helper = $this->helper('Forix\Shopby\Helper\Data');
+	$_img    = $_helper->getConfigValue('banner_rig/general/image_rig');
+	$_size   = $_helper->getImageSize($_img);
+	$_params = $_helper->getRequestParams();
+	if ($_params['banner'] == "") {
+        $banner = $_helper->getMediaUrl().'shopby_rig/'.$_img;
+    } else {
+	    $banner = $_params['banner'];
+    }
+    $_params['manufacturer'] = $_helper->RevertParam($_params['manufacturer']);
+
+?>
+
+<style type="text/css">
+    .page-title-wrapper {
+        border-bottom: 8px solid <?php echo $_params["border_color"]; ?> !important;
+    }
+</style>
+
+<div class="page-title-wrapper" style="background-image: url('<?php echo $banner; ?>');">
+	<div class="title-wrapper-info">
+		<h1 class="page-title">
+			<span class="base ababab" data-ui-id="page-title-wrapper"><?php echo __('HDD TOOLS FOR'); ?></span>
+            <div class="title-catelog">
+                <span><?php echo $_params['manufacturer'].'&nbsp;'; ?></span>
+                <span><?php echo isset($_params["rig_title"]) ? $_params["rig_title"] : ''; ?></span>
+            </div>
+        </h1>
+	</div>
+</div>

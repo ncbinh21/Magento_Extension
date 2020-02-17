@@ -1,0 +1,75 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_Shopby
+ */
+?>
+<?php /** @var \Amasty\Shopby\Block\Navigation\State $block */?>
+<?php
+$_filters = $block->getActiveFilters();
+$value = [];
+?>
+<?php if (!empty($_filters)) : ?>
+    <div class="filter-current" id="am-shopby-container" data-am-js="shopby-container"
+         data-mage-init='{"collapsible":{"openedState": "active", "collapsible": true, "active": false }}'>
+        <span class="block-subtitle filter-current-subtitle"
+                role="heading"
+                aria-level="2"
+                data-role="title"
+                data-count="<?= /* @escapeNotVerified */ count($_filters); ?>">
+            <?= $block->escapeHtml(__('Now Shopping by')) ?>
+        </span>
+        <ol class="items">
+            <?php foreach ($_filters as $_filter) : ?>
+                <?php
+                $filterSetting = $this->getFilterSetting($_filter->getFilter());
+                $value = $value ?: $_filter->getValue();
+                $resultValue = $this->getFilterValue($value, $_filter);
+                ?>
+                <li class="item am-shopby-item"
+                    data-am-js="shopby-item"
+                    data-container="<?= /* @escapeNotVerified */ $_filter->getFilter()->getRequestVar() ?>"
+                    data-value="<?= $block->getDataValue($resultValue) ?>"
+                >
+                    <span class="filter-label"><?= $block->escapeHtml(__($_filter->getName())); ?></span>
+                    <span class="filter-value"><?= $block->viewLabel($_filter);?></span>
+                    <?php
+                    $clearLinkUrl = $_filter->getClearLinkUrl();
+                    $currentFilterName = $block->escapeHtml(__($_filter->getName())) . " " .
+                        $block->stripTags($_filter->getLabel());
+                    if ($clearLinkUrl) :?>
+                        <a class="action previous" href="<?= $_filter->getRemoveUrl() ?>"
+                           title="<?= $block->escapeHtml(__('Previous')) ?>">
+                            <span><?= $block->escapeHtml(__('Previous')) ?></span>
+                        </a>
+                        <a class="action remove"
+                           title="<?= /* @escapeNotVerified */ $_filter->getFilter()->getClearLinkText() ?>"
+                           href="<?= /* @escapeNotVerified */ $clearLinkUrl ?>">
+                            <span><?= /* @escapeNotVerified */ $_filter->getFilter()->getClearLinkText() ?></span>
+                        </a>
+                        <?php
+                    else :
+                        ?>
+                        <a class="action remove"
+                           href="<?= /* @escapeNotVerified */ $_filter->getRemoveUrl($resultValue) ?>"
+                           title="<?= $block->escapeHtml(__('Remove')) . " " . $currentFilterName;?>">
+                            <span><?= $block->escapeHtml(__('Remove This Item')) ?></span>
+                        </a>
+                    <?php endif; ?>
+                </li>
+
+                <?php $value = array_filter(array_slice((array)$value, 1)); ?>
+            <?php endforeach; ?>
+        </ol>
+        <script type="text/x-magento-init">
+        {
+            "[data-am-js='shopby-container']": {
+                "amShopbyFilterContainer": {
+                        "collectFilters": <?= /* @escapeNotVerified */ $block->collectFilters(); ?>
+                   }
+            }
+        }
+        </script>
+    </div>
+<?php endif; ?>

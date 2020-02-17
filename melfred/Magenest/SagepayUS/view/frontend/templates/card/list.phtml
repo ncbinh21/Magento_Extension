@@ -1,0 +1,188 @@
+<?php
+// @codingStandardsIgnoreFile
+$delUrl = $block->getUrl('sagepayus/customer/delete');
+$configHelper = $this->helper("Magenest\SagepayUS\Helper\ConfigHelper");
+?>
+
+<?php $cards = $block->getDataCard(); ?>
+
+<table id="customer-booking-order-list" class="data table table-downloadable-products">
+    <?php if (!sizeof($cards)) { ?>
+        <div class="message info empty">
+            <span><?php echo __('You don\'t store any card yet.'); ?></span>
+        </div>
+    <?php } else {?>
+        <thead>
+        <tr>
+            <th><?php echo __('Credit Card'); ?></th>
+            <th><?php echo __('Expires'); ?></th>
+            <th><?php echo __('Created At'); ?></th>
+            <th><?php echo __('Action'); ?></th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody id="card_table_body">
+        <?php foreach ($cards as $card) {
+            $k = 0;
+            ?>
+            <tr id="row-<?= $k; ?>">
+            <td><span><?= $card->getCardType(); ?></span> - <span><?= $card->getMaskedNumber() ?></span></td>
+            <td><?= $card->getExpirationDate()?></td>
+            <td><?= $card->getCreatedAt(); ?></td>
+            <td>
+                <a href="<?=$block->getDeleteUrl($card->getId())?>" class="action delete"
+                   onclick="return confirm('Are you sure you want to delete this card?');"
+                >
+                    <span><?php echo __('Delete')?></span>
+                </a>
+            </td>
+            <?php
+            $k++;
+        } ?>
+        </tbody>
+    <?php } ?>
+</table>
+<?php if($configHelper->getCanSaveCard()) { ?>
+<a id="add-card-action" href="#">Add a credit card</a>
+<?php } ?>
+<form id="card-field" action="" method="post" style="display: none" data-mage-init='{"validation": {}}'>
+    <input type="number" name="cc" class="input-text" value="" id="magenest_sagepayus_cc_number" placeholder="Credit Card Number" data-validate="{required:true}">
+    <select name="month" class="select select-month" id="magenest_sagepayus_expiration" data-validate="{'required-entry':true}">
+        <option value="" selected>Month</option><option value="01">01 January</option><option value="02">02 February</option><option value="03">03 March</option><option value="04">04 April</option><option value="05">05 May</option><option value="06">06 June</option><option value="07">07 July</option><option value="08">08 August</option><option value="09">09 September</option><option value="10">10 October</option><option value="11">11 November</option><option value="12">12 December</option>
+    </select>
+    <select name="year" class="select select-year" id="magenest_sagepayus_expiration_yr" data-validate="{'required-entry':true}">
+        <option value="" selected>Year</option><option value="18">2018</option><option value="19">2019</option><option value="20">2020</option><option value="21">2021</option><option value="22">2022</option><option value="23">2023</option><option value="24">2024</option><option value="25">2025</option><option value="26">2026</option><option value="27">2027</option><option value="28">2028</option><option value="29">2029</option><option value="30">2030</option>
+    </select>
+    <input type="button" id="paymentButton" value="Submit">
+</form>
+
+<script>
+    require(['jquery','mage/cookies'], function ($) {
+        var clientId, merchantId, authKey, postbackUrl, salt, requestType, orderNumber, doVault;
+        var sage_environment, browser_debug;
+        var resp,hash, cardinfo;
+        var isInput = false;
+        $('#add-card-action').on("click", function (e) {
+            if(isInput){
+                return false;
+            }
+            e.preventDefault();
+            $('body').trigger('processStart');
+            $.getScript('https://www.sagepayments.net/pay/1.0.2/js/pay.min.js', function () {
+                console.log("Loaded SagePaymentJs v1.02");
+                $.ajax({
+                    type: 'GET',
+                    data: {
+                        form_key: $.cookie('form_key'),
+                        is_token: true
+                    },
+                    url: '<?=$block->getUrl('sagepayus/checkout/request')?>',
+                    dataType: "json",
+                    success: function (response) {
+                        if (response.success) {
+                            clientId = response.clientId;
+                            merchantId = response.merchantId;
+                            authKey = response.authKey;
+                            postbackUrl = response.postbackUrl;
+                            salt = response.salt;
+                            requestType = response.requestType;
+                            orderNumber = response.orderNumber;
+                            sage_environment = response.environment;
+                            browser_debug = response.debug;
+                            doVault = response.doVault;
+                            $('#card-field').show("500");
+                            require(['PayJS/Core', 'PayJS/Request', 'PayJS/Response'],
+                                function ($CORE, $REQUEST, $RESPONSE) {
+                                    $('body').trigger('processStop');
+                                    isInput = true;
+                                    var option = {
+                                        clientId: clientId,
+                                        postbackUrl: postbackUrl,
+                                        merchantId: merchantId,
+                                        authKey: authKey,
+                                        salt: salt,
+                                        requestType: requestType,
+                                        orderNumber: orderNumber,
+                                        environment: sage_environment,
+                                        debug: browser_debug,
+                                        doVault: doVault,
+                                    };
+                                    $CORE.Initialize(option);
+                                    $("#paymentButton").click(function () {
+                                        if(!$('#card-field').valid()){
+                                            return false;
+                                        }
+                                        $('body').trigger('processStart');
+                                        $REQUEST.doVault($('#magenest_sagepayus_cc_number').val(), $('#magenest_sagepayus_expiration').val()+$('#magenest_sagepayus_expiration_yr').val(), callbackHandleResponse);
+                                        function callbackHandleResponse(_resp, status, jqxhr) {
+                                            $('body').trigger('processStop');
+                                            $RESPONSE.tryParse(_resp, status, jqxhr);
+                                            resp = $RESPONSE.getApiResponse();
+                                            hash = $RESPONSE.getResponseHash().hash;
+                                            cardinfo = $RESPONSE.getPaymentDetails();
+                                            $.post(
+                                                '<?=$block->getUrl('sagepayus/card/save')?>',
+                                                {
+                                                    form_key: $.cookie('form_key'),
+                                                    sage_resp: resp,
+                                                    sage_hash: hash,
+                                                    sage_cardinfo: JSON.stringify(cardinfo)
+                                                },
+                                                function (response) {
+                                                    if(response.success){
+                                                        alert("Save card success");
+                                                        location.reload();
+                                                    }
+                                                    if(response.error){
+                                                        alert("Error");
+                                                        console.log(response.message);
+                                                    }
+                                                },
+                                                "json"
+                                            )
+                                        }
+                                    });
+
+                                    $("#magenest_sagepayus_cc_cid").on("keyup change", function () {
+                                        var cvv = $("#magenest_sagepayus_cc_cid").val();
+                                        cvv = cvv.replace(/\D/g, '');
+                                        $("#magenest_sagepayus_cc_cid").val(cvv);
+                                    });
+
+                                },
+                                function (err) {
+                                    $('body').trigger('processStop');
+                                    alert("Script load error");
+                                    console.log(err);
+                                }
+                            );
+                        }
+
+                        if (response.error) {
+                            $('body').trigger('processStop');
+                            alert(response.message)
+                            console.log(response.message);
+                        }
+                    },
+                    error: function (err) {
+                        $('body').trigger('processStop');
+                        console.log(err);
+                    }
+                });
+            });
+        })
+    })
+</script>
+
+<style>
+    #card-field{
+        width: 300px;
+    }
+    #card-field select{
+        margin-top: 10px;
+    }
+    #card-field input{
+        margin-top: 10px;
+    }
+</style>

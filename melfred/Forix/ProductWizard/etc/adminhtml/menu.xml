@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Forix_ProductWizard::product_wizard" dependsOnModule="Magento_Backend" module="Forix_ProductWizard" resource="Magento_Backend::content" sortOrder="9999" parent="Magento_Backend::content"  title="Product Wizard"/>
+		<add action="forix_productwizard/group/index" id="Forix::forix_productwizard_group" module="Forix_ProductWizard" parent="Forix_ProductWizard::product_wizard" resource="Forix_ProductWizard::Group" sortOrder="10" title="Group"/>
+		<add action="forix_productwizard/groupitem/index" id="Forix::forix_productwizard_group_item" module="Forix_ProductWizard" parent="Forix_ProductWizard::product_wizard" resource="Forix_ProductWizard::Group_Item" sortOrder="20" title="Group Item"/>
+		<add action="forix_productwizard/groupitemoption/index" id="Forix::forix_productwizard_group_item_option" module="Forix_ProductWizard" parent="Forix_ProductWizard::product_wizard" resource="Forix_ProductWizard::Group_Item_Option" sortOrder="30" title="Group Item Option"/>
+		<add action="forix_productwizard/wizard/index" id="Forix_ProductWizard::forix_productwizard_wizard" module="Forix_ProductWizard" parent="Forix_ProductWizard::product_wizard" resource="Forix_ProductWizard::wizard" sortOrder="5" title="Wizard"/>
+		<add action="adminhtml/system_config/edit/section/wizard"  id="Forix_ProductWizard::forix_productwizard_wizard_config" module="Forix_ProductWizard" parent="Forix_ProductWizard::product_wizard" resource="Forix_ProductWizard::wizard" sortOrder="100" title="Wizard Configurator Config"/>
+	</menu>
+</config>

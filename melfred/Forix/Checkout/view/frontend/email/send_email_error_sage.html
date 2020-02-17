@@ -1,0 +1,14 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!--@subject {{trans "Create Order Sage Error"}} @-->
+{{template config_path="design/email/header_template"}}
+
+<div>Order Error: {{trans "#%order_id" order_id=$order.increment_id}}</div>
+<div>There has been an error in syncronizing this order with Sage. Please review the order and once the problem is resolved, click the "enable" button to try syncing with Sage.</div>
+<div>The customer placing the order will not receive an error message.</div>
+
+{{template config_path="design/email/footer_template"}}

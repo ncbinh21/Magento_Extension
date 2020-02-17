@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Config/etc/system_file.xsd">
+    <system>
+        <section id="payment">
+            <resource>Magenest_Stripe::settings</resource>
+            <group id="magenest_sagepayus" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Paya</label>
+                <group id="version" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Magenest\SagepayUS\Block\Adminhtml\System\Config\Fieldset\Version</frontend_model>
+                </group>
+                <include path="Magenest_SagepayUS::system/sagepayus_required.xml"/>
+                <include path="Magenest_SagepayUS::system/sagepayus_payment.xml"/>
+                <include path="Magenest_SagepayUS::system/sagepayus_direct.xml"/>
+            </group>
+        </section>
+    </system>
+</config>

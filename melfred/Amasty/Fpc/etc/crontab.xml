@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2019 Amasty (https://www.amasty.com)
+ * @package Amasty_Fpc
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="amasty_crawler">
+        <job name="amasty_fpc_generate_queue" instance="Amasty\Fpc\Model\Cron" method="generate">
+            <config_path>amasty_fpc/crawler/generate_cron</config_path>
+        </job>
+        <job name="amasty_fpc_process_queue" instance="Amasty\Fpc\Model\Cron" method="process">
+            <config_path>amasty_fpc/crawler/process_cron</config_path>
+        </job>
+    </group>
+</config>

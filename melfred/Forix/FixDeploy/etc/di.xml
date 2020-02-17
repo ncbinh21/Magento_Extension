@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+	<!--<preference for="Magento\Deploy\Service\DeployStaticFile"-->
+				<!--type="Forix\FixDeploy\Service\DeployStaticFile"/>-->
+
+	<!--<preference for="Magento\Deploy\Service\DeployTranslationsDictionary"-->
+				<!--type="Forix\FixDeploy\Service\DeployTranslationsDictionary"/>-->
+
+</config>

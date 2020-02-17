@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+ <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Block\Product\ListProduct">
+        <plugin name="dispatch" type="Mirasvit\Seo\Model\Plugin\CurrentPageProducts" sortOrder="1000"/>
+    </type>
+    <type name="Magento\Theme\Block\Html\Breadcrumbs">
+        <plugin name="dispatch" type="Mirasvit\Seo\Plugin\Snippet\Breadcrumbs" sortOrder="1000"/>
+    </type>
+    <type name="Magento\Theme\Block\Html\Pager">
+        <plugin name="dispatch" type="Mirasvit\Seo\Model\Plugin\Pager" sortOrder="1000"/>
+    </type>
+
+    <!--make controller_front_send_response_before not working if FPC enabled, because it do FPC result slower-->
+    <type name="Magento\Framework\Event\Invoker\InvokerDefault">
+        <plugin name="dispatch" type="Mirasvit\Seo\Plugin\Event\DispatchPlugin" sortOrder="1000"/>
+    </type>
+
+    <!--add SEO data (snippets, opengraph, meta) for controller_front_send_response_before in response-->
+    <type name="Magento\Framework\App\PageCache\Kernel">
+        <plugin name="dispatch" type="Mirasvit\Seo\Plugin\Event\ApplyResponsePlugin" sortOrder="1000"/>
+    </type>
+
+    <!--add SEO data (snippets, opengraph, meta) for controller_front_send_response_before in response if FPC Warmer installed-->
+    <type name="Mirasvit\CacheWarmer\Plugin\Debug\OnMissPlugin">
+        <plugin name="dispatch" type="Mirasvit\Seo\Plugin\Event\ApplyWarmResponsePlugin" sortOrder="1000"/>
+    </type>
+
+    <type name="Magento\Framework\Controller\ResultInterface">
+        <plugin name="change-title-before-cache" type="Mirasvit\Seo\Plugin\ChangeResult\ChangeContent"/>
+    </type>
+    <type name="Magento\Framework\View\TemplateEngineFactory">
+        <plugin name="add_seo_description_under_template" type="Mirasvit\Seo\Plugin\Template\AddSeoDescriptionUnderTemplate" sortOrder="1001"/>
+    </type>
+    <type name="Magento\Catalog\Block\Product\View\Gallery">
+        <plugin name="change_product_view_image_alt" type="Mirasvit\Seo\Plugin\Image\AltTemplate" sortOrder="1001"/>
+    </type>
+    <!-- for M2.1.6 -->
+    <type name="Magento\Catalog\Block\Product\ImageBlockBuilder">
+        <plugin name="change_product_view_image_alt_21" type="Mirasvit\Seo\Plugin\Image\AltTemplateAddInBlock" sortOrder="1001"/>
+    </type>
+
+</config>

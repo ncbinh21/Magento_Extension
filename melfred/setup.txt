@@ -1,0 +1,28 @@
+* check your php version: php -v
+* if your php version is less than 7.1, please upgrade php to version 7.1
+* Upgrade PHP from 7.0 to 7.1
+	1- find all installed php 7.0's extensions: 
+		sudo dpkg --get-selections | grep -v deinstall | grep php
+	2- remove php 7.0: 
+		sudo apt-get purge php7.0 php7.0-common ...
+	3- install php 7.1
+		sudo apt-get -y update
+		sudo add-apt-repository ppa:ondrej/php
+		sudo apt-get -y update
+		sudo apt-get install -y php7.1 libapache2-mod-php7.1 php7.1-common php7.1-gd php7.1-mysql php7.1-mcrypt php7.1-curl php7.1-intl php7.1-xsl php7.1-mbstring php7.1-zip php7.1-bcmath php7.1-iconv php7.1-soap
+	4- check php version:
+		php -v
+	5- Make PHP7.1 used by Apache:
+		sudo a2enmod php7.1
+		sudo service apache2 restart
+
+Setup Project:
+1- create database (forix_melfredborzall), import database (if need)
+2- create virtual host (melfredborzall.local)
+2- copy createsite.sh to project directory
+3- update info in createsite.sh
+4- run createsite.sh
+	cd <project directory> 
+	chmod +x createsite.sh
+	./createsite.sh	
+

@@ -1,0 +1,65 @@
+<?php
+
+    $helper  = $this->helper("Forix\Base\Helper\Data");
+    $baseUrl = rtrim($helper->getUrlBase(),'/');
+
+    $requestUri =  $_SERVER["REQUEST_URI"];
+    $url = "";
+    if (strrpos($requestUri, "page") === false) {
+        $url = $requestUri;
+        $url = rtrim($url,"/");
+    } else {
+		$url =  substr($requestUri,0,strrpos($requestUri,"page"));
+		$url = rtrim($url,"/");
+	}
+
+
+	/** @var $block \FishPig\WordPress\Block\Post\PostList\Pager */
+	$params     = $block->getRequest()->getParams();
+	$jsonParams = "{}";
+	if (!empty($params)) {
+		$jsonParams = json_encode($params);
+    }
+
+?>
+
+<?php if ($block->getLastPageNum() > $block->getFirstNum()) : ?>
+<div id="blog-loadmore" class="block-product-loadmore box-actions">
+	<button data-page="<?php echo $block->getCurrentPage(); ?>" id="btn-loadmore" class="action ias-trigger ias-trigger-next btn-load-more">
+		<span>
+			<span class="current-page">Page
+                <span id="page_num"><?php echo $block->getCurrentPage(); ?></span> of
+                <span id="last_page"><?php echo $block->getLastPageNum(); ?></span>
+            </span>
+            Load more
+		</span>
+	</button>
+</div>
+<div class="loading-blog" style="text-align: center; display: none;"><img src="<?= $block->getViewFileUrl('images/loader-1.gif')?>" alt="Loading..."></div>
+<?php endif; ?>
+
+<script type="text/javascript">
+    require(["jquery"], function ($) {
+        $(function () {
+            $(document).on("click","button#btn-loadmore", function () {
+                var t = $(this);
+                var currentPage = parseInt($(this).attr("data-page"));
+                var nextPage    = currentPage+1;
+                var lastPage    = parseInt("<?php echo $block->getLastPageNum();  ?>");
+                var url         = '<?php echo $baseUrl.$url; ?>/page/'+nextPage;
+                $("div#blog-loadmore").css({"display":"none"});
+                $("div.loading-blog").css({"display":"block"});
+                $.get(url, function (response) {
+                    if (currentPage+1 >= lastPage) {
+                        $("div#blog-loadmore").remove();
+                    }
+                    $("div#blog-loadmore").css({"display":"block"});
+                    $("div.loading-blog").css({"display":"none"});
+                    $("span#page_num").html(nextPage);
+                    $("button#btn-loadmore").attr("data-page", nextPage);
+                    $("div.post-second-flex").append(response);
+                });
+            });
+        });
+    });
+</script>

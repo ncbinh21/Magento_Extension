@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<!-- UI Component Select Product -->
+	<virtualType name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Pool">
+		<arguments>
+			<argument name="modifiers" xsi:type="array">
+				<item name="packages-product-selection" xsi:type="array">
+					<item name="class" xsi:type="string">Forix\ProductWizard\Ui\DataProvider\Product\Form\Modifier\Relation</item>
+					<item name="sortOrder" xsi:type="number">75</item>
+				</item>
+			</argument>
+		</arguments>
+	</virtualType>
+	<type name="Forix\ProductWizard\Controller\Adminhtml\Wizard\FileUploader\Upload">
+		<arguments>
+			<argument name="imageUploader" xsi:type="object">Forix\ProductWizard\WizardImageUpload</argument>
+		</arguments>
+	</type>
+	<type name="Forix\ProductWizard\Controller\Adminhtml\Wizard\Save">
+		<arguments>
+			<argument name="imageUploader" xsi:type="object">Forix\ProductWizard\WizardImageUpload</argument>
+		</arguments>
+	</type>
+	<virtualType name="Forix\ProductWizard\WizardImageUpload" type="Magento\Catalog\Model\ImageUploader">
+		<arguments>
+			<argument name="baseTmpPath" xsi:type="string">configurator/tmp/wizard</argument>
+			<argument name="basePath" xsi:type="string">configurator/wizard</argument>
+			<argument name="allowedExtensions" xsi:type="array">
+				<item name="jpg" xsi:type="string">jpg</item>
+				<item name="jpeg" xsi:type="string">jpeg</item>
+				<item name="gif" xsi:type="string">gif</item>
+				<item name="png" xsi:type="string">png</item>
+			</argument>
+		</arguments>
+	</virtualType>
+	<type name="Forix\ProductWizard\Ui\DataProvider\Product\Form\Modifier\Relation">
+		<arguments>
+			<argument name="scopeName" xsi:type="string">product_form.product_form</argument>
+		</arguments>
+	</type>
+</config>

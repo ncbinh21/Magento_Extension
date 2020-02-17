@@ -1,0 +1,8 @@
+<?php
+/** @var \Mirasvit\Seo\Block\Description $block */
+?>
+<?php if($seoDesription = $block->getDescription($block->getDescriptionPosition())): ?>
+    <div class="seo__description">
+        <?=$seoDesription ?>
+    </div>
+<?php endif ?>

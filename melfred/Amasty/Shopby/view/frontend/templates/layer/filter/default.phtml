@@ -1,0 +1,75 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_Shopby
+ */
+?>
+<?php
+/** @var \Amasty\ShopbyBase\Model\FilterSetting $filterSetting */
+/** @var \Amasty\Shopby\Block\Navigation\FilterRenderer $block */
+
+$filterUniqId = $block->escapeId(uniqid());
+$filterCode = $block->escapeHtml($filterSetting->getFilterCode());
+?>
+
+<?php if ($filterSetting->isShowSearchBox(count($filterItems))) : ?>
+    <?= $block->getSearchForm(); ?>
+<?php endif; ?>
+
+<ol class="items am-filter-items-<?= $filterCode;?>"
+    <?php if ($filterSetting->getEnableOverflowScroll() > 0) : ?>
+        style="max-height:<?= $block->escapeHtml($filterSetting->getEnableOverflowScroll()) ?>px;
+                overflow-y: auto;
+                overflow-x: hidden;"
+    <?php endif; ?>>
+
+    <form data-am-js="am-ranges"
+          data-amshopby-filter="<?= $filterCode;?>"
+          data-amshopby-filter-request-var="<?= $block->getFilter()->getRequestVar(); ?>">
+        <?php /** @var \Amasty\Shopby\Model\Layer\Filter\Item $filterItem */?>
+        <?php foreach ($filterItems as $filterItem) : ?>
+        <?php $uniqId = uniqid(); ?>
+        <?php $inputType = !$filterSetting->isMultiselect() ||
+            in_array($filterCode, ['rating', 'stock']) ? 'radio' : 'checkbox'?>
+        <li class="item" data-label="<?= $block->escapeHtml($filterItem->getLabel())?>">
+            <?php if ($filterItem->getCount() >= 0) : ?>
+                <a
+                    class="am-filter-item-<?= $block->escapeId($uniqId)?>"
+                    data-am-js="filter-item-default"
+                    href="<?= $block->escapeUrl($filterItem->getUrl()) ?>"
+                    <?= $filterItem->getRelNofollow() ? ' rel="nofollow"' : '' ?>
+                >
+                    <?php $style = ($inputType == 'radio' && !$block->getRadioAllowed())
+                        || in_array($filterCode, ['rating', 'stock'])  ? 'display: none;' : ''; ?>
+                    <input
+                        name="amshopby[<?= /* @escapeNotVerified */ $block->getFilter()->getRequestVar();?>][]"
+                        value="<?= $block->escapeHtml($filterItem->getValueString());?>"
+                        type="<?= $inputType;?>"
+                        style="<?= $style ?>"
+                        <?= /* @escapeNotVerified */ $this->checkedFilter($filterItem) ? ' checked' : ''; ?>
+                    />
+                    <span class="label"><?= $filterItem->getLabel() ?></span>
+                    <?php if ($filterSetting->isShowProductQuantities()) : ?>
+                        <span class="count"><?= $filterItem->getCount()?><span class="filter-count-label">
+                            <?php $title = ($filterItem->getCount() == 1) ? __('item') : __('items');?>
+                            <?= $block->escapeHtml($title) ?>  </span></span>
+                    <?php endif; ?>
+                </a>
+            <?php else :?>
+                <span class="label"><?= $filterItem->getLabel() ?></span>
+                <?php if ($filterSetting->isShowProductQuantities()) : ?>
+                    <span class="count"><?= $filterItem->getCount()?><span class="filter-count-label">
+                            <?php $title = ($filterItem->getCount() == 1) ? __('item') : __('items');?>
+                            <?= $block->escapeHtml($title) ?>
+                    </span></span>
+                <?php endif; ?>
+            <?php endif; ?>
+            </li>
+        <?php endforeach ?>
+    </form>
+</ol>
+
+<?php if ($filterSetting->getAddFromToWidget() && isset($fromToConfig) && is_array($fromToConfig)) :?>
+    <?= $block->getFromToWidget('default') ?>
+<?php endif;?>

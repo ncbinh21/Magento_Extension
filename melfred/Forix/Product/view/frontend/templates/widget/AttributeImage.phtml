@@ -1,0 +1,16 @@
+<?php $attID = $block->getData('block_attribute_id'); ?>
+<?php $data =  $block->getAllbanners($attID); ?>
+<div id="top-ground-condition" class="list-ground-condition">
+    <ul>
+        <?php foreach ($data as $item): ?>
+            <?php if($item["is_active"]): ?>
+                <li>
+                    <a title="<?php echo $item["name"]; ?>" href="<?php $item["url_key"]!="" ? $item["url"] : "javascript:void(0);"  ?>">
+                        <div class="image-ground"><img alt="<?php echo $item['icon_normal'];  ?>" src="<?php echo $this->getRootUrl().$item['icon_normal'] ?> " /></div>
+                        <div class="title-ground"><?php echo $item["name"]; ?></div>
+                    </a>
+                </li>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </ul>
+</div>

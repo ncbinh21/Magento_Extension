@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_ShopbySeo
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Forix\AdvanceShipping\Api\Data\ShippingMethodInterface" type="Forix\AdvanceShipping\Model\Cart\ShippingMethod" />
+    <preference for="Magento\Shipping\Model\CarrierFactory" type="Forix\AdvanceShipping\Model\CarrierFactory"/>
+    <type name="Magento\Quote\Model\Cart\ShippingMethodConverter">
+        <plugin name="Forix_AdvanceShipping::Modifine_Convert_Data" type="Forix\AdvanceShipping\Plugin\Model\Cart\ShippingMethodConverter"/>
+    </type>
+    <!-- Guest Estimate Shipping -->
+    <preference for="Forix\AdvanceShipping\Api\GuestShippingMethodManagementInterface" type="Magento\Quote\Model\GuestCart\GuestShippingMethodManagement" />
+    <preference for="Forix\AdvanceShipping\Api\GuestShipmentEstimationInterface" type="Magento\Quote\Model\GuestCart\GuestShippingMethodManagement" />
+    <!-- Guest Estimate Shipping -->
+    
+    <!-- Customer Estimate Shipping -->
+    <preference for="Forix\AdvanceShipping\Api\ShippingMethodManagementInterface" type="Temando\Shipping\Model\Quote\ShippingMethodManagement" />
+    <preference for="Forix\AdvanceShipping\Api\ShipmentEstimationInterface" type="Magento\Quote\Model\ShippingMethodManagement" />
+    <!-- Customer Estimate Shipping -->
+    
+    <virtualType name="Forix\AdvanceShipping\Api\Data\ShippingMethodInterfaceFactory" type="\Magento\Quote\Api\Data\ShippingMethodInterfaceFactory">
+        <arguments>
+            <argument name="instanceName" xsi:type="string">\Forix\AdvanceShipping\Api\Data\ShippingMethodInterface</argument>
+        </arguments>
+    </virtualType>
+    <type name="\Magento\Quote\Model\Cart\ShippingMethodConverter">
+        <arguments>
+            <argument name="shippingMethodDataFactory" xsi:type="object">Forix\AdvanceShipping\Api\Data\ShippingMethodInterfaceFactory</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Fedex\Model\Carrier">
+        <plugin name="Forix_AdvanceShipping::Modifine_Fedex_Carrier" type="Forix\AdvanceShipping\Plugin\Model\Fedex\CarrierPlugin"/>
+    </type>
+    <type name="Magento\Ups\Model\Carrier">
+        <plugin name="Forix_AdvanceShipping::Modifine_Ups_Carrier" type="Forix\AdvanceShipping\Plugin\Model\Ups\CarrierPlugin"/>
+    </type>
+    <type name="Magento\Quote\Model\Quote\Address\Rate">
+        <plugin name="forix_advanceShipping_address_rate" type="Forix\AdvanceShipping\Plugin\Magento\Quote\Model\Quote\Address\Rate" sortOrder="1" disabled="false" />
+    </type>
+    <preference for="Magento\Ups\Model\Carrier" type="Forix\AdvanceShipping\Rewrite\Magento\Ups\Model\Carrier" />
+
+    <!-- Fix Free Shipping config, Fix Free Shipping Method By Cart Price Rules -->
+    <preference for="Magento\Shipping\Model\Shipping"
+                type="Forix\AdvanceShipping\Rewrite\Magento\Shipping\Model\Shipping" />
+</config>

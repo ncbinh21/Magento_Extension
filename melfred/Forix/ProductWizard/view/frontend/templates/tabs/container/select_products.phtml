@@ -1,0 +1,21 @@
+<?php
+/**
+ * @var $block Forix\ProductWizard\Block\Wizard\Steps
+ * @var $group Forix\ProductWizard\Model\Group
+ * @var $groupItem Forix\ProductWizard\Model\GroupItem
+ *
+ */
+
+$groupCollection = $block->getGroups();
+?>
+<?php if ($groupCollection): ?>
+    <?php foreach ($groupCollection as $group): ?>
+        <div class="group-content">
+            <div class="title-note" data-bind='afterRender: translateText' data-text="<?php echo $block->escapeHtml(__($group->getTitle())); ?>"></div>
+            <?php $groupItems = $group->getGroupItemCollection(); ?>
+            <?php foreach ($groupItems as $groupItem): ?>
+                <?php echo $block->getGroupItemRenderer($groupItem)->toHtml(); ?>
+            <?php endforeach; ?>
+        </div>
+    <?php endforeach; ?>
+<?php endif; ?>

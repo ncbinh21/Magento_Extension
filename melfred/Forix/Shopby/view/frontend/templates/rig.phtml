@@ -1,0 +1,68 @@
+<?php
+    /** @var  $_helpeCustomCate \Forix\CategoryCustom\Helper\Data */
+    $_helpeCustomCate = $this->helper('Forix\CategoryCustom\Helper\Data');
+    /** @var  $_helperData \Forix\Shopby\Helper\Data */
+    $_helperData = $this->helper('Forix\Shopby\Helper\Data');
+    /** @var  $block \Forix\Shopby\Block\Rig */
+    $categories = $block->getCategory();
+    $isEmpty = true;
+?>
+<?php if (!empty($categories)) : ?>
+    <div class="products wrapper grid products-grid">
+        <ol class="products list items product-items">
+			<?php foreach ($categories as $_cate) : ?>
+                <?php $productCount = $_cate['count']; ?>
+                <?php if ($productCount > 0) : ?>
+                    <?php $isEmpty = false; ?>
+                    <li class="item product product-item ">
+                        <div class="product-outer">
+                            <div class="product-item-info" data-container="product-grid">
+                                <a href="<?php echo $_cate["url"]; ?>" class="product photo product-item-photo" tabindex="-1">
+                                    <?php $_helperData->resize($_cate['img'],316, 153); ?>
+                                    <?php $_image  = $_helpeCustomCate->getCategoryThumbUrl($_cate,true,true); ?>
+
+                                    <?php $_size   = $_helperData->getImageSize($_image); ?>
+                                    <?php
+                                        $_width = $_height = $_paddingbottom = "";
+                                        if (isset($_size[0])) {
+                                            $_width = $_size[0];
+                                            $_paddingbottom = ($_size[1]/$_size[0])*100;
+                                            $_height = $_size[1];
+                                        }
+                                    ?>
+                                    <span class="product-image-container" style="width: <?php echo $_width.'px;'; ?>">
+                                        <span class="product-image-wrapper" style="padding-bottom: <?php echo $_paddingbottom; ?>%;">
+                                            <?php if ($_image!="") : ?>
+                                                <img width="<?php echo $_width; ?>" height="<?php echo $_height; ?>" class="product-image-photo" src="<?php echo $_image; ?>" alt="<?php echo $_cate['name']; ?>">
+                                            <?php else : ?>
+                                                <?php
+                                                    $imageHelper = $this->helper(\Magento\Catalog\Helper\Image::class);
+                                                    $placeholderImageUrl = $imageHelper->getDefaultPlaceholderUrl('image');
+                                                ?>
+                                                <img width="262" height="262" class="product-image-photo" src="<?php echo $placeholderImageUrl; ?>" alt="<?php echo $_cate['name']; ?>">
+                                            <?php endif; ?>
+                                        </span>
+                                    </span>
+                                </a>
+
+                                <div class="product details product-item-details">
+                                    <strong class="product name product-item-name">
+                                        <a class="product-item-link generated" title="" href="<?php echo $_cate["url"]; ?>"><?php echo $_cate['name']; ?> </a>
+                                    </strong>
+                                    <div class="count-product">
+                                        <?php echo ($productCount <= 1) ? $productCount.' product' : $productCount.' products'; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                <?php endif; ?>
+			<?php endforeach; ?>
+            <?php if ($isEmpty) : ?>
+                <li class="empty-items">
+                    <p><?php echo __('We can\'t find products matching the selection.'); ?></p>
+                </li>
+            <?php endif; ?>
+        </ol>
+    </div>
+<?php endif; ?>

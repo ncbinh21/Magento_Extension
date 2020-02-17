@@ -1,0 +1,17 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_Shopby
+ */
+?>
+<?php /** @var \Amasty\Shopby\Block\Navigation\UrlModifier $block */?>
+<?php if ($block->replaceUrl()) :?>
+<script>
+    window.history.replaceState({url: '<?= /* @escapeNotVerified */ $block->getCurrentUrl();?>'},
+        '',
+        '<?= /* @escapeNotVerified */ $block->getCurrentUrl();?>'
+    );
+</script>
+<?php endif;?>
+

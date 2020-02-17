@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<recaptcha translate="label">
+			<setting>
+				<forms_area>
+					<user_create>
+						<label>Customer Register</label>
+					</user_create>
+					<user_login>
+						<label>Customer Login</label>
+					</user_login>
+					<!--<mini_login>
+						<label>Mini Login</label>
+					</mini_login>-->
+					<user_forgotpassword>
+						<label>Forgot password</label>
+					</user_forgotpassword>
+					<!--<mini_form_forgotpassword>
+						<label>Mini Forgot password</label>
+					</mini_form_forgotpassword>-->
+					<!--<guest_checkout>-->
+						<!--<label>Check Out as Guest</label>-->
+					<!--</guest_checkout>-->
+					<!--<register_during_checkout>-->
+						<!--<label>Register during Checkout</label>-->
+					<!--</register_during_checkout>-->
+					<email_friend>
+						<label>Email to friend</label>
+					</email_friend>
+					<contact_us>
+						<label>Contact Us</label>
+					</contact_us>
+					<review_product>
+						<label>Review Product Form</label>
+					</review_product>
+					<blog_detail>
+						<label>Blog Detail</label>
+					</blog_detail>
+					<form-validate-company>
+						<label>Company Register</label>
+					</form-validate-company>
+				</forms_area>
+				<forms>user_login, mini_login</forms>
+			</setting>
+		</recaptcha>
+	</default>
+</config>

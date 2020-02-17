@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <!-- frontend -->
+    <event name="controller_action_predispatch_catalogsearch_result_index">
+        <observer name="disable-default-search-result" instance="Forix\Custom\Observer\DisableSearchResult" />
+    </event>
+</config>

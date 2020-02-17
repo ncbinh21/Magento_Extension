@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- add banner slider -->
+        <referenceContainer name="page.wrapper">
+            <block class="Magento\Framework\View\Element\Template" name="banner_rig"
+                   template="Forix_Shopby::banner.phtml" after="header.container"/>
+        </referenceContainer>
+
+        <referenceBlock name="content">
+            <block class="Forix\Shopby\Block\Rig" name="rig_page" template="Forix_Shopby::rig.phtml"/>
+        </referenceBlock>
+
+        <!-- main.content -->
+        <referenceContainer name="main.content">
+            <block class="Forix\Shopby\Block\Title" name="title_rig" template="Forix_Shopby::title.phtml" before="-"/>
+        </referenceContainer>
+
+        <referenceContainer name="main">
+            <!-- featured product-->
+            <block class="Magento\Cms\Block\Block" name="home_featured_product" after="-">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">featured_product_in_rig</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <referenceBlock name="page.main.title" remove="true"/>
+    </body>
+</page>

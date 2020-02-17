@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!--CONFIG-->
+    <preference for="Mirasvit\Seo\Api\Config\ProductUrlTemplateConfigInterface" type="Mirasvit\Seo\Service\Config\ProductUrlTemplateConfig" />
+    <preference for="Mirasvit\Seo\Api\Config\BlogMxInterface" type="Mirasvit\Seo\Service\Config\BlogMx" />
+    <preference for="Mirasvit\Seo\Api\Config\AlternateConfigInterface" type="Mirasvit\Seo\Service\Config\AlternateConfig" />
+    <preference for="Mirasvit\Seo\Api\Config\InfoInterface" type="Mirasvit\Seo\Service\Config\InfoConfig" />
+    <preference for="Mirasvit\Seo\Api\Config\ImageConfigServiceInterface" type="Mirasvit\Seo\Service\Config\ImageConfigService" />
+    <preference for="Mirasvit\Seo\Api\Config\ProductSnippetConfigInterface" type="Mirasvit\Seo\Service\Config\ProductSnippetConfig" />
+
+    <!--SERVICE-->
+    <preference for="Mirasvit\Seo\Api\Service\FriendlyUrl\ProductUrlKeyTemplateInterface" type="Mirasvit\Seo\Service\FriendlyUrl\ProductUrlKeyTemplate" />
+    <preference for="Mirasvit\Seo\Api\Service\Cache\CleanInterface" type="Mirasvit\Seo\Service\Cache\Clean" />
+    <preference for="Mirasvit\Seo\Api\Service\Template\SeoDescription\TemplateInterface" type="Mirasvit\Seo\Service\Template\SeoDescription\Template" />
+    <preference for="Mirasvit\Seo\Api\Service\Alternate\StrategyFactoryInterface" type="Mirasvit\Seo\Service\Alternate\StrategyFactory" />
+    <preference for="Mirasvit\Seo\Api\Service\Alternate\UrlInterface" type="Mirasvit\Seo\Service\Alternate\Url" />
+    <preference for="Mirasvit\Seo\Api\Service\CanonicalRewrite\CanonicalRewriteServiceInterface" type="Mirasvit\Seo\Service\CanonicalRewrite\CanonicalRewriteService" />
+    <preference for="Mirasvit\Seo\Api\Service\CompatibilityServiceInterface" type="Mirasvit\Seo\Service\CompatibilityService" />
+    <preference for="Mirasvit\Seo\Api\Service\Snippet\ProductSnippetInterface" type="Mirasvit\Seo\Service\Snippet\ProductSnippet" />
+    <preference for="Mirasvit\Seo\Api\Service\Snippet\ProductReviewsSnippetInterface" type="Mirasvit\Seo\Service\Snippet\ProductReviewsSnippet" />
+    <preference for="Mirasvit\Seo\Api\Service\Twitter\TwitterCardInterface" type="Mirasvit\Seo\Service\Twitter\TwitterCard" />
+    <preference for="Mirasvit\Seo\Api\Service\WidgetGeneratorServiceInterface" type="Mirasvit\Seo\Service\WidgetGeneratorService" />
+    <preference for="Mirasvit\Seo\Api\Service\PageDetectorInterface" type="Mirasvit\Seo\Service\PageDetector" />
+    <preference for="Mirasvit\Seo\Api\Service\MessageInterface" type="Mirasvit\Seo\Service\MessageService" />
+
+    <!--DATA-->
+    <preference for="Mirasvit\Seo\Api\Data\SuffixInterface" type="Mirasvit\Seo\Service\Data\Suffix" />
+    <preference for="Mirasvit\Seo\Api\Data\TableInterface" type="Mirasvit\Seo\Service\Data\Table" />
+    <preference for="Mirasvit\Seo\Api\Data\BlogMx\PostInterface" type="Mirasvit\Seo\Service\Data\BlogMx\Post" />
+    <preference for="Mirasvit\Seo\Api\Data\BlogMx\CategoryInterface" type="Mirasvit\Seo\Service\Data\BlogMx\Category" />
+    <preference for="Mirasvit\Seo\Api\Data\CanonicalRewriteInterface" type="Mirasvit\Seo\Model\CanonicalRewrite" />
+
+    <!--REPOSITORY-->
+    <preference for="Mirasvit\Seo\Api\Repository\CanonicalRewriteRepositoryInterface" type="Mirasvit\Seo\Repository\CanonicalRewriteRepository" />
+
+    <preference for="Magento\Catalog\Helper\Image" type="Mirasvit\Seo\Helper\Rewrite\Image" />
+
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="ApplyProductUrlKeyTemplateCommand" xsi:type="object">Mirasvit\Seo\Console\Command\ApplyProductUrlKeyTemplateCommand</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!--UI-->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="seo_template_listing_data_source" xsi:type="string">Mirasvit\Seo\Model\ResourceModel\Template\Grid\Collection</item>
+                <item name="seo_rewrite_listing_data_source" xsi:type="string">Mirasvit\Seo\Model\ResourceModel\Rewrite\Grid\Collection</item>
+                <item name="seo_redirect_listing_data_source" xsi:type="string">Mirasvit\Seo\Model\ResourceModel\Redirect\Grid\Collection</item>
+                <item name="seo_canonical_rewrite_listing_data_source" xsi:type="string">Mirasvit\Seo\Model\ResourceModel\CanonicalRewrite\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <!--template-->
+    <virtualType name="SeoGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="SeoTemplateGridDataProvider" type="Mirasvit\Seo\Ui\Template\DataProvider\SeoTemplateGridDataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Mirasvit\Seo\Model\ResourceModel\Template\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">SeoGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <!--rewrite-->
+    <virtualType name="SeoRewriteGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="SeoRewriteGridDataProvider" type="Mirasvit\Seo\Ui\Rewrite\Listing\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Mirasvit\Seo\Model\ResourceModel\Rewrite\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">SeoRewriteGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <!--redirect-->
+    <virtualType name="SeoRedirectGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="SeoRedirectGridDataProvider" type="Mirasvit\Seo\Ui\Redirect\Listing\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Mirasvit\Seo\Model\ResourceModel\Rewrite\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">SeoRedirectGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <!-- canonical rewrite -->
+    <virtualType name="SeoCanonicalRewriteGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="SeoCanonicalRewriteGridDataProvider" type="Mirasvit\Seo\Ui\CanonicalRewrite\Listing\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Mirasvit\Seo\Model\ResourceModel\CanonicalRewrite\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">SeoCanonicalRewriteGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+
+    <!--Entity Manager-->
+    <type name="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="Mirasvit\Seo\Api\Data\CanonicalRewriteInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="const">Mirasvit\Seo\Api\Data\CanonicalRewriteInterface::TABLE_NAME</item>
+                    <item name="identifierField" xsi:type="const">Mirasvit\Seo\Api\Data\CanonicalRewriteInterface::ID</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\EntityManager\HydratorPool">
+        <arguments>
+            <argument name="hydrators" xsi:type="array">
+                <item name="Mirasvit\Seo\Api\Data\CanonicalRewriteInterface" xsi:type="string">Magento\Framework\EntityManager\AbstractModelHydrator</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- change base media path 'catalog/product' at 'product' -->
+    <type name="Magento\Catalog\Model\View\Asset\Image\Context">
+        <plugin name="m-seo-change-product-view-image-alt" type="Mirasvit\Seo\Plugin\Image\ImageBasePathPlugin" sortOrder="1000"/>
+    </type>
+
+    <!-- change image url and path -->
+    <type name="Magento\Catalog\Model\View\Asset\Image">
+        <plugin name="m-seo-change-image-url-and-path" type="Mirasvit\Seo\Plugin\Image\ImagePathPlugin" sortOrder="1000"/>
+    </type>
+
+    <!-- register product for creating image -->
+    <type name="Magento\Catalog\Helper\Image">
+        <plugin name="m-seo-change-image-url-and-path" type="Mirasvit\Seo\Plugin\Image\ImageProductRegisterPlugin" sortOrder="1000"/>
+    </type>
+
+    <!-- friendly image M2.1 compatibility -->
+    <preference for="Magento\Catalog\Model\Product\Image" type="Mirasvit\Seo\Preference\ProductImage" />
+
+</config>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="controller_action_predispatch">
+        <observer name="m_seo_observer" instance="\Mirasvit\Seo\Observer\CheckUrlObserver"/>
+    </event>
+    <event name="controller_action_postdispatch">
+        <observer name="m_seo_observer_meta" instance="Mirasvit\Seo\Observer\SeoDataObserver"/>
+        <observer name="m_seo_observer_robots" instance="Mirasvit\Seo\Observer\Robots"/>
+        <observer name="m_seo_observer_canonical" instance="Mirasvit\Seo\Observer\Canonical"/>
+        <observer name="m_seo_observer_alternate" instance="Mirasvit\Seo\Observer\Alternate"/>
+    </event>
+    <event name="controller_action_layout_render_before_catalogsearch_result_index">
+        <observer name="m_seo_observer_robots_catalogsearch" instance="Mirasvit\Seo\Observer\Robots"/>
+    </event>
+
+    <!--should be added in Mirasvit\Seo\Plugin\Event\Dispatch.php-->
+    <event name="controller_front_send_response_before">
+        <observer name="m_seo_observer_http_response_send_before" instance="\Mirasvit\Seo\Observer\Opengraph"/>
+        <observer name="m_seo_observer_toolbar" instance="Mirasvit\Seo\Observer\ToolbarObserver"/>
+        <observer name="m_seo_snippets_observer" instance="\Mirasvit\Seo\Observer\Snippet"/>
+        <observer name="m_seo_update_meta_observer" instance="\Mirasvit\Seo\Observer\UpdateMeta"/>
+    </event>
+</config> 

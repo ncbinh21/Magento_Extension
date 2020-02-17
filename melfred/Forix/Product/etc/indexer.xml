@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Indexer/etc/indexer.xsd">
+    <indexer id="forix_ground_index" view_id="forix_ground_index" class="Forix\Product\Model\Indexer\GroundCondition">
+        <title translate="true">Ground Condition Index</title>
+        <description translate="true">Ground Condition Index</description>
+    </indexer>
+</config>

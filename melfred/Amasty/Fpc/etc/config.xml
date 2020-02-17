@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2019 Amasty (https://www.amasty.com)
+ * @package Amasty_Fpc
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <amasty_fpc>
+            <crawler>
+                <sitemap_path>sitemaps/sitemap.xml</sitemap_path>
+                <page_types>
+                    <index>
+                        <enabled>1</enabled>
+                        <priority>1</priority>
+                    </index>
+                    <cms>
+                        <enabled>1</enabled>
+                        <priority>4</priority>
+                    </cms>
+                    <product>
+                        <enabled>1</enabled>
+                        <priority>2</priority>
+                    </product>
+                    <category>
+                        <enabled>1</enabled>
+                        <priority>3</priority>
+                    </category>
+                </page_types>
+                <delay>300</delay>
+                <max_queue_size>1000</max_queue_size>
+                <batch_size>50</batch_size>
+                <generate_cron>0 */12 * * *</generate_cron>
+                <process_cron>*/5 * * * *</process_cron>
+                <log_size>50000</log_size>
+                <ignore_list>price=
+</ignore_list>
+            </crawler>
+        </amasty_fpc>
+    </default>
+</config>

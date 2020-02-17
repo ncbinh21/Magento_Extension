@@ -1,0 +1,14 @@
+<?php
+/**
+ * @var $block \Forix\CategoryCustom\Block\Category\View
+ */
+?>
+<div id="register-ground-filter" class="block register_ground_filter" data-block="register_ground_filter"
+     data-bind="scope: 'register_ground_filter'"></div>
+<script type="text/x-magento-init">
+    {
+        "#register-ground-filter": {
+            "Magento_Ui/js/core/app": <?php /* @escapeNotVerified */ echo $block->getJsLayout(); ?>
+        }
+    }
+</script>

@@ -1,0 +1,29 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2019 Amasty (https://www.amasty.com)
+ * @package Amasty_Fpc
+ */
+?>
+<?php
+/** @var \Amasty\Fpc\Block\Status $block */
+$notCacheable = $block->getNotCacheableBlocks();
+?>
+
+<div class="amasty-fpc-crawler-status status-<?= $block->getStatusCode() ?>">
+    <div class="status-header">Full Page Cache</div>
+    <div class="status"><?= $block->getStatusTitle() ?></div>
+    <?php if ($notCacheable): ?>
+    <div class="not-cacheable">
+        <div class="not-cacheable-header"><?= __('Not cacheable blocks') ?></div>
+        <div class="blocks">
+            <?php foreach ($notCacheable as $block): ?>
+                <div class="not-cacheable-block">
+                    <div class="name"><?= $block['name'] ?></div>
+                    <div class="class"><?= $block['class'] ?></div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <?php endif ?>
+</div>

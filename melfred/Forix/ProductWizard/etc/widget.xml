@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="wizard_configurator" class="\Forix\ProductWizard\Block\Wizard\Widget\Configurator"
+            placeholder_image="Forix_ProductWizard::images/configurator.png">
+        <label translate="true">Form Configurator</label>
+        <description translate="true">Wizard form configurator</description>
+        <parameters>
+            <parameter name="title" xsi:type="text" required="false" visible="true">
+                <label translate="true">Title</label>
+            </parameter>
+            <parameter name="description" xsi:type="text" required="false" visible="true">
+                <label translate="true">Description</label>
+            </parameter>
+            <parameter name="attribute_code" xsi:type="text" required="false" visible="true">
+                <label translate="true">Attribute Code</label>
+            </parameter>
+            <parameter name="target_configurator" xsi:type="select" required="true" visible="true" source_model="Forix\ProductWizard\Model\Source\Wizard">
+                <label translate="true">Target Configurator</label>
+                <description translate="true">Select configurator to submit</description>
+            </parameter>
+            <parameter name="no_result_message" xsi:type="text" required="false" visible="true">
+                <label translate="true">No Result Message</label>
+                <description translate="true"><![CDATA[No result message, {-store url="[url]"-} ... (CMS Content Config {-...-}, {value} for append current search value,{configurator_url}, {configurator_title} for next configurator wizard title]]></description>
+            </parameter>
+            <parameter name="final_message" xsi:type="text" required="false" visible="true">
+                <label translate="true">Final Message</label>
+                <description translate="true"><![CDATA[No result message, {-store url="[url]"-} ... (CMS Content Config {-...-}, {value} for append current search value ]]></description>
+            </parameter>
+            <parameter name="template" xsi:type="select" required="true" visible="true">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="dropdown" value="widget/dropdown.phtml" selected="true">
+                        <label translate="true">Filter Dropdown Template</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="cache_lifetime" xsi:type="text" visible="true">
+                <label translate="true">Cache Lifetime (Seconds)</label>
+                <description translate="true">86400 by default, if not set. To refresh instantly, clear the Blocks HTML Output cache.</description>
+            </parameter>
+        </parameters>
+        <containers>
+            <container name="content">
+                <template name="grid" value="default"/>
+            </container>
+            <container name="content.top">
+                <template name="grid" value="default"/>
+            </container>
+            <container name="content.bottom">
+                <template name="grid" value="default"/>
+            </container>
+        </containers>
+    </widget>
+</widgets>
+

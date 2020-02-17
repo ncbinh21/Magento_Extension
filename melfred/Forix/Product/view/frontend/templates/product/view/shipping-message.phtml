@@ -1,0 +1,73 @@
+<?php
+/**
+ * Created by Hidro Le.
+ * Job Title: Magento Developer
+ * Date: 31/07/2018
+ * Time: 18:11
+ */
+?>
+<?php /* @var $block \Magento\Catalog\Block\Product\View\AbstractView */ ?>
+<?php $_product = $block->getProduct() ?>
+<?php $helper = $this->helper('Forix\Config\Helper\Data'); ?>
+<?php $heavyWeight = $helper->getConfigValue("forix_catalog/heavy/weight"); ?>
+<?php if ($_product->getWeight() > $heavyWeight) : ?>
+    <?php $mess = $helper->getConfigValue("shipping_msg/general/heavy"); ?>
+    <div class="mess-stock">
+        <span class="txt-message"><?php echo $mess; ?></span>
+        <span class="link-more-info">
+            <a class="action-popup" data-target="#popup-shipping-info" href="javascript:void(0);"><?php echo __('More shipping Info'); ?></a>
+        </span>
+    </div>
+<?php else : ?>
+    <?php if ($_product->isAvailable()) : ?>
+        <?php $mess = $helper->getConfigValue("shipping_msg/general/in_stock"); ?>
+        <div class="mess-stock">
+            <span class="txt-message"><?php echo $mess; ?></span>
+            <span class="link-more-info">
+                <a class="action-popup" data-target="#popup-shipping-info" href="javascript:void(0);"><?php echo __('More Shipping Info'); ?></a>
+            </span>
+        </div>
+    <?php else: ?>
+		<?php $mess = $helper->getConfigValue("shipping_msg/general/out_stock"); ?>
+        <div class="mess-stock">
+            <span class="txt-message"><?php echo $mess; ?></span>
+            <span>
+                or <a target="_blank" href="#">contact your local distributor</a>
+            </span>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>
+
+<div id="popup-shipping-info" style="display: none;">
+    <?php echo $helper->getConfigValue("shipping_msg/shipping_info/editor_textarea"); ?>
+</div>
+<input type="hidden" id="heavy_mess" value="<?php echo $helper->getConfigValue("shipping_msg/general/heavy"); ?>">
+<input type="hidden" id="shipping_mess" value="<?php echo $mess; ?>">
+
+<script>
+    require(
+        ['jquery', 'Magento_Ui/js/modal/modal'], function ($, modal) {
+            var popup = "";
+            $('a.action-popup').on('click', function () {
+                var options = {
+                    type: 'popup',
+                    responsive: true,
+                    innerScroll: true,
+                    title: 'Shipping info',
+                    buttons: false
+                };
+                var container =  $(this.dataset.target);
+                popup = modal(options,  container);
+                container.modal('openModal');
+            });
+
+            $("body").click(function (e) {
+                var checkclass = e.target.className;
+                if (checkclass.indexOf("_show") >= 0) {
+                    $(".action-close").trigger("click");
+                }
+            });
+
+        }
+    );
+</script>

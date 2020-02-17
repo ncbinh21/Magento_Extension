@@ -1,0 +1,214 @@
+<form class="form-netterms" method="post"  action="<?= /* @escapeNotVerified */ $block->getUrl('netterm/index/savepost') ?>" id="netterms-form" >
+    <?= $block->getBlockHtml('formkey') ?>
+    <fieldset class="fieldset netterms-business">
+        <legend class="legend"><?= __('TELL US ABOUT YOUR BUSINESS') ?></legend>
+        <div class="field required">
+            <label class="label"><span><?= $block->escapeHtml(__('We are engaged in the business of')) ?></span></label>
+            <div class="control">
+                <input type="text" name="business" title="<?= $block->escapeHtmlAttr(__('Engaged Business')) ?>" class="input-text" data-validate="{required:true}"  required="required">
+            </div>
+        </div>
+        <div class="col-left">
+            <div class="field choice required">
+                <label class="label"><span><?= $block->escapeHtml(__('We are a')) ?></span></label>
+                <div class="control">
+                    <div>
+                        <input type="radio" id="business-type-1" name="type_business" value="Corporation" data-validate="{'validate-one-required-by-name':true}">
+                        <label for="business-type-1">Corporation</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="business-type-2" name="type_business" value="Partnership" data-validate="{'validate-one-required-by-name':true}">
+                        <label for="business-type-2">Partnership</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="business-type-3" name="type_business" value="Proprietorship" data-validate="{'validate-one-required-by-name':true}">
+                        <label for="business-type-3">Proprietorship</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-right">
+            <div class="field required">
+                <label  class="label"><span><?= $block->escapeHtml(__('At present location since')) ?></span></label>
+                <div class="control">
+                    <input type="text" name="location_since" title="<?= $block->escapeHtmlAttr(__('Localtion Since')) ?>" class="input-text" data-validate="{required:true}" required="required">
+                </div>
+            </div>
+            <div class="field required">
+                <label  class="label"><span><?= $block->escapeHtml(__('Year company established')) ?></span></label>
+                <div class="control">
+                    <input type="text" name="year_established" title="<?= $block->escapeHtmlAttr(__('Year Company')) ?>" class="input-text" data-validate="{required:true}" required="required">
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="fieldset netterms-officers-are">
+        <legend class="legend"><?= __('THE OWNERS AND OFFICERS ARE') ?></legend>
+        <div class="field required">
+            <label  class="label"><span><?= $block->escapeHtml(__('Name/Title')) ?></span></label>
+            <div class="control">
+                <input type="text" name="name_title_1" title="<?= $block->escapeHtmlAttr(__('Name/Title')) ?>" class="input-text" data-validate="{required:true}" required="required">
+            </div>
+        </div>
+        <div class="field">
+            <label  class="label"><span><?= $block->escapeHtml(__('Name/Title')) ?></span></label>
+            <div class="control">
+                <input type="text" name="name_title_2" title="<?= $block->escapeHtmlAttr(__('Name/Title')) ?>" class="input-text">
+            </div>
+        </div>
+        <div class="field">
+            <label  class="label"><span><?= $block->escapeHtml(__('Name/Title')) ?></span></label>
+            <div class="control">
+                <input type="text" name="name_title_3" title="<?= $block->escapeHtmlAttr(__('Name/Title')) ?>" class="input-text">
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="fieldset netterms-references">
+        <legend class="legend"><?= __('REFERENCES (ONLY THOSE ON OPEN ACCOUNT)') ?></legend>
+        <div class="note">Credit history is only done via fax or email</div>
+        <div class="inner-field">
+            <div class="field">
+                <label  class="label"><span><?= $block->escapeHtml(__('Company')) ?></span></label>
+                <div class="control">
+                    <input type="text" name="company_1" title="<?= $block->escapeHtmlAttr(__('Company')) ?>" class="input-text">
+                </div>
+            </div>
+            <div class="field">
+                <label  class="label"><span><?= $block->escapeHtml(__('Fax Number')) ?></span></label>
+                <div class="control">
+                    <input type="text" name="fax_number_1" title="<?= $block->escapeHtmlAttr(__('Fax Number')) ?>" class="input-text">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label"><span><?= $block->escapeHtml(__('Email')) ?></span></label>
+                <div class="control">
+                    <input type="email" name="email_1" title="<?= $block->escapeHtmlAttr(__('Email')) ?>" class="input-text">
+                </div>
+            </div>
+            <div class="field">
+                <label  class="label"><span><?= $block->escapeHtml(__('Company')) ?></span></label>
+                <div class="control">
+                    <input type="text" name="company_2" title="<?= $block->escapeHtmlAttr(__('Company')) ?>" class="input-text">
+                </div>
+            </div>
+            <div class="field">
+                <label  class="label"><span><?= $block->escapeHtml(__('Fax Number')) ?></span></label>
+                <div class="control">
+                    <input type="text" name="fax_number_2" title="<?= $block->escapeHtmlAttr(__('Fax Number')) ?>" class="input-text">
+                </div>
+            </div>
+            <div class="field">
+                <label  class="label"><span><?= $block->escapeHtml(__('Email')) ?></span></label>
+                <div class="control">
+                    <input type="email" name="email_2" title="<?= $block->escapeHtmlAttr(__('Email')) ?>" class="input-text">
+                </div>
+            </div>
+            <div class="field">
+                <label  class="label"><span><?= $block->escapeHtml(__('Company')) ?></span></label>
+                <div class="control">
+                    <input type="text" name="company_3" title="<?= $block->escapeHtmlAttr(__('Company')) ?>" class="input-text">
+                </div>
+            </div>
+            <div class="field">
+                <label  class="label"><span><?= $block->escapeHtml(__('Fax Number')) ?></span></label>
+                <div class="control">
+                    <input type="text" name="fax_number_3" title="<?= $block->escapeHtmlAttr(__('Fax Number')) ?>" class="input-text">
+                </div>
+            </div>
+            <div class="field">
+                <label  class="label"> <span><?= $block->escapeHtml(__('Email')) ?></span></label>
+                <div class="control">
+                    <input type="email" name="email_3" title="<?= $block->escapeHtmlAttr(__('Email')) ?>" class="input-text">
+                </div>
+            </div>
+            <div class="field">
+                <label  class="label"><span><?= $block->escapeHtml(__('Company')) ?></span></label>
+                <div class="control">
+                    <input type="text" name="company_4" title="<?= $block->escapeHtmlAttr(__('Company')) ?>" class="input-text">
+                </div>
+            </div>
+            <div class="field">
+                <label  class="label"><span><?= $block->escapeHtml(__('Fax Number')) ?></span></label>
+                <div class="control">
+                    <input type="text" name="fax_number_4" title="<?= $block->escapeHtmlAttr(__('Fax Number')) ?>" class="input-text">
+                </div>
+            </div>
+            <div class="field">
+                <label  class="label"> <span><?= $block->escapeHtml(__('Email')) ?></span></label>
+                <div class="control">
+                    <input type="email" name="email_4" title="<?= $block->escapeHtmlAttr(__('Email')) ?>" class="input-text">
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="fieldset netterms-and-conditions">
+        <legend class="legend"><?= __('TERMS AND CONDITIONS') ?></legend>
+        <?= $block->getChildHtml() ?>
+        <div class="field choice required">
+            <input type="checkbox" id="term-condition" name="term-condition" title="<?= $block->escapeHtmlAttr(__('I agree to Terms and Conditions above')) ?>" data-validate="{required:true}" class="checkbox">
+            <label for="term-condition">I agree to Terms and Conditions above</label>
+        </div>
+        <div class="inner">
+            <div class="field required">
+                <label  class="label"><span><?= $block->escapeHtml(__('This form was fill out by (full name)')) ?></span></label>
+                <div class="control">
+                    <input type="text" name="full_name" title="<?= $block->escapeHtmlAttr(__('Fullname')) ?>" class="input-text" data-validate="{required:true}" required="required">
+                </div>
+            </div>
+            <div class="field required">
+                <label  class="label"><span><?= $block->escapeHtml(__('Title')) ?></span></label>
+                <div class="control">
+                    <input type="text" name="title" title="<?= $block->escapeHtmlAttr(__('Title')) ?>" class="input-text" required="required">
+                </div>
+            </div>
+            <div class="field required">
+                <label  class="label"><span><?= $block->escapeHtml(__('Date')) ?></span></label>
+                <div class="control">
+                    <input type="text" id="datepicker" name="date" title="<?= $block->escapeHtmlAttr(__('Date')) ?>" class="input-text" required="required">
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <div class="field no-display">
+        <div class="control">
+            <input type="text" name="company_name" value="<?= $block->getCompanyName() ?>" class="input-text" required="required">
+        </div>
+    </div>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="submit" class="action submit primary" title="<?= $block->escapeHtmlAttr(__('Submit application')) ?>"><span><?= $block->escapeHtml(__('Submit application')) ?></span></button>
+        </div>
+    </div>
+</form>
+<script>
+    require([
+        'jquery',
+        'mage/mage'
+    ], function ($) {
+        var dataForm = $('#netterms-form');
+        dataForm.mage('validation', {});
+    });
+</script>
+<script type="text/javascript">
+    require([
+        "jquery",
+        "mage/calendar"
+    ], function($){
+        $('#datepicker').datepicker({
+                prevText: 'Prev', prevStatus: '',
+                prevJumpText: 'Prev', prevJumpStatus: '',
+                nextText: 'Next', nextStatus: '',
+                nextJumpText: 'Next', nextJumpStatus: '',
+                monthNames: ['Januar','February','March','April','May','June',
+                    'July','August','September','October','November','December'],
+                monthNamesShort: ['Jan','Feb','Mar','Apr','May','Jun',
+                    'Jul','Aug','Sep','Oct','Nov','Dec'],
+                dayNames: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Satuday'],
+                dayNamesShort: ['Sun','Mon','Tue','Wed','Thu','Fri','Sa'],
+                dayNamesMin: ['Sun','Mon','Tue','Wed','Thu','Fri','Sa'],
+                showMonthAfterYear: false,
+                dateFormat:'mm/dd/yy'
+            }
+        );
+    });
+</script>

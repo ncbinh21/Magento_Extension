@@ -1,0 +1,143 @@
+<?php
+
+$imageHelper = $this->helper('\Magento\Catalog\Helper\Image');
+$productCollection = $block->getProductCollection();
+$sortby = $block->getSortByOptions();
+$status = $block->getFilterCategoryOptions();
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$priceHelper = $objectManager->create('Magento\Framework\Pricing\Helper\Data');
+?>
+<?php if($productCollection):?>
+    <div>
+        <form action="" id="manage">
+            <span>Sort by</span>
+            <div class="field no-label">
+                <div class="control">
+                    <select class="required-entry" form="manage" name="sortby" onchange="this.form.submit()" >
+                        <?php foreach ($sortby as $item => $value) : ?>
+                            <option value="<?=$item ?>" <?= $value["selected"]?> ><?= $value["label"]?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+            <span>Show me</span>
+            <div class="field no-label">
+                <div class="control">
+                    <select class="required-entry" form="manage" name="category" onchange="this.form.submit()">
+                        <?php foreach ($status as $item => $value) : ?>
+                            <option value="<?=$item ?>" <?= $value["selected"]?> ><?= $value["label"]?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="table-wrapper orders-history">
+        <table class="data table table-order-items history" id="my-orders-table">
+            <caption class="table-caption"><?= __('Orders') ?></caption>
+            <thead>
+            <tr>
+                <th scope="col" class="col id"><?= __('Product') ?></th>
+                <th scope="col" class="col date"><?= __('Category') ?></th>
+                <th scope="col" class="col shipping"><?= __('Part #') ?></th>
+                <th scope="col" class="col total"><?= __('Rig Model') ?></th>
+                <th scope="col" class="col status"><?= __('Last Order') ?></th>
+                <th scope="col" class="col actions"><?= __('Action') ?></th>
+            </tr>
+            </thead>
+            <tbody class="order-container">
+            <?php /* @var Magento\Sales\Model\Order $_order */ ?>
+            <?php foreach ($productCollection as $item):?>
+                <tr class="row-item">
+                    <td data-th="<?= $block->escapeHtml(__('Product')) ?>"
+                        class="col id"><?=  $item->getProduct()->getName(); ?></td>
+                    <td data-th="<?= $block->escapeHtml(__('Category')) ?>"
+                        class="col date"><?= $item->getCateName(); ?></td>
+                    <td data-th="<?= $block->escapeHtml(__('Part #')) ?>"
+                        class="col shipping">
+                        <?= $item->getProduct()->getSku(); ?>
+                    </td>
+                    <td data-th="<?= $block->escapeHtml(__('Rig Model')) ?>"
+                        class="col total"><?= $item->getRigModel() ?></td>
+                    <td data-th="<?= $block->escapeHtml(__('Last Order')) ?>"
+                        class="col status"><?= $block->formatDate($item->getCreatedOrder()) ?></td>
+                    <td data-th="<?= $block->escapeHtml(__('Actions')) ?>" class="col actions">
+                        <a href="javascript:void(0);" class="action view"
+                           data-order-id="<?= $item->getId() ?>">
+                            <span><?= __('View Details') ?></span>
+                        </a>
+                    </td>
+                </tr>
+                <tr class="row-item row-details no-display" data-order-id="<?= $item->getId() ?>">
+                    <td colspan="6">
+                        <img src="<?= $imageHelper->init($item->getProduct(), 'product_thumbnail_image')->getUrl() ?>"
+                             alt="<?= $item->getProduct()->getName() ?>">
+                        <?php if($_options = $block->getItemOptions($item)): ?>
+                            <dl class="item-options">
+                                <?php foreach ($_options as $_option) : ?>
+                                    <dt><?= $block->escapeHtml($_option['label']) ?></dt>
+                                    <dd>
+                                        <?= nl2br($block->escapeHtml((isset($_option['print_value']) ? $_option['print_value'] : $_option['value']))) ?>
+                                    </dd>
+                                <?php endforeach; ?>
+                            </dl>
+                        <?php endif; ?>
+                        <div><?= $priceHelper->currency($item->getPrice()); ?></div>
+                        <div><span><?= __('Order#: ') ?></span><?= $item->getIncrementId(); ?></div>
+                        <a href="<?= $item->getProduct()->getProductUrl() ?>"><?= __('Go to product details page') ?></a>
+                        <form action="<?= $block->getBaseUrl() . 'customer/sales/addtocart' ?>" method="post">
+                            <input name="item_id" class="no-display" value="<?= $item->getId() ?>">
+                            <input name="order_id" class="no-display" value="<?= $item->getOrderId() ?>">
+                            <?= $block->getBlockHtml('formkey') ?>
+                            <?= $block->getChildHtml('form_top') ?>
+                            <button type="submit"><?= __('Add to Cart') ?></button>
+                        </form>
+                        <div class="block block-requisition-list social-button" data-bind="scope: 'requisition_<?= $block->escapeJs($item->getProduct()->getId()) ?>'">
+                            <!-- ko template: getTemplate() --><!-- /ko -->
+                        </div>
+                        <script type="text/x-magento-init">
+                            {
+                                "*": {
+                                    "Magento_Ui/js/core/app": {
+                                        "components": {
+                                            "requisition_<?= $block->escapeJs($item->getProduct()->getId()) ?>": {
+                                                "component": "Magento_RequisitionList/js/requisition/action/product/add",
+                                                "editModuleName": "requisition_<?= $block->escapeJs($item->getProduct()->getId()) ?>.edit",
+                                                "title": "<?= /* @noEscape */ __('Add to Favorites') ?>",
+                                                "action": "<?= /* @noEscape */ $block->getUrl('requisition_list/item/add') ?>",
+                                                "sku": "<?= $block->escapeJs($item->getProduct()->getSku()) ?>"
+                                            },
+                                            "requisition_<?= $block->escapeJs($item->getProduct()->getId()); ?>.edit": {
+                                                "component": "Magento_RequisitionList/js/requisition/list/edit",
+                                                "modal": "add_to_requisition_popup",
+                                                "saveUrl": "<?= /* @noEscape */ $block->getUrl('rest/V1/requisition_lists') ?>"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        </script>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <?php if ($block->getPagerHtml()): ?>
+        <div class="order-products-toolbar toolbar bottom"><?= $block->getPagerHtml(); ?></div>
+    <?php endif ?>
+<?php else: ?>
+    <div class="message info empty"><span><?= __('You have not any products') ?></span></div>
+<?php endif ?>
+
+<script type="text/javascript">
+    require([
+        'jquery'
+    ], function ($) {
+        $("#my-orders-table .row-item .action.view").on("click", function () {
+            var orderID = $(this).data("orderId");
+            $("#my-orders-table .row-details[data-order-id=" + orderID + "]").slideToggle(500);
+        });
+    });
+</script>
+

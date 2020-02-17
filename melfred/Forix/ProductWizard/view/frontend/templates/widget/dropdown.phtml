@@ -1,0 +1,79 @@
+<?php
+/**
+ * @var $block \Forix\ProductWizard\Block\Wizard\Widget\Configurator
+ * @var $attributeOption \Magento\Eav\Api\Data\AttributeOptionInterface
+ */
+$attribute = $block->getAttribute();
+$attributeOptions = [];
+if ($attribute) {
+    $attributeOptions = $attribute->getOptions();
+}
+$noResultId = $block->getNoResultId();
+$configuratorSelect = $block->getConfiguratorSelect();
+$noResultMessage = $block->getNoResultMessage();
+?>
+<div id="<?php echo $noResultId . $configuratorSelect; ?>" class="configurator <?php echo $block->getAttributeCode() ?>"
+     data-bind="scope: 'drop_box_configurator'">
+    <div id="checkout-loader" data-role="configurator-loader" class="loading-mask" data-mage-init='{"configuratorLoader": {}}'>
+        <div class="loader">
+            <img src="<?= /* @escapeNotVerified */ $block->getViewFileUrl('images/loader-1.gif') ?>"
+                 alt="<?= /* @escapeNotVerified */__('Loading...') ?>" style="position: absolute;">
+        </div>
+    </div>
+    <form action="<?php echo $block->getTargetUrl(); ?>" method="GET" data-bind="afterRender: callSelectsJS()">
+        <div class="configurator-title">
+            <?php echo __($block->getTitle()); ?>
+        </div>
+        <div class="configurator-description">
+            <?php echo __($block->getDescription()); ?>
+        </div>
+        <div class="configurator-form" data-bind="blockLoader: isLoading">
+            <div class="form-content">
+                <div class="field rig-model-wraper rig-model-input">
+                    <select class="configurator-control-select <?php echo $configuratorSelect; ?> group-item"
+                            data-placeholder="<?php echo __("Select") . " " . $block->getAttributeLabel(); ?>"
+                            id="<?php echo $block->getNameInLayout(); ?>"
+                            name="attr[<?php echo $block->getAttributeCode(); ?>]"
+                            required="required"
+                            autocomplete="off">
+                        <?php foreach ($attributeOptions as $attributeOption): ?>
+                            <option class="wizard-item-option"
+                                    value="<?php echo $attributeOption->getValue(); ?>"><?php echo $attributeOption->getLabel(); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <button type="submit" id="configurator-submit">
+                    <span><?php echo __('Start Configuring'); ?></span>
+                </button>
+            </div>
+            <div id="<?php echo $noResultId; ?>" class="no-result" style="display: none;">
+                <?php echo $noResultMessage; ?>
+            </div>
+        </div>
+    </form>
+    <script>
+        if (undefined === window.checkoutConfig) {
+            window.checkoutConfig = {};
+        }
+        if (!window.checkoutConfig.storeCode) {
+            window.checkoutConfig.storeCode = '<?php echo $block->getStoreCode();?>';
+        }
+        window.productWizard = {
+            storeCode: '<?php echo $block->getStoreCode();?>'
+        };
+        require([
+            'mage/url',
+            'Magento_Ui/js/block-loader'
+        ], function (url, blockLoader) {
+            blockLoader("<?= /* @escapeNotVerified */ $block->getViewFileUrl('images/loader-1.gif') ?>");
+            return url.setBaseUrl('<?= /* @escapeNotVerified */ $block->getBaseUrl() ?>');
+        });
+    </script>
+</div>
+<script type="text/x-magento-init">
+    {
+        "#<?php echo $noResultId . $configuratorSelect ?>": {
+            "Magento_Ui/js/core/app": <?php /* @escapeNotVerified */ echo $block->getJsLayout(); ?>
+        }
+    }
+</script>

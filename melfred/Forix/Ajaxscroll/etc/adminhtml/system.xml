@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*************************************************
+ * *
+ *  *
+ *  * @copyright Copyright © 2017 Forix. All rights reserved.
+ *  * See COPYING.txt for license details.
+ *  * @author    thao@forixwebdesign.com
+ *
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="forix" translate="label" sortOrder="150">
+            <label>Forix</label>
+        </tab>
+        <section id="ajax_scroll" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Ajax Scroll</label>
+            <tab>forix</tab>
+            <resource>Forix_Ajaxscroll::configuration</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="active" translate="label comment" sortOrder="0" type="select" showInDefault="1" showInStore="0" showInWebsite="0">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="mode" translate="label comment" sortOrder="10" type="select" showInStore="0" showInDefault="1">
+                    <label>Background Mode</label>
+                    <source_model>Forix\Ajaxscroll\Model\Config\Source\Mode</source_model>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                </field>
+                <field id="html_button" translate="label comment" sortOrder="40" type="select" showInStore="0" showInDefault="1">
+                    <label>Html Button</label>
+                    <frontend_model>Forix\Ajaxscroll\Block\Adminhtml\System\Config\Editor</frontend_model>
+                    <comment>HTML uses in Button. Leave blank to use HTML default</comment>
+                    <depends>
+                        <field id="active">1</field>
+                        <field id="mode">1</field>
+                    </depends>
+                </field>
+                <field id="html_spinner" translate="label comment" sortOrder="50" type="select" showInStore="0" showInDefault="1">
+                    <label>Html Button</label>
+                    <source_model>Forix\Ajaxscroll\Model\Config\Source\Mode</source_model>
+                    <comment>HTML uses in Spinner. Leave blank to use HTML default</comment>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

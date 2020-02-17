@@ -1,0 +1,26 @@
+<?php
+/**
+ * @var $block \Forix\ProductWizard\Block\Step
+ */
+$_className = $block->getCssClass();
+$_title = $block->getTitle();
+?>
+<div class="product attribute <?= /* @escapeNotVerified */ $_className ?>">
+    <div class="value" <?= /* @escapeNotVerified */ $_className ?>>
+        <div class="step-header">
+            <div class="title" data-bind='afterRender: translateText'
+                 data-text="<?php echo $block->escapeHtml(__($block->getStepTitle())); ?>"></div>
+            <div class="step-message step-message-<?php echo $block->getData('index') - 1; ?> no-display"><?php echo $block->getCurrentWizard()->getSkipNotificationMessage(); ?></div>
+        </div>
+        <?php if ($childBlocks = $block->getLayout()->getChildBlocks($block->getNameInLayout())): ?>
+            <?php foreach ($childBlocks as $childBlock): ?>
+                <form action="return function(){return false;}" data-mage-init='{"validation": {}}'
+                      class="wizard-form-main-<?php echo $block->getData('index') - 1; ?>">
+                    <div class="step-index-<?php echo $block->getData('index'); ?>">
+                        <?php echo $childBlock->setIndex($block->getData('index'))->toHtml(); ?>
+                    </div>
+                </form>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="carriers">
+            <group id="fedex" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="enable_ltl" translate="label" type="select" sortOrder="500" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enable LTL</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="freight_account" translate="label comment" type="obscure" sortOrder="501" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Freight Account Number</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <comment>Please make sure to use only digits here. No dashes are allowed.</comment>
+                    <depends>
+                        <field id="carriers/fedex/enable_ltl">1</field>
+                    </depends>
+                </field>
+                <field id="freight_class" translate="label" type="select" sortOrder="502" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Freight Class</label>
+                    <source_model>Forix\FedexLtl\Model\Config\Source\FreightClass</source_model>
+                    <depends>
+                        <field id="carriers/fedex/enable_ltl">1</field>
+                    </depends>
+                </field>
+                <field id="freight_packaging" translate="label" type="select" sortOrder="500" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Freight Packaging</label>
+                    <source_model>Forix\FedexLtl\Model\Config\Source\Packaging</source_model>
+                    <depends>
+                        <field id="carriers/fedex/enable_ltl">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

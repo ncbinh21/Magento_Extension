@@ -1,0 +1,30 @@
+<div data-bind="visible: canVisibleBlock">
+    <div class="payment-option _collapsible opc-payment-additional order-notes"  data-bind="mageInit: {'collapsible':{'openedState': '_active'}}">
+        <div class="payment-option-title field choice" data-role="title">
+            <div class="action action-toggle" role="heading" aria-level="2">
+            </div>
+        </div>
+        <div class="payment-option-content" >
+            <form class="form form-discount">
+                <div class="payment-option-inner">
+                    <div class="field optional">
+                        <div class="control">
+                            <input required="required" class="input-text" id="po-number" name="po-number"/>
+                            <label class="label" for="po-number">
+                                <span data-bind="i18n: 'P.O. Number'"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="field optional">
+                        <div class="control">
+                            <textarea required="required" class="input-text" id="comment-code" name="comment-code" rows="2" maxlength="300"></textarea>
+                            <label class="label" for="comment-code">
+                                <span data-bind="i18n: 'Order Notes'"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <wizard>
+            <general>
+                <attributes>mb_rig_model,mb_thread_connection_type,mb_transmitter_type,mb_swivel_types,mb_blade_cutter_option,mb_fastream_cutter_size,mb_swivel_capacity</attributes>
+            </general>
+            <fastback>
+                <step_one_title><![CDATA[Tell us about your equipment & project]]></step_one_title>
+                <step_two_title><![CDATA[]]></step_two_title>
+                <step_three_title><![CDATA[All done! All of the necessary parts for your FastBack System are listed below.]]></step_three_title>
+            </fastback>
+            <dreamer>
+                <step_one_title><![CDATA[Tell us about your equipment & project]]></step_one_title>
+                <step_two_title><![CDATA[]]></step_two_title>
+                <step_three_title><![CDATA[All done! All of the necessary parts for your FastBack System are listed below.]]></step_three_title>
+            </dreamer>
+        </wizard>
+    </default>
+</config>

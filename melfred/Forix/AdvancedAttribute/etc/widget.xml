@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <!--tạo widget, với param "PRODUCT LIST" trong admin-->
+    <widget class="Forix\AdvancedAttribute\Block\Frontend\AttributeImage" id="forix_bb_show_image">
+        <label>Attribute Ground Condition</label>
+        <description/>
+        <parameters>
+            <parameter name="block_attribute_id" xsi:type="select" required="true" visible="true" source_model="Forix\AdvancedAttribute\Model\Config\Source\AttributeOptions">
+                <label>Attribute Name</label>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

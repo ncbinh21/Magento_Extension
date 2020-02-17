@@ -1,0 +1,86 @@
+<?php
+/*$rigModels = $block->getRigModel(); Remove by Hidro Le*/
+/**
+ * @var $helper \Forix\Megamenu\Helper\Data
+ */
+$helper = $this->helper(\Forix\Megamenu\Helper\Data::class); /*Edited by Hidro Le*/
+$rigModelAttribute = $helper->getRigModelAttribute();
+$rigModels = $rigModelAttribute->getOptions();
+?>
+<div class="block-banner-search">
+    <form id="banner-search">
+        <div class="title"><?php echo __('FIND THE RIGHT HDD TOOL FOR YOUR RIG'); ?></div>
+        <div class="rig-model-wrapper">
+            <div class="rig-model-input-filter-wrapper">
+                <select class="rig-model-input-filter js-select2"  multiple="multiple">
+                    <?php foreach ($rigModels as $rigModel): ?>
+                        <?php
+                            $manufacture = $helper->getAmastyOptionSetting($rigModel->getValue());
+                            if (!$manufacture) continue;
+                            $manufacture = strtolower($manufacture);
+                            $rigUrl = $block->getUrl('shopby/rig/index') . ($block->translitUrl($manufacture)) . "/" . $block->translitUrl($rigModel->getLabel().'-'.$rigModel->getValue());
+                        ?>
+                        <option value="<?php echo $rigUrl ?>"
+                                href="<?php echo $rigUrl ?>">
+                            <?php echo $block->escapeHtml($rigModel->getLabel()) ?>
+                        </option>
+                    <?php endforeach; ?>
+
+                    <script type="text/javascript">
+                        require(['jquery', 'forix/plugins/select2'], function ($) {
+                            var inputFilterModel = $('.rig-model-input-filter.js-select2').select2({
+                                placeholder: {
+                                    id: '', // the value of the option
+                                    text: '<?php echo __("Type in model number");?>'
+                                },
+                                dropdownParent: $('.rig-model-input-filter-wrapper'),
+                                minimumInputLength: 1,
+                                //allowClear: true,
+                                //minimumResultsForSearch: -1,
+                                //dropdownPosition: 'below',
+                                escapeMarkup: function (m) {
+                                    return m;
+                                },
+                                matcher: function (params, data) {
+                                    if ($.trim(params.term) === '') {
+                                        return data;
+                                    }
+                                    if (typeof data.text === 'undefined') {
+                                        return null;
+                                    }
+
+                                    var textF = data.text.substring(0, data.text.indexOf(' (')),
+                                        textL = data.text.substring(data.text.indexOf(' ('), data.text.length);
+                                    if (textF === '') {
+                                        textF = textL;
+                                        textL = '';
+                                    }
+                                    let termUpper = params.term.toUpperCase(), modifiedData = null,
+                                        index = textF.toUpperCase().indexOf(termUpper);
+                                    if (index > -1) {
+                                        modifiedData = $.extend({}, data, true);
+                                        modifiedData.text = textF;
+
+                                        let text = modifiedData.text, sub = text.substring(index, index + termUpper.length);
+                                        text = text.replaceBetween(index, index + termUpper.length, '<span class="bold">' + sub + '</span>');
+                                        modifiedData.text = text;
+                                    }
+                                    return modifiedData
+                                }
+                            });
+                            inputFilterModel.on("select2:open", function(event) {
+                                $('input.select2-search__field').attr('placeholder', 'Type in model number');
+
+                            });
+                            $('.rig-model-input-filter-wrapper .select2-search__field').attr('placeholder','Type in model number');
+
+                            inputFilterModel.on("select2:select", function (e) {
+                                document.location.href = this.value;
+                            });
+                        });
+                    </script>
+                </select>
+            </div>
+        </div>
+    </form>
+</div>
